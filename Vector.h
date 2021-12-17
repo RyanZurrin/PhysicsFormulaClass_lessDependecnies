@@ -23,13 +23,15 @@ namespace rez
         static_assert(std::is_arithmetic_v<coordinate_type>, "Vector class can only store integral or floating points values");
         static_assert(dimensions >= DIM2, "Vector dimension atleast should be 2D");
 
-        std::array<coordinate_type, dimensions> coords = {};
-        bool is_normalized = false;
+
 
         template<typename CT, size_t D>
         friend float dotProduct(const Vector<coordinate_type, dimensions>& v1, const Vector<coordinate_type, dimensions>& v2);
 
     public:
+        std::array<coordinate_type, dimensions> coords = {};
+
+        bool is_normalized = false;
         Vector() {}
 
         Vector(std::array<coordinate_type, dimensions> _coords) : coords(_coords) {}

@@ -698,7 +698,7 @@ inline ld ElectroMagneticInduction::magneticFlux(const ld B, const ld A, const l
 
 inline ld ElectroMagneticInduction::emfFaradyFullEquation(const ld N, const ld r, const ld B, const ld t, const ld thetaS, const ld thetaF)
 {
-    const ld area = _PI * (r * r);
+    const ld area = Pi_ * (r * r);
     const ld deltaTheta = cos(thetaF * RADIAN) - cos(thetaS * RADIAN);
     const ld flux = area * B * deltaTheta;
     return  -N * (flux / t);
@@ -706,7 +706,7 @@ inline ld ElectroMagneticInduction::emfFaradyFullEquation(const ld N, const ld r
 
 inline ld ElectroMagneticInduction::emfMagnitude_FaradayNoMinus(const ld N, const ld r, const ld B1, const ld B2, const ld t, const ld theta)
 {
-    const ld area = _PI * (r * r);
+    const ld area = Pi_ * (r * r);
     const ld deltaB = abs(B2 - B1);
     const ld deltaFlux = area * deltaB * cos(theta*RADIAN);
 
@@ -733,20 +733,20 @@ inline ld ElectroMagneticInduction::emf_peek(const ld N, const ld A, const ld B,
 
 inline ld ElectroMagneticInduction::emf_peek(const ld N, const ld r, const ld B, const ld rad, const ld t)
 {
-    const ld area = _PI * (r * r);
+    const ld area = Pi_ * (r * r);
     const ld aW = rad / t;
     return N * area * B * aW;//V
 }
 
 inline ld ElectroMagneticInduction::emfPeek_r(const ld N, const ld r, const ld B, const ld aW)
 {
-    return N * _PI * (r * r) * B * aW;
+    return N * Pi_ * (r * r) * B * aW;
 }
 
 inline ld ElectroMagneticInduction::emf_peekFromDiameterAndRPMs(const ld N, const ld d, const ld B, const ld rpm)
 {
-    const ld aW = (rpm * 2.0 * _PI) / 60.0;//angular velocity
-    const ld A = (_PI * (d * d)) / 4;//cross sectional
+    const ld aW = (rpm * 2.0 * Pi_) / 60.0;//angular velocity
+    const ld A = (Pi_ * (d * d)) / 4;//cross sectional
     return N * A * B * aW;//V
 }
 
@@ -757,7 +757,7 @@ inline ld ElectroMagneticInduction::emf_inducedByMagneticFlux(const ld N, const 
 
 inline ld ElectroMagneticInduction::emf_avgOnCoil(const ld B, const ld d, const ld t)
 {
-    return (_PI * B * (d * d)) / (4.0 * t);//V
+    return (Pi_ * B * (d * d)) / (4.0 * t);//V
 }
 
 inline ld ElectroMagneticInduction::n_turnsInCoilFromEMFEquation(const ld t, const ld emf, const ld f)
@@ -809,12 +809,12 @@ inline ld ElectroMagneticInduction::magneticFieldMagnitude(const ld flux, const 
     }
     else if (mode == 'r' || mode == 'R')
     {
-        area = _PI * (Ard * Ard);
+        area = Pi_ * (Ard * Ard);
         return flux/(area*cos(theta*RADIAN));//(T)
     }
     else
     {
-        area = _PI * ((Ard * Ard) / 4.0);
+        area = Pi_ * ((Ard * Ard) / 4.0);
         return flux/(area*cos(theta*RADIAN));//(T)
     }
 }
@@ -888,7 +888,7 @@ inline ld ElectroMagneticInduction::transformerEquations_IN(const ld Is, const l
 
 inline ld ElectroMagneticInduction::frequency(const ld aW)
 {
-    return aW/(2.0*_PI);//Hz
+    return aW/(2.0 * Pi_);//Hz
 }
 
 inline ld ElectroMagneticInduction::period(const ld f)
@@ -936,17 +936,17 @@ inline ld ElectroMagneticInduction::inductanceSolenoid_L(const ld N, const ld Ar
     ld area;
     if (mode == 'a' || mode == 'A')
     {
-        return (_µo_ * (N * N) * Ard) / l;//(H)
+        return (_mu0_ * (N * N) * Ard) / l;//(H)
     }
     else if	(mode == 'r' || mode == 'R')
     {
-        area = _PI * (Ard * Ard);
-        return (_µo_ * (N * N) * area) / l;//(H)
+        area = Pi_ * (Ard * Ard);
+        return (_mu0_ * (N * N) * area) / l;//(H)
     }
     else
     {
-        area = _PI * ((Ard * Ard) / 4.0);
-        return (_µo_ * (N * N) * area) / l;//(H)
+        area = Pi_ * ((Ard * Ard) / 4.0);
+        return (_mu0_ * (N * N) * area) / l;//(H)
     }
 }
 
@@ -977,17 +977,17 @@ inline ld ElectroMagneticInduction::characteristicTimeConstant(const ld L, const
 
 inline ld ElectroMagneticInduction::inductance_reactance_XL(const ld f, const ld L)
 {
-    return 2.0 * _PI * f * L;
+    return 2.0 * Pi_ * f * L;
 }
 
 inline ld ElectroMagneticInduction::capacitive_reactance_XC(const ld f, const ld C)
 {
-    return 1.0 / (2.0 * _PI * f * C);//ohms
+    return 1.0 / (2.0 * Pi_ * f * C);//ohms
 }
 
 inline ld ElectroMagneticInduction::capacitanceFromReactance(const ld f, const ld _xc)
 {
-    return 1.0 / (2.0 * _PI * f * _xc);//F
+    return 1.0 / (2.0 * Pi_ * f * _xc);//F
 }
 
 inline ld ElectroMagneticInduction::current_RLCircuit_switchON(const ld Io, const ld t, const ld cTc)
@@ -1048,7 +1048,7 @@ inline ld ElectroMagneticInduction::impedance(const ld R, const ld L, const ld C
 
 inline ld ElectroMagneticInduction::resonantFrequency(const ld L, const ld C)
 {
-    return 1.0 / (20 * _PI * sqrt(L * C));//Hz
+    return 1.0 / (20 * Pi_ * sqrt(L * C));//Hz
 }
 
 inline ld ElectroMagneticInduction::powerFactor(const ld R, const ld Z)
@@ -1074,7 +1074,7 @@ inline ld ElectroMagneticInduction::powerAvgRLC(const ld Irms, const ld Vrms, co
 
 inline ld ElectroMagneticInduction::emfPeek(const ld r, const ld N, const ld t, const ld B)
 {
-    return ((_PI * _PI) * N * (r * r) * B) / (2.0 * t);//peek emf (Vo)
+    return ((Pi_ * Pi_) * N * (r * r) * B) / (2.0 * t);//peek emf (Vo)
 }
 
 

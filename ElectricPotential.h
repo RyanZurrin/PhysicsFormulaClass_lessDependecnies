@@ -4,7 +4,6 @@
 
 #ifndef PHYSICSFORMULA_ELECTRICPOTENTIAL_H
 #define PHYSICSFORMULA_ELECTRICPOTENTIAL_H
-#pragma once
 /**
  * @class ElectricPotential
  * @details driver class for solving complex physics problems
@@ -12,7 +11,7 @@
  * @dateBuilt  12/31/2020
  * @lastEdit 12/31/2020
  */
-#include "ElectricCharge.h"
+//#include "ElectricCharge.h"
 #include "Heat.h"
 #include <iostream>
 
@@ -614,13 +613,13 @@ inline ld ElectricPotential::capacitanceVolts(const ld Q, const ld C)
 
 inline ld ElectricPotential::capacitanceParallelPlate(const ld A, const ld d)
 {
-    return _ε0_*(A/d);
+    return _e0_ * (A / d);
 }
 
 
 inline ld ElectricPotential::capacitanceParallelPlateDielectric(const ld d_k, const ld A, const ld d)
 {
-    return d_k * _ε0_ * (A / d);
+    return d_k * _e0_ * (A / d);
 }
 
 inline ld ElectricPotential::dielectricConstant(const ld E0, const ld E)
@@ -651,12 +650,12 @@ inline ld ElectricPotential::potentialAcross_Ecap_CE(const ld C, const ld Ecap)
 
 inline ld ElectricPotential::capacitorPlateArea(const ld C, const ld d)
 {
-    return C * d / (_ε0_);
+    return C * d / (_e0_);
 }
 
 inline ld ElectricPotential::capacitorPlateAreaDielectric(const ld C, const ld d, const ld k)
 {
-    return (d * C) / (k * _ε0_);
+    return (d * C) / (k * _e0_);
 }
 
 inline ld ElectricPotential::vMaxOnCapacitor(const ld dStrength, const ld d)

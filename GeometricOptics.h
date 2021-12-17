@@ -6,7 +6,6 @@
 #define PHYSICSFORMULA_GEOMETRICOPTICS_H
 #include <map>
 
-#include "ElectroMagneticWaves.h"
 #include <iostream>
 using namespace std;
 

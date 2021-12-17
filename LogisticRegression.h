@@ -5,7 +5,7 @@
 #ifndef PHYSICSFORMULA_LOGISTICREGRESSION_H
 #define PHYSICSFORMULA_LOGISTICREGRESSION_H
 
-#include "MatrixND.h"
+#include "LinearRegression.h"
 #include <list>
 #include <iostream>
     template<typename T>

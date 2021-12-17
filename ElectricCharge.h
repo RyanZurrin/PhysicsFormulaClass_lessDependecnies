@@ -23,18 +23,18 @@ typedef long double ld;
 constexpr auto METERS_1LY = 9460730472580800;
 
 //pi = 3.14159265359
-constexpr auto _π_ = 3.14159265359;
+constexpr auto _pi_ = 3.14159265359;
 /// <summary>
 /// Vacuum permittivity, commonly denoted ε0 (pronounced as "epsilon nought"
 /// or "epsilon zero") is the value of the absolute dielectric permittivity
 /// of classical vacuum.
 /// </summary>
-constexpr auto _ε0_ = 8.854187819013e-12; // 8.8542e-12
+constexpr auto _e0_ = 8.854187819013e-12; // 8.8542e-12
 /// <summary>
 /// Coulombs constant 8.988 * pow(10.0, 9)Nm^2)/C^2
 /// </summary>
 constexpr auto _k_ = 8.9875517923e9; //8.988 * pow(10.0, 9)Nm^2)/C^2
-constexpr auto _K_ = 1.0 / (4.0 * _π_ * _ε0_);
+constexpr auto _K_ = 1.0 / (4.0 * _pi_ * _e0_);
 /// <summary>
 /// The electron = -1.6 * 10^-19 C
 /// </summary>
@@ -728,7 +728,7 @@ inline std::vector<ld> ElectricCharge::electricFieldAtCenterTriangle(
     );
     //cout << "Ey: " << Ey << endl;
     results[0] = sqrt((Ex * Ex) + (Ey * Ey));
-    results[1] = atan((Ey / Ex)) * 180 / _π_;
+    results[1] = atan((Ey / Ex)) * 180 / _pi_;
 
     return results;
 }

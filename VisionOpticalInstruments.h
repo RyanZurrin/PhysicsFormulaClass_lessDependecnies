@@ -285,15 +285,15 @@ public:
 
     /// <summary>
     /// When you hold an insect at the near point of your eye it subtends an
-    /// angle of Θ rad. Calculate the angular size (magnitude only)
+    /// angle of theta rad. Calculate the angular size (magnitude only)
     /// of the insect when viewed through a microscope that has an angular
     /// magnification with a magnitude of m.
     /// </summary>
-    /// <param name="Θ">The f e.</param>
+    /// <param name="theta">The f e.</param>
     /// <param name="m">The m e.</param>
     /// <returns></returns>
     template<typename T, typename K>
-    static auto angularMagnitude_objectThroughMicroscope(const T Θ, const K m);
+    static auto angularMagnitude_objectThroughMicroscope(const T theta, const K m);
 
 
     /// <summary>
@@ -495,9 +495,9 @@ inline auto VisionOpticalInstruments::angular_magnification(const T R_, const K 
 }
 
 template <typename T, typename K>
-inline auto VisionOpticalInstruments::angularMagnitude_objectThroughMicroscope(const T Θ, const K m)
+inline auto VisionOpticalInstruments::angularMagnitude_objectThroughMicroscope(const T theta, const K m)
 {
-    return m * Θ;
+    return m * theta;
 }
 
 template<typename T, typename K>

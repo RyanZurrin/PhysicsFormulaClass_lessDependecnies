@@ -15,14 +15,14 @@
 #include <string>
 #include <vector>
 #include <cmath>
-#define _G_ 9.81
+constexpr auto _ga_ = 9.81;
 using namespace std;
 static int heat_objectCount = 0;
 /***
  * @ the Stefan Boltzmann constant is often represented as sigma in the
  * Stefan Boltzmann->(σ) law of radiation equation
  */
-constexpr auto _σ_ = 5.67e-8;
+constexpr auto _epsilon_ = 5.67e-8;
 typedef long double ld;
 
 static struct HeatEnergyUnitConversion
@@ -449,7 +449,7 @@ public:
      */
     static ld stefanBoltzmannLawOfRadiation(const ld e, const ld A, const ld T)
     {
-        return _σ_ * e * A * pow(T, 4);
+        return _epsilon_ * e * A * pow(T, 4);
     }
 
 
@@ -459,7 +459,7 @@ public:
      */
     static ld netRateOfHeatTransferByRadiation(const ld e, const ld A, const ld T1, const ld T2)
     {
-        return _σ_ * e * A * ((pow(T2, 4) - pow(T1, 4)));
+        return _epsilon_ * e * A * ((pow(T2, 4) - pow(T1, 4)));
     }
 
     /**
@@ -470,7 +470,7 @@ public:
      */
     static ld initialTempFromFallingWater(const ld h, const ld Tf, const ld _c_ = _c.water_L[0])
     {
-        return  Tf - (_G_ * h) / _c_;
+        return  Tf - (_ga_ * h) / _c_;
     }
 
     /**
@@ -613,12 +613,12 @@ public:
     /// </summary>
     /// <param name="m">The mass.</param>
     /// <param name="c_">The specific heat.</param>
-    /// <param name="Δ_t">The δ temperature.</param>
+    /// <param name="deltaTime">The δ temperature.</param>
     /// <param name="P">The power output.</param>
     /// <returns>time to heat object by specified temperature</returns>
-    static ld timeToHeatObject(const ld m, const ld c_, const ld Δ_t, const ld P)
+    static ld timeToHeatObject(const ld m, const ld c_, const ld deltaTime, const ld P)
     {
-        return (m * c_ * Δ_t) / P;
+        return (m * c_ * deltaTime) / P;
     }
 
 

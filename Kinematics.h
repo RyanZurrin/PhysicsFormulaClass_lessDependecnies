@@ -409,11 +409,11 @@ public:
     /// Calculates the horizontal range of a projectile.
     /// </summary>
     /// <param name="v">The velocity.</param>
-    /// <param name="Θ">The angle theta.</param>
+    /// <param name="theta">The angle theta.</param>
     /// <returns>range of projectile</returns>
     template<typename T>
-    static auto horizontal_range_projectile(const T v, const T Θ)
-    { return  ((v * v) * sin(2 * Θ * RADIAN) / (_Ga_));	}
+    static auto horizontal_range_projectile(const T v, const T theta)
+    { return  ((v * v) * sin(2 * theta * RADIAN) / (_Ga_));	}
 
     /// <summary>
     /// calculates the angle theta of a projectile
@@ -430,14 +430,14 @@ public:
     /// Calculates the trajectories equation for a projectile
     /// </summary>
     /// <param name="v">The initial velocity.</param>
-    /// <param name="Θ">The angle theta of projectiles launch.</param>
+    /// <param name="theta">The angle theta of projectiles launch.</param>
     /// <param name="h_0">The height initially started from.</param>
     /// <returns>a string with the trajectory equation of projectile's parabola</returns>
     template<typename T>
-    static auto trajectory_equation(T v, T Θ, T h_0)
+    static auto trajectory_equation(T v, T theta, T h_0)
     {
-        auto prt1 = tan(Θ * RADIAN);
-        auto prt2 = _Ga_ / (2.0 * (v * v) * pow(cos(Θ * RADIAN), 2));
+        auto prt1 = tan(theta * RADIAN);
+        auto prt2 = _Ga_ / (2.0 * (v * v) * pow(cos(theta * RADIAN), 2));
         string results = "y = "+to_string(h_0)+" + " + to_string(prt1) + " - " + to_string(prt2) + "x^2";
         return results;
     }

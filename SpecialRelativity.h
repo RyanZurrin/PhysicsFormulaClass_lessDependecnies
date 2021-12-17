@@ -12,18 +12,18 @@
  * lastEdit: 5/15/2021
  */
 //α=224,ß=225,π=227,Σ=228,σ=229,µ=230,τ=231,Φ=232,Θ=233
-//Ω=234,δ=235,∞=236,φ=237,ε=238,∩=239,≡=240,Γ=226,γ, σ, ϑ, Å, Ώ, λ, γ
+//Ω=234,δ=235,∞=236,φ=237,ε=238,∩=239,≡=240,gamma=226,gamma, σ, ϑ, Å, Ώ, lambda, gamma
 
 #include <iostream>
 
-#include "VisionOpticalInstruments.h"
+//#include "VisionOpticalInstruments.h"
 static int specialRelativity_objectCount = 0;
 typedef long double ld;
 
 inline static auto lFactor = []<class T>(const T & v) {
-    const auto γ = 1.0 / sqrt(1.0 - (v * v));
-    std::cout << "gamma: "<< γ;
-    return γ;
+    const auto upsilon = 1.0 / sqrt(1.0 - (v * v));
+    std::cout << "gamma: "<< upsilon;
+    return upsilon;
 };
 
 
@@ -77,18 +77,18 @@ public:
     static int get_objectCount() { return specialRelativity_objectCount; }
 
     /// <summary>
-    /// Calculates the Lorentz factor(γ) if v is a decimal of the percent of the
+    /// Calculates the Lorentz factor(gamma) if v is a decimal of the percent of the
     /// speed of light, for instance if something was going half the speed of
     /// light you would put a value of .500 for v.
     /// </summary>
-    /// <param name="ν">The velocity .</param>
-    /// <returns>Lorentz factor, gamma (γ)</returns>
+    /// <param name="upsilon">The velocity .</param>
+    /// <returns>Lorentz factor, gamma (gamma)</returns>
     template<typename T>
-    static constexpr auto lorentzFactor(const T ν);
+    static constexpr auto lorentzFactor(const T upsilon);
 
 
     /// <summary>
-    /// Find the value of γ(gamma) for the following situation. An Earth-bound
+    /// Find the value of gamma(gamma) for the following situation. An Earth-bound
     /// observer measures t h to have passed while signals from a high-velocity
     /// space probe indicate that t_o h have passed on board.
     /// </summary>
@@ -104,22 +104,22 @@ public:
     /// relative to an observer, this method will calculate how long they
     /// live as viewed in the laboratory?
     /// </summary>
-    /// <param name="ν">The speed of particle.</param>
+    /// <param name="upsilon">The speed of particle.</param>
     /// <param name="t_o">The time in seconds particle can live.</param>
     /// <returns>relativistic time alive is seconds, time dilation</returns>
     template<typename T, typename K>
-    static constexpr auto relativisticTimeDilation(const T ν, const K t_o);
+    static constexpr auto relativisticTimeDilation(const T upsilon, const K t_o);
 
     /// <summary>
     /// Suppose a particle called a kaon is created by cosmic radiation striking
     /// the atmosphere. It moves by you at vc, and it lives t s when
     /// at rest relative to an observer. How long does it live as you observe it?
     /// </summary>
-    /// <param name="ν">The velocity .</param>
+    /// <param name="upsilon">The velocity .</param>
     /// <param name="t_o">The relatively observed time.</param>
     /// <returns>time from observers perspective</returns>
     template<typename T, typename K>
-    static constexpr auto timeDilation(const T νc, const K t_o);
+    static constexpr auto timeDilation(const T upsilonc, const K t_o);
 
     /// <summary>
     /// A neutral π-meson is a particle that can be created by accelerator
@@ -134,21 +134,21 @@ public:
     static constexpr auto relativeVelocity(const T t, const K t_o);
 
     /// <summary>
-    /// If relativistic effects are to be less than percent_γ %, then γ must be less
-    /// than x = 1.00 + %. At what relative velocity is γ=x
+    /// If relativistic effects are to be less than percent_gamma %, then gamma must be less
+    /// than x = 1.00 + %. At what relative velocity is gamma=x
     /// </summary>
-    /// <param name="percent_γ">The percent of Lorentz(γ).</param>
+    /// <param name="percent_gamma">The percent of Lorentz(gamma).</param>
     /// <returns>speed to achieve desired percent of Lorentz factor</returns>
     template<typename T>
-    static constexpr auto relativeVelocity_percentLorentz(const T percent_γ);
+    static constexpr auto relativeVelocity_percentLorentz(const T percent_gamma);
 
     /// <summary>
-    /// Calculate at what relative velocity is gamma= γ
+    /// Calculate at what relative velocity is gamma= gamma
     /// </summary>
-    /// <param name="γ">The γ.</param>
+    /// <param name="gamma">The gamma.</param>
     /// <returns></returns>
     template<typename T>
-    static constexpr auto relativeVelocity_lorantzAt(const T γ);
+    static constexpr auto relativeVelocity_lorantzAt(const T gamma);
 
     /// <summary>
     /// A neutron lives t_o s when at rest relative to an observer. How fast
@@ -217,13 +217,13 @@ public:
 
     /// <summary>
     /// Verify that two distances are related through length contraction
-    /// if gamma = γ.
+    /// if gamma = gamma.
     /// </summary>
     /// <param name="l_o">The proper length.</param>
-    /// <param name="γ">The γ.</param>
+    /// <param name="gamma">The gamma.</param>
     /// <returns>contracted length</returns>
     template<typename T, typename K>
-    static constexpr auto contractedLength(const T l_o, const K γ);
+    static constexpr auto contractedLength(const T l_o, const K gamma);
 
     /// <summary>
     ///  How long does it take the astronaut  to travel
@@ -246,13 +246,13 @@ public:
     static constexpr auto properTime(const T t, const K vc);
 
     /// <summary>
-    /// Verify time is related through time dilation with gamma = γ as given.
+    /// Verify time is related through time dilation with gamma = gamma as given.
     /// </summary>
     /// <param name="t_o">The t o.</param>
-    /// <param name="γ">The γ.</param>
+    /// <param name="gamma">The gamma.</param>
     /// <returns></returns>
     template<typename T, typename K>
-    static constexpr auto timeGamma(const T t_o, const K  γ);
+    static constexpr auto timeGamma(const T t_o, const K  gamma);
 
     /// <summary>
     /// A spaceship is heading directly toward the Earth at a velocity of
@@ -301,14 +301,14 @@ public:
 
     /// <summary>
     /// If a galaxy moving away from the Earth has a speed of 1000 km/s(u) and
-    /// emits 656 nm(λ_s) light characteristic of hydrogen (the most common element
+    /// emits 656 nm(lambda_s) light characteristic of hydrogen (the most common element
     /// in the universe). Calculate the wavelength we observe on the Earth
     /// </summary>
     /// <param name="u">The speed.</param>
-    /// <param name="λ_s">The wavelength source.</param>
+    /// <param name="lambda_s">The wavelength source.</param>
     /// <returns>observed wavelength</returns>
     template<typename T, typename K>
-    static constexpr auto wavelengthObserved(const T u, const K λ_s);
+    static constexpr auto wavelengthObserved(const T u, const K lambda_s);
 
     /// <summary>
     /// A space probe speeding towards the nearest star moves at 0.250c(u) and
@@ -323,15 +323,15 @@ public:
 
     /// <summary>
     /// Near the center of our galaxy, hydrogen gas is moving directly away
-    /// from us in its orbit about a black hole. We receive 1900(λ_obs) nm electromagnetic
-    /// radiation and know that it was 1875 nm(λ_s) when emitted by the hydrogen gas.
+    /// from us in its orbit about a black hole. We receive 1900(lambda_obs) nm electromagnetic
+    /// radiation and know that it was 1875 nm(lambda_s) when emitted by the hydrogen gas.
     /// What is the speed of the gas
     /// </summary>
-    /// <param name="λ_s">The λ s.</param>
-    /// <param name="λ_obs">The λ obs.</param>
+    /// <param name="lambda_s">The lambda s.</param>
+    /// <param name="lambda_obs">The lambda obs.</param>
     /// <returns></returns>
     template<typename T, typename K>
-    static constexpr auto velocity_fromWaveLengths(const T λ_s, const K λ_obs);
+    static constexpr auto velocity_fromWaveLengths(const T lambda_s, const K lambda_obs);
 
     /// <summary>
     /// A highway patrol officer uses a device that measures the speed of
@@ -395,7 +395,7 @@ public:
 
     /// <summary>
     ///  Find the ratio of this momentum to the classical momentum.
-    ///  (Use the approximation that γ=1+12v2c2 at low velocities.)
+    ///  (Use the approximation that gamma=1+12v2c2 at low velocities.)
     /// </summary>
     /// <param name="v">The velocity.</param>
     /// <returns>gamma, Lorentz factor</returns>
@@ -475,11 +475,11 @@ public:
     /// <summary>
     /// Calculates the kinetics energy.
     /// </summary>
-    /// <param name="γ">gamma.</param>
+    /// <param name="gamma">gamma.</param>
     /// <param name="m">The mass.</param>
     /// <returns>kinetic energy (J)</returns>
     template<typename T, typename K>
-    static constexpr auto kineticEnergy(const T γ, const K m);
+    static constexpr auto kineticEnergy(const T gamma, const K m);
 
     /// <summary>
     /// Totals the energy.
@@ -516,7 +516,7 @@ public:
     /// <summary>
     /// A muon has a rest mass energy of 105.7 MeV(m_i), and it decays into an
     /// electron(m_d = .5110MeV) and a mass-less particle. If all the lost
-    /// mass is converted into the electron’s kinetic energy, find γ for the
+    /// mass is converted into the electron’s kinetic energy, find gamma for the
     /// electron.
     /// </summary>
     /// <param name="m_i">The initial rest mass.</param>
@@ -534,32 +534,32 @@ public:
     /// </summary>
     /// <param name="E_i">The e i.</param>
     /// <param name="E_f">The e f.</param>
-    /// <returns>gamma γ</returns>
+    /// <returns>gamma gamma</returns>
     template<typename T, typename E>
     static constexpr auto gamma_fromRestMassEnergies(const T E_i, const E E_f);
 
     /// <summary>
-    /// What is γ for a proton->(q) having a mass energy of 938.3 MeV->(M) accelerated
+    /// What is gamma for a proton->(q) having a mass energy of 938.3 MeV->(M) accelerated
     /// through an effective potential of 1.0 TV(teravolt)->(volts) at Fermilab
     /// outside Chicago
     /// </summary>
     /// <param name="q">The charge of the particle.</param>
     /// <param name="volts">The volts.</param>
     /// <param name="m">The mass energy.</param>
-    /// <returns>gamma γ</returns>
+    /// <returns>gamma gamma</returns>
     template<typename Q, typename V, typename M>
     static constexpr auto gamma_fromAccelerationThroughVoltage(const Q q, const V volts, const M m);
 
     /// <summary>
     /// Calculate the effective accelerating potential for electrons->(m) at the
-    /// Stanford Linear Accelerator, if gamma=1.00×105->(γ) for them
+    /// Stanford Linear Accelerator, if gamma=1.00×105->(gamma) for them
     /// </summary>
-    /// <param name="γ">gamma (γ).</param>
+    /// <param name="gamma">gamma (gamma).</param>
     /// <param name="m">The mass of particle.</param>
     /// <param name="q">The charge of particle.</param>
     /// <returns>the effective volts needed to accelerate particle</returns>
     template<typename G, typename M, typename Q>
-    static constexpr auto effectiveAccelerationPotential(const G γ, const M m, const Q q);
+    static constexpr auto effectiveAccelerationPotential(const G gamma, const M m, const Q q);
 
     /// <summary>
     /// Using a calculation of the energy released by the destruction of 1.00 kg->(m)
@@ -592,9 +592,9 @@ private:
 #endif //PHYSICSFORMULA_SPECIALRELATIVITY_H
 
 template<typename T>
-constexpr auto SpecialRelativity::lorentzFactor(const T ν)
+constexpr auto SpecialRelativity::lorentzFactor(const T upsilon)
 {
-    return 1.0 / sqrt(1.0 - (ν * ν));
+    return 1.0 / sqrt(1.0 - (upsilon * upsilon));
 }
 
 template<typename T, typename K>
@@ -604,15 +604,15 @@ constexpr auto SpecialRelativity::lorentzValue(const T t, const K t_o)
 }
 
 template<typename T, typename K>
-constexpr auto SpecialRelativity::relativisticTimeDilation(const T ν, const K t_o)
+constexpr auto SpecialRelativity::relativisticTimeDilation(const T upsilon, const K t_o)
 {
-    return t_o / sqrt(1.0 - ((ν * ν)/(C_*C_) ));
+    return t_o / sqrt(1.0 - ((upsilon * upsilon)/(C_*C_) ));
 }
 
 template<typename T, typename K>
-constexpr auto SpecialRelativity::timeDilation(const T νc, const K t_o)
+constexpr auto SpecialRelativity::timeDilation(const T upsilonc, const K t_o)
 {
-    return t_o / sqrt(1.0 - (νc * νc));
+    return t_o / sqrt(1.0 - (upsilonc * upsilonc));
 }
 
 template<typename T, typename K>
@@ -622,16 +622,16 @@ constexpr auto SpecialRelativity::relativeVelocity(const T t, const K t_o)
 }
 
 template<typename T>
-constexpr auto SpecialRelativity::relativeVelocity_percentLorentz(const T percent_γ)
-{// γ = gamma = Lorentz
-    const auto γ = 1.00 + percent_γ / 100;
-    return (_C_ / γ) * sqrt((γ * γ) - 1);
+constexpr auto SpecialRelativity::relativeVelocity_percentLorentz(const T percent_gamma)
+{// gamma = gamma = Lorentz
+    const auto gamma = 1.00 + percent_gamma / 100;
+    return (_C_ / gamma) * sqrt((gamma * gamma) - 1);
 }
 
 template<typename T>
-constexpr auto SpecialRelativity::relativeVelocity_lorantzAt(const T γ)
+constexpr auto SpecialRelativity::relativeVelocity_lorantzAt(const T gamma)
 {
-    return _C_ * sqrt(1.0 - (1.0 / (γ * γ)));
+    return _C_ * sqrt(1.0 - (1.0 / (gamma * gamma)));
 }
 
 template<typename T, typename K>
@@ -665,9 +665,9 @@ constexpr auto SpecialRelativity::distanceTraveled_proper(const T t_o, const K v
 }
 
 template<typename T, typename K>
-constexpr auto SpecialRelativity::contractedLength(const T l_o, const K γ)
+constexpr auto SpecialRelativity::contractedLength(const T l_o, const K gamma)
 {
-    return l_o / γ;
+    return l_o / gamma;
 }
 
 template<typename T, typename K>
@@ -683,9 +683,9 @@ constexpr auto SpecialRelativity::properTime(const T t, const K vc)
 }
 
 template<typename T, typename K>
-constexpr auto SpecialRelativity::timeGamma(const T t_o, const K γ)
+constexpr auto SpecialRelativity::timeGamma(const T t_o, const K gamma)
 {
-    return  γ * t_o;
+    return  gamma * t_o;
 }
 
 template<typename T, typename K>
@@ -713,9 +713,9 @@ constexpr auto SpecialRelativity::relative_velocity(const T v, const K uv, const
 }
 
 template<typename T, typename K>
-constexpr auto SpecialRelativity::wavelengthObserved(const T u, const K λ_s)
+constexpr auto SpecialRelativity::wavelengthObserved(const T u, const K lambda_s)
 {
-    return λ_s * sqrt((1.0 + (u / _C_)) / (1.0 - (u / _C_)));
+    return lambda_s * sqrt((1.0 + (u / _C_)) / (1.0 - (u / _C_)));
 }
 
 template<typename T, typename K>
@@ -725,9 +725,9 @@ constexpr auto SpecialRelativity::frequencyObserved(const T uc, const K f_s)
 }
 
 template<typename T, typename K>
-constexpr auto SpecialRelativity::velocity_fromWaveLengths(const T λ_s, const K λ_obs)
+constexpr auto SpecialRelativity::velocity_fromWaveLengths(const T lambda_s, const K lambda_obs)
 {
-    return _C_ * ((((λ_obs * λ_obs) / (λ_s * λ_s)) - 1.0) / (1.0 + (((λ_obs * λ_obs) / (λ_s * λ_s)))));
+    return _C_ * ((((lambda_obs * lambda_obs) / (lambda_s * lambda_s)) - 1.0) / (1.0 + (((lambda_obs * lambda_obs) / (lambda_s * lambda_s)))));
 }
 
 template<typename T, typename K>
@@ -810,9 +810,9 @@ constexpr auto SpecialRelativity::ratioOfMassUsedAsEnergy(const T m, const K m_i
 }
 
 template<typename T, typename K>
-constexpr auto SpecialRelativity::kineticEnergy(const T γ, const K m)
+constexpr auto SpecialRelativity::kineticEnergy(const T gamma, const K m)
 {
-    return (γ - 1.0) * m * (_C_ * _C_);
+    return (gamma - 1.0) * m * (_C_ * _C_);
 }
 
 template<typename E, typename V>
@@ -852,9 +852,9 @@ constexpr auto SpecialRelativity::gamma_fromAccelerationThroughVoltage(const Q q
 }
 
 template<typename G, typename M, typename Q>
-constexpr auto SpecialRelativity::effectiveAccelerationPotential(const G γ, const M m, const Q q)
+constexpr auto SpecialRelativity::effectiveAccelerationPotential(const G gamma, const M m, const Q q)
 {
-    return ((γ - 1.0) * m * (_C_ * _C_)) / q;
+    return ((gamma - 1.0) * m * (_C_ * _C_)) / q;
 }
 
 template<typename M, typename H>

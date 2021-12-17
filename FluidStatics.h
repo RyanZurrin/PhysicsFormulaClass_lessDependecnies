@@ -25,7 +25,7 @@ static struct VolumeCalculator
     */
     ld sphere(const ld r) const
     {
-        return (4 / 3) * _PI * pow(r, 3.0);
+        return (4 / 3) * Pi_ * pow(r, 3.0);
     }
     /**
     * @brief calculates the volume of a cone
@@ -34,7 +34,7 @@ static struct VolumeCalculator
     */
     ld cone(const ld r, const ld h)const
     {
-        return (1 / 3) * _PI * pow(r, 2.0) * h;
+        return (1 / 3) * Pi_ * pow(r, 2.0) * h;
     }
     /**
     * @brief calculates the volume of a cube
@@ -51,7 +51,7 @@ static struct VolumeCalculator
     */
     ld cylinder(const ld r, const ld h)const
     {
-        return _PI * r * 2 * h;
+        return Pi_ * r * 2 * h;
     }
     /**
     * @brief calculates the volume of rectangular tank
@@ -72,7 +72,7 @@ static struct VolumeCalculator
     */
     ld capsule(const ld r, const ld h)const
     {
-        return (_PI * pow(r, 2)) * ((4 / 3) * r + h);
+        return (Pi_ * pow(r, 2)) * ((4 / 3) * r + h);
     }
 
     /**
@@ -83,7 +83,7 @@ static struct VolumeCalculator
     */
     ld sphericalCap(const ld r, const ld h)const
     {
-        return ((1 / 3) * _PI * pow(h, 2.0)) * (3 * r - h);
+        return ((1 / 3) * Pi_ * pow(h, 2.0)) * (3 * r - h);
     }
 
 }v;
@@ -261,7 +261,7 @@ static struct ContactAngles
 */
 static ld radiusFromCircumference(const ld c)
 {
-    return c / (2 * _PI);
+    return c / (2 * Pi_);
 }
 /**
 * @brief diameter to radius
@@ -504,7 +504,7 @@ public:
     /// <returns>the radius</returns>
     static ld radiusCylinder(const ld m, const ld h, const ld _p)
     {
-        return sqrt((m * _p) / (_PI * h));
+        return sqrt((m * _p) / (Pi_ * h));
     }
 
     /// <summary>
@@ -538,7 +538,7 @@ public:
     /// <returns>radius</returns>
     static ld radiusOfSphere(const ld m, const ld p)
     {
-        return pow((3.0 * m) / (4.0 * _PI * p),1/3);
+        return pow((3.0 * m) / (4.0 * Pi_ * p), 1 / 3);
     }
 
     /// <summary>

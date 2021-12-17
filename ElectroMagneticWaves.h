@@ -5,7 +5,7 @@
 #ifndef PHYSICSFORMULA_ELECTROMAGNETICWAVES_H
 #define PHYSICSFORMULA_ELECTROMAGNETICWAVES_H
 
-#include "ElectroMagneticInduction.h"
+//#include "ElectroMagneticInduction.h"
 
 static int emWaves_objectCount = 0;
 
@@ -172,21 +172,21 @@ public:
 
     /// <summary>
     /// Calculates the inductance of a LC circuit containing a C-F capacitor
-    /// oscillates at such a frequency that it radiates at a  λ-m wavelength.
+    /// oscillates at such a frequency that it radiates at a  theta-m wavelength.
     /// </summary>
-    /// <param name="λ">The λ.</param>
+    /// <param name="theta">The theta.</param>
     /// <param name="C">The c.</param>
     /// <returns>inductance</returns>
-    static ld inductanceOfCircuitFromWavelength(const ld λ, const ld C);
+    static ld inductanceOfCircuitFromWavelength(const ld theta, const ld C);
 
     /// <summary>
     /// Calculates the capacitance of a LC circuit containing a L-H inductor
-    /// oscillates at such a frequency that it radiates at a λ-m wavelength.
+    /// oscillates at such a frequency that it radiates at a theta-m wavelength.
     /// </summary>
-    /// <param name="λ">The λ.</param>
+    /// <param name="theta">The theta.</param>
     /// <param name="L">The l.</param>
     /// <returns>capacitance</returns>
-    static ld capacitanceOfCircuitFromWavelength(const ld λ, const ld L);
+    static ld capacitanceOfCircuitFromWavelength(const ld theta, const ld L);
 
     ~ElectromagneticWaves()
     {
@@ -203,7 +203,7 @@ private:
 //in-line class Implementation
 inline ld ElectromagneticWaves::speedOfElectroMagneticWaves()
 {
-    return 1.0 / sqrt (_µo_ * _ε0_);
+    return 1.0 / sqrt (_mu0_ * _e0_);
 }
 
 inline ld ElectromagneticWaves::magneticFieldStrength_emWave(const ld E)
@@ -248,12 +248,12 @@ inline ld ElectromagneticWaves::echoTime(const ld d)
 
 inline ld ElectromagneticWaves::intensityAvg_emWave_E(const ld E)
 {
-    return (_C_ * _ε0_ * (E * E)) / 2.0;
+    return (_C_ * _e0_ * (E * E)) / 2.0;
 }
 
 inline ld ElectromagneticWaves::powerReceivedByAntenna(const ld d, const ld I)
 {
-    return (I * _PI * (d * d)) / 4.0;
+    return (I * Pi_ * (d * d)) / 4.0;
 }
 
 inline ld ElectromagneticWaves::waveLength_dopplerEffect(const ld v, const ld recievedWL)
@@ -261,17 +261,17 @@ inline ld ElectromagneticWaves::waveLength_dopplerEffect(const ld v, const ld re
     return recievedWL / (1.0 - (v / _C_));
 }
 
-inline ld ElectromagneticWaves::inductanceOfCircuitFromWavelength(const ld λ, const ld C)
+inline ld ElectromagneticWaves::inductanceOfCircuitFromWavelength(const ld theta, const ld C)
 {
-    return (λ * λ) / (4.0 * (_π_ * _π_) * (_C_ * _C_) * C);
+    return (theta * theta) / (4.0 * (_pi_ * _pi_) * (_C_ * _C_) * C);
 }
 
-inline ld ElectromagneticWaves::capacitanceOfCircuitFromWavelength(const ld λ, const ld L)
+inline ld ElectromagneticWaves::capacitanceOfCircuitFromWavelength(const ld theta, const ld L)
 {
-    return (λ * λ) / (4.0 * (_π_ * _π_) * L * (_C_ * _C_));
+    return (theta * theta) / (4.0 * (_pi_ * _pi_) * L * (_C_ * _C_));
 }
 
 inline ld ElectromagneticWaves::intensityAvg_emWave_B(const ld B)
 {
-    return (_C_ * (B * B)) / (2.0 * _µo_);
+    return (_C_ * (B * B)) / (2.0 * _mu0_);
 }

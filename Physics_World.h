@@ -21,31 +21,18 @@
 #include "Circuits.h"
 #include "Cone.h"
 #include "Cylinder.h"
-#include "Circle.h"
 #include "Cube.h"
 #include "Drag.h"
 #include "DynamicsAndForces.h"
 #include "Elasticity.h"
-#include "ElectricCharge.h"
-#include "ElectricCurrent.h"
-#include "ElectricPotential.h"
 #include "ElectroMagneticInduction.h"
 #include "ElectroMagneticWaves.h"
-#include "Energy.h"
-#include "ETL.h"
-#include "FluidDynamics.h"
 #include "FluidStatics.h"
-#include "Friction.h"
-#include "GeometricOptics.h"
 #include "Hearing.h"
-#include "Heat.h"
 #include "Kinematics.h"
 #include "LinearAlgebra.h"
-#include "LinearRegression.h"
 #include "LogisticRegression.h"
-#include "Magnetism.h"
 #include "MathFx.h"
-#include "MatrixND.h"
 #include "Momentum.h"
 #include "Parallelogram.h"
 #include "PeriodicElements.h"
@@ -57,19 +44,12 @@
 #include "RotationalMotion.h"
 #include "Sphere.h"
 #include "Statics.h"
-#include "Temperature.h"
 #include "Thermodynamics.h"
 #include "Torque.h"
 #include "TransitiveClosure.h"
 #include "TriangleSolver.h"
-#include "UniformCircularMotion.h"
 #include "Vector.h"
-#include "Vector3D.h"
-#include "VectorND.h"
 #include "VisionOpticalInstruments.h"
-#include "WaveOptics.h"
-#include "Waves.h"
-#include "SpecialRelativity.h"
 #include "Square.h"
 #include "QuantumPhysics.h"
 typedef TriangleSolver TS;
@@ -808,9 +788,9 @@ public:
     }
 
     unique_ptr<AtomicPhysics> atomic;
-    unique_ptr<LinearRegression<float>> linear_regression;
-    unique_ptr<LogisticRegression<float>> logistic_regression;
-    unique_ptr<ETL<float>> etl;
+    unique_ptr<LinearRegression<TYPE>> linear_regression;
+    unique_ptr<LogisticRegression<TYPE>> logistic_regression;
+    unique_ptr<ETL<TYPE>> etl;
     unique_ptr<MatrixND<TYPE>> matrixNd;
     unique_ptr<VectorND<TYPE>> vectorNd;
     unique_ptr<TriangleSolver> triangle;
@@ -923,55 +903,55 @@ public:
      */
     Physics_World operator+(const Physics_World& r)const
     {
-        double x, y, z;
+        long double x, y, z;
         x = vector3d->return_x() + r.vector3d->return_x();
         y = vector3d->return_y() + r.vector3d->return_y();
         z = vector3d->return_z() + r.vector3d->return_z();
-        Physics_World sum;
-        sum.vector3d->set_coordinates(x, y, z);
+        std::unique_ptr<Physics_World> sum = std::make_unique<Physics_World>();
+        sum->vector3d->set_coordinates(x, y, z);
         x = vector2d->return_x() + r.vector2d->return_x();
         y = vector2d->return_y() + r.vector2d->return_y();
-        sum.vector2d->set_coordinates(x, y);
-        sum.vector3d->mode = r.vector3d->mode;
-        sum.vector2d->mode = this->vector2d->mode;
-        return sum;
+        sum->vector2d->set_coordinates(x, y);
+        sum->vector3d->mode = r.vector3d->mode;
+        sum->vector2d->mode = this->vector2d->mode;
+        return *sum;
     }
     Physics_World operator+(long double n)const
     {
-        double x, y, z;
+        long double x, y, z;
         x = vector3d->return_x() + n;
         y = vector3d->return_y() + n;
         z = vector3d->return_z() + n;
-        Physics_World sum;
-        sum.vector3d->set_coordinates(x, y, z);
+        std::unique_ptr<Physics_World> sum = std::make_unique<Physics_World>();
+        sum->vector3d->set_coordinates(x, y, z);
         x = vector2d->return_x() + n;
         y = vector2d->return_y() + n;
-        sum.vector2d->set_coordinates(x, y);
-        sum.vector3d->mode = this->vector3d->mode;
-        sum.vector2d->mode = this->vector2d->mode;
+        sum->vector2d->set_coordinates(x, y);
+        sum->vector3d->mode = this->vector3d->mode;
+        sum->vector2d->mode = this->vector2d->mode;
         _val_ = +n;
-        return sum;
+        return *sum;
     }
 
-    Physics_World& operator+=(const Physics_World& r)
+    Physics_World& operator+=(const Physics_World& r) const
     {
-        double x, y, z;
+        long double x, y, z;
         x = vector3d->return_x() + r.vector3d->return_x();
         y = vector3d->return_y() + r.vector3d->return_y();
         z = vector3d->return_z() + r.vector3d->return_z();
-        Physics_World sum;
-        sum.vector3d->set_coordinates(x, y, z);
+        std::unique_ptr<Physics_World> sum = std::make_unique<Physics_World>();
+        sum->vector3d->set_coordinates(x, y, z);
         x = vector2d->return_x() + r.vector2d->return_x();
         y = vector2d->return_y() + r.vector2d->return_y();
-        sum.vector2d->set_coordinates(x, y);
-        sum.vector3d->mode = r.vector3d->mode;
-        sum.vector2d->mode = this->vector2d->mode;
-        return sum;
+        sum->vector2d->set_coordinates(x, y);
+        sum->vector3d->mode = r.vector3d->mode;
+        sum->vector2d->mode = this->vector2d->mode;
+        return *sum;
 
     }
     Physics_World operator+()const
     {
-        double x, y, z;
+        long double x, y, z;
         x = vector3d->return_x() + 1.0;
         y = vector3d->return_y() + 1.0;
         z = vector3d->return_z() + 1.0;
@@ -1001,9 +981,9 @@ public:
 inline Physics_World::Physics_World()
 {
     atomic = std::make_unique<AtomicPhysics>();
-    linear_regression = std::make_unique<LinearRegression<float>>();
-    logistic_regression = std::make_unique<LogisticRegression<float>>();
-    etl = std::make_unique<ETL<float>>();
+    linear_regression = std::make_unique<LinearRegression<TYPE>>();
+    logistic_regression = std::make_unique<LogisticRegression<TYPE>>();
+    etl = std::make_unique<ETL<TYPE>>();
     matrixNd = std::make_unique<MatrixND<TYPE>>();
     vectorNd = std::make_unique<VectorND<TYPE>>();
     triangle = std::make_unique<TriangleSolver>();
@@ -1077,9 +1057,9 @@ inline Physics_World& Physics_World::operator=(const Physics_World& r)
 inline Physics_World::Physics_World(const TYPE t1, const TYPE t2, const TYPE t3)
 {
     atomic = std::make_unique<AtomicPhysics>();
-    linear_regression = std::make_unique<LinearRegression<float>>();
-    logistic_regression = std::make_unique<LogisticRegression<float>>();
-    etl = std::make_unique<ETL<float>>();
+    linear_regression = std::make_unique<LinearRegression<TYPE>>();
+    logistic_regression = std::make_unique<LogisticRegression<TYPE>>();
+    etl = std::make_unique<ETL<TYPE>>();
     matrixNd = std::make_unique<MatrixND<TYPE>>();
     vectorNd = std::make_unique<VectorND<TYPE>>();
     triangle = std::make_unique<TriangleSolver>();
@@ -1135,9 +1115,9 @@ inline Physics_World::Physics_World(const TYPE t1, const TYPE t2, const TYPE t3)
 inline Physics_World::Physics_World(const TYPE t1, const TYPE t2)
 {
     atomic  = std::make_unique<AtomicPhysics>();
-    linear_regression = std::make_unique<LinearRegression<float>>();
-    logistic_regression = std::make_unique<LogisticRegression<float>>();
-    etl = std::make_unique<ETL<float>>();
+    linear_regression = std::make_unique<LinearRegression<TYPE>>();
+    logistic_regression = std::make_unique<LogisticRegression<TYPE>>();
+    etl = std::make_unique<ETL<TYPE>>();
     matrixNd = std::make_unique<MatrixND<TYPE>>();
     vectorNd = std::make_unique<VectorND<TYPE>>();
     triangle = std::make_unique<TriangleSolver>();

@@ -14,7 +14,7 @@
 #include <cmath>
 using namespace std;
 typedef long double ld;
-#define _PI 3.141592653589793238462643383279502884L // pi
+//#define Pi_ 3.141592653589793238462643383279502884L // pi
 #define _Ga_ 9.81  // acceleration due to gravity
 static int fluidDynamic_objectCount = 0;
 
@@ -174,7 +174,7 @@ public:
     /// <returns>volume</returns>
     static ld volumeCylinder(const ld radius, const ld distance)
     {
-        return _PI * (radius * radius) * distance;
+        return Pi_ * (radius * radius) * distance;
     }
 
     /// <summary>
@@ -186,7 +186,7 @@ public:
     /// <returns>flow rate (Q)</returns>
     static ld flowRateCylinder_radius(const ld radius, const ld distance, const ld time)
     {
-        return _PI * (radius * radius) * distance * time;
+        return Pi_ * (radius * radius) * distance * time;
     }
 
     /// <summary>
@@ -197,7 +197,7 @@ public:
     /// <returns></returns>
     static ld flowRateCylinder_diameter(const ld diameter, const ld velocity)
     {
-        return (_PI * (diameter * diameter) / 4.0) * velocity;
+        return (Pi_ * (diameter * diameter) / 4.0) * velocity;
     }
 
     /// <summary>
@@ -241,7 +241,7 @@ public:
     /// <returns>average velocity</returns>
     static ld averageVelocity_tubeLike(const ld volumeFlowRate, const ld radius)
     {
-        return volumeFlowRate / (_PI * (radius * radius));
+        return volumeFlowRate / (Pi_ * (radius * radius));
     }
 
     /// <summary>
@@ -287,7 +287,7 @@ public:
     /// <returns></returns>
     static ld flowRate_tubeLike(const ld radius, const ld avgVelocity)
     {
-        return _PI * (radius * radius) * avgVelocity;
+        return Pi_ * (radius * radius) * avgVelocity;
     }
 
     /// <summary>
@@ -299,7 +299,7 @@ public:
     /// <returns>volume total</returns>
     static ld volumeTotal(const ld radius, const ld avgVelocity, const ld time)
     {
-        return _PI * (radius * radius) * avgVelocity * time;
+        return Pi_ * (radius * radius) * avgVelocity * time;
     }
 
     /// <summary>
@@ -323,7 +323,7 @@ public:
     /// <returns>average blood flow</returns>
     static ld averageVelocityBloodFlowThroughCapillary_diameter(const ld flowRate, const ld capillaryVessels, const ld diameterEach)
     {
-        return (4.0 * flowRate) / (capillaryVessels * _PI * (diameterEach * diameterEach));
+        return (4.0 * flowRate) / (capillaryVessels * Pi_ * (diameterEach * diameterEach));
     }
 
     /// <summary>
@@ -334,7 +334,7 @@ public:
     /// <returns></returns>
     static ld averageVelocityBloodFlowThroughCapillary_radius(const ld flowRate, const ld radius)
     {
-        return flowRate / (_PI * (radius * radius));
+        return flowRate / (Pi_ * (radius * radius));
     }
 
     /// <summary>
@@ -345,7 +345,7 @@ public:
     /// <returns>capillaries</returns>
     static ld capillaryFlowTotal_diameter(const ld area, const ld diameter)
     {
-        return (4.0 * area) / (_PI * (diameter * diameter));
+        return (4.0 * area) / (Pi_ * (diameter * diameter));
     }
 
     /// <summary>
@@ -356,7 +356,7 @@ public:
     /// <returns></returns>
     static ld capillaryFlowTotal_radius(const ld flow, const ld radius)
     {
-        return flow / (_PI * (radius * radius));
+        return flow / (Pi_ * (radius * radius));
     }
 
     /// <summary>
@@ -380,7 +380,7 @@ public:
     /// <returns>average speed of air flow out of duct</returns>
     static ld airFlowThroughCircularDuctIntoRectangularRoom(const ld roomVolume, const ld radiusDuct, const ld time)
     {
-        return roomVolume / (_PI * (radiusDuct * radiusDuct) * time);
+        return roomVolume / (Pi_ * (radiusDuct * radiusDuct) * time);
     }
 
     /// <summary>
@@ -391,7 +391,7 @@ public:
     /// <returns>diameter</returns>
     static ld diameterStream(const ld flowRate, const ld velocity)
     {
-        return 2.0 * sqrt((flowRate) / (_PI * velocity));
+        return 2.0 * sqrt((flowRate) / (Pi_ * velocity));
     }
 
     /// <summary>
@@ -405,7 +405,7 @@ public:
     /// <returns></returns>
     static ld diameterPipeForSpecifiedValues(const ld densityFluid, const ld flowRateFluid, const ld viscosityFluid, const ld reynoldsNumber)
     {
-        return (4.0 * densityFluid * flowRateFluid) / (_PI * reynoldsNumber * viscosityFluid);
+        return (4.0 * densityFluid * flowRateFluid) / (Pi_ * reynoldsNumber * viscosityFluid);
     }
 
     /// <summary>
@@ -463,7 +463,7 @@ public:
     /// <returns>max height</returns>
     static ld maxHeightAboveNozzleLiquidRise(const ld volumeROF, const ld nozzleDiameter)
     {
-        return (8.0 * pow(volumeROF, 2.0)) / (pow(_PI, 2.0) * _Ga_ * pow(nozzleDiameter, 4.0));
+        return (8.0 * pow(volumeROF, 2.0)) / (pow(Pi_, 2.0) * _Ga_ * pow(nozzleDiameter, 4.0));
     }
 
     /// <summary>
@@ -506,7 +506,7 @@ public:
     /// <returns>drop in pressure</returns>
     static ld pressureDrop_bernoulliEquationConstantAlt(const ld density, const ld volumeRateOfFlow, const ld diameterLarge, const ld diameterSmall)
     {
-        return (8.0 * density * (volumeRateOfFlow * volumeRateOfFlow) / (_PI * _PI)) * (1.0 / pow(diameterSmall, 4.0) - 1.0 / pow(diameterLarge, 4));
+        return (8.0 * density * (volumeRateOfFlow * volumeRateOfFlow) / (Pi_ * Pi_)) * (1.0 / pow(diameterSmall, 4.0) - 1.0 / pow(diameterLarge, 4));
     }
 
     /// <summary>
@@ -616,7 +616,7 @@ public:
     /// <returns>pressure in hose</returns>
     static ld sumpPumpPressureChangeInPipeDiameter(const ld outputPressure, const ld density, const ld volumeFlowRate, const ld diameter1, const ld diameter2, const ld height)
     {
-        return (outputPressure + ((8.0 * density * (volumeFlowRate * volumeFlowRate)) / (_PI * _PI)) * ((1.0 / pow(diameter1, 4) - (1.0 / pow(diameter2, 4))))) + (density * _Ga_ * -height);
+        return (outputPressure + ((8.0 * density * (volumeFlowRate * volumeFlowRate)) / (Pi_ * Pi_)) * ((1.0 / pow(diameter1, 4) - (1.0 / pow(diameter2, 4))))) + (density * _Ga_ * -height);
     }
 
     /// <summary>
@@ -660,7 +660,7 @@ public:
     /// <returns>viscosity</returns>
     static ld viscosity_laminarFlowPerseusLaw(const ld radiusPipe, const ld resistance, const ld lengthOfPipe)
     {
-        return (_PI * pow(radiusPipe, 4.0) * resistance) / (8.0 * lengthOfPipe);
+        return (Pi_ * pow(radiusPipe, 4.0) * resistance) / (8.0 * lengthOfPipe);
     }
 
     /// <summary>
@@ -696,7 +696,7 @@ public:
     /// <returns></returns>
     static ld resistance_poiseuilleLawFor(const ld viscosityCoef, const ld lengthOfTube, const ld radiusOfTube)
     {
-        return (8.0 * viscosityCoef * lengthOfTube) / (_PI * pow(radiusOfTube, 4.0));
+        return (8.0 * viscosityCoef * lengthOfTube) / (Pi_ * pow(radiusOfTube, 4.0));
     }
 
     /// <summary>
@@ -710,7 +710,7 @@ public:
     /// <returns>flow rate</returns>
     static ld laminarFlow_poiseuilleLawFor(const ld pressure1, const ld pressure2, const ld radiusOfTube, const ld viscosity, const ld lengthOfTube)
     {
-        return ((pressure2 - pressure1) * _PI * pow(radiusOfTube, 4.0)) / (8.0 * viscosity * lengthOfTube);
+        return ((pressure2 - pressure1) * Pi_ * pow(radiusOfTube, 4.0)) / (8.0 * viscosity * lengthOfTube);
     }
 
     /// <summary>
@@ -724,7 +724,7 @@ public:
     /// <returns>pressure point 2</returns>
     static ld pressureToProduceFlowRate_laminarFLow(const ld supplyFlowRate, const ld lengthTube, const ld radiusTube, const ld viscosity, const ld gaugePressurePoint1)
     {
-        return ((8.0 * viscosity * lengthTube) / (_PI * pow(radiusTube, 4.0))) * supplyFlowRate + gaugePressurePoint1;
+        return ((8.0 * viscosity * lengthTube) / (Pi_ * pow(radiusTube, 4.0))) * supplyFlowRate + gaugePressurePoint1;
     }
 
     /// <summary>
@@ -753,7 +753,7 @@ public:
     /// <returns>Reynolds number</returns>
     static ld reynoldsNumber_usingFlowRate(const ld density, const ld flowRate, const ld radius, const ld viscosity)
     {
-        return (2.0 * density * flowRate) / (_PI * radius * viscosity);
+        return (2.0 * density * flowRate) / (Pi_ * radius * viscosity);
     }
 
     /// <summary>
@@ -798,7 +798,7 @@ public:
     /// <returns></returns>
     static ld viscous_drag_sphereSM(const ld radius, const ld viscosity, const ld velocity)
     {
-        return 6.0 * _PI * radius * viscosity * velocity;
+        return 6.0 * Pi_ * radius * viscosity * velocity;
     }
 
     /// <summary>
@@ -928,7 +928,7 @@ public:
     /// <returns>flow rate</returns>
     static ld criticalFLowRate(const ld radius, const ld viscosity, const ld reynoldsNumber, const ld density)
     {
-        return (_PI * radius * reynoldsNumber) / (2.0 * density);
+        return (Pi_ * radius * reynoldsNumber) / (2.0 * density);
     }
 
     /// <summary>
@@ -953,7 +953,7 @@ public:
     /// <returns>pressure supplied by faucet</returns>
     static ld pressureHoseHorizontal_poiseuilleLlawWithFlowRate(const ld viscosity, const ld  lengthHose, const ld volumeFlowRate, const ld radius, const ld pressureAir)
     {
-        return ((8.0 * viscosity * lengthHose * volumeFlowRate) / (_PI * radius)) + pressureAir;
+        return ((8.0 * viscosity * lengthHose * volumeFlowRate) / (Pi_ * radius)) + pressureAir;
     }
 
     /// <summary>

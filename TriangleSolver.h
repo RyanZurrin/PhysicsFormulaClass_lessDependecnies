@@ -421,28 +421,26 @@ inline TriangleSolver::TriangleSolver(TriangleSolver&& t)noexcept
 
 inline TriangleSolver& TriangleSolver::operator=(TriangleSolver const& right)
 {
-    TriangleSolver temp;
     //cout << "in the overloaded Triangle =operator";
     if (this != &right) {
-        temp.side_a = right.side_a;
-        temp.side_b = right.side_b;
-        temp.side_c = right.side_c;
-        temp.update_triangle();
-        return temp;
+        this->side_a = right.side_a;
+        this->side_b = right.side_b;
+        this->side_c = right.side_c;
+        this->update_triangle();
+        return *this;
     }
     return *this;
 }
 
 inline TriangleSolver& TriangleSolver::operator=(TriangleSolver&& t) noexcept
 {
-    TriangleSolver temp;
     //cout << "in the overloaded Triangle =operator";
     if (this != &t) {
-        temp.side_a = t.side_a;
-        temp.side_b = t.side_b;
-        temp.side_c = t.side_c;
-        temp.update_triangle();
-        return temp;
+        this->side_a = t.side_a;
+        this->side_b = t.side_b;
+        this->side_c = t.side_c;
+        this->update_triangle();
+        return *this;
     }
     return *this;
 }
@@ -1558,22 +1556,22 @@ inline void TriangleSolver::setAngles(double aA, double aB, double aC)
 
 inline TriangleSolver TriangleSolver::operator++()
 {
-    return TriangleSolver(++side_a, ++side_b, ++side_c);
+    return TriangleSolver{++side_a, ++side_b, ++side_c};
 }
 
 inline TriangleSolver TriangleSolver::operator++(int)
 {
-    return TriangleSolver(side_a++,side_b++,side_c++);
+    return TriangleSolver{side_a++,side_b++,side_c++};
 }
 
 inline TriangleSolver TriangleSolver::operator+(const TriangleSolver& tri)const
 {
-    return TriangleSolver(side_a+tri.side_a, side_b+tri.side_b,side_c+tri.side_c);
+    return TriangleSolver{side_a+tri.side_a, side_b+tri.side_b,side_c+tri.side_c};
 }
 
 inline TriangleSolver TriangleSolver::operator+(double n)const
 {
-    return TriangleSolver(side_a+n,side_b+n,side_c+n);
+    return TriangleSolver{side_a+n,side_b+n,side_c+n};
 }
 
 inline TriangleSolver& TriangleSolver::operator+=(const TriangleSolver& rhs)
@@ -1586,22 +1584,20 @@ inline TriangleSolver& TriangleSolver::operator+=(const TriangleSolver& rhs)
 }
 inline TriangleSolver& TriangleSolver::operator+(const TriangleSolver& rhs)
 {
-    TriangleSolver temp(
-            side_a + rhs.side_a,
-            side_b + rhs.side_b,
-            side_c + rhs.side_c
-    );
-    temp.update_triangle();
-    return temp;
+    side_a += rhs.side_a;
+    side_b += rhs.side_b;
+    side_c += rhs.side_c;
+    calculate_All_angles();
+    return *this;
 }
 inline TriangleSolver operator+(double num, TriangleSolver& t)
 {
-    return TriangleSolver(num + t.side_a, num + t.side_b, num + t.side_c);
+    return TriangleSolver{num+t.side_a,num+t.side_b,num+t.side_c};
 }
 
 inline TriangleSolver operator+(TriangleSolver& v, TriangleSolver& s)
 {
-    return TriangleSolver(v.side_a + s.side_a, v.side_b + s.side_b, v.side_c + s.side_c);
+    return TriangleSolver{v.side_a+s.side_a,v.side_b+s.side_b,v.side_c+s.side_c};
 }
 
 
@@ -1610,26 +1606,22 @@ inline TriangleSolver operator+(TriangleSolver& v, TriangleSolver& s)
 
 inline TriangleSolver TriangleSolver::operator--()
 {
-    return TriangleSolver(--side_a, --side_b, --side_c);
+    return TriangleSolver{--side_a, --side_b, --side_c};
 }
 
 inline TriangleSolver TriangleSolver::operator--(int)
 {
-    return TriangleSolver(side_a--, side_b--, side_c--);
+    return TriangleSolver{side_a--,side_b--,side_c--};
 }
 
 inline TriangleSolver TriangleSolver::operator-(const TriangleSolver& tri) const
 {
-    double a,b,c;
-    a = this->side_a - tri.side_a;
-    b = this->side_b - tri.side_b;
-    c = this->side_c - tri.side_c;
-    return TriangleSolver(a, b, c);
+    return TriangleSolver{side_a-tri.side_a, side_b-tri.side_b,side_c-tri.side_c};
 }
 
 inline TriangleSolver TriangleSolver::operator-(double n) const
 {
-    return TriangleSolver(side_a-n,side_b-n,side_c-n);
+    return TriangleSolver{side_a-n,side_b-n,side_c-n};
 }
 
 inline TriangleSolver& TriangleSolver::operator-=(const TriangleSolver& rhs)
@@ -1644,12 +1636,12 @@ inline TriangleSolver& TriangleSolver::operator-=(const TriangleSolver& rhs)
 
 inline TriangleSolver operator-(double num, TriangleSolver& t)
 {
-    return TriangleSolver(num - t.side_a, num - t.side_b, num - t.side_c);
+    return TriangleSolver{num-t.side_a,num-t.side_b,num-t.side_c};
 }
 
 inline TriangleSolver operator-(TriangleSolver& v, const TriangleSolver& s)
 {
-    return TriangleSolver(v.side_a - s.side_a, v.side_b - s.side_b, v.side_c - s.side_c);
+    return TriangleSolver{v.side_a-s.side_a,v.side_b-s.side_b,v.side_c-s.side_c};
 }
 
 /*______________________________________________________________________________
@@ -1657,12 +1649,12 @@ inline TriangleSolver operator-(TriangleSolver& v, const TriangleSolver& s)
 
 inline TriangleSolver TriangleSolver::operator/(double d)const
 {
-    return TriangleSolver(side_a/d, side_b/d, side_c/d);
+    return TriangleSolver{side_a/d,side_b/d,side_c/d};
 }
 
 inline TriangleSolver TriangleSolver::operator/(const TriangleSolver& t)const
 {
-    return TriangleSolver(side_a / t.side_a, side_b / t.side_b, side_c / t.side_c);
+    return TriangleSolver{side_a/t.side_a,side_b/t.side_b,side_c/t.side_c};
 }
 
 /*______________________________________________________________________________
@@ -1670,17 +1662,17 @@ inline TriangleSolver TriangleSolver::operator/(const TriangleSolver& t)const
 
 inline TriangleSolver TriangleSolver::operator*(double t) const
 {
-    return TriangleSolver(side_a * t, side_b * t, side_c * t);
+    return TriangleSolver{side_a*t,side_b*t,side_c*t};
 }
 
 inline TriangleSolver operator*(double s, TriangleSolver& t)
 {
-    return TriangleSolver(t.side_a * s, t.side_b * s, t.side_c * s);
+    return TriangleSolver{s*t.side_a,s*t.side_b,s*t.side_c};
 }
 
 inline TriangleSolver operator*(TriangleSolver& v, TriangleSolver& s)
 {
-    return TriangleSolver(v.side_a * s.side_a, v.side_b * s.side_b, v.side_c * s.side_c);
+    return TriangleSolver{v.side_a*s.side_a,v.side_b*s.side_b,v.side_c*s.side_c};
 }
 inline ostream& operator<<(ostream& os, const TriangleSolver& t)
 {
@@ -1720,7 +1712,7 @@ inline T TriangleSolver::negativeNumFix(T& num)
     //double temp;
     if (num < 0) {
         do {
-            cout << "You cannot enter a negitive value\n:";
+            cout << "You cannot enter a negative value\n:";
             cout << "making it an absolute value instead";
             num = abs(num);
             //return num;
@@ -1731,4 +1723,3 @@ inline T TriangleSolver::negativeNumFix(T& num)
     }
     return num;
 }
-

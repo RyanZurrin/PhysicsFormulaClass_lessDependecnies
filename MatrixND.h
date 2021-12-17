@@ -366,13 +366,13 @@ inline MatrixND<T>::MatrixND(int r, int c)
 			numCols  the number of columns in the matrix
 */
 template <typename T>
-MatrixND<T>::MatrixND(std::vector<T> elements, int numRows, int numCols)
+MatrixND<T>::MatrixND(std::vector<T> elm, int numRows, int numCols)
 {
     rows = numRows;
     cols = numCols;
     data.clear();
-    for(unsigned int i = 0; i < elements.size(); i++) {
-        data.push_back(elements[i]);
+    for(unsigned int i = 0; i < elm.size(); i++) {
+        data.push_back(elm[i]);
     }
 }
 

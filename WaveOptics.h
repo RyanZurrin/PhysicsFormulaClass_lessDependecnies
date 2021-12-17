@@ -7,8 +7,8 @@
 #include "GeometricOptics.h"
 #include <cmath>
 #include <iostream>
-//α=224,ß=225,π=227,Σ=228,σ=229,µ=230,τ=231,Φ=232,Θ=233
-//Ω=234,δ=235,∞=236,φ=237,ε=238,∩=239,≡=240,Γ=226,γ, σ, ϑ, Å, Ώ, λ, γ
+//α=224,ß=225,π=227,Σ=228,σ=229,µ=230,τ=231,Φ=232,theta=233
+//Ω=234,delta=235,∞=236,φ=237,ε=238,∩=239,≡=240,Γ=226,γ, σ, theta, Å, Ώ, lambda, γ
 /**
  * @class WaveOptics
  * @details class of static methods that relate to chapter 27 of the open-stax
@@ -79,13 +79,13 @@ public:
 
 
     /// <summary>
-    /// Calculates the wavelength in a medium when the λ in a vacuum is λ and
+    /// Calculates the wavelength in a medium when the lamda in a vacuum is lamda and
     /// the index of refraction of the medium is n.
     /// </summary>
-    /// <param name="λ">The wavelength in a vacuum.</param>
+    /// <param name="lamda">The wavelength in a vacuum.</param>
     /// <param name="n">The index of refraction.</param>
     /// <returns>the wavelength in a medium</returns>
-    static auto wavelengthInMedium(const ld λ, const ld n);
+    static auto wavelengthInMedium(const ld lamda, const ld n);
 
     /// <summary>
     /// Calculates the wavelength of medium.
@@ -126,139 +126,139 @@ public:
     /// from a He-Ne laser and has a wavelength of 633 nm in air, is the
     /// substance zircon or diamond?
     /// </summary>
-    /// <param name="λMedium">The w l medium.</param>
-    /// <param name="λ2">The w l2.</param>
+    /// <param name="lambdaMid">The w l medium.</param>
+    /// <param name="lambda2">The w l2.</param>
     /// <returns></returns>
-    static auto indexOfRefractionFromWavelengths(const ld λMedium, const ld λ2);
+    static auto indexOfRefractionFromWavelengths(const ld lambdaMid, const ld lambda2);
 
     /// <summary>
-    /// Calculates the angle of the n order of maximum for λ wavelength
+    /// Calculates the angle of the n order of maximum for lambda wavelength
     /// of light falling on double slits separated by d (m)?
     /// </summary>
     /// <param name="m">The order of interference: 0, 1, -1, 2, -2.....</param>
-    /// <param name="λ">The wavelength.</param>
+    /// <param name="lambda">The wavelength.</param>
     /// <param name="d">The distance between slits.</param>
-    /// <returns>the angle Θ</returns>
-    static auto angleOf_nOrderOfInterference_doubleSlit(int m, const ld λ, const ld d);
+    /// <returns>the angle theta</returns>
+    static auto angleOf_nOrderOfInterference_doubleSlit(int m, const ld lambda, const ld d);
 
     /// <summary>
-    ///Calculates the separation between two slits for which a wavelength of λ
-    /// light has its first maximum at an angle of Θ∘.
+    ///Calculates the separation between two slits for which a wavelength of lambda
+    /// light has its first maximum at an angle of theta∘.
     /// </summary>
     /// <param name="m">The order of interference: 0, 1, -1, 2, -2.....</param>
-    /// <param name="λ">The wavelength.</param>
-    /// <param name="Θ">The angle Θ.</param>
+    /// <param name="lambda">The wavelength.</param>
+    /// <param name="theta">The angle theta.</param>
     /// <returns>separation between slits (units)</returns>
-    static auto separationBetweenSlits_doubleSlit(const int m, const ld λ, const ld Θ);
+    static auto separationBetweenSlits_doubleSlit(const int m, const ld lambda, const ld theta);
 
     /// <summary>
     /// Calculates the distance between two slits that produces the first minimum
-    /// for λ(m) of light at an angle of Θ∘
+    /// for lambda(m) of light at an angle of theta∘
     /// </summary>
     /// <param name="m">The order of interference: 0, 1, -1, 2, -2....</param>
-    /// <param name="λ">The w l.</param>
-    /// <param name="Θ">The Θ.</param>
+    /// <param name="lambda">The w l.</param>
+    /// <param name="theta">The theta.</param>
     /// <returns></returns>
-    static auto separationBetweenSlits_destructive(const int m, const ld λ, const ld Θ);
+    static auto separationBetweenSlits_destructive(const int m, const ld lambda, const ld theta);
 
     /// <summary>
     /// Calculates the wavelength of light that has its m minimum at an
-    /// angle of Θ∘ when falling on double slits separated by d(units).
+    /// angle of theta∘ when falling on double slits separated by d(units).
     /// </summary>
     /// <param name="m">The minimum.</param>
     /// <param name="d">The distance between slits.</param>
-    /// <param name="Θ">The angle Θ.</param>
+    /// <param name="theta">The angle theta.</param>
     /// <returns>the wavelength (units)</returns>
-    static auto wavelengthAt_nMinimum_doubleSlit(const int m, const ld d, const ld Θ);
+    static auto wavelengthAt_nMinimum_doubleSlit(const int m, const ld d, const ld theta);
 
     /// <summary>
     /// Calculates the wavelength of light falling on double slits separated by
-    /// d units, if the nM maximum is at an angle of Θ∘.
+    /// d units, if the nM maximum is at an angle of theta∘.
     /// </summary>
     /// <param name="nM">The order of maximum.</param>
     /// <param name="d">The distance between slits.</param>
-    /// <param name="Θ">The angle Θ.</param>
+    /// <param name="theta">The angle theta.</param>
     /// <returns>wavelength</returns>
-    static auto wavelengthAt_nOrderMaximum_doubleSlit(const ld nM, const ld d, const ld Θ);
+    static auto wavelengthAt_nOrderMaximum_doubleSlit(const ld nM, const ld d, const ld theta);
 
     /// <summary>
     /// Calculates the wavelength of light that has its m minimum at an angle
-    /// of Θ∘ when it falls on a single slit of width D units.
+    /// of theta∘ when it falls on a single slit of width D units.
     /// </summary>
     /// <param name="m">The order of minimum.</param>
     /// <param name="D">The width of slit.</param>
-    /// <param name="Θ">The angle θ.</param>
+    /// <param name="theta">The angle theta.</param>
     /// <returns>wavelength</returns>
-    static auto wavelength_nMinSingleSlit(const ld m, const ld D, const ld Θ);
+    static auto wavelength_nMinSingleSlit(const ld m, const ld D, const ld theta);
 
     /// <summary>
-    /// Calculates the wavelength of light that has its m-order maximum at angle Θ,
+    /// Calculates the wavelength of light that has its m-order maximum at angle theta,
     /// when falling on a diffraction grating that has a total of s slits per centimeter.
     /// </summary>
     /// <param name="m">The order of interference </param>
-    /// <param name="Θ">The angle θ.</param>
+    /// <param name="theta">The angle theta.</param>
     /// <param name="s">The number of slits per cm.</param>
     /// <returns>the wavelength</returns>
-    static auto wavelengthOfLight_nOrderMaxGrating(const ld m, const ld Θ, const ld s);
+    static auto wavelengthOfLight_nOrderMaxGrating(const ld m, const ld theta, const ld s);
 
     /// <summary>
-    /// What is the highest-order maximum for light with a wavelength of λ
+    /// What is the highest-order maximum for light with a wavelength of lambda
     /// falling on double slits separated by d units.
     /// </summary>
     /// <param name="d">The distance of separation between slits.</param>
-    /// <param name="λ">The wavelength.</param>
-    /// <param name="Θ">The angle Θ is default at 90 degrees which
+    /// <param name="lambda">The wavelength.</param>
+    /// <param name="theta">The angle theta is default at 90 degrees which
     /// would be thrush hold angle that would cause a maximum order.</param>
     /// <returns>m= order of interference</returns>
-    static auto highestOrderMaximum(const ld d, const ld λ, const ld Θ);
+    static auto highestOrderMaximum(const ld d, const ld lambda, const ld theta);
 
     /// <summary>
     /// Calculates angle at nM order maximum, if the first-order maximum for pure-wavelength light
-    /// falling on a double slit is at an angle of Θ∘
+    /// falling on a double slit is at an angle of theta∘
     /// nM-order maximum
     /// </summary>
     /// <param name="nM">The n m.</param>
-    /// <param name="Θ">The Θ.</param>
-    /// <returns>angle of Θ at nM maximum</returns>
-    static auto angleOf_nOrderMaximum(const ld nM, const ld Θ);
+    /// <param name="theta">The theta.</param>
+    /// <returns>angle of theta at nM maximum</returns>
+    static auto angleOf_nOrderMaximum(const ld nM, const ld theta);
 
     /// <summary>
     /// Calculates the angle of the nMim minimum, if the first-order minimum
-    /// for pure-wavelength light falling on a double slit is at an angle of Θ∘
+    /// for pure-wavelength light falling on a double slit is at an angle of theta∘
     /// </summary>
     /// <param name="nMin">The n minimum.</param>
-    /// <param name="Θ">The Θ.</param>
-    /// <returns>angle Θ at n minimum</returns>
-    static auto angleOf_nMinimum(const ld nMin, const ld Θ);
+    /// <param name="theta">The theta.</param>
+    /// <returns>angle theta at n minimum</returns>
+    static auto angleOf_nMinimum(const ld nMin, const ld theta);
 
     /// <summary>
     /// Calculates the highest order maximum, If the first-order maximum for pure-wavelength
-    /// light falling on a double slit at an angle of Θ.
+    /// light falling on a double slit at an angle of theta.
     /// </summary>
-    /// <param name="Θ">The first order maximum Θ.</param>
+    /// <param name="theta">The first order maximum theta.</param>
     /// <returns>highest order of maximum</returns>
-    static auto highestOrderMaximum(const ld Θ);
+    static auto highestOrderMaximum(const ld theta);
 
     /// <summary>
-    /// Using Δy=x*λ*d, calculate the distance between fringes for 633-nm light
+    /// Using deltay=x*lambda*d, calculate the distance between fringes for 633-nm light
     /// falling on double slits separated by 0.0800 mm, located 3.00 m from a
     /// screen as in Figure
     /// </summary>
     /// <param name="x">The x.</param>
-    /// <param name="λ">The w l.</param>
+    /// <param name="lambda">The w l.</param>
     /// <param name="d">The d.</param>
     /// <returns></returns>
-    static auto distanceBetweenFringes(const ld x, const ld λ, const ld d);
+    static auto distanceBetweenFringes(const ld x, const ld lambda, const ld d);
 
     /// <summary>
-    /// Calculate the wavelength of light that produces fringes Δy units
+    /// Calculate the wavelength of light that produces fringes deltay units
     /// apart on a screen x units from double slits separated by d units.
     /// </summary>
     /// <param name="x">The x.</param>
-    /// <param name="Δy">The δy.</param>
+    /// <param name="deltay">The deltay.</param>
     /// <param name="d">The d.</param>
     /// <returns>distance between fringes on screen</returns>
-    static auto wavelengthFromFringes(const ld x, const ld Δy, const ld d);
+    static auto wavelengthFromFringes(const ld x, const ld deltay, const ld d);
 
     /// <summary>
     /// Waves the length at n order m fringe.
@@ -274,17 +274,17 @@ public:
     /// Young's double slit experiment is one of the quintessential experiments
     /// in physics. The availability of low cost lasers in recent years allows
     /// us to perform the double slit experiment rather easily in class.
-    /// Your professor shines a green laser (λ units) on a double slit with a
+    /// Your professor shines a green laser (lambda units) on a double slit with a
     /// separation of d units. The diffraction pattern shines on the classroom
     /// wall x units away. Calculate the fringe separation between the m order
     /// and central fringe.
     /// </summary>
     /// <param name="m">The m.</param>
     /// <param name="x">The x.</param>
-    /// <param name="λ">The λ.</param>
+    /// <param name="lambda">The lambda.</param>
     /// <param name="d">The d.</param>
     /// <returns></returns>
-    static auto fringeSeparationAt_nOrderMFromCenterDS(const ld m, const ld x, const ld λ, const ld d);
+    static auto fringeSeparationAt_nOrderMFromCenterDS(const ld m, const ld x, const ld lambda, const ld d);
 
     /// <summary>
     /// Distances the between grating slits.
@@ -296,103 +296,103 @@ public:
 
     /// <summary>
     /// Calculates the distance between lines on a diffraction grating that
-    /// produces a m-order maximum for λ-nm light at an angle of Θ∘.
+    /// produces a m-order maximum for lambda-nm light at an angle of theta∘.
     /// </summary>
     /// <param name="m">The order of interference.</param>
-    /// <param name="λ">The wavelength λ.</param>
-    /// <param name="Θ">The angle θ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
+    /// <param name="theta">The angle theta.</param>
     /// <returns>distance between lines in a diffraction grating</returns>
-    static auto separationBetweenSlitsDiffractionGrating(const ld m, const ld  λ, const ld Θ);
+    static auto separationBetweenSlitsDiffractionGrating(const ld m, const ld  lambda, const ld theta);
 
     /// <summary>
     /// Calculates how many lines per centimeter are there on a diffraction
-    /// grating that gives a m-order maximum for λ-m light at an angle of Θ.
+    /// grating that gives a m-order maximum for lambda-m light at an angle of theta.
     /// </summary>
     /// <param name="m">The order of interference.</param>
-    /// <param name="λ">The wavelength λ.</param>
-    /// <param name="Θ">The angle θ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
+    /// <param name="theta">The angle theta.</param>
     /// <returns>how many lines per centimeter in a diffraction grating</returns>
-    static auto linesPer_cmDefractionGrating(const ld m, const ld λ, const ld Θ);
+    static auto linesPer_cmDefractionGrating(const ld m, const ld lambda, const ld theta);
 
     /// <summary>
-    /// Calculates the value of Θ with a order m interference.
+    /// Calculates the value of theta with a order m interference.
     /// </summary>
     /// <param name="m">The order of interference.</param>
     /// <param name="d">The distance between slits.</param>
-    /// <param name="λ">The wavelength .</param>
-    /// <returns>the angle of Θ</returns>
-    static auto thetaAtOrderOfInterference(const ld m, const ld d, const ld λ);
+    /// <param name="lambda">The wavelength .</param>
+    /// <returns>the angle of theta</returns>
+    static auto thetaAtOrderOfInterference(const ld m, const ld d, const ld lambda);
 
     /// <summary>
     /// Calculates the distance from a desired wave length to the central location
     /// </summary>
     /// <param name="x">The x-direction distance.</param>
-    /// <param name="Θ">The angle Θ.</param>
+    /// <param name="theta">The angle theta.</param>
     /// <returns>the length from the center to the where a wavelength fringe
     /// intersects on the screen</returns>
-    static auto yDistanceApart(const ld x, const ld Θ);
+    static auto yDistanceApart(const ld x, const ld theta);
 
     /// <summary>
     /// Calculates the width of a single slit.
     /// </summary>
-    /// <param name="λ">The wavelength λ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
     /// <param name="m">The order of interference m.</param>
-    /// <param name="Θ">The angle theta θ.</param>
+    /// <param name="theta">The angle theta theta.</param>
     /// <returns>width of slit</returns>
-    static auto singleSlitWidth(const ld λ, const ld m, const ld Θ);
+    static auto singleSlitWidth(const ld lambda, const ld m, const ld theta);
 
     /// <summary>
     /// Uses the Rayleigh criterion to solve for the minimum resolvable angle.
-    /// between two objects where  λ is the wavelength of light and D is the
+    /// between two objects where  lambda is the wavelength of light and D is the
     /// diameter of aperture.
     /// </summary>
-    /// <param name="λ">The wavelength λ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
     /// <param name="D">The diameter of aperture.</param>
     /// <returns>the minimum angle between two objects that produce a resolvable
     /// image</returns>
-    static auto rayleighEquation(const ld λ, const ld D);
+    static auto rayleighEquation(const ld lambda, const ld D);
 
     /// <summary>
     /// A telescope can be used to enlarge the diameter of a laser beam and
     /// limit diffraction spreading. The laser beam is sent through the telescope
     /// in opposite the normal direction and can then be projected onto a
     /// satellite or the Moon. If this is done with the
-    /// telescope, producing a D-m-diameter beam of λ-nm light, neglecting atmospheric
+    /// telescope, producing a D-m-diameter beam of lambda-nm light, neglecting atmospheric
     /// effects, calculate is the size of the spot this beam would make on the Moon,
     /// assuming a distance of x m?
     /// </summary>
-    /// <param name="λ">The wave length λ.</param>
+    /// <param name="lambda">The wave length lambda.</param>
     /// <param name="D">The diameter of beam.</param>
     /// <param name="x">The distance away.</param>
     /// <returns>the total diffraction spreading of beam on object</returns>
-    static auto diffractionSpreadingTotal(const ld λ, const ld D, const ld x);
+    static auto diffractionSpreadingTotal(const ld lambda, const ld D, const ld x);
 
     /// <summary>
     /// calculates the distance s between two object a distance r away and
-    /// separated by an angle Θ.
+    /// separated by an angle theta.
     /// </summary>
     /// <param name="r">The distance away in any units.</param>
-    /// <param name="Θ">The angle θ.</param>
+    /// <param name="theta">The angle theta.</param>
     /// <returns>distance the two objects are apart</returns>
-    static auto s_distance2Obj_rApart(const ld r, const ld Θ);
+    static auto s_distance2Obj_rApart(const ld r, const ld theta);
 
     /// <summary>
     /// What is the minimum diameter mirror on a looking scope that would allow
     /// you to see details as small as y units apart on a object some x units
-    /// away? Assume an average wavelength of λ units for the light received.
+    /// away? Assume an average wavelength of lambda units for the light received.
     /// </summary>
     /// <param name="y">The separation between objects being viewed.</param>
     /// <param name="x">The distance away.</param>
-    /// <param name="λ">The wavelength.</param>
+    /// <param name="lambda">The wavelength.</param>
     /// <returns>size of mirror in looking device</returns>
-    static auto minimumMirrorDiameter(const ld y, const ld x, const ld λ);
+    static auto minimumMirrorDiameter(const ld y, const ld x, const ld lambda);
 
     /// <summary>
     /// Uses the Rayleigh criterion to calculate where resolution is still possible
     /// looking through a microscope for which the minimum angular separation where
     /// d is the distance between the specimen and the objective lens, and we have used the small
     /// angle approximation assuming that x is much smaller then d, so that
-    /// that tanΘ = sin Θ == Θ. so x is the resolving power from the resolving
+    /// that tantheta = sin theta == theta. so x is the resolving power from the resolving
     /// power equation.
     /// </summary>
     /// <param name="x">The resolving power.</param>
@@ -405,49 +405,49 @@ public:
     /// <summary>
     /// Calculates the resolving power of a microscope
     /// </summary>
-    /// <param name="λ">The wavelength λ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
     /// <param name="d">The  distance between the specimen and the
     /// objective lens.</param>
     /// <param name="D">The diameter of aperture.</param>
     /// <returns>resolving power</returns>
-    static auto resolvingPower(const ld λ, const ld d, const ld D);
+    static auto resolvingPower(const ld lambda, const ld d, const ld D);
 
     /// <summary>
     /// Calculates the resolving  power for a microscope lens.
     /// </summary>
-    /// <param name="λ">The wavelength λ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
     /// <param name="n">The index of refraction between the lens and the object
     /// .</param>
     /// <param name="NA">The Numerical Aperture.</param>
     /// <returns></returns>
-    static auto resolvingPower_microscopeLens(const ld λ, const ld n, const ld NA);
+    static auto resolvingPower_microscopeLens(const ld lambda, const ld n, const ld NA);
 
     /// <summary>
     /// Calculates the thinnest thickness of a non reflective lens coating.
     /// </summary>
-    /// <param name="λ">The λ.</param>
+    /// <param name="lambda">The lambda.</param>
     /// <param name="n">The index of refraction of film.</param>
     /// <returns>thinnest thickness of coating</returns>
-    static auto thicknessOfNonReflectiveLensCoating(const ld λ, const ld n);
+    static auto thicknessOfNonReflectiveLensCoating(const ld lambda, const ld n);
 
     /// <summary>
-    /// Suppose you have a lens(n= 1.52) system that is to be used primarily for λ-nm
+    /// Suppose you have a lens(n= 1.52) system that is to be used primarily for lambda-nm
     /// light. What is the second thinnest coating of (n)fluorite(n=1.38)
     /// (magnesium fluoride) that would be non- reflective for this wavelength?
-    /// this uses the fact that there are two λ/2 phase shifts as the light
+    /// this uses the fact that there are two lambda/2 phase shifts as the light
     /// travels from air91.00) into the fluorite(1.38) then to glass lens(1.52),
     /// with the second phase shift having an additional distance to travel as
-    /// well being a total of λ/2 + ((2*thickness)/λ_n)*λ = λ/2 + 2*t*n after
-    /// substituting in λ_n = λ/n which we will multiply instead because its
-    /// being divided in the originally so this allows us to cancel the λ out
+    /// well being a total of lambda/2 + ((2*thickness)/lambda_n)*lambda = lambda/2 + 2*t*n after
+    /// substituting in lambda_n = lambda/n which we will multiply instead because its
+    /// being divided in the originally so this allows us to cancel the lambda out
     /// of the formula completely.
     /// </summary>
-    /// <param name="λ">The wave length of light trying to be blocked </param>
+    /// <param name="lambda">The wave length of light trying to be blocked </param>
     /// <param name="n">The index of refraction of the coating.</param>
     /// <param name="m">The multiple integers of interference that cause
     /// a destructive interference.</param>
     /// <returns></returns>
-    static auto thicknessOfThinnestCoating(const ld λ, const ld n, const ld m);
+    static auto thicknessOfThinnestCoating(const ld lambda, const ld n, const ld m);
 
     /// <summary>
     /// To save money on making military aircraft invisible to radar, an inventor
@@ -457,21 +457,21 @@ public:
     /// bombers. Calculates What thickness should the coating be to inhibit the
     /// reflection of 4.00-cm wavelength radar.
     /// </summary>
-    /// <param name="λ">The λ.</param>
+    /// <param name="lambda">The lambda.</param>
     /// <param name="n">The n.</param>
     /// <param name="m">The m.</param>
     /// <returns>thickness</returns>
-    static auto thicknessOfCoating(const ld λ, const ld n, const ld m);
+    static auto thicknessOfCoating(const ld lambda, const ld n, const ld m);
 
     /// <summary>
     /// Malus's law used to calculate the intensity of a polarized wave after
-    /// passing through a filter. Where Io is the incident wave and Θ is the angle
+    /// passing through a filter. Where Io is the incident wave and theta is the angle
     /// between the direction of polarization and the axis of a filter.
     /// </summary>
     /// <param name="Io">The intensity of polarized wave.</param>
-    /// <param name="Θ">The θ.</param>
+    /// <param name="theta">The theta.</param>
     /// <returns>intensity of wave</returns>
-    static auto intensityOfTransmittedWave(const ld Io, const ld Θ);
+    static auto intensityOfTransmittedWave(const ld Io, const ld theta);
 
     /// <summary>
     /// A soap bubble is t units thick and illuminated by white light incident
@@ -513,9 +513,9 @@ public:
     /// Waves the amplitude.
     /// </summary>
     /// <param name="E">The electric field amplitude.</param>
-    /// <param name="Θ">The θ.</param>
+    /// <param name="theta">The theta.</param>
     /// <returns></returns>
-    static auto waveAmplitude(const ld E, const ld Θ);
+    static auto waveAmplitude(const ld E, const ld theta);
 
     /// <summary>
     /// Calculates what angle is needed between the direction of polarized light
@@ -540,7 +540,7 @@ public:
     static auto anglePolarizingAxis2ndFilter(const ld percentReduction);
 
     /// <summary>
-    /// Calculates the angle using Brewster's law. tanΘ = n2/n1
+    /// Calculates the angle using Brewster's law. tantheta = n2/n1
     /// </summary>
     /// <param name="n1">The index of refraction for incident.</param>
     /// <param name="n2">The index of refraction for the medium of reflection.
@@ -553,17 +553,17 @@ public:
     /// </summary>
     /// <param name="n2">The index of refraction for the medium of reflection.
     /// </param>
-    /// <param name="Θ">The angle θ.</param>
+    /// <param name="theta">The angle theta.</param>
     /// <returns>The index of refraction for incident medium.</returns>
-    static auto n1FromBrewstersLaw(const ld n2, const ld Θ);
+    static auto n1FromBrewstersLaw(const ld n2, const ld theta);
 
     /// <summary>
     /// Calculates index of refraction using Brewster's law solved for n2.
     /// </summary>
     /// <param name="n1">The index of refraction for the incident medium.</param>
-    /// <param name="Θ">The angle θ.</param>
+    /// <param name="theta">The angle theta.</param>
     /// <returns>The index of refraction for the reflected medium.</returns>
-    static auto n2FromBrewstersLaw(const ld n1, const ld Θ);
+    static auto n2FromBrewstersLaw(const ld n1, const ld theta);
 
     /// <summary>
     /// Calculates the angle theta when the distance of x and height of y is
@@ -575,34 +575,34 @@ public:
     static auto theta_toa_yx(const ld x_len, const ld y_height);
 
     /// <summary>
-    /// light waves averaging  λ units in wavelength falls on a single slit of
+    /// light waves averaging  lambda units in wavelength falls on a single slit of
     /// width D units.  Calculate the highest-order minimum produced.
     /// </summary>
     /// <param name="D">The d.</param>
-    /// <param name="λ">The λ.</param>
+    /// <param name="lambda">The lambda.</param>
     /// <returns></returns>
-    static auto highestOrderMinimum_singleSlit(const ld D, const ld  λ);
+    static auto highestOrderMinimum_singleSlit(const ld D, const ld  lambda);
 
     /// <summary>
-    /// If a single slit produces a first minimum at Θ∘, Calculate at what
+    /// If a single slit produces a first minimum at theta∘, Calculate at what
     /// angle the m order minimum is.
     /// </summary>
     /// <param name="m">The m-order minimum.</param>
-    /// <param name="Θ">The angle theta of first order minimum.</param>
+    /// <param name="theta">The angle theta of first order minimum.</param>
     /// <returns>angle at order m minimum</returns>
-    static auto angleAt_nOrderMin(const ld m, const ld Θ);
+    static auto angleAt_nOrderMin(const ld m, const ld theta);
 
     /// <summary>
     /// Angles at n order minimum single slit.
     /// </summary>
     /// <param name="m">The m.</param>
     /// <param name="D">The d.</param>
-    /// <param name="λ">The λ.</param>
+    /// <param name="lambda">The lambda.</param>
     /// <returns></returns>
-    static auto angleAt_nOrderMinimum_singleSlit(const ld m, const ld D, const ld  λ);
+    static auto angleAt_nOrderMinimum_singleSlit(const ld m, const ld D, const ld  lambda);
 
     /// <summary>
-    ///	t = ((m+1/2)*λ)/(2*n)
+    ///	t = ((m+1/2)*lambda)/(2*n)
     /// Working on your car you spill oil (index of refraction = 1.55) on the
     /// ground into a puddle of water (n = 1.33). You notice a rainbow pattern
     /// appear across the oil slick.Recalling the lessons you learned in physics
@@ -613,12 +613,12 @@ public:
     /// <param name="n">The index of refraction.</param>
     /// <param name="mStart">The m starting of constructive interference.</param>
     /// <param name="mEnd">The m end.</param>
-    /// <param name="λ">The wavelength λ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
     /// <returns>a map of values of where constructive interference occurs</returns>
-    static map<int, ld> constructiveInterferenceRange(const ld n, const int mStart, const int mEnd, const ld λ);
+    static map<int, ld> constructiveInterferenceRange(const ld n, const int mStart, const int mEnd, const ld lambda);
 
     /// <summary>
-    /// t = (m*λ)/(2*n)
+    /// t = (m*lambda)/(2*n)
     /// Working on your car you spill oil (index of refraction = 1.55) on the
     /// ground into a puddle of water (n = 1.33). You notice a rainbow pattern
     /// appear across the oil slick.Recalling the lessons you learned in physics
@@ -629,9 +629,9 @@ public:
     /// <param name="n">The n.</param>
     /// <param name="mStart">The m start.</param>
     /// <param name="mEnd">The m end.</param>
-    /// <param name="λ">The λ.</param>
+    /// <param name="lambda">The lambda.</param>
     /// <returns></returns>
-    static map<int, ld> destructiveInterferenceRange(const ld n, const int mStart, const int mEnd, const ld λ);
+    static map<int, ld> destructiveInterferenceRange(const ld n, const int mStart, const int mEnd, const ld lambda);
 
 
 
@@ -648,9 +648,9 @@ private:
 //in-line class Implementation
 
 
-inline auto WaveOptics::wavelengthInMedium(const ld λ, const ld n)
+inline auto WaveOptics::wavelengthInMedium(const ld lamda, const ld n)
 {
-    return λ / n;//Hz
+    return lamda / n;//Hz
 }
 
 inline auto WaveOptics::wavelengthOfMedium(const ld n, const ld f)
@@ -677,79 +677,79 @@ inline auto WaveOptics::indexOfRefractionFromRatioPrintMedium(const ld xTimes)
     return val2;
 }
 
-inline auto WaveOptics::indexOfRefractionFromWavelengths(const ld λMedium, const ld λ2)
+inline auto WaveOptics::indexOfRefractionFromWavelengths(const ld lambdaMid, const ld lambda2)
 {
-    const auto temp = λ2 / λMedium;
+    const auto temp = lambda2 / lambdaMid;
     const auto scale = 0.001;
     const auto n = floor(temp / scale + .5) * scale;
     printMedium(refractions, n);
     return n;
 }
 
-inline auto WaveOptics::angleOf_nOrderOfInterference_doubleSlit(int m, const ld λ, const ld d)
+inline auto WaveOptics::angleOf_nOrderOfInterference_doubleSlit(int m, const ld lambda, const ld d)
 {
-    return asin((static_cast<ld>(m) * λ) / d) * DEGREE;
+    return asin((static_cast<ld>(m) * lambda) / d) * DEGREE;
 }
 
-inline auto WaveOptics::separationBetweenSlits_doubleSlit(const int m, const ld λ, const ld Θ)
+inline auto WaveOptics::separationBetweenSlits_doubleSlit(const int m, const ld lambda, const ld theta)
 {
-    return (static_cast<ld>(m) * λ) / sin(Θ * RADIAN);
+    return (static_cast<ld>(m) * lambda) / sin(theta * RADIAN);
 }
 
-inline auto WaveOptics::separationBetweenSlits_destructive(const int m, const ld λ, const ld Θ)
+inline auto WaveOptics::separationBetweenSlits_destructive(const int m, const ld lambda, const ld theta)
 {
-    return (((static_cast<ld>(m)-1) + (1 / 2)) * λ) / sin(Θ*RADIAN);
+    return (((static_cast<ld>(m)-1) + (1 / 2)) * lambda) / sin(theta*RADIAN);
 }
 
-inline auto WaveOptics::wavelengthAt_nMinimum_doubleSlit(const int m, const ld d, const ld Θ)
+inline auto WaveOptics::wavelengthAt_nMinimum_doubleSlit(const int m, const ld d, const ld theta)
 {
-    return (d * sin(Θ * RADIAN)) / ((m - 1.0) + (1 / 2));
+    return (d * sin(theta * RADIAN)) / ((m - 1.0) + (1 / 2));
 }
 
-inline auto WaveOptics::wavelengthAt_nOrderMaximum_doubleSlit(const ld nM, const ld d, const ld Θ)
+inline auto WaveOptics::wavelengthAt_nOrderMaximum_doubleSlit(const ld nM, const ld d, const ld theta)
 {
-    return (d * sin(Θ * RADIAN)) / nM;
+    return (d * sin(theta * RADIAN)) / nM;
 }
 
-inline auto WaveOptics::wavelength_nMinSingleSlit(const ld m, const ld D, const ld Θ)
+inline auto WaveOptics::wavelength_nMinSingleSlit(const ld m, const ld D, const ld theta)
 {
-    return (D * sin(Θ * RADIAN)) / m;
+    return (D * sin(theta * RADIAN)) / m;
 }
 
-inline auto WaveOptics::wavelengthOfLight_nOrderMaxGrating(const ld m, const ld Θ, const ld s)
+inline auto WaveOptics::wavelengthOfLight_nOrderMaxGrating(const ld m, const ld theta, const ld s)
 {
     const ld d = distanceBetweenGratingSlits(s, 1.0 * SU.CENTI);
-    return (d * sin(Θ*RADIAN)) / m;
+    return (d * sin(theta*RADIAN)) / m;
 }
 
-inline auto WaveOptics::highestOrderMaximum(const ld d, const ld λ, const ld Θ = 90)
+inline auto WaveOptics::highestOrderMaximum(const ld d, const ld lambda, const ld theta = 90)
 {
-    return floor( (d * sin(Θ * RADIAN)) / λ);
+    return floor( (d * sin(theta * RADIAN)) / lambda);
 }
 
-inline auto WaveOptics::angleOf_nOrderMaximum(const ld nM, const ld Θ)
+inline auto WaveOptics::angleOf_nOrderMaximum(const ld nM, const ld theta)
 {
-    return asin(nM * sin(Θ * RADIAN))*DEGREE;
+    return asin(nM * sin(theta * RADIAN))*DEGREE;
 }
 
-inline auto WaveOptics::angleOf_nMinimum(const ld nMin, const ld Θ)
+inline auto WaveOptics::angleOf_nMinimum(const ld nMin, const ld theta)
 {
-    return asin(((nMin - 1.0) + (1.0 / 2.0)) * sin(Θ * RADIAN));
+    return asin(((nMin - 1.0) + (1.0 / 2.0)) * sin(theta * RADIAN));
 }
 
-inline auto WaveOptics::highestOrderMaximum(const ld Θ)
+inline auto WaveOptics::highestOrderMaximum(const ld theta)
 {
-    return floor(1.0 / sin(Θ * RADIAN));
+    return floor(1.0 / sin(theta * RADIAN));
 }
 
-inline auto WaveOptics::distanceBetweenFringes(const ld x, const ld λ, const ld d)
+inline auto WaveOptics::distanceBetweenFringes(const ld x, const ld lambda, const ld d)
 {
-    return (x * λ) / d;
+    return (x * lambda) / d;
 }
 
-inline auto WaveOptics::wavelengthFromFringes(const ld x, const ld Δy, const ld d)
+inline auto WaveOptics::wavelengthFromFringes(const ld x, const ld deltay, const ld d)
 {
-    return (Δy * d) / x;
+    return (deltay * d) / x;
 }
 
 inline auto WaveOptics::waveLengthAt_nOrderMFringe(const ld m, const ld y, const ld x, const ld d)
@@ -757,9 +757,9 @@ inline auto WaveOptics::waveLengthAt_nOrderMFringe(const ld m, const ld y, const
     return (y * d) / (m * x);
 }
 
-inline auto WaveOptics::fringeSeparationAt_nOrderMFromCenterDS(const ld m, const ld x, const ld λ, const ld d)
+inline auto WaveOptics::fringeSeparationAt_nOrderMFromCenterDS(const ld m, const ld x, const ld lambda, const ld d)
 {
-    return (m * x * λ) / d;
+    return (m * x * lambda) / d;
 }
 
 
@@ -768,52 +768,52 @@ inline ld WaveOptics::distanceBetweenGratingSlits(const ld slits, const ld total
     return totalLength / slits;
 }
 
-inline auto WaveOptics::separationBetweenSlitsDiffractionGrating(const ld m, const ld λ, const ld Θ)
+inline auto WaveOptics::separationBetweenSlitsDiffractionGrating(const ld m, const ld lambda, const ld theta)
 {
-    return (m * λ) / sin(Θ*RADIAN);
+    return (m * lambda) / sin(theta*RADIAN);
 }
 
-inline auto WaveOptics::linesPer_cmDefractionGrating(const ld m, const ld λ, const ld Θ)
+inline auto WaveOptics::linesPer_cmDefractionGrating(const ld m, const ld lambda, const ld theta)
 {
-    return floor(1.0/((m * λ) / sin(Θ * RADIAN))*(1.0/100.0));
+    return floor(1.0/((m * lambda) / sin(theta * RADIAN))*(1.0/100.0));
 }
 
-inline auto WaveOptics::thetaAtOrderOfInterference(const ld m, const ld d, const ld λ)
+inline auto WaveOptics::thetaAtOrderOfInterference(const ld m, const ld d, const ld lambda)
 {
-    return asin((m * λ) / d)*DEGREE;
+    return asin((m * lambda) / d)*DEGREE;
 }
 
-inline auto WaveOptics::yDistanceApart(const ld x, const ld Θ)
+inline auto WaveOptics::yDistanceApart(const ld x, const ld theta)
 {
-    return x * tan(Θ*RADIAN);
+    return x * tan(theta*RADIAN);
 }
 
-inline auto WaveOptics::singleSlitWidth(const ld λ, const ld m, const ld Θ)
+inline auto WaveOptics::singleSlitWidth(const ld lambda, const ld m, const ld theta)
 {
-    return (m * λ) / sin(Θ*RADIAN);
+    return (m * lambda) / sin(theta*RADIAN);
 }
 
-inline auto WaveOptics::rayleighEquation(const ld λ, const ld D)
+inline auto WaveOptics::rayleighEquation(const ld lambda, const ld D)
 {
-    return 1.22 * (λ / D);
+    return 1.22 * (lambda / D);
 }
 
-inline auto WaveOptics::diffractionSpreadingTotal(const ld λ, const ld D, const ld x)
+inline auto WaveOptics::diffractionSpreadingTotal(const ld lambda, const ld D, const ld x)
 {
-    const auto d = 1.22 * (λ / D);
+    const auto d = 1.22 * (lambda / D);
     return D + (2 * x) * tan(d);
 }
 
-inline auto WaveOptics::s_distance2Obj_rApart(const ld r, const ld Θ)
+inline auto WaveOptics::s_distance2Obj_rApart(const ld r, const ld theta)
 {
 
-    return r * Θ;
+    return r * theta;
 }
 
-inline auto WaveOptics::minimumMirrorDiameter(const ld y, const ld x, const ld λ)
+inline auto WaveOptics::minimumMirrorDiameter(const ld y, const ld x, const ld lambda)
 {
-    const auto Θ = atan(y / x);
-    return 1.22 * (λ / Θ);
+    const auto theta = atan(y / x);
+    return 1.22 * (lambda / theta);
 }
 
 inline auto WaveOptics::minimumAngularSeparation(const ld x, const ld d)
@@ -821,34 +821,34 @@ inline auto WaveOptics::minimumAngularSeparation(const ld x, const ld d)
     return x / d;
 }
 
-inline auto WaveOptics::resolvingPower(const ld λ, const ld d, const ld D)
+inline auto WaveOptics::resolvingPower(const ld lambda, const ld d, const ld D)
 {
-    return 1.22 * ((λ * d) / D);
+    return 1.22 * ((lambda * d) / D);
 }
 
-inline auto WaveOptics::resolvingPower_microscopeLens(const ld λ, const ld n, const ld NA)
+inline auto WaveOptics::resolvingPower_microscopeLens(const ld lambda, const ld n, const ld NA)
 {
-    return .61 * ((λ * n) / NA);
+    return .61 * ((lambda * n) / NA);
 }
 
-inline auto WaveOptics::thicknessOfNonReflectiveLensCoating(const ld λ, const ld n)
+inline auto WaveOptics::thicknessOfNonReflectiveLensCoating(const ld lambda, const ld n)
 {
-    return ((λ / n) / 4.0);
+    return ((lambda / n) / 4.0);
 }
 
-inline auto WaveOptics::thicknessOfThinnestCoating(const ld λ, const ld n, const ld m)
+inline auto WaveOptics::thicknessOfThinnestCoating(const ld lambda, const ld n, const ld m)
 {
-    return (λ / (4.0 * n)) * (2.0 * m - 1.0);
+    return (lambda / (4.0 * n)) * (2.0 * m - 1.0);
 }
 
-inline auto WaveOptics::thicknessOfCoating(const ld λ, const ld n, const ld m)
+inline auto WaveOptics::thicknessOfCoating(const ld lambda, const ld n, const ld m)
 {
-    return  (λ * (2.0 * m - 1)) / (4.0 * n);
+    return  (lambda * (2.0 * m - 1)) / (4.0 * n);
 }
 
-inline auto WaveOptics::intensityOfTransmittedWave(const ld Io, const ld Θ)
+inline auto WaveOptics::intensityOfTransmittedWave(const ld Io, const ld theta)
 {
-    return Io * pow(cos(Θ), 2);
+    return Io * pow(cos(theta), 2);
 }
 
 inline auto WaveOptics::constructivelyReflectedWavelength(const ld t, const ld n)
@@ -866,9 +866,9 @@ inline auto WaveOptics::mostConstructivelyReflectedWavelength(const ld t, const 
     return (4.0 * sqrt( (2.0) * t * n) / (2.0 * m - 1.0));
 }
 
-inline auto WaveOptics::waveAmplitude(const ld E, const ld Θ)
+inline auto WaveOptics::waveAmplitude(const ld E, const ld theta)
 {
-    return E * cos(Θ);
+    return E * cos(theta);
 }
 
 inline auto WaveOptics::angleForIntensityReductionByPolarizingFilter(const ld percentReduction)
@@ -889,14 +889,14 @@ inline auto WaveOptics::angleByBrewstersLaw(const ld n1, const ld n2)
     return atan(n2 / n1)*DEGREE;
 }
 
-inline auto WaveOptics::n1FromBrewstersLaw(const ld n2, const ld Θ)
+inline auto WaveOptics::n1FromBrewstersLaw(const ld n2, const ld theta)
 {
-    return n2 / tan(Θ*RADIAN);
+    return n2 / tan(theta*RADIAN);
 }
 
-inline auto WaveOptics::n2FromBrewstersLaw(const ld n1, const ld Θ)
+inline auto WaveOptics::n2FromBrewstersLaw(const ld n1, const ld theta)
 {
-    return tan(Θ * RADIAN) * n1;
+    return tan(theta * RADIAN) * n1;
 }
 
 inline auto WaveOptics::theta_toa_yx(const ld x_len, const ld y_height)
@@ -904,39 +904,39 @@ inline auto WaveOptics::theta_toa_yx(const ld x_len, const ld y_height)
     return atan(y_height / x_len);
 }
 
-inline auto WaveOptics::highestOrderMinimum_singleSlit(const ld D, const ld λ)
+inline auto WaveOptics::highestOrderMinimum_singleSlit(const ld D, const ld lambda)
 {
-    return floor(D / λ);
+    return floor(D / lambda);
 }
 
-inline auto WaveOptics::angleAt_nOrderMin(const ld m, const ld Θ)
+inline auto WaveOptics::angleAt_nOrderMin(const ld m, const ld theta)
 {
-    const auto ratio = sin(Θ * RADIAN)/1.0;
+    const auto ratio = sin(theta * RADIAN)/1.0;
     return asin(m * ratio) * DEGREE;
 }
 
-inline auto WaveOptics::angleAt_nOrderMinimum_singleSlit(const ld m, const ld D, const ld λ)
+inline auto WaveOptics::angleAt_nOrderMinimum_singleSlit(const ld m, const ld D, const ld lambda)
 {
-    return asin((m * λ) / D) * DEGREE;
+    return asin((m * lambda) / D) * DEGREE;
 }
 
-inline map<int, ld> WaveOptics::constructiveInterferenceRange(const ld n, const int mStart, const int mEnd, const ld λ)
+inline map<int, ld> WaveOptics::constructiveInterferenceRange(const ld n, const int mStart, const int mEnd, const ld lambda)
 {
     map<int, ld> results;
     for (int i = mStart, j = 1; i < mEnd; i++, j++)
     {
-        auto val = ((i + .5) * λ / (2.0 * n));
+        auto val = ((i + .5) * lambda / (2.0 * n));
         results[j] = val;
     }
     return results;
 }
 
-inline map<int, ld> WaveOptics::destructiveInterferenceRange(const ld n, const int mStart, const int mEnd, const ld λ)
+inline map<int, ld> WaveOptics::destructiveInterferenceRange(const ld n, const int mStart, const int mEnd, const ld lambda)
 {
     map<int, ld> results;
     for (int i = mStart, j = 1; i < mEnd; i++, j++)
     {
-        auto val = ((i ) * λ / (2.0 * n));
+        auto val = ((i ) * lambda / (2.0 * n));
         results[j] = val;
     }
     return results;

@@ -237,11 +237,11 @@ public:
     /// transition that ends in the nf=5 level. What was ni for the initial
     /// level of the electron
     /// </summary>
-    /// <param name="λ">The λ.</param>
+    /// <param name="theta">The theta.</param>
     /// <param name="n_f">The n f.</param>
     /// <returns></returns>
     template<typename W, typename NF>
-    static constexpr auto initialEnergyLevel(const W λ, const NF n_f);
+    static constexpr auto initialEnergyLevel(const W theta, const NF n_f);
 
     /// <summary>
     /// Atoms can be ionized by thermal collisions, such as at the high
@@ -270,10 +270,10 @@ public:
     /// <summary>
     /// Calculate the photon energy in eV
     /// </summary>
-    /// <param name="λ">The λ.</param>
+    /// <param name="theta">The theta.</param>
     /// <returns>energy in eV</returns>
     template<typename W>
-    static constexpr auto photonEnergy_eV(const W λ);
+    static constexpr auto photonEnergy_eV(const W theta);
 
     /// <summary>
     /// What are the approximate energies of the Kα x-rays for copper(z)
@@ -377,9 +377,9 @@ constexpr auto AtomicPhysics::smallest_wavelength(const NF n_f)
 }
 
 template<typename W, typename NF>
-constexpr auto AtomicPhysics::initialEnergyLevel(const W λ, const NF n_f)
+constexpr auto AtomicPhysics::initialEnergyLevel(const W theta, const NF n_f)
 {
-    return n_f * sqrt((λ * _RYDBERG_) / ((_RYDBERG_ * λ) - (n_f*n_f)));
+    return n_f * sqrt((theta * _RYDBERG_) / ((_RYDBERG_ * theta) - (n_f * n_f)));
 }
 
 template<typename E0, typename Z, typename N>
@@ -397,9 +397,9 @@ constexpr auto AtomicPhysics::shortestWavelength_xRayTubeAppliedVoltage(const V 
 }
 
 template<typename W>
-constexpr auto AtomicPhysics::photonEnergy_eV(const W λ)
+constexpr auto AtomicPhysics::photonEnergy_eV(const W theta)
 {
-    return _PLANKS_C_ / λ;
+    return _PLANKS_C_ / theta;
 }
 
 template<typename E0, typename Z>

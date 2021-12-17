@@ -199,14 +199,14 @@ public:
 
     /// <summary>
     /// Calculates the spring constant of object moving in simple
-    /// harmonic motion.\n k = (4.0 * (_PI * _PI) * m) / (T * T)
+    /// harmonic motion.\n k = (4.0 * (Pi_ * Pi_) * m) / (T * T)
     /// </summary>
     /// <param name="m">The mass in kg.</param>
     /// <param name="T">The period T.</param>
     /// <returns>spring constant (k)</returns>
     static ld springConstant_harmonicMotion(const ld m, const ld T)
     {
-        return (4.0 * (_PI * _PI) * m) / (T * T);
+        return (4.0 * (Pi_ * Pi_) * m) / (T * T);
     }
 
     /// <summary>
@@ -252,7 +252,7 @@ public:
     /// <returns>mass of the pendulum</returns>
     static ld massOfPendulum(const ld T, const ld k)
     {
-        return ((T * T) * k) / (4.0 * (_PI * _PI));
+        return ((T * T) * k) / (4.0 * (Pi_ * Pi_));
     }
 
     /// <summary>
@@ -297,7 +297,7 @@ public:
     /// <returns>frequency (Hz)</returns>
     static ld frequency_simpleHarmonicOscillator(const ld m, const ld k)
     {
-        return (1.0 / (2.0 * _PI)) * sqrt(k / m);
+        return (1.0 / (2.0 * Pi_)) * sqrt(k / m);
     }
 
     /// <summary>
@@ -318,7 +318,7 @@ public:
     /// <returns>period T</returns>
     static ld period_simpleHarmonicOscillator(const ld m, const ld k)
     {
-        return (2.0 * _PI) * sqrt(m / k);
+        return (2.0 * Pi_) * sqrt(m / k);
     }
 
     /// <summary>
@@ -330,7 +330,7 @@ public:
     /// <returns>displacement</returns>
     static ld displacement_functionOfTime(const ld X, const ld t, const ld T)
     {
-        return X * cos(((2.0 * _PI * t) / T) * RADIAN);
+        return X * cos(((2.0 * Pi_ * t) / T) * RADIAN);
     }
 
     /// <summary>
@@ -370,7 +370,7 @@ public:
     /// <returns>velocity</returns>
     static ld velocity_functionOfTime(const ld vMax, const ld t, const ld T)
     {
-        return -vMax * sin(((2.0 * _PI * t) / T) * RADIAN);
+        return -vMax * sin(((2.0 * Pi_ * t) / T) * RADIAN);
     }
 
     static ld velocity_T(const ld waveLength, const ld T)
@@ -403,7 +403,7 @@ public:
     /// <returns></returns>
     static ld vMax(const ld A, const ld T)
     {
-        return (2.0 * _PI * A) / T;
+        return (2.0 * Pi_ * A) / T;
     }
 
     /// <summary>
@@ -442,7 +442,7 @@ public:
     static ld acceleration_functionOfTime
             (const ld k, const ld X, const ld m, const ld t, const ld T)
     {
-        return -((k * X) / m) * cos(((2.0 * _PI * t) / T) * RADIAN);
+        return -((k * X) / m) * cos(((2.0 * Pi_ * t) / T) * RADIAN);
     }
 
     /// <summary>
@@ -552,36 +552,36 @@ public:
 
     /// <summary>
     /// calculates the period T of a simple pendulum. for angles < 15 degrees
-    /// \n T = 2.0 * _PI * sqrt((L / GA))
+    /// \n T = 2.0 * Pi_ * sqrt((L / GA))
     /// </summary>
     /// <param name="L">The length of the pendulum.</param>
     /// <returns>the period T</returns>
     static ld period_simplePendulum(const ld L)
     {
-        return 2.0 * _PI * sqrt((L / GA));
+        return 2.0 * Pi_ * sqrt((L / GA));
     }
 
     /// <summary>
     /// Calculates the length of a simple pendulum.
-    /// \n L = ((T * T) * g) / (4.0 * (_PI * _PI))
+    /// \n L = ((T * T) * g) / (4.0 * (Pi_ * Pi_))
     /// </summary>
     /// <param name="T">The period T.</param>
     /// <param name="g">the acceleration due to gravity</param>
     /// <returns>length of the pendulum</returns>
     static ld length_simplePendulum(const ld T, const ld g = GA)
     {
-        return ((T * T) * g) / (4.0 * (_PI * _PI));
+        return ((T * T) * g) / (4.0 * (Pi_ * Pi_));
     }
 
     /// <summary>
     /// Calculates the Frequency of a simple pendulum.
-    /// \n f =(1.0 / (2.0 * _PI)) * sqrt(GA / L)
+    /// \n f =(1.0 / (2.0 * Pi_)) * sqrt(GA / L)
     /// </summary>
     /// <param name="L">The length of pendulum.</param>
     /// <returns>frequency (Hz)</returns>
     static ld frequency_simplePendulum(const ld L)
     {
-        return (1.0 / (2.0 * _PI)) * sqrt(_Ga_ / L);
+        return (1.0 / (2.0 * Pi_)) * sqrt(_Ga_ / L);
     }
 
     /// <summary>
@@ -592,7 +592,7 @@ public:
     /// <returns>the period T</returns>
     static ld period_T(const ld m, const ld k)
     {
-        return 2.0 * _PI * sqrt(m / k);
+        return 2.0 * Pi_ * sqrt(m / k);
     }
 
     /// <summary>
@@ -694,11 +694,11 @@ public:
     /// Times the between waves.
     /// </summary>
     /// <param name="v_w">The v w.</param>
-    /// <param name="λ">The λ.</param>
+    /// <param name="lamda">The lamda.</param>
     /// <returns></returns>
-    static ld timeBetweenWaves(const ld v_w, const ld λ)
+    static ld timeBetweenWaves(const ld v_w, const ld lamda)
     {
-        return λ / v_w;
+        return lamda / v_w;
     }
 
 

@@ -107,8 +107,8 @@ static struct Elements
         const long double melting_point = -259.1; // -259.1 C
         const long double boiling_point = -252.9; // -252.9 C
         const long double thermal_conductivity = .18; // .18 W/mK
-        const long double electric_conductivity = NULL; // NULL
-        const long double resistivity = NULL; //NULL
+        const long double electric_conductivity = FP_NAN; // FP_NAN
+        const long double resistivity = FP_NAN; //FP_NAN
         const long double heat_specific = 14300.0; // 14300.0 J/kgK
         const long double heat_vaporization = .452; // 452 kJ/mol
         const long double heat_fusion = .558; // .558 kJ/mol
@@ -130,11 +130,11 @@ static struct Elements
         const long double atomic_weight = 4.002602; // 4.002602 u
         const int atomic_number = 2; // Z = 2
         const long double density_STP = 0.1785; // 0.1785 kg/m^3
-        const long double melting_point = NULL; // C
+        const long double melting_point = FP_NAN; // C
         const long double boiling_point = -269; // -269 C
         const long double thermal_conductivity = 0.1513; // 0.1513 W/mK
-        const long double electric_conductivity = NULL; // NULL
-        const long double resistivity = NULL; // NULL
+        const long double electric_conductivity = FP_NAN; // FP_NAN
+        const long double resistivity = FP_NAN; // FP_NAN
         const long double heat_specific = 5193.1; // 5193.1 J/kgK
         const long double heat_vaporization = .083; // .083 kJ/mol
         const long double heat_fusion = .02; // .02 kJ/mol
@@ -263,8 +263,8 @@ static struct Elements
         const long double melting_point = -210.1; // C
         const long double boiling_point = -195.8; // C
         const long double thermal_conductivity = .025; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; //NULL
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; //FP_NAN
         const long double heat_specific = 1040; // J/kgK
         const long double heat_vaporization = 2.79; // kJ/mol
         const long double heat_fusion = .36; // kJ/mol
@@ -289,8 +289,8 @@ static struct Elements
         const long double melting_point = -218.0; // C
         const long double boiling_point = -183.0; // C
         const long double thermal_conductivity = 0.02658; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // NULL
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // FP_NAN
         const long double heat_specific = 919; // J/kgK
         const long double heat_vaporization = 3.41; // kJ/mol
         const long double heat_fusion = .222; // kJ/mol
@@ -316,8 +316,8 @@ static struct Elements
         const long double melting_point = -220.0; // C
         const long double boiling_point = -188.1; // C
         const long double thermal_conductivity = .0277; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // NULL
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // FP_NAN
         const long double heat_specific = 824; // J/kgK
         const long double heat_vaporization = 3.27; // kJ/mol
         const long double heat_fusion = .26; // kJ/mol
@@ -341,8 +341,8 @@ static struct Elements
         const long double melting_point = -248.6; // C
         const long double boiling_point = -246.1; // C
         const long double thermal_conductivity = .0491; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // NULL
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // FP_NAN
         const long double heat_specific = 1030; // J/kgK
         const long double heat_vaporization = 1.75; // kJ/mol
         const long double heat_fusion = 0.34; // kJ/mol
@@ -550,8 +550,8 @@ static struct Elements
         const long double melting_point = -189; // -189 C
         const long double boiling_point = -186; // -186 C
         const long double thermal_conductivity = .01772; // .01772 W/mK
-        const long double electric_conductivity = NULL; // NULL
-        const long double resistivity = NULL; // NULL
+        const long double electric_conductivity = FP_NAN; // FP_NAN
+        const long double resistivity = FP_NAN; // FP_NAN
         const long double heat_specific = 520.33; // 520.33 J/kgK
         const long double heat_vaporization = 6.5; // 6.5 kJ/mol
         const long double heat_fusion = 1.18; // 1.18 kJ/mol
@@ -970,8 +970,8 @@ static struct Elements
         const long double melting_point = 221; // C
         const long double boiling_point = 685; // C
         const long double thermal_conductivity = 0; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
         const long double heat_specific = 321.2; // J/kgK
         const long double heat_vaporization = 26.0; // kJ/mol
         const long double heat_fusion = 5.4; // kJ/mol
@@ -1023,8 +1023,8 @@ static struct Elements
         const long double melting_point = -157.36; // C
         const long double boiling_point = -153.22; // C
         const long double thermal_conductivity = 0.00943; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
         const long double heat_specific = 248.05; // J/kgK
         const long double heat_vaporization = 9.02; // kJ/mol
         const long double heat_fusion = 1.64; // kJ/mol
@@ -1490,8 +1490,8 @@ static struct Elements
         const long double melting_point = -111.8; // C
         const long double boiling_point = -108.0; // C
         const long double thermal_conductivity = .00565; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
         const long double heat_specific = 158.32; // J/kgK
         const long double heat_vaporization = 12.64; // kJ/mol
         const long double heat_fusion = 2.30; // kJ/mol
@@ -1672,7 +1672,7 @@ static struct Elements
         const long double thermal_conductivity = 15.0; // W/mK
         const long double electric_conductivity = 1.3; // MS/m
         const long double resistivity = 7.5e-7; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
+        const long double heat_specific = FP_NAN; // J/kgK
         const long double heat_vaporization = 290.0; // kJ/mol
         const long double heat_fusion = 7.7; // kJ/mol
         const long double ionization_1st = 5.6; // eV
@@ -2263,10 +2263,10 @@ static struct Elements
         const long double density_STP = 9196.0; // kg/m^3
         const long double melting_point = 255.0; // C
         const long double boiling_point = 961.9; // C
-        const long double thermal_conductivity = NULL; // W/mK
+        const long double thermal_conductivity = FP_NAN; // W/mK
         const long double electric_conductivity = 2.3; // MS/m
         const long double resistivity = 4.3e-7; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
+        const long double heat_specific = FP_NAN; // J/kgK
         const long double heat_vaporization = 100.0; // kJ/mol
         const long double heat_fusion = 13.0; // kJ/mol
         const long double ionization_1st = 8.417; // eV
@@ -2287,13 +2287,13 @@ static struct Elements
     {
         const long double atomic_weight = (210); // u
         const int atomic_number = 85;
-        const long double density_STP = NULL; // kg/m^3
+        const long double density_STP = FP_NAN; // kg/m^3
         const long double melting_point = 302.0; // C
         const long double boiling_point = 350.0; // C
         const long double thermal_conductivity = 2.0; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
         const long double heat_vaporization = 40.0; // kJ/mol
         const long double heat_fusion = 6.0; // kJ/mol
         const long double ionization_1st = 9.22; // eV
@@ -2315,8 +2315,8 @@ static struct Elements
         const long double melting_point = -71.1; // C
         const long double boiling_point = -61.85; // C
         const long double thermal_conductivity = .00361; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
         const long double heat_specific = 93.65; // J/kgK
         const long double heat_vaporization = 17.0; // kJ/mol
         const long double heat_fusion = 3.0; // kJ/mol
@@ -2337,13 +2337,13 @@ static struct Elements
     {
         const long double atomic_weight = (223); // u
         const int atomic_number = 87;
-        const long double density_STP = NULL; // kg/m^3
+        const long double density_STP = FP_NAN; // kg/m^3
         const long double melting_point = 20.9; // C
         const long double boiling_point = 650.0; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
         const long double heat_vaporization = 65.0; // kJ/mol
         const long double heat_fusion = 2.0; // kJ/mol
         const long double ionization_1st = 3.94; // eV
@@ -2395,8 +2395,8 @@ static struct Elements
         const long double melting_point = 1050.0; // C
         const long double boiling_point = 3200.0; // C
         const long double thermal_conductivity = 12.0; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
         const long double heat_specific = 120.0; // J/kgK
         const long double heat_vaporization = 400.0; // kJ/mol
         const long double heat_fusion = 14.0; // kJ/mol
@@ -2500,7 +2500,7 @@ static struct Elements
         const long double thermal_conductivity = 6.0; // W/mK
         const long double electric_conductivity = .83; // MS/m
         const long double resistivity = 1.2e-6; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
+        const long double heat_specific = FP_NAN; // J/kgK
         const long double heat_vaporization = 335.0; // kJ/mol
         const long double heat_fusion = 10.0; // kJ/mol
         const long double ionization_1st = 6.265; // eV
@@ -2526,9 +2526,9 @@ static struct Elements
         const long double thermal_conductivity = 6.0; // W/mK
         const long double electric_conductivity = .67; // MS/m
         const long double resistivity = 1.5e-6; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
+        const long double heat_specific = FP_NAN; // J/kgK
         const long double heat_vaporization = 325.0; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
         const long double ionization_1st = 6.060; // eV
         static void display()
         {
@@ -2549,11 +2549,11 @@ static struct Elements
         const long double melting_point = 1176.0; // C
         const long double boiling_point = 2011.0; // C
         const long double thermal_conductivity = 10.0; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
         const long double ionization_1st = 5.99; // eV
         static void display()
         {
@@ -2573,12 +2573,12 @@ static struct Elements
         const long double density_STP = 13510.0; // kg/m^3
         const long double melting_point = 1345.0; // C
         const long double boiling_point = 3110.0; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
         const long double ionization_1st = 6.02; // eV
         static void display()
         {
@@ -2598,13 +2598,13 @@ static struct Elements
         const int atomic_number = 97;
         const long double density_STP = 14780.00; // kg/m^3
         const long double melting_point = 1050.0; // C
-        const long double boiling_point = NULL; // C
+        const long double boiling_point = FP_NAN; // C
         const long double thermal_conductivity = 10.0; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
         const long double ionization_1st = 6.23; // eV
         static void display()
         {
@@ -2623,13 +2623,13 @@ static struct Elements
         const int atomic_number = 98;
         const long double density_STP = 15100.0; // kg/m^3
         const long double melting_point = 899.9; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
         const long double ionization_1st = 6.30; // eV
         static void display()
         {
@@ -2647,15 +2647,15 @@ static struct Elements
     {
         const long double atomic_weight = (252); // u
         const int atomic_number = 99;
-        const long double density_STP = NULL; // kg/m^3
+        const long double density_STP = FP_NAN; // kg/m^3
         const long double melting_point = 859.9; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
         const long double ionization_1st = 6.42; // eV
         static void display()
         {
@@ -2674,15 +2674,15 @@ static struct Elements
     {
         const long double atomic_weight = (257); // u
         const int atomic_number = 100;
-        const long double density_STP = NULL; // kg/m^3
+        const long double density_STP = FP_NAN; // kg/m^3
         const long double melting_point = 1500.0; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
         const long double ionization_1st = 6.50; // eV
         static void display()
         {
@@ -2700,15 +2700,15 @@ static struct Elements
     {
         const long double atomic_weight = (258); // u
         const int atomic_number = 101;
-        const long double density_STP = NULL; // kg/m^3
+        const long double density_STP = FP_NAN; // kg/m^3
         const long double melting_point = 830.0; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
         const long double ionization_1st = 6.58; // eV
         static void display()
         {
@@ -2726,15 +2726,15 @@ static struct Elements
     {
         const long double atomic_weight = (259); // u
         const int atomic_number = 102;
-        const long double density_STP = NULL; // kg/m^3
+        const long double density_STP = FP_NAN; // kg/m^3
         const long double melting_point = 830.0; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
         const long double ionization_1st = 6.65; // eV
         static void display()
         {
@@ -2751,15 +2751,15 @@ static struct Elements
     {
         const long double atomic_weight = (266); // u
         const int atomic_number = 103;
-        const long double density_STP = NULL; // kg/m^3
+        const long double density_STP = FP_NAN; // kg/m^3
         const long double melting_point = 1600.0; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
         const long double ionization_1st = 4.87; // eV
         static void display()
         {
@@ -2776,15 +2776,15 @@ static struct Elements
     {
         const long double atomic_weight = (267); // u
         const int atomic_number = 104;
-        const long double density_STP = NULL; // kg/m^3
-        const long double melting_point = NULL; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
+        const long double density_STP = FP_NAN; // kg/m^3
+        const long double melting_point = FP_NAN; // C
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
         const long double ionization_1st = 6.01; // eV
         static void display()
         {
@@ -2803,16 +2803,16 @@ static struct Elements
     {
         const long double atomic_weight = (268); // u
         const int atomic_number = 105;
-        const long double density_STP = NULL; // kg/m^3
-        const long double melting_point = NULL; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
-        const long double ionization_1st = NULL; // eV
+        const long double density_STP = FP_NAN; // kg/m^3
+        const long double melting_point = FP_NAN; // C
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
+        const long double ionization_1st = FP_NAN; // eV
         static void display()
         {
             displayElementImg(getFileName(105));
@@ -2828,16 +2828,16 @@ static struct Elements
     {
         const long double atomic_weight = (269); // u
         const int atomic_number = 106;
-        const long double density_STP = NULL; // kg/m^3
-        const long double melting_point = NULL; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
-        const long double ionization_1st = NULL; // eV
+        const long double density_STP = FP_NAN; // kg/m^3
+        const long double melting_point = FP_NAN; // C
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
+        const long double ionization_1st = FP_NAN; // eV
         static void display()
         {
             displayElementImg(getFileName(106));
@@ -2853,16 +2853,16 @@ static struct Elements
     {
         const long double atomic_weight = (270); // u
         const int atomic_number = 107;
-        const long double density_STP = NULL; // kg/m^3
-        const long double melting_point = NULL; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
-        const long double ionization_1st = NULL; // eV
+        const long double density_STP = FP_NAN; // kg/m^3
+        const long double melting_point = FP_NAN; // C
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
+        const long double ionization_1st = FP_NAN; // eV
         static void display()
         {
             displayElementImg(getFileName(107));
@@ -2878,16 +2878,16 @@ static struct Elements
     {
         const long double atomic_weight = 277; // u
         const int atomic_number = 108;
-        const long double density_STP = NULL; // kg/m^3
-        const long double melting_point = NULL; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
-        const long double ionization_1st = NULL; // eV
+        const long double density_STP = FP_NAN; // kg/m^3
+        const long double melting_point = FP_NAN; // C
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
+        const long double ionization_1st = FP_NAN; // eV
         static void display()
         {
             displayElementImg(getFileName(108));
@@ -2904,16 +2904,16 @@ static struct Elements
     {
         const long double atomic_weight = 278; // u
         const int atomic_number = 109;
-        const long double density_STP = NULL; // kg/m^3
-        const long double melting_point = NULL; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
-        const long double ionization_1st = NULL; // eV
+        const long double density_STP = FP_NAN; // kg/m^3
+        const long double melting_point = FP_NAN; // C
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
+        const long double ionization_1st = FP_NAN; // eV
         static void display()
         {
             displayElementImg(getFileName(109));
@@ -2929,16 +2929,16 @@ static struct Elements
     {
         const long double atomic_weight = 281; // u
         const int atomic_number = 110;
-        const long double density_STP = NULL; // kg/m^3
-        const long double melting_point = NULL; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
-        const long double ionization_1st = NULL; // eV
+        const long double density_STP = FP_NAN; // kg/m^3
+        const long double melting_point = FP_NAN; // C
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
+        const long double ionization_1st = FP_NAN; // eV
         static void display()
         {
             displayElementImg(getFileName(110));
@@ -2955,16 +2955,16 @@ static struct Elements
     {
         const long double atomic_weight = 282; // u
         const int atomic_number = 111;
-        const long double density_STP = NULL; // kg/m^3
-        const long double melting_point = NULL; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
-        const long double ionization_1st = NULL; // eV
+        const long double density_STP = FP_NAN; // kg/m^3
+        const long double melting_point = FP_NAN; // C
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
+        const long double ionization_1st = FP_NAN; // eV
         static void display()
         {
             displayElementImg(getFileName(111));
@@ -2980,16 +2980,16 @@ static struct Elements
     {
         const long double atomic_weight = 285; // u
         const int atomic_number = 112;
-        const long double density_STP = NULL; // kg/m^3
-        const long double melting_point = NULL; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
-        const long double ionization_1st = NULL; // eV
+        const long double density_STP = FP_NAN; // kg/m^3
+        const long double melting_point = FP_NAN; // C
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
+        const long double ionization_1st = FP_NAN; // eV
         static void display()
         {
             displayElementImg(getFileName(112));
@@ -3007,16 +3007,16 @@ static struct Elements
     {
         const long double atomic_weight = 286; // u
         const int atomic_number = 113;
-        const long double density_STP = NULL; // kg/m^3
-        const long double melting_point = NULL; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
-        const long double ionization_1st = NULL; // eV
+        const long double density_STP = FP_NAN; // kg/m^3
+        const long double melting_point = FP_NAN; // C
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
+        const long double ionization_1st = FP_NAN; // eV
         static void display()
         {
             displayElementImg(getFileName(113));
@@ -3033,16 +3033,16 @@ static struct Elements
     {
         const long double atomic_weight = 289; // u
         const int atomic_number = 114;
-        const long double density_STP = NULL; // kg/m^3
-        const long double melting_point = NULL; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
-        const long double ionization_1st = NULL; // eV
+        const long double density_STP = FP_NAN; // kg/m^3
+        const long double melting_point = FP_NAN; // C
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
+        const long double ionization_1st = FP_NAN; // eV
         static void display()
         {
             displayElementImg(getFileName(114));
@@ -3058,16 +3058,16 @@ static struct Elements
     {
         const long double atomic_weight = 290; // u
         const int atomic_number = 115;
-        const long double density_STP = NULL; // kg/m^3
-        const long double melting_point = NULL; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
-        const long double ionization_1st = NULL; // eV
+        const long double density_STP = FP_NAN; // kg/m^3
+        const long double melting_point = FP_NAN; // C
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
+        const long double ionization_1st = FP_NAN; // eV
         static void display()
         {
             displayElementImg(getFileName(115));
@@ -3083,16 +3083,16 @@ static struct Elements
     {
         const long double atomic_weight = 293; // u
         const int atomic_number = 116;
-        const long double density_STP = NULL; // kg/m^3
-        const long double melting_point = NULL; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
-        const long double ionization_1st = NULL; // eV
+        const long double density_STP = FP_NAN; // kg/m^3
+        const long double melting_point = FP_NAN; // C
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
+        const long double ionization_1st = FP_NAN; // eV
         static void display()
         {
             displayElementImg(getFileName(116));
@@ -3108,16 +3108,16 @@ static struct Elements
     {
         const long double atomic_weight = 294; // u
         const int atomic_number = 117;
-        const long double density_STP = NULL; // kg/m^3
-        const long double melting_point = NULL; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
-        const long double ionization_1st = NULL; // eV
+        const long double density_STP = FP_NAN; // kg/m^3
+        const long double melting_point = FP_NAN; // C
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
+        const long double ionization_1st = FP_NAN; // eV
         static void display()
         {
             displayElementImg(getFileName(117));
@@ -3133,16 +3133,16 @@ static struct Elements
     {
         const long double atomic_weight = 294; // u
         const int atomic_number = 118;
-        const long double density_STP = NULL; // kg/m^3
-        const long double melting_point = NULL; // C
-        const long double boiling_point = NULL; // C
-        const long double thermal_conductivity = NULL; // W/mK
-        const long double electric_conductivity = NULL; // MS/m
-        const long double resistivity = NULL; // m Ohm (m * kg*m^2*s^-3*A^-2)
-        const long double heat_specific = NULL; // J/kgK
-        const long double heat_vaporization = NULL; // kJ/mol
-        const long double heat_fusion = NULL; // kJ/mol
-        const long double ionization_1st = NULL; // eV
+        const long double density_STP = FP_NAN; // kg/m^3
+        const long double melting_point = FP_NAN; // C
+        const long double boiling_point = FP_NAN; // C
+        const long double thermal_conductivity = FP_NAN; // W/mK
+        const long double electric_conductivity = FP_NAN; // MS/m
+        const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        const long double heat_specific = FP_NAN; // J/kgK
+        const long double heat_vaporization = FP_NAN; // kJ/mol
+        const long double heat_fusion = FP_NAN; // kJ/mol
+        const long double ionization_1st = FP_NAN; // eV
         static void display()
         {
             displayElementImg(getFileName(118));

@@ -8,8 +8,8 @@
 #include <iostream>
 
 static int quantum_objectCount = 0;
-//α=224,ß=225,π=227,Σ=228,σ=229,µ=230,τ=231,Φ=232,Θ=233
-//Ω=234,δ=235,∞=236,φ=237,ε=238,∩=239,≡=240,Γ=226,γ, σ, ϑ, Å, Ώ, λ, γ, Δ
+//α=224,ß=225,π=227,Σ=228,σ=229,µ=230,τ=231,phi=232,Θ=233
+//Ω=234,delta=235,∞=236,phi=237,ε=238,∩=239,≡=240,gamma=226,gamma, σ, ϑ, Å, Ώ, lambda, gamma, delta
 /**
  * @class QuantumPhysics
  * @details class of static methods that relate to chapter 29 of the open-stax
@@ -161,31 +161,31 @@ public:
 
     /// <summary>
     /// What is the binding energy in eV of electrons in magnesium, if the
-    /// longest-wavelength photon that can eject electrons is 337 nm(λ)
+    /// longest-wavelength photon that can eject electrons is 337 nm(lambda)
     /// </summary>
-    /// <param name="λ">The wavelength(λ).</param>
+    /// <param name="lambda">The wavelength(lambda).</param>
     /// <returns>binding energy</returns>
     template<typename T>
-    static constexpr auto bindingEnergy(const T λ);
+    static constexpr auto bindingEnergy(const T lambda);
 
     /// <summary>
     /// Calculates the binding energy in joules.
     /// </summary>
-    /// <param name="λ">The λ.</param>
+    /// <param name="lambda">The lambda.</param>
     /// <returns>energy in joules</returns>
     template<typename T>
-    static constexpr auto bindingEnergy_Joules(const T λ);
+    static constexpr auto bindingEnergy_Joules(const T lambda);
 
     /// <summary>
-    /// Violet light of wavelength 400 nm(λ) ejects electrons with a maximum
+    /// Violet light of wavelength 400 nm(lambda) ejects electrons with a maximum
     /// kinetic energy of 0.860 eV(KE) from sodium metal. Calculate the binding
     /// energy of electrons to sodium metal
     /// </summary>
-    /// <param name="λ">The wavelength λ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
     /// <param name="KE">The kinetic energy.</param>
     /// <returns>binding energy (eV)</returns>
     template<typename T, typename K>
-    static constexpr auto bindingEnergy(const T λ, const K KE);
+    static constexpr auto bindingEnergy(const T lambda, const K KE);
 
     /// <summary>
     /// Bindings the energy f.
@@ -198,14 +198,14 @@ public:
 
     /// <summary>
     /// Calculate the maximum kinetic energy in eV of electrons ejected from
-    /// sodium metal by 450-nm EM(λ) radiation, given that the binding energy
+    /// sodium metal by 450-nm EM(lambda) radiation, given that the binding energy
     /// is 2.28 eV?(BE)
     /// </summary>
-    /// <param name="λ">The λ.</param>
+    /// <param name="lambda">The lambda.</param>
     /// <param name="BE">The be.</param>
     /// <returns></returns>
     template<typename T, typename B>
-    static constexpr auto maximumKineticEnergy(const T λ, const B BE);
+    static constexpr auto maximumKineticEnergy(const T lambda, const B BE);
 
     /// <summary>
     /// Maximums the kinetic energy f.
@@ -230,69 +230,69 @@ public:
     /// Calculates the wavelength of a 1.00-eV(E) photon
     /// </summary>
     /// <param name="E">The Energy.</param>
-    /// <returns>wavelength  λ</returns>
+    /// <returns>wavelength  lambda</returns>
     template<typename T>
     static constexpr auto wavelength(const T E);
 
     /// <summary>
     /// Calculate the maximum velocity of electrons(m) ejected from a material by
-    /// 80-nm photons( λ), if they are bound to the material by 4.73 eV(BE)
+    /// 80-nm photons( lambda), if they are bound to the material by 4.73 eV(BE)
     /// </summary>
-    /// <param name="λ">The λ.</param>
+    /// <param name="lambda">The lambda.</param>
     /// <param name="m">The mass.</param>
     /// <param name="BE">The binding energy.</param>
     /// <returns>maximum velocity</returns>
     template<typename T, typename M, typename B>
-    static constexpr auto maximumVelocity(const T λ, const M m, const B BE);
+    static constexpr auto maximumVelocity(const T lambda, const M m, const B BE);
 
     /// <summary>
     /// Photoelectrons(m) from a material with a binding energy of 2.71 eV(BE) are
-    /// ejected by 420-nm(λ) photons. Once ejected, how long does it take these
+    /// ejected by 420-nm(lambda) photons. Once ejected, how long does it take these
     /// electrons to travel 2.50 cm(dis) to a detection device
     /// </summary>
-    /// <param name="λ">The λ.</param>
+    /// <param name="lambda">The lambda.</param>
     /// <param name="m">The m.</param>
     /// <param name="BE">The be.</param>
     /// <param name="dis">The dis.</param>
     /// <returns></returns>
     template<typename T, typename M, typename B, typename D>
-    static constexpr auto timeToTravelDistance(const T λ, const M m, const B BE, const D dis);
+    static constexpr auto timeToTravelDistance(const T lambda, const M m, const B BE, const D dis);
 
     /// <summary>
-    /// A laser with a power output of 2.00 mW(P) at a wavelength of 400 nm(λ)
+    /// A laser with a power output of 2.00 mW(P) at a wavelength of 400 nm(lambda)
     /// is projected onto calcium metal. Calculate How many electrons per second
     /// are ejected.
     /// </summary>
-    /// <param name="λ">The wavelength λ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
     /// <param name="P">The power output.</param>
     /// <returns>how many electrons per second are ejected</returns>
     template<typename T, typename P>
-    static constexpr auto electronsPerSecondEjected(const T λ, const P P_);
+    static constexpr auto electronsPerSecondEjected(const T lambda, const P P_);
 
     /// <summary>
     ///  Calculate the number of photoelectrons per second ejected from a
-    ///  1.00 mm^2 area(A) of sodium metal by 500-nm EM(λ) radiation having an
+    ///  1.00 mm^2 area(A) of sodium metal by 500-nm EM(lambda) radiation having an
     ///  intensity of 1.30 kW/m2(I) (the intensity of sunlight above the
     ///  Earth’s atmosphere)
     /// </summary>
     /// <param name="A">area.</param>
-    /// <param name="λ">The wavelength λ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
     /// <param name="I">The intensity.</param>
     /// <returns></returns>
     template<typename T>
-    static constexpr auto photoelectronsPerSecondEjected(const T A, const T λ, const T I);
+    static constexpr auto photoelectronsPerSecondEjected(const T A, const T lambda, const T I);
 
     /// <summary>
-    /// A laser with a power output of 2.00 mW(P) at a wavelength of 400 nm(λ)
+    /// A laser with a power output of 2.00 mW(P) at a wavelength of 400 nm(lambda)
     /// is projected onto calcium metal. What power is carried away by the
     /// electrons, given that the binding energy is 2.71 eV(BE).
     /// </summary>
-    /// <param name="λ">The wavelength λ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
     /// <param name="P">The power output.</param>
     /// <param name="BE">The binding energy.</param>
     /// <returns>power carried away by the electrons (W)</returns>
     template<typename T>
-    static constexpr auto powerCarriedAwayByElectrons(const T λ, const T P, const T BE);
+    static constexpr auto powerCarriedAwayByElectrons(const T lambda, const T P, const T BE);
 
     /// <summary>
     /// If the number of photoelectrons per second ejected from a
@@ -301,15 +301,15 @@ public:
     /// calculate the power that is carried away by the electrons.
     /// </summary>
     /// <param name="A">a.</param>
-    /// <param name="λ">The λ.</param>
+    /// <param name="lambda">The lambda.</param>
     /// <param name="I">The i.</param>
     /// <param name="BE">The be.</param>
     /// <returns></returns>
     template<typename T>
-    static constexpr auto powerCarriedAwayByElectrons(const T A, const T λ, const T I, const T BE);
+    static constexpr auto powerCarriedAwayByElectrons(const T A, const T lambda, const T I, const T BE);
 
     /// <summary>
-    /// Calculates the frequency in hertz of a 1.00-MeV(E) γ-ray photon.
+    /// Calculates the frequency in hertz of a 1.00-MeV(E) gamma-ray photon.
     /// </summary>
     /// <param name="E">The Energy.</param>
     /// <returns>the frequency in (Hz)</returns>
@@ -324,27 +324,27 @@ public:
     /// <param name="E_tot">The e tot.</param>
     /// <param name="E">The e.</param>
     /// <returns>number of photons</returns>
-    template<typename T>
-    static constexpr  auto numberOfSimultaneouslyAbsorbedPhotons(const T E_tot, const T E);
+    template<typename  T>
+    static constexpr  auto numberOfSimultaneouslyAbsorbedPhotons(T E_tot, T E);
 
     /// <summary>
-    /// Numbers the of tightly bound molecules γ ray can break apart.
+    /// Numbers the of tightly bound molecules gamma ray can break apart.
     /// </summary>
     /// <param name="E_tot">The e tot.</param>
     /// <param name="E">The e.</param>
     /// <returns></returns>
     template<typename T>
-    static constexpr auto numOfTightlyBoundMolecules_γRayCanBreakApart(const T E_tot, const T E);
+    static constexpr auto numOfTightlyBoundMolecules_gammaRayCanBreakApart(T E_tot, T E);
 
     /// <summary>
     /// What is the accelerating voltage of an x-ray tube that produces x-rays
-    /// with a shortest wavelength of  λ nm?
+    /// with a shortest wavelength of  lambda nm?
     /// </summary>
-    /// <param name="λ">The wavelength λ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
     /// <param name="q">The charge.</param>
     /// <returns>accelerating voltage</returns>
     template<typename T>
-    static constexpr auto acceleratingVoltage(const T λ, const T q);
+    static constexpr auto acceleratingVoltage(const T lambda, const T q);
 
     /// <summary>
     /// Calculate the maximum energy in eV of photons produced in a CRT using a
@@ -384,13 +384,13 @@ public:
     /// </summary>
     /// <param name="P_">The power.</param>
     /// <param name="f">The frequency.</param>
-    /// <returns>number of photons per second emitted</returns>γ
+    /// <returns>number of photons per second emitted</returns>gamma
     template<typename P, typename F>
     static constexpr auto photonsPerSecondEmitted(const P P_, const F f);
 
     /// <summary>
     /// Some satellites use nuclear power. If such a satellite emits a
-    /// 1.00-W(P_) flux of γ rays having an average energy of 0.500 MeV(E_),
+    /// 1.00-W(P_) flux of gamma rays having an average energy of 0.500 MeV(E_),
     /// Calculate how many are emitted per second.
     /// </summary>
     /// <param name="P_">The power.</param>
@@ -401,26 +401,26 @@ public:
 
     /// <summary>
     /// Some satellites use nuclear power. If such a satellite emits a
-    /// 1.00-W(P_) flux of γ rays having an average energy of 0.500 MeV(E_),
-    /// Using the number of emitted per second and that these γ rays affect other
+    /// 1.00-W(P_) flux of gamma rays having an average energy of 0.500 MeV(E_),
+    /// Using the number of emitted per second and that these gamma rays affect other
     /// satellites. Calculate how far away must another satellite be to only
-    /// receive one γ ray per second per square meter.
+    /// receive one gamma ray per second per square meter.
     /// </summary>
     /// <param name="P_">The power.</param>
     /// <param name="E_">The energy.</param>
-    /// <param name="Φ">The φ or number of gamma rays per second received by
+    /// <param name="phi">The phi or number of gamma rays per second received by
     /// satellite.</param>
     /// <returns>radius r, or distance away</returns>
     template<typename P, typename E, typename F>
-    static constexpr auto distanceBetween2Satellites(const P P_, const E E_, const F Φ);
+    static constexpr auto distanceBetween2Satellites(const P P_, const E E_, const F phi);
 
     /// <summary>
-    /// Find the momentum of a 4.00-cm-wavelength(λ) microwave photon
+    /// Find the momentum of a 4.00-cm-wavelength(lambda) microwave photon
     /// </summary>
-    /// <param name="λ">The wavelength λ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
     /// <returns>photon momentum</returns>
     template<typename W>
-    static constexpr auto photonMomentum(const W λ);
+    static constexpr auto photonMomentum(const W lambda);
 
     /// <summary>
     /// Find the momentum of a 100-keV(E_) x-ray photon
@@ -470,28 +470,28 @@ public:
     /// wavelength
     /// </summary>
     /// <param name="m">The mass.</param>
-    /// <param name="λ">The wavelength λ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
     /// <returns>the kinetic energy</returns>
     template<typename M, typename W>
-    static constexpr auto kineticEnergy_fromWavelength(const M m, const W λ);
+    static constexpr auto kineticEnergy_fromWavelength(const M m, const W lambda);
 
     /// <summary>
-    /// Calculate at what velocity an electron will have a wavelength of λ
+    /// Calculate at what velocity an electron will have a wavelength of lambda
     /// </summary>
-    /// <param name="λ">The wavelength λ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
     /// <returns>velocity of electron</returns>
     template<typename W>
-    static constexpr auto electronVelocity(const W  λ);
+    static constexpr auto electronVelocity(const W  lambda);
 
     /// <summary>
     /// Calculate the velocity of a 0.400-kg(m) billiard ball if its wavelength
-    /// is 7.50 cm(λ) (large enough for it to interfere with other billiard balls
+    /// is 7.50 cm(lambda) (large enough for it to interfere with other billiard balls
     /// </summary>
     /// <param name="m">The mass.</param>
-    /// <param name="λ">The wavelength λ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
     /// <returns></returns>
     template<typename M, typename W>
-    static constexpr auto objectVelocity(const M m, const W λ);
+    static constexpr auto objectVelocity(const M m, const W lambda);
 
     /// <summary>
     /// What is the wavelength of an electron moving at 3.00%(percentOfLightSpeed)
@@ -591,18 +591,18 @@ public:
     /// <summary>
     /// A certain heat lamp has a binding energy of E_.
     /// How many of these photons are required to increase the temperature
-    /// of a object by  Δ_temp∘ , assuming the affected object is has a mass kg
+    /// of a object by  delta_temp∘ , assuming the affected object is has a mass kg
     /// with a specific heat of specHeat⋅C∘. Also assume no other
     /// significant heat transfer
     /// </summary>
     /// <param name="mass">The mass.</param>
     /// <param name="specHeat">The spec heat.</param>
-    /// <param name="Δ_temp">The δ temporary.</param>
+    /// <param name="delta_temp">The delta temporary.</param>
     /// <param name="E_">The e.</param>
     /// <returns></returns>
     template<typename M, typename C, typename T, typename E>
     static constexpr  auto photonsRequiredToIncreaseTemperature(
-            const M mass, const C specHeat, const T Δ_temp, const E E_
+            const M mass, const C specHeat, const T delta_temp, const E E_
     );
 
     /// <summary>
@@ -613,15 +613,15 @@ public:
     /// Also assume no other significant heat transfer
     /// </summary>
     /// <param name="watts">The watts.</param>
-    /// <param name="λ">The wavelength λ.</param>
+    /// <param name="lambda">The wavelength lambda.</param>
     /// <param name="mass">The mass.</param>
     /// <param name="specHeat">The specific heat.</param>
-    /// <param name="Δ_temp">The δ(change in) temperature.</param>
+    /// <param name="delta_temp">The delta(change in) temperature.</param>
     /// <returns>total Number of photons to increase mass by
     /// temperature specified</returns>
     template<typename P, typename W, typename M, typename C, typename T>
     static constexpr  auto photonsRequiredToIncreaseTemperature(
-            const P watts, const W λ, const M mass, const C specHeat, const T Δ_temp
+            const P watts, const W lambda, const M mass, const C specHeat, const T delta_temp
     );
 
 
@@ -685,21 +685,21 @@ constexpr auto QuantumPhysics::longestWavelength_eMRadiationEjection(const T BE)
 }
 
 template<typename T>
-constexpr auto QuantumPhysics::bindingEnergy(const T λ)
+constexpr auto QuantumPhysics::bindingEnergy(const T lambda)
 {
-    return (_PLANKS_C_) / λ;
+    return (_PLANKS_C_) / lambda;
 }
 
 template<typename T>
-constexpr auto QuantumPhysics::bindingEnergy_Joules(const T λ)
+constexpr auto QuantumPhysics::bindingEnergy_Joules(const T lambda)
 {
-    return (_PLANKS_J_ * _C_) / λ;
+    return (_PLANKS_J_ * _C_) / lambda;
 }
 
 template<typename T, typename K>
-constexpr auto QuantumPhysics::bindingEnergy(const T λ, const K KE)
+constexpr auto QuantumPhysics::bindingEnergy(const T lambda, const K KE)
 {
-    return ((_PLANKS_C_) / λ) - KE;
+    return ((_PLANKS_C_) / lambda) - KE;
 }
 
 template<typename T, typename K>
@@ -709,9 +709,9 @@ constexpr auto QuantumPhysics::bindingEnergy_f(const T f, const K KE)
 }
 
 template<typename T, typename B>
-constexpr auto QuantumPhysics::maximumKineticEnergy(const T λ, const B BE)
+constexpr auto QuantumPhysics::maximumKineticEnergy(const T lambda, const B BE)
 {
-    return ((_PLANKS_C_)/ λ) - BE;
+    return ((_PLANKS_C_)/ lambda) - BE;
 }
 
 template<typename T, typename B>
@@ -733,39 +733,39 @@ constexpr auto QuantumPhysics::wavelength(const T E)
 }
 
 template<typename T, typename M, typename B>
-constexpr auto QuantumPhysics::maximumVelocity(const T λ, const M m, const B BE)
+constexpr auto QuantumPhysics::maximumVelocity(const T lambda, const M m, const B BE)
 {
-    return sqrt((2.0 / m) * (((_PLANKS_J_*_C_) / λ) - (BE*1.602e-19 )));
+    return sqrt((2.0 / m) * (((_PLANKS_J_*_C_) / lambda) - (BE*1.602e-19 )));
 }
 
 template<typename T, typename M, typename B, typename D>
-constexpr auto QuantumPhysics::timeToTravelDistance(const T λ, const M m, const B BE, const D dis)
+constexpr auto QuantumPhysics::timeToTravelDistance(const T lambda, const M m, const B BE, const D dis)
 {
-    return dis/sqrt((2.0 / m) * (((_PLANKS_J_ * _C_) / λ) - (BE * 1.602e-19)));
+    return dis/sqrt((2.0 / m) * (((_PLANKS_J_ * _C_) / lambda) - (BE * 1.602e-19)));
 }
 
 template<typename T, typename P>
-constexpr auto QuantumPhysics::electronsPerSecondEjected(const T λ, const P P_)
+constexpr auto QuantumPhysics::electronsPerSecondEjected(const T lambda, const P P_)
 {
-    return (P_ * λ) / (_PLANKS_J_ * _C_);
+    return (P_ * lambda) / (_PLANKS_J_ * _C_);
 }
 
 template<typename T>
-constexpr auto QuantumPhysics::photoelectronsPerSecondEjected(const T A, const T λ, const T I)
+constexpr auto QuantumPhysics::photoelectronsPerSecondEjected(const T A, const T lambda, const T I)
 {
-    return (I * (A * A) * λ) / (_PLANKS_J_ * _C_);
+    return (I * (A * A) * lambda) / (_PLANKS_J_ * _C_);
 }
 
 template<typename T>
-constexpr auto QuantumPhysics::powerCarriedAwayByElectrons(const T λ, const T P, const T BE)
+constexpr auto QuantumPhysics::powerCarriedAwayByElectrons(const T lambda, const T P, const T BE)
 {
-    return (((_PLANKS_J_ * _C_) / λ) - (BE*1.602e-19)) * electronsPerSecondEjected(λ, P);
+    return (((_PLANKS_J_ * _C_) / lambda) - (BE*1.602e-19)) * electronsPerSecondEjected(lambda, P);
 }
 
 template<typename T>
-constexpr auto QuantumPhysics::powerCarriedAwayByElectrons(const T A, const T λ, const T I, const T BE)
+constexpr auto QuantumPhysics::powerCarriedAwayByElectrons(const T A, const T lambda, const T I, const T BE)
 {
-    return I * (A * A) * (1.0 - (BE * λ) / _PLANKS_C_);
+    return I * (A * A) * (1.0 - (BE * lambda) / _PLANKS_C_);
 }
 
 template<typename T>
@@ -775,21 +775,21 @@ constexpr auto QuantumPhysics::frequency_fromE(const T E)
 }
 
 template<typename T>
-constexpr auto QuantumPhysics::numberOfSimultaneouslyAbsorbedPhotons(const T E_tot, const T E)
+constexpr auto QuantumPhysics::numberOfSimultaneouslyAbsorbedPhotons(T E_tot, T E)
 {
     return E_tot / E;
 }
 
 template<typename T>
-constexpr auto QuantumPhysics::numOfTightlyBoundMolecules_γRayCanBreakApart(const T E_tot, const T E)
+constexpr auto QuantumPhysics::numOfTightlyBoundMolecules_gammaRayCanBreakApart(T E_tot, T E)
 {
     return E / E_tot;
 }
 
 template<typename T>
-constexpr auto QuantumPhysics::acceleratingVoltage(const T λ, const T q)
+constexpr auto QuantumPhysics::acceleratingVoltage(const T lambda, const T q)
 {
-    return (_PLANKS_J_ * _C_) / (q * λ);
+    return (_PLANKS_J_ * _C_) / (q * lambda);
 }
 
 template<typename Q, typename V>
@@ -823,15 +823,15 @@ constexpr auto QuantumPhysics::gammaRaysPerSecondEmitted(const P P_, const E E_)
 }
 
 template<typename P, typename E, typename F>
-constexpr auto QuantumPhysics::distanceBetween2Satellites(const P P_, const E E_, const F Φ)
+constexpr auto QuantumPhysics::distanceBetween2Satellites(const P P_, const E E_, const F phi)
 {
-    return sqrt(gammaRaysPerSecondEmitted(P_, E_) / (4.0 * _PI * Φ));
+    return sqrt(gammaRaysPerSecondEmitted(P_, E_) / (4.0 * Pi_ * phi));
 }
 
 template<typename W>
-constexpr auto QuantumPhysics::photonMomentum(const W λ)
+constexpr auto QuantumPhysics::photonMomentum(const W lambda)
 {
-    return _PLANKS_J_ / λ;
+    return _PLANKS_J_ / lambda;
 }
 
 template<typename E>
@@ -865,21 +865,21 @@ constexpr auto QuantumPhysics::kineticEnergy(const M m, const V v)
 }
 
 template<typename M, typename W>
-constexpr auto QuantumPhysics::kineticEnergy_fromWavelength(const M m, const W λ)
+constexpr auto QuantumPhysics::kineticEnergy_fromWavelength(const M m, const W lambda)
 {
-    return pow(_PLANKS_J_, 2) / (2.0 * m * (λ * λ)) * _JOULES2eV_;
+    return pow(_PLANKS_J_, 2) / (2.0 * m * (lambda * lambda)) * _JOULES2eV_;
 }
 
 template<typename W>
-constexpr auto QuantumPhysics::electronVelocity(const W λ)
+constexpr auto QuantumPhysics::electronVelocity(const W lambda)
 {
-    return _PLANKS_J_ / (_ELECTRON_MASS_ * λ);
+    return _PLANKS_J_ / (_ELECTRON_MASS_ * lambda);
 }
 
 template<typename M, typename W>
-constexpr auto QuantumPhysics::objectVelocity(const M m, const W λ)
+constexpr auto QuantumPhysics::objectVelocity(const M m, const W lambda)
 {
-    return _PLANKS_J_ / (m * λ);
+    return _PLANKS_J_ / (m * lambda);
 }
 
 template<typename V>
@@ -910,46 +910,46 @@ constexpr auto QuantumPhysics::voltageToHaveVelocityOf(const M m, const Q q, con
 template<typename XX, typename M>
 constexpr auto QuantumPhysics::min_uncertaintyInVelocity(const XX x, const M m)
 {
-    return _PLANKS_J_ / (4.0 * _PI * x * m);
+    return _PLANKS_J_ / (4.0 * Pi_ * x * m);
 }
 
 template<typename M, typename V>
 constexpr auto QuantumPhysics::min_uncertaintyInPosition(const V v, const M m)
 {
-    return _PLANKS_J_ / (4.0 * _PI * m * v);
+    return _PLANKS_J_ / (4.0 * Pi_ * m * v);
 }
 
 template<typename T>
 constexpr auto QuantumPhysics::min_uncertaintyInEnergy(const T t)
 {
-    return _PLANKS_EM_ / (4.0 * _PI * t);
+    return _PLANKS_EM_ / (4.0 * Pi_ * t);
 }
 
 template<typename E>
 constexpr auto QuantumPhysics::min_uncertaintyInLifetime(const E E_)
 {
-    return _PLANKS_EM_ / (4.0 * _PI * E_);
+    return _PLANKS_EM_ / (4.0 * Pi_ * E_);
 }
 
 template<typename T>
 constexpr auto QuantumPhysics::min_uncertaintyInMass(const T t)
 {
-    return _PLANKS_J_ / (4.0 * _PI * (_C_ * _C_) * t);
+    return _PLANKS_J_ / (4.0 * Pi_ * (_C_ * _C_) * t);
 }
 
 template<typename M, typename C, typename T, typename E>
 constexpr auto QuantumPhysics::photonsRequiredToIncreaseTemperature(
-        const M mass, const C specHeat, const T Δ_temp, const E E_)
+        const M mass, const C specHeat, const T delta_temp, const E E_)
 {
-    return (mass * specHeat * Δ_temp) / E_;
+    return (mass * specHeat * delta_temp) / E_;
 }
 
 template<typename P, typename W, typename M, typename C, typename T>
 constexpr auto QuantumPhysics::photonsRequiredToIncreaseTemperature(
-        const P watts, const W λ, const M mass, const C specHeat, const T Δ_temp)
+        const P watts, const W lambda, const M mass, const C specHeat, const T delta_temp)
 {
-    auto engJ = bindingEnergy_Joules(λ);
-    return  (mass * specHeat * Δ_temp) / engJ;
+    auto engJ = bindingEnergy_Joules(lambda);
+    return  (mass * specHeat * delta_temp) / engJ;
 }
 
 

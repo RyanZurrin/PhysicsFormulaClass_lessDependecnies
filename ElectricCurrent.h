@@ -12,9 +12,6 @@
  * @dateBuilt  12/31/2020
  * @lastEdit 12/31/2020
  */
-
-#ifndef ELECTRICCURRENT_H
-#define ELECTRICCURRENT_H
 #include "ElectricPotential.h"
 
 
@@ -950,8 +947,5 @@ inline ld ElectricCurrent::tempCoeffOfResistivity(const ld R, const ld R_o, cons
 {
     return ((R / R_o) - 1.0) / (T_f - T_i);
 }
-
-#endif
-
 
 #endif //PHYSICSFORMULA_ELECTRICCURRENT_H
