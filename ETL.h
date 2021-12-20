@@ -8,12 +8,11 @@
 #include <iostream>
 #include <fstream>
 #include <cstdlib>
+#include <utility>
 #include <vector>
 #include <cmath>
 #include "MatrixND.h"
 
-//α=224,ß=225,π=227,Σ=228,σ=229,µ=230,τ=231,Φ=232,Θ=233
-//Ω=234,δ=235,∞=236,φ=237,ε=238,∩=239,≡=240,Γ=226,γ, σ, ϑ, Å, Ώ, λ, γ
 /**
  * @class ETL
  * @details Extract transform and load, class for reading in data from a csv
@@ -36,11 +35,11 @@ public:
         delimiter = " ";
         header = false;
     }
-    ETL(std::string data, std::string separator, bool head) : dataset(data), delimiter(separator), header(head)
+    ETL(std::string data, std::string separator, bool head) : dataset(std::move(data)), delimiter(std::move(separator)), header(head)
     {}
 
     std::vector<std::vector<std::string>> readCSV();
-   MatrixND<T> CSVtoEigen(std::vector<std::vector<std::string>> ds, int rows, int cols);
+   MatrixND<double> CSVtoMatrix(std::vector<std::vector<std::string>> ds, int rows, int cols);
 
     static MatrixND<T> Normalize(MatrixND<T> data, bool normalizeTarget);
     //auto Mean(Eigen::MatrixXd data) -> decltype(data.colwise().mean());
@@ -74,26 +73,32 @@ std::vector<std::vector<std::string>> ETL<T>::readCSV()
     }
 
     file.close();
+    //print out the data
+//    for(int i = 0; i < dataString.size(); i++){
+//        for(int j = 0; j < dataString[i].size(); j++){
+//            std::cout << dataString[i][j] << " ";
+//        }
+//        std::cout << std::endl;
+//    }
 
     return dataString;
 }
 template <typename T>
-MatrixND<T> ETL<T>::CSVtoEigen(std::vector<std::vector<std::string>>
+MatrixND<double> ETL<T>::CSVtoMatrix(std::vector<std::vector<std::string>>
                                 ds, int rows, int cols)
 {
-
     if(header){
         rows = rows - 1;
     }
 
-    MatrixND<T> mat(cols,rows);
-    for(int i=0; i<rows; i++){
-        for(int j=0; j<cols; ++j){
-            mat(j,i) = atof(ds[i][j].c_str());
+    MatrixND<double> data(rows,cols);
+    // adding the data from vector to matrix
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < cols; ++j){
+            data(i,j) = std::stod(ds[i][j]);
         }
     }
-
-    return mat.transpose();
+    return data;
 }
 template <typename T>
 inline std::tuple<MatrixND<T>,MatrixND<T>,MatrixND<T>,MatrixND<T>>
