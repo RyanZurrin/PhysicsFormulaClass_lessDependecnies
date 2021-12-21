@@ -802,7 +802,7 @@ inline ld ElectricCurrent::voltageDropAcrossResistor(const ld I, const ld R)
 
 inline ld ElectricCurrent::driftVelocity_commonWire(const ld q, const ld diameter, const ld I, const ld p, const ld mass)
 {
-    const ld n = (_AVOGADRO_ * 1000.0 * p) / (mass);
+    const ld n = (AVOGADRO_ * 1000.0 * p) / (mass);
     return I / (n * q * (_PI_*pow(diameter/2.0,2)));
 }
 

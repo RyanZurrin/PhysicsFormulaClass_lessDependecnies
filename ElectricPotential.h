@@ -587,12 +587,12 @@ inline ld ElectricPotential::voltageNeededToObtainEnergy(const ld m, const ld v,
 inline ld ElectricPotential::temperatureAvgKineticEnergyGasMolecule(const ld V, const ld q = _PROTON_CHARGE_)
 {
 
-    return (2* q* V)/(3.0 * _BOLTZMANN_K_);
+    return (2* q* V)/(3.0 * BOLTZMANN_K_);
 }
 
 inline ld ElectricPotential::voltageIonsMoveThroughToReachSameTemperature(const ld T, const ld q = _PROTON_CHARGE_)
 {
-    return (3/2)*((_BOLTZMANN_K_*T)/q);
+    return (3/2)*((BOLTZMANN_K_*T)/q);
 }
 
 

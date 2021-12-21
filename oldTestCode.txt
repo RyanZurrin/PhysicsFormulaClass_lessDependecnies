@@ -1,0 +1,22 @@
+// testing the MatrixND class__________________________________________________
+ETL<string> etl("winedata.csv", ",", true);
+    std::vector<std::vector<std::string>> dataSet = etl.readCSV();
+
+    int rows = dataSet.size();
+    int cols = dataSet[0].size();
+
+    MatrixND<double> dataMat = etl.CSVtoMatrix(dataSet, rows, cols);
+
+    std::cout << "Data Matrix: " << std::endl;
+    //MatrixND<double> tDataMat = dataMat.transpose();
+
+    dataMat.print();
+    //cout << dataMat << endl;
+    // unit test to test all the matrixND functions
+    MatrixND<double> testMat = MatrixND<double>::identity(3);
+    testMat.print();
+    testMat.transpose().print();
+
+    // test the matrixND class making a zero matrix
+    MatrixND<double> zeroMat = MatrixND<double>::zero(10, 23);
+    zeroMat.print();

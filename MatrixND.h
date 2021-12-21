@@ -10,9 +10,13 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
+#include <ctime>
+#include <random>
 #include "VectorND.h"
 
 using namespace std;
+namespace rez {
 // Matrix traits: This describes how a matrix is accessed. By
 // externalizing this information into a traits class, the same code
 // can be used both with native arrays and matrix classes. To use the
@@ -40,227 +44,237 @@ using namespace std;
 //
 // Note that the functions are all inline and simple, so the compiler
 // should completely optimize them away.
-template<typename MatrixType> struct matrix_traits
-{
-    typedef typename MatrixType::index_type index_type;
-    typedef typename MatrixType::value_type value_type;
-    static index_type min_row(MatrixType const& A)
-    { return A.min_row(); }
-    static index_type max_row(MatrixType const& A)
-    { return A.max_row(); }
-    static index_type min_column(MatrixType const& A)
-    { return A.min_column(); }
-    static index_type max_column(MatrixType const& A)
-    { return A.max_column(); }
-    static value_type& element(MatrixType& A, index_type i, index_type k)
-    { return A(i,k); }
-    static value_type element(MatrixType const& A, index_type i, index_type k)
-    { return A(i,k); }
-};
+    template<typename MatrixType>
+    struct matrix_traits {
+        typedef typename MatrixType::index_type index_type;
+        typedef typename MatrixType::value_type value_type;
+        static index_type min_row(MatrixType const &A) { return A.min_row(); }
+        static index_type max_row(MatrixType const &A) { return A.max_row(); }
+        static index_type
+        min_column(MatrixType const &A) { return A.min_column(); }
+        static index_type
+        max_column(MatrixType const &A) { return A.max_column(); }
+        static value_type &
+        element(MatrixType &A, index_type i, index_type k) { return A(i, k); }
+        [[maybe_unused]] static value_type
+        element(MatrixType const &A, index_type i, index_type k) {
+            return A(i, k);
+        }
+    };
 
 // specialization of the matrix traits for built-in two-dimensional
 // arrays
-template<typename T, std::size_t rows, std::size_t columns>
-struct matrix_traits<T[rows][columns]>
-{
-    typedef std::size_t index_type;
-    typedef T value_type;
-    static index_type min_row(T const (&)[rows][columns])
-    { return 0; }
-    static index_type max_row(T const (&)[rows][columns])
-    { return rows-1; }
-    static index_type min_column(T const (&)[rows][columns])
-    { return 0; }
-    static index_type max_column(T const (&)[rows][columns])
-    { return columns-1; }
-    static value_type& element(T (&A)[rows][columns],
-                               index_type i, index_type k)
-    { return A[i][k]; }
-    static value_type element(T const (&A)[rows][columns],
-                              index_type i, index_type k)
-    { return A[i][k]; }
-};
+    template<typename T, std::size_t rows, std::size_t columns>
+    struct matrix_traits<T[rows][columns]> {
+        typedef std::size_t index_type;
+        typedef T value_type;
+        static index_type min_row(T const (&)[rows][columns]) { return 0; }
+        static index_type max_row(T const (&)[rows][columns]) {
+            return rows - 1;
+        }
+        static index_type min_column(T const (&)[rows][columns]) { return 0; }
+        static index_type max_column(T const (&)[rows][columns]) {
+            return columns - 1;
+        }
+        [[maybe_unused]] static value_type &element(T (&A)[rows][columns],
+                                   index_type i,
+                                   index_type k) { return A[i][k]; }
+        [[maybe_unused]] static value_type element(T const (&A)[rows][columns],
+                                  index_type i,
+                                  index_type k) { return A[i][k]; }
+    };
 
 // Swap rows i and k of a matrix A
 // Note that due to the reference, both dimensions are preserved for
 // built-in arrays
-template<typename MatrixType>
-void swap_rows(MatrixType& A,
-               typename matrix_traits<MatrixType>::index_type i,
-               typename matrix_traits<MatrixType>::index_type k)
-{
-    matrix_traits<MatrixType> mt;
-    typedef typename matrix_traits<MatrixType>::index_type index_type;
+    template<typename MatrixType>
+    void swap_rows(MatrixType &A,
+                   typename matrix_traits<MatrixType>::index_type i,
+                   typename matrix_traits<MatrixType>::index_type k) {
+        matrix_traits<MatrixType> mt;
+        typedef typename matrix_traits<MatrixType>::index_type index_type;
 
-    // check indices
-    assert(mt.min_row(A) <= i);
-    assert(i <= mt.max_row(A));
-
-    assert(mt.min_row(A) <= k);
-    assert(k <= mt.max_row(A));
-
-    for (index_type col = mt.min_column(A); col <= mt.max_column(A); ++col)
-        std::swap(mt.element(A, i, col), mt.element(A, k, col));
-}
+        // check indices
+        assert(mt.min_row(A) <= i);
+        assert(i <= mt.max_row(A));
+        assert(mt.min_row(A) <= k);
+        assert(k <= mt.max_row(A));
+        for (index_type col = mt.min_column(A); col <= mt.max_column(A); ++col)
+            std::swap(mt.element(A, i, col), mt.element(A, k, col));
+    }
 
 // divide row i of matrix A by v
-template<typename MatrixType>
-void divide_row(MatrixType& A,
-                typename matrix_traits<MatrixType>::index_type i,
-                typename matrix_traits<MatrixType>::value_type v)
-{
-    matrix_traits<MatrixType> mt;
-    typedef typename matrix_traits<MatrixType>::index_type index_type;
-
-    assert(mt.min_row(A) <= i);
-    assert(i <= mt.max_row(A));
-
-    assert(v != 0);
-
-    for (index_type col = mt.min_column(A); col <= mt.max_column(A); ++col)
-        mt.element(A, i, col) /= v;
-}
+    template<typename MatrixType>
+    void divide_row(MatrixType &A,
+                    typename matrix_traits<MatrixType>::index_type i,
+                    typename matrix_traits<MatrixType>::value_type v) {
+        matrix_traits<MatrixType> mt;
+        typedef typename matrix_traits<MatrixType>::index_type index_type;
+        assert(mt.min_row(A) <= i);
+        assert(i <= mt.max_row(A));
+        assert(v != 0);
+        for (index_type col = mt.min_column(A); col <= mt.max_column(A); ++col)
+            mt.element(A, i, col) /= v;
+    }
 
 // in matrix A, add v times row k to row i
-template<typename MatrixType>
-void add_multiple_row(MatrixType& A,
-                      typename matrix_traits<MatrixType>::index_type i,
-                      typename matrix_traits<MatrixType>::index_type k,
-                      typename matrix_traits<MatrixType>::value_type v)
-{
-    matrix_traits<MatrixType> mt;
-    typedef typename matrix_traits<MatrixType>::index_type index_type;
+    template<typename MatrixType>
+    void add_multiple_row(MatrixType &A,
+                          typename matrix_traits<MatrixType>::index_type i,
+                          typename matrix_traits<MatrixType>::index_type k,
+                          typename matrix_traits<MatrixType>::value_type v) {
+        matrix_traits<MatrixType> mt;
+        typedef typename matrix_traits<MatrixType>::index_type index_type;
 
-    assert(mt.min_row(A) <= i);
-    assert(i <= mt.max_row(A));
-
-    assert(mt.min_row(A) <= k);
-    assert(k <= mt.max_row(A));
-
-    for (index_type col = mt.min_column(A); col <= mt.max_column(A); ++col)
-        mt.element(A, i, col) += v * mt.element(A, k, col);
-}
+        assert(mt.min_row(A) <= i);
+        assert(i <= mt.max_row(A));
+        assert(mt.min_row(A) <= k);
+        assert(k <= mt.max_row(A));
+        for (index_type col = mt.min_column(A); col <= mt.max_column(A); ++col)
+            mt.element(A, i, col) += v * mt.element(A, k, col);
+    }
 
 // convert A to reduced row echelon form
-template<typename MatrixType>
-void to_reduced_row_echelon_form(MatrixType& A)
-{
-    matrix_traits<MatrixType> mt;
-    typedef typename matrix_traits<MatrixType>::index_type index_type;
+    template<typename MatrixType>
+    [[maybe_unused]] void to_reduced_row_echelon_form(MatrixType &A) {
+        matrix_traits<MatrixType> mt;
+        typedef typename matrix_traits<MatrixType>::index_type index_type;
 
-    index_type lead = mt.min_row(A);
+        index_type lead = mt.min_row(A);
 
-    for (index_type row = mt.min_row(A); row <= mt.max_row(A); ++row)
-    {
-        if (lead > mt.max_column(A))
-            return;
-        index_type i = row;
-        while (mt.element(A, i, lead) == 0)
-        {
-            ++i;
-            if (i > mt.max_row(A))
-            {
-                i = row;
-                ++lead;
-                if (lead > mt.max_column(A))
-                    return;
+        for (index_type row = mt.min_row(A); row <= mt.max_row(A); ++row) {
+            if (lead > mt.max_column(A))
+                return;
+            index_type i = row;
+            while (mt.element(A, i, lead) == 0) {
+                ++i;
+                if (i > mt.max_row(A)) {
+                    i = row;
+                    ++lead;
+                    if (lead > mt.max_column(A))
+                        return;
+                }
+            }
+            swap_rows(A, i, row);
+            divide_row(A, row, mt.element(A, row, lead));
+            for (i = mt.min_row(A); i <= mt.max_row(A); ++i) {
+                if (i != row)
+                    add_multiple_row(A, i, row, -mt.element(A, i, lead));
             }
         }
-        swap_rows(A, i, row);
-        divide_row(A, row, mt.element(A, row, lead));
-        for (i = mt.min_row(A); i <= mt.max_row(A); ++i)
-        {
-            if (i != row)
-                add_multiple_row(A, i, row, -mt.element(A, i, lead));
-        }
     }
-}
 
-template<typename MatrixType>
-void print_matrix(MatrixType m, int rows, int cols)
-{
-    std::cout << right << setprecision(4) << std::endl;
-    for (size_t r = 0; r < rows; r++)
-    {
-        for (size_t c = 0; c < cols; c++)
-        {
-            std::cout<<setw(7)<<right << m[r][c] << '\t';
+    template<typename MatrixType>
+    void print_matrix(MatrixType m, int rows, int cols) {
+        std::cout << right << setprecision(4) << std::endl;
+        for (size_t r = 0; r < rows; r++) {
+            for (size_t c = 0; c < cols; c++) {
+                std::cout << setw(7) << right << m[r][c] << '\t';
+            }
+            std::cout << "\n";
         }
-        std::cout << "\n";
+        std::cout << std::endl;
     }
-    std::cout << std::endl;
-}
-
-
-
-
-
+} // namespace rez
+//*****************************************************************************
+//*****************************************************************************
 template<typename T>
 class MatrixND
-{
-
-    // turns a single index into a row and column and returns the value at that index
-    int getAt(int index);
+{    // turns a single index into a row and column and returns the value at that index
+    T getAt(int index);
     // sets the value at the given index
     void setAt(int index, int value);
 
 public:
-    int rows{};
-    int cols{};
-    std::vector<T> data;
-    MatrixND();
+    int rows{}; // number of rows
+    int cols{}; // number of columns
+    std::vector<T> data; // the data
 
-    template<typename ... Args>
+    MatrixND(); // default constructor
+    template<typename ... Args> // constructor with arguments
     explicit MatrixND(const int& r_, const int& c_, const T& first, const Args&... args);
-    MatrixND(int r, int c);
-    MatrixND(std::vector<T>, int rows, int cols);
-    MatrixND(T* data, int rows, int cols);
-
+    MatrixND(int r, int c); // constructor with dimensions
+    MatrixND(std::vector<T>, int rows, int cols); // constructor with data and dimensions
+    MatrixND(T* data, int rows, int cols); // constructor with data and dimensions
+    MatrixND(T** data, int rows, int cols); // constructor with data and dimensions
     MatrixND(const MatrixND& other); // copy constructor
     MatrixND(MatrixND&& other) noexcept; // move constructor
     MatrixND& operator=(const MatrixND& other); // copy assignment
     MatrixND& operator=(MatrixND&& other) noexcept ; // move assignment
-
+    // set data and dimensions using a vector
     void set(std::vector<T>, int rows, int cols);
+    // set data and dimensions using a pointer
     template<typename  ... Args>
     void set(const T& first, const Args&... args);
+    // set data at a specific index with a value
     void setAt(int row, int col, T value);
+    // method to swap rows
+    [[maybe_unused]] void swapRows(int row1, int row2);
+    // method to swap columns
+    [[maybe_unused]] void swapCols(int col1, int col2);
+    // static function to generate and return a random matrix of the given size
+    // with values between 0 and 1
+    [[maybe_unused]] static MatrixND<T> random(int rows, int cols);
+    // static function to generate and return a random matrix of the given size
+    // with values in the given range
+    [[maybe_unused]] static MatrixND<T>
+    random(int rows, int cols, T min, T max, bool continuous = true);
     // method to test if matrix is square
-    bool isSquare() const; // returns true if matrix is square
-    bool isZero() const; // returns true if matrix is zero
-    bool isIdentity() const; // returns true if matrix is identity
-    bool isDiagonal() const; // returns true if matrix is diagonal
-    bool isSymmetric() const; // returns true if matrix is symmetric
-    bool isSkewSymmetric() const; // returns true if matrix is skew symmetric
-    bool isUpperTriangular() const; // returns true if matrix is upper triangular
-    bool isLowerTriangular() const; // returns true if matrix is lower triangular
-    bool isTridiagonal() const; // returns true if matrix is tridiagonal
-
-
+    [[nodiscard]] bool isSquare() const; // returns true if matrix is square
+    [[nodiscard]] bool isZero() const; // returns true if matrix is zero
+    // returns true if matrix is identity
+    [[maybe_unused]] [[nodiscard]] bool isIdentity() const;
+    // returns true if matrix is diagonal
+    [[maybe_unused]] [[nodiscard]] bool isDiagonal() const;
+    // returns true if matrix is symmetric
+    [[maybe_unused]] [[nodiscard]] bool isSymmetric() const;
+    // returns true if matrix is skew symmetric
+    [[maybe_unused]] [[nodiscard]] bool isSkewSymmetric() const;
+    // returns true if matrix is upper triangular
+    [[maybe_unused]] [[nodiscard]] bool isUpperTriangular() const;
+    // returns true if matrix is lower triangular
+    [[maybe_unused]] [[nodiscard]] bool isLowerTriangular() const;
+    // returns true if matrix is tridiagonal
+    [[maybe_unused]] [[nodiscard]] bool isTridiagonal() const;
+    //checks if the f1 - f2  close to 0
+    bool closeEnough(T f1, T f2);
+    // prints the matrix
     void print();
+    // returns the transpose of the matrix
     MatrixND<T> transpose();
+    // returns the inverse of the matrix
     MatrixND<T> inverse();
+    // returns the determinant of the matrix
     float determinant();
+    // function to return the characteristic polynomial of the matrix
+    std::vector<T> characteristicPolynomial();
     // method to create an identity matrix of a square matrix
-    MatrixND<T> identity();
+    [[nodiscard]] MatrixND<T> identity();
+    // method to create a identity matrix of a specified size
+    [[nodiscard]] static MatrixND<T> identity(int size);
     // method to create a zero matrix of a square matrix
     MatrixND<T> zero();
+    static MatrixND<T> zero(int rows, int cols);
     // method to calculate the rank of a matrix
     int rank();
     // method to put matrix into reduced row echelon form
     MatrixND<T> rref();
     // method to determine if matrix is in reduced row echelon form
-    bool IsRowEchelon();
-    MatrixND<T> dot(const MatrixND<T> &);
+    bool isRowEchelon();
+    [[nodiscard]] MatrixND<T> dot(const MatrixND<T> &);
     MatrixND<T> cross(const MatrixND<T>&);
     MatrixND<T> add(const MatrixND<T> &);
     MatrixND<T> sub(const MatrixND<T> &);
     MatrixND<T> mult(const MatrixND<T> &);
     MatrixND<T> mult(const T &);
+    // Function to add a multiple of row j to row i (in place).
+    void addMultiple(int i, int j, T multiple);
     bool isEqual(const MatrixND<T> &);
-    MatrixND<T> concat(const MatrixND<T> &); // concatenate two matrices
-    MatrixND<T> stack(const MatrixND<T> &); // stack vertically
-    MatrixND<T> kronecker(const MatrixND<T> &); // kronecker product
+    // method to calculate the adjoint of a matrix
+    MatrixND<T> adjoint();
+    [[nodiscard]] MatrixND<T> concat(const MatrixND<T> &); // concatenate two matrices
+    [[nodiscard]] MatrixND<T> stack(const MatrixND<T> &); // stack vertically
+    [[nodiscard]] MatrixND<T> kronecker(const MatrixND<T> &); // kronecker product
     // method to vind the eignenvectors of the matrix
     MatrixND<T> eigenvectors();
     // method to return a vector of eigenvalues of the matrix
@@ -275,9 +289,13 @@ public:
     double corr();
     // method to take the sum of the matrix elements
     double sum();
+    // enode from row and column to index
+    int index(int row, int col)const;
 
     int getRows()const; // returns the number of rows
     int getCols()const; // returns the number of columns
+    // find the sub matrix of the given row and column
+    MatrixND<T> subMatrix(int row, int col);
     // method to return the top number of specified rows of the matrix
     MatrixND<T> topRows(int rows);
     // method to return the bottom number of specified rows of the matrix
@@ -294,6 +312,8 @@ public:
     MatrixND<T> bottomLeft(int rows, int cols);
     // method to return the bottom right number of specified rows and columns of the matrix
     MatrixND<T> bottomRight(int rows, int cols);
+    // method to return the cofactor of the matrix at the specified row and column
+    T cofactor(int row, int col);
     // method to ruturn the colwise mean of the matrix
     double colwiseMean(int col);
     // method to ruturn the rowwise mean of the matrix
@@ -330,10 +350,21 @@ public:
     std::vector<T> rowwise(int row);
     // look at the data in a rowwise fashion
     MatrixND<T> rowwise();
+    // Function to the find the row with the maximum element at the column given.
+    // Returns the row index.
+    int findRowWithMaxElement(int col, int row);
     // method to return the max coefficient of the matrix
     T max();
+    // find row with max element
+    int maxRow();
+    // find column with max element
+    int maxCol();
     // method to return the min coefficient of the matrix
     T min();
+    // find row with min element
+    int minRow();
+    // find column with min element
+    int minCol();
     // method to return the max coefficient of a specified row of the matrix
     T maxRow(int row);
     // method to return the min coefficient of a specified row of the matrix
@@ -344,7 +375,7 @@ public:
     T minCol(int col);
 
 
-    int get(int row, int col)const;
+    [[nodiscard]] T get(int row, int col)const;
     // overload the parenthesis operator to get the value at a given row and column
     T& operator()(int row, int col);
     // overload the parenthesis operator to set the value at a given row and column
@@ -371,56 +402,23 @@ public:
     MatrixND<T> operator*(const T &);
     bool operator==(const MatrixND<T> &);
 
-    template <class U> friend MatrixND<U> operator+ (const MatrixND<U>& lhs, const MatrixND<U>& rhs);
-    template <class U> friend MatrixND<U> operator+ (const U& lhs, const MatrixND<U>& rhs);
-    template <class U> friend MatrixND<U> operator+ (const MatrixND<U>& lhs, const U& rhs);
-
-    template <class U> friend MatrixND<U> operator- (const MatrixND<U>& lhs, const MatrixND<U>& rhs);
-    template <class U> friend MatrixND<U> operator- (const U& lhs, const MatrixND<U>& rhs);
-    template <class U> friend MatrixND<U> operator- (const MatrixND<U>& lhs, const U& rhs);
-
-    template <class U> friend MatrixND<U> operator* (const MatrixND<U>& lhs, const MatrixND<U>& rhs);
-    template <class U> friend MatrixND<U> operator* (const U& lhs, const MatrixND<U>& rhs);
-    template <class U> friend MatrixND<U> operator* (const MatrixND<U>& lhs, const U& rhs);
+//    template <class U> friend MatrixND<U> operator+ (const MatrixND<U>& lhs, MatrixND<U>& rhs);
+//    template <class U> friend MatrixND<U> operator+ (const U& lhs, MatrixND<U>& rhs);
+//    template <class U> friend MatrixND<U> operator+ (const MatrixND<U>& lhs, U& rhs);
+//
+//    template <class U> friend MatrixND<U> operator- (const MatrixND<U>& lhs, MatrixND<U>& rhs);
+//    template <class U> friend MatrixND<U> operator- (const U& lhs, MatrixND<U>& rhs);
+//    template <class U> friend MatrixND<U> operator- (const MatrixND<U>& lhs, U& rhs);
+//
+//    template <class U> friend MatrixND<U> operator* (const MatrixND<U>& lhs, MatrixND<U>& rhs);
+//    template <class U> friend MatrixND<U> operator* (const U& lhs, MatrixND<U>& rhs);
+//    template <class U> friend MatrixND<U> operator* (const MatrixND<U>& lhs, const U& rhs);
 
     template<typename K>
     friend istream& operator>>(istream& is, MatrixND<T>& m);
 
     template <typename K>
     friend ostream& operator<<(ostream& os, const MatrixND<T>& rhs);
-
-
-    /*
-    MatrixND& operator+=(T a);
-    MatrixND& operator-=(T a);
-    MatrixND& operator*=(T a);
-    MatrixND& operator/=(T a);
-
-    MatrixND& operator+=(MatrixND const& a);
-    MatrixND& operator-=(MatrixND const& a);
-
-    MatrixND operator-() const; // unary negation
-
-    // free functions:
-
-    MatrixND<T> operator+(MatrixND<T> const& a, T b);
-    MatrixND<T> operator-(MatrixND<T> const& a, T b);
-    MatrixND<T> operator*(MatrixND<T> const& a, T b);
-    MatrixND<T> operator/(MatrixND<T> const& a, T b);
-
-    MatrixND<T> operator+(T a, MatrixND<T> const& b);
-    MatrixND<T> operator-(T a, MatrixND<T> const& b);
-    MatrixND<T> operator*(T a, MatrixND<T> const& b);
-    MatrixND<T> operator/(T a, MatrixND<T> const& b);
-
-    MatrixND<T> operator+(MatrixND<T> const& a, MatrixND<T> const& b);
-    MatrixND<T> operator-(MatrixND<T> const& a, MatrixND<T> const& b);
-
-    MatrixND<T> operator*(MatrixND<T> const& a, MatrixND<T> const& b);
-
-    Vector<T> operator*(MatrixND<T> const& a, Vector<T> const& b);
-    Vector<T> operator*(Vector<T> const& a, MatrixND<T> const& b);
-    */
 
     ~MatrixND() = default;
 
@@ -485,8 +483,65 @@ inline void MatrixND<T>::set(const T& first, const Args & ...args)
 }
 template<typename T>
 void MatrixND<T>::setAt(int row, int col, T value) {
-    data[row * col + col] = value;
+    if (row < rows && col < cols) {
+        data[row * cols + col] = value;
+    }
 }
+
+template<typename T>
+[[maybe_unused]] void MatrixND<T>::swapRows(int row1, int row2) {
+    if (row1 < rows && row2 < rows) {
+        for (int i = 0; i < cols; i++) {
+            std::swap(data[row1 * cols + i], data[row2 * cols + i]);
+        }
+    }
+}
+template<typename T>
+[[maybe_unused]] void MatrixND<T>::swapCols(int col1, int col2) {
+    if (col1 < cols && col2 < cols) {
+        for (int i = 0; i < rows; i++) {
+            std::swap(data[i * cols + col1], data[i * cols + col2]);
+        }
+    }
+}
+template<typename T>
+MatrixND<T> MatrixND<T>::random(int rows, int cols) {
+    MatrixND<T> m(rows, cols);
+    // seed a random number generator
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<> dis(0, 1);
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            m.setAt(i, j, dis(gen));
+        }
+    }
+    return m;
+}
+template<typename T>
+MatrixND<T> MatrixND<T>::random(int rows, int cols, T min, T max, bool continuous) {
+    MatrixND<T> m(rows, cols);
+    // seed a random number generator
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_real_distribution<> dis(min, max);
+    if (continuous) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                m.setAt(i, j, dis(gen));
+            }
+        }
+    }
+    else {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                m.setAt(i, j, round(dis(gen)));
+            }
+        }
+    }
+    return m;
+}
+
 template<typename T>
 bool MatrixND<T>::isSquare() const {
     return rows == cols;
@@ -504,7 +559,7 @@ bool MatrixND<T>::isZero() const {
 }
 
 template<typename T>
-bool MatrixND<T>::isIdentity() const {
+[[maybe_unused]] bool MatrixND<T>::isIdentity() const {
     if (!isSquare())
         return false;
     for (int i = 0; i < rows; i++)
@@ -582,6 +637,10 @@ bool MatrixND<T>::isTridiagonal() const {
     return true;
 }
 
+template<typename T>
+bool MatrixND<T>::closeEnough(T f1, T f2) {
+    return fabs(f1-f2) < 1e-9;
+}
 
 template<typename T>
 inline MatrixND<T>::MatrixND(int r, int c)
@@ -614,6 +673,21 @@ MatrixND<T>::MatrixND(T *data, int rows, int cols)
     this->rows = rows;
     this->cols = cols;
     this->data = vector<T>(data, data + rows * cols);
+}
+
+template<typename T>
+MatrixND<T>::MatrixND(T **data, int rows, int cols) {
+    //use data from the 2d array
+    this->rows = rows;
+    this->cols = cols;
+    this->data = vector<T>(rows * cols);
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < cols; j++)
+        {
+            this->data[i * cols + j] = data[i][j];
+        }
+    }
 }
 
 /** set
@@ -712,132 +786,133 @@ MatrixND<T> MatrixND<T>::operator*(const T & t)
 {
     return this->mult(t);
 }
-template<class U>
-MatrixND<U> operator+(const MatrixND<U> &lhs, const MatrixND<U> &rhs) {
-    int numRows = lhs.getRows();
-    int numCols = lhs.getCols();
-    int numElements = numRows * numCols;
-    U *tempResult = new U[numElements];
-    for (int i=0; i<numElements; i++)
-        tempResult[i] = lhs.getAt(i) + rhs.getAt(i);
-
-    MatrixND<U> result(numRows, numCols, tempResult);
-    delete[] tempResult;
-    return result;
-}
-template<class U>
-MatrixND<U> operator+(const U &lhs, const MatrixND<U> &rhs) {
-    int numRows = rhs.getRows();
-    int numCols = rhs.getCols();
-    int numElements = numRows * numCols;
-    U *tempResult = new U[numElements];
-    for (int i=0; i<numElements; i++)
-        tempResult[i] = lhs + rhs.getAt(i);
-
-    MatrixND<U> result(numRows, numCols, tempResult);
-    delete[] tempResult;
-    return result;
-}
-template<class U>
-MatrixND<U> operator+(const MatrixND<U> &lhs, const U &rhs) {
-    int numRows = lhs.getRows();
-    int numCols = lhs.getCols();
-    int numElements = numRows * numCols;
-    U *tempResult = new U[numElements];
-    for (int i=0; i<numElements; i++)
-        tempResult[i] = lhs.getAt(i) + rhs;
-
-    MatrixND<U> result(numRows, numCols, tempResult);
-    delete[] tempResult;
-    return result;
-}
-template<class U>
-MatrixND<U> operator-(const MatrixND<U> &lhs, const MatrixND<U> &rhs) {
-    int numRows = lhs.getRows();
-    int numCols = lhs.getCols();
-    int numElements = numRows * numCols;
-    U *tempResult = new U[numElements];
-    for (int i=0; i<numElements; i++)
-        tempResult[i] = lhs.getAt(i) - rhs.getAt(i);
-
-    MatrixND<U> result(numRows, numCols, tempResult);
-    delete[] tempResult;
-    return result;
-} //
-template<class U>
-MatrixND<U> operator-(const U& lhs, const MatrixND<U>& rhs) {
-    int numRows = rhs.getRows();
-    int numCols = rhs.getCols();
-    int numElements = numRows * numCols;
-    U *tempResult = new U[numElements];
-    for (int i=0; i<numElements; i++)
-        tempResult[i] = lhs - rhs.getAt(i);
-
-    MatrixND<U> result(numRows, numCols, tempResult);
-    delete[] tempResult;
-    return result;
-}
-template<class U>
-MatrixND<U> operator-(const MatrixND<U>& lhs, const U& rhs) {
-    int numRows = lhs.getRows();
-    int numCols = lhs.getCols();
-    int numElements = numRows * numCols;
-    U *tempResult = new U[numElements];
-    for (int i=0; i<numElements; i++)
-        tempResult[i] = lhs.getAt(i) - rhs;
-
-    MatrixND<U> result(numRows, numCols, tempResult);
-    delete[] tempResult;
-    return result;
-}
-template<class U>
-MatrixND<U> operator*(const MatrixND<U> &lhs, const MatrixND<U> &rhs) {
-    // Verify the dimensions of the inputs.
-    if (lhs.getCols() != rhs.getRows())
-        throw std::invalid_argument("Number of columns in matrix must equal number of rows in vector.");
-
-    // Setup the vector for the output.
-    MatrixND<U> result(lhs.m_nRows);
-
-    // Loop over rows and columns and perform the multiplication operation element-by-element.
-    for (int row=0; row<lhs.getRows(); ++row)
-    {
-        U cumulativeSum = static_cast<U>(0.0);
-        for (int col=0; col<lhs.getCols(); ++col)
-        {
-            cumulativeSum += (lhs.getAt(row, col) * rhs.getAt(col, row));
-        }
-        result.setAt(row, cumulativeSum);
-    }
-
-    return result;
-}
-template<class U>
-MatrixND<U> operator*(const U &lhs, const MatrixND<U> &rhs) {
-    int numRows = rhs.m_nRows;
-    int numCols = rhs.m_nCols;
-    int numElements = numRows * numCols;
-    U *tempResult = new U[numElements];
-    for (int i=0; i<numElements; ++i)
-        tempResult[i] = lhs * rhs.m_matrixData[i];
-
-    MatrixND<U> result(tempResult, numRows, numCols);
-    delete[] tempResult;
-    return result;
-}
-template<class U>
-MatrixND<U> operator*(const MatrixND<U> &lhs, const U &rhs) {
-    int numRows = lhs.m_nRows;
-    int numCols = lhs.m_nCols;
-    int numElements = numRows * numCols;
-    U *tempResult = new U[numElements];
-    for (int i=0; i<numElements; ++i)
-        tempResult[i] = lhs.m_matrixData[i] * rhs;
-
-    MatrixND<U> result(tempResult, numRows, numCols);
-    delete[] tempResult;
-    return result;
-}
+//template<class U>
+//MatrixND<U> operator+(const MatrixND<U> &lhs, MatrixND<U> &rhs) {
+//    int numRows = lhs.getRows();
+//    int numCols = lhs.getCols();
+//    int numElements = numRows * numCols;
+//    U *tempResult = new U[numElements];
+//    for (int i=0; i<numElements; i++)
+//        tempResult[i] = lhs.getAt(i) + rhs.getAt(i);
+//
+//    MatrixND<U> result(numRows, numCols, tempResult);
+//    delete[] tempResult;
+//    return result;
+//}
+//template<class U>
+//MatrixND<U> operator+(const U &lhs, MatrixND<U> &rhs) {
+//    int numRows = rhs.getRows();
+//    int numCols = rhs.getCols();
+//    int numElements = numRows * numCols;
+//    U *tempResult = new U[numElements];
+//    for (int i=0; i<numElements; i++)
+//        tempResult[i] = lhs + rhs.getAt(i);
+//
+//    MatrixND<U> result(numRows, numCols, tempResult);
+//    delete[] tempResult;
+//    return result;
+//}
+//template<class U>
+//MatrixND<U> operator+(const MatrixND<U> &lhs, U &rhs) {
+//    int numRows = lhs.getRows();
+//    int numCols = lhs.getCols();
+//    int numElements = numRows * numCols;
+//    U *tempResult = new U[numElements];
+//    for (int i=0; i<numElements; i++)
+//        tempResult[i] = lhs.getAt(i) + rhs;
+//
+//    MatrixND<U> result(numRows, numCols, tempResult);
+//    delete[] tempResult;
+//    return result;
+//}
+//template<class U>
+//MatrixND<U> operator-(const MatrixND<U> &lhs, MatrixND<U> &rhs) {
+//    int numRows = lhs.getRows();
+//    int numCols = lhs.getCols();
+//    int numElements = numRows * numCols;
+//    U *tempResult = new U[numElements];
+//    for (int i=0; i<numElements; i++)
+//        tempResult[i] = lhs.getAt(i) - rhs.getAt(i);
+//
+//    MatrixND<U> result(numRows, numCols, tempResult);
+//    delete[] tempResult;
+//    return result;
+//} //
+//template<class U>
+//MatrixND<U> operator-(const U& lhs, MatrixND<U>& rhs) {
+//    int numRows = rhs.getRows();
+//    int numCols = rhs.getCols();
+//    int numElements = numRows * numCols;
+//    U *tempResult = new U[numElements];
+//    for (int i=0; i<numElements; i++)
+//        tempResult[i] = lhs - rhs.getAt(i);
+//
+//    MatrixND<U> result(numRows, numCols, tempResult);
+//    delete[] tempResult;
+//    return result;
+//}
+//template<class U>
+//MatrixND<U> operator-(const MatrixND<U>& lhs, U& rhs) {
+//    int numRows = lhs.getRows();
+//    int numCols = lhs.getCols();
+//    int numElements = numRows * numCols;
+//    U *tempResult = new U[numElements];
+//    for (int i=0; i<numElements; i++)
+//        tempResult[i] = lhs.getAt(i) - rhs;
+//
+//    MatrixND<U> result(numRows, numCols, tempResult);
+//    delete[] tempResult;
+//    return result;
+//}
+//template<class U>
+//MatrixND<U> operator*(const MatrixND<U> &lhs, MatrixND<U> &rhs) {
+//    // Verify the dimensions of the inputs.
+//    if (lhs.getCols() != rhs.getRows())
+//        throw std::invalid_argument("Number of columns in matrix must equal number of rows in vector.");
+//
+//    // Setup the vector for the output.
+//    MatrixND<U> result(lhs.getRows());
+//
+//    // Loop over rows and columns and perform the multiplication operation element-by-element.
+//    for (int row=0; row<lhs.getRows(); ++row)
+//    {
+//        U cumulativeSum = static_cast<U>(0.0);
+//        for (int col=0; col<lhs.getCols(); ++col)
+//        {
+//            cumulativeSum += (lhs.getAt(row, col) * rhs.getAt(col, row));
+//        }
+//        result.setAt(row, cumulativeSum);
+//    }
+//
+//    return result;
+//}
+//template<class U>
+//MatrixND<U> operator*(const U &lhs, MatrixND<U> &rhs) {
+//    int numRows = rhs.getRows();
+//    int numCols = rhs.getCols();
+//    int numElements = numRows * numCols;
+//    U *tempResult = new U[numElements];
+//    for (int i = 0; i < numElements; ++i) {
+//        tempResult[i] = lhs * rhs.getAt(i);
+//    }
+//
+//    MatrixND<U> result(tempResult, numRows, numCols);
+//    delete[] tempResult;
+//    return result;
+//}
+//template<class U>
+//MatrixND<U> operator*(const MatrixND<U> &lhs, U &rhs) {
+//    int numRows = lhs.getRows();
+//    int numCols = lhs.getCols();
+//    int numElements = numRows * numCols;
+//    U *tempResult = new U[numElements];
+//    for (int i=0; i<numElements; ++i)
+//        tempResult[i] = lhs.getAt(i) * rhs;
+//
+//    MatrixND<U> result(tempResult, numRows, numCols);
+//    delete[] tempResult;
+//    return result;
+//}
 /** operator ==
 
 	elemetnwise comparison of two matrices of equal size
@@ -902,7 +977,24 @@ bool MatrixND<T>::isEqual(const MatrixND<T> & rhs)
 
     return true;
 }
-
+template<typename T>
+MatrixND<T> MatrixND<T>::adjoint() {
+    MatrixND<T> result(rows, cols);
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            result.setAt(i, j, cofactor(i, j));
+        }
+    }
+    // finding any -0 and replacing it with 0
+    for (int i = 0; i < result.rows; i++) {
+        for (int j = 0; j < result.cols; j++) {
+            if (result.get(i, j) == -0) {
+                result.setAt(i, j, 0);
+            }
+        }
+    }
+    return result.transpose();
+}
 /** add
 
 	elementwise adition of rhs to lhs
@@ -1011,15 +1103,17 @@ MatrixND<T> MatrixND<T>::mult(const T & scalar)
     return MatrixND<T>(vec,rows,cols);
 }
 
+template<typename T>
+void MatrixND<T>::addMultiple(int i, int j, T multiple) {
+    for (int k=0; k<cols; ++k)
+        data[index(i,k)] += (data[index(j,k)] * multiple);
+}
 /** subtract
-
 	elementwise subtraction of rhs from lhs
-
 	@params rhs; the matrix to subtract
 	@return matrix; the difference
 
 */
-
 template <typename T>
 MatrixND<T> MatrixND<T>::sub(const MatrixND<T> & rhs)
 {
@@ -1040,7 +1134,7 @@ template <typename T>
 void MatrixND<T>::print()
 {
    // print out in a nice format using setw and setprecision
-    std::cout << std::setprecision(4);
+   std::cout << std::endl << std::setprecision(4);
    for(unsigned int i = 0; i < data.size(); i++) {
        std::cout << std::setw(6) << left << data[i] << " ";
        if(i % cols == cols - 1) {
@@ -1061,15 +1155,14 @@ void MatrixND<T>::print()
 template <typename T>
 MatrixND<T> MatrixND<T>::transpose()
 {
-    std::vector<T> vec(this->rows*this->cols);
-    MatrixND<T> results(vec, cols, rows);
+    std::vector<T> vec;
     for(int i = 0; i < cols; i++) {
-        for(int j = 0; j< rows; j++)
-        {
-            results.data[j*cols+i] = data[i*cols+j];
+        for(int j = 0; j < rows; j++) {
+            vec.push_back(data[j * cols + i]);
         }
     }
-    return results;
+
+    return MatrixND<T>(vec,cols,rows);
 }
 
 /** Inverse
@@ -1079,21 +1172,26 @@ MatrixND<T> MatrixND<T>::transpose()
  template<typename T>
  MatrixND<T> MatrixND<T>::inverse()
  {
-     assert(rows == cols);
+     if (rows != cols) {
+         MatrixND<T> matrix;
+         return matrix;
+     }
      MatrixND<T> result(rows, cols);
      T det = this->determinant();
      if(det == 0) {
-         std::cout << "Error! Determinant is 0!" << std::endl;
+         std::cout << "Matrix is not invertible" << std::endl;
          return result;
      }
-     MatrixND<T> cofactor(rows, cols);
+     // calculate the adjoint matrix
+     MatrixND<T> inv(rows, cols);
+     MatrixND<T> adj = this->adjoint();
+     // finding the inverse by dividing the adjoint matrix by the determinant
      for(int i = 0; i < rows; i++) {
          for(int j = 0; j < cols; j++) {
-             cofactor.data[i*cols+j] = this->cofactor(i, j);
+             inv.data[i * cols + j] = adj.data[i * cols + j] / det;
          }
      }
-     result = cofactor.transpose().mult(1/det);
-     return result;
+     return inv;
  }
 
  /** determinant
@@ -1103,22 +1201,56 @@ MatrixND<T> MatrixND<T>::transpose()
  template<typename T>
  float MatrixND<T>::determinant()
  {
-     assert(rows == cols);
-     auto det = 0;
-     if(rows == 1) {
-         det = data[0];
+// Check if the matrix is square.
+     if (!isSquare()) {
+         return -999999;
      }
-     else if(rows == 2) {
-         det = data[0] * data[3] - data[1] * data[2];
+
+     // If the matrix is 2x2, we can just compute the determinant directly.
+     T determinant;
+     if (rows == 2)
+     {
+         determinant = (data[0] * data[3]) - (data[1] * data[2]);
      }
-     else {
-         det = 0;
-         for(int i = 0; i < rows; i++) {
-             det += pow(-1, i) * data[i] * this->cofactor(0, i);
+     else
+     {
+         /* Otherwise we extract the sub-matrices and then recursively call this function
+             until we get to 2x2 matrices. */
+
+         // We will find the sub-matrices for row 0.
+         // So, loop over each column.
+         T cumulativeSum = 0.0;
+         T sign = 1.0;
+         for (int j = 0; j < cols; ++j)
+         {
+             // And find the sub-matrix for each element.
+             MatrixND<T> subMatrix = this->subMatrix(0, j);
+
+             /* Cumulatively multiply the determinant of the sub-matrix by the
+                 current element of this matrix and the sign variable (note the
+                 recursive calling of the Determinant() method). */
+             cumulativeSum += this->get(0, j) * subMatrix.determinant() * sign;
+             sign = -sign;
          }
+         determinant = cumulativeSum;
      }
-     return det;
+
+     return determinant;
  }
+// NOT WORKING NEEDS TO BE FIXED
+template<typename T>
+std::vector<T> MatrixND<T>::characteristicPolynomial() {
+    std::vector<T> poly;
+    MatrixND<T> adj = this->adjoint();
+    MatrixND<T> inv = this->inverse();
+    MatrixND<T> adjInv = adj * inv;
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            poly.push_back(adjInv.data[i * cols + j]);
+        }
+    }
+    return poly;
+}
 
 template<typename T>
 MatrixND<T> MatrixND<T>::identity() {
@@ -1135,7 +1267,24 @@ MatrixND<T> MatrixND<T>::identity() {
 }
 
 template<typename T>
+MatrixND<T> MatrixND<T>::identity(int size) {
+    std::vector<T> vec(size*size);
+    MatrixND<T> results(vec, size, size);
+    for (int i = 0; i < size; i++) {
+        results.data[i * size + i] = 1;
+    }
+    return results;
+}
+
+template<typename T>
 MatrixND<T> MatrixND<T>::zero() {
+    __assert(isSquare(), "Matrix is not square!");
+    std::vector<T> vec(rows*cols);
+    MatrixND<T> results(vec, rows, cols);
+    return results;
+}
+template<typename T>
+MatrixND<T> MatrixND<T>::zero(int rows, int cols) {
     std::vector<T> vec(rows*cols);
     MatrixND<T> results(vec, rows, cols);
     return results;
@@ -1144,7 +1293,7 @@ MatrixND<T> MatrixND<T>::zero() {
 template<typename T>
 int MatrixND<T>::rank() {
     // Convert the matrix to row-echelon form.
-    MatrixND<T> matrixCopy = this->RowEchelon();
+    MatrixND<T> matrixCopy = this->rref();
 
     /* If this didn't work, then we compute the rank by finding
         the largest non-zero sub-matrix with a non-zero determinant.
@@ -1152,7 +1301,7 @@ int MatrixND<T>::rank() {
         Note that this method is slower for large matrices and therefore
         it is better to use the RowEchelon method if possible. */
     int numNonZeroRows = 0;
-    if (!matrixCopy.IsRowEchelon())
+    if (!matrixCopy.isRowEchelon())
     {
         // Setup a std::vector to store the sub-matrices as we go.
         std::vector<MatrixND<T>> subMatrixVector;
@@ -1171,26 +1320,26 @@ int MatrixND<T>::rank() {
             subMatrixCount++;
 
             // Test if this matrix is non-zero.
-            if (currentMatrix.IsNonZero())
+            if (!currentMatrix.isZero())
             {
                 // If the determinant is non-zero, then we have our result.
-                T currentMatrixDet = currentMatrix.Determinant();
-                if (!CloseEnough(currentMatrixDet, 0.0))
+                T currentMatrixDet = currentMatrix.determinant();
+                if (!closeEnough(currentMatrixDet, 0.0))
                 {
                     completeFlag = true;
-                    numNonZeroRows = currentMatrix.GetNumRows();
+                    numNonZeroRows = currentMatrix.getRows();
                 }
                 else
                 {
                     // Extract and store each sub-matrix (if larger than 2x2).
-                    if ((currentMatrix.GetNumRows() > 2) && (currentMatrix.GetNumCols() > 2))
+                    if ((currentMatrix.getRows() > 2) && (currentMatrix.getCols() > 2))
                     {
-                        for (int i=0; i<currentMatrix.GetNumRows(); ++i)
+                        for (int i=0; i<currentMatrix.getRows(); ++i)
                         {
-                            for (int j=0; j<currentMatrix.GetNumCols(); ++j)
+                            for (int j=0; j<currentMatrix.getCols(); ++j)
                             {
                                 // Extract this sub-matrix and store.
-                                subMatrixVector.push_back(currentMatrix.FindSubMatrix(i,j));
+                                subMatrixVector.push_back(currentMatrix.subMatrix(i,j));
                             }
                         }
                     }
@@ -1207,17 +1356,17 @@ int MatrixND<T>::rank() {
             in row-echelon form and we can compute the rank quite easily
             as simply the number of non-zero rows. */
 
-        int nRows = matrixCopy.GetNumRows();
-        int nCols = matrixCopy.GetNumCols();
+        int nRows = matrixCopy.getRows();
+        int nCols = matrixCopy.getCols();
 
         // Loop over each row and test whether it has at least one non-zero element.
-        for (int i=0; i<nRows; ++i)
+        for (int i=0; i<rows; ++i)
         {
             // Loop over the columns of this row.
             int colSum = 0;
-            for (int j=0; j<nCols; ++j)
+            for (int j=0; j<cols; ++j)
             {
-                if (!CloseEnough(matrixCopy.GetElement(i,j), 0.0))
+                if (!closeEnough(matrixCopy.get(i,j), 0.0))
                     colSum++;
             }
             // If colSum is greater than zero, then increment numNonZeroRows.
@@ -1232,32 +1381,49 @@ int MatrixND<T>::rank() {
 
 template<typename T>
 MatrixND<T> MatrixND<T>::rref() {
-    MatrixND<T> result = *this;
-    for (int i = 0; i < rows; i++) {
-        int max = i;
-        for (int j = i + 1; j < rows; j++) {
-            if (abs(result.data[j * cols + i]) > abs(result.data[max * cols + i])) {
-                max = j;
+    // Convert the matrix to row-echelon form.
+    MatrixND<T> matrixCopy = *this;
+    int nRows = matrixCopy.getRows();
+    int nCols = matrixCopy.getCols();
+    T A[nRows][nCols];
+    for (int r = 0; r < nRows; r++)
+        for (int c = 0; c < nCols; c++)
+            A[r][c] = matrixCopy.get(r,c);
+
+    // Loop over each row and test whether it has at least one non-zero element.
+    for (int i=0; i<nRows; ++i)
+    {
+        int lead = 0;
+        while (lead < nRows) {
+            float d, m;
+            for (int r = 0; r < nRows; r++) { // for each row ...
+                /* calculate divisor and multiplier */
+                d = A[lead][lead];
+                m = A[r][lead] / A[lead][lead];
+
+                for (int c = 0; c < nCols; c++) { // for each column ...
+                    if (r == lead)
+                        A[r][c] /= d;               // make pivot = 1
+                    else
+                        A[r][c] -= A[lead][c] * m;  // make other = 0
+                }
             }
+            lead++;
+
         }
-        if (abs(result.data[max * cols + i]) < 1e-10) {
-            continue;
-        }
-        if (max != i) {
-            result.swap_row(i, max);
-        }
-        for (int j = i + 1; j < rows; j++) {
-            result.data[j * cols + i] /= result.data[i * cols + i];
-            for (int k = i + 1; k < cols; k++) {
-                result.data[j * cols + k] -= result.data[j * cols + i] * result.data[i * cols + k];
-            }
+    }
+    MatrixND<T> result(nRows, nCols);
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            // fill the result matrix
+            result(i,j) = A[i][j];
         }
     }
     return result;
 }
 
 template<typename T>
-bool MatrixND<T>::IsRowEchelon() {
+bool MatrixND<T>::isRowEchelon() {
     MatrixND<T> rref = this->rref();
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
@@ -1269,14 +1435,11 @@ bool MatrixND<T>::IsRowEchelon() {
     return true;
 }
 /** Concat
-
 	append two matrices of equal row count
-
 	@params rhs; the matrix to concatanate
 	@return matrix; the contanated matrix
 
 */
-
 template <typename T>
 MatrixND<T> MatrixND<T>::concat(const MatrixND<T> & rhs)
 {
@@ -1298,12 +1461,9 @@ MatrixND<T> MatrixND<T>::concat(const MatrixND<T> & rhs)
 }
 
 /** stack
-
 	append two matrices of equal column count
-
 	@params rhs; the matrix to stack below
 	@return matrix; the lhs stacked ontop of rhs matrix
-
 */
 
 template <typename T>
@@ -1332,7 +1492,6 @@ MatrixND<T> MatrixND<T>::stack(const MatrixND<T> & rhs)
 	@return matrix; the Kronecker product matrix
 
 */
-
 template <typename T>
 MatrixND<T> MatrixND<T>::kronecker(const MatrixND<T> & rhs)
 {
@@ -1350,12 +1509,18 @@ MatrixND<T> MatrixND<T>::kronecker(const MatrixND<T> & rhs)
 
     return MatrixND<T>(vec,rows*rhs.rows,cols*rhs.cols);
 }
+template<typename T>
+MatrixND<T> MatrixND<T>::eigenvectors() {
+
+}
 template <typename T>
 std::vector<T> MatrixND<T>::eigenvalues() {
+    if(rows != cols)
+        return std::vector<T>();
+    MatrixND<T> A = *this;
     std::vector<T> eigenvalues;
-    MatrixND<T> eigenvectors = this->eigenvectors();
-    for(int i = 0; i < eigenvectors.rows; i++) {
-        eigenvalues.push_back(eigenvectors.data[i*eigenvectors.cols]);
+    for(int i = 0; i < rows; i++) {
+        eigenvalues.push_back(A.data[i*cols + i]);
     }
     return eigenvalues;
 }
@@ -1380,8 +1545,37 @@ int MatrixND<T>::getCols()const
 {
     return cols;
 }
+
 template<typename T>
-int MatrixND<T>::getAt(int index) {
+MatrixND<T> MatrixND<T>::subMatrix(int row, int col) {
+    // Create a new matrix to store the sub-matrix.
+    // Note that this is one row and one column smaller than the original.
+    MatrixND<T> subMatrix(rows-1, cols-1);
+
+    // Loop over the elements of the existing matrix and copy to sub-matrix as appropriate.
+    int count = 0;
+    for (int i=0; i<rows; ++i)
+    {
+        for (int j=0; j<cols; ++j)
+        {
+            // If i or j correspond to rowNum or colNum, then ignore this element.
+            if ((i != row) && (j != col))
+            {
+                // Copy the element to the sub-matrix.
+                subMatrix.data[count] = data[i*cols + j];
+                count++;
+            }
+        }
+    }
+
+    return subMatrix;
+}
+
+template<typename T>
+T MatrixND<T>::getAt(int index) {
+    if (index < 0 || index >= data.size()) {
+        return 0;
+    }
     return data[index];
 }
 template<typename T>
@@ -1396,7 +1590,7 @@ void MatrixND<T>::setAt(int index, int value) {
  * @return T : the element at the specified row and column
  */
 template <typename T>
-int MatrixND<T>::get(int row, int col)const
+T MatrixND<T>::get(int row, int col)const
 {
     return data[row*cols + col];
 }
@@ -1557,6 +1751,13 @@ double MatrixND<T>::sum() {
 }
 
 template<typename T>
+int MatrixND<T>::index(int row, int col) const {
+    if  (row < 0 || row >= rows || col < 0 || col >= cols) {
+        return -1;
+    }
+    return row*cols + col;
+}
+template<typename T>
 vector<T> MatrixND<T>::flatten() {
     vector<T> vec;
     for(int i = 0; i < rows; i++) {
@@ -1659,7 +1860,27 @@ MatrixND<T> MatrixND<T>::bottomRight(int rows, int cols) {
     }
     return m;
 }
-
+template<typename T>
+T MatrixND<T>::cofactor(int row, int col) {
+    MatrixND<T> m(rows-1,cols-1);
+    for(int i = 0; i < rows-1; i++) {
+        for(int j = 0; j < cols-1; j++) {
+            if(i < row && j < col) {
+                m(i,j) = this->operator()(i,j);
+            }
+            else if(i < row && j >= col) {
+                m(i,j) = this->operator()(i,j+1);
+            }
+            else if(i >= row && j < col) {
+                m(i,j) = this->operator()(i+1,j);
+            }
+            else {
+                m(i,j) = this->operator()(i+1,j+1);
+            }
+        }
+    }
+    return m.determinant()*pow(-1,row+col);
+}
 template<typename T>
 double MatrixND<T>::colwiseMean(int col) {
     double sum = 0;
@@ -1812,6 +2033,20 @@ vector<T> MatrixND<T>::rowwise(int row) {
     }
     return v;
 }
+template<typename T>
+int MatrixND<T>::findRowWithMaxElement(int col, int row) {
+    T tempValue = data[get(row, col)];
+    int rowIndex = row;
+    for (int k=row+1; k<rows; ++k)
+    {
+        if (fabs(data[get(k, col)]) > fabs(tempValue))
+        {
+            rowIndex = k;
+            tempValue = data[get(k, col)];
+        }
+    }
+    return rowIndex;
+}
 
 template<typename T>
 T MatrixND<T>::max() {
@@ -1823,7 +2058,30 @@ T MatrixND<T>::max() {
     }
     return max;
 }
-
+template<typename T>
+int MatrixND<T>::maxRow() {
+    T max = data[0];
+    int row = 0;
+    for(int i = 0; i < rows*cols; i++) {
+        if(data[i] > max) {
+            max = data[i];
+            row = i/cols;
+        }
+    }
+    return row;
+}
+template<typename T>
+int MatrixND<T>::maxCol() {
+    T max = data[0];
+    int col = 0;
+    for(int i = 0; i < rows*cols; i++) {
+        if(data[i] > max) {
+            max = data[i];
+            col = i%cols;
+        }
+    }
+    return col;
+}
 template<typename T>
 T MatrixND<T>::min() {
     T min = data[0];
@@ -1833,6 +2091,30 @@ T MatrixND<T>::min() {
         }
     }
     return min;
+}
+template<typename T>
+int MatrixND<T>::minRow() {
+    T min = data[0];
+    int row = 0;
+    for(int i = 0; i < rows*cols; i++) {
+        if(data[i] < min) {
+            min = data[i];
+            row = i/cols;
+        }
+    }
+    return row;
+}
+template<typename T>
+int MatrixND<T>::minCol() {
+    T min = data[0];
+    int col = 0;
+    for(int i = 0; i < rows*cols; i++) {
+        if(data[i] < min) {
+            min = data[i];
+            col = i%cols;
+        }
+    }
+    return col;
 }
 
 template<typename T>
@@ -1899,3 +2181,5 @@ MatrixND<T> MatrixND<T>::colwise() {
     }
     return m;
 }
+
+
