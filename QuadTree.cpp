@@ -4,13 +4,13 @@
 
 #include "QuadTree.h"
 
-rez::QuadTree::QuadTree(std::vector<Point2d> _points)
+rez::QuadTree::QuadTree(const std::vector<Point2d>& _points)
 {
 
 }
 
 static void partition(rez::QDTNode* _parent, std::vector<rez::Point2d> _points) {
-    if (_points.size() == 0) {
+    if (_points.empty()) {
         //_parent->isAEmptyNode = true;
         _parent->isALeaf = true;
         return;
@@ -84,8 +84,8 @@ static void addBoundariesToTheList(rez::QDTNode* _node, std::vector<rez::Segment
         rez::Point2d left_mid(box.x_min, y_mid);
         rez::Point2d right_mid(box.x_max, y_mid);
 
-        _segList.push_back(rez::Segment2d(bot_mid, top_mid));
-        _segList.push_back(rez::Segment2d(left_mid, right_mid));
+        _segList.emplace_back(bot_mid, top_mid);
+        _segList.emplace_back(left_mid, right_mid);
 
         addBoundariesToTheList(_node->NW, _segList);
         addBoundariesToTheList(_node->NE, _segList);
@@ -174,9 +174,9 @@ static rez::QDTNode* westNeighbor(rez::QDTNode* _node, rez::QDTNode* _root) {
         return u->SE;
 }
 
-rez::QuadTree::QuadTree(std::vector<Point2d> _points, AABB& bounds)
+rez::QuadTree::QuadTree(const std::vector<Point2d>& _points, AABB& bounds)
 {
-    if (_points.size() == 0)
+    if (_points.empty())
         return;
     else {
         root = new rez::QDTNode();
@@ -352,10 +352,10 @@ void rez::QuadTree::GetUniqueSegmentList(std::vector<Segment2d>& _segList) {
         Point2d bot_right(box.x_max, box.y_min);
         Point2d top_left(box.x_min, box.y_max);
         Point2d top_right(box.x_max, box.y_max);
-        _segList.push_back(Segment2d(bot_left, bot_right));
-        _segList.push_back(Segment2d(bot_right, top_right));
-        _segList.push_back(Segment2d(top_right, top_left));
-        _segList.push_back(Segment2d(top_left, bot_left));
+        _segList.emplace_back(bot_left, bot_right);
+        _segList.emplace_back(bot_right, top_right);
+        _segList.emplace_back(top_right, top_left);
+        _segList.emplace_back(top_left, bot_left);
 
         addBoundariesToTheList(root, _segList);
     }

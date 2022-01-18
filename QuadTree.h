@@ -24,7 +24,7 @@ namespace rez {
     struct QDTNode {
         QDTNode* NE = nullptr, * NW = nullptr, * SE = nullptr, * SW = nullptr;
         QDTNode* parent = nullptr;
-        AABB box;
+        AABB box{};
         Point2d point = DEFAULT_POINT_2D;
         bool isALeaf = false;
         //bool isAEmptyNode = false;
@@ -35,11 +35,11 @@ namespace rez {
         QDTNode* root = nullptr;
 
     public:
-        QuadTree() {}
+        QuadTree() = default;
 
-        QuadTree(std::vector<Point2d> _points);
+        explicit QuadTree(const std::vector<Point2d>& _points);
 
-        QuadTree(std::vector<Point2d> _points, AABB& bounds);
+        QuadTree(const std::vector<Point2d>& _points, AABB& bounds);
 
         void BalanceTheTree();
 

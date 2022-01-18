@@ -11,7 +11,7 @@ int main(int argc, char* argv[])
 {
     //starting time do not edit code between solid comment lines
     //_________________________________________________________________________
-    RunTimer timer;
+    RunTimer timer(SECONDS);
     timer.start();
     //_________________________________________________________________________
     //add test code between starred areas
@@ -19,7 +19,8 @@ int main(int argc, char* argv[])
 
 
 
-    vector<double> v1 = {1,2,4,-2,1,0,-2,1,2};
+    vector<double> v1 = {-3.489, -1.929, 9.193, 3.221, -4.491, 6.154,
+                         -1.605, -4.176, -1.047};
     // test the matrixND class making a random matrix
     MatrixND<double> randMat(v1, 3, 3);
     cout  << "random matrix: " << endl << randMat << endl;
@@ -52,8 +53,10 @@ int main(int argc, char* argv[])
     printVector(charPoly);
 
     // test multiplication of two matrices
-    MatrixND<double> mat1(3,3,1,2,3,4,5,6,7,8,9);
-    MatrixND<double> mat2(3,3,1,2,3,4,5,6,7,8,9);
+    MatrixND<double> mat1(3,3,1.0,2.3,3.4,4.7,5.1,6.3,7.6,8.9,9.2);
+    cout << "matrix 1: " << endl << mat1 << endl;
+    MatrixND<double> mat2(3,3,1.3,2.4,3.5,4.6,5.7,6.8,7.9,8.0,9.1);
+    cout << "matrix 2: " << endl << mat2 << endl;
     MatrixND<double> mat3 = mat1 * mat2;
     cout << "mat1 * mat2: " << endl << mat3 << endl;
 
@@ -79,7 +82,7 @@ int main(int argc, char* argv[])
     //Stopping timer and displaying the programs execution time
     //_________________________________________________________________________
     timer.stop();
-    timer.displayRunTime("ms");
+    timer.display();
     //_________________________________________________________________________
     return EXIT_SUCCESS;
 

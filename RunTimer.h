@@ -6,94 +6,86 @@
 #define PHYSICSFORMULA_RUNTIMER_H
 #include <chrono>
 #include <iostream>
-#include <ctime>
-
-class RunTimer
-{
-public:
-    RunTimer();
-    std::chrono::steady_clock::time_point start();
-    std::chrono::steady_clock::time_point stop();
-    std::chrono::duration<long long, std::ratio<1,1000000000>> runTimeNS();
-    std::chrono::duration<long long, std::ratio<1, 1000000000>> runTimeMS();
-    std::chrono::duration<long long, std::ratio<1, 1000000000>> runTimeS();
-    std::chrono::duration<long long, std::ratio<1, 1000000000>> runTimeM();
-    void displayRunTime(const std::string& timeFormat);
-private:
-    std::chrono::steady_clock::time_point begin;
-    std::chrono::steady_clock::time_point end;
-    std::chrono::duration<long long, std::ratio<1,1000000000>> elapsed;
+using namespace std;
+// create an enum for the different units of time
+enum TimeUnit {
+    SECONDS,
+    MILLISECONDS,
+    MICROSECONDS,
+    NANOSECONDS
 };
 
+class RunTimer {
+private:
+    chrono::time_point<chrono::system_clock, chrono::nanoseconds> start_;
+    chrono::time_point<chrono::system_clock, chrono::nanoseconds> end_;
+    chrono::nanoseconds elapsed_{};
+    TimeUnit timeUnit;
+public:
+    RunTimer();
+    explicit RunTimer(TimeUnit unit);
+    void start();
+    void stop();
+    [[nodiscard]] chrono::nanoseconds elapsed() const;
+    void setTimeUnit(TimeUnit unit);
+    [[nodiscard]] TimeUnit getTimeUnit() const;
+    void display() const;
+};
 #endif //PHYSICSFORMULA_RUNTIMER_H
 
-
-inline RunTimer::RunTimer()
-{
-    begin = std::chrono::steady_clock::now();
-    end = std::chrono::steady_clock::now();
-    elapsed = std::chrono::duration<long long, std::ratio<1,1000000000>>(0);
+inline RunTimer::RunTimer() {
+    start_ = chrono::system_clock::now();
+    end_ = chrono::system_clock::now();
+    elapsed_ = chrono::nanoseconds(0);
+    timeUnit = TimeUnit::NANOSECONDS;
 }
 
-
-inline std::chrono::steady_clock::time_point RunTimer::start()
-{
-    begin = std::chrono::steady_clock::now();
-    return begin;
+inline RunTimer::RunTimer(TimeUnit unit) {
+    start_ = chrono::system_clock::now();
+    end_ = chrono::system_clock::now();
+    elapsed_ = chrono::nanoseconds(0);
+    timeUnit = unit;
 }
 
-
-inline std::chrono::steady_clock::time_point RunTimer::stop()
-{
-    end = std::chrono::steady_clock::now();
-    elapsed = end - begin;
-    return end;
-}
-
-
-inline std::chrono::duration<long long, std::ratio<1,1000000000>> RunTimer::runTimeNS()
-{
-    return std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
-}
-
-inline std::chrono::duration<long long, std::ratio<1, 1000000000>> RunTimer::runTimeMS()
-{
-    return std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+inline void RunTimer::start() {
+    start_ = chrono::system_clock::now();
 
 }
-inline std::chrono::duration<long long, std::ratio<1, 1000000000>> RunTimer::runTimeS()
-{
-    return std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
+
+inline void RunTimer::stop() {
+    end_ = chrono::system_clock::now();
+    elapsed_ = end_ - start_;
 }
 
-inline std::chrono::duration<long long, std::ratio<1, 1000000000>> RunTimer::runTimeM()
+inline chrono::nanoseconds RunTimer::elapsed() const
 {
-    return std::chrono::duration_cast<std::chrono::minutes>(end - begin);
+    return elapsed_;
 }
 
+inline void RunTimer::setTimeUnit(TimeUnit unit) {
+    timeUnit = unit;
+}
 
-inline void RunTimer::displayRunTime(const std::string& timeFormat = "m")
+inline TimeUnit RunTimer::getTimeUnit() const
 {
+    return timeUnit;
+}
 
-    if (timeFormat == "ns" || timeFormat == "NS")
-    {
-        elapsed = runTimeNS();
-        printf("\n\nTime measured: %.0f ns.\n", static_cast<double>(elapsed.count()));
-    }
-    else if (timeFormat == "ms" || timeFormat == "MS")
-    {
-        elapsed = runTimeMS();
-        printf("\n\nTime measured: %.2f ms.\n", elapsed.count() * 1e-6);
-    }
-    else if (timeFormat == "s" || timeFormat == "S")
-    {
-        elapsed = runTimeS();
-        printf("\n\nTime measured: %.9f sec.\n", elapsed.count() * 1e-9);
-    }
-    else
-    {
-        elapsed = runTimeS();
-        printf("\n\nTime measured: %.12f min.\n", static_cast<double>(elapsed.count()) * 1e-9/60);
+inline void RunTimer::display() const
+{
+    switch (timeUnit) {
+        case TimeUnit::SECONDS:
+            cout << "Elapsed seconds: " << elapsed_.count() / 1000000000.0 << " seconds" << endl;
+            break;
+        case TimeUnit::MILLISECONDS:
+            cout << "Elapsed milliseconds: " << elapsed_.count() / 1000000.0 << " milliseconds" << endl;
+            break;
+        case TimeUnit::MICROSECONDS:
+            cout << "Elapsed microseconds: " << elapsed_.count() / 1000.0 << " microseconds" << endl;
+            break;
+        case TimeUnit::NANOSECONDS:
+            cout << "Elapsed nanoseconds: " << elapsed_.count() << " nanoseconds" << endl;
+            break;
     }
 }
 

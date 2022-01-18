@@ -14,6 +14,13 @@
 #include <ctime>
 #include <random>
 #include "VectorND.h"
+#define THRESHOLD 1e-10
+// enum class for different random_device types
+enum class RandomGenerator {
+    MERSENNE_TWISTER,
+    LINEAR_CONGRUENTIAL
+};
+
 
 using namespace std;
 namespace rez {
@@ -194,6 +201,7 @@ public:
     template<typename ... Args> // constructor with arguments
     explicit MatrixND(const int& r_, const int& c_, const T& first, const Args&... args);
     MatrixND(int r, int c); // constructor with dimensions
+    MatrixND(int r, int c, int min, int max, RandomGenerator generator); // constructor with dimensions and random values
     MatrixND(std::vector<T>, int rows, int cols); // constructor with data and dimensions
     MatrixND(T* data, int rows, int cols); // constructor with data and dimensions
     MatrixND(T** data, int rows, int cols); // constructor with data and dimensions
@@ -276,9 +284,9 @@ public:
     [[nodiscard]] MatrixND<T> stack(const MatrixND<T> &); // stack vertically
     [[nodiscard]] MatrixND<T> kronecker(const MatrixND<T> &); // kronecker product
     // method to vind the eignenvectors of the matrix
-    MatrixND<T> eigenvectors();
+    MatrixND<T> eigenvectors(); // not implemented
     // method to return a vector of eigenvalues of the matrix
-    std::vector<T> eigenvalues();
+    std::vector<T> eigenvalues(); // not implemented
     // method to take the mean of the matrix
     double mean();
     // method to take the standard deviation of the matrix
@@ -393,6 +401,7 @@ public:
     // method to turn the matrix into an array
     T* array();
 
+
     MatrixND<T> operator+(const MatrixND<T> &);
     VectorND<T> operator+(const VectorND<T> &);
     MatrixND<T> operator-(const MatrixND<T> &);
@@ -446,21 +455,10 @@ template<typename T>
 template<typename ...Args>
 MatrixND<T>::MatrixND(const int& r_, const int& c_, const T& first, const Args & ...args)
 {
-    data.clear();
+    data = {first, args...};
     rows = r_;
     cols = c_;
     auto total = rows * cols;
-    data.push_back(first);
-    int dummy[] = { 0, (data.push_back(args), 0)... };
-    (void)dummy;
-    for (const auto& i : data)
-    {
-        if(i<=total)
-        {
-            data.push_back(i);
-        }
-    }
-
 
 }
 
@@ -648,6 +646,42 @@ inline MatrixND<T>::MatrixND(int r, int c)
     rows = r;
     cols = c;
     data = vector<T>(r * c);
+}
+
+template<typename T>
+MatrixND<T>::MatrixND(int r, int c, int min, int max,
+                      RandomGenerator generator) {
+    rows = r;
+    cols = c;
+    data = vector<T>(r * c);
+    // seed a random number generator depending on the generator
+    std::random_device rd;
+    if (generator == RandomGenerator::MERSENNE_TWISTER) {
+        std::mt19937 gen(rd());
+        std::uniform_real_distribution<> dis(min, max);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                data[i * cols + j] = dis(gen);
+            }
+        }
+    }
+    else if (generator == RandomGenerator::LINEAR_CONGRUENTIAL) {
+        std::minstd_rand gen(rd());
+        std::uniform_real_distribution<> dis(min, max);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                data[i * cols + j] = dis(gen);
+            }
+        }
+    } else {
+        // defalut to srand with time
+        srand(time(NULL));
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                data[i * cols + j] = (T)rand() / RAND_MAX * (max - min) + min;
+            }
+        }
+    }
 }
 
 /** Constructor
@@ -951,8 +985,6 @@ std::ostream& operator<<(std::ostream& os, const MatrixND<T>& rhs)
     }
     return os;
 }
-
-
 /**
  *isEqual
  *
@@ -964,17 +996,13 @@ std::ostream& operator<<(std::ostream& os, const MatrixND<T>& rhs)
 template <typename T>
 bool MatrixND<T>::isEqual(const MatrixND<T> & rhs)
 {
-
-
     if(rows != rhs.rows || cols != rhs.cols) {
         return false;
     }
-
     for(unsigned int i = 0; i < data.size(); i++) {
         if(data[i] != rhs.data[i])
             return false;
     }
-
     return true;
 }
 template<typename T>
@@ -996,29 +1024,21 @@ MatrixND<T> MatrixND<T>::adjoint() {
     return result.transpose();
 }
 /** add
-
 	elementwise adition of rhs to lhs
-
 	@params rhs; the matrix to add
 	@return matrix; the sum
-
 */
-
 template <typename T>
 MatrixND<T> MatrixND<T>::add(const MatrixND<T> & rhs)
 {
-
-
     if(rows != rhs.rows || cols != rhs.cols) {
         MatrixND<T> matrix;
         return matrix;
     }
-
     std::vector<T> vec;
     for(unsigned int i = 0; i < data.size(); i++) {
         vec.push_back(data[i] + rhs.data[i]);
     }
-
     return MatrixND<T>(vec,rows,cols);
 }
 
@@ -1072,7 +1092,7 @@ MatrixND<T> MatrixND<T>::mult(const MatrixND<T> & rhs)
     MatrixND<T> result(d, this->rows, rhs.cols);
     for (int i = 0; i < this->rows; i++) {
         for (int j = 0; j < rhs.cols; j++) {
-            long int sum = 0;
+            T sum = 0;
             for (int k = 0; k < rhs.rows; k++) {
                 sum += data[i * this->cols + k] * rhs.data[k * rhs.cols + j];
                 result.data[i * this->rows + j] = sum;
@@ -1090,16 +1110,13 @@ MatrixND<T> MatrixND<T>::mult(const MatrixND<T> & rhs)
 	@return matrix; the transformed product matrix
 
 */
-
 template <typename T>
 MatrixND<T> MatrixND<T>::mult(const T & scalar)
 {
-
     std::vector<T> vec;
     for(unsigned int i = 0; i < data.size(); i++) {
         vec.push_back(data[i] * scalar);
     }
-
     return MatrixND<T>(vec,rows,cols);
 }
 
@@ -1416,7 +1433,12 @@ MatrixND<T> MatrixND<T>::rref() {
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
             // fill the result matrix
-            result(i,j) = A[i][j];
+            // check if the element is within the tolerance
+            if (closeEnough(A[i][j], 0.0))
+                result(i,j) = 0.0;
+            else
+                result(i,j) = A[i][j];
+
         }
     }
     return result;
@@ -2181,5 +2203,4 @@ MatrixND<T> MatrixND<T>::colwise() {
     }
     return m;
 }
-
 
