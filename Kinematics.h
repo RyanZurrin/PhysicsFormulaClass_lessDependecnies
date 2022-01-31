@@ -103,7 +103,7 @@ public:
     }
 
     static void show_objectCount() { std::cout << "\n kinematics object count: "
-                                               << kinematics_objectCount << std::endl; }
+                                     << kinematics_objectCount << std::endl; }
     static int get_objectCount() { return kinematics_objectCount; }
 
 
@@ -167,13 +167,13 @@ public:
     /// <summary>
     /// calculate displacement for the distance to stop from moving object
     /// </summary>
-    /// <param name="pos">The position.</param>
     /// <param name="velocityStart">The velocity start.</param>
     /// <param name="velocityFinal">The velocity final.</param>
     /// <param name="acceleration">The acceleration.</param>
+    /// <param name="pos">The starting position, default is 0.</param>
     /// <returns>final displacement</returns>
-    static ld distance_VdA(const ld pos, const ld velocityStart, const ld velocityFinal, const ld acceleration)
-    { return abs(((velocityFinal * velocityFinal) - (velocityStart * velocityStart)) / (2 * acceleration)) + pos; }
+    static ld distance(const ld velocityStart, const ld velocityFinal, const ld acceleration, const ld pos = 0.0)
+    { return abs(((velocityFinal * velocityFinal) - (velocityStart * velocityStart)) / (2.0 * acceleration)) + pos; }
 
     /**
      * method: velocity_vStart_plus_vEndD2(const ld velocityStart, const ld velocityEnd)
@@ -199,44 +199,60 @@ public:
     { return sqrt(initialVelocity * initialVelocity + (2 * (acceleration * displacement))); }
 
     /**
-     * method: velocity_avg_DdT(ld displacement, ld time)   ss2.3 pg37
-     * arguments: displacement = avg displacement in m, time = total time  in s
-     * purpose: to calculate the average velocity using displacement divided by time
-     * returns: ld, average velocity
+     * @brief calculates the average velocity
+     * @param d the displacement
+     * @param t  the time
+     * @return  the average velocity
      */
-    static ld velocity_avg_DdT(const ld displacement, const ld time)
-    { return  displacement / time; }
+    static ld average_velocity(const ld d, const ld t)
+    { return  d / t; }
+
 
     /**
-     * method: PhysicsWorld::velocity_falling_object_down(ld y, ld yf, ld v, ld a)
-     * arguments: y0 = start position,  yf = final position v = velocity, a = acceleration
-     * purpose: find the velocity of a falling object thrown downwards
-     * returns: ld, velocity
+     * @brief v^2 = vi^2 + 2*a*(x0 - xf) == v = sqrt(vi^2 + 2*a*(x0 - xf))
+     * @param x0  the initial position
+     * @param xf  the final position
+     * @param v0  the initial velocity
+     * @param a  the acceleration
+     * @return  final velocity
      */
-    static ld velocity_kinematic_constant_a(const ld xY0, const ld xYf, const ld velocity, const ld acceleration)
-    { return sqrt((velocity * velocity) + (2 * (acceleration * (xYf - xY0)))); }
+    static ld final_velocity(const ld x0, const ld xf, const ld v0, const ld a)
+    { return sqrt((v0 * v0) + (2 * (a * (xf - x0)))); }
 
     /**
-     * @brief calculates the final velocity using the kinematic formula Vf = Vi*t
-     * @param vi initial velocity
-     * @param t time
-     * @returns the final velocity
+     * @brief v = vi + a*t
+     * @param vi  the initial velocity
+     * @param a  the acceleration
+     * @param t  the time
+     * @return  final velocity
      */
-    static ld velocityFinal_kinematic(const ld vi, const ld t)
+    static ld final_velocity(const ld vi,const ld a, const ld t)
     {
-        return vi * t;
+        return vi + a*t;
+    }
+
+    /**
+     * @brief calculates the initial velocity given the final velocity, distance s
+     *  and time t
+     * @param v_f  final velocity
+     * @param s  distance
+     * @param t  time
+     * @return  the initial velocity
+     */
+    static auto initial_velocity(const ld v_f, const ld s, const ld t) {
+        return (2.0 * s - t * v_f) / t;
     }
 
 
     /// <summary>
     /// Constant Acceleration average using final velocity, starting velocity and time.
     /// </summary>
-    /// <param name="u">The final velocity.</param>
-    /// <param name="v">The initial velocity.</param>
+    /// <param name="u_">The final velocity.</param>
+    /// <param name="v_">The initial velocity.</param>
     /// <param name="t">The time taken.</param>
     /// <returns>average acceleration</returns>
-    static ld acceleration_avg(const ld u, const ld v, const ld t)
-    { return (u - v) / t; }
+    static ld acceleration_avg(const ld u_, const ld v_, const ld t)
+    { return (u_ - v_) / t; }
 
     /// <summary>
     /// Constant Acceleration average using change in velocity and time.
@@ -274,13 +290,13 @@ public:
     { return (v * v - u * u) / (2.0 * s); }
 
     /**
-     * method: speed_avg_DdT(ld total_distance, ld time)   ss2.3 pg37
-     * arguments: displacement = avg displacement in m, time = total time  in s
-     * purpose: to calculate the average velocity using displacement divided by time
-     * returns: ld, average velocity
+     * @brief calulates the average speed
+     * @param s  the distance
+     * @param t  the time
+     * @return  the average speed
      */
-    static ld speed_avg_DdT(const ld total_distance, const ld time)
-    { return abs(total_distance / time); }
+    static ld average_speed(const ld s, const ld t)
+    { return abs(s / t); }
 
     /**
      * method: time_by_avgVdA(ld acceleration, ld velocityStart, ld velocityEnd)
@@ -288,7 +304,7 @@ public:
      * purpose: calculate time with know acceleration and final velocity end point
      * returns: ld, time
      */
-    static ld time_by_avgVdA(const ld acceleration, const ld velocityStart, const ld velocityEnd)
+    static ld time_by_velocity_acceleration(const ld acceleration, const ld velocityStart, const ld velocityEnd)
     { return (velocityEnd - velocityStart) / acceleration; }
 
     /**
@@ -297,7 +313,7 @@ public:
      * purpose: find the velocity of a falling object thrown downwards
      * returns: ld, velocity
      */
-    static ld time_by_DisTdV(const ld distance, const ld velocity)
+    static ld time_by_distance_velocity(const ld distance, const ld velocity)
     { return distance / velocity; }
 
     /**
@@ -371,7 +387,7 @@ public:
      * purpose: calculate the time of a merging object when velocity and displacement is know
      * returns: ld, total time
      */
-    std::vector<ld> time_using_quadratic(ld a1, ld b_velocity, ld c_displacement)const
+    static std::vector<ld> time_using_quadratic(ld a1, ld b_velocity, ld c_displacement)
     {
         vector_values[0] = (-b_velocity + sqrt((b_velocity * b_velocity) - 4 * a1 * c_displacement)) / (2 * a1);
         vector_values[1] = (-b_velocity - sqrt((b_velocity * b_velocity) - 4 * a1 * c_displacement)) / (2 * a1);
@@ -380,29 +396,43 @@ public:
     }
 
     /**
-     * method: pos_vel_falling_object_upDown(double p, double v, double a, double t)
-     * arguments: p = position (0),  v = velocity, a = acceleration, t = time is s
+     * method: pos_vel_falling_object_upDown(double p, double v_, double a, double t)
+     * arguments: p = position (0),  v_ = velocity, a = acceleration, t = time is s
      * purpose: this method will fill a vector with four pieces of data in order from the right to left it
      *			is: time, position, velocity, acceleration. use the print_vector_values() to see contents.
      * returns: ld, vector of the time, position, velocity, acceleration.
      */
-    std::vector<ld> pos_vel_falling_object_upDown(ld v, ld a, ld t, ld p = 0.0)const
+    static std::vector<ld> pos_vel_falling_object_upDown(ld v_, ld a, ld t, ld p = 0.0)
     {
         ld temp;
         vector_values[0] = t;
-        //solution for Position:
-        Kinematics obj;
-
-        vector_values[1] = obj.displacement_accelerating_object_PV(v, a, t, p);
+        vector_values[1] = Kinematics::displacement_accelerating_object_PV(v_, a, t, p);
         //Solution for Velocity:
-
-        temp = obj.velocity_final_from_kinematic_time(v, a, t);
+        temp = Kinematics::velocity_final_from_kinematic_time(v_, a, t);
         vector_values[2] = temp;
-
         vector_values[3] = a;
         //this->show_vector_values();
-
         return vector_values;
+    }
+
+    static std::vector<pair<string, ld>>
+    time_and_velocity_falling_obj_to_P_Q(ld seperationPQ, ld timeBetweenPQ) {
+        vector<pair<string, ld>> timeAndVelocity;
+        timeAndVelocity.emplace_back("time to P", 0.0);
+        timeAndVelocity.emplace_back("time to Q", 0.0);
+        timeAndVelocity.emplace_back("velocity at P", 0.0);
+        timeAndVelocity.emplace_back("velocity at Q", 0.0);
+        auto timeToP =
+                (seperationPQ - ((1.0/2.0)*_ga_*(timeBetweenPQ*timeBetweenPQ))) /
+                (timeBetweenPQ*_ga_);
+        auto timeToQ = timeToP + timeBetweenPQ;
+        auto velAtP = timeToP * _ga_;
+        auto velAtQ = timeToQ * _ga_;
+        timeAndVelocity[0].second = timeToP;
+        timeAndVelocity[1].second = timeToQ;
+        timeAndVelocity[2].second = velAtP;
+        timeAndVelocity[3].second = velAtQ;
+        return timeAndVelocity;
     }
 
     /// <summary>
@@ -465,6 +495,8 @@ public:
     static ld time_of_projectiles_flight(ld angle, ld initialHeight, ld velocity)
     {
         ld vy = velocity * sin(angle * RADIAN);
+        cout << "vy = " << vy << endl;
+        cout <<"initialHeight = " << initialHeight << endl;
         return (vy + (sqrt((vy * vy) + 2.0 * _Ga_ * initialHeight))) / _Ga_;
     }
 
@@ -562,7 +594,12 @@ public:
     {
         return targetDistance * sqrt(-acceleration/((2 * (targetDistance * tan(angle*RADIAN) - targetHeight))));
     }
-
+    /**
+     * @brief
+     * @param xVelocity
+     * @param angle
+     * @return
+     */
     static ld vertical_velocity_by_Xvelocity_with_angle(ld xVelocity, ld angle)
     {
         return xVelocity * tan(angle*RADIAN);

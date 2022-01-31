@@ -14,7 +14,6 @@
 #include <cmath>
 using namespace std;
 typedef long double ld;
-//#define Pi_ 3.141592653589793238462643383279502884L // pi
 #define _Ga_ 9.81  // acceleration due to gravity
 static int fluidDynamic_objectCount = 0;
 

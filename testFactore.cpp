@@ -5,7 +5,7 @@
 #include "RunTimer.h"
 #include "BinarySearchTree.h"
 
-
+#define _USE_MATH_DEFINES
 
 int main(int argc, char* argv[])
 {
@@ -16,66 +16,10 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //*************************************************************************
-
-
-
-    vector<double> v1 = {-3.489, -1.929, 9.193, 3.221, -4.491, 6.154,
-                         -1.605, -4.176, -1.047};
-    // test the matrixND class making a random matrix
-    MatrixND<double> randMat(v1, 3, 3);
-    cout  << "random matrix: " << endl << randMat << endl;
-
-    // adjoint of the randMat
-    MatrixND<double> adjugate = randMat.adjoint();
-    cout << "adjoint of the random matrix: " << endl << adjugate << endl;
-
-    // finding the inverse of a matrix
-    MatrixND<double> invMat = randMat.inverse();
-    cout << "inverse of random matrix: " << endl << invMat << endl;
-    // finding the determinant of a matrix
-    double det = randMat.determinant();
-    std::cout << "The determinant of the matrix is: " << det << std::endl;
-    // finding the transpose of a matrix
-    MatrixND<double> transMat = randMat.transpose();
-    cout << "transpose of random matrix: " << endl << transMat << endl;
-    // finding the trace of a matrix
-    double trace = randMat.trace();
-    std::cout << "The trace of the matrix is: " << trace << std::endl;
-    // finding the rank of a matrix
-    int rank = randMat.rank();
-    std::cout << "The rank of the matrix is: " << rank << std::endl;
-    // finding the rref of a matrix
-    MatrixND<double> rref = randMat.rref();
-    cout << "rref of random matrix: " << endl << rref << endl;
-    // finding the characteristic polynomial of a matrix
-    vector<double> charPoly = randMat.characteristicPolynomial();
-    cout << "characteristic polynomial of random matrix: " << endl;
-    printVector(charPoly);
-
-    // test multiplication of two matrices
-    MatrixND<double> mat1(3,3,1.0,2.3,3.4,4.7,5.1,6.3,7.6,8.9,9.2);
-    cout << "matrix 1: " << endl << mat1 << endl;
-    MatrixND<double> mat2(3,3,1.3,2.4,3.5,4.6,5.7,6.8,7.9,8.0,9.1);
-    cout << "matrix 2: " << endl << mat2 << endl;
-    MatrixND<double> mat3 = mat1 * mat2;
-    cout << "mat1 * mat2: " << endl << mat3 << endl;
-
-
-
-
-    double M[3][4] = { {  1, 2, -1,  -4 },
-                       {  2, 3, -1, -11 },
-                       { -2, 0, -3,  22 } };
-
-    rez::to_reduced_row_echelon_form(M);
-    cout << "reduced row echelon form: " << endl;
-    for (int i = 0; i < 3; ++i)
-    {
-        for (int j = 0; j < 4; ++j)
-            std::cout << M[i][j] << '\t';
-        std::cout << "\n";
-    }
-
+   //calculate a projectiles time of flight
+   cout << "total:" << endl;
+   cout << Kinematics::average_speed(100.0, 9.58);
+   cout << endl;
 
 
     //*************************************************************************

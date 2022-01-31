@@ -37,7 +37,7 @@ public:
         countIncrease();
     }
 
-    Sphere(ld radius)
+    explicit Sphere(ld radius)
     {
         this->radius = radius;
         this->volume = calculateVolume();
