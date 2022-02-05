@@ -9,7 +9,7 @@
  * @details class for operating with 2D vectors
  * @author Ryan Zurrin
  * dateBuilt  11/22/2020
- * lastEdit 9/5/2021
+ * lastEdit 2/5/2022
  */
 #ifndef Vector2D_H
 #define Vector2D_H
@@ -60,6 +60,7 @@ public:
     Vector2D(const Vector2D &, string id = "");	//copy constructor
     virtual void displayAllData(const std::string& label = "")const; //virtual so any derived classes must redefine
     virtual void display(const std::string& label = "")const;
+    virtual void showUnitVector(const std::string& label = "")const;
     virtual void showRectCord(const std::string& label = "")const;
     void		 showPolarCord(const std::string& label = "")const;
     void		 showRevolutionAngle(const std::string&  label = "")const;
@@ -100,17 +101,18 @@ public:
     /// coefficients</returns>
     template<typename T>
     long double		 distance_to_line(T a, T b, T c);
-    virtual unsigned long square()const;              //gives square olong double the Vector2D
-    virtual unsigned long find_magnitude()const;             //magnitude olong double the Vector2D
-    long double		 dot_product(const Vector2D&)const; //scalar dot_product
-    long double		 distance(const Vector2D&)const;    //gives distance between two Vector2Ds
-    long double		 cross_product(const Vector2D&)const;    //cross_product
-    Vector2D	 normalize_Vector2D();   //normalized Vector2D
-    bool isOrthogonalWith(Vector2D& v)const;
-    void typeOfAngleBetween(const Vector2D& v)const;
-    static void  show_objectCount() { std::cout << "\n vector2D object count: "
+    virtual unsigned long       square()const;              //gives square olong double the Vector2D
+    virtual unsigned long       find_magnitude()const;             //magnitude olong double the Vector2D
+    [[nodiscard]] long double   dot_product(const Vector2D&)const; //scalar dot_product
+    [[nodiscard]] long double	distance(const Vector2D&)const;    //gives distance between two Vector2Ds
+    [[nodiscard]] long double	cross_product(const Vector2D&)const;    //cross_product
+    Vector2D	                normalize_Vector2D();   //normalized Vector2D
+    Vector2D                    getUnitVector()const;
+    bool                        isOrthogonalWith(Vector2D& v)const;
+    void                        typeOfAngleBetween(const Vector2D& v)const;
+    static void                 show_objectCount() { std::cout << "\n vector2D object count: "
                                                 << vec2d_object_counter << std::endl; }
-    static int	 get_objectCount() { return vec2d_object_counter; }
+    static int	                get_objectCount() { return vec2d_object_counter; }
     bool operator>(const Vector2D &)const;
     bool operator>=(const Vector2D&)const;
     bool operator<(const Vector2D &)const;
@@ -253,6 +255,7 @@ inline Vector2D::Vector2D(const Vector2D &v, string id)
 inline void Vector2D::displayAllData(const std::string& label)const
 {
     std::cout << ((label.empty()) ? ID : label) << ":";
+    showUnitVector(label);
     showRectCord(label);
     showPolarCord(label);
     showRevolutionAngle(label);
@@ -267,6 +270,12 @@ inline void Vector2D::display(const std::string& label)const
     else {
         showPolarCord(label);
     }
+}
+
+void Vector2D::showUnitVector(const std::string& label)const {
+    // display as a unit vector with ihat and jhat
+    std::cout << ((label.empty()) ? ID : label) << ":";
+    std::cout << 1.0/magnitude << "*"  << "(" << x << "i ," << y << "j)";
 }
 
 inline void Vector2D::showRectCord(const std::string& label)const
@@ -474,6 +483,13 @@ inline Vector2D Vector2D::normalize_Vector2D()
     calculate_arcLength();
     return *this;
 }
+
+Vector2D Vector2D::getUnitVector() const {
+    Vector2D unitVector(this->x, this->y);
+    unitVector.normalize_Vector2D();
+    return unitVector;
+}
+
 inline bool Vector2D::isOrthogonalWith(Vector2D& v) const
 {
     return this->dot_product(v) == 0;
@@ -755,4 +771,6 @@ inline long double Vector2D::distance_to_line(T a, T b, T c)
     auto bot = sqrt((a * a) + (b * b));
     return top / bot;
 }
+
+
 #endif //PHYSICSFORMULA_VECTOR2D_H

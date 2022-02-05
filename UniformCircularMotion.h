@@ -6,7 +6,7 @@
 #define PHYSICSFORMULA_UNIFORMCIRCULARMOTION_H
 // class for doing physics problems
 // author: Ryan Zurrin
-// last Modified: 10/10/2020
+// last Modified: 2/5/2022
 #include <cmath>
 #include "VectorND.h"
 #include "Circle.h"
@@ -42,7 +42,12 @@ class UniformCircularMotion
     // centripetal acceleration variable of object
     ld _centripetalAcceleration_;
 
+    ld _frequency_;
+
+    ld _time_period_;
+
     // array to hold the value of two masses
+
 
 
 public:
@@ -58,6 +63,8 @@ public:
         _linearVelocity = 0.0;
         _arcLength_ = 0.0;
         _centripetalAcceleration_ = 0.0;
+        _frequency_ = 0.0;
+        _time_period_ = 0.0;
 
         countIncrease();
     }
@@ -71,6 +78,8 @@ public:
         _rotationAngle_ = 0.0;
         _arcLength_ = 0.0;
         _centripetalAcceleration_ = (velocity * velocity)/(radius);
+        _time_period_ = 2.0* _PI_ * _radius_ / (radius*_angularVelocityW_);
+        _frequency_ = 1.0 / _time_period_;
         countIncrease();
     }
     // overloaded constructor
@@ -83,6 +92,8 @@ public:
         _rotationAngle_ = 0.0;
         _arcLength_ = 0.0;
         _centripetalAcceleration_ = (velocity * velocity) / (radius);
+        _frequency_ = radius * (_angularVelocityW_ * _angularVelocityW_);
+        _time_period_ = time;
         countIncrease();
     }
     //copy constructor
@@ -95,6 +106,8 @@ public:
         _arcLength_ = r._arcLength_;
         _radius_ = r._radius_;
         _rotationAngle_ = r._rotationAngle_;
+        _frequency_ = r._frequency_;
+        _time_period_ = r._time_period_;
         countIncrease();
         //countShow();
     }
@@ -110,6 +123,8 @@ public:
             _arcLength_ = r._arcLength_;
             _radius_ = r._radius_;
             _rotationAngle_ = r._rotationAngle_;
+            _frequency_ = r._frequency_;
+            _time_period_ = r._time_period_;
             countIncrease();
 
         }
@@ -119,11 +134,19 @@ public:
      * setters
      */
     void set_radius_(const ld r) { _radius_ = r; }
-    void set_rotationalAngle_(const ld ra) { _rotationAngle_ = ra; }
+    void set_rotationalAngle_(const ld ra) {
+        _rotationAngle_ = ra;
+        _arcLength_ = _radius_ * _rotationAngle_ * _RAD_;
+    }
     void set_angularVelocityW_(const ld av) { _angularVelocityW_ = av; }
     void set_linearVelocity_(const ld lv) { _linearVelocity = lv; }
-    void set_arcLength_(const ld al) { _arcLength_ = al; }
+    void set_arcLength_(const ld al) {
+        _arcLength_ = al;
+        _rotationAngle_ = _arcLength_ / (_radius_ * _RAD_);
+    }
     void set_centripetalAcceleration_(const ld ca) { _centripetalAcceleration_ = ca; }
+    void set_frequency_(const ld f) { _frequency_ = f; }
+    void set_time_period_(const ld tp) { _time_period_ = tp; }
 
     /*===================================================================
      * getters
@@ -134,16 +157,35 @@ public:
     ld get_linearVelocity()const { return _linearVelocity; }
     ld get_arcLength()const { return _arcLength_; }
     ld get_centripetalAcceleration()const { return _centripetalAcceleration_; }
+    ld get_frequency()const { return _frequency_; }
+    ld get_time_period()const { return _time_period_; }
 
     /*===================================================================
      * display methods
      */
-    void show_radius()const { cout << "radius: " << _radius_ << endl; }
-    void show_rotationalAngle()const { cout << "rotational angle: " << _rotationAngle_ << endl;	}
-    void show_angularVelocityW()const { cout << "angular velocity: " << _angularVelocityW_ << endl;	}
-    void show_linearVelocity()const { cout << "linear velocity: " << _linearVelocity << endl; }
-    void show_arcLength()const { cout << "arcLength: " << _arcLength_ << endl; }
-    void show_centripetalAcceleration()const { cout << "centripetal acceleration: " << _centripetalAcceleration_ << endl; }
+    void show_radius()const { cout << "radius: " << _radius_ << "m" <<endl; }
+    void show_rotationalAngle()const { cout << "rotational angle: " << _rotationAngle_ << "degrees" << endl;	}
+    void show_angularVelocityW()const { cout << "angular velocity: " << _angularVelocityW_ << "rad/s" << endl;	}
+    void show_linearVelocity()const { cout << "linear velocity: " << _linearVelocity << "m/s" << endl; }
+    void show_arcLength()const { cout << "arcLength: " << _arcLength_ << "m" << endl; }
+    void show_centripetalAcceleration()const { cout << "centripetal acceleration: " << _centripetalAcceleration_ << "m/s^2" << endl; }
+    void show_frequency()const {
+        cout << "frequency: " << _frequency_ << "Hz" << endl;
+        // calculate freq in RPM
+        cout << "rev per min: " << _frequency_ * 60 << "RPM" << endl;
+    }
+    void show_time_period()const { cout << "time period: " << _time_period_ << "s" << endl; }
+    void show_all_data()const {
+        show_radius();
+        show_angularVelocityW();
+        show_linearVelocity();
+        show_centripetalAcceleration();
+        show_frequency();
+        show_time_period();
+        show_rotationalAngle();
+        show_arcLength();
+    }
+
 
     /*===================================================================
      * conversion methods
@@ -394,6 +436,15 @@ public:
         return 1.0;
     }
 
+    ld static calculate_frequency(const ld period)
+    {
+        return 1.0 / period;
+    }
+
+    ld static calculate_period(const ld frequency)
+    {
+        return 1.0 / frequency;
+    }
 
     ~UniformCircularMotion() {
         delete _circlePtr;

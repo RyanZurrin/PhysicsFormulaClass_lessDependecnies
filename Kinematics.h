@@ -605,6 +605,15 @@ public:
         return xVelocity * tan(angle*RADIAN);
     }
 
+    static ld horizontal_velocity_of_projectile_at_max_altitude(ld angle, ld velocity)
+    {
+        return velocity * cos(angle * RADIAN);
+    }
+    static ld vertical_velocity_of_projectile_at_max_altitude(ld angle, ld velocity)
+    {
+        return velocity * sin(angle * RADIAN);
+    }
+
 
     /// <summary>
     /// uses quadratic formula to return two angles in a vector, the larger angle

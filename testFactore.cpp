@@ -16,13 +16,12 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //*************************************************************************
-   //calculate a projectiles time of flight
-   cout << "total:" << endl;
-   cout << Kinematics::average_speed(100.0, 9.58);
-   cout << endl;
+   UniformCircularMotion motion(5.5, 22.0);
+   motion.show_all_data();
 
 
-    //*************************************************************************
+
+    //**********************************************************************    ***
     //Stopping timer and displaying the programs execution time
     //_________________________________________________________________________
     timer.stop();
