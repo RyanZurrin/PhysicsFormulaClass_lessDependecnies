@@ -134,13 +134,13 @@ public:
     /// returns the x instance.
     /// </summary>
     /// <returns>the x-coordinate</returns>
-    [[nodiscard]] auto getX() const { return points.return_x(); }
+    [[nodiscard]] auto getX() const { return points.getX(); }
 
     /// <summary>
     /// returns the y instance.
     /// </summary>
     /// <returns>the y-coordinate</returns>
-    [[nodiscard]] auto getY() const { return points.return_y(); }
+    [[nodiscard]] auto getY() const { return points.getY(); }
 
     /// <summary>
     /// the polar radius of this point.
@@ -152,7 +152,7 @@ public:
     /// the angle of this point in polar coordinates.
     /// </summary>
     /// <returns>the angle (in radians) of this point in polar coordinates (between –&pi; and &pi;)</returns>
-    auto theta() { return atan2(points.return_y(), points.return_x()); }
+    auto theta() { return atan2(points.getY(), points.getX()); }
 
     /// <summary>
     /// the angle between this point and that point.
@@ -242,10 +242,10 @@ inline auto Point2D<NumericType>::angleTo(Point2D<NumericType> that)
 template<typename NumericType>
 inline auto Point2D<NumericType>::area2(Point2D<NumericType> a, Point2D<NumericType> b, Point2D<NumericType> c)
 {
-    return (b.points.return_x() - a.points.return_x()) *
-           (c.points.return_y() - a.points.return_y()) -
-           (b.points.return_y() - a.points.return_y()) *
-           (c.points.return_x() - a.points.return_x());
+    return (b.points.getX() - a.points.getX()) *
+           (c.points.getY() - a.points.getY()) -
+           (b.points.getY() - a.points.getY()) *
+           (c.points.getX() - a.points.getX());
 }
 template<typename NumericType>
 inline int Point2D<NumericType>::ccw(Point2D<NumericType> a, Point2D<NumericType> b, Point2D<NumericType> c)
@@ -261,16 +261,16 @@ inline int Point2D<NumericType>::ccw(Point2D<NumericType> a, Point2D<NumericType
 template<typename NumericType>
 inline auto Point2D<NumericType>::distanceTo(Point2D<NumericType> that)
 {
-    double dx = this->points.return_x() - that.points.return_x();
-    double dy = this->points.return_y() - that.points.return_y();
+    double dx = this->points.getX() - that.points.getX();
+    double dy = this->points.getY() - that.points.getY();
     return sqrt(dx * dx + dy * dy);
 }
 
 template<typename NumericType>
 inline auto Point2D<NumericType>::distanceSquaredTo(Point2D<NumericType> that)
 {
-    auto dx = this->points.return_x() - that.points.return_x();
-    auto dy = this->points.return_y() - that.points.return_y();
+    auto dx = this->points.getX() - that.points.getX();
+    auto dy = this->points.getY() - that.points.getY();
     return dx * dx + dy * dy;
 }
 
@@ -280,7 +280,7 @@ inline auto Point2D<NumericType>::distanceSquaredTo(Point2D<NumericType> that)
 template <typename NumericType>
 inline auto Point2D<NumericType>::compareByX(Point2D<NumericType> other)
 {
-    if (this->points.return_x() > other.points.return_x())
+    if (this->points.getX() > other.points.getX())
         return 1;
     else if (this->x_ < other->x_)
         return -1;
@@ -291,7 +291,7 @@ inline auto Point2D<NumericType>::compareByX(Point2D<NumericType> other)
 template <typename NumericType>
 inline auto Point2D<NumericType>::compareByY(Point2D<NumericType> other)
 {
-    if (this->points.return_y() > other.points.return_y())
+    if (this->points.getY() > other.points.getY())
         return 1;
     else if (this->y_ < other->y_)
         return -1;

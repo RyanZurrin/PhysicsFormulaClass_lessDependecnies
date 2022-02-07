@@ -49,7 +49,7 @@ public:
     [[nodiscard]] long double	return_xAngle()const; //return x angle
     [[nodiscard]] long double	return_yAngle()const; //return y angle
     [[nodiscard]] long double	return_zAngle()const; //return z angle
-    [[nodiscard]] unsigned long	return_mag()const override;
+    [[nodiscard]] long double	return_mag()const override;
     [[nodiscard]] long double	return_angle()const override;
     [[nodiscard]] long double	return_arcLength()const override;
     [[nodiscard]] char			return_mode()const override;
@@ -76,11 +76,11 @@ public:
     /// coefficients</returns>
     template<typename T>
     long double distance_to_plane(T a, T b, T c, T d);
-    [[nodiscard]] unsigned long	square() const override; //gives square of the vector
+    [[nodiscard]] long double	square() const override; //gives square of the vector
     [[nodiscard]] long double	dot_product(const Vector3D &vec) const; //scalar dot_product
     [[nodiscard]] static long double dot_product(const long double uMag, const long double vMag, const long double angleBetween);
     [[nodiscard]] long double	distance(const Vector3D &vec)const;    //gives distance between two vectors
-    [[nodiscard]] unsigned long	find_magnitude()const override;  //magnitude of the vector
+    [[nodiscard]] long double	find_magnitude()const override;  //magnitude of the vector
     [[nodiscard]] Vector3D		cross_product(const Vector3D &vec)const;    //cross_product
     [[nodiscard]] long double	scaler_triple_product(Vector3D& b, Vector3D& c) const;
     Vector3D	normalize_vector();   //normalized vector
@@ -125,7 +125,7 @@ inline Vector3D::Vector3D(string id) //constructor
     xAngle = 0.0;
     yAngle = 0.0;
     zAngle = 0.0;
-    magnitude = static_cast<unsigned long>(0.0);
+    magnitude = static_cast<long double>(0.0);
     radius = 0.0;
     inclination = 0.0;
     azimuth = 0.0;
@@ -405,13 +405,13 @@ inline long double Vector3D::scaler_triple_product(Vector3D& b, Vector3D& c) con
 {
     return this->dot_product(b.cross_product(c));
 }
-inline unsigned long Vector3D::find_magnitude()const
+inline long double Vector3D::find_magnitude()const
 {
-    return static_cast<unsigned long>( sqrt(square()));
+    return static_cast<long double>( sqrt(square()));
 }
-inline unsigned long Vector3D::square()const
+inline long double Vector3D::square()const
 {
-    return static_cast<unsigned long>( x*x+y*y+z*z);
+    return static_cast<long double>( x*x+y*y+z*z);
 }
 
 inline Vector3D Vector3D::normalize_vector()
@@ -513,9 +513,9 @@ inline long double Vector3D::return_zAngle()const
 {
     return atan2(sqrt(x * x  + y * y), z) * DEGREE;
 }
-inline unsigned long Vector3D::return_mag() const
+inline long double Vector3D::return_mag() const
 {
-    return static_cast<unsigned long>(sqrt(x * x + y * y + z * z));
+    return static_cast<long double>(sqrt(x * x + y * y + z * z));
 }
 inline long double Vector3D::return_angle() const
 {

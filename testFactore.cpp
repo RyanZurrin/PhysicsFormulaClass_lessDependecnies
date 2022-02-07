@@ -16,8 +16,10 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //*************************************************************************
-   UniformCircularMotion motion(5.5, 22.0);
-   motion.show_all_data();
+    cout << Kinematics::projectile_initial_speed(90.4332, 27.0185) << endl;
+    string path = Kinematics::trajectory_equation(30.0, 50.0, .1);
+    cout << path << endl;
+
 
 
 

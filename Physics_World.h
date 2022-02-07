@@ -906,13 +906,13 @@ public:
     Physics_World operator+(const Physics_World& r)const
     {
         long double x, y, z;
-        x = vector3d->return_x() + r.vector3d->return_x();
-        y = vector3d->return_y() + r.vector3d->return_y();
+        x = vector3d->getX() + r.vector3d->getX();
+        y = vector3d->getY() + r.vector3d->getY();
         z = vector3d->return_z() + r.vector3d->return_z();
         std::unique_ptr<Physics_World> sum = std::make_unique<Physics_World>();
         sum->vector3d->set_coordinates(x, y, z);
-        x = vector2d->return_x() + r.vector2d->return_x();
-        y = vector2d->return_y() + r.vector2d->return_y();
+        x = vector2d->getX() + r.vector2d->getX();
+        y = vector2d->getY() + r.vector2d->getY();
         sum->vector2d->set_coordinates(x, y);
         sum->vector3d->mode = r.vector3d->mode;
         sum->vector2d->mode = this->vector2d->mode;
@@ -921,13 +921,13 @@ public:
     Physics_World operator+(long double n)const
     {
         long double x, y, z;
-        x = vector3d->return_x() + n;
-        y = vector3d->return_y() + n;
+        x = vector3d->getX() + n;
+        y = vector3d->getY() + n;
         z = vector3d->return_z() + n;
         std::unique_ptr<Physics_World> sum = std::make_unique<Physics_World>();
         sum->vector3d->set_coordinates(x, y, z);
-        x = vector2d->return_x() + n;
-        y = vector2d->return_y() + n;
+        x = vector2d->getX() + n;
+        y = vector2d->getY() + n;
         sum->vector2d->set_coordinates(x, y);
         sum->vector3d->mode = this->vector3d->mode;
         sum->vector2d->mode = this->vector2d->mode;
@@ -938,13 +938,13 @@ public:
     Physics_World& operator+=(const Physics_World& r) const
     {
         long double x, y, z;
-        x = vector3d->return_x() + r.vector3d->return_x();
-        y = vector3d->return_y() + r.vector3d->return_y();
+        x = vector3d->getX() + r.vector3d->getX();
+        y = vector3d->getY() + r.vector3d->getY();
         z = vector3d->return_z() + r.vector3d->return_z();
         std::unique_ptr<Physics_World> sum = std::make_unique<Physics_World>();
         sum->vector3d->set_coordinates(x, y, z);
-        x = vector2d->return_x() + r.vector2d->return_x();
-        y = vector2d->return_y() + r.vector2d->return_y();
+        x = vector2d->getX() + r.vector2d->getX();
+        y = vector2d->getY() + r.vector2d->getY();
         sum->vector2d->set_coordinates(x, y);
         sum->vector3d->mode = r.vector3d->mode;
         sum->vector2d->mode = this->vector2d->mode;
@@ -954,13 +954,13 @@ public:
     Physics_World operator+()const
     {
         long double x, y, z;
-        x = vector3d->return_x() + 1.0;
-        y = vector3d->return_y() + 1.0;
+        x = vector3d->getX() + 1.0;
+        y = vector3d->getY() + 1.0;
         z = vector3d->return_z() + 1.0;
         Physics_World sum;
         sum.vector3d->set_coordinates(x, y, z);
-        x = vector2d->return_x() + 1.0;
-        y = vector2d->return_y() + 1.0;
+        x = vector2d->getX() + 1.0;
+        y = vector2d->getY() + 1.0;
         vector2d->set_coordinates(x, y);
         vector3d->mode = this->vector3d->mode;
         vector2d->mode = this->vector2d->mode;

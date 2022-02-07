@@ -164,6 +164,7 @@ public:
         return (velocity * time) + (acceleration * (time * time)) / 2;
     }
 
+
     /// <summary>
     /// calculate displacement for the distance to stop from moving object
     /// </summary>
@@ -468,7 +469,7 @@ public:
     {
         auto prt1 = tan(theta * RADIAN);
         auto prt2 = _Ga_ / (2.0 * (v * v) * pow(cos(theta * RADIAN), 2));
-        string results = "y = "+to_string(h_0)+" + " + to_string(prt1) + " - " + to_string(prt2) + "x^2";
+        string results ="y = -" + to_string(prt2) + "x^2" + " + " + to_string(prt1) +"x + "+ to_string(h_0) ;
         return results;
     }
 
@@ -623,17 +624,94 @@ public:
     /// <param name="releaseHeight">Height of the ball at its release.</param>
     /// <param name="hoopDistance">The hoop distance from shot.</param>
     /// <returns>angle to shoot</returns>
-    static vector<ld> basketball_angles(ld launchVelocity, ld releaseHeight, ld hoopDistance)
+    template<typename T>
+    static vector<T> basketball_angles(T launchVelocity, T releaseHeight, T hoopDistance, ld hoopHeight = 3.048)
     {
-        const ld hoopHeight = 3.05; //meters
-        ld a = (((-_Ga_) * (hoopDistance * hoopDistance)) / (2 * (launchVelocity * launchVelocity)));
+        vector<T> angles;
+        ld a = (((_Ga_) * (hoopDistance * hoopDistance)) / (2 * (launchVelocity * launchVelocity)));
         ld b = -hoopDistance;
         ld c = ((hoopHeight - releaseHeight) + a);
-        vector_values[0] = atan(-((b)+sqrt((b * b) - 4 * a * c)) / (2 * a))*DEGREE;
-        vector_values[1] = atan(-((b)-sqrt((b * b) - 4 * a * c)) / (2 * a))*DEGREE;
+        angles.push_back(atan(-((b)+sqrt((b * b) - 4 * a * c)) / (2 * a))*DEGREE);
+        angles.push_back(atan(-((b)-sqrt((b * b) - 4 * a * c)) / (2 * a))*DEGREE);
 
-        return vector_values;
+        return angles;
     }
+
+    static ld starting_height_of_projectile(ld angle, ld velocity)
+    {
+        return (velocity * sin(angle * RADIAN)) / (-_Ga_);
+    }
+    static ld height(ld time, ld a = _Ga_)
+    {
+        return (a * time * time) / 2;
+    }
+    static ld height(ld x, ld v, ld a)
+    {
+        auto t = x / v;
+        return (a * t * t) / 2;
+    }
+    /**
+     * @brief You're windsurfing at v0 (L/T) when a gust hits, accelerating your sailboard
+     * at acc (L/T^2) at degrees theta to your original direction. If the gust lasts
+     * t (T), what's the magnitude of the board's displacement during this time?
+     * @param v0 The initial velocity of the board (L/T)
+     * @param acc The acceleration of the board (L/T^2)
+     * @param theta The angle of the gust (degrees)
+     * @param t The duration of the gust (T)
+     * @return The magnitude of the board's displacement during this time
+     */
+    static ld displacement_2d(ld v0, ld acc, ld theta, ld t) {
+        auto x_a = acc * cos(theta*RADIAN);
+        auto y_a = acc * sin(theta*RADIAN);
+        auto x_d = v0*t + (1.0/2.0)*x_a*t*t;
+        auto y_d = (1.0/2.0)*y_a*t*t;
+        return sqrt(pow(x_d, 2) + pow(y_d, 2));
+    }
+
+    /**
+     * @brief You're windsurfing at v0 (L/T) when a gust hits, accelerating your sailboard
+     * at theta (degrees) to your original direction. The gust lasts t (T), and
+     * the board's displacement during this time is d (L). Find the magnitude of
+     * the board's acceleration during the gust.
+     * @param v0 The initial velocity of the board (L/T)
+     * @param theta The angle of the gust (degrees)
+     * @param t The duration of the gust (T)
+     * @param d The magnitude of the board's displacement during this time (L)
+     * @return The magnitude of the board's acceleration during the gust
+     */
+    static ld acceleration_2d(ld v0, ld theta, ld t, ld d) {
+        auto x_d = d*cos(theta*RADIAN);
+        auto y_d = d*sin(theta*RADIAN);
+        auto x_a = (2*x_d - v0*t)/(t*t);
+        auto y_a = (2*y_d)/(t*t);
+        return sqrt(pow(x_a, 2) + pow(y_a, 2));
+    }
+
+    /**
+     * @brief A delivery drone approaches a customer's porch, flying h (L) above the porch
+     * at v0 (L/T). (a) At what horizontal distance from the desired landing spot
+     * should it release a package? (b) At what speed will the package hit the porch?
+     */
+    static vector<ld> delivery_drone_package_drop_data(ld h, ld v0) {
+        vector<ld> results;
+        auto time_y = sqrt(2*h/(_Ga_));
+        results.push_back(v0*time_y);
+        auto vy = GA*time_y;
+        results.push_back(sqrt(vy*vy + v0*v0));
+        return results;
+    }
+
+    /**
+     * A projectile has horizontal range R (L) on level ground and reaches maximum
+     * height h (L). Find its initial speed.
+     */
+    static ld projectile_initial_speed(ld R, ld h) {
+        return sqrt(2*h*_Ga_ + (((R*R) * _Ga_)/(8.0 * h)));
+    }
+
+
+
+
     ~Kinematics()
     {
         delete _kinematicPtr;
@@ -643,4 +721,6 @@ private:
     static void countIncrease() { kinematics_objectCount += 1; }
     static void countDecrease() { kinematics_objectCount -= 1; }
 };
+
+
 #endif //PHYSICSFORMULA_KINEMATICS_H

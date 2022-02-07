@@ -35,7 +35,7 @@ class Vector2D
     string		ID;
     long double		x;
     long double		y;
-    unsigned long		magnitude;
+    long double	    magnitude;
     long double		angle;
     long double		arcLength;
     long double		revolutionAngle_inDegrees;
@@ -71,19 +71,19 @@ public:
     void		 show_mode()const;
     void		 show_arcLength()const;
     std::string	 getID() const { return ID; }
-    long double		 return_x()const;
-    long double		 return_y()const;
-    virtual unsigned long return_mag()const;
+    long double		 getX()const;
+    long double		 getY()const;
+    virtual long double return_mag()const;
     virtual long double return_angle()const;
     virtual long double return_arcLength()const;
     virtual char return_mode()const;
     static int	 return_objectCount(){return vec2d_object_counter;}
     void		 set_coordinates(long double, long double, char _mode = 'r');
     void		 set_rectCord(long double, long double);
-    void		 set_polarCord(unsigned long, long double);
+    void		 set_polarCord(long double, long double);
     void		 set_x(long double);
     void		 set_y(long double);
-    void		 set_mag(unsigned long);
+    void		 set_mag(long double);
     void		 set_mode(char);
     Vector2D	 projection(Vector2D& v);
     Vector2D	 projection(Vector2D&)const;
@@ -101,8 +101,8 @@ public:
     /// coefficients</returns>
     template<typename T>
     long double		 distance_to_line(T a, T b, T c);
-    virtual unsigned long       square()const;              //gives square olong double the Vector2D
-    virtual unsigned long       find_magnitude()const;             //magnitude olong double the Vector2D
+    virtual long double square() const;              //gives square olong double the Vector2D
+    virtual long double find_magnitude() const;             //magnitude olong double the Vector2D
     [[nodiscard]] long double   dot_product(const Vector2D&)const; //scalar dot_product
     [[nodiscard]] long double	distance(const Vector2D&)const;    //gives distance between two Vector2Ds
     [[nodiscard]] long double	cross_product(const Vector2D&)const;    //cross_product
@@ -163,7 +163,7 @@ inline Vector2D::Vector2D(string id)
 {
     x = static_cast<long double>(0.0);
     y = static_cast<long double>(0.0);
-    magnitude = static_cast<unsigned long>( 0.0);
+    magnitude = static_cast<long double>( 0.0);
     angle = static_cast<long double>(0.0);
     calculate_arcLength();
     arcLength =  static_cast<long double>(0.0);
@@ -186,7 +186,7 @@ inline Vector2D::Vector2D(char _mode, string id)
 {
     x =  static_cast<long double>(0.0);
     y =  static_cast<long double>(0.0);
-    magnitude =  static_cast<unsigned long>( 0.0);
+    magnitude =  static_cast<long double>( 0.0);
     angle =  static_cast<long double>(0.0);
     calculate_arcLength();
     revolutionAngle_inDegrees = 0;
@@ -211,7 +211,7 @@ inline Vector2D::Vector2D(long double xMag, long double yAng, char _mode, string
 {
     revolutionAngle_inDegrees = static_cast<long double>(0.0);
     ID = id;
-    magnitude =  static_cast<unsigned long>(0.0);
+    magnitude =  static_cast<long double>(0.0);
     angle =  static_cast<long double>(0.0);
     mode = _mode;
     validate_setMode();
@@ -303,11 +303,11 @@ inline void Vector2D::showPolarCord(const std::string& label)const
 {
     cout<< "\n" << ((label.empty()) ? ID : label) << setprecision(6);
     if(magnitude >= 0 && angle >= 0){
-        cout << ":<r,\xE9> = <" << magnitude << "," << angle << ">";
+        cout << ":<r,theta> = <" << magnitude << "," << angle << ">";
     }
     else{
         cout << setiosflags(ios::fixed);
-        cout << ":<r,\xE9> = <" << magnitude << "," << angle << ">";
+        cout << ":<r,theta> = <" << magnitude << "," << angle << ">";
         cout << resetiosflags(ios::fixed) << endl;
     }
 }
@@ -345,15 +345,15 @@ inline void Vector2D::show_arcLength() const
     cout << setprecision(4);
     cout << "\narc length: " << arcLength << endl;
 }
-inline long double Vector2D::return_x() const
+inline long double Vector2D::getX() const
 {
     return x;
 }
-inline long double Vector2D::return_y()const
+inline long double Vector2D::getY()const
 {
     return y;
 }
-inline unsigned long Vector2D::return_mag()const
+inline long double Vector2D::return_mag()const
 {
     return magnitude;
 }
@@ -382,7 +382,7 @@ inline void Vector2D::set_coordinates(long double xMag, long double yAng, char _
         set_rectCord(xMag, yAng);
     }
     else{
-        set_polarCord(static_cast<unsigned long>(xMag), yAng);
+        set_polarCord(static_cast<long double>(xMag), yAng);
     }
     calculate_angle();
     adjust_angle();
@@ -396,7 +396,7 @@ inline void Vector2D::set_rectCord(long double _x, long double _y)
     calculate_polar();
     revolutionAngle_inDegrees = angle;
 }
-inline void Vector2D::set_polarCord(unsigned long mag, long double ang)
+inline void Vector2D::set_polarCord(long double mag, long double ang)
 {
     magnitude = mag;
     angle =ang;
@@ -417,7 +417,7 @@ inline void Vector2D::set_y(long double _y)
     y = _y;
     calculate_polar();
 }
-inline void Vector2D::set_mag(unsigned long mag)
+inline void Vector2D::set_mag(long double mag)
 {
     magnitude = mag;
     calculate_rectangular();
@@ -448,9 +448,8 @@ inline long double Vector2D::angle_between_vectors(Vector2D& v) const
     return acos((x*v.x+y*v.y) / (sqrt(x*x+y*y)*
                                  sqrt(v.x*v.x+v.y*v.y))) * DEGREE;
 }
-inline unsigned long Vector2D::square()const
-{
-    return  static_cast<unsigned long>( x * x + y * y);
+inline long double Vector2D::square() const {
+    return  static_cast<long double>( x * x + y * y);
 }
 inline long double Vector2D::dot_product(const Vector2D& vec)const
 {
@@ -494,9 +493,8 @@ inline bool Vector2D::isOrthogonalWith(Vector2D& v) const
 {
     return this->dot_product(v) == 0;
 }
-inline unsigned long Vector2D::find_magnitude()const
-{
-    return static_cast<unsigned long>(sqrt(square()));
+inline long double Vector2D::find_magnitude() const {
+    return sqrt(square());
 }
 /*
 void Vector2D::setPolarCurve()
@@ -525,7 +523,7 @@ inline void Vector2D::validate_setMode()
 
 inline void Vector2D::calculate_magnitude()
 {
-    magnitude = static_cast<unsigned long>( sqrt(x * x + y * y));
+    magnitude = static_cast<long double>( sqrt(x * x + y * y));
 }
 inline void Vector2D::calculate_angle()
 {
@@ -557,7 +555,7 @@ inline void Vector2D::calculate_rectangular()
 }
 inline void Vector2D::calculate_polar()
 {
-    magnitude = static_cast<unsigned long>( sqrt(x * x + y * y));
+    magnitude = static_cast<long double>( sqrt(x * x + y * y));
     if (x == 0.0 && y == 0.0)
         angle = 0.0;
     else
@@ -652,12 +650,12 @@ inline Vector2D Vector2D::operator--(int)
 }
 inline Vector2D operator-(long double s, Vector2D& v)
 {
-    Vector2D resultant(s-v.return_x(),s-v.return_y(),v.return_mode());
+    Vector2D resultant(s-v.getX(),s-v.getY(),v.return_mode());
     return resultant;
 }
 inline Vector2D operator+(long double s, Vector2D& v)
 {
-    Vector2D resultant(s+v.return_x(),s+v.return_y(),v.return_mode());
+    Vector2D resultant(s+v.getX(),s+v.getY(),v.return_mode());
     return resultant;
 }
 inline Vector2D& Vector2D::operator=(const Vector2D &right)

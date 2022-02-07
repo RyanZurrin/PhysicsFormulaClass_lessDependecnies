@@ -14,9 +14,15 @@
 constexpr auto _RAD_ = 360.0 / (2.0 * _PI_);
 //Gravitational Constant 6.67408(31) * 10^(-11) * N
 constexpr auto _Gc_ = 6.674e-11;
+//Radius of the earth 6,371km
+constexpr auto EARTH_RADIUS = 6.371e6;
+//Radius of the sun 6,963km
+constexpr auto SUN_RADIUS = 6.963e8;
 
 static int circularMotion_objectCount = 0;
 ld static _masses_[] = { 0.0, 0.0 };
+
+
 
 class UniformCircularMotion
 {
@@ -424,27 +430,56 @@ public:
     }
 
     /**
-     * @warning Not working needs to get worked on
-     * @brief Returns the time it takes a satellite to orbit the earth when the distance from the earth is known
-     * @param r2 is the radius from the center of the earth to the satellite. Earth core to crust is 6380 km
-     * @param r1 is the radius to a first body and we use the moon as the default because the values are known
-     * @param t1 is the time it takes the first body to orbit the earth, moon is default
-     * @returns the time is hours to orbit the earth
+     * @brief Global Positioning System (GPS) satellites circle Earth at altitudes of
+     * approximately oH, where the gravitational acceleration has pL (%) of its surface
+     * value. To the nearest hour, what's the orbital period of the GPS satellites?\n
+     * fx = (2 * PI * sqrt(oH_ / (_Ga_ * pL_))) / 3600
+     * @param oH is the altitude of the satellite in meters
+     * @param pL is the percentage of the surface gravity of the earth
+     * @returns the orbital period in hours
      */
-    ld static orbit_time_earth_satellite()
+    ld static orbit_time_earth_satellite(ld oH, ld pL, ld planetRadius = EARTH_RADIUS)
     {
-        return 1.0;
+        // turn the percentage into a decimal
+        ld pL_ = pL / 100.0;
+        // add the radius of the earth to the altitude
+        ld oH_ = oH + planetRadius;
+        return (2 * PI * sqrt(oH_ / (_Ga_ * pL_))) / 3600;
     }
-
+    /**
+     * @brief Calculates the frequency from a known period time
+     * @param period  is the period of the wave in seconds
+     * @return  the frequency in hertz
+     */
     ld static calculate_frequency(const ld period)
     {
         return 1.0 / period;
     }
-
+    /**
+     * @brief Calculates the period from a known frequency
+     * @param frequency is the frequency of the wave in hertz
+     * @return  the period in seconds
+     */
     ld static calculate_period(const ld frequency)
     {
         return 1.0 / frequency;
     }
+
+    /**
+     * @brief Pilots of high-performance aircraft risk loss of consciousness if they
+     * undergo accelerations exceeding about Xg's. For a jet flying at a speed of
+     * v0 (L/T), what's the minimum radius for a turn that will keep the
+     * acceleration below Xg's?
+     * fx = pow(v0, ) / (Xg * _G_)
+     * @param v0 is the speed of the aircraft in meters per second
+     * @param Xg is the acceleration in meters per second squared
+     * @returns the minimum radius in meters
+     */
+    ld static minimum_turn_radius(const ld v0, const ld Xg) {
+        // r = v0^2 / Xg*gravity
+        return pow(v0, 2) / (Xg * _G_);
+    }
+
 
     ~UniformCircularMotion() {
         delete _circlePtr;
