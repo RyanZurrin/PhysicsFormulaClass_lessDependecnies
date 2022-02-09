@@ -513,6 +513,23 @@ public:
         return velocity * cos(angle * RADIAN) * time_of_projectiles_flight(angle, initialHeight, velocity);
     }
 
+    /**
+     * Derive a general formula for the horizontal distance covered by a
+     * projectile launched horizontally at speed  from height .
+     */
+    static ld horizontal_distance_covered_by_projectile(ld speed, ld height, bool print = false)
+    {
+        auto time = sqrt(2.0 * height / _Ga_);
+        auto horizDis = speed * sqrt((2.0*height) / _Ga_);
+        if (print)
+        {
+            cout << "time = " << time << endl;
+            cout << "range = " << horizDis << endl;
+
+        }
+        return horizDis;
+    }
+
     /// <summary>
     /// calculates the maximum height of a projectile.
     /// </summary>
@@ -520,10 +537,17 @@ public:
     /// <param name="initialHeight">The initial height.</param>
     /// <param name="velocity">The velocity.</param>
     /// <returns></returns>
-    static ld maximum_height_of_projectile(ld angle, ld initialHeight, ld velocity)
+    static ld maximum_height_of_projectile(ld angle, ld initialHeight, ld velocity, bool print = false)
     {
+
         ld vy = velocity * sin(angle * RADIAN);
-        return initialHeight + ((vy * vy) / (2.0 * _Ga_));
+        auto maxH = initialHeight + ((vy * vy) / (2.0 * _Ga_));
+        if (print)
+        {
+            cout << "vy = " << vy << endl;
+            cout << "max height = " << maxH << endl;
+        }
+        return maxH;
     }
 
     /// <summary>
@@ -531,9 +555,14 @@ public:
     /// </summary>
     /// <param name="displacement">The total displacement.</param>
     /// <returns>time is seconds in air</returns>
-    static ld air_time_initial_velocity0_y0(ld displacement)
+    static ld air_time_initial_velocity0_y0(ld displacement, bool print = false)
     {
-        return sqrt((-2*(displacement))/_Ga_);
+        auto air_time =  sqrt((-2*(displacement))/_Ga_);
+        if (print)
+        {
+            cout << "air time = " << air_time << endl;
+        }
+        return air_time;
     }
 
 
@@ -707,6 +736,23 @@ public:
      */
     static ld projectile_initial_speed(ld R, ld h) {
         return sqrt(2*h*_Ga_ + (((R*R) * _Ga_)/(8.0 * h)));
+    }
+
+    /**
+        You and your roommate plot to drop water balloons from your window on
+        students entering your dorm. You plan to place an X on the sidewalk to
+        mark the spot a student must be when you drop the balloon. You note that
+        most students approach the dorm at about v0 (L/T). If you place the X at a
+        distance of d (L) from the impact point, what is the height of your
+        window from ground level?
+     */
+    static ld height_from_free_fall(ld vx0, ld d, ld vy0 = 0) {
+        auto t = d / vx0;
+        // calculate the final fall speed
+        //auto vy = vy0 + GA*t;
+        // find the free fall distance
+        auto d_free = vy0*t + (1.0/2.0)*GA*t*t;
+        return d_free;
     }
 
 

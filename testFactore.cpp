@@ -16,9 +16,7 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //*************************************************************************
-    cout << Kinematics::projectile_initial_speed(90.4332, 27.0185) << endl;
-    string path = Kinematics::trajectory_equation(30.0, 50.0, .1);
-    cout << path << endl;
+   Kinematics::time_of_projectiles_flight(6.6, 5.2, true);
 
 
 
