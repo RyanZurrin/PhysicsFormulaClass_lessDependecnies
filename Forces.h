@@ -2,11 +2,11 @@
 // Created by Ryan.Zurrin001 on 12/15/2021.
 //
 
-#ifndef PHYSICSFORMULA_DYNAMICSANDFORCES_H
-#define PHYSICSFORMULA_DYNAMICSANDFORCES_H
+#ifndef PHYSICSFORMULA_FORCES_H
+#define PHYSICSFORMULA_FORCES_H
 #pragma once
 /**
- * @class DynamicsAndForces
+ * @class Forces
  * @details driver class for solving complex physics problems
  * @author Ryan Zurrin
  * @date   10/15/2020
@@ -16,57 +16,110 @@
 #include "Vector2D.h"
 constexpr auto GA = 9.81;
 
-static int dynamicsAndForces_objectCount = 0;
+static int forces_objectCount = 0;
 
 
-class DynamicsAndForces
+class Forces
 {
 
 public:
-    DynamicsAndForces* _dynamicForcePtr;
 
-    DynamicsAndForces()
+    Forces()
     {
-        _dynamicForcePtr = nullptr;
-        _dynamicForceVal = 0.0;
+        _force = 0.0;
+        _mass = 0.0;
+        _acceleration = 0.0;
+        _angle = 0.0;
         countIncrease();
     }
-
+    /**
+     * @brief constructor for Forces
+     * @param mass
+     * @param acceleration
+     */
+    Forces(double mass_force, double acc_angle, string type = "force")
+    {
+        if (type == "force")
+        {
+            _force = mass_force;
+            _mass = 0.0;
+            _acceleration = 0.0;
+            _angle = acc_angle;
+        }
+        else
+        {
+            _mass = mass_force;
+            _force = mass_force * acc_angle;
+            _acceleration = acc_angle;
+            _angle = 0.0;
+        }
+        countIncrease();
+    }
+    Forces(double mass, double acceleration, double angle) {
+        _mass = mass;
+        _acceleration = acceleration;
+        _force = _mass * _acceleration;
+        _angle = angle;
+        countIncrease();
+    }
     /**
      * @brief copy constructor
      */
-    DynamicsAndForces(const DynamicsAndForces& t)
+    Forces(const Forces& t)
     {
-        _dynamicForcePtr = t._dynamicForcePtr;
-        _dynamicForceVal = t._dynamicForceVal;
+        _force = t._force;
+        _mass = t._mass;
+        _acceleration = t._acceleration;
+        _angle = t._angle;
         countIncrease();
     }
     /**
      * #brief move constructor
      */
-    DynamicsAndForces(DynamicsAndForces&& t) noexcept
+    Forces(Forces&& t) noexcept
     {
-        _dynamicForcePtr = t._dynamicForcePtr;
-        _dynamicForceVal = t._dynamicForceVal;
+        _force = t._force;
+        _mass = t._mass;
+        _acceleration = t._acceleration;
+        _angle = t._angle;
         countIncrease();
     }
     /**
      * @brief copy assignment operator
      */
-    DynamicsAndForces& operator=(const DynamicsAndForces& t)
+    Forces& operator=(const Forces& t)
     {
         if (this != &t)
         {
-            _dynamicForcePtr = t._dynamicForcePtr;
-            _dynamicForceVal = t._dynamicForceVal;
+            _force = t._force;
+            _mass = t._mass;
+            _acceleration = t._acceleration;
+            _angle = t._angle;
             countIncrease();
         }
         return *this;
     }
 
-    static void show_dynamicsAndForces_objectCount() { std::cout << "\ndynamics and forces object count: " << dynamicsAndForces_objectCount << std::endl; }
-    static int get_dynamicsAndForces_objectCount() { return dynamicsAndForces_objectCount; }
-    void setDynamicForceVal(long double val) { _dynamicForceVal = val; }
+    static void show_forces_objectCount() { std::cout << "\ndynamics and forces object count: "
+    << forces_objectCount << std::endl; }
+    static int get_forces_objectCount() { return forces_objectCount; }
+    void setForce(long double val) { _force = val; }
+    long double getForce() const { return _force; }
+    void setMass(long double val) { _mass = val; }
+    long double getMass() const { return _mass; }
+    void setAcceleration(long double val) { _acceleration = val; }
+    long double getAcceleration() const { return _acceleration; }
+    void setAngle(long double val) { _angle = val; }
+    long double getAngle() const { return _angle; }
+    string toString() const
+    {
+        stringstream ss;
+        ss << "Force: " << _force << " N\n"
+        << "Mass: " << _mass << " kg\n"
+        << "Acceleration: " << _acceleration << " m/s^2\n"
+        << "Angle: " << _angle*DEGREE << " degrees\n";
+        return ss.str();
+    }
 
     /**
      * method: netForce(const long double totalForces, const long double totalFriction)
@@ -96,7 +149,7 @@ public:
      * purpose:	uses Newtons second law of motion to calculate the force of a something
      * returns: long double, force
      */
-    static long double newtons_second_law_for_force(const long double mass, const long double acceleration)
+    static long double force(const long double mass, const long double acceleration)
     {
         return mass * acceleration;
     }
@@ -108,7 +161,7 @@ public:
     /// <param name="m">The mass.</param>
     /// <returns>acceleration</returns>
     template<typename T>
-    static auto acceleration_from_force_mass(const T F, const T m)
+    static auto acceleration(const T F, const T m)
     {
         return F / m;
     }
@@ -119,7 +172,7 @@ public:
      * purpose:calculates the mass of an object from the force and acceleration
      * returns: long double, mass
      */
-    static long double newtons_second_law_for_mass(long double netForce, long double acceleration)
+    static long double mass(long double netForce, long double acceleration)
     {
         return netForce / acceleration;
     }
@@ -147,7 +200,8 @@ public:
     }
 
     /**
-     * method: normal_force_angle(const long double mass, const long double angleTheta)
+     * method: normal_force
+     * _angle(const long double mass, const long double angleTheta)
      * arguments: 1)mass 2)acceleration
      * purpose: calculates the normal force on an angle
      * returns: long double, normal force
@@ -263,16 +317,88 @@ public:
         return (mass * GA)/(2.0*sin(theta*RADIAN));
     }
 
-    ~DynamicsAndForces()
+    /**
+     * @brief In a front-end collision, a car of mass m with shock-absorbing bumpers can
+     * withstand a maximum force of f before damage occurs. If the maximum speed
+     * for a non-damaging collision is v by how much must the bumper be able to
+     * move relative to the car?
+     * @param m mass of car
+     * @param f maximum force of impact on car bumper
+     * @param v maximum speed of car
+     * @returns the maximum distance the bumper can move
+     */
+     static long double maxCompression(const long double m, const long double f, const long double v)
+     {
+         return (v*v)/(2.0*(f/m));
+     }
+
+     /**
+      * Find an expression for the thrust (force) of a model rocket's engine required
+      * to accelerate a spacecraft of total mass m from rest on the ground to speed v
+      * while rising a vertical distance h.
+      * @param m total mass of spacecraft
+      * @param v speed of spacecraft
+      * @param h vertical distance of spacecraft
+      * @returns the thrust of the rocket's engine
+      */
+     static long double rocketThrust(const long double m, const long double v, const long double h)
+     {
+         return m*(GA*((v*v)/(2.0*h)));
+     }
+
+
+
+    Forces operator+(const Forces& other)
     {
-        delete _dynamicForcePtr;
+        Forces result;
+        // add two forces using the triangular method a2 = b2 + c2 - 2*b*c*Cos (A)
+        auto ax = this->_force * cos(this->_angle*RADIAN);
+        auto ay = this->_force * sin(this->_angle*RADIAN);
+        auto bx = other._force * cos(other._angle*RADIAN);
+        auto by = other._force * sin(other._angle*RADIAN);
+        auto totX = ax + bx;
+        auto totY = ay + by;
+        result._force = sqrt(totX * totX + totY * totY);
+        result._angle = atan2(totY, totX);
+        return result;
+    }
+    // overload the - operator to subtract two Forces objects
+    Forces operator-(const Forces& other)
+    {
+        Forces result;
+        // subtract two forces using the triangular method a2 = b2 + c2 - 2*b*c*Cos (A)
+        auto ax = this->_force * cos(this->_angle*RADIAN);
+        auto ay = this->_force * sin(this->_angle*RADIAN);
+        auto bx = other._force * cos(other._angle*RADIAN);
+        auto by = other._force * sin(other._angle*RADIAN);
+        auto totX = ax - bx;
+        auto totY = ay - by;
+        result._force = sqrt(totX * totX + totY * totY);
+        result._angle = atan2(totY, totX);
+        return result;
     }
 
+
+    ~Forces()
+    {
+        countDecrease();
+    }
+    // overload the << operator
+    friend ostream& operator<<(ostream& os, const Forces& f) {
+        os << "Forces: " << endl;
+        os << f.toString();
+        return os;
+    }
+
+
 private:
-    long double _dynamicForceVal;
-    static void countIncrease() { dynamicsAndForces_objectCount += 1; }
-    static void countDecrease() { dynamicsAndForces_objectCount -= 1; }
+    long double _force;
+    long double _acceleration;
+    long double _mass;
+    long double _angle;
+    static void countIncrease() { forces_objectCount += 1; }
+    static void countDecrease() { forces_objectCount -= 1; }
 
 };
 
-#endif //PHYSICSFORMULA_DYNAMICSANDFORCES_H
+#endif //PHYSICSFORMULA_FORCES_H

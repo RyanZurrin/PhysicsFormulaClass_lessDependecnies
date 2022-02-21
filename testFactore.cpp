@@ -16,7 +16,11 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //*************************************************************************
-   Kinematics::time_of_projectiles_flight(6.6, 5.2, true);
+
+   cout << Forces::acceleration(191e3, 148e3) << endl;
+    cout << Forces::maxCompression(converter.gram_to_kilogram(85.0), 28.0, 12.0) << endl;
+
+
 
 
 

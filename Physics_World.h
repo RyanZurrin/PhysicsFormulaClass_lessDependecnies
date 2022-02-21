@@ -24,7 +24,7 @@
 #include "Cylinder.h"
 #include "Cube.h"
 #include "Drag.h"
-#include "DynamicsAndForces.h"
+#include "Forces.h"
 #include "Elasticity.h"
 #include "ElectroMagneticInduction.h"
 #include "ElectroMagneticWaves.h"
@@ -71,7 +71,7 @@ typedef ElectroMagneticInduction EMI;
 typedef ElectricPotential EP;
 typedef ElectricCurrent EC;
 typedef ElectricCharge ELCHRG;
-typedef DynamicsAndForces DAF;
+typedef Forces DAF;
 typedef RandomNumbers RN;
 typedef AtomicPhysics AP;
 
@@ -485,7 +485,7 @@ static struct Conversions
     template<typename T>
     static auto kmh_to_mps(const T kmh = _val_)
     {
-        return kmh / 3.6;
+        return (kmh*1000.0) / 3600.0;
     }
 
     /// <summary>
@@ -662,7 +662,7 @@ static struct Conversions
     template<typename T>
     static auto gram_to_kilogram(const T g = _val_)
     {
-        return g / 1000;
+        return g / 1000.0;
     }
     template<typename T>
     static auto ounce_to_kilogram(const T ounce = _val_)
@@ -811,7 +811,7 @@ public:
     unique_ptr<Temperature> temperature;
     unique_ptr<Heat> heat;
     unique_ptr<Thermodynamics> thermodynamic;
-    unique_ptr<DynamicsAndForces> dynamics_and_forces;
+    unique_ptr<Forces> dynamics_and_forces;
     unique_ptr <FluidStatics> fluid_statics;
     unique_ptr<FluidDynamics> fluid_dynamics;
     unique_ptr<Waves> waves;
