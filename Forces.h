@@ -37,7 +37,7 @@ public:
      * @param mass
      * @param acceleration
      */
-    Forces(double mass_force, double acc_angle, string type = "force")
+    Forces(double mass_force, double acc_angle, const string& type = "force")
     {
         if (type == "force")
         {
@@ -104,14 +104,14 @@ public:
     << forces_objectCount << std::endl; }
     static int get_forces_objectCount() { return forces_objectCount; }
     void setForce(long double val) { _force = val; }
-    long double getForce() const { return _force; }
+    [[nodiscard]] long double getForce() const { return _force; }
     void setMass(long double val) { _mass = val; }
-    long double getMass() const { return _mass; }
+    [[nodiscard]] long double getMass() const { return _mass; }
     void setAcceleration(long double val) { _acceleration = val; }
-    long double getAcceleration() const { return _acceleration; }
+    [[nodiscard]] long double getAcceleration() const { return _acceleration; }
     void setAngle(long double val) { _angle = val; }
-    long double getAngle() const { return _angle; }
-    string toString() const
+    [[nodiscard]] long double getAngle() const { return _angle; }
+    [[nodiscard]] string toString() const
     {
         stringstream ss;
         ss << "Force: " << _force << " N\n"
@@ -274,9 +274,9 @@ public:
     static long double tensionOnSingleStrandWithFrictionWhileAccelerating(const long double mass, const long double fCoeff, const long double a)
     {
         const long double Nf = mass * GA;
-        const long double friction = fCoeff * Nf;
+        const long double friction_ = fCoeff * Nf;
         const long double accF = mass * a;
-        return friction + accF;
+        return friction_ + accF;
     }
 
     /**
@@ -285,7 +285,7 @@ public:
      * @param mass2 in kg of object2
      * @returns tension in Newtons
      */
-    static long double tensionOnMultipleStrandsIdealPully(const long double mass1, const long double mass2)
+    static long double tensionOnMultipleStrandsIdealPulley(const long double mass1, const long double mass2)
     {
         return ((2.0*GA)*(mass1*mass2))/(mass1 + mass2);
     }
@@ -345,10 +345,135 @@ public:
      {
          return m*(GA*((v*v)/(2.0*h)));
      }
+     /**
+      * Two forces, both in the x-y plane, act on a object of mass m (M) that
+      * accelerates at acc (L/T^2) in a direction theta counterclockwise from
+      * the x-axis. One force has magnitude F_1 and points in the +x-direction.
+      * Find the other force F_2 magnitude and direction.
+      * @param m mass of object
+      * @param acc acceleration of object
+      * @param theta angle of object
+      * @param F1 magnitude of force 1
+      * @returns a vector with the magnitude and direction of force 2
+      */
+     static vector<long double>
+     forceOnObject(const long double m, const long double acc, const long double theta,
+                   const long double F1, bool print = false){
+         vector<long double> result = { 0.0, 0.0};
+         auto ax = (m*acc*cos(theta*RADIAN) - F1);
+         auto ay = (m*acc*sin(theta*RADIAN));
+         auto F2 = sqrt(ax*ax + ay*ay);
+         auto theta2 = atan2(ay, ax)*DEGREE;
+         if(print){
+             cout << "F2 = " << F2 << endl;
+             cout << "theta = " << theta2 << endl;
+         }
+         result[0] = F2;
+         result[1] = theta2;
+         return result;
+     }
+
+     /**
+      * Two forces act on a object of mass m(M) that undergoes acceleration
+      * ai and aj. If one force is F1i and F1j what's the i and j components
+      * as well as the magnitude and direction of the other force?
+      */
+     static vector<long double>
+     forceOnObject(const long double m, const long double ai, const long double aj,
+                   const long double F1i, const long double F1j, bool print = false){
+         vector<long double> result = { 0.0, 0.0, 0.0, 0.0};
+         auto F2i = (m*ai) - F1i;
+         auto F2j = (m*aj) - F1j;
+         auto F2 = sqrt(F2i*F2i + F2j*F2j);
+         auto theta2 = atan2(F2j, F2i)*DEGREE;
+         if(print){
+             cout << "F2 = " << F2 << endl;
+             cout << "theta = " << theta2 << endl;
+             cout << "F2i = " << F2i << endl;
+             cout << "F2j = " << F2j << endl;
+         }
+         result[0] = F2;
+         result[1] = theta2;
+         result[2] = F2i;
+         result[3] = F2j;
+         return result;
+     }
+
+     /**
+      * At what angle should you tilt an air table (on Earth) to simulate free
+      * fall at the surface of some other planet, with an acceleration of g?
+      * @param g acceleration of gravity on other planet
+      * @return  angle of tilt
+      */
+     static long double tiltAngle(const long double g, bool print = false){
+         auto theta = asin(g/GA)*DEGREE;
+         if(print){
+             cout << "theta = " << theta << endl;
+         }
+         return theta;
+     }
+
+     /**
+      * A skier starts from rest at the top of a slope at angel of theta and that
+      *  is d long. Neglecting friction, how long does it take to reach the bottom?
+      */
+     static long double skierTime(const long double theta, const long double d, bool print = false){
+         auto a = GA*sin(theta*RADIAN);
+         auto t = sqrt(2.0*d/a);
+         if(print){
+             cout << "t = " << t << endl;
+         }
+         return t;
+     }
+
+     /**
+      * @brief Your baby sister of mass m_s(M) pulls on the bottom of the tablecloth with
+      * all her weight. On the table, distance d(L) from the edge, is a roast
+      * turkey of mass m_t(M). \n
+      * (a) What's the turkey's acceleration?
+      * (b) From the time your sister starts pulling, how long do you have to
+      * intervene before the turkey goes over the edge? Neglect friction.
+      */
+     static vector<long double> tablecloth(const long double m_s, const long double m_t, const long double d, bool print = false){
+         vector<long double> result = { 0.0, 0.0};
+         auto a = (m_s*GA)/(m_s+m_t);
+         auto t = sqrt(2.0*d/a);
+         if(print){
+             cout << "acceleration = " << a << endl;
+             cout << "time to save = " << t << endl;
+         }
+         result[0] = a;
+         result[1] = t;
+         return result;
+     }
+
+     static long double
+     acceleration2masses(const long double m_1, const long double theta_1,
+                         const long double m_2, const long double theta_2,
+                         bool print = false){
+         auto a =
+                 ((m_1*GA*sin(theta_1*RADIAN)) + (m_2*GA*sin(theta_2*RADIAN)))
+                 / (m_1+m_2);
+         if(print){
+             cout << "acceleration = " << a << endl;
+         }
+         return a;
+     }
+
+     static long double
+     forceToKeepMassInCircularPath(const long double m, const long double r,
+                                   const long double periodT, bool print = false){
+         auto F = (4.0*(PI_*PI_)*m*r)/(periodT*periodT);
+         if(print){
+             cout << "F = " << F << endl;
+         }
+         return F;
+     }
 
 
 
-    Forces operator+(const Forces& other)
+
+    Forces operator+(const Forces& other) const
     {
         Forces result;
         // add two forces using the triangular method a2 = b2 + c2 - 2*b*c*Cos (A)
@@ -363,7 +488,7 @@ public:
         return result;
     }
     // overload the - operator to subtract two Forces objects
-    Forces operator-(const Forces& other)
+    Forces operator-(const Forces& other) const
     {
         Forces result;
         // subtract two forces using the triangular method a2 = b2 + c2 - 2*b*c*Cos (A)

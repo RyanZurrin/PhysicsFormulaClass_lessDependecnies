@@ -1,5 +1,3 @@
-#include <stack>
-
 #include "Physics_World.h"
 #include "GeoUtils.h"
 #include "RunTimer.h"
@@ -16,12 +14,7 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //*************************************************************************
-
-   cout << Forces::acceleration(191e3, 148e3) << endl;
-    cout << Forces::maxCompression(converter.gram_to_kilogram(85.0), 28.0, 12.0) << endl;
-
-
-
+    Forces::acceleration2masses(75.0, 12.0, 63.0, 38.0, true);
 
 
 

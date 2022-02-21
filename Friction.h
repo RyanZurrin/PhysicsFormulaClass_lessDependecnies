@@ -30,38 +30,38 @@ static struct FrictionCoefficient
 {
     struct StaticCoefficient
     {
-        const ld static_rubber_concrete_dry = 1.0;//returns 1.0
-        const ld static_rubber_concrete_wet = .7; //returns 0.7
-        const ld static_wood_wood = .5;  //returns 0.5
-        const ld static_waxedWood_wetSnow = .14;  //returns 0.14
-        const ld static_metal_wood = .5;  //returns 0.5
-        const ld static_steel_steel_dry = .6;  //returns 0.6
-        const ld static_steel_steel_oiled = .05;  //returns 0.05
-        const ld static_teflon_steel = .04;  //returns 0.04
-        const ld static_bone_lubricated_synovial_fluid = .016;  //returns 0.016
-        const ld static_shoes_wood = .9;  //returns 0.9
-        const ld static_shoes_ice = .1;  //returns 0.1
-        const ld static_ice_ice = .1;  //returns 0.1
-        const ld static_steel_ice = 0.4; // returns 0.4
-    }static_friction_coefficient;
+        const ld rubber_on_concrete_dry = 1.0;//returns 1.0
+        const ld rubber_on_concrete_wet = .7; //returns 0.7
+        const ld wood_on_wood = .5;  //returns 0.5
+        const ld waxedWood_on_wetSnow = .14;  //returns 0.14
+        const ld metal_on_wood = .5;  //returns 0.5
+        const ld steel_on_steel_dry = .6;  //returns 0.6
+        const ld steel_on_steel_oiled = .05;  //returns 0.05
+        const ld teflon_on_steel = .04;  //returns 0.04
+        const ld bone_on_lubricated_synovial_fluid = .016;  //returns 0.016
+        const ld shoes_on_wood = .9;  //returns 0.9
+        const ld shoes_on_ice = .1;  //returns 0.1
+        const ld ice_on_ice = .1;  //returns 0.1
+        const ld steel_on_ice = 0.4; // returns 0.4
+    }staticFriction;
 
     // Kinetic friction coefficients
     struct KineticCoefficient
     {
-        const ld kinetic_rubber_concrete_dry = .7;  //returns 0.7
-        const ld kinetic_rubber_concrete_wet = .5;  //returns 0.5
-        const ld kinetic_wood_wood = .3; //return 0.3
-        const ld kinetic_waxedWood_wetSnow = .1;//return 0.1
-        const ld kinetic_metal_wood = .3; //returns 0.3
-        const ld kinetic_steel_steel_dry = .3;  //returns 0.3
-        const ld kinetic_steel_steel_oiled = .03;  //return 0.03
-        const ld kinetic_teflon_steel = .4;  //return 0.4
-        const ld kinetic_bone_lubricated_synovial_fluid = .015; //returns 0.015
-        const ld kinetic_shoes_wood = .5;  //returns 0.5
-        const ld kinetic_shoes_ice = .5;  //return 0.5
-        const ld kinetic_ice_ice = .03;  //return 0.03
-        const ld kinetic_steel_ice = .04;  // return .04
-    }kinetic_friction_coefficient;
+        const ld rubber_on_concrete_dry = .7;  //returns 0.7
+        const ld rubber_on_concrete_wet = .5;  //returns 0.5
+        const ld wood_on_wood = .3; //return 0.3
+        const ld waxedWood_on_wetSnow = .1;//return 0.1
+        const ld metal_on_wood = .3; //returns 0.3
+        const ld steel_on_steel_dry = .3;  //returns 0.3
+        const ld steel_on_steel_oiled = .03;  //return 0.03
+        const ld teflon_on_steel = .4;  //return 0.4
+        const ld bone_on_lubricated_synovial_fluid = .015; //returns 0.015
+        const ld shoes_on_wood = .5;  //returns 0.5
+        const ld shoes_on_ice = .5;  //return 0.5
+        const ld ice_on_ice = .03;  //return 0.03
+        const ld steel_on_ice = .04;  // return .04
+    }kineticFriction;
 
 }friction;
 
@@ -71,46 +71,35 @@ class Friction
 {
 
 public:
-    static void countShow() { std::cout << "friction count: " << friction_objectCount << std::endl; }
-    Friction* _ptrFriction;
-
-    void set_frictionalCoefficient(const ld fC) { _frictionCoefficient_ = fC; }
-    ld return_frictionCoefficient()const { return _frictionCoefficient_; }
-    void show_frictionalCoefficient()const { std::cout << "frictional coefficient: " << return_frictionCoefficient() << std::endl; }
+    static void countShow() { std::cout << "friction count: "
+    << friction_objectCount << std::endl; }
+    void displayFrictionalCoefficients()const {
+        cout << "static coefficient: " << _staticCoefficient_ << endl;
+        cout << "kinetic coefficient: " << _kineticCoefficient_ << endl;
+    }
 
 
     // constructor
     Friction()
     {
-        _ptrFriction =  nullptr;
-        _frictionCoefficient_ = 0.0;
-        _frictionVal = 0.0;
+        _staticCoefficient_ = 0.0;
+        _kineticCoefficient_ = 0.0;
         countIncrease();
         //countShow();
-    }
-    Friction(ld val)
-    {
-        _ptrFriction =  nullptr;
-        _frictionCoefficient_ = 0.0;
-        _frictionVal = 0.0;
-        countIncrease();
     }
 
-    Friction(ld fC, char mode)
+    Friction(ld sc, ld kc)
     {
-        _ptrFriction = nullptr;
-        _frictionCoefficient_ = fC;
-        _frictionVal = 0.0;
+        _staticCoefficient_ = sc;
+        _kineticCoefficient_ = kc;
         countIncrease();
-        //countShow();
     }
 
     // copy constructor
     Friction(const Friction& f)
     {
-        _ptrFriction = f._ptrFriction;
-        _frictionCoefficient_ = f.return_frictionCoefficient();
-        _frictionVal = f._frictionVal;
+        _staticCoefficient_ = f._staticCoefficient_;
+        _kineticCoefficient_ = f._kineticCoefficient_;
         countIncrease();
         //countShow();
     }
@@ -269,19 +258,22 @@ public:
         return  (a-b)/(mass);
     }
 
-    void setFrictionVal(ld val) { _frictionVal = val; }
+    void setKineticCoefficient(ld val) { _kineticCoefficient_ = val; }
+    void setStaticCoefficient(ld val) { _staticCoefficient_ = val; }
+    ld staticCoefficient() { return _staticCoefficient_; }
+    ld kineticCoefficient() { return _kineticCoefficient_; }
 
     // destructor
     ~Friction()
     {
-        delete _ptrFriction;
         countDecrease();
         //countShow();
     }
 
 private:
-    ld _frictionCoefficient_;
-    ld _frictionVal;
+    ld _kineticCoefficient_;
+    ld _staticCoefficient_;
+    map<string, double> frictionCoeffMap;
     static void countIncrease() { friction_objectCount += 1; }
     static void countDecrease() { friction_objectCount -= 1; }
 
