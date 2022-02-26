@@ -298,12 +298,30 @@ public:
      * @param theta2 angle side 2 in degrees
      * @returns tension in Newtons
      */
-    static vector<long double> tensionOnMultipleStrandsHangingObject(const long double mass, const long double theta1, const long double theta2)
+    static vector<long double>
+    tensionOnMultipleStrandsHangingObject(const long double mass, const long double theta1,
+                                          const long double theta2, bool print = false)
     {
         vector<long double> result = { 0.0, 0.0, 0.0 };
-        result[0] = cos(theta1 * RADIAN) * (mass * GA);
-        result[1] = cos(theta2 * RADIAN) * (mass * GA);
-        result[2] = result[0] + result[1];
+        auto mg = mass * GA;
+        auto T1x = cos(theta1 * RADIAN);
+        auto T1y = sin(theta1 * RADIAN);
+        auto T2x = cos(theta2 * RADIAN);
+        auto T2y = sin(theta2 * RADIAN);
+        auto T2 = T1x/T2x;
+        auto temp = T2y*T2+T1y;
+        auto T1_tot = mg/temp;
+        auto T2_tot = T1_tot*T2;
+        result[0] = T1_tot;
+        result[1] = T2_tot;
+        result[2] = T1_tot + T2_tot;
+
+        if (print)
+        {
+            cout << "Tension on side 1: " << result[0] << endl;
+            cout << "Tension on side 2: " << result[1] << endl;
+            cout << "Tension on both sides: " << result[2] << endl;
+        }
         return result;
     }
     /**
@@ -469,8 +487,6 @@ public:
          }
          return F;
      }
-
-
 
 
     Forces operator+(const Forces& other) const
