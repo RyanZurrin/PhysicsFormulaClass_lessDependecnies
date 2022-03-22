@@ -1,0 +1,26 @@
+static_rubber_concrete_dry  1.0
+static_rubber_concrete_wet  .7
+static_wood_wood  .5
+static_waxedWood_wetSnow  .14
+static_metal_wood  .5
+static_steel_steel_dry  .6
+static_steel_steel_oiled  .05
+static_teflon_steel  .04
+static_bone_lubricated_synovial_fluid  .016
+static_shoes_wood  .9
+static_shoes_ice  .1
+static_ice_ice  .1
+static_steel_ice  0.4
+kinetic_rubber_concrete_dry  .7
+kinetic_rubber_concrete_wet  .5
+kinetic_wood_wood  .3
+kinetic_waxedWood_wetSnow  .1
+kinetic_metal_wood  .3
+kinetic_steel_steel_dry  .3
+kinetic_steel_steel_oiled  .03
+kinetic_teflon_steel = .4
+kinetic_bone_lubricated_synovial_fluid  .015
+kinetic_shoes_wood  .5
+kinetic_shoes_ice  .5
+kinetic_ice_ice  .03
+kinetic_steel_ice  .04

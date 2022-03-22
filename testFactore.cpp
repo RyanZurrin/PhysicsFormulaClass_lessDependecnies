@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //*************************************************************************
     //Forces::acceleration2masses(75.0, 12.0, 63.0, 38.0, true);
-    Forces::tensionOnMultipleStrandsHangingObject(1.02, 60.0, 30.0 , true);
+    Energy::vertical_height_arrow(.120, 430, .71, true);
 
 
     //**********************************************************************    ***

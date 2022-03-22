@@ -19,102 +19,95 @@ typedef  long double ld;
 
 static int energy_objectCount = 0;
 
+/**
+ * @brief  a structure containing the energy in joules of some common phenomena
+ */
+static struct EnergyOfEventsInJoules
+{
+    const ld big_bang = pow(10, 68);
+    const ld super_nova = pow(10, 44);
+    const ld fusion_all_hydrogen_earths_oceans = pow(10, 34);
+    const ld annual_world_energy_use = 4 * pow(10, 20);
+    const ld large_fusion_bomb_9megaTon = 3.8 * pow(10, 16);
+    const ld hydrogen_1kg_fusion_to_helium = 6.4 * pow(10, 14);
+    const ld uranium_1kg_nuclear_fission = 8 * pow(10, 13);
+    const ld fission_bomb_10kiloton = 4.2 * pow(10, 13);
+    const ld barrel_crude_oil = 5.9 * pow(10, 9);
+    const ld tnt_1ton = 4.2 * pow(10, 9);
+    const ld gasoline_1gallon = 1.2 * pow(10, 8);
+    const ld electricity_use_daily_per_home = 7 * pow(10, 7);
+    const ld food_intake_adult_daily_recommended = 1.2 * pow(10, 7);
+    const ld car_1000kg_at_90kmh = 3.1 * pow(10, 5);
+    const ld fat_1g_or_9point3_kcal = 3.9 * pow(10, 4);
+    const ld carbohydrate_1g_or_4point1_kcal = 1.7 * pow(10, 4);
+    const ld protein_1g_or_4point1_kcal = 1.7 * pow(10, 4);
+    const ld tennis_ball_100kmh = 22;
+    const ld mosquito_point5ms = 1.3 * pow(10, -6);
+    const ld single_electron_in_tv_tube_beam = 4.0 * pow(10, -15);
+    const ld energy_to_break_dna_strand = pow(10, -19);
+}joules;
+/**
+ * @brief a structure containing the efficiency percent of common human
+ * body and mechanical devices
+ */
+static struct Efficiency
+{
+    const int cycling_and_climbing = 20;
+    const int swimming_surface = 2;
+    const int swimming_submerged = 4;
+    const int shoveling = 3;
+    const int weightlifting = 9;
+    const int steam_engine = 17;
+    const int gasoline_engine = 30;
+    const int diesel_engine = 35;
+    const int nuclear_power_plant = 35;
+    const int coal_power_plant = 42;
+    const int electric_motor = 98;
+    const int compact_fluorescent_light = 20;
+    const int gas_heater_residential = 90;
+    const int solar_cell = 10;
+}eff;
+/**
+ * @brief Power output or consumption in watts per hour of some common things
+ */
+static struct Watts_Per_Hour
+{
+    const ld supernova_peak = 5 * pow(10, 37);
+    const ld milky_way_galaxy = pow(10, 37);
+    const ld crab_nebula_pulsar = pow(10, 28);
+    const ld sun_ours = 4 * pow(10, 26);
+    const ld volcanic_eruption_maximum = 4 * pow(10, 15);
+    const ld lightning_bolt = 2 * pow(10, 12);
+    const ld nuclear_power_plant_total_electric_and_heat_transfer = 3 * pow(10, 9);
+    const ld aircraft_carrier_total_useful_and_heat_transfer = pow(10, 8);
+    const ld dragster_total_useful_and_heat_transfer = 2 * pow(10, 6);
+    const ld car_total_useful_and_heat_transfer = 8 * pow(10, 4);
+    const ld football_player_total_useful_and_heat_transfer = 5 * pow(10, 3);
+    const ld clothes_dryer = 4 * pow(10, 3);
+    const ld person_at_rest_all_heat_transfer = 100;
+    const ld typical_incandescent_light_buld_total_useful_and_heat_transfer = 60;
+    const ld heart_person_at_rest_total_useful_and_heat_transfer = 8;
+    const ld electric_clock = 3;
+    const ld pocket_calculator = pow(10, -3);
+
+}watts;
+
 class Energy
 {
 
 public:
-
-    // Energy pointer
-    Energy* _energyPtr;
-
-
     static void countShow() { std::cout << "energy object count: " << energy_objectCount << std::endl; }
-
-    /**
-     * @brief  a structure containing the energy in joules of some common phenomena
-     */
-    struct EnergyOfEventsInJoules
-    {
-        const ld big_bang = pow(10, 68);
-        const ld super_nova = pow(10, 44);
-        const ld fusion_all_hydrogen_earths_oceans = pow(10, 34);
-        const ld annual_world_energy_use = 4 * pow(10, 20);
-        const ld large_fusion_bomb_9megaTon = 3.8 * pow(10, 16);
-        const ld hydrogen_1kg_fusion_to_helium = 6.4 * pow(10, 14);
-        const ld uranium_1kg_nuclear_fission = 8 * pow(10, 13);
-        const ld fission_bomb_10kiloton = 4.2 * pow(10, 13);
-        const ld barrel_crude_oil = 5.9 * pow(10, 9);
-        const ld tnt_1ton = 4.2 * pow(10, 9);
-        const ld gasoline_1gallon = 1.2 * pow(10, 8);
-        const ld electricity_use_daily_per_home = 7 * pow(10, 7);
-        const ld food_intake_adult_daily_recommended = 1.2 * pow(10, 7);
-        const ld car_1000kg_at_90kmh = 3.1 * pow(10, 5);
-        const ld fat_1g_or_9point3_kcal = 3.9 * pow(10, 4);
-        const ld carbohydrate_1g_or_4point1_kcal = 1.7 * pow(10, 4);
-        const ld protein_1g_or_4point1_kcal = 1.7 * pow(10, 4);
-        const ld tennis_ball_100kmh = 22;
-        const ld mosquito_point5ms = 1.3 * pow(10, -6);
-        const ld single_electron_in_tv_tube_beam = 4.0 * pow(10, -15);
-        const ld energy_to_break_dna_strand = pow(10, -19);
-    }joules;
-    /**
-     * @brief a structure containing the efficiency percent of common human
-     * body and mechanical devices
-     */
-    struct Efficiency
-    {
-        const int cycling_and_climbing = 20;
-        const int swimming_surface = 2;
-        const int swimming_submerged = 4;
-        const int shoveling = 3;
-        const int weightlifting = 9;
-        const int steam_engine = 17;
-        const int gasoline_engine = 30;
-        const int diesel_engine = 35;
-        const int nuclear_power_plant = 35;
-        const int coal_power_plant = 42;
-        const int electric_motor = 98;
-        const int compact_fluorescent_light = 20;
-        const int gas_heater_residential = 90;
-        const int solar_cell = 10;
-    }eff;
-    /**
-     * @brief Power output or consumption in watts per hour of some common things
-     */
-    struct Watts_Per_Hour
-    {
-        const ld supernova_peak = 5 * pow(10, 37);
-        const ld milky_way_galaxy = pow(10, 37);
-        const ld crab_nebula_pulsar = pow(10, 28);
-        const ld sun_ours = 4 * pow(10, 26);
-        const ld volcanic_eruption_maximum = 4 * pow(10, 15);
-        const ld lightning_bolt = 2 * pow(10, 12);
-        const ld nuclear_power_plant_total_electric_and_heat_transfer = 3 * pow(10, 9);
-        const ld aircraft_carrier_total_useful_and_heat_transfer = pow(10, 8);
-        const ld dragster_total_useful_and_heat_transfer = 2 * pow(10, 6);
-        const ld car_total_useful_and_heat_transfer = 8 * pow(10, 4);
-        const ld football_player_total_useful_and_heat_transfer = 5 * pow(10, 3);
-        const ld clothes_dryer = 4 * pow(10, 3);
-        const ld person_at_rest_all_heat_transfer = 100;
-        const ld typical_incandescent_light_buld_total_useful_and_heat_transfer = 60;
-        const ld heart_person_at_rest_total_useful_and_heat_transfer = 8;
-        const ld electric_clock = 3;
-        const ld pocket_calculator = pow(10, -3);
-
-    }watts;
 
     //constructor
     Energy()
     {
-        _energyPtr =  nullptr;
-        _energyVal = 0.0;
+        _work = 0.0;
         countIncrease();
     }
 
     Energy(ld val)
     {
-        _energyPtr =  nullptr;
-        _energyVal = 0.0;
+        _work = 0.0;
         countIncrease();
     }
 
@@ -129,6 +122,18 @@ public:
         const int num = 4184;
         return joules / num;
     }
+
+    static ld work(const ld v_0, const ld v_1, const ld mass, const bool print)
+    {
+        ld work = 0.0;
+        work = .5*mass*(v_1*v_1)  - .5*mass*(v_0*v_0);
+        if (print)
+        {
+            std::cout << "work: " << work << std::endl;
+        }
+        return work;
+    }
+
     /**
      * @brief Returns the work(W) done on a system by a constant force in the
      * direction of motion times the distance through which the force acts
@@ -206,9 +211,14 @@ public:
      * @param velocity of object in m/s
      * @returns KE (kinetic energy)
      */
-    static ld kinetic_energy_translational(const ld mass, const ld velocity)
+    static ld kinetic_energy(const ld mass, const ld velocity, const bool print = false)
     {
-        return .5 * mass * (velocity * velocity);
+        const ld fx = .5 * mass * pow(velocity, 2);
+        if (print)
+        {
+            cout << "Kinetic Energy: " << fx << endl;
+        }
+        return fx;
     }
     /**
      * @brief Returns the velocity(speed) solved by rearranging the work-energy theorem
@@ -217,10 +227,27 @@ public:
      * @param mass in kg
      * @returns the velocity
      */
-    static ld velocity_from_work_energy_theorem(const ld netWork, const ld mass)
+    static ld velocity(const ld KE, const ld mass, const bool print = false)
     {
-        return sqrt((2 * netWork) / (mass));
+        const ld fx = sqrt((2 * KE) / mass);
+        if (print)
+        {
+            cout << "Velocity: " << fx << endl;
+        }
+        return fx;
     }
+
+    static ld velocity(const ld m, const ld x, const ld F, const ld print = false)
+    {
+        const ld a = F / m;
+        const ld fx = sqrt(2.0 * a * x);
+        if (print)
+        {
+            cout << "Velocity: " << fx << endl;
+        }
+        return fx;
+    }
+
     /**
      * @brief calculates the initial velocity of a falling mass when friction is negligible
      * such as a roller coaster
@@ -266,6 +293,15 @@ public:
     {
         return abs(netWork / frictionForce);
     }
+
+    static ld distance(ld force, ld work, ld theta, bool print = false) {
+        auto distance = work/(force*cos(theta*RADIAN));
+        if (print) {
+            std::cout << "Distance: " << distance << std::endl;
+        }
+        return distance;
+    }
+
     /**
      * @brief Returns the change in gravitational potential energy
      * fx = mass * _G_ * height;
@@ -362,9 +398,14 @@ public:
     /**
      * @brief Returns the power
      */
-    static ld power(const ld work, const ld time)
+    static ld power(const ld work, const ld time, const bool print = false)
     {
-        return work / time;
+        auto power = work / time;
+        if (print)
+        {
+            std::cout << "Power: " << power << std::endl;
+        }
+        return power;
     }
     /**
      * @brief Returns the power output of someone jumping
@@ -458,6 +499,42 @@ public:
     {
         return sqrt((k * (x * x) / mass));
     }
+
+    static ld work_by_spring(const ld k, const ld x, const bool isCompressed = false,
+                             const bool print = false)
+    {
+        auto work = 0.0;
+        if (isCompressed)
+        {
+            work = .5 * k * (x * x);
+        }
+        else
+        {
+            work =  -.5 * k * (x * x);
+        }
+        if (print)
+        {
+            std::cout << "Work by spring: " << work << std::endl;
+        }
+        return work;
+    }
+
+    static ld distance_spring_moved(const ld k, const ld work,
+                                    const bool isCompressed = false,
+                                    const bool print = false)
+    {
+        auto distance = 0.0;
+        if (isCompressed) {
+            distance = sqrt((2.0 * work) / k);
+        } else
+            distance = -sqrt((2.0 * work) / k);
+        if (print)
+        {
+            std::cout << "Distance spring moved: " << distance << std::endl;
+        }
+        return distance;
+    }
+
     /**
      * @brief calculates the height of something from two velocities
      * @param velocityStart is the initial velocity
@@ -531,19 +608,52 @@ public:
     {
         return (mass * _Ga_ * distanceTop) / distanceBottom;
     }
-
-    void setEnergyVal(ld val) { _energyVal = val; }
-
-    ~Energy()
-    {
-        delete _energyPtr;
-        countDecrease();
+    /**
+     * calculates the average force using F = w/(d * cos(theta))
+     * @param work  in J
+     * @param d  distance in m
+     * @param theta angle in degrees of cosine
+     * @return  average force in N
+     */
+    static ld averageForce(ld work, ld d, ld theta, bool print = false) {
+        auto force = work / (d * cos(theta*RADIAN));
+        if (print) {
+            std::cout << "Average Force: " << force << " N\n";
+        }
+        return force;
     }
 
+    /**
+     * @brief A arrow of mass m is shot vertically from a bow whose effective
+     * spring constant is k. If the bow is drawn back a distance of x before
+     * shooting, to what height does the arrow rise?
+     * @param m  mass in kg
+     * @param k spring constant in N/m
+     * @param x  distance in m
+     * @param print  print the answer
+     * @return  height in m
+     */
+    static ld vertical_height_arrow(const ld m, const ld k, const ld x, bool print = false)
+    {
+        auto height = (k * (x * x)) / (2 * m * _Ga_);
+        if (print) {
+            std::cout << "Vertical Height: " << height << " m\n";
+        }
+        return height;
+    }
+    /**
+     * @brief sets the work variable
+     * @param val  value to set
+     */
+    void setWork(ld val) { _work = val; }
+    ~Energy()
+    {
+        countDecrease();
+    }
 private:
     static void countIncrease() { energy_objectCount += 1; }
     static void countDecrease() { energy_objectCount -= 1; }
-    ld _energyVal;
+    ld _work;
 
 
 };

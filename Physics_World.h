@@ -710,6 +710,25 @@ static struct Conversions
         return atm * 101325.0;
     }
 
+    template<typename T>
+    static auto kcalPerDay_to_watts(const T d = _val_) {
+        return d * .0484259259;
+    }
+
+    template<typename T>
+    static auto watts_to_hp(T d = _val_) {
+        return d * .001341022089;
+    }
+
+    template<typename T>
+    static auto hp_to_watts(T d = _val_) {
+        return d * 745.7;
+    }
+
+    template<typename T>
+    static auto lbs_kg(T lbs = _val_) {
+        return lbs * .45359237;
+    }
 }converter;
 
 /// <summary>
