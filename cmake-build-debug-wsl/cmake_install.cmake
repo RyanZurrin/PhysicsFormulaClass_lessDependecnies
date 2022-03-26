@@ -1,4 +1,4 @@
-# Install script for directory: /home/ryazur/src/PhysicsFormula
+# Install script for directory: /home/ryazur/src/PhysicsFormulaClass_lessDependecnies
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/ryazur/src/PhysicsFormula/cmake-build-debug-wsl/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/cmake-build-debug-wsl/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

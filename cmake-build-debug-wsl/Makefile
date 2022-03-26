@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ryazur/src/PhysicsFormula
+CMAKE_SOURCE_DIR = /home/ryazur/src/PhysicsFormulaClass_lessDependecnies
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ryazur/src/PhysicsFormula/cmake-build-debug-wsl
+CMAKE_BINARY_DIR = /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/cmake-build-debug-wsl
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryazur/src/PhysicsFormula/cmake-build-debug-wsl/CMakeFiles /home/ryazur/src/PhysicsFormula/cmake-build-debug-wsl/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/cmake-build-debug-wsl/CMakeFiles /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/cmake-build-debug-wsl/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryazur/src/PhysicsFormula/cmake-build-debug-wsl/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/cmake-build-debug-wsl/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -555,32 +555,32 @@ templateGraph.cpp.s:
 	$(MAKE) -f CMakeFiles/PhysicsFormula.dir/build.make CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.s
 .PHONY : templateGraph.cpp.s
 
-testFactore.o: testFactore.cpp.o
+testFactory.o: testFactory.cpp.o
 
-.PHONY : testFactore.o
+.PHONY : testFactory.o
 
 # target to build an object file
-testFactore.cpp.o:
-	$(MAKE) -f CMakeFiles/PhysicsFormula.dir/build.make CMakeFiles/PhysicsFormula.dir/testFactore.cpp.o
-.PHONY : testFactore.cpp.o
+testFactory.cpp.o:
+	$(MAKE) -f CMakeFiles/PhysicsFormula.dir/build.make CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o
+.PHONY : testFactory.cpp.o
 
-testFactore.i: testFactore.cpp.i
+testFactory.i: testFactory.cpp.i
 
-.PHONY : testFactore.i
+.PHONY : testFactory.i
 
 # target to preprocess a source file
-testFactore.cpp.i:
-	$(MAKE) -f CMakeFiles/PhysicsFormula.dir/build.make CMakeFiles/PhysicsFormula.dir/testFactore.cpp.i
-.PHONY : testFactore.cpp.i
+testFactory.cpp.i:
+	$(MAKE) -f CMakeFiles/PhysicsFormula.dir/build.make CMakeFiles/PhysicsFormula.dir/testFactory.cpp.i
+.PHONY : testFactory.cpp.i
 
-testFactore.s: testFactore.cpp.s
+testFactory.s: testFactory.cpp.s
 
-.PHONY : testFactore.s
+.PHONY : testFactory.s
 
 # target to generate assembly for a file
-testFactore.cpp.s:
-	$(MAKE) -f CMakeFiles/PhysicsFormula.dir/build.make CMakeFiles/PhysicsFormula.dir/testFactore.cpp.s
-.PHONY : testFactore.cpp.s
+testFactory.cpp.s:
+	$(MAKE) -f CMakeFiles/PhysicsFormula.dir/build.make CMakeFiles/PhysicsFormula.dir/testFactory.cpp.s
+.PHONY : testFactory.cpp.s
 
 # Help Target
 help:
@@ -639,9 +639,9 @@ help:
 	@echo "... templateGraph.o"
 	@echo "... templateGraph.i"
 	@echo "... templateGraph.s"
-	@echo "... testFactore.o"
-	@echo "... testFactore.i"
-	@echo "... testFactore.s"
+	@echo "... testFactory.o"
+	@echo "... testFactory.i"
+	@echo "... testFactory.s"
 .PHONY : help
 
 

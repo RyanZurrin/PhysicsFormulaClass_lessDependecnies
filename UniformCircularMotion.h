@@ -22,7 +22,270 @@ constexpr auto SUN_RADIUS = 6.963e8;
 static int circularMotion_objectCount = 0;
 ld static _masses_[] = { 0.0, 0.0 };
 
+static struct AstrophysicalData {
+    AstrophysicalData() {}
 
+    const struct SUN {
+        const ld mass = 1.989e30; // kg
+        const ld radius = 6.963e8; // m
+        const ld surfaceGravity = 274.0; // m/s^2
+        const ld escapeSpeed = 618.0; // km/s
+        const ld siderealRotationPeriod = 31.0; // days
+        const ld meanDistanceFromCentralBody = 2.6e17; // km
+        const ld orbitalPeriod = 7.30485e10; // days around center of galaxy
+        const ld orbitalVelocity = 250.0; // m/s
+    }sun;
+
+    const struct MERCURY {
+        const ld mass = .330e24; // kg
+        const ld radius = 2.44e6; // m
+        const ld surfaceGravity = 3.70; // m/s^2
+        const ld escapeSpeed = 4.25; // km/s
+        const ld siderealRotationPeriod = 58.6; // days
+        const ld meanDistanceFromCentralBody = 57.9e6; // km
+        const ld orbitalPeriod = 88.0; // days around sun
+        const ld orbitalVelocity = 47.4; // m/s
+    }mercury;
+
+    const struct VENUS {
+        const ld mass = 4.87e24; // kg
+        const ld radius = 6.05e6; // m
+        const ld surfaceGravity = 8.87; // m/s^2
+        const ld escapeSpeed = 10.4; // km/s
+        const ld siderealRotationPeriod = -243.0; // days
+        const ld meanDistanceFromCentralBody = 108.0e6; // km
+        const ld orbitalPeriod = 225.0; // days around sun
+        const ld orbitalVelocity = 35.0; // m/s
+    }venus;
+
+    const struct EARTH {
+        const ld mass = 5.97e24; // kg
+        const ld radius = 6.37e6; // m
+        const ld surfaceGravity = 9.81; // m/s^2
+        const ld escapeSpeed = 11.2; // km/s
+        const ld siderealRotationPeriod = .997; // days
+        const ld meanDistanceFromCentralBody = 149.6e6; // km
+        const ld orbitalPeriod = 365.2; // days around sun
+        const ld orbitalVelocity = 29.8; // m/s
+    }earth;
+
+    const struct MOON {
+        const ld mass = .0735e24; // kg
+        const ld radius = 1.74e6; // m
+        const ld surfaceGravity = 1.62; // m/s^2
+        const ld escapeSpeed = 2.38; // km/s
+        const ld siderealRotationPeriod = 27.3; // days
+        const ld meanDistanceFromCentralBody = .3844e6; // km
+        const ld orbitalPeriod = 27.3; // days around sun
+        const ld orbitalVelocity = 1.02; // m/s
+    }moon;
+
+    const struct MARS {
+        const ld mass = .642e24; // kg
+        const ld radius = 3.39e6; // m
+        const ld surfaceGravity = 3.71; // m/s^2
+        const ld escapeSpeed =5.03; // km/s
+        const ld siderealRotationPeriod = 1.03; // days
+        const ld meanDistanceFromCentralBody = 228.0e6; // km
+        const ld orbitalPeriod = 686.0; // days around sun
+        const ld orbitalVelocity = 24.1; // m/s
+    }mars;
+
+    const struct PHOBOS {
+        const ld mass = 1.07e16; // kg
+        const ld radius = 11.0e6; // m
+        const ld surfaceGravity = .0057; // m/s^2
+        const ld escapeSpeed =.0114; // km/s
+        const ld siderealRotationPeriod = .319; // days
+        const ld meanDistanceFromCentralBody = 9.4e3; // km
+        const ld orbitalPeriod = .319; // days around sun
+        const ld orbitalVelocity = 2.14; // m/s
+    }phobos;
+//
+//    const struct DEIMOS {
+//        const ld mass = e24; // kg
+//        const ld radius = e6; // m
+//        const ld surfaceGravity = ; // m/s^2
+//        const ld escapeSpeed =; // km/s
+//        const ld siderealRotationPeriod = ; // days
+//        const ld meanDistanceFromCentralBody = e6; // km
+//        const ld orbitalPeriod = ; // days around sun
+//        const ld orbitalVelocity = ; // m/s
+//    }deimos;
+//
+//    const struct JUPITER {
+//        const ld mass = e24; // kg
+//        const ld radius = e6; // m
+//        const ld surfaceGravity = ; // m/s^2
+//        const ld escapeSpeed =; // km/s
+//        const ld siderealRotationPeriod = ; // days
+//        const ld meanDistanceFromCentralBody = e6; // km
+//        const ld orbitalPeriod = ; // days around sun
+//        const ld orbitalVelocity = ; // m/s
+//    }jupiter;
+//
+//    const struct IO {
+//        const ld mass = e24; // kg
+//        const ld radius = e6; // m
+//        const ld surfaceGravity = ; // m/s^2
+//        const ld escapeSpeed =; // km/s
+//        const ld siderealRotationPeriod = ; // days
+//        const ld meanDistanceFromCentralBody = e6; // km
+//        const ld orbitalPeriod = ; // days around sun
+//        const ld orbitalVelocity = ; // m/s
+//    }io;
+//
+//    const struct EUROPA {
+//        const ld mass = e24; // kg
+//        const ld radius = e6; // m
+//        const ld surfaceGravity = ; // m/s^2
+//        const ld escapeSpeed =; // km/s
+//        const ld siderealRotationPeriod = ; // days
+//        const ld meanDistanceFromCentralBody = e6; // km
+//        const ld orbitalPeriod = ; // days around sun
+//        const ld orbitalVelocity = ; // m/s
+//    }europa;
+//
+//    const struct GANYMEDE {
+//        const ld mass = e24; // kg
+//        const ld radius = e6; // m
+//        const ld surfaceGravity = ; // m/s^2
+//        const ld escapeSpeed =; // km/s
+//        const ld siderealRotationPeriod = ; // days
+//        const ld meanDistanceFromCentralBody = e6; // km
+//        const ld orbitalPeriod = ; // days around sun
+//        const ld orbitalVelocity = ; // m/s
+//    }ganymede;
+//
+//    const struct CALLISTO {
+//        const ld mass = e24; // kg
+//        const ld radius = e6; // m
+//        const ld surfaceGravity = ; // m/s^2
+//        const ld escapeSpeed =; // km/s
+//        const ld siderealRotationPeriod = ; // days
+//        const ld meanDistanceFromCentralBody = e6; // km
+//        const ld orbitalPeriod = ; // days around sun
+//        const ld orbitalVelocity = ; // m/s
+//    }callisto;
+//
+//    const struct SATURN {
+//        const ld mass = e24; // kg
+//        const ld radius = e6; // m
+//        const ld surfaceGravity = ; // m/s^2
+//        const ld escapeSpeed =; // km/s
+//        const ld siderealRotationPeriod = ; // days
+//        const ld meanDistanceFromCentralBody = e6; // km
+//        const ld orbitalPeriod = ; // days around sun
+//        const ld orbitalVelocity = ; // m/s
+//    }saturn;
+//
+//    const struct TETHYS {
+//        const ld mass = e24; // kg
+//        const ld radius = e6; // m
+//        const ld surfaceGravity = ; // m/s^2
+//        const ld escapeSpeed =; // km/s
+//        const ld siderealRotationPeriod = ; // days
+//        const ld meanDistanceFromCentralBody = e6; // km
+//        const ld orbitalPeriod = ; // days around sun
+//        const ld orbitalVelocity = ; // m/s
+//    }tethys;
+//
+//    const struct DIONE {
+//        const ld mass = e24; // kg
+//        const ld radius = e6; // m
+//        const ld surfaceGravity = ; // m/s^2
+//        const ld escapeSpeed =; // km/s
+//        const ld siderealRotationPeriod = ; // days
+//        const ld meanDistanceFromCentralBody = e6; // km
+//        const ld orbitalPeriod = ; // days around sun
+//        const ld orbitalVelocity = ; // m/s
+//    }dione;
+//
+//    const struct RHEA {
+//        const ld mass = e24; // kg
+//        const ld radius = e6; // m
+//        const ld surfaceGravity = ; // m/s^2
+//        const ld escapeSpeed =; // km/s
+//        const ld siderealRotationPeriod = ; // days
+//        const ld meanDistanceFromCentralBody = e6; // km
+//        const ld orbitalPeriod = ; // days around sun
+//        const ld orbitalVelocity = ; // m/s
+//    }rhea;
+//
+//    const struct TITAN {
+//        const ld mass = e24; // kg
+//        const ld radius = e6; // m
+//        const ld surfaceGravity = ; // m/s^2
+//        const ld escapeSpeed =; // km/s
+//        const ld siderealRotationPeriod = ; // days
+//        const ld meanDistanceFromCentralBody = e6; // km
+//        const ld orbitalPeriod = ; // days around sun
+//        const ld orbitalVelocity = ; // m/s
+//    }titan;
+//
+//
+//    const struct URANUS {
+//        const ld mass = e24; // kg
+//        const ld radius = e6; // m
+//        const ld surfaceGravity = ; // m/s^2
+//        const ld escapeSpeed =; // km/s
+//        const ld siderealRotationPeriod = ; // days
+//        const ld meanDistanceFromCentralBody = e6; // km
+//        const ld orbitalPeriod = ; // days around sun
+//        const ld orbitalVelocity = ; // m/s
+//    }uranus;
+//
+//    const struct NEPTUNE {
+//        const ld mass = e24; // kg
+//        const ld radius = e6; // m
+//        const ld surfaceGravity = ; // m/s^2
+//        const ld escapeSpeed =; // km/s
+//        const ld siderealRotationPeriod = ; // days
+//        const ld meanDistanceFromCentralBody = e6; // km
+//        const ld orbitalPeriod = ; // days around sun
+//        const ld orbitalVelocity = ; // m/s
+//    }neptune;
+//
+//    const struct CERES {
+//        const ld mass = e24; // kg
+//        const ld radius = e6; // m
+//        const ld surfaceGravity = ; // m/s^2
+//        const ld escapeSpeed =; // km/s
+//        const ld siderealRotationPeriod = ; // days
+//        const ld meanDistanceFromCentralBody = e6; // km
+//        const ld orbitalPeriod = ; // days around sun
+//        const ld orbitalVelocity = ; // m/s
+//    }ceres;
+//
+//    const struct PLUTO {
+//        const ld mass = e24; // kg
+//        const ld radius = e6; // m
+//        const ld surfaceGravity = ; // m/s^2
+//        const ld escapeSpeed =; // km/s
+//        const ld siderealRotationPeriod = ; // days
+//        const ld meanDistanceFromCentralBody = e6; // km
+//        const ld orbitalPeriod = ; // days around sun
+//        const ld orbitalVelocity = ; // m/s
+//    }pluto;
+//
+//    const struct ERIS {
+//        const ld mass = e24; // kg
+//        const ld radius = e6; // m
+//        const ld surfaceGravity = ; // m/s^2
+//        const ld escapeSpeed =; // km/s
+//        const ld siderealRotationPeriod = ; // days
+//        const ld meanDistanceFromCentralBody = e6; // km
+//        const ld orbitalPeriod = ; // days around sun
+//        const ld orbitalVelocity = ; // m/s
+//    }eris;
+//
+//
+
+
+
+
+
+}celestialObjects;
 
 class UniformCircularMotion
 {

@@ -15,7 +15,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/PhysicsFormula.dir/Vector.cpp.o"
   "CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.o"
   "CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.o"
-  "CMakeFiles/PhysicsFormula.dir/testFactore.cpp.o"
+  "CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o"
   "PhysicsFormula"
   "PhysicsFormula.pdb"
 )
