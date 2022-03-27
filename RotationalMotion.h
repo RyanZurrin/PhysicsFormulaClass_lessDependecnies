@@ -87,8 +87,8 @@ public:
     RotationalMotion(ld rpm, ld time)
     {
         _rotational_motionPtr = nullptr;
-        set_angularVelocityW_(conversion_revolutions_min_to_radians_second(rpm));
-        _angular_acceleration_ = get_angularVelocityW() / time;
+        setAngularVelocityW_(revMin_to_radSec(rpm));
+        _angular_acceleration_ = getAngularVelocityW() / time;
         _linear_acceleration_ = rpm / time;
         countIncrease();
     }

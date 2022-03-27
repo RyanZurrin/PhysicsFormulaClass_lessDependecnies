@@ -16,90 +16,143 @@ constexpr auto _RAD_ = 360.0 / (2.0 * _PI_);
 constexpr auto _Gc_ = 6.674e-11;
 //Radius of the earth 6,371km
 constexpr auto EARTH_RADIUS = 6.371e6;
-//Radius of the sun 6,963km
+constexpr auto EARTH_MASS = 5.972e24;
+constexpr auto MOON_RADIUS = 1737.1e3;
+constexpr auto MOON_MASS = 7.34767309e22;
 constexpr auto SUN_RADIUS = 6.963e8;
+constexpr auto SUN_MASS = 1.989e30;
 
 static int circularMotion_objectCount = 0;
-ld static _masses_[] = { 0.0, 0.0 };
 
-static struct AstrophysicalData {
-    AstrophysicalData() {}
+
+static struct AstronomicalObject {
+    AstronomicalObject() {}
 
     const struct SUN {
+        /**
+         * The mass of the sun in kg (1.989e30)
+         */
         const ld mass = 1.989e30; // kg
+        /**
+         * The radius of the sun in meters (6.963e8)
+         */
         const ld radius = 6.963e8; // m
+        /**
+         * The surface gravity of the sun in N (274.0)
+         */
         const ld surfaceGravity = 274.0; // m/s^2
-        const ld escapeSpeed = 618.0; // km/s
-        const ld siderealRotationPeriod = 31.0; // days
-        const ld meanDistanceFromCentralBody = 2.6e17; // km
-        const ld orbitalPeriod = 7.30485e10; // days around center of galaxy
-        const ld orbitalVelocity = 250.0; // m/s
+        /**
+         * The surface acceleration of the sun in m/s^2 (618)
+         */
+        const ld escapeSpeed = 618.0e3; // m/s
+        /**
+         * The sidereal rotation period of the sun in seconds 2114208
+         *  or (24.47) days
+         */
+        const ld siderealRotationPeriod = 2114208; // seconds
+        /**
+         * The mean distance from central body (galaxy center)
+         * of the sun in m (2.6e20)
+         */
+        const ld meanDistanceFromCentralBody = 2.6e20; // m
+        /**
+         * The orbital period of the sun in days (7.30485e10)
+         */
+        const ld orbitalPeriod = 7.30485e10;
+        /**
+         * The orbital velocity of the sun in m/s (250.0e3)
+         */
+        const ld orbitalVelocity = 250.0e3;
     }sun;
 
     const struct MERCURY {
+        /**
+         * @brief mass of the planet in kg (1.65e-7)
+         */
         const ld mass = .330e24; // kg
+        /**
+         * @brief radius of the planet in m (2439.7)
+         */
         const ld radius = 2.44e6; // m
-        const ld surfaceGravity = 3.70; // m/s^2
-        const ld escapeSpeed = 4.25; // km/s
+        /**
+         * @brief surface gravity of the planet in m/s^2 (3.711)
+         */
+        const ld surfaceGravity = 3.71; // m/s^2
+        /**
+         * @brief escape velocity of the planet in km/s (35.02)
+         */
+        const ld escapeSpeed = 4.25e3; // m/s
+        /**
+         * @brief sidereal rotation period of the planet in days (88.0)
+         */
         const ld siderealRotationPeriod = 58.6; // days
-        const ld meanDistanceFromCentralBody = 57.9e6; // km
+        /**
+         * @brief mean distance from the sun to the planet in m (57.91e9)
+         */
+        const ld meanDistanceFromCentralBody = 57.9e9; // m
+        /**
+         * @brief orbital period of the planet in days (88.0)
+         */
         const ld orbitalPeriod = 88.0; // days around sun
-        const ld orbitalVelocity = 47.4; // m/s
+        /**
+         * @brief orbital velocity of the planet in m/s (47.4)
+         */
+        const ld orbitalVelocity = 47.4e3; // m/s
     }mercury;
 
     const struct VENUS {
         const ld mass = 4.87e24; // kg
         const ld radius = 6.05e6; // m
         const ld surfaceGravity = 8.87; // m/s^2
-        const ld escapeSpeed = 10.4; // km/s
+        const ld escapeSpeed = 10.4e3; // m/s
         const ld siderealRotationPeriod = -243.0; // days
-        const ld meanDistanceFromCentralBody = 108.0e6; // km
+        const ld meanDistanceFromCentralBody = 108.0e9; // m
         const ld orbitalPeriod = 225.0; // days around sun
-        const ld orbitalVelocity = 35.0; // m/s
+        const ld orbitalVelocity = 35.0e3; // m/s
     }venus;
 
     const struct EARTH {
         const ld mass = 5.97e24; // kg
         const ld radius = 6.37e6; // m
         const ld surfaceGravity = 9.81; // m/s^2
-        const ld escapeSpeed = 11.2; // km/s
+        const ld escapeSpeed = 11.2e3; // m/s
         const ld siderealRotationPeriod = .997; // days
-        const ld meanDistanceFromCentralBody = 149.6e6; // km
+        const ld meanDistanceFromCentralBody = 149.6e9; // m
         const ld orbitalPeriod = 365.2; // days around sun
-        const ld orbitalVelocity = 29.8; // m/s
+        const ld orbitalVelocity = 29.8e3; // m/s
     }earth;
 
     const struct MOON {
         const ld mass = .0735e24; // kg
         const ld radius = 1.74e6; // m
         const ld surfaceGravity = 1.62; // m/s^2
-        const ld escapeSpeed = 2.38; // km/s
+        const ld escapeSpeed = 2.38e3; // m/s
         const ld siderealRotationPeriod = 27.3; // days
-        const ld meanDistanceFromCentralBody = .3844e6; // km
+        const ld meanDistanceFromCentralBody = .3844e9; // m
         const ld orbitalPeriod = 27.3; // days around sun
-        const ld orbitalVelocity = 1.02; // m/s
+        const ld orbitalVelocity = 1.02e3; // m/s
     }moon;
 
     const struct MARS {
         const ld mass = .642e24; // kg
-        const ld radius = 3.39e6; // m
+        const ld radius = 3.38e6; // m
         const ld surfaceGravity = 3.71; // m/s^2
-        const ld escapeSpeed =5.03; // km/s
+        const ld escapeSpeed =5.03e3; // m/s
         const ld siderealRotationPeriod = 1.03; // days
-        const ld meanDistanceFromCentralBody = 228.0e6; // km
+        const ld meanDistanceFromCentralBody = 228.0e9; // m
         const ld orbitalPeriod = 686.0; // days around sun
-        const ld orbitalVelocity = 24.1; // m/s
+        const ld orbitalVelocity = 24.1e3; // m/s
     }mars;
 
     const struct PHOBOS {
         const ld mass = 1.07e16; // kg
         const ld radius = 11.0e6; // m
         const ld surfaceGravity = .0057; // m/s^2
-        const ld escapeSpeed =.0114; // km/s
+        const ld escapeSpeed =.0114e3; // m/s
         const ld siderealRotationPeriod = .319; // days
-        const ld meanDistanceFromCentralBody = 9.4e3; // km
+        const ld meanDistanceFromCentralBody = 9.4e6; // m
         const ld orbitalPeriod = .319; // days around sun
-        const ld orbitalVelocity = 2.14; // m/s
+        const ld orbitalVelocity = 2.14e3; // m/s
     }phobos;
 //
 //    const struct DEIMOS {
@@ -110,30 +163,30 @@ static struct AstrophysicalData {
 //        const ld siderealRotationPeriod = ; // days
 //        const ld meanDistanceFromCentralBody = e6; // km
 //        const ld orbitalPeriod = ; // days around sun
-//        const ld orbitalVelocity = ; // m/s
+//        const ld orbitalVelocity = e3; // m/s
 //    }deimos;
 //
-//    const struct JUPITER {
-//        const ld mass = e24; // kg
-//        const ld radius = e6; // m
-//        const ld surfaceGravity = ; // m/s^2
-//        const ld escapeSpeed =; // km/s
-//        const ld siderealRotationPeriod = ; // days
-//        const ld meanDistanceFromCentralBody = e6; // km
-//        const ld orbitalPeriod = ; // days around sun
-//        const ld orbitalVelocity = ; // m/s
-//    }jupiter;
-//
-//    const struct IO {
-//        const ld mass = e24; // kg
-//        const ld radius = e6; // m
-//        const ld surfaceGravity = ; // m/s^2
-//        const ld escapeSpeed =; // km/s
-//        const ld siderealRotationPeriod = ; // days
-//        const ld meanDistanceFromCentralBody = e6; // km
-//        const ld orbitalPeriod = ; // days around sun
-//        const ld orbitalVelocity = ; // m/s
-//    }io;
+    const struct JUPITER {
+        const ld mass = 1.90e27; // kg
+        const ld radius = 69.9e6; // m
+        const ld surfaceGravity = 24.8; // m/s^2
+        const ld escapeSpeed = 60.2e3; // m/s
+        const ld siderealRotationPeriod = .414; // days
+        const ld meanDistanceFromCentralBody = 778e9; // m
+        const ld orbitalPeriod = 4.34588e3; // days around sun
+        const ld orbitalVelocity = 13.1e3; // m/s
+    }jupiter;
+
+    const struct IO {
+        const ld mass = .0893e24; // kg
+        const ld radius = 1.82e6; // m
+        const ld surfaceGravity = 1.80; // m/s^2
+        const ld escapeSpeed = 2.38e3; // m/s
+        const ld siderealRotationPeriod = 1.77; // days
+        const ld meanDistanceFromCentralBody = .422e9; // m
+        const ld orbitalPeriod = 1.77; // days around sun
+        const ld orbitalVelocity = 17.3e3; // m/s
+    }io;
 //
 //    const struct EUROPA {
 //        const ld mass = e24; // kg
@@ -143,7 +196,7 @@ static struct AstrophysicalData {
 //        const ld siderealRotationPeriod = ; // days
 //        const ld meanDistanceFromCentralBody = e6; // km
 //        const ld orbitalPeriod = ; // days around sun
-//        const ld orbitalVelocity = ; // m/s
+//        const ld orbitalVelocity = e3; // m/s
 //    }europa;
 //
 //    const struct GANYMEDE {
@@ -154,7 +207,7 @@ static struct AstrophysicalData {
 //        const ld siderealRotationPeriod = ; // days
 //        const ld meanDistanceFromCentralBody = e6; // km
 //        const ld orbitalPeriod = ; // days around sun
-//        const ld orbitalVelocity = ; // m/s
+//        const ld orbitalVelocity = e3; // m/s
 //    }ganymede;
 //
 //    const struct CALLISTO {
@@ -165,7 +218,7 @@ static struct AstrophysicalData {
 //        const ld siderealRotationPeriod = ; // days
 //        const ld meanDistanceFromCentralBody = e6; // km
 //        const ld orbitalPeriod = ; // days around sun
-//        const ld orbitalVelocity = ; // m/s
+//        const ld orbitalVelocity = e3; // m/s
 //    }callisto;
 //
 //    const struct SATURN {
@@ -176,7 +229,7 @@ static struct AstrophysicalData {
 //        const ld siderealRotationPeriod = ; // days
 //        const ld meanDistanceFromCentralBody = e6; // km
 //        const ld orbitalPeriod = ; // days around sun
-//        const ld orbitalVelocity = ; // m/s
+//        const ld orbitalVelocity = e3; // m/s
 //    }saturn;
 //
 //    const struct TETHYS {
@@ -187,7 +240,7 @@ static struct AstrophysicalData {
 //        const ld siderealRotationPeriod = ; // days
 //        const ld meanDistanceFromCentralBody = e6; // km
 //        const ld orbitalPeriod = ; // days around sun
-//        const ld orbitalVelocity = ; // m/s
+//        const ld orbitalVelocity = e3; // m/s
 //    }tethys;
 //
 //    const struct DIONE {
@@ -198,7 +251,7 @@ static struct AstrophysicalData {
 //        const ld siderealRotationPeriod = ; // days
 //        const ld meanDistanceFromCentralBody = e6; // km
 //        const ld orbitalPeriod = ; // days around sun
-//        const ld orbitalVelocity = ; // m/s
+//        const ld orbitalVelocity = e3; // m/s
 //    }dione;
 //
 //    const struct RHEA {
@@ -209,7 +262,7 @@ static struct AstrophysicalData {
 //        const ld siderealRotationPeriod = ; // days
 //        const ld meanDistanceFromCentralBody = e6; // km
 //        const ld orbitalPeriod = ; // days around sun
-//        const ld orbitalVelocity = ; // m/s
+//        const ld orbitalVelocity = e3; // m/s
 //    }rhea;
 //
 //    const struct TITAN {
@@ -220,7 +273,7 @@ static struct AstrophysicalData {
 //        const ld siderealRotationPeriod = ; // days
 //        const ld meanDistanceFromCentralBody = e6; // km
 //        const ld orbitalPeriod = ; // days around sun
-//        const ld orbitalVelocity = ; // m/s
+//        const ld orbitalVelocity = e3; // m/s
 //    }titan;
 //
 //
@@ -232,7 +285,7 @@ static struct AstrophysicalData {
 //        const ld siderealRotationPeriod = ; // days
 //        const ld meanDistanceFromCentralBody = e6; // km
 //        const ld orbitalPeriod = ; // days around sun
-//        const ld orbitalVelocity = ; // m/s
+//        const ld orbitalVelocity = e3; // m/s
 //    }uranus;
 //
 //    const struct NEPTUNE {
@@ -243,7 +296,7 @@ static struct AstrophysicalData {
 //        const ld siderealRotationPeriod = ; // days
 //        const ld meanDistanceFromCentralBody = e6; // km
 //        const ld orbitalPeriod = ; // days around sun
-//        const ld orbitalVelocity = ; // m/s
+//        const ld orbitalVelocity = e3; // m/s
 //    }neptune;
 //
 //    const struct CERES {
@@ -254,7 +307,7 @@ static struct AstrophysicalData {
 //        const ld siderealRotationPeriod = ; // days
 //        const ld meanDistanceFromCentralBody = e6; // km
 //        const ld orbitalPeriod = ; // days around sun
-//        const ld orbitalVelocity = ; // m/s
+//        const ld orbitalVelocity = e3; // m/s
 //    }ceres;
 //
 //    const struct PLUTO {
@@ -265,7 +318,7 @@ static struct AstrophysicalData {
 //        const ld siderealRotationPeriod = ; // days
 //        const ld meanDistanceFromCentralBody = e6; // km
 //        const ld orbitalPeriod = ; // days around sun
-//        const ld orbitalVelocity = ; // m/s
+//        const ld orbitalVelocity = e3; // m/s
 //    }pluto;
 //
 //    const struct ERIS {
@@ -276,7 +329,7 @@ static struct AstrophysicalData {
 //        const ld siderealRotationPeriod = ; // days
 //        const ld meanDistanceFromCentralBody = e6; // km
 //        const ld orbitalPeriod = ; // days around sun
-//        const ld orbitalVelocity = ; // m/s
+//        const ld orbitalVelocity = e3; // m/s
 //    }eris;
 //
 //
@@ -289,10 +342,6 @@ static struct AstrophysicalData {
 
 class UniformCircularMotion
 {
-
-    // pointer for the class object to use
-    UniformCircularMotion* _circlePtr;
-
     // radius variable of object
     ld  _radius_;
 
@@ -325,7 +374,6 @@ public:
     // suppresses default constructor
     UniformCircularMotion()
     {
-        _circlePtr = nullptr;
         _radius_ = 0.0;
         _rotationAngle_ = 0.0;
         _angularVelocityW_ = 0.0;
@@ -340,7 +388,6 @@ public:
     // assignment constructor
     UniformCircularMotion(ld radius, ld velocity)
     {
-        _circlePtr =  nullptr;
         _radius_ = radius;
         _angularVelocityW_ = velocity / radius;
         _linearVelocity = radius * _angularVelocityW_;
@@ -354,7 +401,6 @@ public:
     // overloaded constructor
     UniformCircularMotion(ld radius, ld velocity, ld time)
     {
-        _circlePtr = nullptr;
         _radius_ = radius;
         _angularVelocityW_ = velocity / radius;
         _linearVelocity = radius * _angularVelocityW_;
@@ -368,7 +414,6 @@ public:
     //copy constructor
     UniformCircularMotion(const UniformCircularMotion& r)
     {
-        _circlePtr = r._circlePtr;
         _angularVelocityW_ = r._angularVelocityW_;
         _centripetalAcceleration_ = r._centripetalAcceleration_;
         _linearVelocity = r._linearVelocity;
@@ -385,7 +430,6 @@ public:
     {
         if (this != &r)
         {
-            _circlePtr = r._circlePtr;
             _centripetalAcceleration_ = r._centripetalAcceleration_;
             _angularVelocityW_ = r._angularVelocityW_;
             _linearVelocity = r._linearVelocity;
@@ -402,57 +446,57 @@ public:
     /*===================================================================
      * setters
      */
-    void set_radius_(const ld r) { _radius_ = r; }
-    void set_rotationalAngle_(const ld ra) {
+    void setRadius_(const ld r) { _radius_ = r; }
+    void setRotationalAngle_(const ld ra) {
         _rotationAngle_ = ra;
         _arcLength_ = _radius_ * _rotationAngle_ * _RAD_;
     }
-    void set_angularVelocityW_(const ld av) { _angularVelocityW_ = av; }
-    void set_linearVelocity_(const ld lv) { _linearVelocity = lv; }
-    void set_arcLength_(const ld al) {
+    void setAngularVelocityW_(const ld av) { _angularVelocityW_ = av; }
+    void setLinearVelocity_(const ld lv) { _linearVelocity = lv; }
+    void setArcLength_(const ld al) {
         _arcLength_ = al;
         _rotationAngle_ = _arcLength_ / (_radius_ * _RAD_);
     }
-    void set_centripetalAcceleration_(const ld ca) { _centripetalAcceleration_ = ca; }
-    void set_frequency_(const ld f) { _frequency_ = f; }
-    void set_time_period_(const ld tp) { _time_period_ = tp; }
+    void setCentripetalAcceleration_(const ld ca) { _centripetalAcceleration_ = ca; }
+    void setFrequency_(const ld f) { _frequency_ = f; }
+    void setTimePeriod_(const ld tp) { _time_period_ = tp; }
 
     /*===================================================================
      * getters
      */
-    ld get_radius()const { return _radius_; }
-    ld get_rotationalAngle()const { return  _rotationAngle_; }
-    ld get_angularVelocityW()const { return _angularVelocityW_; }
-    ld get_linearVelocity()const { return _linearVelocity; }
-    ld get_arcLength()const { return _arcLength_; }
-    ld get_centripetalAcceleration()const { return _centripetalAcceleration_; }
-    ld get_frequency()const { return _frequency_; }
-    ld get_time_period()const { return _time_period_; }
+    ld getRadius()const { return _radius_; }
+    ld getRotationalAngle()const { return  _rotationAngle_; }
+    ld getAngularVelocityW()const { return _angularVelocityW_; }
+    ld getLinearVelocity()const { return _linearVelocity; }
+    ld getArcLength()const { return _arcLength_; }
+    ld getCentripetalAcceleration()const { return _centripetalAcceleration_; }
+    ld getFrequency()const { return _frequency_; }
+    ld getTimePeriod()const { return _time_period_; }
 
     /*===================================================================
      * display methods
      */
-    void show_radius()const { cout << "radius: " << _radius_ << "m" <<endl; }
-    void show_rotationalAngle()const { cout << "rotational angle: " << _rotationAngle_ << "degrees" << endl;	}
-    void show_angularVelocityW()const { cout << "angular velocity: " << _angularVelocityW_ << "rad/s" << endl;	}
-    void show_linearVelocity()const { cout << "linear velocity: " << _linearVelocity << "m/s" << endl; }
-    void show_arcLength()const { cout << "arcLength: " << _arcLength_ << "m" << endl; }
-    void show_centripetalAcceleration()const { cout << "centripetal acceleration: " << _centripetalAcceleration_ << "m/s^2" << endl; }
-    void show_frequency()const {
+    void showRadius()const { cout << "radius: " << _radius_ << "m" <<endl; }
+    void showRotationalAngle()const { cout << "rotational angle: " << _rotationAngle_ << "degrees" << endl;	}
+    void showAngularVelocityW()const { cout << "angular velocity: " << _angularVelocityW_ << "rad/s" << endl;	}
+    void showLinearVelocity()const { cout << "linear velocity: " << _linearVelocity << "m/s" << endl; }
+    void showArcLength()const { cout << "arcLength: " << _arcLength_ << "m" << endl; }
+    void showCentripetalAcceleration()const { cout << "centripetal acceleration: " << _centripetalAcceleration_ << "m/s^2" << endl; }
+    void showFrequency()const {
         cout << "frequency: " << _frequency_ << "Hz" << endl;
         // calculate freq in RPM
         cout << "rev per min: " << _frequency_ * 60 << "RPM" << endl;
     }
     void show_time_period()const { cout << "time period: " << _time_period_ << "s" << endl; }
     void show_all_data()const {
-        show_radius();
-        show_angularVelocityW();
-        show_linearVelocity();
-        show_centripetalAcceleration();
-        show_frequency();
+        showRadius();
+        showAngularVelocityW();
+        showLinearVelocity();
+        showCentripetalAcceleration();
+        showFrequency();
         show_time_period();
-        show_rotationalAngle();
-        show_arcLength();
+        showRotationalAngle();
+        showArcLength();
     }
 
 
@@ -460,10 +504,12 @@ public:
      * conversion methods
      */
 
-    ld static conversion_revolutions(const ld radTotal)
+    ld static radiansToRevolutions(const ld radTotal, bool print = false)
     {
-        cout << "revolutions: " << radTotal / (2.0 * _PI_) << endl;
-        return radTotal / (2.0 * _PI_);
+        ld rev = radTotal / (2 * M_PI);
+        if (print)
+            cout << "radians to revolutions: " << rev << endl;
+        return rev;
     }
 
     /**
@@ -471,9 +517,12 @@ public:
      * @param revMin revolutions per minute
      * @returns revolutions in radians per second
      */
-    ld static conversion_revolutions_min_to_radians_second(const ld revMin)
+    ld static revMin_to_radSec(const ld revMin, bool print = false)
     {
-        return (revMin * 2.0 * _PI_) / 60;
+        ld radSec = revMin * (2 * M_PI) / 60;
+        if (print)
+            cout << "rev per min to rad per sec: " << radSec << endl;
+        return radSec;
     }
 
     /**
@@ -481,19 +530,22 @@ public:
      * @param radSec is the rotation speed in radians per second
      * @returns the revolutions per minute
      */
-    ld static conversion_radians_second_to_revolutions_minute(const ld radSec)
+    ld static radSec_to_revMin(const ld radSec, bool print = false)
     {
-        return (radSec * 60.0) / (2.0 * _PI_);
+        ld revMin = (radSec * 60) / (2 * M_PI);
+        if (print)
+            cout << "rad per sec to rev per min: " << revMin << endl;
+        return revMin;
     }
 
     /**
-     *  @brief Returns the ratio of the value to gravity
+     *  @brief Returns the ratio of the value of one gravitational acceleration to earths gravity
      *  @param unit can be whatever you are dividing by gravity acceleration
      *  @returns the gravity ratio
      */
-    ld static conversion_gravity_ratio(const ld unit)
+    ld static gravityRatio(const ld unit)
     {
-        return unit / _Ga_;
+        return unit / celestialObjects.earth.surfaceGravity;
     }
 
     /*====================================================================
@@ -506,7 +558,7 @@ public:
      * @param rotations are the number of rotations counted
      * @returns the arc length - linear distance traveled
      */
-    ld static arc_length_meters(const ld radius, const ld rotations)
+    ld static arcLength_meters(const ld radius, const ld rotations)
     {
         return (rotations * 2 * _PI_) * radius;
     }
@@ -516,7 +568,7 @@ public:
      * @param rotations are the number of rotations counted
      * @returns the arc length - in radians
      */
-    ld static arc_length_radians(const ld rotations)
+    ld static arcLength_radians(const ld rotations)
     {
         return (rotations * 2 * _PI_);
     }
@@ -527,7 +579,7 @@ public:
      * @param rt radius or time
      * @returns angular velocity
      */
-    ld static angular_velocity(const ld v, const ld rt)
+    ld static angularVelocity(const ld v, const ld rt)
     {
         return v / rt;
     }
@@ -538,7 +590,7 @@ public:
      * @param av the angular velocity
      * @returns linear velocity
      */
-    ld static linear_velocity(const ld r, const ld av)
+    ld static linearVelocity(const ld r, const ld av)
     {
         return r * av;
     }
@@ -548,7 +600,7 @@ public:
      * @param w angular velocity in radian revolutions per second
      * @returns the centripetal acceleration
      */
-    ld static centripetal_acceleration_W(const ld r, const ld w)
+    ld static centripetalAcceleration_W(const ld r, const ld w)
     {
         return r * (w * w);
     }
@@ -559,9 +611,12 @@ public:
      * @param v angular velocity in radian revolutions per second
      * @returns the centripetal acceleration
      */
-    ld static centripetal_acceleration_V(const ld r, const ld v)
+    ld static centripetalAcceleration_V(const ld r, const ld v, bool print = false)
     {
-        return (v * v) / r;
+        ld w = (v * v) / r;
+        if (print)
+            cout << "centripetal acceleration: " << w << endl;
+        return w;
     }
 
     /**
@@ -571,7 +626,7 @@ public:
      * @param radius
      * @returns the centripetal force
      */
-    ld static centripetal_force_V(const ld mass, const ld velocity, const ld radius)
+    ld static centripetalForce_V(const ld mass, const ld velocity, const ld radius)
     {
         return (mass * (velocity * velocity)) / (radius);
     }
@@ -583,7 +638,7 @@ public:
      * @param radius form center
      * @returns the centripetal force
      */
-    ld static centripetal_force_W(const ld mass, const ld angularVelocity, const ld radius)
+    ld static centripetalForce_W(const ld mass, const ld angularVelocity, const ld radius)
     {
         return mass * radius * (angularVelocity * angularVelocity);
     }
@@ -608,7 +663,7 @@ public:
      * @param speed is in m/s meters per second
      * @returns the minimum static coefficient needed
      */
-    ld static coefficientOfFriction_minimumForEmbankedTurn(const ld r, const ld angle, const ld speed)
+    ld static minCoefficientOfFrictionForEmbankedTurn(const ld r, const ld angle, const ld speed)
     {
         return ((r * _Ga_) * tan(angle * RADIAN) - (speed * speed)) / ((r * _Ga_) + (speed * speed) * tan(15*RADIAN));
     }
@@ -621,7 +676,7 @@ public:
      * @param speed is in m/s meters per second
      * @returns the minimum static coefficient needed
      */
-    ld static coefficientFriction_minimumForFlatCurve(const ld r,  const ld speed)
+    ld static minCoefficientFrictionForFlatCurve(const ld r,  const ld speed)
     {
         return (speed * speed) / (r * _Ga_);
     }
@@ -632,7 +687,7 @@ public:
      * @param angle of the embankment
      * @returns the ideal velocity to take the corner
      */
-    ld static ideal_speed_banked_curve(const ld r, const ld angle)
+    ld static idealSpeedBankedCurve(const ld r, const ld angle)
     {
         return pow(r * _Ga_ * tan(angle * RADIAN), .5);
     }
@@ -644,7 +699,7 @@ public:
      * @param v is the velocity or speed in m/s
      * @returns the ideal angle in degrees
      */
-    ld static ideal_angle_banked_curve(const ld r, const ld v)
+    ld static idealAngleBankedCurve(const ld r, const ld v)
     {
         return atan((v * v) / (r * _Ga_))*DEGREE;
     }
@@ -659,9 +714,24 @@ public:
      * @param r is the distance from the center of one mass to the center of the other mass
      * @returns magnitude of acceleration between two masses
      */
-    ld static newtons_universal_law_gravitation(const ld m, const ld M, const ld r)
+    ld static universalGravitation_force(const ld m, const ld M, const ld r, bool print = true)
     {
-        return _Gc_ * (m * M) / (r * r);
+        auto f =  _Gc_ * (m * M) / (r * r);
+        if(print)
+        {
+            std::cout << "Gravitational Force: " << f << " N" << std::endl;
+        }
+        return f;
+    }
+
+    ld static universalGravitation_acceleration(const ld r, const ld M = celestialObjects.earth.mass, bool print = false)
+    {
+        auto acc = _Gc_ * (M) / (r * r);
+        if(print)
+        {
+            std::cout << "Acceleration: " << acc << std::endl;
+        }
+        return acc;
     }
 
     /**
@@ -671,20 +741,46 @@ public:
      * @param r is the distance from the center of one mass to the center of the other mass
      * @param totalMass is the total mass of both objects combined
      */
-    void static newtons_universal_law_gravitation2(const ld force, const ld r, const ld totalMass)
+    vector<ld> static universalGravitation_masses(const ld force, const ld r, const ld totalMass, bool print = true)
     {
         ld temp = (force * (r*r)) / (_Gc_);
-        _masses_[0] = (totalMass + sqrt((totalMass * totalMass) - 4 * temp)) / (2);
-        _masses_[1] = (totalMass - sqrt((totalMass * totalMass) - 4 * temp)) / (2);
-        show_array(_masses_);
-
+        auto m1 = (totalMass + sqrt((totalMass * totalMass) - 4 * temp)) / (2);
+        auto m2 = (totalMass - sqrt((totalMass * totalMass) - 4 * temp)) / (2);
+        vector<ld> masses = {m1, m2};
+        if(print)
+        {
+            cout << "The masses of the two objects are: " << endl;
+            for(auto i : masses)
+            {
+                cout << i << endl;
+            }
+        }
+        return masses;
     }
+
+    /**
+    * @brief Prints the masses of two objects from knowing the radius and the magnitude of force between them
+    * as well as the combined weights of the two.
+    * @param force is the magnitude of the force between the two
+    * @param r is the distance from the center of one mass to the center of the other mass
+    */
+    static ld universalGravitation_masses(const ld force, const ld r,  bool print = true)
+    {
+        ld totalMass = sqrt((force * (r*r)) / (_Gc_));
+        if(print)
+        {
+            cout << "The masses of the two objects are: " << endl;
+            cout << totalMass << "kg, or " << (totalMass) / 2.0 << "kg each" << endl;
+        }
+        return totalMass/2.0;
+    }
+
     /**
      * @brief Prints the masses from the mass array
      * @param obj is reference to a array holding twwo masses
      */
     template <typename T, std::size_t size>
-    void static show_array(const T(&array)[size])
+    void static showArray(const T(&array)[size])
     {
         for (size_t i = 0; i < size; i++)
             cout << array[i] << " ";
@@ -701,7 +797,7 @@ public:
      * @param pL is the percentage of the surface gravity of the earth
      * @returns the orbital period in hours
      */
-    ld static orbit_time_earth_satellite(ld oH, ld pL, ld planetRadius = EARTH_RADIUS)
+    ld static orbitTimeEarthSatellite(ld oH, ld pL, ld planetRadius = EARTH_RADIUS)
     {
         // turn the percentage into a decimal
         ld pL_ = pL / 100.0;
@@ -714,7 +810,7 @@ public:
      * @param period  is the period of the wave in seconds
      * @return  the frequency in hertz
      */
-    ld static calculate_frequency(const ld period)
+    ld static frequency(const ld period)
     {
         return 1.0 / period;
     }
@@ -723,7 +819,7 @@ public:
      * @param frequency is the frequency of the wave in hertz
      * @return  the period in seconds
      */
-    ld static calculate_period(const ld frequency)
+    ld static period(const ld frequency)
     {
         return 1.0 / frequency;
     }
@@ -738,14 +834,191 @@ public:
      * @param Xg is the acceleration in meters per second squared
      * @returns the minimum radius in meters
      */
-    ld static minimum_turn_radius(const ld v0, const ld Xg) {
+    ld static minTurnRadius(const ld v0, const ld Xg) {
         // r = v0^2 / Xg*gravity
         return pow(v0, 2) / (Xg * _G_);
     }
+    /**
+     * @brief calulates the circular orbit speed of a satellite from the radius and mass
+     * @param radius  is the radius of the orbit in meters
+     * @param mass  is the mass of the satellite in kilograms
+     * @param print  is a boolean to print the result
+     * @return  the speed of the satellite in meters per second
+     */
+    ld static circularOrbitSpeed(const ld radius, const ld mass, bool print = false)
+    {
+        ld v = sqrt((_Gc_ * mass) / radius);
+        if(print)
+        {
+            cout << "The circular orbit speed is: " << v << endl;
+        }
+        return v;
+    }
+
+    /**
+     * @brief calculates the orbital period of a satellite from the radius and mass
+     * @param radius is the radius of the orbit in meters
+     * @param mass is the mass of the satellite in kilograms
+     * @param print is a boolean to print the result
+     * @return the orbital period in seconds
+     */
+    static ld orbitalPeriod(const ld r, const ld m, bool print = false)
+    {
+        auto period = sqrt((4.0 * (PI * PI) * (r*r*r)) / (_Gc_ * m));
+        if(print)
+        {
+            cout << "The orbital period is: " << period << endl;
+        }
+        return period;
+    }
+
+    static ld orbitAltitude(const ld mass, const ld T, bool print = false)
+    {
+        ld radius = pow((mass * _Gc_ * (T*T)) / (4 * (PI * PI)), 1.0 / 3.0);
+        if(print)
+        {
+            cout << "The orbital altitude is: " << radius << endl;
+        }
+        return radius;
+    }
+
+    static ld gravitationalPE(const ld M, const ld m, const ld r1, const ld r2, bool print = false)
+    {
+        ld PE = (_Gc_ * M * m)*(1/r1 - 1/r2);
+        if(print)
+        {
+            cout << "The gravitational potential energy is: " << PE << " J" << endl;
+        }
+        return PE;
+    }
+
+    static ld gravitationalPE(const ld M, const ld m, const ld r, bool print = false)
+    {
+        ld PE = -(M * _G_ * m)/r;
+        if(print)
+        {
+            cout << "The gravitational potential energy is: " << PE << endl;
+        }
+        return PE;
+    }
+
+    static ld escapeVelocity(const ld m, const ld r, bool print = false)
+    {
+        ld v = sqrt((2 * _G_ * m) / r);
+        if(print)
+        {
+            cout << "The escape velocity is: " << v << endl;
+        }
+        return v;
+    }
+
+    static ld launchVelocity(const ld m, const ld r, const ld h, bool print = false)
+    {
+        ld v = sqrt((2.0 * _Gc_ * m) *((1.0/r) - (1.0/(r+h))));
+        if(print)
+        {
+            cout << "The launch velocity is: " << v << endl;
+        }
+        return v;
+    }
+
+    static ld heightRocket(const ld M,  const ld r, const ld v0, bool print = false)
+    {
+        ld h = 1.0/((1.0/r) - ((v0*v0)/(2.0 * _Gc_* M))) - r;
+        if(print)
+        {
+            cout << "The height of the rocket is: " << h << endl;
+        }
+        return h;
+    }
+
+    static ld gravitationalField(const ld M, const ld r, const tuple<ld, ld, ld> position, bool print = false)
+    {
+        ld rx, ry, rz;
+        tie(rx, ry, rz) = position;
+        ld r2 = rx*rx + ry*ry + rz*rz;
+        ld r3 = r2*sqrt(r2);
+        ld G = _G_ * M / r3;
+        if(print)
+        {
+            cout << "The gravitational field is: " << G << endl;
+        }
+        return G;
+    }
+
+    static ld radius_v(const ld M, const ld v0, bool print = false)
+    {
+        ld r = pow(((v0*v0)/(2*_Gc_*M)), -1);
+        if(print)
+        {
+            cout << "The radius is: " << r << endl;
+        }
+        return r;
+    }
+
+    static ld radius_a(const ld m, const ld a, bool print = false)
+    {
+        ld r = sqrt((_Gc_ * m) / a);
+        if(print)
+        {
+            cout << "The radius is: " << r << endl;
+        }
+        return r;
+    }
+
+    static ld radius_Vesc(const ld m, const ld v0, bool print = false)
+    {
+        ld r = (2.0 * _Gc_ * m) / (v0*v0);
+        if(print)
+        {
+            cout << "The radius is: " << r << endl;
+        }
+        return r;
+    }
+
+    /**
+     * @brief call like this:
+     * UniformCircularMotion::altitudeSatelliteCompleteOrbitOfPlanetInTime(
+            AstronomicalObject::EARTH(), 2.0*3600.0, true
+            );
+     * @tparam T is the AstronomicalObject::ObjectType()
+     * @param planet  is the reference planet AstronomicalObject::PLANET()
+     * @param time  is the time in seconds
+     * @param print  is a boolean to print the result
+     * @return  the altitude of the satellite in meters
+     */
+    template<typename T>
+    static ld altitudeSatelliteCompleteOrbitOfPlanetInTime(
+            T planet, ld time, bool print = false) {
+        auto radius = planet.radius;
+        auto mass = planet.mass;
+        auto rad_total = cbrt(((time*time)*_Gc_*mass) / (4 * PI * PI));
+        auto alt = rad_total - radius;
+        if(print)
+        {
+            cout << "The altitude of the satellite is: " << alt << endl;
+        }
+        return alt;
+    }
+
+    template<typename T>
+    static ld geostationaryOrbitVelocityOfSatellite(
+            T mass, ld period, bool print = false) {
+        auto v = cbrt((2.0*PI*_Gc_*mass) / period);
+        if(print)
+        {
+            cout << "The geostationary orbit velocity is: " << v << endl;
+        }
+        return v;
+    }
+
+
+
+
+
 
 
     ~UniformCircularMotion() {
-        delete _circlePtr;
         countDecrease();
     };
 

@@ -14,6 +14,11 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //*************************************************************************
+    UniformCircularMotion::radius_Vesc(
+            2.9e24,
+            7.1e3,
+            true
+            );
 
 
 
