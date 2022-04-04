@@ -922,9 +922,13 @@ public:
         return v;
     }
 
-    static ld heightRocket(const ld M,  const ld r, const ld v0, bool print = false)
+    static ld heightRocket_earth(const ld v0,  bool print = false)
     {
-        ld h = 1.0/((1.0/r) - ((v0*v0)/(2.0 * _Gc_* M))) - r;
+        auto temp = 2.0 * GA * EARTH_RADIUS;
+        auto v = v0*v0;
+        auto temp2 = (temp / v) - 1.0;
+        auto h = EARTH_RADIUS * pow( temp2, -1.0);
+
         if(print)
         {
             cout << "The height of the rocket is: " << h << endl;

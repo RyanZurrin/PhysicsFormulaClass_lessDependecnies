@@ -171,6 +171,7 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/ElectroMagneticInduction.h
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/ElectroMagneticWaves.h
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Energy.h
+ /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/EuclideanGraph.h
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/FluidDynamics.h
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/FluidStatics.h
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Forces.h
@@ -183,12 +184,12 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Kinematics.h
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Line.h
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/LinearAlgebra.h
+ /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/LinearMomentum.h
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/LinearRegression.h
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/LogisticRegression.h
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Magnetism.h
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/MathFx.h
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/MatrixND.h
- /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Momentum.h
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Parallelogram.h
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/PeriodicElements.h
  /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Physics_World.h

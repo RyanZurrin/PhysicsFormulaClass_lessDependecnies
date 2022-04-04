@@ -146,7 +146,7 @@ static struct Elements
     } He;
 
     /// <summary>
-    ///	Lithium is a chemical element with the symbol Li and atomic number 3.
+    ///	Lithium is a chemical element with the symbol LinearMomentum and atomic number 3.
     ///	It is a soft, silvery-white alkali metal. Under standard conditions,
     ///	it is the lightest metal and the lightest solid element.
     /// </summary>

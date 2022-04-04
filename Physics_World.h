@@ -34,10 +34,9 @@
 #include "LinearAlgebra.h"
 #include "LogisticRegression.h"
 #include "MathFx.h"
-#include "Momentum.h"
+#include "LinearMomentum.h"
 #include "Parallelogram.h"
 #include "PeriodicElements.h"
-#include "Point2D.h"
 #include "Pyramid.h"
 #include "RandomNumbers.h"
 #include "Rectangle.h"
@@ -54,6 +53,7 @@
 #include "VisionOpticalInstruments.h"
 #include "Square.h"
 #include "QuantumPhysics.h"
+#include "EuclideanGraph.h"
 typedef TriangleSolver TS;
 typedef QuantumPhysics QP;
 typedef SpecialRelativity SR;
@@ -70,10 +70,11 @@ typedef ElectromagneticWaves EMW;
 typedef ElectroMagneticInduction EMI;
 typedef ElectricPotential EP;
 typedef ElectricCurrent EC;
-typedef ElectricCharge ELCHRG;
+typedef ElectricCharge ECH;
 typedef Forces DAF;
 typedef RandomNumbers RN;
 typedef AtomicPhysics AP;
+typedef LinearMomentum LM;
 
 
 
@@ -823,7 +824,7 @@ public:
     unique_ptr<Vector2D> vector2d;
     unique_ptr<Vector3D> vector3d;
     unique_ptr<Energy> energy;
-    unique_ptr<Momentum> momentum;
+    unique_ptr<LinearMomentum> momentum;
     unique_ptr<Torque> torque;
     unique_ptr<Statics> statics;
     unique_ptr<RotationalMotion> rotationalMotion;
@@ -1016,7 +1017,7 @@ inline Physics_World::Physics_World()
     vector2d = std::make_unique<Vector2D>();
     vector3d = std::make_unique<Vector3D>();
     energy = std::make_unique<Energy>();
-    momentum = std::make_unique<Momentum>();
+    momentum = std::make_unique<LinearMomentum>();
     torque = std::make_unique<Torque>();
     statics = std::make_unique<Statics>();
     rotationalMotion = std::make_unique<RM>();
@@ -1028,7 +1029,7 @@ inline Physics_World::Physics_World()
     fluid_dynamics = std::make_unique<FD>();
     waves = std::make_unique<Waves>();
     hearing = std::make_unique<Hearing>();
-    electric_charge = std::make_unique<ELCHRG>();
+    electric_charge = std::make_unique<ECH>();
     electric_potential = std::make_unique<EP>();
     electric_current = std::make_unique<EC>();
     circuits =std::make_unique<Circuits>();
@@ -1092,7 +1093,7 @@ inline Physics_World::Physics_World(const TYPE t1, const TYPE t2, const TYPE t3)
     vector2d = std::make_unique<Vector2D>();
     vector3d = std::make_unique<Vector3D>();
     energy = std::make_unique<Energy>();
-    momentum = std::make_unique<Momentum>();
+    momentum = std::make_unique<LinearMomentum>();
     torque = std::make_unique<Torque>();
     statics = std::make_unique<Statics>();
     rotationalMotion = std::make_unique<RM>();
@@ -1104,7 +1105,7 @@ inline Physics_World::Physics_World(const TYPE t1, const TYPE t2, const TYPE t3)
     fluid_dynamics = std::make_unique<FD>();
     waves = std::make_unique<Waves>();
     hearing = std::make_unique<Hearing>();
-    electric_charge = std::make_unique<ELCHRG>();
+    electric_charge = std::make_unique<ECH>();
     electric_potential = std::make_unique<EP>();
     electric_current = std::make_unique<EC>();
     circuits =std::make_unique<Circuits>();
@@ -1150,7 +1151,7 @@ inline Physics_World::Physics_World(const TYPE t1, const TYPE t2)
     vector2d = std::make_unique<Vector2D>();
     vector3d = std::make_unique<Vector3D>();
     energy = std::make_unique<Energy>();
-    momentum = std::make_unique<Momentum>();
+    momentum = std::make_unique<LinearMomentum>();
     torque = std::make_unique<Torque>();
     statics = std::make_unique<Statics>();
     rotationalMotion = std::make_unique<RM>();
@@ -1162,7 +1163,7 @@ inline Physics_World::Physics_World(const TYPE t1, const TYPE t2)
     fluid_dynamics = std::make_unique<FD>();
     waves = std::make_unique<Waves>();
     hearing = std::make_unique<Hearing>();
-    electric_charge = std::make_unique<ELCHRG>();
+    electric_charge = std::make_unique<ECH>();
     electric_potential = std::make_unique<EP>();
     electric_current = std::make_unique<EC>();
     circuits =std::make_unique<Circuits>();

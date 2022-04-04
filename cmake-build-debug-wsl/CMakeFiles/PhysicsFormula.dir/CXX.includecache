@@ -126,6 +126,16 @@ Vector2D.h
 cmath
 -
 
+/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/EuclideanGraph.h
+Point2D.h
+/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Point2D.h
+iostream
+-
+vector
+-
+fstream
+-
+
 /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/FluidDynamics.h
 iostream
 -
@@ -228,6 +238,16 @@ Point.h
 
 /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/LinearAlgebra.h
 
+/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/LinearMomentum.h
+iostream
+-
+cmath
+-
+vector
+-
+VectorND.h
+/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/VectorND.h
+
 /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/LinearRegression.h
 iostream
 -
@@ -268,16 +288,6 @@ cstdlib
 ctime
 -
 random
--
-VectorND.h
-/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/VectorND.h
-
-/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Momentum.h
-iostream
--
-cmath
--
-vector
 -
 VectorND.h
 /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/VectorND.h
@@ -337,14 +347,12 @@ LogisticRegression.h
 /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/LogisticRegression.h
 MathFx.h
 /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/MathFx.h
-Momentum.h
-/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Momentum.h
+LinearMomentum.h
+/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/LinearMomentum.h
 Parallelogram.h
 /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Parallelogram.h
 PeriodicElements.h
 /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/PeriodicElements.h
-Point2D.h
-/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Point2D.h
 Pyramid.h
 /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Pyramid.h
 RandomNumbers.h
@@ -377,6 +385,8 @@ Square.h
 /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Square.h
 QuantumPhysics.h
 /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/QuantumPhysics.h
+EuclideanGraph.h
+/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/EuclideanGraph.h
 
 /home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Plane.h
 Vector.h

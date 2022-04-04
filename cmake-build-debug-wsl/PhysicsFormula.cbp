@@ -166,6 +166,9 @@
 		<Unit filename="/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Energy.h">
 			<Option target="PhysicsFormula"/>
 		</Unit>
+		<Unit filename="/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/EuclideanGraph.h">
+			<Option target="PhysicsFormula"/>
+		</Unit>
 		<Unit filename="/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/FluidDynamics.h">
 			<Option target="PhysicsFormula"/>
 		</Unit>
@@ -223,6 +226,9 @@
 		<Unit filename="/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/LinearAlgebra.h">
 			<Option target="PhysicsFormula"/>
 		</Unit>
+		<Unit filename="/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/LinearMomentum.h">
+			<Option target="PhysicsFormula"/>
+		</Unit>
 		<Unit filename="/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/LinearRegression.h">
 			<Option target="PhysicsFormula"/>
 		</Unit>
@@ -236,9 +242,6 @@
 			<Option target="PhysicsFormula"/>
 		</Unit>
 		<Unit filename="/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/MatrixND.h">
-			<Option target="PhysicsFormula"/>
-		</Unit>
-		<Unit filename="/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/Momentum.h">
 			<Option target="PhysicsFormula"/>
 		</Unit>
 		<Unit filename="/home/ryazur/src/PhysicsFormulaClass_lessDependecnies/MonotonePartition.cpp">

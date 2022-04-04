@@ -170,6 +170,7 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../ElectricPotential.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../ElectroMagneticInduction.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../ElectroMagneticWaves.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../Energy.h
+CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../EuclideanGraph.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../FluidDynamics.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../FluidStatics.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../Forces.h
@@ -182,12 +183,12 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../Intersection.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../Kinematics.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../Line.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../LinearAlgebra.h
+CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../LinearMomentum.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../LinearRegression.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../LogisticRegression.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../Magnetism.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../MathFx.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../MatrixND.h
-CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../Momentum.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../Parallelogram.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../PeriodicElements.h
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.o: ../Physics_World.h
