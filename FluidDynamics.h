@@ -412,6 +412,7 @@ public:
         (constants::PI * reynoldsNumber * viscosityFluid);
     }
 
+
     /// <summary>
     /// uses Bernoulli's equation to calculate the amount of work.
     /// </summary>
@@ -434,6 +435,41 @@ public:
     {
         return sqrt(pow(velocityInitial, 2.0) + (2.0 * constants::Ga * changeInHeight));
     }
+
+    /**
+     * @brief  speed of liquid emerging from the drain of a tank.
+     * @param  height of liquid in tank
+     * @return  speed of liquid
+     */
+    static ld speedOfLiquidEmergingFromTank(const ld height,
+                                            bool print =false) {
+        auto speed = sqrt(2.0 * constants::Ga * height);
+        if (print) {
+            std::cout << "speed of liquid emerging from tank: "
+            << speed << std::endl;
+        }
+        return speed;
+    }
+
+    /**
+     * @brief X has a nuclei density around rhoX while Y's density is rhoY.
+     * Roughly what fraction of Y's volume is not empty space?
+     * @param rhoX nuclei density of X
+     * @param rhoY nuclei density of Y
+     * @param print print results to console
+     * @return fraction of Y's volume that is not empty space
+     */
+    static ld fractionOfYVolumeNotEmptySpace(const ld rhoX,
+                                             const ld rhoY,
+                                             bool print = false) {
+        auto fraction = (rhoY / rhoX);
+        if (print) {
+            std::cout << "fraction of Y's volume that is not empty space: "
+            << fraction << std::endl;
+        }
+        return fraction;
+    }
+
 
     /// <summary>
     /// calculates the final pressure.
@@ -463,18 +499,50 @@ public:
         return (velocity * velocity) / (2.0 * constants::Ga);
     }
 
-    /// <summary>
-    /// Calculates the maximum height above a nozzle the water can rise?
-    /// (The actual height will be significantly smaller due to air resistance.)
-    /// </summary>
-    /// <param name="volumeROF">The volume rate of flow.</param>
-    /// <param name="nozzleDiameter">The nozzle diameter.</param>
-    /// <returns>max height</returns>
-    static ld maxHeightAboveNozzleLiquidRise(const ld volumeROF, const ld nozzleDiameter)
-    {
-        return (8.0 * pow(volumeROF, 2.0)) / (pow(constants::PI, 2.0) *
-        constants::Ga * pow(nozzleDiameter, 4.0));
+    /**
+     * @brief  calculates the maximum height above a nozzle the water can rise?
+     * (The actual height will be significantly smaller due to air resistance.)
+     * @param  volumeROF volume rate of flow
+     * @param  nozzleDiameter nozzle diameter (in meters)
+     * @param print print to console
+     * @return  max height
+     */
+    static ld maxHeightAboveNozzleLiquidRise(const ld volumeROF,
+                                             const ld nozzleDiameter,
+                                             bool print =false) {
+        auto maxHeight = (8.0 * pow(volumeROF, 2.0)) /
+                (pow(constants::PI, 2.0) *
+                constants::Ga * pow(nozzleDiameter, 4.0));
+        if (print) {
+            std::cout << "max height above nozzle: "
+            << maxHeight << std::endl;
+        }
+        return maxHeight;
     }
+
+    /**
+     * @brief venturi flowmeter guage reading
+     * @param p
+     * @param A_big
+     * @param A_small
+     * @param density
+     * @param print print to console
+     * @return flowrate
+     */
+     static ld venturiFlowSpeed(const ld p,
+                                const ld A_big,
+                                const ld A_small,
+                                const ld density,
+                                bool print =false) {
+        auto ratioOfAreas = A_big / A_small;
+        auto flowRate = sqrt((2.0 * p)/(density*(ratioOfAreas*ratioOfAreas-1.0)));
+        if (print) {
+            std::cout << "flow rate: "
+            << flowRate << std::endl;
+
+        }
+        return flowRate;
+     }
 
     /// <summary>
     /// Calculates approximately the force due to the Bernoulli effect on a roof
@@ -1076,12 +1144,26 @@ public:
     {
         return (volume * volume) / (2.0 * diffusionConstant * (area * area));
     }
-
+    /**
+     * calculats the  weight of a column of air
+     * @param pascals  pressure of the air
+     * @param A  the section of the column
+     * @param print if true prints the results
+     */
+    static ld weightOfColumnOfAir(ld pascals, ld A, bool print = false) {
+        auto weight = pascals * A;
+        if (print) {
+            std::cout << "The weight of the column of air is " << weight
+            << " kg" << std::endl;
+        }
+        return weight;
+    }
 
     ~FluidDynamics()
     {
         delete _fluidDynamicPtr;
     }
+
 
 };
 #endif //PHYSICSFORMULA_FLUIDDYNAMICS_H

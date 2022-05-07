@@ -313,7 +313,8 @@ public:
         return *this;
     }
 
-    static void show_objectCount() { std::cout << "\nfluid statics object count: " << fluidStatics_objectCount << std::endl; }
+    static void show_objectCount() { std::cout << "\nfluid statics object count: "
+    << fluidStatics_objectCount << std::endl; }
     static int get_objectCount() { return fluidStatics_objectCount; }
 
 
@@ -323,8 +324,11 @@ public:
     /// <param name="mass">The mass.</param>
     /// <param name="volume">The volume.</param>
     /// <returns>density</returns>
-    static ld density(const ld mass, const ld volume) {
-        return mass / volume;
+    static ld density(const ld mass, const ld volume, bool print = false) {
+        ld density = mass / volume;     if (print) {
+            std::cout << "density: " << density << std::endl;
+        }
+        return density;
     }
 
     /// <summary>
@@ -377,7 +381,12 @@ public:
     /// <param name="massC">The mass c.</param>
     /// <param name="pC">The p c.</param>
     /// <returns></returns>
-    static ld densityAvg(const ld massA, const ld pA, const ld massB = 0.0, const ld pB = 0.0, const ld massC = 0.0, const ld pC = 0.0)
+    static ld densityAvg(const ld massA,
+                         const ld pA,
+                         const ld massB = 0.0,
+                         const ld pB = 0.0,
+                         const ld massC = 0.0,
+                         const ld pC = 0.0)
     {
         return (massA + massB + massB) / ((massA / pA) + (massB / pB) + (massC / pC));
     }
@@ -399,8 +408,15 @@ public:
     /// <param name="mass">The mass.</param>
     /// <param name="density">The density.</param>
     /// <returns>the volume</returns>
-    static ld volume(const ld mass, const ld density) {
-        return mass / density;
+    static ld volume(const ld mass,
+                     const ld density,
+                     bool print = false) {
+        ld volume = mass / density;
+        if (print)
+        {
+            cout << "volume: " << volume << endl;
+        }
+        return volume;
     }
 
     /// <summary>
@@ -409,8 +425,14 @@ public:
     /// <param name="density">The density.</param>
     /// <param name="volume">The volume.</param>
     /// <returns>the mass</returns>
-    static ld mass(const ld density, const ld volume) {
-        return density * volume;
+    static ld mass(const ld density,
+                   const ld volume,
+                   bool print = false) {
+        auto mass = density * volume;
+        if (print) {
+            cout << "mass: " << mass << endl;
+        }
+        return mass;
     }
 
     /// <summary>
@@ -419,7 +441,8 @@ public:
     /// <param name="massOut">The mass of object out of fluid.</param>
     /// <param name="massIn">The mass of object in the fluid.</param>
     /// <returns>mass of displaced fluid</returns>
-    static ld massOfFluidDisplaced(const ld massOut, const ld massIn)
+    static ld massOfFluidDisplaced(const ld massOut,
+                                   const ld massIn)
     {
         return massOut - massIn;
     }
@@ -430,7 +453,8 @@ public:
     /// <param name="force">The force.</param>
     /// <param name="area">The area.</param>
     /// <returns>pressure</returns>
-    static ld pressure(const ld force, const ld area) {
+    static ld pressure(const ld force,
+                       const ld area) {
         return force / area;
     }
 
@@ -442,7 +466,9 @@ public:
      * @param w the width
      * @returns the pressure on bottom of tank
      */
-    static ld pressure(const ld m, const ld l, const ld w)
+    static ld pressure(const ld m,
+                       const ld l,
+                       const ld w)
     {
         return (m * constants::Ga) / (l * w);
     }
@@ -454,7 +480,9 @@ public:
      * @param h the height
      * @return the average pressure
      */
-    static ld pressureAvg(const ld p, const ld l, const ld h)
+    static ld pressureAvg(const ld p,
+                          const ld l,
+                          const ld h)
     {
         return ((p * constants::Ga * h) / 2.0) * (l * h);
     }
@@ -465,7 +493,8 @@ public:
     /// <param name="force">The force per unit length.</param>
     /// <param name="length">length exerted by a stretched liquid membrane.</param>
     /// <returns>surface tension</returns>
-    static ld surfaceTension(const ld force, const ld length)
+    static ld surfaceTension(const ld force,
+                             const ld length)
     {
         return force / length;
     }
@@ -476,7 +505,8 @@ public:
     /// <param name="surfaceTension">The surface tension.</param>
     /// <param name="radius">The radius.</param>
     /// <returns>pressure inside a sphere</returns>
-    static ld pressureInSphericalObject(const ld surfaceTension, const ld radius)
+    static ld pressureInSphericalObject(const ld surfaceTension,
+                                        const ld radius)
     {
         return (4.0 * surfaceTension) / radius;
     }
@@ -487,7 +517,8 @@ public:
     /// <param name="pressure">The pressure.</param>
     /// <param name="radius">The radius.</param>
     /// <returns>surface tension</returns>
-    static ld surfaceTensionSphericalObject(const ld pressure, const ld radius)
+    static ld surfaceTensionSphericalObject(const ld pressure,
+                                            const ld radius)
     {
         return (pressure * radius) / 4.0;
     }
@@ -498,7 +529,8 @@ public:
     /// <param name="pressure">the pressure</param>
     /// <param name="area">the area</param>
     /// <returns>force</returns>
-    static ld force(const ld pressure, const ld area) {
+    static ld force(const ld pressure,
+                    const ld area) {
         return pressure * area;
     }
 
@@ -509,7 +541,9 @@ public:
     /// <param name="dM">The diameter master.</param>
     /// <param name="dS">The diameter slave s.</param>
     /// <returns>Force master cylinder</returns>
-    static ld forceMaster_hydraulicSystemPascal(const ld m, const ld dM, const ld dS)
+    static ld forceMaster_hydraulicSystemPascal(const ld m,
+                                                const ld dM,
+                                                const ld dS)
     {
         return (m * constants::Ga * (dM * dM)) / (dS * dS);
     }
@@ -521,7 +555,9 @@ public:
     /// <param name="a1">The area 1.</param>
     /// <param name="a2">The area 2.</param>
     /// <returns>Force 2 in newtons</returns>
-    static ld force2pascalPrinciples(const ld F1, const ld a1, const ld a2)
+    static ld force2pascalPrinciples(const ld F1,
+                                     const ld a1,
+                                     const ld a2)
     {
         return F1 * (a2 / a1);
     }
@@ -533,7 +569,9 @@ public:
     /// <param name="h">The height.</param>
     /// <param name="_p">The density.</param>
     /// <returns>the radius</returns>
-    static ld radiusCylinder(const ld m, const ld h, const ld _p)
+    static ld radiusCylinder(const ld m,
+                             const ld h,
+                             const ld _p)
     {
         return sqrt((m * _p) / (constants::PI * h));
     }
@@ -546,7 +584,10 @@ public:
     /// <param name="l">The length.</param>
     /// <param name="w">The width.</param>
     /// <returns></returns>
-    static ld depthRectangularTank(const ld m, const ld _p, const ld l, const ld w)
+    static ld depthRectangularTank(const ld m,
+                                   const ld _p,
+                                   const ld l,
+                                   const ld w)
     {
         return m / (_p * l * w);
     }
@@ -622,7 +663,8 @@ public:
     /// fluid, either sinking or floating
     /// </summary>
     /// <param name="densitySubstance">The density of the test substance.</param>
-    /// <param name="densityReference">The density of the reference substance.</param>
+    /// <param name="densityReference">The density of the reference
+    /// substance.</param>
     /// <returns>the relative density</returns>
     static ld relativeDensity(const ld densitySubstance, const ld densityReference)
     {
@@ -633,7 +675,8 @@ public:
     /// Density of the fluid.
     /// </summary>
     /// <param name="densityObject">The density of the object.</param>
-    /// <param name="percentSubmerged">The percent of the object that is submerged.</param>
+    /// <param name="percentSubmerged">The percent of the object that is
+    /// submerged.</param>
     /// <returns>the density of the fluid</returns>
     static ld densityOfFluid(const ld densityObject, const ld percentSubmerged)
     {
@@ -647,7 +690,9 @@ public:
     /// <param name="densityObj">The density object.</param>
     /// <param name="densityFluid">The density fluid.</param>
     /// <returns>force</returns>
-    static ld forceToStaySubmerged(const ld massObj, const ld densityObj, const ld densityFluid)
+    static ld forceToStaySubmerged(const ld massObj,
+                                   const ld densityObj,
+                                   const ld densityFluid)
     {
         return massObj * constants::Ga * ((densityFluid / densityObj) - 1.0);
     }
@@ -661,22 +706,45 @@ public:
     /// <param name="height">The height.</param>
     /// <param name="fluidDensity">The fluids density.</param>
     /// <returns>max weight before sinking in fluid</returns>
-    static ld maxWeightSupportedByFloatingAirMattress(const ld massMattress, const ld length, const ld width, const ld height, const ld fluidDensity)
-    {
-        return constants::Ga * (fluidDensity * (length * width * height) - massMattress);
+    static ld maxWeightSupportedByFloatingAirMattress(const ld massMattress,
+                                                      const ld length,
+                                                      const ld width,
+                                                      const ld height,
+                                                      const ld fluidDensity,
+                                                      bool print = false) {
+        auto result = constants::Ga * (fluidDensity * (length * width *
+                height) -
+        massMattress);
+        if (print) {
+            std::cout << "max weight supported by floating air mattress: "
+            << result << std::endl;
+        }
+        return result;
     }
 
     /// <summary>
     /// calculates the capacity of lungs.
     /// </summary>
     /// <param name="mass">The mass.</param>
-    /// <param name="percentFloatLungEmpty">The percent floating when lung empty.</param>
-    /// <param name="percentFloatLungFull">The percent floating when lung full.</param>
+    /// <param name="percentFloatLungEmpty">The percent floating when lung
+    /// empty.</param>
+    /// <param name="percentFloatLungFull">The percent floating when lung
+    /// full.</param>
     /// <param name="densityFluid">The density of the fluid.</param>
-    /// <returns>capacity in m^3, multiply answer by 1000 to have in liters cubed</returns>
-    static ld lungCapacity(const ld mass, const ld percentFloatLungEmpty, const ld percentFloatLungFull, const ld densityFluid)
-    {
-        return (mass / densityFluid)* ((1.0 / (1.0 -(percentFloatLungFull / 100.0)) - (1.0 / (1.0 - (percentFloatLungEmpty / 100.0)))));
+    /// <returns>capacity in m^3, multiply answer by 1000 to have in liters
+    /// cubed</returns>
+    static ld lungCapacity(const ld mass,
+                           const ld percentFloatLungEmpty,
+                           const ld percentFloatLungFull,
+                           const ld densityFluid,
+                           bool print = false) {
+        auto result = (mass / densityFluid) *
+                ((1.0 / (1.0 -(percentFloatLungFull / 100.0)) -
+                (1.0 / (1.0 - (percentFloatLungEmpty / 100.0)))));
+        if (print)  {
+            std::cout << "Lung Capacity: " << result << " m^3" << std::endl;
+        }
+        return result;
     }
 
     /// <summary>
@@ -687,9 +755,17 @@ public:
     /// <param name="density">The density.</param>
     /// <param name="radius">The radius.</param>
     /// <returns>height the fluid will rise in a capillary tube</returns>
-    static ld capillaryTubeHeight(const ld surfaceTension, const ld contactAngle, const ld density, const ld radius)
-    {
-        return (2.0 * surfaceTension * cos(contactAngle)) / (density * constants::Ga * radius);
+    static ld capillaryTubeHeight(const ld surfaceTension,
+                                  const ld contactAngle,
+                                  const ld density,
+                                  const ld radius,
+                                  bool print = false) {
+        auto result = (2.0 * surfaceTension * cos(contactAngle)) /
+        (density * constants::Ga * radius);
+        if (print) {
+            std::cout << "Capillary Tube Height: " << result << " m" << std::endl;
+        }
+        return result;
     }
 
     /// <summary>
@@ -700,9 +776,18 @@ public:
     /// <param name="density">The density.</param>
     /// <param name="height">The height.</param>
     /// <returns>the radius of a capillary tube</returns>
-    static ld capillaryTubeRadius(const ld surfaceTension, const ld contactAngle, const ld density, const ld height)
-    {
-        return (2.0 * surfaceTension * cos(contactAngle)) / (density * constants::Ga * height);
+    static ld capillaryTubeRadius(const ld surfaceTension,
+                                  const ld contactAngle,
+                                  const ld density,
+                                  const ld height,
+                                  bool print = false) {
+            auto result = (2.0 * surfaceTension * cos(contactAngle)) /
+            (density * constants::Ga * height);
+            if (print) {
+                std::cout << "Capillary Tube Radius: " << result << " m"
+                << std::endl;
+            }
+            return result;
     }
 
     /// <summary>
@@ -711,9 +796,14 @@ public:
     /// <param name="force">The force.</param>
     /// <param name="lengthOfWire">The length of wire.</param>
     /// <returns>gamma(surface tension)</returns>
-    static ld surfaceTension_usingSlidingWireDevice(const ld force, const ld lengthOfWire)
-    {
-        return force / (2.0 * lengthOfWire);
+    static ld surfaceTension_usingSlidingWireDevice(const ld force,
+                                                    const ld lengthOfWire,
+                                                    bool print = false) {
+        auto result = force / (2.0 * lengthOfWire);
+        if (print) {
+            std::cout << "Surface Tension: " << result << " N/m" << std::endl;
+        }
+        return result;
     }
 
     /// <summary>
@@ -723,9 +813,16 @@ public:
     /// <param name="height">The height.</param>
     /// <param name="radius">The radius.</param>
     /// <returns>surface tension</returns>
-    static ld effectiveSurfaceTensionBalloon(const ld density, const ld height, const ld radius)
-    {
-        return (density * constants::Ga * height * radius) / 4.0;
+    static ld effectiveSurfaceTensionBalloon(const ld density,
+                                             const ld height,
+                                             const ld radius,
+                                             bool print = false) {
+        auto result = (density * constants::Ga * height * radius) / 4.0;
+        if (print) {
+            std::cout << "Effective Surface Tension: " << result << " N/m"
+            << std::endl;
+        }
+        return result;
     }
 
     /// <summary>
@@ -735,9 +832,18 @@ public:
     /// <param name="contactAngle1">The contact angle1.</param>
     /// <param name="contactAngle2">The contact angle2.</param>
     /// <returns></returns>
-    static ld heightOfCapillaryActionByRatioOfContactAngles(const ld height1, const ld contactAngle1, const ld contactAngle2)
-    {
-        return height1 * (cos(contactAngle2*constants::RADIAN) / cos(contactAngle1*constants::RADIAN));
+    static ld heightOfCapillaryActionByRatioOfContactAngles(
+            const ld height1,
+            const ld contactAngle1,
+            const ld contactAngle2,
+            bool print = false) {
+        auto result = height1 * (cos(contactAngle2*constants::RADIAN) /
+                cos(contactAngle1*constants::RADIAN));
+        if (print) {
+            std::cout << "Height of Capillary Action: " << result << " m"
+            << std::endl;
+        }
+        return result;
     }
 
     /// <summary>
@@ -748,9 +854,17 @@ public:
     /// <param name="radius">The radius.</param>
     /// <param name="surfaceTension">The surface tension.</param>
     /// <returns>contact angle</returns>
-    static ld contactAngleTheta(const ld density, const ld height, const ld radius, const ld surfaceTension)
-    {
-        return acos((density * constants::Ga * height * radius) / (2.0 * surfaceTension))*constants::DEGREE;
+    static ld contactAngleTheta(const ld density,
+                                const ld height,
+                                const ld radius,
+                                const ld surfaceTension,
+                                bool print = false) {
+        auto result =  acos((density * constants::Ga * height * radius) /
+                (2.0 * surfaceTension))*constants::DEGREE;
+        if (print) {
+            std::cout << "Contact Angle Theta: " << result << " rad" << std::endl;
+        }
+        return result;
     }
 
     /// <summary>
@@ -763,9 +877,19 @@ public:
     /// <param name="ca2">The contact angle 2.</param>
     /// <param name="density2">The density 2.</param>
     /// <returns>ration of heights</returns>
-    static ld ratioOfHeights_capillaryAction(const ld st1, const ld ca1, const ld density1, const ld st2, const ld ca2, const ld density2)
-    {
-        return (st1 * cos(ca1*constants::RADIAN) * density2) / (st2 * cos(ca2*constants::RADIAN) * density1);
+    static ld ratioOfHeights_capillaryAction(const ld st1,
+                                             const ld ca1,
+                                             const ld density1,
+                                             const ld st2,
+                                             const ld ca2,
+                                             const ld density2,
+                                             bool print = false) {
+        auto result = (st1 * cos(ca1*constants::RADIAN) * density2) /
+                      (st2 * cos(ca2*constants::RADIAN) * density1);
+        if (print) {
+            std::cout << "Ratio of Heights: " << result << std::endl;
+        }
+        return result;
     }
 
 

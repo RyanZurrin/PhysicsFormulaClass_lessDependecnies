@@ -14,13 +14,13 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //*************************************************************************
-
+     FluidStatics::volume(8.8, 1.2, true);
 
 
 
 
     //*************************************************************************
-    //Stopping timer and displaying the programs execution time
+    //Stopping timer and displaying the programs' execution time
     //_________________________________________________________________________
     timer.stop();
     timer.display();
