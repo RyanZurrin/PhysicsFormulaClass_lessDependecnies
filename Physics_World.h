@@ -26,7 +26,6 @@
 #include "Drag.h"
 #include "Forces.h"
 #include "Elasticity.h"
-#include "ElectroMagneticInduction.h"
 #include "ElectroMagneticWaves.h"
 #include "FluidStatics.h"
 #include "Hearing.h"
@@ -54,6 +53,10 @@
 #include "Square.h"
 #include "QuantumPhysics.h"
 #include "EuclideanGraph.h"
+#include "FluidDynamics.h"
+#include "ElectricPotential.h"
+#include "Circle.h"
+
 typedef TriangleSolver TS;
 typedef QuantumPhysics QP;
 typedef SpecialRelativity SR;
@@ -81,8 +84,6 @@ typedef LinearMomentum LM;
 
 
 static auto physics_objectCount = 0;
-
-
 template<typename T>
 void print_type_properties()
 {
@@ -332,7 +333,7 @@ void static printArr(const long double arr[], const int n)
 /// <returns>the area of sphere (m^2)</returns>
 static auto sphereArea = []<class T>(const T r)
 {
-    return 4.0 * _PI_ * (r * r);
+    return 4.0 * constants::PI * (r * r);
 };
 
 
@@ -343,7 +344,7 @@ static auto sphereArea = []<class T>(const T r)
 /// <returns>the volume of sphere(m^3)</returns>
 static auto sphereVolume = []<class T>(const long double r)
 {
-    return (4.0 / 3.0) * (_PI_ * (r * r * r));
+    return (4.0 / 3.0) * (constants::PI * (r * r * r));
 };
 
 
@@ -359,9 +360,9 @@ static auto circleCircumference = []<class T>(const T rd, const char mode = 'r')
 {
     if (mode == 'r')
     {
-        return 2.0 * _PI_ * rd;
+        return 2.0 * constants::PI * rd;
     }
-    return _PI_ * rd;
+    return constants::PI * rd;
 };
 
 /// <summary>
@@ -376,9 +377,9 @@ static auto circleArea = []<class T>(const T rd, const char mode = 'r')
 {
     if (mode == 'r')
     {
-        return _PI_ * (rd * rd);
+        return constants::PI * (rd * rd);
     }
-    return (_PI_ * (rd * rd)) / 4.0;
+    return (constants::PI * (rd * rd)) / 4.0;
 };
 
 /// <summary>
@@ -426,8 +427,8 @@ static struct Conversions
     template<typename T>
     static auto revolutionsFromRadians(const T radTotal)
     {
-        //cout << "revolutions: " << radTotal / (2.0 * _PI_) << endl;
-        return radTotal / (2.0 * _PI_);
+        //cout << "revolutions: " << radTotal / (2.0 * constants::PI) << endl;
+        return radTotal / (2.0 * constants::PI);
     }
 
     /**
@@ -439,7 +440,7 @@ static struct Conversions
     template<typename T>
     static auto revolutions_min_to_radians_second(const T revMin)
     {
-        return (revMin * 2.0 * _PI_) / 60;
+        return (revMin * 2.0 * constants::PI) / 60;
     }
 
     /**
@@ -451,7 +452,7 @@ static struct Conversions
     template<typename T>
     static auto radians_second_to_revolutions_minute(const T radSec)
     {
-        return (radSec * 60.0) / (2.0 * _PI_);
+        return (radSec * 60.0) / (2.0 * constants::PI);
     }
 
     /**
@@ -462,7 +463,7 @@ static struct Conversions
     template<typename T>
     static auto gravity_ratio(const T unit)
     {
-        return unit / _G_;
+        return unit / constants::Ga;
     }
 
 
@@ -688,7 +689,7 @@ static struct Conversions
     template<typename T>
     static auto joules_to_eV(const T j = _val_)
     {
-        return j / _PROTON_CHARGE_;
+        return j / constants::PROTON_CHARGE;
     }
     template<typename T>
     static auto newtonMeters_to_ftPounds(const T Nm = _val_)
@@ -698,12 +699,12 @@ static struct Conversions
     template<typename T>
     static auto radians_to_revolutions(const T rad = _val_)
     {
-        return rad / (2 * _PI_);
+        return rad / (2 * constants::PI);
     }
     template<typename T>
     static auto revolutions_to_radians(const T rev = _val_)
     {
-        return rev * 2 * _PI_;
+        return rev * 2 * constants::PI;
     }
     template<typename T>
     static auto atm_to_pascals(const T atm = _val_)
@@ -991,6 +992,8 @@ public:
 
     // destructor
     ~Physics_World();
+
+    void setGravity(double d);
 };
 #endif //PHYSICSFORMULA_PHYSICS_WORLD_H
 
@@ -1193,5 +1196,9 @@ inline Physics_World::Physics_World(const TYPE t1, const TYPE t2)
 inline Physics_World::~Physics_World()
 {
     countDecrease();
+}
+
+void Physics_World::setGravity(double d) {
+    constants::set_Ga(d);
 }
 

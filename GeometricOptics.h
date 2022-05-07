@@ -5,7 +5,7 @@
 #ifndef PHYSICSFORMULA_GEOMETRICOPTICS_H
 #define PHYSICSFORMULA_GEOMETRICOPTICS_H
 #include <map>
-
+#include "Constants.h"
 #include <iostream>
 using namespace std;
 
@@ -198,12 +198,9 @@ class GeometricOptics :
 
 
 public:
-    GeometricOptics* _geoOpticPtr;
 
     GeometricOptics()
     {
-        _geoOpticPtr = nullptr;
-        geometricOpticsVar = 0.0;
         countIncrease();
     }
 
@@ -212,8 +209,6 @@ public:
      */
     GeometricOptics(const GeometricOptics& t)
     {
-        _geoOpticPtr = t._geoOpticPtr;
-        geometricOpticsVar = t.getGeometricOpticsVar();
         countIncrease();
     }
     /**
@@ -221,8 +216,6 @@ public:
      */
     GeometricOptics(GeometricOptics&& t) noexcept
     {
-        _geoOpticPtr = t._geoOpticPtr;
-        geometricOpticsVar = t.getGeometricOpticsVar();
         countIncrease();
     }
     /**
@@ -232,8 +225,6 @@ public:
     {
         if (this != &t)
         {
-            _geoOpticPtr = t._geoOpticPtr;
-            geometricOpticsVar = t.getGeometricOpticsVar();
             countIncrease();
         }
         return *this;
@@ -245,13 +236,7 @@ public:
     static int get_objectCount() { return geometricOptics_objectCount; }
 
 
-    ~GeometricOptics()
-    {
-        delete _geoOpticPtr;
-    }
-
-    void setGeometricOpticsVar(ld var) { geometricOpticsVar = var; }
-    ld getGeometricOpticsVar() const { return geometricOpticsVar; }
+    ~GeometricOptics(){}
 
     /// <summary>
     /// Calculates the index of refraction (n) where v is the observed speed of
@@ -475,7 +460,6 @@ public:
 
 
 private:
-    ld geometricOpticsVar;
     static void countIncrease() { geometricOptics_objectCount += 1; }
     static void countDecrease() { geometricOptics_objectCount -= 1; }
 
@@ -490,65 +474,65 @@ inline ld GeometricOptics::indexOfRefraction(const ld v, int precision = 3)
     if (precision == 1)
     {
         ld scale = 0.1;
-        ld a = _C_ / v;
+        ld a = constants::LIGHT_SPEED / v;
         return floor(a/scale+.5)* scale;
     }
     if (precision == 2)
     {
         ld scale = 0.01;
-        ld a = _C_ / v;
+        ld a = constants::LIGHT_SPEED / v;
         return floor(a/scale+.5)* scale;
     }
     if (precision == 3)
     {
         ld scale = 0.001;
-        ld a = _C_ / v;
+        ld a = constants::LIGHT_SPEED / v;
         return floor(a/scale+.5)* scale;
     }
     if (precision == 4)
     {
         ld scale = 0.0001;
-        ld a = _C_ / v;
+        ld a = constants::LIGHT_SPEED / v;
         return floor(a/scale+.5)* scale;
     }
     else
-        return _C_ / v;;
+        return constants::LIGHT_SPEED / v;;
 }
 
 inline ld GeometricOptics::speedOfLightFromRefractionIndex(const ld n)
 {
-    return _C_ / n;
+    return constants::LIGHT_SPEED / n;
 }
 
 inline ld GeometricOptics::indexOfRefractionMedium2(const ld n1, const ld incidentAng1, const ld angRefraction2, int precision = 3)
 {
     if (precision == 1)
     {
-        ld val = n1 * (sin(incidentAng1 * RADIAN) / sin(angRefraction2 * RADIAN));
+        ld val = n1 * (sin(incidentAng1 * constants::RADIAN) / sin(angRefraction2 * constants::RADIAN));
         ld scale = .1;
         ld v = floor(val / scale + .5) * scale;
         return v;
     }
     if (precision == 2)
     {
-        ld val = n1 * (sin(incidentAng1 * RADIAN) / sin(angRefraction2 * RADIAN));
+        ld val = n1 * (sin(incidentAng1 * constants::RADIAN) / sin(angRefraction2 * constants::RADIAN));
         ld scale = .01;
         return floor(val/scale+.5)*scale;
     }
     if (precision == 3)
     {
-        ld val = n1 * (sin(incidentAng1 * RADIAN) / sin(angRefraction2 * RADIAN));
+        ld val = n1 * (sin(incidentAng1 * constants::RADIAN) / sin(angRefraction2 * constants::RADIAN));
         ld scale = .001;
         return floor(val/scale+.5)*scale;
     }
     if (precision == 4)
     {
-        ld val = n1 * (sin(incidentAng1 * RADIAN) / sin(angRefraction2 * RADIAN));
+        ld val = n1 * (sin(incidentAng1 * constants::RADIAN) / sin(angRefraction2 * constants::RADIAN));
         ld scale = .0001;
         return floor(val / scale + .5) * scale;
     }
     else
-        return n1 * (sin(incidentAng1 * RADIAN) / sin(angRefraction2 * RADIAN));
+        return n1 * (sin(incidentAng1 * constants::RADIAN) / sin(angRefraction2 * constants::RADIAN));
 
 }
 
@@ -556,48 +540,48 @@ inline ld GeometricOptics::indexOfRefractionMedium1(const ld n2, const ld incide
 {
     if (precision == 1)
     {
-        ld val = n2 * (sin(angRefraction2 * RADIAN) / sin(incidentAng1 * RADIAN));
+        ld val = n2 * (sin(angRefraction2 * constants::RADIAN) / sin(incidentAng1 * constants::RADIAN));
         ld scale = .1;
         ld v = floor(val / scale + .5) * scale;
         return v;
     }
     if (precision == 2)
     {
-        ld val = n2 * (sin(angRefraction2 * RADIAN) / sin(incidentAng1 * RADIAN));;
+        ld val = n2 * (sin(angRefraction2 * constants::RADIAN) / sin(incidentAng1 * constants::RADIAN));;
         ld scale = .01;
         return floor(val/scale+.5)*scale;
     }
     if (precision == 3)
     {
-        ld val = n2 * (sin(angRefraction2 * RADIAN) / sin(incidentAng1 * RADIAN));
+        ld val = n2 * (sin(angRefraction2 * constants::RADIAN) / sin(incidentAng1 * constants::RADIAN));
         ld scale = .001;
         return floor(val/scale+.5)*scale;
     }
     if (precision == 4)
     {
-        ld val = n2 * (sin(angRefraction2 * RADIAN) / sin(incidentAng1 * RADIAN));
+        ld val = n2 * (sin(angRefraction2 * constants::RADIAN) / sin(incidentAng1 * constants::RADIAN));
         ld scale = .0001;
         return floor(val / scale + .5) * scale;
     }
     else
-        return n2 * (sin(incidentAng1 * RADIAN) / sin(incidentAng1 * RADIAN));
+        return n2 * (sin(incidentAng1 * constants::RADIAN) / sin(incidentAng1 * constants::RADIAN));
 }
 
 inline ld GeometricOptics::angleOfRefraction(const ld n1, const ld n2, const ld incidentAng1)
 {
-    ld temp = (n1 / n2) * sin(incidentAng1*RADIAN);
-    return asin(temp)*DEGREE;
+    ld temp = (n1 / n2) * sin(incidentAng1*constants::RADIAN);
+    return asin(temp)*constants::DEGREE;
 }
 
 inline ld GeometricOptics::incidentAngle(const ld n1, const ld n2, const ld angRefraction2)
 {
-    ld temp = (n2 / n1) * sin(angRefraction2 * RADIAN);
-    return asin(temp) * DEGREE;
+    ld temp = (n2 / n1) * sin(angRefraction2 * constants::RADIAN);
+    return asin(temp) * constants::DEGREE;
 }
 
 inline ld GeometricOptics::criticalAngle(const ld n1, const ld n2)
 {
-    return asin(n2/n1)*DEGREE;
+    return asin(n2/n1)*constants::DEGREE;
 }
 
 inline ld GeometricOptics::waveLength_fromIndexRefraction(const ld waveLFromSourceRay, const ld n)
@@ -625,7 +609,7 @@ inline std::map<std::string, ld> GeometricOptics::heightOfMirror(const ld floorT
 
 inline ld GeometricOptics::timeForSignalToTravel(const ld n, const ld d)
 {
-    return (d* n)/_C_;//s
+    return (d* n)/constants::LIGHT_SPEED;//s
 }
 
 inline ld GeometricOptics::powerOfLens(const ld f)
@@ -646,9 +630,9 @@ inline ld GeometricOptics::focalLength(const ld m, const ld d_o)
 inline std::map<std::string, ld> GeometricOptics::angleAndDistanceOfBouncedLaserToSensor(const ld disFromLas2Mirror, const ld disSouthSensor, const ld angleOffBy)
 {
     std::map<string, ld> results;
-    ld angle = (atan(disSouthSensor / disFromLas2Mirror) * DEGREE) / 2.0;
+    ld angle = (atan(disSouthSensor / disFromLas2Mirror) * constants::DEGREE) / 2.0;
     results["angle with respect to due west"] = angle;
-    ld offBy = disFromLas2Mirror * tan((2.0 * (angle + angleOffBy))*RADIAN);
+    ld offBy = disFromLas2Mirror * tan((2.0 * (angle + angleOffBy))*constants::RADIAN);
     results["distance between laser and point south"] = offBy;
     results["how far need to move the light sensor"] = offBy - disSouthSensor;
 
@@ -657,7 +641,7 @@ inline std::map<std::string, ld> GeometricOptics::angleAndDistanceOfBouncedLaser
 
 inline ld GeometricOptics::incidentRayToMaterial(const ld n1, const ld n2, const ld angRefrac2)
 {
-    return asin((n2 * sin(angRefrac2*RADIAN)) / n1) * DEGREE;
+    return asin((n2 * sin(angRefrac2*constants::RADIAN)) / n1) * constants::DEGREE;
 }
 
 inline ld GeometricOptics::imageDistance_diRaytracing(const ld dObj, const ld f)
@@ -677,7 +661,7 @@ inline ld GeometricOptics::magnification(const ld di, const ld dObj)
 
 inline ld GeometricOptics::indexOfRefractionFromCriticalAngle(const ld cA, const ld n2)
 {
-    return n2 / sin(cA * RADIAN);
+    return n2 / sin(cA * constants::RADIAN);
 }
 
 inline ld GeometricOptics::focalLength_ConvergingLens_dido(const ld d_i, const ld d_o)

@@ -639,139 +639,139 @@ private:
 template<typename T>
 constexpr auto QuantumPhysics::energyBetweenOscillatorStates_eM(const T f)
 {
-    return _PLANKS_EM_ * f;
+    return constants::PLANKS_EM * f;
 }
 
 template<typename T>
 inline constexpr auto QuantumPhysics::energy_J(const T f)
 {
-    return _PLANKS_J_ * f;
+    return constants::PLANKS_J * f;
 }
 
 template<typename T>
 inline constexpr auto QuantumPhysics::energy_eM(const T f)
 {
-    return _PLANKS_EM_ * f;
+    return constants::PLANKS_EM * f;
 }
 
 template<typename T>
 constexpr auto QuantumPhysics::energyBetweenOscillatorStates_J(const T time)
 {
-    return _PLANKS_J_ * (1.0 / time);
+    return constants::PLANKS_J * (1.0 / time);
 }
 
 template<typename F, typename E>
 constexpr auto QuantumPhysics::valueOf_nState_f(const F frequency, const E energy)
 {
-    return round((energy / (_PLANKS_EM_ * frequency)) - (1 / 2));
+    return round((energy / (constants::PLANKS_EM * frequency)) - (1 / 2));
 }
 
 template<typename T, typename E>
 constexpr auto QuantumPhysics::valueOf_nState_t(const T time, const E energy)
 {
-    return ((energy * time) / _PLANKS_J_) - 1 / 2;
+    return ((energy * time) / constants::PLANKS_J) - 1 / 2;
 }
 
 template<typename E>
 constexpr auto QuantumPhysics::oscillationFrequency(const E energy)
 {
-    return energy / _PLANKS_EM_;
+    return energy / constants::PLANKS_EM;
 }
 
 template<typename T>
 constexpr auto QuantumPhysics::longestWavelength_eMRadiationEjection(const T BE)
 {
-    return (_PLANKS_C_) / BE;
+    return (constants::PLANKS_C) / BE;
 }
 
 template<typename T>
 constexpr auto QuantumPhysics::bindingEnergy(const T lambda)
 {
-    return (_PLANKS_C_) / lambda;
+    return (constants::PLANKS_C) / lambda;
 }
 
 template<typename T>
 constexpr auto QuantumPhysics::bindingEnergy_Joules(const T lambda)
 {
-    return (_PLANKS_J_ * _C_) / lambda;
+    return (constants::PLANKS_J * constants::LIGHT_SPEED) / lambda;
 }
 
 template<typename T, typename K>
 constexpr auto QuantumPhysics::bindingEnergy(const T lambda, const K KE)
 {
-    return ((_PLANKS_C_) / lambda) - KE;
+    return ((constants::PLANKS_C) / lambda) - KE;
 }
 
 template<typename T, typename K>
 constexpr auto QuantumPhysics::bindingEnergy_f(const T f, const K KE)
 {
-    return (_PLANKS_J_*f) - KE;
+    return (constants::PLANKS_J*f) - KE;
 }
 
 template<typename T, typename B>
 constexpr auto QuantumPhysics::maximumKineticEnergy(const T lambda, const B BE)
 {
-    return ((_PLANKS_C_)/ lambda) - BE;
+    return ((constants::PLANKS_C)/ lambda) - BE;
 }
 
 template<typename T, typename B>
 constexpr auto QuantumPhysics::maximumKineticEnergy_f(const T f, const B BE)
 {
-    return _PLANKS_EM_ * f - BE;
+    return constants::PLANKS_EM * f - BE;
 }
 
 template<typename K, typename B>
 constexpr auto QuantumPhysics::wavelength(const K KE, const B BE)
 {
-    return _PLANKS_C_ / (KE + BE);
+    return constants::PLANKS_C / (KE + BE);
 }
 
 template<typename T>
 constexpr auto QuantumPhysics::wavelength(const T E)
 {
-    return _PLANKS_C_ / E;
+    return constants::PLANKS_C / E;
 }
 
 template<typename T, typename M, typename B>
 constexpr auto QuantumPhysics::maximumVelocity(const T lambda, const M m, const B BE)
 {
-    return sqrt((2.0 / m) * (((_PLANKS_J_*_C_) / lambda) - (BE*1.602e-19 )));
+    return sqrt((2.0 / m) * (((constants::PLANKS_J*constants::LIGHT_SPEED) / lambda) - (BE*1.602e-19 )));
 }
 
 template<typename T, typename M, typename B, typename D>
 constexpr auto QuantumPhysics::timeToTravelDistance(const T lambda, const M m, const B BE, const D dis)
 {
-    return dis/sqrt((2.0 / m) * (((_PLANKS_J_ * _C_) / lambda) - (BE * 1.602e-19)));
+    return dis/sqrt((2.0 / m) * (((constants::PLANKS_J * constants::LIGHT_SPEED) / lambda) - (BE * 1.602e-19)));
 }
 
 template<typename T, typename P>
 constexpr auto QuantumPhysics::electronsPerSecondEjected(const T lambda, const P P_)
 {
-    return (P_ * lambda) / (_PLANKS_J_ * _C_);
+    return (P_ * lambda) / (constants::PLANKS_J * constants::LIGHT_SPEED);
 }
 
 template<typename T>
 constexpr auto QuantumPhysics::photoelectronsPerSecondEjected(const T A, const T lambda, const T I)
 {
-    return (I * (A * A) * lambda) / (_PLANKS_J_ * _C_);
+    return (I * (A * A) * lambda) / (constants::PLANKS_J * constants::LIGHT_SPEED);
 }
 
 template<typename T>
 constexpr auto QuantumPhysics::powerCarriedAwayByElectrons(const T lambda, const T P, const T BE)
 {
-    return (((_PLANKS_J_ * _C_) / lambda) - (BE*1.602e-19)) * electronsPerSecondEjected(lambda, P);
+    return (((constants::PLANKS_J * constants::LIGHT_SPEED) / lambda) - (BE*1.602e-19)) * electronsPerSecondEjected(lambda, P);
 }
 
 template<typename T>
 constexpr auto QuantumPhysics::powerCarriedAwayByElectrons(const T A, const T lambda, const T I, const T BE)
 {
-    return I * (A * A) * (1.0 - (BE * lambda) / _PLANKS_C_);
+    return I * (A * A) * (1.0 - (BE * lambda) / constants::PLANKS_C);
 }
 
 template<typename T>
 constexpr auto QuantumPhysics::frequency_fromE(const T E)
 {
-    return E / _PLANKS_EM_;
+    return E / constants::PLANKS_EM;
 }
 
 template<typename T>
@@ -789,13 +789,13 @@ constexpr auto QuantumPhysics::numOfTightlyBoundMolecules_gammaRayCanBreakApart(
 template<typename T>
 constexpr auto QuantumPhysics::acceleratingVoltage(const T lambda, const T q)
 {
-    return (_PLANKS_J_ * _C_) / (q * lambda);
+    return (constants::PLANKS_J * constants::LIGHT_SPEED) / (q * lambda);
 }
 
 template<typename Q, typename V>
 constexpr auto QuantumPhysics::energyMax_eV(const Q q, const V volts)
 {
-    return q * volts * _JOULES2eV_;
+    return q * volts * constants::JOULES2eV;
 }
 
 template<typename F>
@@ -813,43 +813,43 @@ constexpr auto QuantumPhysics::ratioOf_photonsPerSecond(const F f_1, const F f_2
 template<typename P, typename F>
 constexpr auto QuantumPhysics::photonsPerSecondEmitted(const P P_, const F f)
 {
-    return P_ / (_PLANKS_J_ * f);
+    return P_ / (constants::PLANKS_J * f);
 }
 
 template<typename P, typename E>
 constexpr auto QuantumPhysics::gammaRaysPerSecondEmitted(const P P_, const E E_)
 {
-    return P_ / (E_ * _PROTON_CHARGE_);
+    return P_ / (E_ * constants::PROTON_CHARGE);
 }
 
 template<typename P, typename E, typename F>
 constexpr auto QuantumPhysics::distanceBetween2Satellites(const P P_, const E E_, const F phi)
 {
-    return sqrt(gammaRaysPerSecondEmitted(P_, E_) / (4.0 * Pi_ * phi));
+    return sqrt(gammaRaysPerSecondEmitted(P_, E_) / (4.0 * constants::PI * phi));
 }
 
 template<typename W>
 constexpr auto QuantumPhysics::photonMomentum(const W lambda)
 {
-    return _PLANKS_J_ / lambda;
+    return constants::PLANKS_J / lambda;
 }
 
 template<typename E>
 constexpr auto QuantumPhysics::momentum_fromEnergy(const E E_)
 {
-    return (E_*_PROTON_CHARGE_) / _C_;
+    return (E_*constants::PROTON_CHARGE) / constants::LIGHT_SPEED;
 }
 
 template<typename P>
 constexpr auto QuantumPhysics::energy_fromMomentum(const P p)
 {
-    return p * _C_ * _JOULES2eV_;
+    return p * constants::LIGHT_SPEED * constants::JOULES2eV;
 }
 
 template<typename P>
 constexpr auto QuantumPhysics::wavelength_fromMomentum(const P p)
 {
-    return _PLANKS_J_ / p;
+    return constants::PLANKS_J / p;
 }
 
 template<typename P, typename M>
@@ -867,38 +867,38 @@ constexpr auto QuantumPhysics::kineticEnergy(const M m, const V v)
 template<typename M, typename W>
 constexpr auto QuantumPhysics::kineticEnergy_fromWavelength(const M m, const W lambda)
 {
-    return pow(_PLANKS_J_, 2) / (2.0 * m * (lambda * lambda)) * _JOULES2eV_;
+    return pow(constants::PLANKS_J, 2) / (2.0 * m * (lambda * lambda)) * constants::JOULES2eV;
 }
 
 template<typename W>
 constexpr auto QuantumPhysics::electronVelocity(const W lambda)
 {
-    return _PLANKS_J_ / (_ELECTRON_MASS_ * lambda);
+    return constants::PLANKS_J / (constants::ELECTRON_MASS * lambda);
 }
 
 template<typename M, typename W>
 constexpr auto QuantumPhysics::objectVelocity(const M m, const W lambda)
 {
-    return _PLANKS_J_ / (m * lambda);
+    return constants::PLANKS_J / (m * lambda);
 }
 
 template<typename V>
 constexpr auto QuantumPhysics::electronWavelength_movingAtPercentSpeedOfLight(const V percentOfLightSpeed)
 {
     auto decimalVal = percentOfLightSpeed / 100.0;
-    return _PLANKS_J_ / (_ELECTRON_MASS_ * decimalVal * _C_);
+    return constants::PLANKS_J / (constants::ELECTRON_MASS * decimalVal * constants::LIGHT_SPEED);
 }
 
 template<typename M, typename V>
 constexpr auto QuantumPhysics::deBrogile_wavelength(const M m, const V v)
 {
-    return _PLANKS_J_ / (m * v);
+    return constants::PLANKS_J / (m * v);
 }
 
 template<typename M, typename Q, typename V>
 constexpr auto QuantumPhysics::wavelengthParticleAcceleratedThroughVoltageOf(const M m, const Q q, const V v)
 {
-    return _PLANKS_J_ / (sqrt((2.0 * q * m * v)));
+    return constants::PLANKS_J / (sqrt((2.0 * q * m * v)));
 }
 
 template<typename M, typename Q, typename V>
@@ -910,31 +910,31 @@ constexpr auto QuantumPhysics::voltageToHaveVelocityOf(const M m, const Q q, con
 template<typename XX, typename M>
 constexpr auto QuantumPhysics::min_uncertaintyInVelocity(const XX x, const M m)
 {
-    return _PLANKS_J_ / (4.0 * Pi_ * x * m);
+    return constants::PLANKS_J / (4.0 * constants::PI * x * m);
 }
 
 template<typename M, typename V>
 constexpr auto QuantumPhysics::min_uncertaintyInPosition(const V v, const M m)
 {
-    return _PLANKS_J_ / (4.0 * Pi_ * m * v);
+    return constants::PLANKS_J / (4.0 * constants::PI * m * v);
 }
 
 template<typename T>
 constexpr auto QuantumPhysics::min_uncertaintyInEnergy(const T t)
 {
-    return _PLANKS_EM_ / (4.0 * Pi_ * t);
+    return constants::PLANKS_EM / (4.0 * constants::PI * t);
 }
 
 template<typename E>
 constexpr auto QuantumPhysics::min_uncertaintyInLifetime(const E E_)
 {
-    return _PLANKS_EM_ / (4.0 * Pi_ * E_);
+    return constants::PLANKS_EM / (4.0 * constants::PI * E_);
 }
 
 template<typename T>
 constexpr auto QuantumPhysics::min_uncertaintyInMass(const T t)
 {
-    return _PLANKS_J_ / (4.0 * Pi_ * (_C_ * _C_) * t);
+    return constants::PLANKS_J / (4.0 * constants::PI * (constants::LIGHT_SPEED * constants::LIGHT_SPEED) * t);
 }
 
 template<typename M, typename C, typename T, typename E>

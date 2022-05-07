@@ -5,43 +5,9 @@
 #ifndef PHYSICSFORMULA_ATOMICPHYSICS_H
 #define PHYSICSFORMULA_ATOMICPHYSICS_H
 
-#include "ElectricCharge.h"
+#include "Constants.h"
 #include "PeriodicElements.h"
-// speed of light in a vacuum is 299792458 m/s
-constexpr auto _LIGHT_SPEED_ = 2.99792458e8;//2.9979*10^8
 
-
-/// <summary>
-/// the Rydberg constant is expressed for either hydrogen as R_H or at the limit
-/// of infinite nuclear mass as R_∞. In either case, the constant is used to
-/// express the limiting value of the highest wave number (inverse wavelength)
-/// of any photon that can be emitted from an atom, or, alternatively,
-/// the wave number of the lowest-energy photon capable of ionizing an atom from
-/// its ground state. The hydrogen spectral series can be expressed simply in
-/// terms of the Rydberg constant for hydrogen R_H and the Rydberg formula.
-/// </summary>
-constexpr auto _RYDBERG_ = 1.09678e7;
-constexpr auto _R_H_ = _RYDBERG_;
-
-/// <summary>
-/// The Bohr radius is a physical constant, equal to the most probable distance
-/// between the nucleus and the electron in a hydrogen atom in its ground state.
-/// It is named after Niels Bohr, due to its role in the Bohr model of an atom.
-/// Its value is 5.29177210903×10⁻¹¹
-/// </summary>
-constexpr auto _BOHR_RADIUS_ = 5.29177210903e-11;
-constexpr auto _A_B_ = (_PLANKS_J_*_PLANKS_J_)/(4.0*(_PI_*_PI_)*_ELECTRON_MASS_*_k_*(_PROTON_CHARGE_*_PROTON_CHARGE_));
-
-/// <summary>
-/// After performing an uncertainty analysis, it was found that the electron
-/// charge to mass ratio is most accurately reported as 1.71×10¹¹ ± 5.9×10^9 C/kg
-/// </summary>
-constexpr auto _Q2M_E_ = _ELECTRON_CHARGE_/_ELECTRON_MASS_;
-
-/// <summary>
-/// The Proton Charge to Mass ratio is 95788335.8 C/kg.
-/// </summary>
-constexpr auto _Q2M_P_ = _PROTON_CHARGE_/_PROTON_MASS_;
 
 /// <summary>
 /// The atomic physics object count
@@ -51,8 +17,8 @@ static int atomicPhysics_objectCount = 0;
 static struct HydrogenSpectralSeries
 {
     HydrogenSpectralSeries()
-    {}
-    HydrogenSpectralSeries(int further )
+    = default;
+    explicit HydrogenSpectralSeries(int further )
     {
         FURTHER = further;
     }
@@ -144,7 +110,7 @@ public:
     /// <param name="elementMass">The element mass.</param>
     /// <returns></returns>
     template<typename T>
-    static constexpr auto elementDensityFromNucleusSize(const T elementMass);
+    static constexpr auto elementDensityFromNucleusSize(T elementMass);
 
     /// <summary>
     /// In Millikan’s oil-drop experiment, one looks at a small oil drop held
@@ -159,7 +125,7 @@ public:
     /// <param name="diameter">The diameter</param>
     /// <returns>charge on the oil drop</returns>
     template<typename V, typename D, typename P, typename A>
-    static constexpr auto chargeOnDrop(const V volts, const D d, const P p, const A diameter);
+    static constexpr auto chargeOnDrop(V volts, D d, P p, A diameter);
 
     /// <summary>
     ///  An aspiring physicist wants to build a scale model of a hydrogen atom
@@ -169,18 +135,18 @@ public:
     /// <param name="d">The diameter.</param>
     /// <returns>size of nucleus on model</returns>
     template<typename D>
-    static constexpr auto toScale(const D d);
+    static constexpr auto toScale(D d);
 
     /// <summary>
     /// calculate the wavelength within the hydrogen spectrum using the Rydberg
-    /// constant and this formula. n_i and n_f are integer values where n_i is
-    /// always at least one larger then n_f.
+    /// constant and this formula. n_i and nf are integer values where n_i is
+    /// always at least one larger then nf.
     /// </summary>
-    /// <param name="n_i">positive integer larger then > n_f</param>
-    /// <param name="n_f">The positive integer associated with some series..</param>
+    /// <param name="n_i">positive integer larger then > nf</param>
+    /// <param name="nf">The positive integer associated with some series..</param>
     /// <returns>wavelength of hydrogen spectrum element</returns>
     template<typename NI, typename NF>
-    static constexpr auto hydrogenSpectrum_wavelength(const NI n_i, const NF n_f);
+    static constexpr auto hydrogenSpectrum_wavelength(NI n_i, NF nf);
 
     /// <summary>
     /// If a hydrogen atom has its electron in the n=4 state,
@@ -190,7 +156,7 @@ public:
     /// <param name="E_0">The e 0.</param>
     /// <returns></returns>
     template<typename N, typename E>
-    static constexpr auto energyToIonizedState(const N state, const E E_0);
+    static constexpr auto energyToIonizedState(N state, E E_0);
 
     /// <summary>
     /// A hydrogen atom in an excited state can be ionized with less energy
@@ -201,7 +167,7 @@ public:
     /// <param name="e_i">The e i.</param>
     /// <returns></returns>
     template<typename E0, typename EI>
-    static constexpr auto stateOfExcitedAtom(const E0 e_0, const EI e_i);
+    static constexpr auto stateOfExcitedAtom(E0 e_0, EI e_i);
 
     /// <summary>
     /// How much energy in eV is needed to ionize the ion from this excited state?
@@ -211,7 +177,7 @@ public:
     /// <param name="n">The excited state the atom is in now.</param>
     /// <returns>energy needed to ionize atom from excited state</returns>
     template<typename E0, typename Z, typename N>
-    static constexpr auto energyNeededToIonizeAtom(const E0 e_0, const Z z, const N n);
+    static constexpr auto energyNeededToIonizeAtom(E0 e_0, Z z, N n);
 
     /// <summary>
     /// Find the radius of a hydrogen atom in the n=2 state according to Bohr’s
@@ -221,16 +187,16 @@ public:
     /// <param name="z">The z.</param>
     /// <returns></returns>
     template<typename N, typename Z>
-    static constexpr auto atomRadius_nState(const N n, const Z z);
+    static constexpr auto atomRadius_nState(N n, Z z);
 
     /// <summary>
     /// What is the smallest-wavelength line in the Balmer series? Is it in the
     /// visible part of the spectrum?
     /// </summary>
-    /// <param name="n_f">The n f.</param>
+    /// <param name="nf">The n f.</param>
     /// <returns></returns>
     template<typename NF>
-    static constexpr auto smallest_wavelength(const NF n_f);
+    static constexpr auto smallest_wavelength(NF nf);
 
     /// <summary>
     /// A wavelength of 4.653 μm is observed in a hydrogen spectrum for a
@@ -238,25 +204,27 @@ public:
     /// level of the electron
     /// </summary>
     /// <param name="theta">The theta.</param>
-    /// <param name="n_f">The n f.</param>
+    /// <param name="nf">The n f.</param>
     /// <returns></returns>
     template<typename W, typename NF>
-    static constexpr auto initialEnergyLevel(const W theta, const NF n_f);
+    static constexpr auto initialEnergyLevel(W theta, NF nf);
 
     /// <summary>
     /// Atoms can be ionized by thermal collisions, such as at the high
     /// temperatures found in the solar corona. One such ion is C^+5(z), a carbon
     /// atom with only a single electron. What is the wavelength of the first
-    /// line(n_f) in this ion’s Paschen series(n_i)
+    /// line(nf) in this ion’s Paschen series(n_i)
     /// </summary>
     /// <param name="e_0">The ground state.</param>
     /// <param name="z">The atomic number z.</param>
     /// <param name="n_i">The initial electron orbit.</param>
-    /// <param name="n_f">The final electron orbit.</param>
+    /// <param name="nf">The final electron orbit.</param>
     /// <returns></returns>
     template<typename E0, typename Z, typename N>
-    static constexpr auto wavelength_nLineInIonsSeries(
-            const E0 e_0, const Z z, const N n_i, const N n_f);
+    static constexpr auto wavelength_nLineInIonsSeries(E0 e_0,
+                                                       Z z,
+                                                       N n_i,
+                                                       N nf);
 
     /// <summary>
     /// Calculate the shortest-wavelength x-ray radiation that can be generated
@@ -265,7 +233,7 @@ public:
     /// <param name="volts">The volts.</param>
     /// <returns>shortest wavelength</returns>
     template<typename V>
-    static constexpr auto shortestWavelength_xRayTubeAppliedVoltage(const V volts);
+    static constexpr auto shortestWavelength_xRayTubeAppliedVoltage(V volts);
 
     /// <summary>
     /// Calculate the photon energy in eV
@@ -273,7 +241,7 @@ public:
     /// <param name="theta">The theta.</param>
     /// <returns>energy in eV</returns>
     template<typename W>
-    static constexpr auto photonEnergy_eV(const W theta);
+    static constexpr auto photonEnergy_eV(W theta);
 
     /// <summary>
     /// What are the approximate energies of the Kα x-rays for copper(z)
@@ -282,7 +250,7 @@ public:
     /// <param name="z">The z.</param>
     /// <returns>energy of x-ray for Kα transition</returns>
     template<typename E0, typename Z>
-    static constexpr auto energyK_alphaTransition(const E0 e_0, const Z z);
+    static constexpr auto energyK_alphaTransition(E0 e_0, Z z);
 
     /// <summary>
     /// What are the approximate energies of the Kβ x-rays for copper(z)
@@ -291,7 +259,7 @@ public:
     /// <param name="z">The z.</param>
     /// <returns>energy of x-ray for Kβ transition</returns>
     template<typename E0, typename Z>
-    static constexpr auto energyK_betaTransition(const E0 e_0, const Z z);
+    static constexpr auto energyK_betaTransition(E0 e_0, Z z);
 
     /// <summary>
     /// A helium-neon laser is pumped by electric discharge. Calculate the wavelength
@@ -301,7 +269,7 @@ public:
     /// <param name="energy">The energy supplied.</param>
     /// <returns>wavelength</returns>
     template<typename E>
-    static constexpr auto wavelengthNeededToPumpLaserTo_evState(const E energy);
+    static constexpr auto wavelengthNeededToPumpLaserTo_evState(E energy);
 
     /// <summary>
     /// Calculate the magnitude of the angular momentum for an l=1(l) electron.
@@ -309,7 +277,7 @@ public:
     /// <param name="l">The l.</param>
     /// <returns>magnitude of angular momentum</returns>
     template<typename L>
-    static constexpr auto magnitudeAngularMomentum(const L l);
+    static constexpr auto magnitudeAngularMomentum(L l);
 
 
 
@@ -324,13 +292,14 @@ public:
 template<typename T>
 constexpr auto AtomicPhysics::elementDensityFromNucleusSize(const T elementMass)
 {
-    return elementMass / ((4.0 / 3.0) * _PI_ * (pow((1e-15/2.0), 3)));
+    return elementMass / ((4.0 / 3.0) * constants::PI * (pow((1e-15/2.0), 3)));
 }
 
 template<typename V, typename D, typename P, typename A>
 constexpr auto AtomicPhysics::chargeOnDrop(const V volts, const D d, const P p, const A diameter)
 {
-    return ((d * _PI_ * pow(diameter, 3) * p * _Ga_) / (6.0 * volts))* (1/_PROTON_CHARGE_);
+    return ((d * constants::PI * pow(diameter, 3.0) * p * constants::Ga) / (6.0 * volts))*
+    (1.0/constants::PROTON_CHARGE);
 }
 
 template<typename D>
@@ -340,9 +309,10 @@ constexpr auto AtomicPhysics::toScale(const D d)
 }
 
 template<typename NI, typename NF>
-constexpr auto AtomicPhysics::hydrogenSpectrum_wavelength(const NI n_i, const NF n_f)
+constexpr auto AtomicPhysics::hydrogenSpectrum_wavelength(const NI n_i, const NF nf)
 {
-    return 1.0 / (_RYDBERG_ * ((1.0 / (n_f * n_f)) - (1.0 / (n_i * n_i))));
+    return 1.0 / (constants::RYDBERG * ((1.0 / (nf * nf)) - (1.0 / (n_i * n_i)
+    )));
 }
 
 template<typename N, typename E>
@@ -367,39 +337,44 @@ constexpr auto AtomicPhysics::energyNeededToIonizeAtom(const E0 e_0, const Z z, 
 template<typename N, typename Z>
 constexpr auto AtomicPhysics::atomRadius_nState(const N n, const Z z)
 {
-    return ((n * n) / z) * _A_B_;
+    return ((n * n) / z) * constants::A_B;
 }
 
 template<typename NF>
-constexpr auto AtomicPhysics::smallest_wavelength(const NF n_f)
+constexpr auto AtomicPhysics::smallest_wavelength(const NF nf)
 {
-    return (n_f * n_f) / _RYDBERG_;
+    return (nf * nf) / constants::RYDBERG;
 }
 
 template<typename W, typename NF>
-constexpr auto AtomicPhysics::initialEnergyLevel(const W theta, const NF n_f)
+constexpr auto AtomicPhysics::initialEnergyLevel(const W theta, const NF nf)
 {
-    return n_f * sqrt((theta * _RYDBERG_) / ((_RYDBERG_ * theta) - (n_f * n_f)));
+    return nf * sqrt((theta * constants::RYDBERG) /
+                     ((constants::RYDBERG * theta) - (nf * nf)));
 }
 
 template<typename E0, typename Z, typename N>
-constexpr auto AtomicPhysics::wavelength_nLineInIonsSeries(const E0 e_0, const Z z, const N n_i, const N n_f)
+constexpr auto AtomicPhysics::wavelength_nLineInIonsSeries(const E0 e_0,
+                                                           const Z z,
+                                                           const N n_i,
+                                                           const N nf)
 {
     auto E_i = energyNeededToIonizeAtom(e_0, z, n_i);
-    auto E_f = energyNeededToIonizeAtom(e_0, z, n_f);
-    return _PLANKS_C_ / (E_i - E_f);
+    auto E_f = energyNeededToIonizeAtom(e_0, z, nf);
+    return constants::PLANKS_C / (E_i - E_f);
 }
 
 template<typename V>
 constexpr auto AtomicPhysics::shortestWavelength_xRayTubeAppliedVoltage(const V volts)
 {
-    return (_PLANKS_J_*_LIGHT_SPEED_) / (_PROTON_CHARGE_ * volts);
+    return (constants::PLANKS_J*constants::LIGHT_SPEED) /
+    (constants::PROTON_CHARGE * volts);
 }
 
 template<typename W>
 constexpr auto AtomicPhysics::photonEnergy_eV(const W theta)
 {
-    return _PLANKS_C_ / theta;
+    return constants::PLANKS_C / theta;
 }
 
 template<typename E0, typename Z>
@@ -417,13 +392,13 @@ constexpr auto AtomicPhysics::energyK_betaTransition(const E0 e_0, const Z z)
 template<typename E>
 constexpr auto AtomicPhysics::wavelengthNeededToPumpLaserTo_evState(const E energy)
 {
-    return _PLANKS_C_ / energy;
+    return constants::PLANKS_C / energy;
 }
 
 template<typename L>
 constexpr auto AtomicPhysics::magnitudeAngularMomentum(const L l)
 {
-    return sqrt(l * (l + 1.0)) * (_PLANKS_J_ / (2.0 * _PI_));
+    return sqrt(l * (l + 1.0)) * (constants::PLANKS_J / (2.0 * constants::PI));
 }
 
 

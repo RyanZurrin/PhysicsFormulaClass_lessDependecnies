@@ -13,7 +13,7 @@
  */
 #include <iostream>
 #include <cmath>
-#define _PI_ 3.14159265358979323846
+#include "Constants.h"
 
 static int coneObjectCount = 0;
 typedef long double ld;
@@ -119,12 +119,13 @@ public:
 #endif //PHYSICSFORMULA_CONE_H
 inline ld Cone::calculateVolume() const
 {
-    return (1.0/3.0)*_PI_*(radius*radius)*height;
+    return (1.0/3.0)*constants::PI*(radius*radius)*height;
 }
 
 inline ld Cone::calculateSurfaceArea() const
 {
-    return _PI_*radius*(sqrt((radius*radius) + (height*height)))+ _PI_*(radius*radius);
+    return constants::PI*radius*(sqrt((radius*radius) + (height*height)))+
+    constants::PI*(radius*radius);
 }
 
 inline auto Cone::setHeight(ld h)

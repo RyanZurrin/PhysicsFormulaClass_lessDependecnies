@@ -10,7 +10,7 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-#define PI 3.14159265
+#include "Constants.h"
 using namespace std;
 
 //static object counter for Elasticity class
@@ -166,7 +166,7 @@ public:
      * returns: long double, cross sectional
      */
     static long double cross_sectional_area(const long double radius)
-    { return PI * (radius * radius); }
+    { return constants::PI * (radius * radius); }
 
     /**
     * Returns the calculated deformation of an object which is used in hooks law equation
@@ -177,7 +177,7 @@ public:
     * @returns the deformation
     */
     static long double deformations(const long double appliedForce, const long double modulus, const long double diameter, const long double original)
-    { return (1 / modulus) * (appliedForce / (PI * (diameter * diameter)) * original); }
+    { return (1 / modulus) * (appliedForce / (constants::PI * (diameter * diameter)) * original); }
 
     /**
     * method: stress_usingY(const long double YoungsModulus, const long double strain)
@@ -236,7 +236,8 @@ public:
      */
     static long double displacement_side_sheer_force(const long double length, const long double diameter, const long double forceN, const long double sheerModuli)
     {
-        return (1 / sheerModuli) * (4 / (PI * (diameter * diameter))) * forceN * length;
+        return (1 / sheerModuli) * (4.0 / (constants::PI * (diameter *
+        diameter))) * forceN * length;
     }
 
     /**

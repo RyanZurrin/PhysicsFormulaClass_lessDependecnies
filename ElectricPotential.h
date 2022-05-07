@@ -11,7 +11,6 @@
  * @dateBuilt  12/31/2020
  * @lastEdit 12/31/2020
  */
-//#include "ElectricCharge.h"
 #include "Heat.h"
 #include <iostream>
 
@@ -20,11 +19,11 @@
 
 static int electricalPotential_objectCount = 0;
 
-constexpr auto _eV_ = 1.602e-19;
+
 
 //constexpr auto _LIGHTSPEED_ = 2.99792458e8;
 //multiply joules by this to convert to electron Volts
-constexpr auto _JOULES2eV_ = 1.0 / _eV_;
+
 
 static struct DielectricConstants
 {
@@ -516,17 +515,17 @@ inline ld ElectricPotential::chargeMoved_q(const ld PE, const ld V)
 
 inline ld ElectricPotential::electronsPerSecond(const ld chargeMoved)
 {
-    return chargeMoved/_ELECTRON_CHARGE_;
+    return chargeMoved/constants::ELECTRON_CHARGE;
 }
 
 inline ld ElectricPotential::electronVolts_eV(const ld V)
 {
-    return _eV_ * V;
+    return constants::eV * V;
 }
 
 inline ld ElectricPotential::electronVoltsFromJoules(const ld joules)
 {
-    return joules/_PROTON_CHARGE_;
+    return joules/constants::PROTON_CHARGE;
 }
 
 inline ld ElectricPotential::velocityFinal(const ld q, const ld V, const ld m)
@@ -564,35 +563,42 @@ inline ld ElectricPotential::distanceOverChangeInVolts_s(const ld V, const ld E)
     return V / E;
 }
 
-inline ld ElectricPotential::distancePointChargeToEqualVoltsOf(const ld Q, const ld V)
+inline ld ElectricPotential::distancePointChargeToEqualVoltsOf(const ld Q,
+                                                               const ld V)
 {
-    return (_k_*Q)/V;
+    return (constants::K*Q)/V;
 }
 
 inline ld ElectricPotential::electricPotential_pointCharge(const ld Q, const ld r)
 {
-    return (_k_ * Q) / r;
+    return (constants::K * Q) / r;
 }
 
 inline ld ElectricPotential::excessCharge(const ld r, const ld V)
 {
-    return (r * V) / _k_;
+    return (r * V) / constants::K;
 }
 
-inline ld ElectricPotential::voltageNeededToObtainEnergy(const ld m, const ld v, const ld q, const ld numProtons)
+inline ld ElectricPotential::voltageNeededToObtainEnergy(const ld m,
+                                                         const ld v,
+                                                         const ld q,
+                                                         const ld numProtons)
 {
     return -(m * (v*v)) / (2.0 * (numProtons*q));
 }
 
-inline ld ElectricPotential::temperatureAvgKineticEnergyGasMolecule(const ld V, const ld q = _PROTON_CHARGE_)
+inline ld ElectricPotential::temperatureAvgKineticEnergyGasMolecule(
+        const ld V,
+        const ld q = constants::PROTON_CHARGE)
 {
 
-    return (2* q* V)/(3.0 * BOLTZMANN_K_);
+    return (2* q* V)/(3.0 * constants::BOLTZMANN);
 }
 
-inline ld ElectricPotential::voltageIonsMoveThroughToReachSameTemperature(const ld T, const ld q = _PROTON_CHARGE_)
+inline ld ElectricPotential::voltageIonsMoveThroughToReachSameTemperature(
+        const ld T, const ld q = constants::PROTON_CHARGE)
 {
-    return (3/2)*((BOLTZMANN_K_*T)/q);
+    return (3/2)*((constants::BOLTZMANN*T)/q);
 }
 
 
@@ -613,13 +619,13 @@ inline ld ElectricPotential::capacitanceVolts(const ld Q, const ld C)
 
 inline ld ElectricPotential::capacitanceParallelPlate(const ld A, const ld d)
 {
-    return _e0_ * (A / d);
+    return constants::e0 * (A / d);
 }
 
 
 inline ld ElectricPotential::capacitanceParallelPlateDielectric(const ld d_k, const ld A, const ld d)
 {
-    return d_k * _e0_ * (A / d);
+    return d_k * constants::e0 * (A / d);
 }
 
 inline ld ElectricPotential::dielectricConstant(const ld E0, const ld E)
@@ -650,12 +656,14 @@ inline ld ElectricPotential::potentialAcross_Ecap_CE(const ld C, const ld Ecap)
 
 inline ld ElectricPotential::capacitorPlateArea(const ld C, const ld d)
 {
-    return C * d / (_e0_);
+    return C * d / (constants::e0);
 }
 
-inline ld ElectricPotential::capacitorPlateAreaDielectric(const ld C, const ld d, const ld k)
+inline ld ElectricPotential::capacitorPlateAreaDielectric(const ld C,
+                                                          const ld d,
+                                                          const ld k)
 {
-    return (d * C) / (k * _e0_);
+    return (d * C) / (k * constants::e0);
 }
 
 inline ld ElectricPotential::vMaxOnCapacitor(const ld dStrength, const ld d)
@@ -664,7 +672,8 @@ inline ld ElectricPotential::vMaxOnCapacitor(const ld dStrength, const ld d)
 }
 
 
-inline ld ElectricPotential::maxChargeCanBeStoredCapacitor(const ld C, const ld vMax)
+inline ld ElectricPotential::maxChargeCanBeStoredCapacitor(const ld C,
+                                                           const ld vMax)
 {
     return C * vMax;
 }
@@ -674,32 +683,43 @@ inline ld ElectricPotential::volumeOfDielectricMaterial(const ld A, const ld d)
     return A * d;
 }
 
-inline ld ElectricPotential::electricFieldStrengthBetween2plates(const ld KE, const ld q, const ld d)
+inline ld ElectricPotential::electricFieldStrengthBetween2plates(
+        const ld KE,
+        const ld q,
+        const ld d)
 {
     return KE/(q*d);
 }
 
 inline ld ElectricPotential::potentialNearSurfaceOfSphere(const ld d, const ld q)
 {
-    return (2.0*_k_*q)/d;
+    return (2.0*constants::K * q)/d;
 }
 
 inline ld ElectricPotential::chargeOnSphere(const ld d, const ld V)
 {
-    return (d*V)/(2.0*_k_);
+    return (d*V)/(2.0 * constants::K);
 }
 
-inline ld ElectricPotential::chargeOnPointToArriveWithSpeed(const ld m, const ld v, const ld V)
+inline ld ElectricPotential::chargeOnPointToArriveWithSpeed(const ld m,
+                                                            const ld v,
+                                                            const ld V)
 {
     return (m*(v*v))/(2.0*V);
 }
 
-inline ld ElectricPotential::temperatureChangeFromCapacitanceBurn(const ld V, const ld C, const ld m, const ld _c_ = _c.human_body_average_S[0])
+inline ld ElectricPotential::temperatureChangeFromCapacitanceBurn(
+        const ld V,
+        const ld C,
+        const ld m,
+        const ld _c_ = _c.human_body_average_S[0])
 {
     return (C*(V*V))/(2.0*m*_c_);
 }
 
-inline ld ElectricPotential::kineticEnergyFinalToMovePositiveCharge(const ld q, const ld Vab)
+inline ld ElectricPotential::kineticEnergyFinalToMovePositiveCharge(
+        const ld q,
+        const ld Vab)
 {
     return -q * Vab;
 }

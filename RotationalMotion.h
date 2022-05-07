@@ -260,7 +260,7 @@ public:
         {
             return ((wf * wf) - (wi * wi)) / (2 * (Aa));
         }
-        return ((wf * wf) - (wi * wi)) / (2 * (Aa))/(2*_PI_);
+        return ((wf * wf) - (wi * wi)) / (2 * (Aa))/(2*constants::PI);
 
     }
 
@@ -315,7 +315,7 @@ public:
      */
     ld static netTorque(const ld r, const ld F, const ld angleTheta = 90)
     {
-        return r * F * sin(angleTheta * RADIAN);
+        return r * F * sin(angleTheta * constants::RADIAN);
     }
 
     /**
@@ -347,7 +347,7 @@ public:
      */
     ld static maxHeight(const ld KE, const ld mass)
     {
-        return ((KE) / (mass * _Ga_));
+        return ((KE) / (mass * constants::Ga));
     }
 
     /**
@@ -355,7 +355,7 @@ public:
      */
     ld static speedOfRollingCylinder(const ld height)
     {
-        return pow(((4.0 * _Ga_ * height) / 3.0), .5);
+        return pow(((4.0 * constants::Ga * height) / 3.0), .5);
     }
     /**
      * @brief calculates the distance something moves from the radius and the radians
@@ -409,7 +409,7 @@ public:
      */
     ld static revolutionsToStop(const ld a, const ld wi, const ld wf =0.0)
     {
-        return (((wf * wf) - (wi * wi)) / (2 * a)) / (2 * _PI_);
+        return (((wf * wf) - (wi * wi)) / (2 * a)) / (2 * constants::PI);
     }
 
     /**

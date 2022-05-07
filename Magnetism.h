@@ -12,11 +12,8 @@
  * @lastEdit 3/21/2021
  */
 #include "ElectricCurrent.h"
-#define Pi_ 3.14159265358979323846
+#include "ElectricCharge.h"
 static int magnetism_objectCount = 0;
-constexpr auto _GAUSS_ = 1.0e-4; //Tesla's
-constexpr auto _mu0_ = 4.0 * _pi_ * 1.0e-7;//permeability of free space
-
 
 class Magnetism :
         public ElectricCurrent, public ElectricCharge
@@ -443,7 +440,7 @@ private:
 
 inline ld Magnetism::magneticForce(const ld q, const ld v, const ld B, const ld theta)
 {
-    return q*v*B*sin(theta*RADIAN);//Newtons
+    return q*v*B*sin(theta*constants::RADIAN);//Newtons
 }
 
 inline ld Magnetism::magneticForceMax(const ld q, const ld B, const ld v)
@@ -458,12 +455,12 @@ inline ld Magnetism::chargeOfParticle(const ld F, const ld v, const ld B)
 
 inline ld Magnetism::magneticForceOnIdenticalParticle(const ld v1, const ld v2, const ld F1, const ld theta1, const ld theta2)
 {
-    return (F1 * v2 * sin(theta2 * RADIAN)) / (v1 * sin(theta1 * RADIAN));//F2 (N)
+    return (F1 * v2 * sin(theta2 * constants::RADIAN)) / (v1 * sin(theta1 * constants::RADIAN));//F2 (N)
 }
 
 inline ld Magnetism::magneticFieldStrength(const ld F, const ld q, const ld v, const ld theta)
 {
-    return F/(q*v*sin(theta*RADIAN));//Tesla(T) = 1N/C*m/s = 1N/A*m a newton amp meter
+    return F/(q*v*sin(theta*constants::RADIAN));//Tesla(T) = 1N/C*m/s = 1N/A*m a newton amp meter
 }
 
 inline ld Magnetism::magneticFieldStrength_Fc(const ld m, const ld v, const ld q, const ld r)
@@ -473,22 +470,22 @@ inline ld Magnetism::magneticFieldStrength_Fc(const ld m, const ld v, const ld q
 
 inline ld Magnetism::magneticFieldStrength_straightCurrentCarryingWire(const ld I, const ld r)
 {
-    return (_mu0_ * I) / (2.0 * Pi_ * r);//(T)
+    return (constants::mu0 * I) / (2.0 * constants::PI * r);//(T)
 }
 
 inline ld Magnetism::magneticFieldStrengthCenterCircularLoop(const ld I, const ld R, const ld N = 1.0)
 {
-    return (N * _mu0_ * I) / (2.0 * R);//(T)
+    return (N * constants::mu0 * I) / (2.0 * R);//(T)
 }
 
 inline ld Magnetism::magneticFieldStrengthInsideSolenoid(const ld n, const ld I)
 {
-    return _mu0_ * n * I;//(T)
+    return constants::mu0 * n * I;//(T)
 }
 
 inline ld Magnetism::magneticFieldStrengthInsideSolenoid(const ld N, const ld l, const ld I)
 {
-    return _mu0_ * (N / l) * I;//T
+    return constants::mu0 * (N / l) * I;//T
 }
 
 inline ld Magnetism::magneticFieldStrengthHallVoltage(const ld E, const ld d, const ld v)
@@ -506,32 +503,45 @@ inline ld Magnetism::centripetalForce(const ld m, const ld v, const ld r)
     return (m * (v * v)) / r;
 }
 
-inline ld Magnetism::radiusCurvatureOfPath(const ld m, const ld v, const ld q, const ld B, const ld theta = 90)
+inline ld Magnetism::radiusCurvatureOfPath(const ld m,
+                                           const ld v,
+                                           const ld q,
+                                           const ld B,
+                                           const ld theta = 90)
 {
-    return (m * v) / (q * B * sin(theta*RADIAN));//meters
+    return (m * v) / (q * B * sin(theta*constants::RADIAN));//meters
 }
 
 inline ld Magnetism::radiusLoopOfCurrentCarryingWire(const ld I, const ld B)
 {
-    return (_mu0_ * I) / (2.0 * B);//m
+    return (constants::mu0 * I) / (2.0 * B);//m
 }
 
 inline ld Magnetism::distanceBetween2wires(const ld I1, const ld I2, const ld Fl)
 {
-    return (_mu0_ * I1 * I2) / (2.0 * Pi_ * Fl);//m
+    return (constants::mu0 * I1 * I2) / (2.0 * constants::PI * Fl);//m
 }
 
-inline ld Magnetism::forceMagnitude2wires(const ld I1, const ld I2, const ld l, const ld r)
+inline ld Magnetism::forceMagnitude2wires(const ld I1,
+                                          const ld I2,
+                                          const ld l,
+                                          const ld r)
 {
-    return (_mu0_ * I1 * I2 * l) / (2.0 * Pi_ * r);//N
+    return (constants::mu0 * I1 * I2 * l) / (2.0 * constants::PI * r);//N
 }
 
-inline ld Magnetism::massOfChargedParticle(const ld r, const ld q, const ld B, const ld v)
+inline ld Magnetism::massOfChargedParticle(const ld r,
+                                           const ld q,
+                                           const ld B,
+                                           const ld v)
 {
     return (r * q * B) / v;//kg
 }
 
-inline ld Magnetism::velocityOfChargedParticle(const ld r, const ld q, const ld B, const ld m)
+inline ld Magnetism::velocityOfChargedParticle(const ld r,
+                                               const ld q,
+                                               const ld B,
+                                               const ld m)
 {
     return (r * q * B) / m; //m/s
 }
@@ -541,57 +551,80 @@ inline ld Magnetism::hallEMF(const ld B, const ld l, const ld v)
     return B * l * v;//(V)
 }
 
-inline ld Magnetism::forceOnWire(const ld n, const ld q, const ld A, const ld vD, const ld l, const ld B, const ld theta)
+inline ld Magnetism::forceOnWire(const ld n,
+                                 const ld q,
+                                 const ld A,
+                                 const ld vD,
+                                 const ld l,
+                                 const ld B,
+                                 const ld theta)
 {
-    return (n*q*A*vD)*l*B*sin(theta*RADIAN);//n
+    return (n*q*A*vD)*l*B*sin(theta*constants::RADIAN);//n
 }
 
-inline ld Magnetism::forceOnWire(const ld I, const ld l, const ld B, const ld theta)
+inline ld Magnetism::forceOnWire(
+        const ld I, const ld l, const ld B, const ld theta)
 {
-    return I * l * B * sin(theta * RADIAN);//N
+    return I * l * B * sin(theta * constants::RADIAN);//N
 }
 
-inline ld Magnetism::forcePerUnitLengthBetween2ParallelWires(const ld I1, const ld I2, const ld r)
+inline ld Magnetism::forcePerUnitLengthBetween2ParallelWires(
+        const ld I1, const ld I2, const ld r)
 {
-    return (_mu0_ * I1 * I2) / (2.0 * Pi_ * r);
+    return (constants::mu0 * I1 * I2) / (2.0 * constants::PI * r);
 }
 
-inline ld Magnetism::currentFromWire2ParallelRunning(const ld I1, const ld r, const ld Fl)
+inline ld Magnetism::currentFromWire2ParallelRunning(const ld I1,
+                                                     const ld r,
+                                                     const ld Fl)
 {
-    return ((2.0 * Pi_ * r) / (_mu0_ * I1)) * Fl;//A
+    return ((2.0 * constants::PI * r) / (constants::mu0 * I1)) * Fl;//A
 }
 
-inline ld Magnetism::torqueOnCurrentCarryingLoop_umf(const ld N, const ld I, const ld A, const ld B, const ld theta)
+inline ld Magnetism::torqueOnCurrentCarryingLoop_umf(const ld N,
+                                                     const ld I,
+                                                     const ld A,
+                                                     const ld B,
+                                                     const ld theta)
 {
-    return N*I*A*B*sin(theta*RADIAN);//N*m = newton meters
+    return N*I*A*B*sin(theta*constants::RADIAN);//N*m = newton meters
 }
 
-inline ld Magnetism::torqueMaxOnCurrentCarryingLoop_umf(const ld N, const ld I, const ld A, const ld B)
+inline ld Magnetism::torqueMaxOnCurrentCarryingLoop_umf(const ld N,
+                                                        const ld I,
+                                                        const ld A,
+                                                        const ld B)
 {
     return N*I*(A*A)*B;//N*m = newton meter
 }
 
-inline ld Magnetism::currentFromTorqueMax(const ld tMax, const ld N, const ld A, const ld B)
+inline ld Magnetism::currentFromTorqueMax(const ld tMax,
+                                          const ld N,
+                                          const ld A,
+                                          const ld B)
 {
     return tMax / (N * A * B);//(A)
 }
 
 inline ld Magnetism::currentInLongStraightWire(const ld r, const ld B)
 {
-    return (2.0 * Pi_ * r * B) / _mu0_;//(A)
+    return (2.0 * constants::PI * r * B) / constants::mu0;//(A)
 }
 
 inline ld Magnetism::currentSolenoid(const ld B, const ld n, const ld l)
 {
-    return B / (_mu0_ * (n / l));// A
+    return B / (constants::mu0 * (n / l));// A
 }
 
-inline ld Magnetism::angleThetaOfElectronToMagneticField(const ld v, const ld B, const ld F, const ld q = _ELECTRON_CHARGE_)
+inline ld Magnetism::angleThetaOfElectronToMagneticField(const ld v, const ld
+B, const ld F, const ld q = constants::ELECTRON_CHARGE)
 {
-    return asin(F / (-q * v * B))*DEGREE;//angle theta
+    return asin(F / (-q * v * B))*constants::DEGREE;//angle theta
 }
 
-inline ld Magnetism::electricFieldStrength_vB(const ld v, const ld B, const ld theta = 90)
+inline ld Magnetism::electricFieldStrength_vB(const ld v,
+                                              const ld B,
+                                              const ld theta = 90)
 {
-    return v * B * sin(theta*RADIAN);//N/C
+    return v * B * sin(theta*constants::RADIAN);//N/C
 }

@@ -14,7 +14,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include "Vector2D.h"
+#include "Constants.h"
 
 static int triangle_object_count = 0;
 
@@ -629,7 +629,7 @@ inline void TriangleSolver::calculate_angleA()
     else {
         auto cosA = (pow(side_b, 2) + pow(side_c, 2) -
                      pow(side_a, 2)) / (2.0 * side_b * side_c);
-        angle_A = acos(cosA)*DEGREE;
+        angle_A = acos(cosA)*constants::DEGREE;
     }
 }
 
@@ -641,7 +641,7 @@ inline void TriangleSolver::calculate_angleB()
     else {
         auto cosB = (pow(side_c, 2) + pow(side_a, 2) -
                      pow(side_b, 2)) / (2.0 * side_c * side_a);
-        angle_B =  acos(cosB)*DEGREE;
+        angle_B =  acos(cosB)*constants::DEGREE;
     }
 }
 
@@ -653,7 +653,7 @@ inline void TriangleSolver::calculate_angleC()
     else {
         auto cosC = (pow(side_a, 2) + pow(side_b, 2) -
                      pow(side_c, 2)) / (2.0 * side_a * side_b);
-        angle_C =  acos(cosC)*DEGREE;
+        angle_C =  acos(cosC)*constants::DEGREE;
     }
 
 }
@@ -712,7 +712,7 @@ inline void TriangleSolver::findMissingSide()
         side_c = pythagoreanTheorem(a, b);
     }
     else {
-        side_c = sqrt((a * a) + (b * b) - 2 * a * (b * cos(angle*RADIAN)));
+        side_c = sqrt((a * a) + (b * b) - 2 * a * (b * cos(angle*constants::RADIAN)));
     }
     update_triangle();
 
@@ -843,16 +843,16 @@ inline TriangleSolver *TriangleSolver::solve_by_AAA(const double& a1, const doub
         side_c= temp_c;
 
     if (side_a > 0) {
-        side_b = sin(angle_B * RADIAN) * side_a / sin(angle_A * RADIAN);
-        side_c = sin(angle_C * RADIAN) * side_a / sin(angle_A * RADIAN);
+        side_b = sin(angle_B * constants::RADIAN) * side_a / sin(angle_A * constants::RADIAN);
+        side_c = sin(angle_C * constants::RADIAN) * side_a / sin(angle_A * constants::RADIAN);
     }
     else if (side_b > 0) {
-        side_a = sin(angle_A * RADIAN) * side_b / sin(angle_B * RADIAN);
-        side_c = sin(angle_C * RADIAN) * side_b / sin(angle_B * RADIAN);
+        side_a = sin(angle_A * constants::RADIAN) * side_b / sin(angle_B * constants::RADIAN);
+        side_c = sin(angle_C * constants::RADIAN) * side_b / sin(angle_B * constants::RADIAN);
     }
     else if (side_c > 0) {
-        side_a = sin(angle_A * RADIAN) * side_c / sin(angle_C * RADIAN);
-        side_b = sin(angle_B * RADIAN) * side_c / sin(angle_C * RADIAN);
+        side_a = sin(angle_A * constants::RADIAN) * side_c / sin(angle_C * constants::RADIAN);
+        side_b = sin(angle_B * constants::RADIAN) * side_c / sin(angle_C * constants::RADIAN);
     }
     else
         cout << "You didn't enter a valid side lenght, no further computations made on triangle";
@@ -882,8 +882,8 @@ inline TriangleSolver *TriangleSolver::solve_by_AAS(const double& a1, const doub
     angle_C = a2;
     side_c = s;
     calculate_angleB();
-    side_a = sin(a1 * RADIAN) * s / sin(a2 * RADIAN);
-    side_b = sin(angle_B*RADIAN) * s / sin(a2 * RADIAN);
+    side_a = sin(a1 * constants::RADIAN) * s / sin(a2 * constants::RADIAN);
+    side_b = sin(angle_B*constants::RADIAN) * s / sin(a2 * constants::RADIAN);
 
 
     if (checkTriangle() == true) {
@@ -899,8 +899,8 @@ inline TriangleSolver *TriangleSolver::solve_by_ASA(const double& a1, const doub
 
     calculate_angleC();
 
-    side_b = sin(angle_B*RADIAN) * s/sin(angle_C*RADIAN);
-    side_a = sin(angle_A*RADIAN) * s/sin(angle_C*RADIAN);
+    side_b = sin(angle_B*constants::RADIAN) * s/sin(angle_C*constants::RADIAN);
+    side_a = sin(angle_A*constants::RADIAN) * s/sin(angle_C*constants::RADIAN);
 
     if (checkTriangle() == true) {
         update_triangle();
@@ -923,26 +923,26 @@ inline TriangleSolver* TriangleSolver::solve_by_SSA(const double& s1, const doub
     side_b = s2;
     angle_A = _a;
     t1 = s2 / s1;
-    t2 = sin(_a * RADIAN);
+    t2 = sin(_a * constants::RADIAN);
     t3 = (t1 * t2);
-    angle_B = asin(t3) * DEGREE;
+    angle_B = asin(t3) * constants::DEGREE;
     calculate_angleC();
-    t4 = side_a * sin(angle_C*RADIAN);
-    side_c = t4 / sin(angle_A*RADIAN);
+    t4 = side_a * sin(angle_C*constants::RADIAN);
+    side_c = t4 / sin(angle_A*constants::RADIAN);
     //side_c = sqrt((s1 * s1) + (s2 * s2) - 2 * s1 * s2 * cos(angle_C));
     if (checkTriangle() == true) {
         update_triangle();
     }
     else
         cout << "this is a bad tringle" << endl;
-    double check = sin(angle_B * RADIAN);
+    double check = sin(angle_B * constants::RADIAN);
     if (side_b > side_a && check >=0 && check <=1) // checking if an alternate triangle can be made
     {											   // and if so then calculates the alternate data.
         altTriFlag = true;
         altAngle_B = 180 - angle_B;
         altAngle_C = 180 - (angle_A + altAngle_B);
-        altSide = side_a * sin(altAngle_C * RADIAN) / sin(angle_A * RADIAN);
-        altArea = ( side_a * side_b ) * sin(altAngle_C*RADIAN) / 2;
+        altSide = side_a * sin(altAngle_C * constants::RADIAN) / sin(angle_A * constants::RADIAN);
+        altArea = ( side_a * side_b ) * sin(altAngle_C*constants::RADIAN) / 2;
         altPerimeter = side_a + side_b + altSide;
         altHeight_a = 2 * altArea / side_a;
         altHeight_b = 2 * altArea / side_b;

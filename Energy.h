@@ -12,7 +12,7 @@
  * @date   10/21/2020
  */
 #include <iostream>
-#include "Vector2D.h"
+#include "Constants.h"
 using namespace std;
 #include <cmath>
 typedef  long double ld;
@@ -144,7 +144,7 @@ public:
      */
     static ld work(const ld force, const ld displacement_magnitude, const ld theta = 0)
     {
-        return force * displacement_magnitude * cos(theta * RADIAN);
+        return force * displacement_magnitude * cos(theta * constants::RADIAN);
     }
     /**
      * @brief Returns the work when the mass, final velocity, and height of y are known
@@ -167,7 +167,7 @@ public:
      */
     static ld work3(const ld mass, const ld height)
     {
-        return mass * _Ga_ * height;
+        return mass * constants::Ga * height;
     }
     /**
      * @brief calculates the amount of useful power output by elevator motor
@@ -184,8 +184,8 @@ public:
     {
         const ld calculatedMass = balanceWeight - elevatorWeight;
         const ld v2 = pow(velocityFinal, 2);
-        const ld m1 = _Ga_ * balanceWeight * liftHeight;
-        const ld m2 = _Ga_ * calculatedMass * -liftHeight;
+        const ld m1 = constants::Ga * balanceWeight * liftHeight;
+        const ld m2 = constants::Ga * calculatedMass * -liftHeight;
         const ld m3 = m1 + m2;
         const ld m = (.5 * balanceWeight) * v2;
 
@@ -202,7 +202,7 @@ public:
      */
     static ld work_friction_down_slope(const ld coefficient, const ld mass, const ld theta1, const ld distance, const ld theta2 = 180)
     {
-        return coefficient * mass * _Ga_ * cos(theta1 * RADIAN) * distance * cos(theta2);
+        return coefficient * mass * constants::Ga * cos(theta1 * constants::RADIAN) * distance * cos(theta2);
     }
     /**
      * @brief Returns the kinetic energy of an object
@@ -257,7 +257,7 @@ public:
      */
     static ld velocityFinal_fromHeight(const ld h, const ld vi = 0.0)
     {
-        return sqrt((2 *_Ga_* abs(h) + (vi * vi)));
+        return sqrt((2 *constants::Ga* abs(h) + (vi * vi)));
     }
 
     /**
@@ -269,7 +269,7 @@ public:
      */
     static ld velocityInitial_fromHeight(const ld h, const ld vf = 0.0)
     {
-        return sqrt((vf*vf)-2*_Ga_*abs(h));
+        return sqrt((vf*vf)-2*constants::Ga*abs(h));
     }
 
     /**
@@ -281,7 +281,7 @@ public:
      */
     static ld speed_from_height(const ld height, const ld initialVelocity = 0)
     {
-        return sqrt(2 * _Ga_ * height ) + initialVelocity;
+        return sqrt(2 * constants::Ga * height ) + initialVelocity;
     }
     /**
      * @brief Returns the distance traveld
@@ -295,7 +295,7 @@ public:
     }
 
     static ld distance(ld force, ld work, ld theta, bool print = false) {
-        auto distance = work/(force*cos(theta*RADIAN));
+        auto distance = work/(force*cos(theta*constants::RADIAN));
         if (print) {
             std::cout << "Distance: " << distance << std::endl;
         }
@@ -310,7 +310,7 @@ public:
      */
     static ld potential_energy_gravity_PEg(const ld mass, const ld height)
     {
-        return mass * _Ga_ * height;
+        return mass * constants::Ga * height;
     }
     /**
      * @brief Returns the potential energy of a conservative source, such as a spring
@@ -330,7 +330,7 @@ public:
      */
     static ld force_to_stop(const ld mass, const ld height, const ld compressionDistance)
     {
-        return ((mass * _Ga_) * height)/ (compressionDistance);
+        return ((mass * constants::Ga) * height)/ (compressionDistance);
     }
     /**
      * @brief Returns the speed of object just after release using the equation
@@ -357,7 +357,7 @@ public:
      */
     static ld conservation_equation_for_velocityFinal_top(const ld k, const ld m, const ld x, const ld y)
     {
-        return sqrt((k / m) * (x * x) - (2 * _Ga_ * y));
+        return sqrt((k / m) * (x * x) - (2 * constants::Ga * y));
     }
     /**
      * @brief Returns the distance traveled sliding on level surface
@@ -373,7 +373,7 @@ public:
     }
     /**
      * @brief Returns the distance traveled sliding on an incline
-     * fx = (.5 * (m * (vi * vi)) / (ff + (m * _G_) * sin(theta * RADIAN)))
+     * fx = (.5 * (m * (vi * vi)) / (ff + (m * _G_) * sin(theta * constants::RADIAN)))
      * @param m is the mass in kg
      * @param vi is the initial velocity
      * @param ff is the frictional force
@@ -382,7 +382,7 @@ public:
      */
     static ld distance_traveled_sliding_slope(const ld m, const ld vi, const ld ff, const ld theta)
     {
-        return (.5 * (m * (vi * vi)) / (ff + (m * _Ga_) * sin(theta * RADIAN)));
+        return (.5 * (m * (vi * vi)) / (ff + (m * constants::Ga) * sin(theta * constants::RADIAN)));
     }
     /**
      * @brief Returns the efficiency (Eff) of an energy conversion process
@@ -416,7 +416,7 @@ public:
      */
     static ld power_to_jump(const ld mass, const ld distanceBottom, const ld distanceTop)
     {
-        return mass * _Ga_ * distanceTop * sqrt((_Ga_ * ((distanceTop / distanceBottom) - 1) / (2 * distanceBottom)));
+        return mass * constants::Ga * distanceTop * sqrt((constants::Ga * ((distanceTop / distanceBottom) - 1) / (2 * distanceBottom)));
     }
     /**
      * @brief calculates the time to do work based off of power output
@@ -439,7 +439,7 @@ public:
      */
     static ld power_to_reach_velocity_from_rest_given_mass(const ld mass, const ld velocity, const ld time)
     {
-        return (mass * (velocity * velocity) / (2 * _Ga_ * time));
+        return (mass * (velocity * velocity) / (2 * constants::Ga * time));
     }
 
     /**
@@ -543,7 +543,7 @@ public:
      */
     static ld height_from_velocity(const ld velocityStart, const ld velocityEnd)
     {
-        return ((velocityStart * velocityStart) - (velocityEnd * velocityEnd)) / (2 * _Ga_);
+        return ((velocityStart * velocityStart) - (velocityEnd * velocityEnd)) / (2 * constants::Ga);
     }
     /**
      * @brief calculates the kinetic energy in a falling mass.
@@ -554,7 +554,7 @@ public:
      */
     static ld kinetic_energy_falling_mass(const ld mass, const ld finalDistance, const ld initialDistance = 0)
     {
-        return -mass * _Ga_ * (finalDistance + initialDistance);
+        return -mass * constants::Ga * (finalDistance + initialDistance);
     }
     /**
      * @brief Calculates the cost of an electrical unit based on the charge rate and power usage
@@ -584,7 +584,7 @@ public:
      */
     static ld tension_elevator_cable(const ld mass, const ld acceleration, const ld friction)
     {
-        return mass * (acceleration + _Ga_) + friction;
+        return mass * (acceleration + constants::Ga) + friction;
     }
     /**
      * @brief Returns the final velocity
@@ -606,7 +606,7 @@ public:
      */
     static ld force_needed_to_jump_a_distance(const ld mass, const ld distanceTop, const ld distanceBottom)
     {
-        return (mass * _Ga_ * distanceTop) / distanceBottom;
+        return (mass * constants::Ga * distanceTop) / distanceBottom;
     }
     /**
      * calculates the average force using F = w/(d * cos(theta))
@@ -616,7 +616,7 @@ public:
      * @return  average force in N
      */
     static ld averageForce(ld work, ld d, ld theta, bool print = false) {
-        auto force = work / (d * cos(theta*RADIAN));
+        auto force = work / (d * cos(theta*constants::RADIAN));
         if (print) {
             std::cout << "Average Force: " << force << " N\n";
         }
@@ -635,7 +635,7 @@ public:
      */
     static ld vertical_height_arrow(const ld m, const ld k, const ld x, bool print = false)
     {
-        auto height = (k * (x * x)) / (2 * m * _Ga_);
+        auto height = (k * (x * x)) / (2 * m * constants::Ga);
         if (print) {
             std::cout << "Vertical Height: " << height << " m\n";
         }

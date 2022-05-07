@@ -11,7 +11,7 @@
  * @dateBuilt  1/1/2021
  * @lastEdit 1/1/2021
  */
-#include "VectorND.h"
+#include "Constants.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -30,15 +30,15 @@ static std::vector<ld> vector_values = { 0.0,0.0,0.0,0.0 };
 /// <summary>
 /// Sets the vector.
 /// </summary>
-/// <param name="v">The vector to add too.</param>
+/// <param name="_v">The vector to add too.</param>
 /// <param name="val">value to add</param>
 /// <param name="index">position to add to</param>
 template<typename T>
-static auto setVector(vector<T>& v, T val, int index)
+static auto setVector(vector<T>& _v, T val, int index)
 {
-    if (index < v.size())
+    if (index < _v.size())
     {
-        v[index] = val;
+        _v[index] = val;
         return true;
     }
     return false;
@@ -363,7 +363,7 @@ public:
      * returns: average speed of spinning object
      */
     static ld rotation_speed_2PIxRdT(const ld radius, const ld rotations, const ld time)
-    { return (2.0 * _PI_ * radius) / (time / rotations); }
+    { return (2.0 * constants::PI * radius) / (time / rotations); }
 
     /**
      * method: rotation_avgVelocity_2PIxRdT_in_1_rotation(ld radius, ld time)
@@ -372,7 +372,7 @@ public:
      * returns: ld, average velocity
      */
     static ld rotation_avgVelocity_2PIxRdT_in_1_rotation(const ld radius, const ld time)
-    { return (2.0 * _PI_ * radius) / time; }
+    { return (2.0 * constants::PI * radius) / time; }
 
     /**
      * @brief Returns the conversion of given value divided by the acceleration of gravity on earth, 9.80 m/s^2
@@ -380,7 +380,7 @@ public:
      * returns: g's
      */
     static ld conversion_multiple_of_gravity(const ld value)
-    { return value / _Ga_; }
+    { return value / constants::Ga; }
 
     /**
      * method: time_using_quadratic(ld a, ld b, ld c)
@@ -424,11 +424,11 @@ public:
         timeAndVelocity.emplace_back("velocity at P", 0.0);
         timeAndVelocity.emplace_back("velocity at Q", 0.0);
         auto timeToP =
-                (seperationPQ - ((1.0/2.0)*_ga_*(timeBetweenPQ*timeBetweenPQ))) /
-                (timeBetweenPQ*_ga_);
+                (seperationPQ - ((1.0/2.0)*constants::Ga*(timeBetweenPQ*timeBetweenPQ))) /
+                (timeBetweenPQ*constants::Ga);
         auto timeToQ = timeToP + timeBetweenPQ;
-        auto velAtP = timeToP * _ga_;
-        auto velAtQ = timeToQ * _ga_;
+        auto velAtP = timeToP * constants::Ga;
+        auto velAtQ = timeToQ * constants::Ga;
         timeAndVelocity[0].second = timeToP;
         timeAndVelocity[1].second = timeToQ;
         timeAndVelocity[2].second = velAtP;
@@ -444,7 +444,7 @@ public:
     /// <returns>range of projectile</returns>
     template<typename T>
     static auto horizontal_range_projectile(const T v, const T theta)
-    { return  ((v * v) * sin(2 * theta * RADIAN) / (_Ga_));	}
+    { return  ((v * v) * sin(2 * theta * constants::RADIAN) / (constants::Ga));	}
 
     /// <summary>
     /// calculates the angle theta of a projectile
@@ -454,7 +454,7 @@ public:
     /// <returns>theta</returns>
     static ld projectile_theta(const ld distance, const ld velocity)
     {
-        return (asinh(distance * _Ga_) / (velocity * velocity)) / 2;
+        return (asinh(distance * constants::Ga) / (velocity * velocity)) / 2;
     }
 
     /// <summary>
@@ -467,8 +467,8 @@ public:
     template<typename T>
     static auto trajectory_equation(T v, T theta, T h_0)
     {
-        auto prt1 = tan(theta * RADIAN);
-        auto prt2 = _Ga_ / (2.0 * (v * v) * pow(cos(theta * RADIAN), 2));
+        auto prt1 = tan(theta * constants::RADIAN);
+        auto prt2 = constants::Ga / (2.0 * (v * v) * pow(cos(theta * constants::RADIAN), 2));
         string results ="y = -" + to_string(prt2) + "x^2" + " + " + to_string(prt1) +"x + "+ to_string(h_0) ;
         return results;
     }
@@ -483,7 +483,7 @@ public:
     /// <returns>air time</returns>
     static ld time_for_projectile_to_reach_level(ld launchVelocity, ld angleTheta)
     {
-        return (2 * launchVelocity * sin(angleTheta)) / (_Ga_);
+        return (2 * launchVelocity * sin(angleTheta)) / (constants::Ga);
     }
 
     /// <summary>
@@ -495,10 +495,10 @@ public:
     /// <returns>time in seconds projectile was in flight</returns>
     static ld time_of_projectiles_flight(ld angle, ld initialHeight, ld velocity)
     {
-        ld vy = velocity * sin(angle * RADIAN);
+        ld vy = velocity * sin(angle * constants::RADIAN);
         cout << "vy = " << vy << endl;
         cout <<"initialHeight = " << initialHeight << endl;
-        return (vy + (sqrt((vy * vy) + 2.0 * _Ga_ * initialHeight))) / _Ga_;
+        return (vy + (sqrt((vy * vy) + 2.0 * constants::Ga * initialHeight))) / constants::Ga;
     }
 
     /// <summary>
@@ -510,7 +510,7 @@ public:
     /// <returns></returns>
     static ld range_of_projectile_flight(ld angle, ld initialHeight, ld velocity)
     {
-        return velocity * cos(angle * RADIAN) * time_of_projectiles_flight(angle, initialHeight, velocity);
+        return velocity * cos(angle * constants::RADIAN) * time_of_projectiles_flight(angle, initialHeight, velocity);
     }
 
     /**
@@ -519,8 +519,8 @@ public:
      */
     static ld horizontal_distance_covered_by_projectile(ld speed, ld height, bool print = false)
     {
-        auto time = sqrt(2.0 * height / _Ga_);
-        auto horizDis = speed * sqrt((2.0*height) / _Ga_);
+        auto time = sqrt(2.0 * height / constants::Ga);
+        auto horizDis = speed * sqrt((2.0*height) / constants::Ga);
         if (print)
         {
             cout << "time = " << time << endl;
@@ -540,8 +540,8 @@ public:
     static ld maximum_height_of_projectile(ld angle, ld initialHeight, ld velocity, bool print = false)
     {
 
-        ld vy = velocity * sin(angle * RADIAN);
-        auto maxH = initialHeight + ((vy * vy) / (2.0 * _Ga_));
+        ld vy = velocity * sin(angle * constants::RADIAN);
+        auto maxH = initialHeight + ((vy * vy) / (2.0 * constants::Ga));
         if (print)
         {
             cout << "vy = " << vy << endl;
@@ -557,7 +557,7 @@ public:
     /// <returns>time is seconds in air</returns>
     static ld air_time_initial_velocity0_y0(ld displacement, bool print = false)
     {
-        auto air_time =  sqrt((-2*(displacement))/_Ga_);
+        auto air_time =  sqrt((-2*(displacement))/constants::Ga);
         if (print)
         {
             cout << "air time = " << air_time << endl;
@@ -574,7 +574,7 @@ public:
     /// <returns></returns>
     static ld velocity_initial_horizontal_component(ld y0, ld displacement)
     {
-        return sqrt((-_Ga_/(-2 * y0)))* displacement;
+        return sqrt((-constants::Ga/(-2 * y0)))* displacement;
     }
 
     /**
@@ -585,7 +585,7 @@ public:
      */
     static ld velocity_vertical_component(ld y0, ld yf)
     {
-        return -sqrt(2 * (-_Ga_) * (yf - y0));
+        return -sqrt(2 * (-constants::Ga) * (yf - y0));
     }
 
 
@@ -598,7 +598,7 @@ public:
     static vector<ld> final_projectile_velocity_vector(ld velocityY, ld velocityX)
     {
         vector_values[0] = sqrt(velocityY * velocityY + velocityX * velocityX);
-        vector_values[1] = atan(velocityY / velocityX)*DEGREE;
+        vector_values[1] = atan(velocityY / velocityX)*constants::DEGREE;
         return vector_values;
     }
 
@@ -620,9 +620,9 @@ public:
      * purpose:	finds x component velocity
      * returns: ld, velocity of X component
      */
-    static ld horizontal_velocity_using_distance_angle_height(ld targetDistance, ld targetHeight, ld angle, ld acceleration = _Ga_)
+    static ld horizontal_velocity_using_distance_angle_height(ld targetDistance, ld targetHeight, ld angle, ld acceleration = constants::Ga)
     {
-        return targetDistance * sqrt(-acceleration/((2 * (targetDistance * tan(angle*RADIAN) - targetHeight))));
+        return targetDistance * sqrt(-acceleration/((2 * (targetDistance * tan(angle*constants::RADIAN) - targetHeight))));
     }
     /**
      * @brief
@@ -632,16 +632,16 @@ public:
      */
     static ld vertical_velocity_by_Xvelocity_with_angle(ld xVelocity, ld angle)
     {
-        return xVelocity * tan(angle*RADIAN);
+        return xVelocity * tan(angle*constants::RADIAN);
     }
 
     static ld horizontal_velocity_of_projectile_at_max_altitude(ld angle, ld velocity)
     {
-        return velocity * cos(angle * RADIAN);
+        return velocity * cos(angle * constants::RADIAN);
     }
     static ld vertical_velocity_of_projectile_at_max_altitude(ld angle, ld velocity)
     {
-        return velocity * sin(angle * RADIAN);
+        return velocity * sin(angle * constants::RADIAN);
     }
 
 
@@ -657,20 +657,20 @@ public:
     static vector<T> basketball_angles(T launchVelocity, T releaseHeight, T hoopDistance, ld hoopHeight = 3.048)
     {
         vector<T> angles;
-        ld a = (((_Ga_) * (hoopDistance * hoopDistance)) / (2 * (launchVelocity * launchVelocity)));
+        ld a = (((constants::Ga) * (hoopDistance * hoopDistance)) / (2 * (launchVelocity * launchVelocity)));
         ld b = -hoopDistance;
         ld c = ((hoopHeight - releaseHeight) + a);
-        angles.push_back(atan(-((b)+sqrt((b * b) - 4 * a * c)) / (2 * a))*DEGREE);
-        angles.push_back(atan(-((b)-sqrt((b * b) - 4 * a * c)) / (2 * a))*DEGREE);
+        angles.push_back(atan(-((b)+sqrt((b * b) - 4 * a * c)) / (2 * a))*constants::DEGREE);
+        angles.push_back(atan(-((b)-sqrt((b * b) - 4 * a * c)) / (2 * a))*constants::DEGREE);
 
         return angles;
     }
 
     static ld starting_height_of_projectile(ld angle, ld velocity)
     {
-        return (velocity * sin(angle * RADIAN)) / (-_Ga_);
+        return (velocity * sin(angle * constants::RADIAN)) / (-constants::Ga);
     }
-    static ld height(ld time, ld a = _Ga_)
+    static ld height(ld time, ld a = constants::Ga)
     {
         return (a * time * time) / 2;
     }
@@ -690,8 +690,8 @@ public:
      * @return The magnitude of the board's displacement during this time
      */
     static ld displacement_2d(ld v0, ld acc, ld theta, ld t) {
-        auto x_a = acc * cos(theta*RADIAN);
-        auto y_a = acc * sin(theta*RADIAN);
+        auto x_a = acc * cos(theta*constants::RADIAN);
+        auto y_a = acc * sin(theta*constants::RADIAN);
         auto x_d = v0*t + (1.0/2.0)*x_a*t*t;
         auto y_d = (1.0/2.0)*y_a*t*t;
         return sqrt(pow(x_d, 2) + pow(y_d, 2));
@@ -709,8 +709,8 @@ public:
      * @return The magnitude of the board's acceleration during the gust
      */
     static ld acceleration_2d(ld v0, ld theta, ld t, ld d) {
-        auto x_d = d*cos(theta*RADIAN);
-        auto y_d = d*sin(theta*RADIAN);
+        auto x_d = d*cos(theta*constants::RADIAN);
+        auto y_d = d*sin(theta*constants::RADIAN);
         auto x_a = (2*x_d - v0*t)/(t*t);
         auto y_a = (2*y_d)/(t*t);
         return sqrt(pow(x_a, 2) + pow(y_a, 2));
@@ -723,9 +723,9 @@ public:
      */
     static vector<ld> delivery_drone_package_drop_data(ld h, ld v0) {
         vector<ld> results;
-        auto time_y = sqrt(2*h/(_Ga_));
+        auto time_y = sqrt(2*h/(constants::Ga));
         results.push_back(v0*time_y);
-        auto vy = GA*time_y;
+        auto vy = constants::Ga*time_y;
         results.push_back(sqrt(vy*vy + v0*v0));
         return results;
     }
@@ -735,7 +735,7 @@ public:
      * height h (L). Find its initial speed.
      */
     static ld projectile_initial_speed(ld R, ld h) {
-        return sqrt(2*h*_Ga_ + (((R*R) * _Ga_)/(8.0 * h)));
+        return sqrt(2*h*constants::Ga + (((R*R) * constants::Ga)/(8.0 * h)));
     }
 
     /**
@@ -751,7 +751,7 @@ public:
         // calculate the final fall speed
         //auto vy = vy0 + GA*t;
         // find the free fall distance
-        auto d_free = vy0*t + (1.0/2.0)*GA*t*t;
+        auto d_free = vy0*t + (1.0/2.0)*constants::Ga*t*t;
         return d_free;
     }
 

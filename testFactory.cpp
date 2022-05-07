@@ -14,9 +14,7 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //*************************************************************************
-    vector<double> masses = {50.0, 80.0};
-    vector<double> xPos = {0.0, 1.5};
-    LM::positionOfFather(28.0, 65.0, 3.5, true);
+
 
 
 

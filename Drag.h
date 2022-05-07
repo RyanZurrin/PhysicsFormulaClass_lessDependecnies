@@ -217,7 +217,7 @@ public:
      * @returns force of sphere moving through a viscous matter
      */
     static long double stokes_law(const long double radius, const long double viscosity, const long double velocity)
-    { return 6.0 * _PI_ * radius * viscosity * velocity; }
+    { return 6.0 * constants::PI * radius * viscosity * velocity; }
 
     /**
      * @brief Returns the viscosity of a fluid by using the time it takes an objects with
@@ -232,7 +232,8 @@ public:
     static long double viscosity(const long double density, const long double diameter, const long double distance, const long double time)
     {
         const long double radius = diameter / 2;
-        return (2 * density * time * (radius * radius) * _Ga_) / (9 * distance);
+        return (2 * density * time * (radius * radius) * constants::Ga) / (9 *
+        distance);
     }
 
 

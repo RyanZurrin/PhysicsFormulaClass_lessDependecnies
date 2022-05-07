@@ -8,19 +8,9 @@
 // author: Ryan Zurrin
 // last Modified: 2/5/2022
 #include <cmath>
-#include "VectorND.h"
-#include "Circle.h"
-//constant for the degrees in one radian
-constexpr auto _RAD_ = 360.0 / (2.0 * _PI_);
-//Gravitational Constant 6.67408(31) * 10^(-11) * N
-constexpr auto _Gc_ = 6.674e-11;
+#include "Constants.h"
 //Radius of the earth 6,371km
-constexpr auto EARTH_RADIUS = 6.371e6;
-constexpr auto EARTH_MASS = 5.972e24;
-constexpr auto MOON_RADIUS = 1737.1e3;
-constexpr auto MOON_MASS = 7.34767309e22;
-constexpr auto SUN_RADIUS = 6.963e8;
-constexpr auto SUN_MASS = 1.989e30;
+
 
 static int circularMotion_objectCount = 0;
 
@@ -394,7 +384,7 @@ public:
         _rotationAngle_ = 0.0;
         _arcLength_ = 0.0;
         _centripetalAcceleration_ = (velocity * velocity)/(radius);
-        _time_period_ = 2.0* _PI_ * _radius_ / (radius*_angularVelocityW_);
+        _time_period_ = 2.0* constants::PI * _radius_ / (radius*_angularVelocityW_);
         _frequency_ = 1.0 / _time_period_;
         countIncrease();
     }
@@ -449,13 +439,13 @@ public:
     void setRadius_(const ld r) { _radius_ = r; }
     void setRotationalAngle_(const ld ra) {
         _rotationAngle_ = ra;
-        _arcLength_ = _radius_ * _rotationAngle_ * _RAD_;
+        _arcLength_ = _radius_ * _rotationAngle_ * constants::RADIAN;
     }
     void setAngularVelocityW_(const ld av) { _angularVelocityW_ = av; }
     void setLinearVelocity_(const ld lv) { _linearVelocity = lv; }
     void setArcLength_(const ld al) {
         _arcLength_ = al;
-        _rotationAngle_ = _arcLength_ / (_radius_ * _RAD_);
+        _rotationAngle_ = _arcLength_ / (_radius_ * constants::RADIAN);
     }
     void setCentripetalAcceleration_(const ld ca) { _centripetalAcceleration_ = ca; }
     void setFrequency_(const ld f) { _frequency_ = f; }
@@ -560,7 +550,7 @@ public:
      */
     ld static arcLength_meters(const ld radius, const ld rotations)
     {
-        return (rotations * 2 * _PI_) * radius;
+        return (rotations * 2 * constants::PI) * radius;
     }
 
     /**
@@ -570,7 +560,7 @@ public:
      */
     ld static arcLength_radians(const ld rotations)
     {
-        return (rotations * 2 * _PI_);
+        return (rotations * 2 * constants::PI);
     }
 
     /**
@@ -651,7 +641,7 @@ public:
      */
     ld static coefficient(const ld v, const ld r)
     {
-        return (v * v) / (r * _Ga_);
+        return (v * v) / (r * constants::Ga);
     }
 
     /**
@@ -665,7 +655,7 @@ public:
      */
     ld static minCoefficientOfFrictionForEmbankedTurn(const ld r, const ld angle, const ld speed)
     {
-        return ((r * _Ga_) * tan(angle * RADIAN) - (speed * speed)) / ((r * _Ga_) + (speed * speed) * tan(15*RADIAN));
+        return ((r * constants::Ga) * tan(angle * constants::RADIAN) - (speed * speed)) / ((r * constants::Ga) + (speed * speed) * tan(15*constants::RADIAN));
     }
     /**
      * @brief Returns the minimum static coefficient needed to safely take a turn with an specified
@@ -678,7 +668,7 @@ public:
      */
     ld static minCoefficientFrictionForFlatCurve(const ld r,  const ld speed)
     {
-        return (speed * speed) / (r * _Ga_);
+        return (speed * speed) / (r * constants::Ga);
     }
     /**
      * @brief Returns the ideal speed to take going around a banked curve,
@@ -689,7 +679,7 @@ public:
      */
     ld static idealSpeedBankedCurve(const ld r, const ld angle)
     {
-        return pow(r * _Ga_ * tan(angle * RADIAN), .5);
+        return pow(r * constants::Ga * tan(angle * constants::RADIAN), .5);
     }
 
     /**
@@ -701,14 +691,14 @@ public:
      */
     ld static idealAngleBankedCurve(const ld r, const ld v)
     {
-        return atan((v * v) / (r * _Ga_))*DEGREE;
+        return atan((v * v) / (r * constants::Ga))*constants::DEGREE;
     }
 
     /**
      * @brief Returns the magnitude of the gravitational acceleration of two objects,
      * use 1 as a value as one of the m arguments if you want to calculate the gravitational
      * acceleration of one mass and use the radius to the center of the singe object.
-     * fx = _Gc_ * (m * M) / (r * r), where _Gc_ is the gravitational constant
+     * fx = constants::G * (m * M) / (r * r), where constants::G is the gravitational constant
      * @param m mass 1
      * @param M mass 2
      * @param r is the distance from the center of one mass to the center of the other mass
@@ -716,7 +706,7 @@ public:
      */
     ld static universalGravitation_force(const ld m, const ld M, const ld r, bool print = true)
     {
-        auto f =  _Gc_ * (m * M) / (r * r);
+        auto f =  constants::G * (m * M) / (r * r);
         if(print)
         {
             std::cout << "Gravitational Force: " << f << " N" << std::endl;
@@ -726,7 +716,7 @@ public:
 
     ld static universalGravitation_acceleration(const ld r, const ld M = celestialObjects.earth.mass, bool print = false)
     {
-        auto acc = _Gc_ * (M) / (r * r);
+        auto acc = constants::G * (M) / (r * r);
         if(print)
         {
             std::cout << "Acceleration: " << acc << std::endl;
@@ -743,7 +733,7 @@ public:
      */
     vector<ld> static universalGravitation_masses(const ld force, const ld r, const ld totalMass, bool print = true)
     {
-        ld temp = (force * (r*r)) / (_Gc_);
+        ld temp = (force * (r*r)) / (constants::G);
         auto m1 = (totalMass + sqrt((totalMass * totalMass) - 4 * temp)) / (2);
         auto m2 = (totalMass - sqrt((totalMass * totalMass) - 4 * temp)) / (2);
         vector<ld> masses = {m1, m2};
@@ -766,7 +756,7 @@ public:
     */
     static ld universalGravitation_masses(const ld force, const ld r,  bool print = true)
     {
-        ld totalMass = sqrt((force * (r*r)) / (_Gc_));
+        ld totalMass = sqrt((force * (r*r)) / (constants::G));
         if(print)
         {
             cout << "The masses of the two objects are: " << endl;
@@ -792,18 +782,19 @@ public:
      * @brief Global Positioning System (GPS) satellites circle Earth at altitudes of
      * approximately oH, where the gravitational acceleration has pL (%) of its surface
      * value. To the nearest hour, what's the orbital period of the GPS satellites?\n
-     * fx = (2 * PI * sqrt(oH_ / (_Ga_ * pL_))) / 3600
+     * fx = (2 * PI * sqrt(oH_ / (constants::Ga * pL_))) / 3600
      * @param oH is the altitude of the satellite in meters
      * @param pL is the percentage of the surface gravity of the earth
      * @returns the orbital period in hours
      */
-    ld static orbitTimeEarthSatellite(ld oH, ld pL, ld planetRadius = EARTH_RADIUS)
+    ld static orbitTimeEarthSatellite(ld oH, ld pL, ld planetRadius =
+            constants::EARTH_RADIUS)
     {
         // turn the percentage into a decimal
         ld pL_ = pL / 100.0;
         // add the radius of the earth to the altitude
         ld oH_ = oH + planetRadius;
-        return (2 * PI * sqrt(oH_ / (_Ga_ * pL_))) / 3600;
+        return (2 * constants::PI * sqrt(oH_ / (constants::Ga * pL_))) / 3600;
     }
     /**
      * @brief Calculates the frequency from a known period time
@@ -836,7 +827,7 @@ public:
      */
     ld static minTurnRadius(const ld v0, const ld Xg) {
         // r = v0^2 / Xg*gravity
-        return pow(v0, 2) / (Xg * _G_);
+        return pow(v0, 2) / (Xg * constants::G);
     }
     /**
      * @brief calulates the circular orbit speed of a satellite from the radius and mass
@@ -847,7 +838,7 @@ public:
      */
     ld static circularOrbitSpeed(const ld radius, const ld mass, bool print = false)
     {
-        ld v = sqrt((_Gc_ * mass) / radius);
+        ld v = sqrt((constants::G * mass) / radius);
         if(print)
         {
             cout << "The circular orbit speed is: " << v << endl;
@@ -864,7 +855,7 @@ public:
      */
     static ld orbitalPeriod(const ld r, const ld m, bool print = false)
     {
-        auto period = sqrt((4.0 * (PI * PI) * (r*r*r)) / (_Gc_ * m));
+        auto period = sqrt((4.0 * (constants::PI * constants::PI) * (r*r*r)) / (constants::G * m));
         if(print)
         {
             cout << "The orbital period is: " << period << endl;
@@ -874,7 +865,7 @@ public:
 
     static ld orbitAltitude(const ld mass, const ld T, bool print = false)
     {
-        ld radius = pow((mass * _Gc_ * (T*T)) / (4 * (PI * PI)), 1.0 / 3.0);
+        ld radius = pow((mass * constants::G * (T*T)) / (4 * (constants::PI * constants::PI)), 1.0 / 3.0);
         if(print)
         {
             cout << "The orbital altitude is: " << radius << endl;
@@ -884,7 +875,7 @@ public:
 
     static ld gravitationalPE(const ld M, const ld m, const ld r1, const ld r2, bool print = false)
     {
-        ld PE = (_Gc_ * M * m)*(1/r1 - 1/r2);
+        ld PE = (constants::G * M * m)*(1/r1 - 1/r2);
         if(print)
         {
             cout << "The gravitational potential energy is: " << PE << " J" << endl;
@@ -894,7 +885,7 @@ public:
 
     static ld gravitationalPE(const ld M, const ld m, const ld r, bool print = false)
     {
-        ld PE = -(M * _G_ * m)/r;
+        ld PE = -(M * constants::G * m)/r;
         if(print)
         {
             cout << "The gravitational potential energy is: " << PE << endl;
@@ -904,7 +895,7 @@ public:
 
     static ld escapeVelocity(const ld m, const ld r, bool print = false)
     {
-        ld v = sqrt((2 * _G_ * m) / r);
+        ld v = sqrt((2 * constants::G * m) / r);
         if(print)
         {
             cout << "The escape velocity is: " << v << endl;
@@ -914,7 +905,7 @@ public:
 
     static ld launchVelocity(const ld m, const ld r, const ld h, bool print = false)
     {
-        ld v = sqrt((2.0 * _Gc_ * m) *((1.0/r) - (1.0/(r+h))));
+        ld v = sqrt((2.0 * constants::G * m) *((1.0/r) - (1.0/(r+h))));
         if(print)
         {
             cout << "The launch velocity is: " << v << endl;
@@ -924,10 +915,10 @@ public:
 
     static ld heightRocket_earth(const ld v0,  bool print = false)
     {
-        auto temp = 2.0 * GA * EARTH_RADIUS;
+        auto temp = 2.0 * constants::Ga * constants::EARTH_RADIUS;
         auto v = v0*v0;
         auto temp2 = (temp / v) - 1.0;
-        auto h = EARTH_RADIUS * pow( temp2, -1.0);
+        auto h = constants::EARTH_RADIUS * pow( temp2, -1.0);
 
         if(print)
         {
@@ -942,7 +933,7 @@ public:
         tie(rx, ry, rz) = position;
         ld r2 = rx*rx + ry*ry + rz*rz;
         ld r3 = r2*sqrt(r2);
-        ld G = _G_ * M / r3;
+        ld G = constants::G * M / r3;
         if(print)
         {
             cout << "The gravitational field is: " << G << endl;
@@ -952,7 +943,7 @@ public:
 
     static ld radius_v(const ld M, const ld v0, bool print = false)
     {
-        ld r = pow(((v0*v0)/(2*_Gc_*M)), -1);
+        ld r = pow(((v0*v0)/(2*constants::G*M)), -1);
         if(print)
         {
             cout << "The radius is: " << r << endl;
@@ -962,7 +953,7 @@ public:
 
     static ld radius_a(const ld m, const ld a, bool print = false)
     {
-        ld r = sqrt((_Gc_ * m) / a);
+        ld r = sqrt((constants::G * m) / a);
         if(print)
         {
             cout << "The radius is: " << r << endl;
@@ -972,7 +963,7 @@ public:
 
     static ld radius_Vesc(const ld m, const ld v0, bool print = false)
     {
-        ld r = (2.0 * _Gc_ * m) / (v0*v0);
+        ld r = (2.0 * constants::G * m) / (v0*v0);
         if(print)
         {
             cout << "The radius is: " << r << endl;
@@ -996,7 +987,7 @@ public:
             T planet, ld time, bool print = false) {
         auto radius = planet.radius;
         auto mass = planet.mass;
-        auto rad_total = cbrt(((time*time)*_Gc_*mass) / (4 * PI * PI));
+        auto rad_total = cbrt(((time*time)*constants::G*mass) / (4 * constants::PI * constants::PI));
         auto alt = rad_total - radius;
         if(print)
         {
@@ -1008,7 +999,7 @@ public:
     template<typename T>
     static ld geostationaryOrbitVelocityOfSatellite(
             T mass, ld period, bool print = false) {
-        auto v = cbrt((2.0*PI*_Gc_*mass) / period);
+        auto v = cbrt((2.0*constants::PI*constants::G*mass) / period);
         if(print)
         {
             cout << "The geostationary orbit velocity is: " << v << endl;

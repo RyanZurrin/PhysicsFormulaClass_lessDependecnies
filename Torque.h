@@ -5,7 +5,7 @@
 #ifndef PHYSICSFORMULA_TORQUE_H
 #define PHYSICSFORMULA_TORQUE_H
 typedef long double ld;
-#include "VectorND.h"
+#include "Constants.h"
 /**
  * @class Torque
  * @details class for composition with Physics class to help in solving complex physics problems
@@ -16,13 +16,9 @@ typedef long double ld;
 class Torque
 {
 public:
-    Torque* _torquePtr;
 
     //constructor
-    Torque()
-    {
-        _torquePtr = nullptr;
-    }
+    Torque(){}
 
     /**
      * @brief Returns the magnitude of torque
@@ -35,7 +31,7 @@ public:
      */
     ld static torque(const ld r, const ld F, const ld theta)
     {
-        return r * F * sin(theta * RADIAN);
+        return r * F * sin(theta * constants::RADIAN);
     }
 
     /**
@@ -58,7 +54,7 @@ public:
      */
     ld static perpendicular_lever_arm(const ld r, const ld theta)
     {
-        return r * sin(theta * RADIAN);
+        return r * sin(theta * constants::RADIAN);
     }
 
     /**
@@ -76,18 +72,18 @@ public:
     /**
      * @brief return the net force on a pivot calculated by adding up the total
      * weight of a system.
-     * @param m1 in kg is the mass of the first force acting on a pivot
-     * @param m2,
-     * @param m3
-     * @param m4
-     * @param m5
-     * @param m6 in kg is the mass from the second to the sixth force acting on the
+     * @param m is a vector of the masses of the objects in the system
      * same pivot, these are all defaulted to 0 so you only enter the masses you need making sure
      * to include any negative forces in the calculation if there are any
      */
-    ld static net_force_by_pivot(const ld m1, const ld m2=0.0, const ld m3=0.0, const ld m4=0.0, const ld m5= 0.0, const ld m6 = 0.0)
+    ld static net_force_by_pivot(const vector<ld>& m)
     {
-        return (m1 * _Ga_) + (m2 * _Ga_) + (m3 * _Ga_) + (m4 * _Ga_) + (m5 * _Ga_) + (m6 * _Ga_);
+        ld net_force = 0;
+        for (ld i : m)
+        {
+            net_force += i * constants::Ga;
+        }
+        return net_force;
     }
 
     /**
@@ -104,7 +100,16 @@ public:
      * @param theta3 is the angle of the mr3 force
      * @returns vector with the mass, distance, force up on pin, force down on pin
      */
-    vector<ld> static rod_of_mass_m_and_length_l(const ld m1, const ld r1, const ld theta1, const ld m2, const ld r2, const ld theta2, const ld mRod, const ld lRod, const ld mr3 = 0, const ld theta3 = 90)
+    vector<ld> static rod_of_mass_m_and_length_l(const ld m1,
+                                                 const ld r1,
+                                                 const ld theta1,
+                                                 const ld m2,
+                                                 const ld r2,
+                                                 const ld theta2,
+                                                 const ld mRod,
+                                                 const ld lRod,
+                                                 const ld mr3 = 0,
+                                                 const ld theta3 = 90)
     {
         vector<ld> result = { 0.0,0.0,0.0};
         double fu, fd, fd2;
@@ -112,18 +117,23 @@ public:
         {
 
             result[0] = m1 + m2 - mRod;
-            result[1] = ((m1 * r1 * sin(theta1 * RADIAN)) + (m2 * r2 * sin(theta2* RADIAN)) - (mRod * (.5 * lRod) * sin(theta3 * RADIAN))) / (result[0]);
-            fu = (m1/1000 + m2/1000) * _Ga_;
+            result[1] = ((m1 * r1 * sin(theta1 * constants::RADIAN)) +
+                    (m2 * r2 * sin(theta2* constants::RADIAN)) -
+                    (mRod * (.5 * lRod) * sin(theta3 * constants::RADIAN))) /
+                            (result[0]);
+            fu = (m1/1000 + m2/1000) * constants::Ga;
             fd = mRod/1000 + result[0]/1000;
             result[2] = fu - fd;
             return result;
         }
 
 
-        result[0] = ((m1 * r1 * sin(theta1 * RADIAN)) + (m2 * r2 * sin(theta2 * RADIAN)) - (mRod * (.5 * lRod) * sin(theta3 * RADIAN))) / (mr3);
-        fu = (m1 / 1000 + m2 / 1000) * _Ga_;
-        fd = (mRod / 1000 + mr3 / 1000) * _Ga_;
-        fd2 = (mRod / 1000 + result[0] / 1000) * _Ga_;
+        result[0] = ((m1 * r1 * sin(theta1 * constants::RADIAN)) +
+                (m2 * r2 * sin(theta2 * constants::RADIAN)) -
+                (mRod * (.5 * lRod) * sin(theta3 * constants::RADIAN))) / (mr3);
+        fu = (m1 / 1000 + m2 / 1000) * constants::Ga;
+        fd = (mRod / 1000 + mr3 / 1000) * constants::Ga;
+        fd2 = (mRod / 1000 + result[0] / 1000) * constants::Ga;
         result[1] = fu - fd;
         result[2] = fd2 - fu;
         return result;
@@ -134,7 +144,7 @@ public:
      */
     ld static fulcrum_position(const ld massToLift,  const ld leverLength, const ld limitForce)
     {
-        return (massToLift * _Ga_ * leverLength) / (limitForce + massToLift * _Ga_);
+        return (massToLift * constants::Ga * leverLength) / (limitForce + massToLift * constants::Ga);
     }
 
     /**
@@ -146,7 +156,7 @@ public:
  */
     ld static  force_to_lift_wheelbarrow(const ld w, const ld ro, const ld ri)
     {
-        return w * _Ga_ * (ro / ri);
+        return w * constants::Ga * (ro / ri);
     }
 
     /**
@@ -161,8 +171,8 @@ public:
     ld static weight_load_of_wheelbarrow(const ld Mb, const ld rToHandlesTo_cg, const ld cg_toPivot, const ld liftingForce)
     {
         ld  a, b,  c;
-        a = ((Mb * _Ga_ * cg_toPivot) / (rToHandlesTo_cg));
-        b = ((_Ga_ * cg_toPivot) / rToHandlesTo_cg);
+        a = ((Mb * constants::Ga * cg_toPivot) / (rToHandlesTo_cg));
+        b = ((constants::Ga * cg_toPivot) / rToHandlesTo_cg);
         c = (liftingForce - a) / b;
 
         return c;
@@ -184,11 +194,7 @@ public:
         return li / lo;
     }
 
-
     // destructor
-    ~Torque()
-    {
-        delete _torquePtr;
-    }
+    ~Torque() {}
 };
 #endif //PHYSICSFORMULA_TORQUE_H

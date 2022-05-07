@@ -32,18 +32,18 @@ class Vector3D : public Vector2D
     static void countIncrease() { vec3d_objectCount += 1; }
     static void countDecrease() { vec3d_objectCount -= 1; }
 public:
-    Vector3D(string id = ""); //constructor
+    explicit Vector3D(string id = ""); //constructor
     Vector3D(long double, long double, long double, string id = "");  //initializing object with values.
     Vector3D(const Vector3D &vec, string id = "");    //copy constructor
     void		setX(long double);
     void		setY(long double);
     void		setZ(long double);
     void		set_coordinates(long double, long double, long double);
-    void		displayAllData(const std::string& label = "")const override;
-    void		showRectCord(const std::string& label = "")const override;
+    void		displayAllData(const std::string& label = "")const;
+    void		showRectCord(const std::string& label = "")const;
     void		showSphericalCoordinates(const std::string& label = "")const;
     void		showAllAngles(const std::string& label = "")const;
-    void		display(const std::string& label = "")const override;    //display value of vector
+    void		display(const std::string& label = "")const;    //display value of vector
     static int	return_objectCount(){return vec3d_objectCount;}
     [[nodiscard]] long double	return_z()const; //return z
     [[nodiscard]] long double	return_xAngle()const; //return x angle
@@ -256,11 +256,11 @@ inline void Vector3D::setRadius()
 }
 inline void Vector3D::setInclination()
 {
-    inclination = acos(z / radius)*DEGREE;
+    inclination = acos(z / radius)*constants::DEGREE;
 }
 inline void Vector3D::setAzimuth()
 {
-    azimuth = atan(y / x)*DEGREE;
+    azimuth = atan(y / x)*constants::DEGREE;
 }
 inline void Vector3D::calculate_spherical()
 {
@@ -291,11 +291,11 @@ inline void Vector3D::updateVector()
 //addition
 inline Vector3D Vector3D::operator+(const Vector3D &vec)const
 {
-    return Vector3D(x+vec.x,y+vec.y,z+vec.z);
+    return {x+vec.x,y+vec.y,z+vec.z};
 }
 inline Vector3D Vector3D::operator+(Vector3D &vec)const
 {
-    return Vector3D(x+vec.x,y+vec.y,z);
+    return {x+vec.x,y+vec.y,z};
 }
 
 inline Vector3D &Vector3D::operator+=(const Vector3D &vec)
@@ -310,23 +310,23 @@ inline Vector3D &Vector3D::operator+=(const Vector3D &vec)
 //subtraction//
 inline Vector3D Vector3D::operator-(const Vector3D &vec)const
 {
-    return Vector3D(x-vec.x,y-vec.y,z-vec.z);
+    return {x-vec.x,y-vec.y,z-vec.z};
 }
 inline Vector3D Vector3D::operator-(const long double n) const
 {
-    return Vector3D(x-n, y-n, z-n);
+    return {x-n, y-n, z-n};
 }
 inline Vector3D Vector3D::operator-() const
 {
-    return Vector3D(-x, -y, -z);
+    return {-x, -y, -z};
 }
 inline Vector3D Vector3D::operator--()
 {
-    return Vector3D(--x, --y, --z);
+    return {--x, --y, --z};
 }
 inline Vector3D Vector3D::operator--(int)
 {
-    return Vector3D(x--, y--, z--);
+    return {x--, y--, z--};
 }
 inline Vector3D &Vector3D::operator-=(const Vector3D &vec)
 {
@@ -340,7 +340,7 @@ inline Vector3D &Vector3D::operator-=(const Vector3D &vec)
 //scalar multiplication
 inline Vector3D Vector3D::operator*(long double value)const
 {
-    return Vector3D(x*value,y*value,z*value);
+    return {x*value,y*value,z*value};
 }
 inline Vector3D &Vector3D::operator*=(long double value)
 {
@@ -391,7 +391,7 @@ inline long double Vector3D::dot_product(const Vector3D &vec) const
 }
 inline long double Vector3D::dot_product(const long double uMag, const long double vMag, const long double angleBetween)
 {
-    return uMag * vMag * cos(angleBetween*RADIAN);
+    return uMag * vMag * cos(angleBetween*constants::RADIAN);
 }
 //cross product
 inline Vector3D Vector3D::cross_product(const Vector3D &vec)const
@@ -399,7 +399,7 @@ inline Vector3D Vector3D::cross_product(const Vector3D &vec)const
     long double ni=y*vec.z-z*vec.y;
     long double nj=z*vec.x-x*vec.z;
     long double nk=x*vec.y-y*vec.x;
-    return Vector3D(ni,nj,nk);
+    return {ni,nj,nk};
 }
 inline long double Vector3D::scaler_triple_product(Vector3D& b, Vector3D& c) const
 {
@@ -503,15 +503,15 @@ inline long double Vector3D::return_z()const
 }
 inline long double Vector3D::return_xAngle()const
 {
-    return atan2(sqrt(y * y + z * z), x) * DEGREE;
+    return atan2(sqrt(y * y + z * z), x) * constants::DEGREE;
 }
 inline long double Vector3D::return_yAngle()const
 {
-    return atan2(sqrt(x * x + z * z), y) * DEGREE;
+    return atan2(sqrt(x * x + z * z), y) * constants::DEGREE;
 }
 inline long double Vector3D::return_zAngle()const
 {
-    return atan2(sqrt(x * x  + y * y), z) * DEGREE;
+    return atan2(sqrt(x * x  + y * y), z) * constants::DEGREE;
 }
 inline long double Vector3D::return_mag() const
 {
@@ -525,7 +525,7 @@ inline long double Vector3D::return_angle() const
 }
 inline long double Vector3D::return_arcLength() const
 {
-    return return_mag()*return_angle()*RADIAN;
+    return return_mag()*return_angle()*constants::RADIAN;
 }
 inline char Vector3D::return_mode() const
 {
@@ -545,8 +545,9 @@ inline Vector3D Vector3D::projection(Vector3D& v) const
 }
 inline long double Vector3D::angle_between_vectors(Vector3D& v)const
 {
-    return acos((x*v.x+y*v.y+z*v.z) / (sqrt(x*x+y*y+z*z)*
-                                       sqrt(v.x*v.x+v.y*v.y+v.z*v.z))) * DEGREE;
+    return acos((x*v.x+y*v.y+z*v.z) / (sqrt(x*x+y*y+z*z) *
+                                       sqrt(v.x*v.x+v.y*v.y+v.z*v.z))) *
+                                       constants::DEGREE;
 }
 inline void Vector3D::display(const std::string& label)const
 {

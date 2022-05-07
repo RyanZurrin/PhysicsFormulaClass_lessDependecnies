@@ -12,9 +12,9 @@
  */
 #include <iostream>
 #include <cmath>
+#include "Constants.h"
 using namespace std;
 typedef long double ld;
-#define _Ga_ 9.81  // acceleration due to gravity
 static int fluidDynamic_objectCount = 0;
 
 static struct FlowRateConversions
@@ -162,7 +162,8 @@ public:
         return *this;
     }
 
-    static void show_objectCount() { std::cout << "\n fluid dynamic object count: " << fluidDynamic_objectCount << std::endl; }
+    static void show_objectCount() { std::cout << "\n fluid dynamic object count: "
+    << fluidDynamic_objectCount << std::endl; }
     static int get_objectCount() { return fluidDynamic_objectCount; }
 
     /// <summary>
@@ -173,7 +174,7 @@ public:
     /// <returns>volume</returns>
     static ld volumeCylinder(const ld radius, const ld distance)
     {
-        return Pi_ * (radius * radius) * distance;
+        return constants::PI * (radius * radius) * distance;
     }
 
     /// <summary>
@@ -185,7 +186,7 @@ public:
     /// <returns>flow rate (Q)</returns>
     static ld flowRateCylinder_radius(const ld radius, const ld distance, const ld time)
     {
-        return Pi_ * (radius * radius) * distance * time;
+        return constants::PI * (radius * radius) * distance * time;
     }
 
     /// <summary>
@@ -196,7 +197,7 @@ public:
     /// <returns></returns>
     static ld flowRateCylinder_diameter(const ld diameter, const ld velocity)
     {
-        return (Pi_ * (diameter * diameter) / 4.0) * velocity;
+        return (constants::PI * (diameter * diameter) / 4.0) * velocity;
     }
 
     /// <summary>
@@ -240,7 +241,7 @@ public:
     /// <returns>average velocity</returns>
     static ld averageVelocity_tubeLike(const ld volumeFlowRate, const ld radius)
     {
-        return volumeFlowRate / (Pi_ * (radius * radius));
+        return volumeFlowRate / (constants::PI * (radius * radius));
     }
 
     /// <summary>
@@ -286,7 +287,7 @@ public:
     /// <returns></returns>
     static ld flowRate_tubeLike(const ld radius, const ld avgVelocity)
     {
-        return Pi_ * (radius * radius) * avgVelocity;
+        return constants::PI * (radius * radius) * avgVelocity;
     }
 
     /// <summary>
@@ -298,7 +299,7 @@ public:
     /// <returns>volume total</returns>
     static ld volumeTotal(const ld radius, const ld avgVelocity, const ld time)
     {
-        return Pi_ * (radius * radius) * avgVelocity * time;
+        return constants::PI * (radius * radius) * avgVelocity * time;
     }
 
     /// <summary>
@@ -322,7 +323,7 @@ public:
     /// <returns>average blood flow</returns>
     static ld averageVelocityBloodFlowThroughCapillary_diameter(const ld flowRate, const ld capillaryVessels, const ld diameterEach)
     {
-        return (4.0 * flowRate) / (capillaryVessels * Pi_ * (diameterEach * diameterEach));
+        return (4.0 * flowRate) / (capillaryVessels * constants::PI * (diameterEach * diameterEach));
     }
 
     /// <summary>
@@ -333,7 +334,7 @@ public:
     /// <returns></returns>
     static ld averageVelocityBloodFlowThroughCapillary_radius(const ld flowRate, const ld radius)
     {
-        return flowRate / (Pi_ * (radius * radius));
+        return flowRate / (constants::PI * (radius * radius));
     }
 
     /// <summary>
@@ -344,7 +345,7 @@ public:
     /// <returns>capillaries</returns>
     static ld capillaryFlowTotal_diameter(const ld area, const ld diameter)
     {
-        return (4.0 * area) / (Pi_ * (diameter * diameter));
+        return (4.0 * area) / (constants::PI * (diameter * diameter));
     }
 
     /// <summary>
@@ -355,7 +356,7 @@ public:
     /// <returns></returns>
     static ld capillaryFlowTotal_radius(const ld flow, const ld radius)
     {
-        return flow / (Pi_ * (radius * radius));
+        return flow / (constants::PI * (radius * radius));
     }
 
     /// <summary>
@@ -379,7 +380,7 @@ public:
     /// <returns>average speed of air flow out of duct</returns>
     static ld airFlowThroughCircularDuctIntoRectangularRoom(const ld roomVolume, const ld radiusDuct, const ld time)
     {
-        return roomVolume / (Pi_ * (radiusDuct * radiusDuct) * time);
+        return roomVolume / (constants::PI * (radiusDuct * radiusDuct) * time);
     }
 
     /// <summary>
@@ -390,7 +391,7 @@ public:
     /// <returns>diameter</returns>
     static ld diameterStream(const ld flowRate, const ld velocity)
     {
-        return 2.0 * sqrt((flowRate) / (Pi_ * velocity));
+        return 2.0 * sqrt((flowRate) / (constants::PI * velocity));
     }
 
     /// <summary>
@@ -402,9 +403,13 @@ public:
     /// <param name="viscosityFluid">The viscosity fluid.</param>
     /// <param name="reynoldsNumber">The Reynolds number.</param>
     /// <returns></returns>
-    static ld diameterPipeForSpecifiedValues(const ld densityFluid, const ld flowRateFluid, const ld viscosityFluid, const ld reynoldsNumber)
+    static ld diameterPipeForSpecifiedValues(const ld densityFluid,
+                                             const ld flowRateFluid,
+                                             const ld viscosityFluid,
+                                             const ld reynoldsNumber)
     {
-        return (4.0 * densityFluid * flowRateFluid) / (Pi_ * reynoldsNumber * viscosityFluid);
+        return (4.0 * densityFluid * flowRateFluid) /
+        (constants::PI * reynoldsNumber * viscosityFluid);
     }
 
     /// <summary>
@@ -427,7 +432,7 @@ public:
     /// <returns>final velocity</returns>
     static ld velocityFinal_bernoulliEquation(const ld velocityInitial, const ld changeInHeight)
     {
-        return sqrt(pow(velocityInitial, 2.0) + (2.0 * _Ga_ * changeInHeight));
+        return sqrt(pow(velocityInitial, 2.0) + (2.0 * constants::Ga * changeInHeight));
     }
 
     /// <summary>
@@ -438,9 +443,14 @@ public:
     /// <param name="velocityInitial">The initial velocity</param>
     /// <param name="velocityFinal">The final velocity final.</param>
     /// <returns></returns>
-    static ld pressureFinal_bernoulliEquationConstantAltitude(const ld pressureInitial, const ld density, const ld velocityInitial, const ld velocityFinal)
+    static ld pressureFinal_bernoulliEquationConstantAltitude(
+            const ld pressureInitial,
+            const ld density,
+            const ld velocityInitial,
+            const ld velocityFinal)
     {
-        return pressureInitial + .5 * density * ((velocityInitial * velocityInitial) - (velocityFinal * velocityFinal));
+        return pressureInitial + .5 * density *
+        ((velocityInitial * velocityInitial) - (velocityFinal * velocityFinal));
     }
 
     /// <summary>
@@ -450,7 +460,7 @@ public:
     /// <returns>height</returns>
     static ld maxHeightWaterFromHose(const ld velocity)
     {
-        return (velocity * velocity) / (2.0 * _Ga_);
+        return (velocity * velocity) / (2.0 * constants::Ga);
     }
 
     /// <summary>
@@ -462,7 +472,8 @@ public:
     /// <returns>max height</returns>
     static ld maxHeightAboveNozzleLiquidRise(const ld volumeROF, const ld nozzleDiameter)
     {
-        return (8.0 * pow(volumeROF, 2.0)) / (pow(Pi_, 2.0) * _Ga_ * pow(nozzleDiameter, 4.0));
+        return (8.0 * pow(volumeROF, 2.0)) / (pow(constants::PI, 2.0) *
+        constants::Ga * pow(nozzleDiameter, 4.0));
     }
 
     /// <summary>
@@ -473,7 +484,9 @@ public:
     /// <param name="velocity">The velocity of the wind.</param>
     /// <param name="area">The area of the roof.</param>
     /// <returns>Force on roof</returns>
-    static ld force_bernoulliEquationConstantAltitude(const ld density, const ld velocity, const ld area)
+    static ld force_bernoulliEquationConstantAltitude(const ld density,
+                                                      const ld velocity,
+                                                      const ld area)
     {
         return .5 * density * (velocity * velocity) * area;
     }
@@ -488,9 +501,13 @@ public:
     /// <param name="velocityLow">The velocity low.</param>
     /// <param name="area">The area.</param>
     /// <returns>force of wind</returns>
-    static ld force_bernoulliEquationConstantAltitude(const ld density, const ld velocityHigh, const ld velocityLow, const ld area)
+    static ld force_bernoulliEquationConstantAltitude(const ld density,
+                                                      const ld velocityHigh,
+                                                      const ld velocityLow,
+                                                      const ld area)
     {
-        return .5 * density * ((velocityHigh * velocityHigh) - (velocityLow * velocityLow)) * area;
+        return .5 * density * ((velocityHigh * velocityHigh) -
+        (velocityLow * velocityLow)) * area;
     }
 
     /// <summary>
@@ -503,9 +520,14 @@ public:
     /// <param name="diameterLarge">The larger diameter.</param>
     /// <param name="diameterSmall">The smaller diameter.</param>
     /// <returns>drop in pressure</returns>
-    static ld pressureDrop_bernoulliEquationConstantAlt(const ld density, const ld volumeRateOfFlow, const ld diameterLarge, const ld diameterSmall)
+    static ld pressureDrop_bernoulliEquationConstantAlt(const ld density,
+                                                        const ld volumeRateOfFlow,
+                                                        const ld diameterLarge,
+                                                        const ld diameterSmall)
     {
-        return (8.0 * density * (volumeRateOfFlow * volumeRateOfFlow) / (Pi_ * Pi_)) * (1.0 / pow(diameterSmall, 4.0) - 1.0 / pow(diameterLarge, 4));
+        return (8.0 * density * (volumeRateOfFlow * volumeRateOfFlow) /
+        (constants::PI * constants::PI)) * (1.0 / pow(diameterSmall, 4.0) - 1.0 /
+        pow(diameterLarge, 4));
     }
 
     /// <summary>
@@ -517,7 +539,7 @@ public:
     /// <returns></returns>
     static ld fluidSpeed_pitotTube(const ld meterFluidDensity, const ld heightOfFluid, const ld airDensity)
     {
-        return pow((2.0 * meterFluidDensity * _Ga_ * heightOfFluid) / airDensity, .5);
+        return pow((2.0 * meterFluidDensity * constants::Ga * heightOfFluid) / airDensity, .5);
     }
 
     /// <summary>
@@ -529,7 +551,7 @@ public:
     /// <returns>Power in Watts</returns>
     static ld power_bernoulliEquation(const ld density, const ld changeInHeight, const ld flowRate)
     {
-        return density * _Ga_ * changeInHeight * flowRate;
+        return density * constants::Ga * changeInHeight * flowRate;
     }
 
     /// <summary>
@@ -544,9 +566,14 @@ public:
     /// <param name="heightChangeOfFluid">The height change of fluid.</param>
     /// <param name="fluidFlowRate">The fluid flow rate.</param>
     /// <returns>power</returns>
-    static ld power_bernoulliEquation_ventricle(const ld pressureToFluid, const ld fluidDensity, const ld speedChangeOfFluid, const ld heightChangeOfFluid, const ld fluidFlowRate)
+    static ld power_bernoulliEquation_ventricle(const ld pressureToFluid,
+                                                const ld fluidDensity,
+                                                const ld speedChangeOfFluid,
+                                                const ld heightChangeOfFluid,
+                                                const ld fluidFlowRate)
     {
-        return (pressureToFluid + (.5 * (fluidDensity * pow(speedChangeOfFluid, 2))) + (fluidDensity *_Ga_ * heightChangeOfFluid)) * fluidFlowRate;
+        return (pressureToFluid + (.5 * (fluidDensity * pow(speedChangeOfFluid, 2)))
+        + (fluidDensity *constants::Ga * heightChangeOfFluid)) * fluidFlowRate;
     }
 
     /// <summary>
@@ -583,9 +610,12 @@ public:
     /// <param name="forceLiftPerSquareMeterOfWing">The force lift per square meter of wing.</param>
     /// <param name="speedUnderWing">The speed under wing.</param>
     /// <returns>wind speed over wing</returns>
-    static ld speedTopOfWing_bernoulliEquation(const ld density, const ld forceLiftPerSquareMeterOfWing, const ld speedUnderWing)
+    static ld speedTopOfWing_bernoulliEquation(const ld density,
+                                               const ld forceLiftPerSquareMeterOfWing,
+                                               const ld speedUnderWing)
     {
-        return sqrt(((2.0 * forceLiftPerSquareMeterOfWing) / (density)) + (speedUnderWing * speedUnderWing));
+        return sqrt(((2.0 * forceLiftPerSquareMeterOfWing) /
+        (density)) + (speedUnderWing * speedUnderWing));
     }
 
     /// <summary>
@@ -595,9 +625,11 @@ public:
     /// <param name="density">The density.</param>
     /// <param name="HeightOfPoint">The height of point.</param>
     /// <returns>pressure</returns>
-    static ld sumpPumpPressureAtPoint(const ld outputPressure, const ld density, const ld HeightOfPoint)
+    static ld sumpPumpPressureAtPoint(const ld outputPressure,
+                                      const ld density,
+                                      const ld HeightOfPoint)
     {
-        return outputPressure + ((density * _Ga_) * (-HeightOfPoint));
+        return outputPressure + ((density * constants::Ga) * (-HeightOfPoint));
     }
 
     /// <summary>
@@ -613,9 +645,16 @@ public:
     /// <param name="diameter2">The diameter the hose changes to.</param>
     /// <param name="height">The height.</param>
     /// <returns>pressure in hose</returns>
-    static ld sumpPumpPressureChangeInPipeDiameter(const ld outputPressure, const ld density, const ld volumeFlowRate, const ld diameter1, const ld diameter2, const ld height)
+    static ld sumpPumpPressureChangeInPipeDiameter(const ld outputPressure,
+                                                   const ld density,
+                                                   const ld volumeFlowRate,
+                                                   const ld diameter1,
+                                                   const ld diameter2,
+                                                   const ld height)
     {
-        return (outputPressure + ((8.0 * density * (volumeFlowRate * volumeFlowRate)) / (Pi_ * Pi_)) * ((1.0 / pow(diameter1, 4) - (1.0 / pow(diameter2, 4))))) + (density * _Ga_ * -height);
+        return (outputPressure + ((8.0 * density * (volumeFlowRate * volumeFlowRate)) /
+        (constants::PI * constants::PI)) * ((1.0 / pow(diameter1, 4) -
+        (1.0 / pow(diameter2, 4))))) + (density * constants::Ga * -height);
     }
 
     /// <summary>
@@ -631,7 +670,10 @@ public:
     /// <param name="crossSectionalArea">The cross sectional area.</param>
     /// <param name="layerThickness">The layer thickness.</param>
     /// <returns>retarding force</returns>
-    static ld retardingForce_airLayer(const ld viscosity, const ld velocity, const ld crossSectionalArea, const ld layerThickness)
+    static ld retardingForce_airLayer(const ld viscosity,
+                                      const ld velocity,
+                                      const ld crossSectionalArea,
+                                      const ld layerThickness)
     {
         return viscosity * (velocity * crossSectionalArea) / (layerThickness);
     }
@@ -644,7 +686,8 @@ public:
     /// <param name="velocity">The velocity.</param>
     /// <param name="crossSectionalArea">The cross sectional area.</param>
     /// <returns>viscosity coefficient</returns>
-    static ld viscosityCoefficient(const ld force, const ld layerLength, const ld velocity, const ld crossSectionalArea)
+    static ld viscosityCoefficient(const ld force, const ld layerLength,
+                                   const ld velocity, const ld crossSectionalArea)
     {
         return (force * layerLength) / (velocity * crossSectionalArea);
     }
@@ -657,9 +700,12 @@ public:
     /// <param name="resistance">The resistance.</param>
     /// <param name="lengthOfPipe">The length of pipe.</param>
     /// <returns>viscosity</returns>
-    static ld viscosity_laminarFlowPerseusLaw(const ld radiusPipe, const ld resistance, const ld lengthOfPipe)
+    static ld viscosity_laminarFlowPerseusLaw(const ld radiusPipe,
+                                              const ld resistance,
+                                              const ld lengthOfPipe)
     {
-        return (Pi_ * pow(radiusPipe, 4.0) * resistance) / (8.0 * lengthOfPipe);
+        return (constants::PI * pow(radiusPipe, 4.0) * resistance) /
+        (8.0 * lengthOfPipe);
     }
 
     /// <summary>
@@ -669,7 +715,9 @@ public:
     /// <param name="pressure2">The pressure2.</param>
     /// <param name="resistance">The resistance.</param>
     /// <returns>flow rate</returns>
-    static ld pressureDifferentialFlowRate(const ld pressure1, const ld pressure2, const ld resistance)
+    static ld pressureDifferentialFlowRate(const ld pressure1,
+                                           const ld pressure2,
+                                           const ld resistance)
     {
         return (pressure2 - pressure1) / resistance;
     }
@@ -681,7 +729,9 @@ public:
     /// <param name="pressureEnd">The pressure end.</param>
     /// <param name="flowRate">The flow rate.</param>
     /// <returns>resistance</returns>
-    static ld resistance(const ld pressureStart, const ld pressureEnd, const ld flowRate)
+    static ld resistance(const ld pressureStart,
+                         const ld pressureEnd,
+                         const ld flowRate)
     {
         return (pressureStart - pressureEnd) / flowRate;
     }
@@ -693,9 +743,12 @@ public:
     /// <param name="lengthOfTube">The length of tube.</param>
     /// <param name="radiusOfTube">The radius of tube.</param>
     /// <returns></returns>
-    static ld resistance_poiseuilleLawFor(const ld viscosityCoef, const ld lengthOfTube, const ld radiusOfTube)
+    static ld resistance_poiseuilleLawFor(const ld viscosityCoef,
+                                          const ld lengthOfTube,
+                                          const ld radiusOfTube)
     {
-        return (8.0 * viscosityCoef * lengthOfTube) / (Pi_ * pow(radiusOfTube, 4.0));
+        return (8.0 * viscosityCoef * lengthOfTube) /
+        (constants::PI * pow(radiusOfTube, 4.0));
     }
 
     /// <summary>
@@ -707,9 +760,13 @@ public:
     /// <param name="viscosity">The viscosity of the fluid in tube.</param>
     /// <param name="lengthOfTube">The length of tube.</param>
     /// <returns>flow rate</returns>
-    static ld laminarFlow_poiseuilleLawFor(const ld pressure1, const ld pressure2, const ld radiusOfTube, const ld viscosity, const ld lengthOfTube)
+    static ld laminarFlow_poiseuilleLawFor(const ld pressure1,
+                                           const ld pressure2,
+                                           const ld radiusOfTube,
+                                           const ld viscosity,
+                                           const ld lengthOfTube)
     {
-        return ((pressure2 - pressure1) * Pi_ * pow(radiusOfTube, 4.0)) / (8.0 * viscosity * lengthOfTube);
+        return ((pressure2 - pressure1) * constants::PI * pow(radiusOfTube, 4.0)) / (8.0 * viscosity * lengthOfTube);
     }
 
     /// <summary>
@@ -721,9 +778,15 @@ public:
     /// <param name="viscosity">The viscosity.</param>
     /// <param name="gaugePressurePoint1">The gauge pressure point 1.</param>
     /// <returns>pressure point 2</returns>
-    static ld pressureToProduceFlowRate_laminarFLow(const ld supplyFlowRate, const ld lengthTube, const ld radiusTube, const ld viscosity, const ld gaugePressurePoint1)
+    static ld pressureToProduceFlowRate_laminarFLow(const ld supplyFlowRate,
+                                                    const ld lengthTube,
+                                                    const ld radiusTube,
+                                                    const ld viscosity,
+                                                    const ld gaugePressurePoint1)
     {
-        return ((8.0 * viscosity * lengthTube) / (Pi_ * pow(radiusTube, 4.0))) * supplyFlowRate + gaugePressurePoint1;
+        return ((8.0 * viscosity * lengthTube) /
+        (constants::PI * pow(radiusTube, 4.0))) *
+        supplyFlowRate + gaugePressurePoint1;
     }
 
     /// <summary>
@@ -737,7 +800,10 @@ public:
     /// <param name="viscosity">The viscosity.</param>
     /// <param name="tubeRadius">The tube radius.</param>
     /// <returns>Reynolds Number, flow in a tube</returns>
-    static ld reynoldsNumber_flowInHorizontalTube(const ld fluidDensity, const ld fluidSpeed, const ld viscosity, const ld tubeRadius)
+    static ld reynoldsNumber_flowInHorizontalTube(const ld fluidDensity,
+                                                  const ld fluidSpeed,
+                                                  const ld viscosity,
+                                                  const ld tubeRadius)
     {
         return (2.0 * fluidDensity * fluidSpeed * tubeRadius) / viscosity;
     }
@@ -750,9 +816,12 @@ public:
     /// <param name="radius">The radius.</param>
     /// <param name="viscosity">The viscosity.</param>
     /// <returns>Reynolds number</returns>
-    static ld reynoldsNumber_usingFlowRate(const ld density, const ld flowRate, const ld radius, const ld viscosity)
+    static ld reynoldsNumber_usingFlowRate(const ld density,
+                                           const ld flowRate,
+                                           const ld radius,
+                                           const ld viscosity)
     {
-        return (2.0 * density * flowRate) / (Pi_ * radius * viscosity);
+        return (2.0 * density * flowRate) / (constants::PI * radius * viscosity);
     }
 
     /// <summary>
@@ -766,9 +835,12 @@ public:
     /// <param name="viscosity">The viscosity.</param>
     /// <param name="tubeRadius">The tube radius.</param>
     /// <returns>Reynolds Number, flow in a tube</returns>
-    static ld reynoldsNumber_flowInVerticalTube(const ld fluidDensity, const ld height, const ld viscosity, const ld tubeRadius)
+    static ld reynoldsNumber_flowInVerticalTube(const ld fluidDensity,
+                                                const ld height,
+                                                const ld viscosity,
+                                                const ld tubeRadius)
     {
-        return (2.0 * fluidDensity * (sqrt(2.0*_Ga_*height)) * tubeRadius) / viscosity;
+        return (2.0 * fluidDensity * (sqrt(2.0*constants::Ga*height)) * tubeRadius) / viscosity;
     }
 
     /// <summary>
@@ -783,7 +855,10 @@ public:
     /// <param name="objectSpeed">The objects speed.</param>
     /// <param name="objectLength">Length of the object; a spheres diameter for example.</param>
     /// <returns>Reynolds Number, object in fluid</returns>
-    static ld reynoldsNumber_objectInFluid(const ld fluidDensity, const ld viscosity, const ld objectSpeed, const ld objectLength)
+    static ld reynoldsNumber_objectInFluid(const ld fluidDensity,
+                                           const ld viscosity,
+                                           const ld objectSpeed,
+                                           const ld objectLength)
     {
         return (fluidDensity * objectSpeed * objectLength) / viscosity;
     }
@@ -797,7 +872,7 @@ public:
     /// <returns></returns>
     static ld viscous_drag_sphereSM(const ld radius, const ld viscosity, const ld velocity)
     {
-        return 6.0 * Pi_ * radius * viscosity * velocity;
+        return 6.0 * constants::PI * radius * viscosity * velocity;
     }
 
     /// <summary>
@@ -829,7 +904,10 @@ public:
     /// <param name="startingFlowRate">The starting flow rate.</param>
     /// <param name="changedFlowRate">The changed flow rate.</param>
     /// <returns>the pressure related to the changed flow rate</returns>
-    static ld changedPressure_byFlowRateChange_withConstantResistance(const ld startingPressure, const ld startingFlowRate, const ld changedFlowRate)
+    static ld changedPressure_byFlowRateChange_withConstantResistance(
+            const ld startingPressure,
+            const ld startingFlowRate,
+            const ld changedFlowRate)
     {
         return (startingPressure * changedFlowRate) / startingFlowRate;
     }
@@ -863,9 +941,13 @@ public:
     /// <param name="densitySphere">The density of the sphere.</param>
     /// <param name="densityFluid">The density of the fluid.</param>
     /// <returns>velocity at terminal speed</returns>
-    static ld terminalSpeed_sphericalParticleFallingInFluid(const ld radius, const ld viscosity, const ld densitySphere, const ld densityFluid)
+    static ld terminalSpeed_sphericalParticleFallingInFluid(
+            const ld radius,
+            const ld viscosity,
+            const ld densitySphere,
+            const ld densityFluid)
     {
-        return ((2.0 * pow(radius, 2.0) * _Ga_) / (9.0 * viscosity)) * (densitySphere - densityFluid);
+        return ((2.0 * pow(radius, 2.0) * constants::Ga) / (9.0 * viscosity)) * (densitySphere - densityFluid);
     }
 
     /// <summary>
@@ -876,9 +958,13 @@ public:
     /// <param name="densitySphere">The density sphere.</param>
     /// <param name="densityFluid">The density fluid.</param>
     /// <returns>viscosity</returns>
-    static ld viscosity_sphericalParticleFallingInFluid(const ld radius, const ld velocity, const ld densitySphere, const ld densityFluid)
+    static ld viscosity_sphericalParticleFallingInFluid(const ld radius,
+                                                        const ld velocity,
+                                                        const ld densitySphere,
+                                                        const ld densityFluid)
     {
-        return ((2.0 * pow(radius, 2.0) * _Ga_) / (9.0 * velocity)) * (densitySphere - densityFluid);
+        return ((2.0 * pow(radius, 2.0) * constants::Ga) / (9.0 * velocity)) *
+        (densitySphere - densityFluid);
     }
 
     /// <summary>
@@ -890,7 +976,7 @@ public:
     /// <returns>terminal velocity</returns>
     static ld terminalVelocity(const ld mass, const ld crossSectionalArea, const ld density)
     {
-        return sqrt((2.0 * mass * _Ga_) / (density * crossSectionalArea));
+        return sqrt((2.0 * mass * constants::Ga) / (density * crossSectionalArea));
     }
 
     /// <summary>
@@ -901,9 +987,13 @@ public:
     /// <param name="lengthOfPipe">The length of pipe.</param>
     /// <param name="pipeRadius">The pipe radius.</param>
     /// <returns>gauge pressure</returns>
-    static ld gaugePressure_atEntranceToVerticalPipeShootingFluid(const ld fluidHeight, const ld viscosity, const ld lengthOfPipe, const ld pipeRadius)
+    static ld gaugePressure_atEntranceToVerticalPipeShootingFluid(
+            const ld fluidHeight,
+            const ld viscosity,
+            const ld lengthOfPipe,
+            const ld pipeRadius)
     {
-        return (8.0 * sqrt((2.0 * _Ga_ * fluidHeight) * viscosity * lengthOfPipe)) / pipeRadius;
+        return (8.0 * sqrt((2.0 * constants::Ga * fluidHeight) * viscosity * lengthOfPipe)) / pipeRadius;
     }
 
     /// <summary>
@@ -914,7 +1004,7 @@ public:
     /// <returns></returns>
     static ld gaugePressureByFluidInVerticalPipe(const ld viscosity, const ld lengthOfPipe)
     {
-        return viscosity * _Ga_ * lengthOfPipe;
+        return viscosity * constants::Ga * lengthOfPipe;
     }
 
     /// <summary>
@@ -925,9 +1015,12 @@ public:
     /// <param name="reynoldsNumber">The Reynolds number.</param>
     /// <param name="density">The density.</param>
     /// <returns>flow rate</returns>
-    static ld criticalFLowRate(const ld radius, const ld viscosity, const ld reynoldsNumber, const ld density)
+    static ld criticalFLowRate(const ld radius,
+                               const ld viscosity,
+                               const ld reynoldsNumber,
+                               const ld density)
     {
-        return (Pi_ * radius * reynoldsNumber) / (2.0 * density);
+        return (constants::PI * radius * reynoldsNumber) / (2.0 * density);
     }
 
     /// <summary>
@@ -950,9 +1043,15 @@ public:
     /// <param name="radius">The radius.</param>
     /// <param name="pressureAir">The pressure.</param>
     /// <returns>pressure supplied by faucet</returns>
-    static ld pressureHoseHorizontal_poiseuilleLlawWithFlowRate(const ld viscosity, const ld  lengthHose, const ld volumeFlowRate, const ld radius, const ld pressureAir)
+    static ld pressureHoseHorizontal_poiseuilleLlawWithFlowRate(
+            const ld viscosity,
+            const ld  lengthHose,
+            const ld volumeFlowRate,
+            const ld radius,
+            const ld pressureAir)
     {
-        return ((8.0 * viscosity * lengthHose * volumeFlowRate) / (Pi_ * radius)) + pressureAir;
+        return ((8.0 * viscosity * lengthHose * volumeFlowRate) /
+        (constants::PI * radius)) + pressureAir;
     }
 
     /// <summary>

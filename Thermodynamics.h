@@ -10,7 +10,7 @@
  * @author Ryan Zurrin
  * @date   12/6/2020
  */
-constexpr auto _ATM_TO_PASCAL_MULTIPLIER_ = 101325;
+
 static int thermodynamics_objectCount = 0;
 
 double static kiloJoulesToCalories(const double kJ)
@@ -161,7 +161,7 @@ public:
 
         const ld v0 = mass / density;
         const ld changeV = 3.0 * coefLinExp * v0 * (Tf - Ti);
-        const ld W = Patm * _ATM_TO_PASCAL_MULTIPLIER_ * changeV; // a
+        const ld W = Patm * constants::ATM_TO_PASCAL_MULTIPLIER * changeV; // a
         const ld Q = heatTransfer_Q(mass, c, Tf - Ti);
         const ld U = Q - W;
         vector<ld> results = { W, Q, U };

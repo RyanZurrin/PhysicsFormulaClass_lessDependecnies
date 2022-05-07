@@ -4,14 +4,9 @@
 
 #ifndef PHYSICSFORMULA_ELECTROMAGNETICWAVES_H
 #define PHYSICSFORMULA_ELECTROMAGNETICWAVES_H
-
-//#include "ElectroMagneticInduction.h"
+#include "ElectroMagneticInduction.h"
 
 static int emWaves_objectCount = 0;
-
-// speed of light in a vacuum is 299792458 m/s
-constexpr auto _C_ = 2.99792e8;//2.99*10^8
-constexpr auto C_ = 3.000e8;//3.00*10^8
 
 class ElectromagneticWaves :
         public ElectroMagneticInduction
@@ -203,75 +198,75 @@ private:
 //in-line class Implementation
 inline ld ElectromagneticWaves::speedOfElectroMagneticWaves()
 {
-    return 1.0 / sqrt (_mu0_ * _e0_);
+    return 1.0 / sqrt (constants::mu0 * constants::e0);
 }
 
 inline ld ElectromagneticWaves::magneticFieldStrength_emWave(const ld E)
 {
-    return E / _C_;
+    return E / constants::LIGHT_SPEED;
 }
 
 inline ld ElectromagneticWaves::electricFieldStrength_emWave(const ld B)
 {
-    return _C_ * B;
+    return constants::LIGHT_SPEED * B;
 }
 
 inline ld ElectromagneticWaves::electricFieldStrength_emWave(const ld B, const ld percentOfc)
 {
-    return percentOfc * _C_ * B;
+    return percentOfc * constants::LIGHT_SPEED * B;
 }
 
 inline ld ElectromagneticWaves::waveLength_emWave(const ld f)
 {
-    return _C_ / f;
+    return constants::LIGHT_SPEED / f;
 }
 
 inline ld ElectromagneticWaves::frequency_emWave(const ld waveLen)
 {
-    return _C_ / waveLen;
+    return constants::LIGHT_SPEED / waveLen;
 }
 
 inline ld ElectromagneticWaves::distanceFromRadarStation(const ld t)
 {
-    return (_C_ * t) / 2.0;
+    return (constants::LIGHT_SPEED * t) / 2.0;
 }
 
 inline ld ElectromagneticWaves::timeFor_emWaveToTravelDistance(const ld d)
 {
-    return d / _C_;
+    return d / constants::LIGHT_SPEED;
 }
 
 inline ld ElectromagneticWaves::echoTime(const ld d)
 {
-    return (2.0 * d) / _C_;
+    return (2.0 * d) / constants::LIGHT_SPEED;
 }
 
 inline ld ElectromagneticWaves::intensityAvg_emWave_E(const ld E)
 {
-    return (_C_ * _e0_ * (E * E)) / 2.0;
+    return (constants::LIGHT_SPEED * constants::e0 * (E * E)) / 2.0;
 }
 
 inline ld ElectromagneticWaves::powerReceivedByAntenna(const ld d, const ld I)
 {
-    return (I * Pi_ * (d * d)) / 4.0;
+    return (I * constants::PI * (d * d)) / 4.0;
 }
 
 inline ld ElectromagneticWaves::waveLength_dopplerEffect(const ld v, const ld recievedWL)
 {
-    return recievedWL / (1.0 - (v / _C_));
+    return recievedWL / (1.0 - (v / constants::LIGHT_SPEED));
 }
 
 inline ld ElectromagneticWaves::inductanceOfCircuitFromWavelength(const ld theta, const ld C)
 {
-    return (theta * theta) / (4.0 * (_pi_ * _pi_) * (_C_ * _C_) * C);
+    return (theta * theta) / (4.0 * (constants::PI * constants::PI) * (constants::LIGHT_SPEED * constants::LIGHT_SPEED) * C);
 }
 
 inline ld ElectromagneticWaves::capacitanceOfCircuitFromWavelength(const ld theta, const ld L)
 {
-    return (theta * theta) / (4.0 * (_pi_ * _pi_) * L * (_C_ * _C_));
+    return (theta * theta) / (4.0 * (constants::PI * constants::PI) * L * (constants::LIGHT_SPEED * constants::LIGHT_SPEED));
 }
 
 inline ld ElectromagneticWaves::intensityAvg_emWave_B(const ld B)
 {
-    return (_C_ * (B * B)) / (2.0 * _mu0_);
+    return (constants::LIGHT_SPEED * (B * B)) / (2.0 * constants::mu0);
 }

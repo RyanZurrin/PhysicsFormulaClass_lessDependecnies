@@ -6,21 +6,12 @@
 #define PHYSICSFORMULA_FRICTION_H
 #include <iostream>
 #include <cmath>
+#include "Constants.h"
 // class for doing physics problems
 // author: Ryan Zurrin
 // last Modified: 10/11/2020
 
 typedef long double ld;
-//Gravitational Constant 6.67408(31) * 10^(-11) * N
-constexpr auto _GRAV_CONSTANT_ =  6.67408e-11; //N m^2 kg^-2
-//Acceleration due to gravity = 9.81
-constexpr auto _G_ = 9.81; //m/s^2
-//pi = 3.14159265359
-constexpr auto _PI = 3.14159265359; //radians
-// convert radian value to degrees
-constexpr auto _DEGREE_ = 180 / _PI; //degrees
-//convert degrees to radian value
-constexpr auto _RADIAN_ = _PI / 180; //radians
 
 //static object counter for class
 static int friction_objectCount = 0;
@@ -112,7 +103,7 @@ public:
      */
     static ld friction_force(const ld mass,  const ld coefficient)
     {
-        return coefficient * mass * _G_;
+        return coefficient * mass * constants::Ga;
     }
 
     /**
@@ -135,7 +126,7 @@ public:
      */
     static ld acceleration_magnitude(const ld mass, const ld frictionCoefficient)
     {
-        const ld normalForce = mass * _G_;
+        const ld normalForce = mass * constants::Ga;
         const ld frictionForce = normalForce * frictionCoefficient;
         return frictionForce / mass;
     }
@@ -150,7 +141,7 @@ public:
      */
     static ld initial_velocity(const ld mass, const ld frictionCoefficient, const ld time)
     {
-        const ld normalForce = mass * _G_;
+        const ld normalForce = mass * constants::Ga;
         const ld frictionForce = normalForce * frictionCoefficient;
         const ld acceleration = frictionForce / mass;
         return acceleration * time;
@@ -164,7 +155,7 @@ public:
      */
     static ld acceleration_down_slope_friction(const ld angleTheta, const ld kineticCoefficient)
     {
-        return _G_ * (sin(angleTheta * _RADIAN_) - (kineticCoefficient * cos(angleTheta * _RADIAN_)));
+        return constants::Ga * (sin(angleTheta * constants::RADIAN) - (kineticCoefficient * cos(angleTheta * constants::RADIAN)));
     }
 
     /**
@@ -175,7 +166,7 @@ public:
      */
     static ld acceleration_up_slope_friction(const ld angleTheta, const ld frictionalCoefficient)
     {
-        return _G_ * ((frictionalCoefficient*cos(angleTheta * _RADIAN_) - sin(angleTheta*_RADIAN_)));
+        return constants::Ga * ((frictionalCoefficient*cos(angleTheta * constants::RADIAN) - sin(angleTheta*constants::RADIAN)));
     }
 
     /**
@@ -186,7 +177,7 @@ public:
      */
     static ld car2wheel_acceleration_up_slope_friction(const ld angleTheta, const ld kineticCoefficient)
     {
-        return _G_ * ((kineticCoefficient*cos(angleTheta*_RADIAN_)/2)-(sin(angleTheta * _RADIAN_)));
+        return constants::Ga * ((kineticCoefficient*cos(angleTheta*constants::RADIAN)/2)-(sin(angleTheta * constants::RADIAN)));
     }
 
     /**
@@ -197,7 +188,7 @@ public:
      */
     static ld tension_rope_rockClimber(const ld angleRope, const ld angleLegs,  const ld mass)
     {
-        return (mass * _G_) / (cos(angleRope*_RADIAN_) + sin(angleRope*_RADIAN_) * tan(angleLegs*_RADIAN_));
+        return (mass * constants::Ga) / (cos(angleRope*constants::RADIAN) + sin(angleRope*constants::RADIAN) * tan(angleLegs*constants::RADIAN));
     }
 
     /**
@@ -208,7 +199,7 @@ public:
      */
     static ld tension_legs_rockClimber(const ld angleRope, const ld angleLegs, const ld mass)
     {
-        return (tension_rope_rockClimber(angleRope, angleLegs, mass)*sin(angleRope*_RADIAN_)/cos(angleLegs*_RADIAN_));
+        return (tension_rope_rockClimber(angleRope, angleLegs, mass)*sin(angleRope*constants::RADIAN)/cos(angleLegs*constants::RADIAN));
     }
 
     /**
@@ -219,7 +210,7 @@ public:
      */
     static ld minimum_force_start_move_downPush(const ld mass, const ld pushAngle, const ld staticCoefficient)
     {
-        return (staticCoefficient * mass*_G_) / (cos(pushAngle*_RADIAN_)- staticCoefficient * sin(pushAngle*_RADIAN_));
+        return (staticCoefficient * mass*constants::Ga) / (cos(pushAngle*constants::RADIAN)- staticCoefficient * sin(pushAngle*constants::RADIAN));
     }
 
     /**
@@ -230,7 +221,7 @@ public:
      */
     static ld magnitude_acceleration_moving_object_downPush(const ld mass, const ld pushAngle, const ld kineticCoefficient, const ld staticCoefficient)
     {
-        return ((minimum_force_start_move_downPush(mass, pushAngle, staticCoefficient) * cos(pushAngle*_RADIAN_) - kineticCoefficient *sin(pushAngle*_RADIAN_))-(kineticCoefficient)*mass*_G_)/(mass);
+        return ((minimum_force_start_move_downPush(mass, pushAngle, staticCoefficient) * cos(pushAngle*constants::RADIAN) - kineticCoefficient *sin(pushAngle*constants::RADIAN))-(kineticCoefficient)*mass*constants::Ga)/(mass);
     }
 
     /**
@@ -241,7 +232,7 @@ public:
      */
     static ld minimum_force_start_move_upPull(const ld mass, const ld pullAngle, const ld staticCoefficient)
     {
-        return (staticCoefficient*mass*_G_)/(cos(pullAngle*_RADIAN_) + staticCoefficient*sin(pullAngle*_RADIAN_));
+        return (staticCoefficient*mass*constants::Ga)/(cos(pullAngle*constants::RADIAN) + staticCoefficient*sin(pullAngle*constants::RADIAN));
     }
 
     /**
@@ -253,8 +244,8 @@ public:
     static ld magnitude_acceleration_moving_object_pullingUp(const ld mass, const ld pullAngle, const ld kineticCoefficient, const ld maintainingForce)
     {
         ld a, b;
-        a = maintainingForce * cos(pullAngle * _RADIAN_);
-        b = kineticCoefficient * ((mass * _G_) - maintainingForce * sin(pullAngle * _RADIAN_));
+        a = maintainingForce * cos(pullAngle * constants::RADIAN);
+        b = kineticCoefficient * ((mass * constants::Ga) - maintainingForce * sin(pullAngle * constants::RADIAN));
         return  (a-b)/(mass);
     }
 

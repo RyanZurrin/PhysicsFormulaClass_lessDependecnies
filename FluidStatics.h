@@ -12,7 +12,7 @@
  */
 #include <iostream>
 
-#include "Friction.h"
+#include "Constants.h"
 
 typedef long double ld;
 static int fluidStatics_objectCount = 0;
@@ -23,35 +23,35 @@ static struct VolumeCalculator
     * @brief calculates the volume of a sphere
     * @param r radius
     */
-    ld sphere(const ld r) const
+    static ld sphere(const ld r)
     {
-        return (4 / 3) * Pi_ * pow(r, 3.0);
+        return (4.0 / 3.0) * constants::PI * pow(r, 3.0);
     }
     /**
     * @brief calculates the volume of a cone
     * @param r radius
     * @param h height
     */
-    ld cone(const ld r, const ld h)const
+    static ld cone(const ld r, const ld h)
     {
-        return (1 / 3) * Pi_ * pow(r, 2.0) * h;
+        return (1.0 / 3.0) * constants::PI * pow(r, 2.0) * h;
     }
     /**
     * @brief calculates the volume of a cube
     * @param edgeL edge length
     */
-    ld cube(const ld edgeL)const
+    static ld cube(const ld edgeL)
     {
-        return pow(edgeL, 3);
+        return pow(edgeL, 3.0);
     }
     /**
     * @brief calculates the volume of a cylinder
     * @param r radius
     * @param h height
     */
-    ld cylinder(const ld r, const ld h)const
+    static ld cylinder(const ld r, const ld h)
     {
-        return Pi_ * r * 2 * h;
+        return constants::PI * r * 2 * h;
     }
     /**
     * @brief calculates the volume of rectangular tank
@@ -59,7 +59,7 @@ static struct VolumeCalculator
     * @param w width
     * @param h height
     */
-    ld rectangularTank(const ld l, const ld w, const ld h)const
+    static ld rectangularTank(const ld l, const ld w, const ld h)
     {
         return l * w * h;
     }
@@ -70,9 +70,9 @@ static struct VolumeCalculator
     * @param h height
     * returns volume m^3
     */
-    ld capsule(const ld r, const ld h)const
+    static ld capsule(const ld r, const ld h)
     {
-        return (Pi_ * pow(r, 2)) * ((4 / 3) * r + h);
+        return (constants::PI * pow(r, 2.0)) * ((4.0 / 3.0) * r + h);
     }
 
     /**
@@ -81,145 +81,145 @@ static struct VolumeCalculator
     * @param h height
     * returns volume m^3
     */
-    ld sphericalCap(const ld r, const ld h)const
+    static ld sphericalCap(const ld r, const ld h)
     {
-        return ((1 / 3) * Pi_ * pow(h, 2.0)) * (3 * r - h);
+        return ((1.0 / 3.0) * constants::PI * pow(h, 2.0)) * (3.0 * r - h);
     }
 
 }v;
 
 static struct PressureConversions
 {
-    ld atm_to_Pa(const ld atm)const
+    static ld atm_to_Pa(const ld atm)
     {
         return atm * 1.013 * pow(10, 5);// Pa = N/m^2
     }
 
-    ld dynePer_cmSquared_to_Pa(const ld d)const
+    static ld dynePer_cmSquared_to_Pa(const ld d)
     {
         return d * .10;// Pa = N/m^2
     }
-    ld Pa_to_dynePer_cmSquared(const ld Pa)const
+    static ld Pa_to_dynePer_cmSquared(const ld Pa)
     {
         return Pa / .10;// dyne/cm^2
     }
-    ld kgPer_cmSquared_to_Pa(const ld kg)const
+    static ld kgPer_cmSquared_to_Pa(const ld kg)
     {
         return kg * 9.8 * pow(10, 4);// N/m^2
     }
-    ld Pa_to_kgPer_cmSquared(const ld Pa)const
+    static ld Pa_to_kgPer_cmSquared(const ld Pa)
     {
         return Pa / 9.8 * pow(10, 4);// kg/cm^2
     }
-    ld lbPer_inSquared_to_Pa(const ld atm)const
+    static ld lbPer_inSquared_to_Pa(const ld atm)
     {
         return atm * 1.013 * pow(10, 5);// N/m^2
     }
-    ld Pa_to_lbPer_inSquared(const ld Pa)const
+    static ld Pa_to_lbPer_inSquared(const ld Pa)
     {
         return Pa / 1.013 * pow(10, 5);// lb/in^2
     }
-    ld mmHg_to_Pa(const ld mm)const
+    static ld mmHg_to_Pa(const ld mm)
     {
         return mm * 133.3224;// N/m^2
     }
-    ld Pa_to_mmHg(const ld Pa)const
+    static ld Pa_to_mmHg(const ld Pa)
     {
         return Pa / 133.3224;// mm Hg
     }
-    ld cmHg_to_Pa(const ld cm)const
+    static ld cmHg_to_Pa(const ld cm)
     {
         return cm * 1.33 * pow(10, 3);// N/m^2
     }
-    ld Pa_to_cmHg(const ld Pa)const
+    static ld Pa_to_cmHg(const ld Pa)
     {
         return Pa / 1.33 * pow(10, 3);// cm Hg
     }
-    ld cmWater_to_Pa(const ld w)const
+    static ld cmWater_to_Pa(const ld w)
     {
         return w * 98.1;// N/m^2
     }
-    ld Pa_to_cmWater(const ld Pa)const
+    static ld Pa_to_cmWater(const ld Pa)
     {
         return Pa / 98.1;// cm water
     }
-    ld bar_to_Pa(const ld bar)const
+    static ld bar_to_Pa(const ld bar)
     {
         return bar * 1.000 * pow(10, 5);// N/m^2
     }
-    ld Pa_to_bar(const ld Pa)const
+    static ld Pa_to_bar(const ld Pa)
     {
         return Pa / 1.000 * pow(10, 5);// bar
     }
-    ld millibar_to_Pa(const ld cm)const
+    static ld millibar_to_Pa(const ld cm)
     {
         return cm * 1.000 * pow(10, 2);// Pa = N/m^2
     }
-    ld Pa_to_millibar(const ld Pa)const
+    static ld Pa_to_millibar(const ld Pa)
     {
         return Pa / 1.000 * pow(10, 2);// millibar
     }
-    ld atm_to_dyneCmSquared(const ld atm)const
+    static ld atm_to_dyneCmSquared(const ld atm)
     {
         return atm * 1.013 * pow(10, 6);// dyne/cm^2
     }
-    ld dyneCmSquared_to_atm(const ld n)const
+    static ld dyneCmSquared_to_atm(const ld n)
     {
         return n / 1.013 * pow(10, 6);// atm
     }
-    ld atm_to_kgCmSquared(const ld atm)const
+    static ld atm_to_kgCmSquared(const ld atm)
     {
         return atm * 1.013;// kg/cm^2
     }
-    ld kgCmSquared_to_atm(const ld n)const
+    static ld kgCmSquared_to_atm(const ld n)
     {
         return n / 1.013;// atm
     }
-    ld atm_to_lbsPerInchSquared(const ld atm)const
+    static ld atm_to_lbsPerInchSquared(const ld atm)
     {
         return atm * 14.7;// lb/in^2
     }
-    ld lbsPerInchSquared_to_atm(const ld n)const
+    static ld lbsPerInchSquared_to_atm(const ld n)
     {
         return n / 14.7;// atm
     }
-    ld atm_to_mmHg(const ld atm)const
+    static ld atm_to_mmHg(const ld atm)
     {
         return atm * 760.0;// mm Hg
     }
-    ld mmHg_to_atm(const ld n)const
+    static ld mmHg_to_atm(const ld n)
     {
         return n / 760.0;// atm
     }
-    ld atm_to_cmHg(const ld atm)const
+    static ld atm_to_cmHg(const ld atm)
     {
         return atm * 76.0;// cm Hg
     }
-    ld cmHg_to_atm(const ld n)const
+    static ld cmHg_to_atm(const ld n)
     {
         return n / 76.0;// atm
     }
-    ld atm_to_cmWater(const ld atm)const
+    static ld atm_to_cmWater(const ld atm)
     {
         return atm * 1.03 * pow(10, 3);// cm water
     }
-    ld cmWater_to_atm(const ld n)const
+    static ld cmWater_to_atm(const ld n)
     {
         return n / 1.03 * pow(10, 3);// atm
     }
-    ld atm_to_bar(const ld atm)const
+    static ld atm_to_bar(const ld atm)
     {
         return atm * 1.013;// bar
     }
-    ld bar_to_atm(const ld n)const
+    static ld bar_to_atm(const ld n)
     {
         return n / 1.013;// atm
     }
-    ld atm_to_millibar(const ld atm)const
+    static ld atm_to_millibar(const ld atm)
     {
         return atm * 1013;// millibar
     }
-    ld millibar_to_atm(const ld n)const
+    static ld millibar_to_atm(const ld n)
     {
         return n / 1013;// atm
     }
@@ -261,7 +261,7 @@ static struct ContactAngles
 */
 static ld radiusFromCircumference(const ld c)
 {
-    return c / (2 * Pi_);
+    return c / (2 * constants::PI);
 }
 /**
 * @brief diameter to radius
@@ -328,11 +328,13 @@ public:
     }
 
     /// <summary>
-    /// calculates the density of a substance made of other substances by adding the total parts together.
-    /// example: 18.0-karat gold that is a mixture of 18 parts gold, 5 parts silver, and 1 part copper?
+    /// calculates the density of a substance made of other substances by adding
+    /// the total parts together.
+    /// example: 18.0-karat gold that is a mixture of 18 parts gold, 5 parts
+    /// silver, and 1 part copper?
     /// (These values are parts by mass, not volume.)
-    /// Assume that this is a simple mixture having an average density equal to the weighted densities
-    /// of its constituents
+    /// Assume that this is a simple mixture having an average density equal to
+    /// the weighted densities of its constituents
     /// </summary>
     /// <param name="partsA">The parts of substance A.</param>
     /// <param name="pA">The density of substance A.</param>
@@ -341,11 +343,29 @@ public:
     /// <param name="partsC">The parts of substance dC</param>
     /// <param name="pC">The density of substance C.</param>
     /// <returns></returns>
-    static ld densityAvg_partsByMass(const ld partsA, const ld pA, const ld partsB = 0.0, const ld pB = 0.0, const ld partsC = 0.0, const ld pC = 0.0)
+    static ld densityAvg_partsByMass(const ld partsA,
+                                     const ld pA,
+                                     const ld partsB = 0.0,
+                                     const ld pB = 0.0,
+                                     const ld partsC = 0.0,
+                                     const ld pC = 0.0)
     {
-        return (partsA + partsB + partsC) / ((partsA / pA) + (partsB / pB) + (partsC / pC));
+        return (partsA + partsB + partsC) /
+        ((partsA / pA) + (partsB / pB) + (partsC / pC));
     }
 
+
+    static ld densityAvg_partsByMass(const vector<ld>& parts, const vector<ld>& p)
+    {
+        ld numerator = 0.0;
+        ld denominator = 0.0;
+        for (int i = 0; i < parts.size(); i++)
+        {
+            numerator += parts[i];
+            denominator += parts[i]/p[i];
+        }
+        return numerator / denominator;
+    }
 
     /// <summary>
     /// calculates the average density using mass and density of .
@@ -360,6 +380,17 @@ public:
     static ld densityAvg(const ld massA, const ld pA, const ld massB = 0.0, const ld pB = 0.0, const ld massC = 0.0, const ld pC = 0.0)
     {
         return (massA + massB + massB) / ((massA / pA) + (massB / pB) + (massC / pC));
+    }
+    static ld densityAvg(const vector<ld>& mass, const vector<ld>& p)
+    {
+        ld numerator = 0.0;
+        ld denominator = 0.0;
+        for (int i = 0; i < mass.size(); i++)
+        {
+            numerator += mass[i];
+            denominator += mass[i] / p[i];
+        }
+        return numerator / denominator;
     }
 
     /// <summary>
@@ -413,7 +444,7 @@ public:
      */
     static ld pressure(const ld m, const ld l, const ld w)
     {
-        return (m * _G_) / (l * w);
+        return (m * constants::Ga) / (l * w);
     }
 
     /**
@@ -425,7 +456,7 @@ public:
      */
     static ld pressureAvg(const ld p, const ld l, const ld h)
     {
-        return ((p * _G_ * h) / 2.0) * (l * h);
+        return ((p * constants::Ga * h) / 2.0) * (l * h);
     }
 
     /// <summary>
@@ -480,7 +511,7 @@ public:
     /// <returns>Force master cylinder</returns>
     static ld forceMaster_hydraulicSystemPascal(const ld m, const ld dM, const ld dS)
     {
-        return (m * _G_ * (dM * dM)) / (dS * dS);
+        return (m * constants::Ga * (dM * dM)) / (dS * dS);
     }
 
     /// <summary>
@@ -504,7 +535,7 @@ public:
     /// <returns>the radius</returns>
     static ld radiusCylinder(const ld m, const ld h, const ld _p)
     {
-        return sqrt((m * _p) / (Pi_ * h));
+        return sqrt((m * _p) / (constants::PI * h));
     }
 
     /// <summary>
@@ -538,7 +569,7 @@ public:
     /// <returns>radius</returns>
     static ld radiusOfSphere(const ld m, const ld p)
     {
-        return pow((3.0 * m) / (4.0 * Pi_ * p), 1 / 3);
+        return pow((3.0 * m) / (4.0 * constants::PI * p), 1 / 3);
     }
 
     /// <summary>
@@ -549,7 +580,7 @@ public:
     /// <returns>height</returns>
     static ld heightOfFluid(const ld pressure, const ld density)
     {
-        return pressure / (density * _G_);
+        return pressure / (density * constants::Ga);
     }
 
     /// <summary>
@@ -560,7 +591,7 @@ public:
     /// <returns></returns>
     static ld gaugePressure(const ld density, const ld height)
     {
-        return density * _G_ * height;
+        return density * constants::Ga * height;
     }
 
     /// <summary>
@@ -618,7 +649,7 @@ public:
     /// <returns>force</returns>
     static ld forceToStaySubmerged(const ld massObj, const ld densityObj, const ld densityFluid)
     {
-        return massObj * _G_ * ((densityFluid / densityObj) - 1.0);
+        return massObj * constants::Ga * ((densityFluid / densityObj) - 1.0);
     }
 
     /// <summary>
@@ -632,7 +663,7 @@ public:
     /// <returns>max weight before sinking in fluid</returns>
     static ld maxWeightSupportedByFloatingAirMattress(const ld massMattress, const ld length, const ld width, const ld height, const ld fluidDensity)
     {
-        return _G_ * (fluidDensity * (length * width * height) - massMattress);
+        return constants::Ga * (fluidDensity * (length * width * height) - massMattress);
     }
 
     /// <summary>
@@ -658,7 +689,7 @@ public:
     /// <returns>height the fluid will rise in a capillary tube</returns>
     static ld capillaryTubeHeight(const ld surfaceTension, const ld contactAngle, const ld density, const ld radius)
     {
-        return (2.0 * surfaceTension * cos(contactAngle)) / (density * _G_ * radius);
+        return (2.0 * surfaceTension * cos(contactAngle)) / (density * constants::Ga * radius);
     }
 
     /// <summary>
@@ -671,7 +702,7 @@ public:
     /// <returns>the radius of a capillary tube</returns>
     static ld capillaryTubeRadius(const ld surfaceTension, const ld contactAngle, const ld density, const ld height)
     {
-        return (2.0 * surfaceTension * cos(contactAngle)) / (density * _G_ * height);
+        return (2.0 * surfaceTension * cos(contactAngle)) / (density * constants::Ga * height);
     }
 
     /// <summary>
@@ -694,7 +725,7 @@ public:
     /// <returns>surface tension</returns>
     static ld effectiveSurfaceTensionBalloon(const ld density, const ld height, const ld radius)
     {
-        return (density * _G_ * height * radius) / 4.0;
+        return (density * constants::Ga * height * radius) / 4.0;
     }
 
     /// <summary>
@@ -706,7 +737,7 @@ public:
     /// <returns></returns>
     static ld heightOfCapillaryActionByRatioOfContactAngles(const ld height1, const ld contactAngle1, const ld contactAngle2)
     {
-        return height1 * (cos(contactAngle2*_RADIAN_) / cos(contactAngle1*_RADIAN_));
+        return height1 * (cos(contactAngle2*constants::RADIAN) / cos(contactAngle1*constants::RADIAN));
     }
 
     /// <summary>
@@ -719,7 +750,7 @@ public:
     /// <returns>contact angle</returns>
     static ld contactAngleTheta(const ld density, const ld height, const ld radius, const ld surfaceTension)
     {
-        return acos((density * _G_ * height * radius) / (2.0 * surfaceTension))*_DEGREE_;
+        return acos((density * constants::Ga * height * radius) / (2.0 * surfaceTension))*constants::DEGREE;
     }
 
     /// <summary>
@@ -734,7 +765,7 @@ public:
     /// <returns>ration of heights</returns>
     static ld ratioOfHeights_capillaryAction(const ld st1, const ld ca1, const ld density1, const ld st2, const ld ca2, const ld density2)
     {
-        return (st1 * cos(ca1*_RADIAN_) * density2) / (st2 * cos(ca2*_RADIAN_) * density1);
+        return (st1 * cos(ca1*constants::RADIAN) * density2) / (st2 * cos(ca2*constants::RADIAN) * density1);
     }
 
 

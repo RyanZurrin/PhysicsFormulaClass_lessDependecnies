@@ -515,7 +515,7 @@ inline auto VisionOpticalInstruments::object_distance(const T f_e, const K m_e)
 template<typename T, typename K>
 inline auto VisionOpticalInstruments::acceptanceAngle(const T NA, const K n)
 {
-    return 2 * asin(NA / n) * DEGREE;
+    return 2 * asin(NA / n) * constants::DEGREE;
 }
 
 template<typename T>

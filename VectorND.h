@@ -644,7 +644,7 @@ inline double VectorND<T>::angle_between_vectors(VectorND& v) const
     auto dotProd = dot_product(v);
     auto divisor = magnitude * v.magnitude;
     auto temp = dotProd / divisor;
-    return acos(temp)*DEGREE;
+    return acos(temp)*constants::DEGREE;
 }
 
 template<typename T>

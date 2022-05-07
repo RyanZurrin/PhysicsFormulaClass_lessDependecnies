@@ -15,14 +15,10 @@
 #include <string>
 #include <vector>
 #include <cmath>
-constexpr auto _ga_ = 9.81;
+#include "Constants.h"
 using namespace std;
 static int heat_objectCount = 0;
-/***
- * @ the Stefan Boltzmann constant is often represented as sigma in the
- * Stefan Boltzmann->(σ) law of radiation equation
- */
-constexpr auto _epsilon_ = 5.67e-8;
+
 typedef long double ld;
 
 static struct HeatEnergyUnitConversion
@@ -449,7 +445,7 @@ public:
      */
     static ld stefanBoltzmannLawOfRadiation(const ld e, const ld A, const ld T)
     {
-        return _epsilon_ * e * A * pow(T, 4);
+        return constants::BOLTZMANN * e * A * pow(T, 4);
     }
 
 
@@ -459,7 +455,7 @@ public:
      */
     static ld netRateOfHeatTransferByRadiation(const ld e, const ld A, const ld T1, const ld T2)
     {
-        return _epsilon_ * e * A * ((pow(T2, 4) - pow(T1, 4)));
+        return constants::BOLTZMANN * e * A * ((pow(T2, 4) - pow(T1, 4)));
     }
 
     /**
@@ -470,7 +466,7 @@ public:
      */
     static ld initialTempFromFallingWater(const ld h, const ld Tf, const ld _c_ = _c.water_L[0])
     {
-        return  Tf - (_ga_ * h) / _c_;
+        return  Tf - (constants::Ga * h) / _c_;
     }
 
     /**

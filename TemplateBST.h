@@ -4,11 +4,12 @@
 
 #ifndef PHYSICSFORMULA_TEMPLATEBST_H
 #define PHYSICSFORMULA_TEMPLATEBST_H
-#define INT_MAX 2147483647
+
 #include <iomanip>
 #include <iostream>
 #include <queue>
-
+#include <random>
+using namespace std;
 #define COUNT 10
 static int pos = 1;
 
@@ -220,14 +221,14 @@ public:
     /// <returns>
     ///   <c>true</c> if this instance is empty; otherwise, <c>false</c>.
     /// </returns>
-    bool isEmpty()const;
+    [[nodiscard]] bool isEmpty()const;
     /// <summary>
     /// Determines whether this instance is full.
     /// </summary>
     /// <returns>
     ///   <c>true</c> if this instance is full; otherwise, <c>false</c>.
     /// </returns>
-    bool isFull()const;
+    [[nodiscard]] bool isFull()const;
     /// <summary>
     /// Makes the tree empty.
     /// </summary>
@@ -242,12 +243,12 @@ public:
     /// Gets the qty.
     /// </summary>
     /// <returns>the number of elements in the tree</returns>
-    int getQty()const;
+    [[nodiscard]] int getQty()const;
     /// <summary>
     /// Gets the count.
     /// </summary>
     /// <returns>counts the nodes and returns the count</returns>
-    int getCount()const;
+    [[nodiscard]] int getCount()const;
     /// <summary>
     /// Finds the item.
     /// </summary>
@@ -279,7 +280,7 @@ public:
     /// <summary>
     /// returns the size of the tree
     /// </summary>
-    int getSize() const { return qty; }
+    [[nodiscard]] int getSize() const { return qty; }
     static vector<int> countLeftRightSubTree(node<T>* tree);
     /// <summary>
     /// outputs the tree
@@ -799,9 +800,11 @@ void TBST<T>::shuffleArray(vector<T> &arr) {
     int n = arr.size();
     cout << "Shuffling array size is "<< n << endl;
     bool added[n];
-    srandom(time(nullptr));
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::uniform_int_distribution<> dist(0, n-1);
     for(int i = 0; i < n;) {
-        int r = random() % n;
+        int r = dist(g);
         if(!added[r]) {
             added[r] = true;
             arr[i] = arr[r];
@@ -817,9 +820,11 @@ void TBST<T>::fillTreeFromArray(vector<T> &arr, TBST *tree) {
     addItem(arr[mid]);
     cout << "Shuffling array size is "<< n << endl;
     bool added[n];
-    srandom(time(nullptr));
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::uniform_int_distribution<> dist(0, n-1);
     for(int i = 1; i < n;) {
-        int r = random() % n;
+        int r = dist(g);
         if(!added[r] && r != mid) {
             added[r] = true;
             addItem(arr[r]);

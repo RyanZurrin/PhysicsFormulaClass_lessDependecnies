@@ -14,10 +14,8 @@
 #include <iostream>
 #include <vector>
 #include "Vector2D.h"
-constexpr auto GA = 9.81;
 
 static int forces_objectCount = 0;
-
 
 class Forces
 {
@@ -117,7 +115,7 @@ public:
         ss << "Force: " << _force << " N\n"
         << "Mass: " << _mass << " kg\n"
         << "Acceleration: " << _acceleration << " m/s^2\n"
-        << "Angle: " << _angle*DEGREE << " degrees\n";
+        << "Angle: " << _angle*constants::DEGREE << " degrees\n";
         return ss.str();
     }
 
@@ -140,7 +138,7 @@ public:
      */
     static long double weight(const long double mass)
     {
-        return mass * GA;
+        return mass * constants::Ga;
     }
 
     /**
@@ -194,7 +192,7 @@ public:
      * purpose: calculates the normal force, weight
      * returns: long double, normal force
      */
-    static long double normalForce(const long double mass, const long double acceleration = GA)
+    static long double normalForce(const long double mass, const long double acceleration = constants::Ga)
     {
         return mass * acceleration;
     }
@@ -208,7 +206,7 @@ public:
      */
     static long double normalForce_angleDOWN(const long double mass, const long double angleTheta)
     {
-        return mass * GA * cos(angleTheta * RADIAN);
+        return mass * constants::Ga * cos(angleTheta * constants::RADIAN);
     }
     /**
      * method: normal_force_angleUp(const long double mass, const long double angleTheta)
@@ -218,7 +216,7 @@ public:
      */
     static long double normalForce_angleUP(const long double mass, const long double angleTheta)
     {
-        return mass * GA * sin(angleTheta * RADIAN);
+        return mass * constants::Ga * sin(angleTheta * constants::RADIAN);
     }
 
     /**
@@ -229,7 +227,7 @@ public:
      */
     static long double acceleration_slope_simpleFriction(const long double angleTheta, const long double kC)
     {
-        return GA * (sin(angleTheta * RADIAN) - (kC * cos(angleTheta * RADIAN)));
+        return constants::Ga * (sin(angleTheta * constants::RADIAN) - (kC * cos(angleTheta * constants::RADIAN)));
     }
 
     /**
@@ -250,7 +248,7 @@ public:
      */
     static long double tensionOnSingleStrand(const long double mass)
     {
-        return mass * GA;
+        return mass * constants::Ga;
     }
 
     /**
@@ -261,7 +259,7 @@ public:
      */
     static long double tensionOnSingleStrandWithAccelerationUpward(const long double mass, const long double a)
     {
-        return (mass * GA) + (mass * a);
+        return (mass * constants::Ga) + (mass * a);
     }
 
     /**
@@ -273,7 +271,7 @@ public:
      */
     static long double tensionOnSingleStrandWithFrictionWhileAccelerating(const long double mass, const long double fCoeff, const long double a)
     {
-        const long double Nf = mass * GA;
+        const long double Nf = mass * constants::Ga;
         const long double friction_ = fCoeff * Nf;
         const long double accF = mass * a;
         return friction_ + accF;
@@ -287,7 +285,7 @@ public:
      */
     static long double tensionOnMultipleStrandsIdealPulley(const long double mass1, const long double mass2)
     {
-        return ((2.0*GA)*(mass1*mass2))/(mass1 + mass2);
+        return ((2.0*constants::Ga)*(mass1*mass2))/(mass1 + mass2);
     }
 
 
@@ -303,11 +301,11 @@ public:
                                           const long double theta2, bool print = false)
     {
         vector<long double> result = { 0.0, 0.0, 0.0 };
-        auto mg = mass * GA;
-        auto T1x = cos(theta1 * RADIAN);
-        auto T1y = sin(theta1 * RADIAN);
-        auto T2x = cos(theta2 * RADIAN);
-        auto T2y = sin(theta2 * RADIAN);
+        auto mg = mass * constants::Ga;
+        auto T1x = cos(theta1 * constants::RADIAN);
+        auto T1y = sin(theta1 * constants::RADIAN);
+        auto T2x = cos(theta2 * constants::RADIAN);
+        auto T2y = sin(theta2 * constants::RADIAN);
         auto T2 = T1x/T2x;
         auto temp = T2y*T2+T1y;
         auto T1_tot = mg/temp;
@@ -332,7 +330,7 @@ public:
      */
     static long double tensionOnCableMultipleStrandsMiddle(const long double mass, const long double theta)
     {
-        return (mass * GA)/(2.0*sin(theta*RADIAN));
+        return (mass * constants::Ga)/(2.0*sin(theta*constants::RADIAN));
     }
 
     /**
@@ -361,7 +359,7 @@ public:
       */
      static long double rocketThrust(const long double m, const long double v, const long double h)
      {
-         return m*(GA*((v*v)/(2.0*h)));
+         return m*(constants::Ga*((v*v)/(2.0*h)));
      }
      /**
       * Two forces, both in the x-y plane, act on a object of mass m (M) that
@@ -378,10 +376,10 @@ public:
      forceOnObject(const long double m, const long double acc, const long double theta,
                    const long double F1, bool print = false){
          vector<long double> result = { 0.0, 0.0};
-         auto ax = (m*acc*cos(theta*RADIAN) - F1);
-         auto ay = (m*acc*sin(theta*RADIAN));
+         auto ax = (m*acc*cos(theta*constants::RADIAN) - F1);
+         auto ay = (m*acc*sin(theta*constants::RADIAN));
          auto F2 = sqrt(ax*ax + ay*ay);
-         auto theta2 = atan2(ay, ax)*DEGREE;
+         auto theta2 = atan2(ay, ax)*constants::DEGREE;
          if(print){
              cout << "F2 = " << F2 << endl;
              cout << "theta = " << theta2 << endl;
@@ -403,7 +401,7 @@ public:
          auto F2i = (m*ai) - F1i;
          auto F2j = (m*aj) - F1j;
          auto F2 = sqrt(F2i*F2i + F2j*F2j);
-         auto theta2 = atan2(F2j, F2i)*DEGREE;
+         auto theta2 = atan2(F2j, F2i)*constants::DEGREE;
          if(print){
              cout << "F2 = " << F2 << endl;
              cout << "theta = " << theta2 << endl;
@@ -424,7 +422,7 @@ public:
       * @return  angle of tilt
       */
      static long double tiltAngle(const long double g, bool print = false){
-         auto theta = asin(g/GA)*DEGREE;
+         auto theta = asin(g/constants::Ga)*constants::DEGREE;
          if(print){
              cout << "theta = " << theta << endl;
          }
@@ -436,7 +434,7 @@ public:
       *  is d long. Neglecting friction, how long does it take to reach the bottom?
       */
      static long double skierTime(const long double theta, const long double d, bool print = false){
-         auto a = GA*sin(theta*RADIAN);
+         auto a = constants::Ga*sin(theta*constants::RADIAN);
          auto t = sqrt(2.0*d/a);
          if(print){
              cout << "t = " << t << endl;
@@ -454,7 +452,7 @@ public:
       */
      static vector<long double> tablecloth(const long double m_s, const long double m_t, const long double d, bool print = false){
          vector<long double> result = { 0.0, 0.0};
-         auto a = (m_s*GA)/(m_s+m_t);
+         auto a = (m_s*constants::Ga)/(m_s+m_t);
          auto t = sqrt(2.0*d/a);
          if(print){
              cout << "acceleration = " << a << endl;
@@ -470,7 +468,7 @@ public:
                          const long double m_2, const long double theta_2,
                          bool print = false){
          auto a =
-                 ((m_1*GA*sin(theta_1*RADIAN)) + (m_2*GA*sin(theta_2*RADIAN)))
+                 ((m_1*constants::Ga*sin(theta_1*constants::RADIAN)) + (m_2*constants::Ga*sin(theta_2*constants::RADIAN)))
                  / (m_1+m_2);
          if(print){
              cout << "acceleration = " << a << endl;
@@ -493,10 +491,10 @@ public:
     {
         Forces result;
         // add two forces using the triangular method a2 = b2 + c2 - 2*b*c*Cos (A)
-        auto ax = this->_force * cos(this->_angle*RADIAN);
-        auto ay = this->_force * sin(this->_angle*RADIAN);
-        auto bx = other._force * cos(other._angle*RADIAN);
-        auto by = other._force * sin(other._angle*RADIAN);
+        auto ax = this->_force * cos(this->_angle*constants::RADIAN);
+        auto ay = this->_force * sin(this->_angle*constants::RADIAN);
+        auto bx = other._force * cos(other._angle*constants::RADIAN);
+        auto by = other._force * sin(other._angle*constants::RADIAN);
         auto totX = ax + bx;
         auto totY = ay + by;
         result._force = sqrt(totX * totX + totY * totY);
@@ -508,10 +506,10 @@ public:
     {
         Forces result;
         // subtract two forces using the triangular method a2 = b2 + c2 - 2*b*c*Cos (A)
-        auto ax = this->_force * cos(this->_angle*RADIAN);
-        auto ay = this->_force * sin(this->_angle*RADIAN);
-        auto bx = other._force * cos(other._angle*RADIAN);
-        auto by = other._force * sin(other._angle*RADIAN);
+        auto ax = this->_force * cos(this->_angle*constants::RADIAN);
+        auto ay = this->_force * sin(this->_angle*constants::RADIAN);
+        auto bx = other._force * cos(other._angle*constants::RADIAN);
+        auto by = other._force * sin(other._angle*constants::RADIAN);
         auto totX = ax - bx;
         auto totY = ay - by;
         result._force = sqrt(totX * totX + totY * totY);

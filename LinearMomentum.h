@@ -226,7 +226,7 @@ public:
      */
     ld static velocityVectorY(const ld v, const ld theta, const ld y_vector90 = 0)
     {
-        return v * sin(theta * RADIAN) + y_vector90;
+        return v * sin(theta * constants::RADIAN) + y_vector90;
     }
 
     /**
@@ -239,7 +239,7 @@ public:
      */
     ld static velocityVectorX(const ld v, const ld theta, const ld x_vector180 = 0)
     {
-        return v * cos(theta * RADIAN) + x_vector180;
+        return v * cos(theta * constants::RADIAN) + x_vector180;
     }
 
     /**
@@ -306,7 +306,7 @@ public:
      */
     ld static  collisionTotallyInelasticPerpendicular_V2initial(const ld m1, const ld v1, const ld m2, const ld theta)
     {
-        return ((m1 * v1 * tan(theta * RADIAN))) / (m2);
+        return ((m1 * v1 * tan(theta * constants::RADIAN))) / (m2);
     }
 
     /**
@@ -320,7 +320,7 @@ public:
      */
     ld static collisionTotallyInelasticPerpendicular_Vfinal(const ld m1, const ld v1, const ld m2, const ld theta)
     {
-        return (m1 * v1) / ((cos(theta * RADIAN) * m1) + (cos(theta * RADIAN) * m2));
+        return (m1 * v1) / ((cos(theta * constants::RADIAN) * m1) + (cos(theta * constants::RADIAN) * m2));
     }
 
     /**
@@ -370,7 +370,7 @@ public:
      */
     ld static rocketLaunchAcceleration(const ld liftMass, const ld exhaustVelocity, const ld fuelBurnRate)
     {
-        return ((exhaustVelocity / liftMass) * (fuelBurnRate)) - _Ga_;
+        return ((exhaustVelocity / liftMass) * (fuelBurnRate)) - constants::Ga;
     }
 
     /**
@@ -388,14 +388,14 @@ public:
     /**
      * @brief Returns the initial speed of a projectile as it launches from ground level at a particular angle
      * and returns to ground level a certain distance away
-     * Vi = sqrt((distance * _Ga_) / (2 * cos(angle * RADIAN) * sin(angle * RADIAN)))
+     * Vi = sqrt((distance * _Ga_) / (2 * cos(angle * constants::RADIAN) * sin(angle * constants::RADIAN)))
      * @param distance
      * @param angle
      * @returns the initial launch speed
      */
     ld static projectileLaunchSpeed(const ld distance, const ld angle)
     {
-        return sqrt((distance * _Ga_) / (2 * cos(angle * RADIAN) * sin(angle * RADIAN)));
+        return sqrt((distance * constants::Ga) / (2 * cos(angle * constants::RADIAN) * sin(angle * constants::RADIAN)));
     }
 
     /**
@@ -419,7 +419,7 @@ public:
      */
     ld static rangeOfProjectile(const ld v, const ld angle, const ld time)
     {
-        return v * cos(angle * RADIAN) * time;
+        return v * cos(angle * constants::RADIAN) * time;
     }
 
     /**

@@ -19,14 +19,10 @@
 #include <cmath>
 #include <complex>
 #include <cassert>
+#include "Constants.h"
 
 using namespace std;
 
-
-constexpr auto _PI_ = 3.141592653589793238462643383;
-constexpr auto DEGREE = 180/_PI_;
-constexpr auto RADIAN = _PI_/180;
-constexpr auto _Ga_ = 9.81;
 static int vec2d_object_counter = 0;
 
 class Vector2D
@@ -54,13 +50,14 @@ class Vector2D
 
 public:
     char mode;  //sets mode to Polar w/ 'p' or Rectangular w/ 'r'
-    Vector2D(string id = ""); //default constructor
-    Vector2D(char, string id = "");//mode select, defaults to 0, in rectangular, constructor
+    explicit Vector2D(string id = ""); //default constructor
+    explicit Vector2D(char, string id = "");//mode select, defaults to 0, in rectangular, constructor
     Vector2D(long double, long double, char _mode = 'r', string id = ""); //constructor takes both coordinates and mode
     Vector2D(const Vector2D &, string id = "");	//copy constructor
-    virtual void displayAllData(const std::string& label = "")const; //virtual so any derived classes must redefine
+    virtual void displayAllData(const std::string& label = "")const; //displays all data
     virtual void display(const std::string& label = "")const;
-    virtual void showUnitVector(const std::string& label = "")const;
+    void showUnitVector(const std::string& label = "")const;
+
     virtual void showRectCord(const std::string& label = "")const;
     void		 showPolarCord(const std::string& label = "")const;
     void		 showRevolutionAngle(const std::string&  label = "")const;
@@ -70,13 +67,13 @@ public:
     void		 show_angle()const;
     void		 show_mode()const;
     void		 show_arcLength()const;
-    std::string	 getID() const { return ID; }
-    long double		 getX()const;
-    long double		 getY()const;
-    virtual long double return_mag()const;
-    virtual long double return_angle()const;
-    virtual long double return_arcLength()const;
-    virtual char return_mode()const;
+    [[nodiscard]] std::string	 getID() const { return ID; }
+    [[nodiscard]] long double		 getX()const;
+    [[nodiscard]] long double		 getY()const;
+    [[nodiscard]] virtual long double return_mag()const;
+    [[nodiscard]] virtual long double return_angle()const;
+    [[nodiscard]] virtual long double return_arcLength()const;
+    [[nodiscard]] virtual char return_mode()const;
     static int	 return_objectCount(){return vec2d_object_counter;}
     void		 set_coordinates(long double, long double, char _mode = 'r');
     void		 set_rectCord(long double, long double);
@@ -446,7 +443,7 @@ inline Vector2D Vector2D::projection(Vector2D& v) const
 inline long double Vector2D::angle_between_vectors(Vector2D& v) const
 {
     return acos((x*v.x+y*v.y) / (sqrt(x*x+y*y)*
-                                 sqrt(v.x*v.x+v.y*v.y))) * DEGREE;
+                                 sqrt(v.x*v.x+v.y*v.y))) * constants::DEGREE;
 }
 inline long double Vector2D::square() const {
     return  static_cast<long double>( x * x + y * y);
@@ -527,7 +524,7 @@ inline void Vector2D::calculate_magnitude()
 }
 inline void Vector2D::calculate_angle()
 {
-    angle = atan2(y, x) * DEGREE;
+    angle = atan2(y, x) * constants::DEGREE;
 }
 inline void Vector2D::adjust_angle()
 {
@@ -550,8 +547,8 @@ inline void Vector2D::adjust_angle()
 }
 inline void Vector2D::calculate_rectangular()
 {
-    x = magnitude* cos(angle*RADIAN);
-    y = magnitude* sin(angle*RADIAN);
+    x = magnitude* cos(angle*constants::RADIAN);
+    y = magnitude* sin(angle*constants::RADIAN);
 }
 inline void Vector2D::calculate_polar()
 {
@@ -559,7 +556,7 @@ inline void Vector2D::calculate_polar()
     if (x == 0.0 && y == 0.0)
         angle = 0.0;
     else
-        angle = atan2(y, x)*DEGREE;
+        angle = atan2(y, x)*constants::DEGREE;
 
     adjust_angle();
     calculate_arcLength();
@@ -568,7 +565,7 @@ inline void Vector2D::calculate_polar()
 inline void Vector2D::calculate_arcLength()
 {
     adjust_angle();
-    arcLength = (_PI_ * (magnitude*2.0)) *
+    arcLength = (constants::PI * (magnitude*2.0)) *
                 (angle / 360.0);
 }
 

@@ -17,42 +17,6 @@
 #include "Vector2D.h"
 typedef long double ld;
 
-/// <summary>
-/// The meters light travels in one light year
-/// </summary>
-constexpr auto METERS_1LY = 9460730472580800;
-
-//pi = 3.14159265359
-constexpr auto _pi_ = 3.14159265359;
-/// <summary>
-/// Vacuum permittivity, commonly denoted ε0 (pronounced as "epsilon nought"
-/// or "epsilon zero") is the value of the absolute dielectric permittivity
-/// of classical vacuum.
-/// </summary>
-constexpr auto _e0_ = 8.854187819013e-12; // 8.8542e-12
-/// <summary>
-/// Coulombs constant 8.988 * pow(10.0, 9)Nm^2)/C^2
-/// </summary>
-constexpr auto _k_ = 8.9875517923e9; //8.988 * pow(10.0, 9)Nm^2)/C^2
-constexpr auto _K_ = 1.0 / (4.0 * _pi_ * _e0_);
-/// <summary>
-/// The electron = -1.6 * 10^-19 C
-/// </summary>
-constexpr auto _ELECTRON_CHARGE_ = -(1.602176634e-19); //-1.6e-19
-
-/// <summary>
-/// The proton = 1.6 * 10^-19C
-/// </summary>
-constexpr auto _PROTON_CHARGE_ = 1.602176634e-19; // 1.6e-19
-constexpr auto _COULOMB_       = 1.0 / (_ELECTRON_CHARGE_);
-
-constexpr auto _ELECTRON_MASS_ = 9.1093837015e-31;  //9.11e-31
-constexpr auto _PROTON_MASS_   = 1.67262e-27; //1.673e-27
-
-constexpr auto _PLANKS_J_ = 6.62607004e-34;
-constexpr auto _PLANKS_EM_ = 4.14e-15;
-constexpr auto _PLANKS_C_ = _PLANKS_EM_ * 2.99792e8;
-
 static int electricCharge_objectCount = 0;
 
 static struct ScientificNotationUnits
@@ -338,7 +302,7 @@ public:
     /// <param name="charge">The charge.</param>
     /// <param name="m">The mass.</param>
     /// <returns></returns>
-    static constexpr ld minimumChargeToLiftObject(ld r, ld charge, ld m);
+    static ld minimumChargeToLiftObject(ld r, ld charge, ld m);
 
     /// <summary>
     /// A wrecking yard inventor wants to pick up cars by charging a ball
@@ -510,12 +474,12 @@ constexpr ld ElectricCharge::massFromEnergy(const ld M)
 
 constexpr ld ElectricCharge::totalElectronMass(const ld Ne)
 {
-    return Ne * _ELECTRON_MASS_;
+    return Ne * constants::ELECTRON_MASS;
 }
 
 constexpr ld ElectricCharge::totalProtonMass(const ld Np)
 {
-    return Np * _PROTON_MASS_;
+    return Np * constants::PROTON_MASS;
 }
 
 constexpr ld ElectricCharge::totalMass(const ld Ne, const ld Np)
@@ -527,21 +491,21 @@ constexpr ld ElectricCharge::electrostaticForce(
         const ld q1, const ld q2, const ld r
 )
 {
-    return (_k_ * q1 * q2) / (r * r);
+    return (constants::K * q1 * q2) / (r * r);
 }
 
 inline ld ElectricCharge::chargeOfElectrostaticForce_equalPointCharges(
         const ld q, const ld mass, const ld r
 )
 {
-    return r * (sqrt((mass * _Ga_) / _k_));
+    return r * (sqrt((mass * constants::Ga) / constants::K));
 }
 
 constexpr ld ElectricCharge::electricFieldForce(
         const ld Q, const ld r
 )
 {
-    return (_k_ * Q) / (r * r);
+    return (constants::K * Q) / (r * r);
 }
 
 constexpr ld ElectricCharge::forceByElectricField(
@@ -555,14 +519,14 @@ constexpr ld ElectricCharge::coulombs(
         const ld baseNumber, const ld su
 )
 {
-    return baseNumber * su * _PROTON_CHARGE_;
+    return baseNumber * su * constants::PROTON_CHARGE;
 }
 
 inline ld ElectricCharge::howManyFewerElectronsThenProtons(
         const ld netCharge
 )
 {
-    return netCharge / abs(_ELECTRON_CHARGE_);
+    return netCharge / abs(constants::ELECTRON_CHARGE);
 }
 
 inline ld ElectricCharge::fractionProtonsNoElectrons(
@@ -591,7 +555,7 @@ constexpr ld ElectricCharge::magnitudePointCharge(
         const ld E, const ld r
 )
 {
-    return ((r * r) * E) / _k_;
+    return ((r * r) * E) / constants::K;
 }
 
 constexpr ld ElectricCharge::charge(const ld F, const ld E)
@@ -603,32 +567,32 @@ inline ld ElectricCharge::separationBetweenPointCharges(
         const ld q1, const ld q2, const ld F
 )
 {
-    return sqrt((_k_ * (q1 * q2)) / F);
+    return sqrt((constants::K * (q1 * q2)) / F);
 }
 
 constexpr ld ElectricCharge::howManyElectrons(
         const ld totalParticles, const ld netCharge
 )
 {
-    const ld NeMinusNp = netCharge / _ELECTRON_CHARGE_;
+    const ld NeMinusNp = netCharge / constants::ELECTRON_CHARGE;
     const ld total     = totalParticles + NeMinusNp;
     const ld Ne        = total / 2.0;
 
     return Ne;
 }
 
-constexpr ld ElectricCharge::minimumChargeToLiftObject(
+inline ld ElectricCharge::minimumChargeToLiftObject(
         const ld r, const ld charge, const ld m
 )
 {
-    return (m * _Ga_ * (r * r)) / (_k_ * charge);
+    return (m * constants::Ga * (r * r)) / (constants::K * charge);
 }
 
 inline ld ElectricCharge::minimumChargeToLiftCar(
         const ld r, const ld l, const ld m
 )
 {
-    return (r + l) * sqrt((m * _Ga_) / _k_);
+    return (r + l) * sqrt((m * constants::Ga) / constants::K);
 }
 
 constexpr ld ElectricCharge::superpositionPrinciple(
@@ -643,47 +607,47 @@ inline ld ElectricCharge::distanceBetweenPoints(
         const ld q1, const ld q2, const ld F
 )
 {
-    return sqrt((_k_ * abs(q1) * abs(q2)) / F);
+    return sqrt((constants::K * abs(q1) * abs(q2)) / F);
 }
 
 inline ld ElectricCharge::angleVerticalAxis(
         const ld Fe, const ld mass
 )
 {
-    return atan((Fe / (mass * _Ga_))) * DEGREE;
+    return atan((Fe / (mass * constants::Ga))) * constants::DEGREE;
 }
 
 constexpr ld ElectricCharge::accelerationOfParticles(
         const ld m, const ld r, const ld q1, const ld q2
 )
 {
-    return (_k_ * (q1 * q2)) / (m * (r * r));
+    return (constants::K * (q1 * q2)) / (m * (r * r));
 }
 
 constexpr ld ElectricCharge::electricFieldStrength(const ld d, const ld q_excess)
 {
-    return (4.0 * _k_ * q_excess) / (d * d);
+    return (4.0 * constants::K * q_excess) / (d * d);
 }
 
 inline ld ElectricCharge::electricFieldStrength(
         const ld m, const ld theta, const ld q
 )
 {
-    return (m * _Ga_ * tan(theta * RADIAN)) / q;
+    return (m * constants::Ga * tan(theta * constants::RADIAN)) / q;
 }
 
 inline ld ElectricCharge::magnitudeOfq_termsOf_Q_m_d(
         const ld Q, const ld m, const ld d
 )
 {
-    return (3.0 * sqrt(6.0) * (d * d) * m * _Ga_) / (16.0 * _k_ * Q);
+    return (3.0 * sqrt(6.0) * (d * d) * m * constants::Ga) / (16.0 * constants::K * Q);
 }
 
 inline ld ElectricCharge::angularVelocityOfElectronOrbitingProton(
         const ld r, const ld m, const ld q
 )
 {
-    return q * sqrt((_k_) / (m * r));
+    return q * sqrt((constants::K) / (m * r));
 }
 
 inline ld ElectricCharge::distanceToPlaceThirdChargeToMakeZero(
@@ -697,14 +661,15 @@ inline ld ElectricCharge::magnitudeOfForceOn_q(
         const ld qx4, const ld lSide, const ld q1, const ld theta = 45.0
 )
 {
-    return ((8.0 * _k_ * qx4 * q1) / (lSide * lSide)) * sin(theta * RADIAN);
+    return ((8.0 * constants::K * qx4 * q1) / (lSide * lSide)) *
+    sin(theta * constants::RADIAN);
 }
 
 inline ld ElectricCharge::electricFieldAtLocation(
         const ld qb, const ld qm, const ld l
 )
 {
-    return (_k_ / (l * l)) * (sqrt(2) * qb + (qb / 2.0) - 2 * qm);
+    return (constants::K / (l * l)) * (sqrt(2) * qb + (qb / 2.0) - 2 * qm);
 }
 
 inline std::vector<ld> ElectricCharge::electricFieldAtCenterTriangle(
@@ -714,7 +679,7 @@ inline std::vector<ld> ElectricCharge::electricFieldAtCenterTriangle(
     std::vector<ld> results = {0.0, 0.0};
     const ld sr_rthx   = 3.0 * sqrt(3);
     //cout << "3*srty3: " << sr_rthx << endl;
-    const ld y = sr_rthx * _k_;
+    const ld y = sr_rthx * constants::K;
     //cout << "ktimessqrt3: " << y << endl;
     const ld z = 2 * (l * l);
     //cout << "2timeslength: " << z << endl;
@@ -724,11 +689,11 @@ inline std::vector<ld> ElectricCharge::electricFieldAtCenterTriangle(
     //cout << "qb+qc: " << j  << endl;
     const ld Ex = w * j;
     //cout << "Ex: " << Ex << endl;
-    const ld Ey = ((3.0 * _k_) / (l * l)) * (-qa - abs((qb / 2)) + abs((qc / 2))
+    const ld Ey = ((3.0 * constants::K) / (l * l)) * (-qa - abs((qb / 2)) + abs((qc / 2))
     );
     //cout << "Ey: " << Ey << endl;
     results[0] = sqrt((Ex * Ex) + (Ey * Ey));
-    results[1] = atan((Ey / Ex)) * 180 / _pi_;
+    results[1] = atan((Ey / Ex)) * 180 / constants::PI;
 
     return results;
 }
@@ -737,12 +702,12 @@ constexpr ld ElectricCharge::electrons(
         const ld baseNumber, const ld su
 )
 {
-    return (baseNumber * su) / _ELECTRON_CHARGE_;
+    return (baseNumber * su) / constants::ELECTRON_CHARGE;
 }
 
 inline ld ElectricCharge::netElectronCount(
         const ld protons, const ld netCharge
 )
 {
-    return protons + ((-abs(netCharge)) / _PROTON_CHARGE_);
+    return protons + ((-abs(netCharge)) / constants::PROTON_CHARGE);
 }
