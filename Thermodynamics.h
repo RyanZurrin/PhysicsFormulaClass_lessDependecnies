@@ -90,7 +90,7 @@ public:
     static int get_thermodynamics_objectCount() { return thermodynamics_objectCount; }
 
     /**
-     * @brief first law of thermodynamics  delta_U = Q - W
+     * @brief first law of thermodynamics  delta_U = COULOMB - W
      * @param Q is the sum of all heat transfer into and out of the system
      * @param W is the sum of all work done on or by the system
      * @returns delta U, is the change in internal energy U of the system
@@ -101,7 +101,7 @@ public:
     }
 
     /**
-     * @brief first law of thermodynamics  delta_U = Q - W
+     * @brief first law of thermodynamics  delta_U = COULOMB - W
      * @param Q_in is the sum of all heat transfer into a system
      * @param Q_out is the sum of all heat transfer out of a system
      * @param W is the sum of all work done by the system
@@ -181,7 +181,7 @@ public:
 
 
     /**
-     * @brief using first law of thermodynamics  Q = delta_U + W
+     * @brief using first law of thermodynamics  COULOMB = delta_U + W
      * @param delta_U is te change of internal energy while doing work
      * @param W is the sum of all work done on or by the system
      * @returns delta U, is the change in internal energy U of the system
@@ -304,7 +304,7 @@ public:
 
     /**
      * @brief calculates the change in entropy for a reversible process {(S)rev}
-     * (S)rev = Q/T
+     * (S)rev = COULOMB/T
      * @param Q is the heat transfer necessary to change forms of an object
      * @param T is the temperature it takes in kelvin to change an objects forms
      * @returns entropy

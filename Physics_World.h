@@ -43,6 +43,7 @@
 #include "RotationalMotion.h"
 #include "Sphere.h"
 #include "Statics.h"
+#include "TemplateBST.h"
 #include "templateGraph.h"
 #include "Thermodynamics.h"
 #include "Torque.h"
@@ -56,6 +57,7 @@
 #include "FluidDynamics.h"
 #include "ElectricPotential.h"
 #include "Circle.h"
+#include "StaticEquilibrium.h"
 
 typedef TriangleSolver TS;
 typedef QuantumPhysics QP;

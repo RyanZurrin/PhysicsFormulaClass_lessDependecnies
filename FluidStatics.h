@@ -14,7 +14,6 @@
 
 #include "Constants.h"
 
-typedef long double ld;
 static int fluidStatics_objectCount = 0;
 
 static struct VolumeCalculator

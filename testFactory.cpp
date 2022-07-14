@@ -14,7 +14,16 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //*************************************************************************
-     FluidStatics::volume(8.8, 1.2, true);
+    StaticEquilibrium::concrete_on_beam(4.2, 65.0, 190.0, true);
+
+    vector<int> v = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+    TBST<int> tbst(v);
+    cout << "Tree length: " << endl;
+    int val = tbst.getQty();
+    cout << val << endl;
+
+    cout << "The tree is: " << endl;
+    tbst.traverseTree(tbst.TWO_DIMENSIONS);
 
 
 

@@ -4,7 +4,6 @@
 
 #ifndef PHYSICSFORMULA_TORQUE_H
 #define PHYSICSFORMULA_TORQUE_H
-typedef long double ld;
 #include "Constants.h"
 /**
  * @class Torque
@@ -193,6 +192,28 @@ public:
     {
         return li / lo;
     }
+
+    /**
+     * @brief calculates the net torque from vector components
+     * @param m is the vector of components
+     * @returns the net torque vector
+     */
+     vector<ld> static net_torque(const vector<vector<ld>> m) {
+        vector<ld> net_torque = {0.0,0.0,0.0};
+        for (ld i : m[0])
+        {
+            net_torque[0] += i;
+        }
+        for (ld i : m[1])
+        {
+            net_torque[1] += i;
+        }
+        for (ld i : m[2])
+        {
+            net_torque[2] += i;
+        }
+        return net_torque;
+     }
 
     // destructor
     ~Torque() {}

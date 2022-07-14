@@ -227,9 +227,9 @@ public:
     static ld distanceOverChangeInVolts_s(const ld V, const ld E);
 
     /// <summary>
-    /// How far from a Q charged point charge will the potential be V volts?
+    /// How far from a COULOMB charged point charge will the potential be V volts?
     /// </summary>
-    /// <param name="Q">The charge (C).</param>
+    /// <param name="COULOMB">The charge (C).</param>
     /// <param name="V">The volts.</param>
     /// <returns>distance (meters)</returns>
     static ld distancePointChargeToEqualVoltsOf(const ld Q, const ld V);
@@ -237,7 +237,7 @@ public:
     /// <summary>
     /// Electrics the potential point charge.
     /// </summary>
-    /// <param name="Q">The point charge.</param>
+    /// <param name="COULOMB">The point charge.</param>
     /// <param name="r">The distance.</param>
     /// <returns>voltage</returns>
     static ld electricPotential_pointCharge(const ld Q, const ld r);
@@ -286,7 +286,7 @@ public:
     /// <summary>
     /// Capacitance of a capacitor. units of C/V or A^2s^2/kg*m^2
     /// </summary>
-    /// <param name="Q">The charge.</param>
+    /// <param name="COULOMB">The charge.</param>
     /// <param name="V">The volts.</param>
     /// <returns>the capacitance (C/V)</returns>
     static ld capacitance(const ld Q, const ld V);
@@ -296,14 +296,14 @@ public:
     /// </summary>
     /// <param name="C">The Capacitance.</param>
     /// <param name="V">The volts.</param>
-    /// <returns>the charge (Q)</returns>
+    /// <returns>the charge (COULOMB)</returns>
     static ld capacitanceCharge(const ld C, const ld V);
 
     /// <summary>
     /// Calculates the voltage applied to a C (F) capacitor when it holds
-    /// Q (C) of charge.
+    /// COULOMB (C) of charge.
     /// </summary>
-    /// <param name="Q">The charge.</param>
+    /// <param name="COULOMB">The charge.</param>
     /// <param name="C">The capacitance.</param>
     /// <returns>volts (V)</returns>
     static ld capacitanceVolts(const ld Q, const ld C);
@@ -338,9 +338,9 @@ public:
 
     /// <summary>
     /// calculates the energy stored in a capacitor
-    /// Ecap = (Q*V)/2.
+    /// Ecap = (COULOMB*V)/2.
     /// </summary>
-    /// <param name="Q">The charge.</param>
+    /// <param name="COULOMB">The charge.</param>
     /// <param name="V">The volts.</param>
     /// <returns>Energy stored in capacitor</returns>
     static ld capacitorEnergy_Ecap_QV(const ld Q, const ld V);
@@ -356,9 +356,9 @@ public:
 
     /// <summary>
     /// calculates the energy stored in a capacitor
-    /// Ecap = Q^2/2*C.
+    /// Ecap = COULOMB^2/2*C.
     /// </summary>
-    /// <param name="Q">The charge.</param>
+    /// <param name="COULOMB">The charge.</param>
     /// <param name="C">The capacitance.</param>
     /// <returns>Energy stored in capacitor</returns>
     static ld capacitorEnergy_Ecap_QC(const ld Q, const ld C);

@@ -17,7 +17,6 @@
 #include <vector>
 
 using namespace std;
-typedef long double ld;
 
 static int kinematics_objectCount = 0;
 
@@ -420,9 +419,9 @@ public:
     time_and_velocity_falling_obj_to_P_Q(ld seperationPQ, ld timeBetweenPQ) {
         vector<pair<string, ld>> timeAndVelocity;
         timeAndVelocity.emplace_back("time to P", 0.0);
-        timeAndVelocity.emplace_back("time to Q", 0.0);
+        timeAndVelocity.emplace_back("time to COULOMB", 0.0);
         timeAndVelocity.emplace_back("velocity at P", 0.0);
-        timeAndVelocity.emplace_back("velocity at Q", 0.0);
+        timeAndVelocity.emplace_back("velocity at COULOMB", 0.0);
         auto timeToP =
                 (seperationPQ - ((1.0/2.0)*constants::Ga*(timeBetweenPQ*timeBetweenPQ))) /
                 (timeBetweenPQ*constants::Ga);
@@ -754,6 +753,144 @@ public:
         auto d_free = vy0*t + (1.0/2.0)*constants::Ga*t*t;
         return d_free;
     }
+
+    /**
+     * @brief Your medieval history class is constructing a trebuchet,
+     * a catapult-like weapon for hurling stones at enemy castles.
+     * The plan is to launch stones off a h -m-high cliff, with initial speed
+     * v0. What is the angle that will maximize the range?
+     * @param h The height of the cliff (m)
+     * @param v0 The initial speed of the stone (m/s)
+     * @param print Whether or not to print the results
+     * @return The angle that will maximize the range
+     */
+    static ld ideal_launch_angle_from_cliff(ld h, ld v0, bool print = false) {
+        auto result = atan(v0/sqrt(((v0*v0) + 2.0*constants::Ga*h)))
+                *constants::DEGREE;
+        if (print) {
+            cout << "The angle that will maximize the range is " <<
+            result << "degrees." << endl;
+        }
+        return result;
+    }
+
+    /**
+     * a projectile is fired horizontally with a speed of v0 from the top of a
+     * cliff h meters high.
+     * (a) How long will it take to strike the level ground at the base of the
+     * cliff?
+     * (b) How far from the foot of the cliff will it strike?
+     * (c) With what velocity will it strike?
+     * @param h The height of the cliff (m)
+     * @param v0 The initial speed of the stone (m/s)
+     * @param print Whether or not to print the results
+     * @return A vector of the results
+     */
+    static vector<ld> cliff_projectile_data(ld h, ld v0, bool print = false) {
+        vector<ld> results;
+        auto t = sqrt((2.0*h)/constants::Ga);
+        auto vx = v0*t;
+        auto vfy = -constants::Ga*t;
+        auto vy = sqrt(vfy*vfy + v0*v0);
+        auto theta = atan(vfy/v0)*constants::DEGREE;
+        results.push_back(t);
+        results.push_back(vx);
+        results.push_back(vfy);
+        results.push_back(vy);
+        results.push_back(theta);
+        results.push_back(v0*cos(ideal_launch_angle_from_cliff(h, v0, false)));
+        if (print) {
+            cout << "The projectile will strike the level ground at the base of the cliff in " <<
+            t << " seconds." << endl;
+            cout << "The projectile will strike at a distance of " <<
+            vx << " meters from the foot of the cliff." << endl;
+            cout << "The projectile will strike with a vertical component of "
+                    "" << vfy << " meters." << endl;
+            cout << "The projectile will strike at a speed of " <<
+            vy << " meters/second." << endl;
+            cout << "The projectile will strike at an angle of " <<
+            theta << " degrees." << endl;
+        }
+        return results;
+    }
+    /**
+     * a projectile is fired at an angle theta with a speed of v0 from the top
+     * of a cliff h meters high.
+     * (a) How long will it take to strike the level ground at the base of the
+     * cliff?
+     * (b) How far from the foot of the cliff will it strike?
+     * (c) With what velocity will it strike?
+     * @param h The height of the cliff (m)
+     * @param theta The angle of launch (degrees)
+     * @param v0 The initial speed of the stone (m/s)
+     * @param print Whether or not to print the results
+     * @return A vector of the results
+     */
+    static vector<ld> cliff_projectile_data(ld h, ld theta, ld v0, bool print = false) {
+        vector<ld> results;
+        auto vx = v0*cos(theta * constants::RADIAN);
+        auto vy = v0*sin(theta * constants::RADIAN);
+        auto t = (vy+sqrt(pow(vy, 2)+2.0*constants::Ga*h))/constants::Ga;
+        auto R = vx*t;
+        auto H = h + (vy*vy) / (2.0*constants::Ga);
+        auto vyf = -constants::Ga*t;
+        auto vfy = sqrt(vyf*vyf + v0*v0);
+        auto theta_f = atan(vyf/v0)*constants::DEGREE;
+        results.push_back(t);
+        results.push_back(R);
+        results.push_back(H);
+        results.push_back(vfy);
+        results.push_back(theta_f);
+        if (print) {
+            cout << "The projectile will strike the level ground at the base of the cliff in " <<
+            t << " seconds." << endl;
+            cout << "The projectile will strike at a distance of " <<
+            R << " meters from the foot of the cliff." << endl;
+            cout << "The projectile will reach a maximum height of " <<
+                    "" << H << " meters." << endl;
+            cout << "The projectile will strike with a vertical component of "
+                    "" << vfy << " meters." << endl;
+            cout << "The projectile will strike at an angle of " <<
+            theta_f << " degrees." << endl;
+        }
+        return results;
+    }
+
+    /** TODO: FIX THIS FUNCTION, NOT WORKING
+     * Suppose two masses are at angles theta and alpha degrees from each other and
+     * are connected by a frictionless and massless rope over a masssless
+     * pulley. If the left-hand mass is ml kg ,what should the right-hand
+     * mass be so that it:
+     * (a) accelerates downslope at ad m/s2?
+     * (b) accelerates upslope at au m/s2?
+     * @param theta The angle of the left-hand mass (degrees)
+     * @param alpha The angle of the right-hand mass (degrees)
+     * @param ml The mass of the left-hand mass (kg)
+     * @param ad The downslope speed of the left-hand mass (m/s)
+     * @param au The upslope speed of the left-hand mass (m/s)
+     * @param print Whether or not to print the results
+     */
+     static vector<ld> pulley_data(ld theta, ld alpha, ld ml, ld ad, ld au,
+                                   bool print = false) {
+        vector<ld> results;
+        auto g = constants::Ga;
+        auto sin_theta = g * sin(theta * constants::RADIAN);
+        auto sin_alpha = g * sin(alpha * constants::RADIAN);
+        // the mass of the right-hand mass part a
+        auto mr = ml*((sin_theta + ad)/(sin_alpha - ad));
+        auto mr2 = ml*((sin_theta - au)/(sin_alpha + au));
+        results.push_back(mr);
+        results.push_back(mr2);
+
+        if (print) {
+            cout << "The right-hand mass should have a mass of " <<
+            mr << " kg. to accelerate downslope at " << ad << " m/s2." << endl;
+            cout << "The right-hand mass should have a mass of " <<
+            mr2 << " kg. to accelerate upslope at " << au << " m/s2." << endl;
+        }
+        return results;
+    }
+
 
 
 

@@ -11,7 +11,6 @@
 // author: Ryan Zurrin
 // last Modified: 10/11/2020
 
-typedef long double ld;
 
 //static object counter for class
 static int friction_objectCount = 0;

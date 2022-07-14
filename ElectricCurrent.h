@@ -239,23 +239,23 @@ public:
 
     /// <summary>
     /// calculates the electric current (I) defined as the rate at which charge
-    /// (Q) flows through a given time (t).
+    /// (COULOMB) flows through a given time (t).
     /// </summary>
-    /// <param name="Q">The change in current.</param>
+    /// <param name="COULOMB">The change in current.</param>
     /// <param name="t">The time over which current passes through.</param>
     /// <returns>the electric current SI unit of ampere (A)</returns>
     static long double electricCurrent(const long double Q, const long double t);
 
     /// <summary>
-    /// Times it takes charge Q to flow through a current of I amperes
+    /// Times it takes charge COULOMB to flow through a current of I amperes
     /// </summary>
-    /// <param name="Q">The charge.</param>
+    /// <param name="COULOMB">The charge.</param>
     /// <param name="I">The current.</param>
     /// <returns>time in seconds</returns>
     static long double timeItTakesChargeToFlow(const long double Q, const long double I);
 
     /// <summary>
-    /// Calculates the Electrics  charge Q
+    /// Calculates the Electrics  charge COULOMB
     /// </summary>
     /// <param name="I">The current.</param>
     /// <param name="t">The time in seconds.</param>
@@ -500,11 +500,11 @@ public:
     static long double electricalPowerAndEnergy_I2R(const long double I, const long double R);
 
     /// <summary>
-    /// A charge of (Q) C of charge passes through a pocket calculator’s solar
+    /// A charge of (COULOMB) C of charge passes through a pocket calculator’s solar
     /// cells in t seconds. What is the power output, given the calculator’s
     /// voltage output is a voltage of V.
     /// </summary>
-    /// <param name="Q">The charge.</param>
+    /// <param name="COULOMB">The charge.</param>
     /// <param name="t">The time.</param>
     /// <param name="V">The voltage.</param>
     /// <returns>the watts</returns>
@@ -513,7 +513,7 @@ public:
     /// <summary>
     /// Calculates the total electrons  that pass through a charge.
     /// </summary>
-    /// <param name="Q">The charge in coulombs.</param>
+    /// <param name="COULOMB">The charge in coulombs.</param>
     /// <returns>Ne, number of electrons</returns>
     static long double electronsThatPassThroughACharge(const long double Q);
 
@@ -588,7 +588,7 @@ public:
     /// <summary>
     /// Calculates the total time.
     /// </summary>
-    /// <param name="Q">The charge.</param>
+    /// <param name="COULOMB">The charge.</param>
     /// <param name="P">The power.</param>
     /// <returns>time</returns>
     static long double timeTotal(const long double Q, const long double P);
@@ -596,7 +596,7 @@ public:
     /// <summary>
     /// Times the total.
     /// </summary>
-    /// <param name="Q">The charge .</param>
+    /// <param name="COULOMB">The charge .</param>
     /// <param name="I">The current.</param>
     /// <param name="V">The volts.</param>
     /// <returns>time</returns>

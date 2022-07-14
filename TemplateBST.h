@@ -145,15 +145,21 @@ class TBST
 
 public:
     /// <summary>
-    /// Initializes a new instance of the <see cref="Bll"/> class.
+    /// Initializes a new instance of the <see cref="BST"/> class.
     /// </summary>
     TBST();
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="Bll"/> class.
+    /// Initializes a new instance of the <see cref="BST"/> class.
     /// </summary>
     /// <param name="maxSize">The maximum size.</param>
     explicit TBST(int maxSize);
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BST"/> class.
+    /// </summary>
+    /// <param name="arr">The array.</param>
+    TBST(vector<T>& arr);
 
 
     /// <summary>
@@ -458,7 +464,6 @@ inline void TBST<T>::copyTree(node<T>*& copy, const node<T>* originalTree)
 template<typename T>
 inline void TBST<T>::destroy(node<T>*& tree)
 {
-    //cout << "Destroying tree..." << endl;
     if (tree != NULL)
     {
         destroy(tree->left);
@@ -466,7 +471,6 @@ inline void TBST<T>::destroy(node<T>*& tree)
         delete tree;
         tree = NULL;
     }
-   // cout << "Tree destroyed." << endl;
 }
 
 template<typename T>
@@ -575,6 +579,21 @@ inline TBST<T>::TBST()
     root = NULL;
 }
 
+
+template<typename T>
+TBST<T>::TBST(vector<T> &arr) {
+    qty = 0;
+    max = INT_MAX;
+    root = NULL;
+    cout << "Creating tree from array..." << endl;
+    // shuffle the array
+    std::random_shuffle(arr.begin(), arr.end());
+    // insert all elements into the tree
+    for (int i = 0; i < arr.size(); i++) {
+        addItem(arr[i]);
+    }
+}
+
 template<typename T>
 inline TBST<T>::TBST(int maxSize)
 {
@@ -610,8 +629,9 @@ inline TBST<T> &TBST<T>::operator=(TBST&& originalTree) noexcept
 template<typename T>
 inline bool TBST<T>::addItem(T k)
 {
-    if (isFull())
+    if (isFull()) {
         return false;
+    }
     if (root == NULL)
     {
         root = new node<T>;
@@ -621,7 +641,6 @@ inline bool TBST<T>::addItem(T k)
         qty++;
         return true;
     }
-
     return pAdd(root, k);
 }
 
@@ -646,11 +665,9 @@ inline bool TBST<T>::isFull() const
 template<typename T>
 inline bool TBST<T>::makeEmpty()
 {
-    //cout << "Tree is being destroyed in makeEmpty." << endl;
     destroy(root);
     root = NULL;
     qty = 0;
-    //cout << "Tree destroyed leaving Make empty." << endl;
     return true;
 }
 
@@ -785,20 +802,16 @@ vector<int> TBST<T>::countLeftRightSubTree(node<T> *tree) {
 
 template<typename T>
 void TBST<T>::fillAuxArray(vector<T>& arr, node<T>* tree) {
-    //cout << "Filling array with values from tree" << endl;
     if(tree == NULL)
         return;
     fillAuxArray(arr, tree->left);
     arr.push_back(tree->item);
-    //cout << "item pushed is " << tree->item << endl;
     fillAuxArray(arr, tree->right);
-    //cout << "Array filled" << endl;
 }
 
 template<typename T>
 void TBST<T>::shuffleArray(vector<T> &arr) {
     int n = arr.size();
-    cout << "Shuffling array size is "<< n << endl;
     bool added[n];
     std::random_device rd;
     std::mt19937 g(rd());
@@ -818,12 +831,11 @@ void TBST<T>::fillTreeFromArray(vector<T> &arr, TBST *tree) {
     int n = arr.size() - 1;
     int mid = n / 2;
     addItem(arr[mid]);
-    cout << "Shuffling array size is "<< n << endl;
     bool added[n];
     std::random_device rd;
     std::mt19937 g(rd());
     std::uniform_int_distribution<> dist(0, n-1);
-    for(int i = 1; i < n;) {
+    for(int i = 0; i < n;) {
         int r = dist(g);
         if(!added[r] && r != mid) {
             added[r] = true;
@@ -835,7 +847,6 @@ void TBST<T>::fillTreeFromArray(vector<T> &arr, TBST *tree) {
 
 template<typename T>
 void TBST<T>::balanceTree() {
-    //cout << "Balancing tree..." << endl;
     if(root == NULL || isBalanced())
         return;
     vector<T> arr;
@@ -844,7 +855,7 @@ void TBST<T>::balanceTree() {
     //root = NULL;
     //root = new node<T>;
     fillTreeFromArray(arr, this);
-    //cout << "Tree balanced ending!" << endl;
 }
+
 
 #endif //PHYSICSFORMULA_TEMPLATEBST_H

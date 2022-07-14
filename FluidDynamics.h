@@ -14,7 +14,6 @@
 #include <cmath>
 #include "Constants.h"
 using namespace std;
-typedef long double ld;
 static int fluidDynamic_objectCount = 0;
 
 static struct FlowRateConversions
@@ -183,7 +182,7 @@ public:
     /// <param name="radius">The radius.</param>
     /// <param name="distance">The distance.</param>
     /// <param name="time">The time.</param>
-    /// <returns>flow rate (Q)</returns>
+    /// <returns>flow rate (COULOMB)</returns>
     static ld flowRateCylinder_radius(const ld radius, const ld distance, const ld time)
     {
         return constants::PI * (radius * radius) * distance * time;

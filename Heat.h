@@ -397,7 +397,7 @@ public:
      * @param A is total surface area
      * @param deltaTemp is the change in temperature
      * @param d the thickness of substance
-     * @returns the Q value or heat transfer total
+     * @returns the COULOMB value or heat transfer total
      */
     static ld heatTransferConduction_Q(const ld k, const ld A, const ld deltaTemp, const ld d)
     {

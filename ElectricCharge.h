@@ -189,7 +189,7 @@ public:
     /// <summary>
     /// Electrics the field e.
     /// </summary>
-    /// <param name="Q">The q.</param>
+    /// <param name="COULOMB">The q.</param>
     /// <param name="r">The r.</param>
     /// <returns></returns>
     static constexpr ld electricFieldForce(ld Q, ld r);
@@ -378,13 +378,13 @@ public:
     static ld electricFieldStrength(ld m, ld theta, ld q);
 
     /// <summary>
-    /// four equal charges q lie on the corners of a square. A fifth charge Q
+    /// four equal charges q lie on the corners of a square. A fifth charge COULOMB
     /// is on a mass m directly above the center of the square, at a height
     /// equal to the length d of one side of the square.
-    /// Determine the magnitude of q in terms of Q , m , and d ,
+    /// Determine the magnitude of q in terms of COULOMB , m , and d ,
     /// if the Coulomb force is to equal the weight of m.
     /// </summary>
-    /// <param name="Q">The charge of the center point.</param>
+    /// <param name="COULOMB">The charge of the center point.</param>
     /// <param name="m">The mass in center.</param>
     /// <param name="d">The length of a side and height of the center.</param>
     /// <returns>the charge of the corner points </returns>
