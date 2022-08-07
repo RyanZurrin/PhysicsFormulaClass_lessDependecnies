@@ -384,7 +384,7 @@ public:
      */
     static ld monoatomicInternalEnergyChange(const ld Vi, const ld Vf, const ld pressureConstant)
     {
-        return (pressureConstant * (Vf - Vi)) / (ATOMIC_MASS_UNIT_ - 1);
+        return (pressureConstant * (Vf - Vi)) / (constants::ATOMIC_MASS_UNIT - 1);
     }
     /**
      * @brief calculates the work done during an isobaric process

@@ -111,9 +111,11 @@ namespace constants {
     /// </summary>
     constexpr auto METERS_1LY = 9460730472580800;
 
+    constexpr auto ATOMIC_MASS_UNIT = 1.66e-27;
 
 
-    const double G = 6.67408e-11;
+
+    constexpr auto G = 6.67408e-11;
 
     double Ga = 9.81;
     void set_Ga(double g) { Ga = g; }
