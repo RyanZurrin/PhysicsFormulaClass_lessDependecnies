@@ -155,6 +155,39 @@ public:
         ld _fahrenheit;
         ld _kelvin;
 
+        Temp()
+        {
+            _celsius = 0.0;
+            _fahrenheit = 0.0;
+            _kelvin = 0.0;
+        }
+
+        Temp(ld temp, string mode)
+        {
+            if (mode == "c")
+            {
+                _celsius = temp;
+                _fahrenheit = temp * 9 / 5 + 32;
+                _kelvin = temp + 273.15;
+            }
+            else if (mode == "f")
+            {
+                _fahrenheit = temp;
+                _celsius = (temp - 32) * 5 / 9;
+                _kelvin = (_celsius + 273.15) * 5 / 9;
+            }
+            else if (mode == "k")
+            {
+                _kelvin = temp;
+                _celsius = temp - 273.15;
+                _fahrenheit = _celsius * 9 / 5 + 32;
+            }
+            else
+            {
+                std::cout << "invalid mode" << std::endl;
+            }
+        }
+
         ld getFahrenheit()const { return _fahrenheit; }
         ld getCelsius()const { return _celsius; }
         ld getKelvin()const { return _kelvin; }
@@ -351,9 +384,14 @@ public:
      * @param B is the bulk modulus
      * @returns the gas pressure in Pa
      */
-    static ld gasPressure(const ld F, const ld A, const ld B)
+    static ld gasPressure(const ld F, const ld A, const ld B, bool print = false)
     {
-        return ((F / A)-1) * B;
+        ld P = ((F / A)-1) * B;
+        if(print)
+        {
+            std::cout << "The gas pressure is: " << P << " Pa\n";
+        }
+        return P;
     }
 
     /**
@@ -466,7 +504,31 @@ public:
      */
     static ld temperatureChange(const ld startTemp, const ld finishTemp)
     {
-        return finishTemp - startTemp;
+        return abs(finishTemp - startTemp);
+    }
+
+    /**
+     * @brief with w kg of water at a temp of t_i C. How many units of ice
+     * at 0 C would be needed to cool the water to t_f C?
+     * @param m_w is the amount of water in kg
+     * @param t_i is the initial temp in C
+     * @param t_f is the final temp in C
+     *
+     * @returns the amount of ice needed to cool the water to t_f C
+     */
+    static ld iceNeeded(const ld m_w, const ld t_i, const ld t_f, bool print =
+            false)
+    {
+        auto hf_ice = LHF.water.kJ_kg;
+        auto shw = SHC.waterLiquid.J_kgC;
+        auto deltaT = temperatureChange(t_i, t_f);
+        // mass_ice = (m_w * specific_heat_water * (t_i - t_f)) / hf_ice;
+        auto mass_ice = (m_w * shw * deltaT) / hf_ice;
+        if (print)
+        {
+            std::cout << "mass_ice = " << mass_ice << " kg" << std::endl;
+        }
+        return mass_ice;
     }
 
     ~Temperature()

@@ -39,88 +39,384 @@ static struct HeatEnergyUnitConversion
  */
 static struct SpecificHeatCapacity
 {
+    SpecificHeatCapacity() { }
 
-    const std::vector<ld> aluminum_S = { 900.0, .215 };//< 900J/kg*C`, .215kCal/kg*C` >
-    const std::vector<ld> asbestos_S = { 800.0, .19 };//< 800J/kg*C`, .19kCal/kg*C` >
-    const std::vector<ld> concrete_granite_average_S = { 840.0, .20 };//< 840J/kg*C`, .20kCal/kg*C` >
-    const std::vector<ld> copper_S = { 387.0, .0924 };//< 387J/kg*C`, .0924kCal/kg*C` >
-    const std::vector<ld> glass_S = { 840.0, .20 };//< 840.0J/kg*C`, .20kCal/kg*C` >
-    const std::vector<ld> sand_s = { 840.0, };//< 840.0J/kg*C`, .20kCal/kg*C` >
-    const std::vector<ld> gold_S = { 129.0, .0308 };//< 129.0J/kg*C`,.0308kCal/kg*C` >
-    const std::vector<ld> human_body_average_S = { 3474.38, .83 };//< 3500.0J/kg*C`, .83kCal/kg*C` >
-    const std::vector<ld> ice_average_S = { 2090.0, .50 };//< 2090.0J/kg*C`, .50kCal/kg*C` >
-    const std::vector<ld> iron_steel_S = { 452, .108 };//< 452J/kg*C`, .108kCal/kg*C` >
-    const std::vector<ld> lead_S = { 128.0, .0305 };//< 128.0J/kg*C`, .0305kCal/kg*C` >
-    const std::vector<ld> silver_S = { 235.0, .0562 };//< 235.0J/kg*C`, .0562kCal/kg*C` >
-    const std::vector<ld> wood_S = { 1700, .40 };//< 1700J/kg*C`, .40kCal/kg*C` >
-    const std::vector<ld> benzene_L = { 1740.0, .415 };//< 1740.0J/kg*C`, .415kCal/kg*C` >
-    const std::vector<ld> ethanol_L = { 2450, .586 };//< 2450J/kg*C`, .586kCal/kg*C` >
-    const std::vector<ld> glycerin_L = { 2410.0, .576 };//< 2410.0J/kg*C`, .576kCal/kg*C` >
-    const std::vector<ld> mercury_L = { 139, .0333 };//< 139J/kg*C`, .0333kCal/kg*C` >
-    const std::vector<ld> water_L = { 4186.0, 1.0 };//< 4186.0J/kg*C`, 1.0kCal/kg*C` >
-    const std::vector<ld> air_G = { 721.0, .172 };//< 721.0J/kg*C`, .172kCal/kg*C` >
-    const std::vector<ld> air_dry_G = { 1015.0, .242 };//< 1015.0J/kg*C`, .242kCal/kg*C` >
-    const std::vector<ld> ammonia_G = { 1670.0, .399 };//< 1670.0J/kg*C`, .399kCal/kg*C` >
-    const std::vector<ld> ammonia_dry_G = { 2190.0, .523 };//< 2190.0J/kg*C`, .523kCal/kg*C` >
-    const std::vector<ld> carbonDioxide_G = { 638.0, .152 };//< 638.0J/kg*C`, .152kCal/kg*C` >
-    const std::vector<ld> carbonDioxide_dry_G = { 833.0, .199 };//< 833.0J/kg*C`, .199kCal/kg*C` >
-    const std::vector<ld> nitrogen_G = { 739.0, .177 };//< 739.0J/kg*C`, .177kCal/kg*C` >
-    const std::vector<ld> nitrogen_dry_G = { 1040, .248 };//< 1040J/kg*C`,.248kCal/kg*C` >
-    const std::vector<ld> oxygen_G = { 651.0, .156 };//< 651.0J/kg*C`, .156kCal/kg*dC` >
-    const std::vector<ld> oxygen_dry_G = { 913.0, .218 };//< 913.0J/kg*C`, .218kCal/kg*dC` >
-    const std::vector<ld> steam_100C_G = { 1520.0, .363 };//< 1520.0J/kg*C`, .363kCal/kg*dC` >
-    const std::vector<ld> steam_dry_100C_G = { 2020.0, .482 };//< 2020.0J/kg*C`, .482kCal/kg*dC` >
+//    const std::vector<ld> aluminum_S = { 900.0, .215 };//< 900J/kg*C`, .215kCal/kg*C` >
+    const struct Aluminum_Solid {
+        const ld J_kgC = 900.0;
+        const ld kcal_kgC = .215;
+    } aluminumSolid;
+//    const std::vector<ld> asbestos_S = { 800.0, .19 };//< 800J/kg*C`, .19kCal/kg*C` >
+    const struct Asbestos_Solid {
+        const ld J_kgC = 800.0;
+        const ld kcal_kgC = .19;
+    } asbestosSolid;
+//    const std::vector<ld> concrete_granite_average_S = { 840.0, .20 };//< 840J/kg*C`, .20kCal/kg*C` >
+    const struct Concrete_Granite_Average_Solid {
+        const ld J_kgC = 840.0;
+        const ld kcal_kgC = .20;
+    } concreteGraniteAverageSolid;
+//    const std::vector<ld> copper_S = { 387.0, .0924 };//< 387J/kg*C`, .0924kCal/kg*C` >
+    const struct Copper_Solid {
+        const ld J_kgC = 387.0;
+        const ld kcal_kgC = .0924;
+    } copperSolid;
+//    const std::vector<ld> glass_S = { 840.0, .20 };//< 840.0J/kg*C`, .20kCal/kg*C` >
+    const struct Glass_Solid {
+        const ld J_kgC = 840.0;
+        const ld kcal_kgC = .20;
+    } glassSolid;
+//    const std::vector<ld> sand_s = { 840.0, };//< 840.0J/kg*C`, .20kCal/kg*C` >
+    const struct Sand_Solid {
+        const ld J_kgC = 840.0;
+        const ld kcal_kgC = .20;
+    } sandSolid;
+//    const std::vector<ld> gold_S = { 129.0, .0308 };//< 129.0J/kg*C`,.0308kCal/kg*C` >
+    const struct Gold_Solid {
+        const ld J_kgC = 129.0;
+        const ld kcal_kgC = .0308;
+    } goldSolid;
+//    const std::vector<ld> human_body_average_S = { 3474.38, .83 };//< 3500.0J/kg*C`, .83kCal/kg*C` >
+    const struct Human_Body_Average_Solid {
+        const ld J_kgC = 3474.38;
+        const ld kcal_kgC = .83;
+    } humanBodyAverageSolid;
+//    const std::vector<ld> ice_average_S = { 2090.0, .50 };//< 2090.0J/kg*C`, .50kCal/kg*C` >
+    const struct Ice_Average_Solid {
+        const ld J_kgC = 2090.0;
+        const ld kcal_kgC = .50;
+    } iceAverageSolid;
+//    const std::vector<ld> iron_steel_S = { 452, .108 };//< 452J/kg*C`, .108kCal/kg*C` >
+    const struct Iron_Steel_Solid {
+        const ld J_kgC = 452;
+        const ld kcal_kgC = .108;
+    } ironSteelSolid;
+//    const std::vector<ld> lead_S = { 128.0, .0305 };//< 128.0J/kg*C`, .0305kCal/kg*C` >
+    const struct Lead_Solid {
+        const ld J_kgC = 128.0;
+        const ld kcal_kgC = .0305;
+    } leadSolid;
+//    const std::vector<ld> silver_S = { 235.0, .0562 };//< 235.0J/kg*C`, .0562kCal/kg*C` >
+    const struct Silver_Solid {
+        const ld J_kgC = 235.0;
+        const ld kcal_kgC = .0562;
+    } silverSolid;
+//    const std::vector<ld> wood_S = { 1700, .40 };//< 1700J/kg*C`, .40kCal/kg*C` >
+    const struct Wood_Solid {
+        const ld J_kgC = 1700;
+        const ld kcal_kgC = .40;
+    } woodSolid;
+//    const std::vector<ld> benzene_L = { 1740.0, .415 };//< 1740.0J/kg*C`, .415kCal/kg*C` >
+    const struct Benzene_Liquid {
+        const ld J_kgC = 1740.0;
+        const ld kcal_kgC = .415;
+    } benzeneLiquid;
+//    const std::vector<ld> ethanol_L = { 2450, .586 };//< 2450J/kg*C`, .586kCal/kg*C` >
+    const struct Ethanol_Liquid {
+        const ld J_kgC = 2450;
+        const ld kcal_kgC = .586;
+    } ethanolLiquid;
+//    const std::vector<ld> glycerin_L = { 2410.0, .576 };//< 2410.0J/kg*C`, .576kCal/kg*C` >
+    const struct Glycerin_Liquid {
+        const ld J_kgC = 2410.0;
+        const ld kcal_kgC = .576;
+    } glycerinLiquid;
+//    const std::vector<ld> mercury_L = { 139, .0333 };//< 139J/kg*C`, .0333kCal/kg*C` >
+    const struct Mercury_Liquid {
+        const ld J_kgC = 139;
+        const ld kcal_kgC = .0333;
+    } mercuryLiquid;
+//    const std::vector<ld> water_L = { 4186.0, 1.0 };//< 4186.0J/kg*C`, 1.0kCal/kg*C` >
+    const struct Water_Liquid {
+        const ld J_kgC = 4186.0;
+        const ld kcal_kgC = 1.0;
+    } waterLiquid;
+//    const std::vector<ld> air_G = { 721.0, .172 };//< 721.0J/kg*C`, .172kCal/kg*C` >
+    const struct Air_Gas {
+        const ld J_kgC = 721.0;
+        const ld kcal_kgC = .172;
+    } airGas;
+//    const std::vector<ld> air_dry_G = { 1015.0, .242 };//< 1015.0J/kg*C`, .242kCal/kg*C` >
+    const struct Air_Dry_Gas {
+        const ld J_kgC = 1015.0;
+        const ld kcal_kgC = .242;
+    } airDryGas;
+//    const std::vector<ld> ammonia_G = { 1670.0, .399 };//< 1670.0J/kg*C`, .399kCal/kg*C` >
+    const struct Ammonia_Gas {
+        const ld J_kgC = 1670.0;
+        const ld kcal_kgC = .399;
+    } ammoniaGas;
+//    const std::vector<ld> ammonia_dry_G = { 2190.0, .523 };//< 2190.0J/kg*C`, .523kCal/kg*C` >
+    const struct Ammonia_Dry_Gas {
+        const ld J_kgC = 2190.0;
+        const ld kcal_kgC = .523;
+    } ammoniaDryGas;
+//    const std::vector<ld> carbonDioxide_G = { 638.0, .152 };//< 638.0J/kg*C`, .152kCal/kg*C` >
+    const struct CarbonDioxide_Gas {
+        const ld J_kgC = 638.0;
+        const ld kcal_kgC = .152;
+    } carbonDioxideGas;
+//    const std::vector<ld> carbonDioxide_dry_G = { 833.0, .199 };//< 833.0J/kg*C`, .199kCal/kg*C` >
+    const struct CarbonDioxide_Dry_Gas {
+        const ld J_kgC = 833.0;
+        const ld kcal_kgC = .199;
+    } carbonDioxideDryGas;
+//    const std::vector<ld> nitrogen_G = { 739.0, .177 };//< 739.0J/kg*C`, .177kCal/kg*C` >
+    const struct Nitrogen_Gas {
+        const ld J_kgC = 739.0;
+        const ld kcal_kgC = .177;
+    } nitrogenGas;
+//    const std::vector<ld> nitrogen_dry_G = { 1040, .248 };//< 1040J/kg*C`,.248kCal/kg*C` >
+    const struct Nitrogen_Dry_Gas {
+        const ld J_kgC = 1040;
+        const ld kcal_kgC = .248;
+    } nitrogenDryGas;
+//    const std::vector<ld> oxygen_G = { 651.0, .156 };//< 651.0J/kg*C`, .156kCal/kg*dC` >
+    const struct Oxygen_Gas {
+        const ld J_kgC = 651.0;
+        const ld kcal_kgC = .156;
+    } oxygenGas;
+//    const std::vector<ld> oxygen_dry_G = { 913.0, .218 };//< 913.0J/kg*C`, .218kCal/kg*dC` >
+    const struct Oxygen_Dry_Gas {
+        const ld J_kgC = 913.0;
+        const ld kcal_kgC = .218;
+    } oxygenDryGas;
+//    const std::vector<ld> steam_100C_G = { 1520.0, .363 };//< 1520.0J/kg*C`, .363kCal/kg*dC` >
+    const struct Steam_100C_Gas {
+        const ld J_kgC = 1520.0;
+        const ld kcal_kgC = .363;
+    } steam100CGas;
+//    const std::vector<ld> steam_dry_100C_G = { 2020.0, .482 };//< 2020.0J/kg*C`, .482kCal/kg*dC` >
+    const struct Steam_Dry_100C_Gas {
+        const ld J_kgC = 2020.0;
+        const ld kcal_kgC = .482;
+    } steamDry100CGas;
+} SHC;
 
-}_c;
 
 /**
  * structure of latent heat coefficients for fusion (melting point)
  */
 static struct LatentHeatFusion
 {
-    const std::vector<ld> helium = { -269.7, 5230.0, 1.25 };// <MeltingPoint(-269.7), j/kg(5230.0), kCal/kg(1.25)>
-    const std::vector<ld> hydrogen = { -259.3, 58600.0, 14.0 };// <MeltingPoint(-259.3), j/kg(5858600.0), kCal/kg(14.0)>
-    const std::vector<ld> nitrogen = { -210.0, 25500.0, 6.09 };// <MeltingPoint(-210.0), j/kg(25500.0), kCal/kg(6.09)>
-    const std::vector<ld> oxygen = { -218.8, 13800.0, 3.3 };// <MeltingPoint(-218.8), j/kg(13800.0), kCal/kg(3.3)>
-    const std::vector<ld> ethanol = { -114.0, 104000.0, 24.9 };// <MeltingPoint(-114.0), j/kg(104000.0), kCal/kg(24.9)>
-    const std::vector<ld> ammonia = { -75.0, 0.00, 108.0 };// <MeltingPoint(-75.0), j/kg(0.00), kCal/kg()>
-    const std::vector<ld> mercury = { -38.9, 11800.0, 2.82 };// <MeltingPoint(-38.9), j/kg(), kCal/kg(108.0)>
-    const std::vector<ld> water = { 0.0, 334000.0, 79.8 };// <MeltingPoint(0.0), j/kg(334000.0), kCal/kg(79.8)>
-    const std::vector<ld> sulfur = { 119, 38100.0, 9.10 };// <MeltingPoint(119), j/kg(38100.0), kCal/kg(9.10)>
-    const std::vector<ld> lead = { 327.0, 24500.0, 5.85 };// <MeltingPoint(327.0), j/kg(24500.0), kCal/kg(5.85)>
-    const std::vector<ld> antimony = { 631.0, 165000.0, 39.4 };// <MeltingPoint(631.0), j/kg(165000.0), kCal/kg(39.4)>
-    const std::vector<ld> aluminum = { 660.0, 380000.0, 90.0 };// <MeltingPoint(660.0), j/kg(380000.0), kCal/kg(90.0)>
-    const std::vector<ld> silver = { 961.0, 88300.0, 21.1 };// <MeltingPoint(961.0), j/kg(88300.0), kCal/kg(21.1)>
-    const std::vector<ld> gold = { 1063.0, 64500.0, 15.4 };// <MeltingPoint(1063.0), j/kg(64500.0), kCal/kg(15.4)>
-    const std::vector<ld> copper = { 1083.0, 134000.0, 32.0 };// <MeltingPoint(1083.0), j/kg(134000.0), kCal/kg(32.0)>
-    const std::vector<ld> uranium = { 1133.0, 84000.0, 20.0 };// <MeltingPoint(1133.0), j/kg(84000.0), kCal/kg(20.0)>
-    const std::vector<ld> tungsten = { 3410.0, 184000.0, 44.0 };// <MeltingPoint(3410.0), j/kg(184000.0), kCal/kg(44.0)>
-
-}_Lf;
+    LatentHeatFusion() {}
+    // const std::vector<ld> helium = { -269.7, 5230.0, 1.25 };// <MeltingPoint
+    // (-269.7), j/kg(5230.0), kCal/kg(1.25)>
+    const struct Helium {
+        const ld melting_point = -269.7;
+        const ld kJ_kg = 5230.0;
+        const ld kcal_kg = 1.25;
+    } helium;
+    // const std::vector<ld> hydrogen = { -259.3, 58600.0, 14.0 };//
+    // <MeltingPoint(-259.3), j/kg(5858600.0), kCal/kg(14.0)>
+    const struct Hydrogen {
+        const ld melting_point = -259.3;
+        const ld kJ_kg = 58600.0;
+        const ld kcal_kg = 14.0;
+    } hydrogen;
+    // const std::vector<ld> nitrogen = { -210.0, 25500.0, 6.09 };//
+    // <MeltingPoint(-210.0), j/kg(25500.0), kCal/kg(6.09)>
+    const struct Nitrogen {
+        const ld melting_point = -210.0;
+        const ld kJ_kg = 25500.0;
+        const ld kcal_kg = 6.09;
+    } nitrogen;
+//    const std::vector<ld> oxygen = { -218.8, 13800.0, 3.3 };// <MeltingPoint(-218.8), j/kg(13800.0), kCal/kg(3.3)>
+    const struct Oxygen {
+        const ld melting_point = -218.8;
+        const ld kJ_kg = 13800.0;
+        const ld kcal_kg = 3.3;
+    } oxygen;
+//    const std::vector<ld> ethanol = { -114.0, 104000.0, 24.9 };// <MeltingPoint(-114.0), j/kg(104000.0), kCal/kg(24.9)>
+    const struct Ethanol {
+        const ld melting_point = -114.0;
+        const ld kJ_kg = 104000.0;
+        const ld kcal_kg = 24.9;
+    } ethanol;
+//    const std::vector<ld> ammonia = { -75.0, 0.00, 108.0 };// <MeltingPoint(-75.0), j/kg(0.00), kCal/kg()>
+    const struct Ammonia {
+        const ld melting_point = -75.0;
+        const ld kJ_kg = 0.00;
+        const ld kcal_kg = 108.0;
+    } ammonia;
+//    const std::vector<ld> mercury = { -38.9, 11800.0, 2.82 };// <MeltingPoint(-38.9), j/kg(), kCal/kg(108.0)>
+    const struct Mercury {
+        const ld melting_point = -38.9;
+        const ld kJ_kg = 11800.0;
+        const ld kcal_kg = 2.82;
+    } mercury;
+//    const std::vector<ld> water = { 0.0, 334000.0, 79.8 };// <MeltingPoint(0.0), j/kg(334000.0), kCal/kg(79.8)>
+    const struct Water {
+        const ld melting_point = 0.0;
+        const ld kJ_kg = 334000.0;
+        const ld kcal_kg = 79.8;
+    } water;
+//    const std::vector<ld> sulfur = { 119, 38100.0, 9.10 };// <MeltingPoint(119), j/kg(38100.0), kCal/kg(9.10)>
+    const struct Sulfur {
+        const ld melting_point = 119;
+        const ld kJ_kg = 38100.0;
+        const ld kcal_kg = 9.10;
+    } sulfur;
+//    const std::vector<ld> lead = { 327.0, 24500.0, 5.85 };// <MeltingPoint(327.0), j/kg(24500.0), kCal/kg(5.85)>
+    const struct Lead {
+        const ld melting_point = 327.0;
+        const ld kJ_kg = 24500.0;
+        const ld kcal_kg = 5.85;
+    } lead;
+//    const std::vector<ld> antimony = { 631.0, 165000.0, 39.4 };// <MeltingPoint(631.0), j/kg(165000.0), kCal/kg(39.4)>
+    const struct Antimony {
+        const ld melting_point = 631.0;
+        const ld kJ_kg = 165000.0;
+        const ld kcal_kg = 39.4;
+    } antimony;
+//    const std::vector<ld> aluminum = { 660.0, 380000.0, 90.0 };// <MeltingPoint(660.0), j/kg(380000.0), kCal/kg(90.0)>
+    const struct Aluminum {
+        const ld melting_point = 660.0;
+        const ld kJ_kg = 380000.0;
+        const ld kcal_kg = 90.0;
+    } aluminum;
+//    const std::vector<ld> silver = { 961.0, 88300.0, 21.1 };// <MeltingPoint(961.0), j/kg(88300.0), kCal/kg(21.1)>
+    const struct Silver {
+        const ld melting_point = 961.0;
+        const ld kJ_kg = 88300.0;
+        const ld kcal_kg = 21.1;
+    } silver;
+//    const std::vector<ld> gold = { 1063.0, 64500.0, 15.4 };// <MeltingPoint(1063.0), j/kg(64500.0), kCal/kg(15.4)>
+    const struct Gold {
+        const ld melting_point = 1063.0;
+        const ld kJ_kg = 64500.0;
+        const ld kcal_kg = 15.4;
+    } gold;
+//    const std::vector<ld> copper = { 1083.0, 134000.0, 32.0 };// <MeltingPoint(1083.0), j/kg(134000.0), kCal/kg(32.0)>
+    const struct Copper {
+        const ld melting_point = 1083.0;
+        const ld kJ_kg = 134000.0;
+        const ld kcal_kg = 32.0;
+    } copper;
+//    const std::vector<ld> uranium = { 1133.0, 84000.0, 20.0 };// <MeltingPoint(1133.0), j/kg(84000.0), kCal/kg(20.0)>
+    const struct Uranium {
+        const ld melting_point = 1133.0;
+        const ld kJ_kg = 84000.0;
+        const ld kcal_kg = 20.0;
+    } uranium;
+//    const std::vector<ld> tungsten = { 3410.0, 184000.0, 44.0 };// <MeltingPoint(3410.0), j/kg(184000.0), kCal/kg(44.0)>
+    const struct Tungsten {
+        const ld melting_point = 3410.0;
+        const ld kJ_kg = 184000.0;
+        const ld kcal_kg = 44.0;
+    } tungsten;
+} LHF;
 
 /**
  * structure of latent heat coefficients for vaporization (boiling point)
  */
 static struct LatentHeatVaporization
 {
-    const std::vector<ld> helium = { -268.9, 20900.0, 4.99 };// <BoilingPoint(-268.9), j/kg(20900.0), kCal/kg(4.99)>
-    const std::vector<ld> hydrogen = { -252.9, 452000.0, 108.0 };// <BoilingPoint(-252.9), j/kg(452000.0), kCal/kg(108.0)>
-    const std::vector<ld> nitrogen = { -195.8, 201000.0, 48.0 };// <BoilingPoint(-195.8), j/kg(201000.0), kCal/kg(48.0)>
-    const std::vector<ld> oxygen = { -183.0, 213000.0, 50.9 };// <BoilingPoint(-183.0), j/kg(213000.0), kCal/kg(50.9)>
-    const std::vector<ld> ethanol = { 78.3, 854000.0, 204.0 };// <BoilingPoint(78.3), j/kg(854000.0), kCal/kg(204.0)>
-    const std::vector<ld> ammonia = { -33.4, 1370000.0, 327.0 };// <BoilingPoint(-33.4), j/kg(1370000.0), kCal/kg(327.0)>
-    const std::vector<ld> mercury = { 357, 272000.0, 65.0 };// <BoilingPoint(357), j/kg(272000.0), kCal/kg(65.0)>
-    const std::vector<ld> water = { 100.0, 2256000.0, 539.0 };// <BoilingPoint(100.0), j/kg(2256000.0), kCal/kg(539.0)>
-    const std::vector<ld> sulfur = { 444.6, 326000.0, 77.9 };// <BoilingPoint(444.6), j/kg(326000.0), kCal/kg(77.9)>
-    const std::vector<ld> lead = { 1750.0, 871000.0, 208.0 };// <BoilingPoint(1750.0), j/kg(871000.0), kCal/kg(208.0)>
-    const std::vector<ld> antimony = { 1440.0, 561000.0, 134.0 };// <BoilingPoint(1440.0), j/kg(561000.0), kCal/kg(134.0)>
-    const std::vector<ld> aluminum = { 2450.0, 11400000.0, 2720.0 };// <MeltingPoint(2450.0), j/kg(11400000.0), kCal/kg(2720.0)>
-    const std::vector<ld> silver = { 2193.0, 2336000.0, 558.0 };// <BoilingPoint(2193.0), j/kg(2336000.0), kCal/kg(558.0)>
-    const std::vector<ld> gold = { 2660.0, 1578000.0, 377.0 };// <BoilingPoint(2660.0), j/kg(1578000.0), kCal/kg(377.0)>
-    const std::vector<ld> copper = { 2595.0, 5069000.0, 1211.0 };// <BoilingPoint(2595.0), j/kg(5069000.0), kCal/kg(1211.0)>
-    const std::vector<ld> uranium = { 3900.0, 1900000.0, 454.0 };// <BoilingPoint(3900.0), j/kg(1900000.0), kCal/kg(454.0)>
-    const std::vector<ld> tungsten = { 5900.0, 4810000.0, 1150.0 };// <BoilingPoint(5900.0), j/kg(4810000.0), kCal/kg(1150.0)>
-}_Lv;
+    LatentHeatVaporization() {}
+
+//    const std::vector<ld> helium = { -268.9, 20900.0, 4.99 };// <BoilingPoint(-268.9), j/kg(20900.0), kCal/kg(4.99)>
+    const struct Helium {
+        const ld boiling_point = -268.9;
+        const ld kJ_kg = 20900.0;
+        const ld kcal_kg = 4.99;
+    } helium;
+//    const std::vector<ld> hydrogen = { -252.9, 452000.0, 108.0 };// <BoilingPoint(-252.9), j/kg(452000.0), kCal/kg(108.0)>
+    const struct Hydrogen {
+        const ld boiling_point = -252.9;
+        const ld kJ_kg = 452000.0;
+        const ld kcal_kg = 108.0;
+    } hydrogen;
+//    const std::vector<ld> nitrogen = { -195.8, 201000.0, 48.0 };// <BoilingPoint(-195.8), j/kg(201000.0), kCal/kg(48.0)>
+    const struct Nitrogen {
+        const ld boiling_point = -195.8;
+        const ld kJ_kg = 201000.0;
+        const ld kcal_kg = 48.0;
+    } nitrogen;
+//    const std::vector<ld> oxygen = { -183.0, 213000.0, 50.9 };// <BoilingPoint(-183.0), j/kg(213000.0), kCal/kg(50.9)>
+    const struct Oxygen {
+        const ld boiling_point = -183.0;
+        const ld kJ_kg = 213000.0;
+        const ld kcal_kg = 50.9;
+    } oxygen;
+//    const std::vector<ld> ethanol = { 78.3, 854000.0, 204.0 };// <BoilingPoint(78.3), j/kg(854000.0), kCal/kg(204.0)>
+    const struct Ethanol {
+        const ld boiling_point = 78.3;
+        const ld kJ_kg = 854000.0;
+        const ld kcal_kg = 204.0;
+    } ethanol;
+//    const std::vector<ld> ammonia = { -33.4, 1370000.0, 327.0 };// <BoilingPoint(-33.4), j/kg(1370000.0), kCal/kg(327.0)>
+    const struct Ammonia {
+        const ld boiling_point = -33.4;
+        const ld kJ_kg = 1370000.0;
+        const ld kcal_kg = 327.0;
+    } ammonia;
+//    const std::vector<ld> mercury = { 357, 272000.0, 65.0 };// <BoilingPoint(357), j/kg(272000.0), kCal/kg(65.0)>
+    const struct Mercury {
+        const ld boiling_point = 357;
+        const ld kJ_kg = 272000.0;
+        const ld kcal_kg = 65.0;
+    } mercury;
+//    const std::vector<ld> water = { 100.0, 2256000.0, 539.0 };// <BoilingPoint(100.0), j/kg(2256000.0), kCal/kg(539.0)>
+    const struct Water {
+        const ld boiling_point = 100.0;
+        const ld kJ_kg = 2256000.0;
+        const ld kcal_kg = 539.0;
+    } water;
+//    const std::vector<ld> sulfur = { 444.6, 326000.0, 77.9 };// <BoilingPoint(444.6), j/kg(326000.0), kCal/kg(77.9)>
+    const struct Sulfur {
+        const ld boiling_point = 444.6;
+        const ld kJ_kg = 326000.0;
+        const ld kcal_kg = 77.9;
+    } sulfur;
+//    const std::vector<ld> lead = { 1750.0, 871000.0, 208.0 };// <BoilingPoint(1750.0), j/kg(871000.0), kCal/kg(208.0)>
+    const struct Lead {
+        const ld boiling_point = 1750.0;
+        const ld kJ_kg = 871000.0;
+        const ld kcal_kg = 208.0;
+    } lead;
+//    const std::vector<ld> antimony = { 1440.0, 561000.0, 134.0 };// <BoilingPoint(1440.0), j/kg(561000.0), kCal/kg(134.0)>
+    const struct Antimony {
+        const ld boiling_point = 1440.0;
+        const ld kJ_kg = 561000.0;
+        const ld kcal_kg = 134.0;
+    } antimony;
+//    const std::vector<ld> aluminum = { 2450.0, 11400000.0, 2720.0 };// <MeltingPoint(2450.0), j/kg(11400000.0), kCal/kg(2720.0)>
+    const struct Aluminum {
+        const ld melting_point = 2450.0;
+        const ld kJ_kg = 11400000.0;
+        const ld kcal_kg = 2720.0;
+    } aluminum;
+//    const std::vector<ld> silver = { 2193.0, 2336000.0, 558.0 };// <BoilingPoint(2193.0), j/kg(2336000.0), kCal/kg(558.0)>
+    const struct Silver {
+        const ld boiling_point = 2193.0;
+        const ld kJ_kg = 2336000.0;
+        const ld kcal_kg = 558.0;
+    } silver;
+//    const std::vector<ld> gold = { 2660.0, 1578000.0, 377.0 };// <BoilingPoint(2660.0), j/kg(1578000.0), kCal/kg(377.0)>
+    const struct Gold {
+        const ld boiling_point = 2660.0;
+        const ld kJ_kg = 1578000.0;
+        const ld kcal_kg = 377.0;
+    } gold;
+//    const std::vector<ld> copper = { 2595.0, 5069000.0, 1211.0 };// <BoilingPoint(2595.0), j/kg(5069000.0), kCal/kg(1211.0)>
+    const struct Copper {
+        const ld boiling_point = 2595.0;
+        const ld kJ_kg = 5069000.0;
+        const ld kcal_kg = 1211.0;
+    } copper;
+//    const std::vector<ld> uranium = { 3900.0, 1900000.0, 454.0 };// <BoilingPoint(3900.0), j/kg(1900000.0), kCal/kg(454.0)>
+    const struct Uranium {
+        const ld boiling_point = 3900.0;
+        const ld kJ_kg = 1900000.0;
+        const ld kcal_kg = 454.0;
+    } uranium;
+//    const std::vector<ld> tungsten = { 5900.0, 4810000.0, 1150.0 };// <BoilingPoint(5900.0), j/kg(4810000.0), kCal/kg(1150.0)>
+    const struct Tungsten {
+        const ld boiling_point = 5900.0;
+        const ld kJ_kg = 4810000.0;
+        const ld kcal_kg = 1150.0;
+    } tungsten;
+}LHV;
 
 /**
  * @brief structure of thermal conductivities of common substances
@@ -314,7 +610,9 @@ public:
     /**
      * @brief display method for outputting the count of Heat objects
      */
-    static void show_heat_objectCount() { std::cout << "\nheat object count: " << heat_objectCount << std::endl; }
+    static void show_heat_objectCount() { std::cout << "\nheat object count: "
+                                                    << heat_objectCount
+                                                    << std::endl; }
     /**
      * @brief getter method returns the value of heat objects
      */
@@ -335,7 +633,9 @@ public:
     /**
      * @brief calculates the temp from heat transferred
      */
-    static ld temperatureFromHeatTransferred(const ld Q, const ld mass, const ld c)
+    static ld temperatureFromHeatTransferred(const ld Q,
+                                             const ld mass,
+                                             const ld c)
     {
         return Q / (mass * c);
     }
@@ -348,10 +648,16 @@ public:
      * @param m2 is the mass of the second object
      * @param c2 is the specific heat of object 2
      * @param t2 is the temperature object 2
-     * @returns thermal equilibrium {is when two objects come in contact and the hotter
-     * object transfers heat to the cooler object until a equal temp is reached between two objects}
+     * @returns thermal equilibrium {is when two objects come in contact
+     * and the hotter object transfers heat to the cooler object until a equal
+     * temp is reached between two objects}
      */
-    static ld finalTemp_ThermalEquilibrium2objects(const ld m1, const ld c1, const ld t1, const ld m2, const ld c2, const ld t2)
+    static ld finalTemp_ThermalEquilibrium2objects(const ld m1,
+                                                   const ld c1,
+                                                   const ld t1,
+                                                   const ld m2,
+                                                   const ld c2,
+                                                   const ld t2)
     {
         return ((m1 * c1 * t1) + (m2 * c2 * t2)) / ((m1 * c1) + (m2 * c2));
     }
@@ -380,13 +686,18 @@ public:
 
     /**
      * @brief calculates the final temp after a phase change
-     * @param heatTransferTotal is the total calculated value from the heatTransfer_Q method
-     * @param phaseChangeTotal is the calculated value of the phase change in question
+     * @param heatTransferTotal is the total calculated value from the
+     * heatTransfer_Q method
+     * @param phaseChangeTotal is the calculated value of the phase change in
+     * question
      * @param totalMass of objects combined
      * @param c is the specific heat of substance
      * @returns the final temperature
      */
-    static ld finalTempFromPhaseChange(const ld heatTransferTotal, const ld phaseChangeTotal, const ld totalMass, const ld c)
+    static ld finalTempFromPhaseChange(const ld heatTransferTotal,
+                                       const ld phaseChangeTotal,
+                                       const ld totalMass,
+                                       const ld c)
     {
         return (heatTransferTotal - phaseChangeTotal) / (totalMass * c);
     }
@@ -399,14 +710,19 @@ public:
      * @param d the thickness of substance
      * @returns the COULOMB value or heat transfer total
      */
-    static ld heatTransferConduction_Q(const ld k, const ld A, const ld deltaTemp, const ld d)
+    static ld heatTransferConduction_Q(const ld k,
+                                       const ld A,
+                                       const ld deltaTemp,
+                                       const ld d)
     {
         return ((k * A * deltaTemp) / d);
     }
 
     /**
-     * @brief calculates the total mass as a result of heat transfer though conduction
-     * @param htcQ is the result from the heatTransferConduction_Q method using those know variables
+     * @brief calculates the total mass as a result of heat transfer though
+     * conduction
+     * @param htcQ is the result from the heatTransferConduction_Q method using
+     * those know variables
      * @param Lf is the latent heat fusion coefficient for material
      */
     static ld heatTransferConduction_mass(const ld htcQ, const ld Lf)
@@ -416,14 +732,19 @@ public:
 
     /**
      * @breif temperatureDifferenceMaintainedByHeatTransfer
-     * @param QmLv is the result from method phaseChangeEnergy_vaporizationCondensation_Q using the known values in
-     * this method will provide the result for this method, unless the value is given directly of course
+     * @param QmLv is the result from method
+     * phaseChangeEnergy_vaporizationCondensation_Q using the known values in
+     * this method will provide the result for this method, unless the value is
+     * given directly of course
      * @param d is the thickness of the material
      * @param k is the thermal conductivity value
      * @param A is the surface area
      * @returns temperature difference maintained in heat transfer
      */
-    static ld temperatureDifferenceMaintainedByHeatTransfer(const ld QmLv, const ld d, const ld k, const ld A)
+    static ld temperatureDifferenceMaintainedByHeatTransfer(const ld QmLv,
+                                                            const ld d,
+                                                            const ld k,
+                                                            const ld A)
     {
         return QmLv * (d / (k * A));
     }
@@ -453,25 +774,31 @@ public:
      * @brief Uses the Stefan-Boltzmann law of radiation equation
      * @param e
      */
-    static ld netRateOfHeatTransferByRadiation(const ld e, const ld A, const ld T1, const ld T2)
+    static ld netRateOfHeatTransferByRadiation(const ld e,
+                                               const ld A,
+                                               const ld T1,
+                                               const ld T2)
     {
         return constants::BOLTZMANN * e * A * ((pow(T2, 4) - pow(T1, 4)));
     }
 
     /**
-     * @brief calculates the initial temperature of falling water using conservation of mechanical energy
+     * @brief calculates the initial temperature of falling water using
+     * conservation of mechanical energy
      * @param h is the height of the fall of water or substance
      * @param Tf is the final temp after the drop occurs
      * @param _c is the specific heat of something(default is waters value of
      */
-    static ld initialTempFromFallingWater(const ld h, const ld Tf, const ld _c_ = _c.water_L[0])
+    static ld initialTempFromFallingWater(const ld h, const ld Tf, const ld
+    _c_ = SHC.waterLiquid.J_kgC)
     {
         return  Tf - (constants::Ga * h) / _c_;
     }
 
     /**
-     * @brief calculates the initial temperature of an object after being submerged into a
-     * liquid of a certain temperature, by using the final temp of both and the specific heats
+     * @brief calculates the initial temperature of an object after being
+     * submerged into a liquid of a certain temperature, by using the final temp
+     * of both and the specific heats
      * of both as well in the equation T1i = ((m2c2(T2f-T2i))/(m1c1))+T1f
      * @param m1 mass of object 1 in kg
      * @param c1 specific heat of object 1
@@ -481,27 +808,38 @@ public:
      * @param finalTboth temperature of both objects after equilibrium
      * @returns initial temperature of object 1
      */
-    static ld initialTempFromEqualLibrium(const ld m1, const ld c1, const ld m2, const ld c2, const ld T2i, const ld finalTboth)
+    static ld initialTempFromEqualLibrium(const ld m1,
+                                          const ld c1,
+                                          const ld m2,
+                                          const ld c2,
+                                          const ld T2i,
+                                          const ld finalTboth)
     {
         return ((m2 * c2 * (finalTboth - T2i)) / (m1 * c1)) + finalTboth;
     }
 
     /**
-     * @brief calculates the initial temperature of a substance after equilibrium when in contact or mixed with same substance,
-     * which means the specific heats cancel so we are left with a simpler equation: T1i = ((m2(T2f-T2i))/(m1))+T1f
+     * @brief calculates the initial temperature of a substance after equilibrium
+     * when in contact or mixed with same substance,
+     * which means the specific heats cancel so we are left with a simpler
+     * equation: T1i = ((m2(T2f-T2i))/(m1))+T1f
      * @param m1 mass of object 1 in kg
      * @param m2 mass of object 2 in kg
      * @param T2i initial temperature of object 2
      * @param finalTboth temperature of both objects after equilibrium
      * @returns initial temperature of object 1
      */
-    static ld initialTempFromEqualLibrium(const ld m1, const ld m2, const ld T2i, const ld finalTboth)
+    static ld initialTempFromEqualLibrium(const ld m1,
+                                          const ld m2,
+                                          const ld T2i,
+                                          const ld finalTboth)
     {
         return ((m2 * (finalTboth - T2i)) / (m1)) + finalTboth;
     }
 
     /**
-     * @brief calculates the amount of a fluid added to another fluid in single container(think adding creamer to coffee)
+     * @brief calculates the amount of a fluid added to another fluid in single
+     * container(think adding creamer to coffee)
      * @param m1cup mass in kg
      * @param c1cup specific heat
      * @param T1cup initial temp in c
@@ -515,7 +853,16 @@ public:
      * @returns the mass of m3cr in kg
      */
     static ld massOfFluid2AddedToFluid1In1Container
-            (const ld m1cup, const ld c1cup, const ld T1cup, const ld m2cof, const ld c2cof, const ld T2cof, const ld c3cr, const ld T3cr, const ld Tf, char mode = 'k')
+            (const ld m1cup,
+             const ld c1cup,
+             const ld T1cup,
+             const ld m2cof,
+             const ld c2cof,
+             const ld T2cof,
+             const ld c3cr,
+             const ld T3cr,
+             const ld Tf,
+             char mode = 'k')
     {
         const ld heatGainedByCup = m1cup * c1cup * (Tf - T1cup);
         cout << "heat gain by cup: " << heatGainedByCup << endl;
@@ -535,16 +882,21 @@ public:
     /**
      * @brief calculates the thickness of ice on a windshield
      */
-    static ld thicknessOfIceOnWindshield(const ld iceTemp, const ld surfaceArea, const ld energyToMelt, const ld _Lf_ = _Lf.water[1], const ld _c_ = _c.ice_average_S[0], const ld density = 917.0)
+    static ld thicknessOfIceOnWindshield(const ld iceTemp,
+                                         const ld surfaceArea,
+                                         const ld energyToMelt,
+                                         const ld lf = LHF.water.kJ_kg,
+                                         const ld c = SHC.iceAverageSolid.J_kgC,
+                                         const ld density = 917.0)
     {
-        cout << "lf: " << _Lf_ << endl;
-        const double q1 = _c_ * -iceTemp;
+        cout << "lf: " << lf << endl;
+        auto q1 = c * -iceTemp;
         cout << "q1: " << q1 << endl;
-        const double q2 = q1 + _Lf_;
+        auto q2 = q1 + lf;
         cout << "q2: " << q2 << endl;
-        const double q3 = energyToMelt / q2;
+        auto q3 = energyToMelt / q2;
         cout << "q3: " << q3 << endl;
-        const double volumeIce = q3 / density;
+        auto volumeIce = q3 / density;
         cout << "v: " << volumeIce << endl;
         cout << "thickness: : " << volumeIce / surfaceArea << endl;
         return volumeIce / surfaceArea;
@@ -554,18 +906,25 @@ public:
     /**
      * @calculaes tF of a ice cube placed in water
      */
-    static ld finalTemperatureMeltingIceInWater(const ld mI, const ld cI, const ld Ti, const ld mW, const ld cW, const ld Tw, const ld Lfw = _Lf.water[2] )
+    static ld finalTemperatureMeltingIceInWater(const ld mI,
+                                                const ld cI,
+                                                const ld Ti,
+                                                const ld mW,
+                                                const ld cW,
+                                                const ld Tw,
+                                                const ld Lfw = LHF.water.kcal_kg)
     {
-        const double q1 = mI * cI * -Ti;
-        const double q2 = mI * Lfw;
-        const double q3 = mI;
-        const double q4 = mW * cW * -Tw;
+        auto q1 = mI * cI * -Ti;
+        auto q2 = mI * Lfw;
+        auto q3 = mI;
+        auto q4 = mW * cW * -Tw;
         return (-q4 - (q1+q2))/(q3 + mW);
     }
 
     /**
-     * @brief calculates the final temperature of a bowl of soup placed in a freezer when a
-     * specified amount of energy is transferred away from the objects by the freezer the final temp found
+     * @brief calculates the final temperature of a bowl of soup placed in a
+     * freezer when a specified amount of energy is transferred away from the
+     * objects by the freezer the final temp found
      * @param m_b mass of bowl in Kg
      * @param c_b specific heat of bowl(varies with what bowl is made from)
      * @param m_s mass of soup in kg
@@ -575,9 +934,17 @@ public:
      * @param Lf latent heat of fusion
      * @param Q total energy transferred from soup and bowl
      */
-    static ld finalTempBowlSoupInFreezer(const ld m_b, const ld c_b, const ld m_s, const ld c_s, const ld c_i, const ld Ti, const ld Lf, const ld Q)
+    static ld finalTempBowlSoupInFreezer(const ld m_b,
+                                         const ld c_b,
+                                         const ld m_s,
+                                         const ld c_s,
+                                         const ld c_i,
+                                         const ld Ti,
+                                         const ld Lf,
+                                         const ld Q)
     {
-        return ((((m_b * c_b) * (Ti)) + ((m_s * c_s) * (Ti))) + (m_s * Lf) - Q) / ((m_b * c_b) + (m_s * c_i));
+        return ((((m_b * c_b) * (Ti)) + ((m_s * c_s) * (Ti))) + (m_s * Lf) - Q)
+                / ((m_b * c_b) + (m_s * c_i));
     }
 
     /**
@@ -612,11 +979,13 @@ public:
     /// <param name="deltaTime">The δ temperature.</param>
     /// <param name="P">The power output.</param>
     /// <returns>time to heat object by specified temperature</returns>
-    static ld timeToHeatObject(const ld m, const ld c_, const ld deltaTime, const ld P)
+    static ld timeToHeatObject(const ld m,
+                               const ld c_,
+                               const ld deltaTime,
+                               const ld P)
     {
         return (m * c_ * deltaTime) / P;
     }
-
 
     /**
      *@brief destructor

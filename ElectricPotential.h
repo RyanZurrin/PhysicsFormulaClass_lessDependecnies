@@ -712,7 +712,7 @@ inline ld ElectricPotential::temperatureChangeFromCapacitanceBurn(
         const ld V,
         const ld C,
         const ld m,
-        const ld _c_ = _c.human_body_average_S[0])
+        const ld _c_ = SHC.humanBodyAverageSolid.J_kgC)
 {
     return (C*(V*V))/(2.0*m*_c_);
 }
