@@ -34,6 +34,8 @@ int main(int argc, char* argv[])
 
     cout << m * m2 << endl;
 
+    cout << m2.cross(m) << endl;
+
 
 
 

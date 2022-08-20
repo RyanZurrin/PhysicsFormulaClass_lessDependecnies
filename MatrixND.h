@@ -1109,7 +1109,6 @@ MatrixND<T> MatrixND<T>::mult(const MatrixND<T> & rhs)
         for (int j = 0; j < rhs.cols; j++) {
             T sum = 0;
             for (int k = 0; k < rhs.rows; k++) {
-                cout << this->data[i * this->cols + k] << " " << rhs.data[k * rhs.cols + j] << endl;
                 sum += data[i * this->cols + k] * rhs.data[k * rhs.cols + j];
                 result.data[i * rhs.cols + j] = sum;
             }
