@@ -209,6 +209,21 @@ public:
     MatrixND(MatrixND&& other) noexcept; // move constructor
     MatrixND& operator=(const MatrixND& other); // copy assignment
     MatrixND& operator=(MatrixND&& other) noexcept ; // move assignment
+    // allow for MatrixND<T> M = {{1,2,3},{4,5,6}} for initializer list
+    MatrixND(std::initializer_list<std::initializer_list<T>> list) :
+    MatrixND(list.size(), list.size() ?  list.begin()->size() : 0) {
+        int i = 0, j = 0;
+        for (auto row : list) {
+            for (auto elem : row) {
+                data[i * cols + j] = elem;
+                j++;
+            }
+            i++;
+            j = 0;
+        }
+    }
+
+
     // set data and dimensions using a vector
     void set(std::vector<T>, int rows, int cols);
     // set data and dimensions using a pointer
@@ -298,10 +313,10 @@ public:
     // method to take the sum of the matrix elements
     double sum();
     // enode from row and column to index
-    int index(int row, int col)const;
+    [[nodiscard]] int index(int row, int col)const;
 
-    int getRows()const; // returns the number of rows
-    int getCols()const; // returns the number of columns
+    [[nodiscard]] int getRows()const; // returns the number of rows
+    [[nodiscard]] int getCols()const; // returns the number of columns
     // find the sub matrix of the given row and column
     MatrixND<T> subMatrix(int row, int col);
     // method to return the top number of specified rows of the matrix
@@ -1094,8 +1109,9 @@ MatrixND<T> MatrixND<T>::mult(const MatrixND<T> & rhs)
         for (int j = 0; j < rhs.cols; j++) {
             T sum = 0;
             for (int k = 0; k < rhs.rows; k++) {
+                cout << this->data[i * this->cols + k] << " " << rhs.data[k * rhs.cols + j] << endl;
                 sum += data[i * this->cols + k] * rhs.data[k * rhs.cols + j];
-                result.data[i * this->rows + j] = sum;
+                result.data[i * rhs.cols + j] = sum;
             }
         }
     }
@@ -1648,6 +1664,7 @@ MatrixND<T>::MatrixND(const MatrixND &other) {
     rows = other.rows;
     cols = other.cols;
 }
+
 
 template<typename T>
 MatrixND<T> &MatrixND<T>::operator=(const MatrixND &other) {
@@ -2203,4 +2220,6 @@ MatrixND<T> MatrixND<T>::colwise() {
     }
     return m;
 }
+
+
 
