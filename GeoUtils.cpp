@@ -302,7 +302,7 @@ float rez::FaceVisibility(const Face& _f, const Point3d& _p)
     auto b1 = p3 - p1;
     auto c1 = _p - p1;
 
-    double vol1 = rez::scalerTripleProduct(a1, b1, c1);
+    double vol1 = rez::scalarTripleProduct(a1, b1, c1);
     return vol1;
 }
 
@@ -364,7 +364,7 @@ bool rez::coplaner(const Point3d& a, const Point3d& b, const Point3d& c, const P
 
 bool rez::coplaner(const Vector3f& _v1, const Vector3f& _v2, const Vector3f& _v3)
 {
-    float value = scalerTripleProduct(_v1, _v2, _v3);
+    float value = scalarTripleProduct(_v1, _v2, _v3);
     return isEqualD(value, ZERO);
 }
 

@@ -92,7 +92,15 @@ namespace constants {
      * @ the Stefan Boltzmann constant is often represented as sigma in the
      * Stefan Boltzmann->(σ) law of radiation equation
      */
-    constexpr auto BOLTZMANN = 5.67e-8;
+    constexpr auto STEFAN_BOLTZMANN = 5.67e-8;
+
+    /**
+     * The Boltzmann constant is the ratio of the energy of a system to the
+     * amount of heat energy required to raise the system to temperature T.
+     */
+    constexpr auto BOLTZMANN = 1.38064852e-23;
+
+
     /**
      * Gas constant, R = 8.314 J/mol K
      */
@@ -117,8 +125,8 @@ namespace constants {
 
     constexpr auto G = 6.67408e-11;
 
-    double Ga = 9.81;
-    void set_Ga(double g) { Ga = g; }
+    long double Ga = 9.81;
+    void set_Ga(long double g) { Ga = g; }
 }
 
 #endif //PHYSICSFORMULA_CONSTANTS_H

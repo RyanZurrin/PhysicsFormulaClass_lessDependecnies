@@ -27,9 +27,9 @@ namespace rez {
 
         void setPoint(Point3d&);
 
-        Vector3f direction() const;
+        [[nodiscard]] Vector3f direction() const;
 
-        Point3d point() const;
+        [[nodiscard]] Point3d point() const;
     };
 
     class Line2d {
@@ -50,11 +50,11 @@ namespace rez {
             normal_vec.assign(Y, dir[X]);
         }
 
-        Vector2f direction() const;
+        [[nodiscard]] Vector2f direction() const;
 
-        Point2d point() const;
+        [[nodiscard]] Point2d point() const;
 
-        Vector2f normal() const;
+        [[nodiscard]] Vector2f normal() const;
     };
 
     template<class coord_type, size_t dim = DIM3>
@@ -62,7 +62,7 @@ namespace rez {
         Vector<coord_type, dim> point;
         Vector<coord_type, dim> dir;
         Vector<coord_type, dim> second;
-        float d;
+        float d{};
 
     public:
         LineStd() {}
@@ -85,7 +85,7 @@ namespace rez {
 
         Vector<coord_type, dim> getDir() const;
 
-        float getD() const;
+        [[nodiscard]] float getD() const;
 
         void setDirection(Vector<coord_type, dim>& _dir);
 

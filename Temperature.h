@@ -38,6 +38,12 @@ static struct TemperatureConversions
     static ld  kelvin_to_celsius(const ld k) { return k - 273.15; }
     static ld  fahrenheit_to_kelvin(const ld f) { return (5.0 / 9.0) * (f - 32) + 273.15; }
     static ld  kelvin_to_fahrenheit(const ld k) { return (9.0 / 5.0) * (k - 273.15) + 32.0; }
+    static ld  celsius_to_rankine(const ld c) { return c + 273.15; }
+    static ld  rankine_to_celsius(const ld r) { return r - 273.15; }
+    static ld  fahrenheit_to_rankine(const ld f) { return (5.0 / 9.0) * (f - 32) + 491.67; }
+    static ld  rankine_to_fahrenheit(const ld r) { return (9.0 / 5.0) * (r - 491.67) + 32.0; }
+    static ld  kelvin_to_rankine(const ld k) { return k * 1.8; }
+    static ld  rankine_to_kelvin(const ld r) { return r / 1.8; }
 }tempConverter;
 
 /**
@@ -95,16 +101,15 @@ private:
     static void countIncrease() { temperature_objectCount += 1; }
     static void countDecrease() { temperature_objectCount -= 1; }
 public:
-    Temperature* _tempPtr;
     /**
      * @brief no argument constructor
      */
     Temperature()
     {
-        _tempPtr = nullptr;
         T._celsius = 0.0;
         T._fahrenheit = 0.0;
         T._kelvin = 0.0;
+        T._rankine = 0.0;
         _mode = 'f';
         countIncrease();
     }
@@ -116,8 +121,8 @@ public:
         T._celsius = t.T._celsius;
         T._fahrenheit = t.T._fahrenheit;
         T._kelvin = t.T._kelvin;
+        T._rankine = t.T._rankine;
         _mode = t._mode;
-        _tempPtr = t._tempPtr;
         countIncrease();
     }
     /**
@@ -130,8 +135,8 @@ public:
             T._celsius = t.T._celsius;
             T._fahrenheit = t.T._fahrenheit;
             T._kelvin = t.T._kelvin;
+            T._rankine = t.T._rankine;
             _mode = t._mode;
-            _tempPtr = t._tempPtr;
             countIncrease();
         }
         return *this;
@@ -140,11 +145,13 @@ public:
     /**
      * #brief move constructor
      */
-    Temperature(Temperature&& t) noexcept : _tempPtr(nullptr), _mode(t._mode)
+    Temperature(Temperature&& t) noexcept : _mode(t._mode)
     {
         T._fahrenheit = t.T._fahrenheit;
         T._celsius = t.T._celsius;
         T._kelvin = t.T._kelvin;
+        T._rankine = t.T._rankine;
+        countIncrease();
     }
 
     static void show_temperature_objectCount() { std::cout << "\ntemperature object count: " << temperature_objectCount << std::endl; }
@@ -155,51 +162,50 @@ public:
         ld _celsius;
         ld _fahrenheit;
         ld _kelvin;
+        ld _rankine;
+        string _mode;
 
         Temp()
         {
             _celsius = 0.0;
             _fahrenheit = 0.0;
             _kelvin = 0.0;
+            _rankine = 0.0;
         }
 
-        Temp(ld temp, string mode)
+        Temp(ld temp, string& mode)
         {
-            if (mode == "c")
+            // turn mode all lowercase
+            std::transform(mode.begin(), mode.end(), mode.begin(), ::tolower);
+            if (mode == "c" || "celsius"  )
             {
                 _celsius = temp;
                 _fahrenheit = temp * 9 / 5 + 32;
                 _kelvin = temp + 273.15;
             }
-            else if (mode == "f")
+            else if (mode == "f" || "fahrenheit")
             {
                 _fahrenheit = temp;
                 _celsius = (temp - 32) * 5 / 9;
                 _kelvin = (_celsius + 273.15) * 5 / 9;
             }
-            else if (mode == "k")
+            else if (mode == "k" || "kelvin")
             {
                 _kelvin = temp;
                 _celsius = temp - 273.15;
                 _fahrenheit = _celsius * 9 / 5 + 32;
             }
+            else if (mode == "r"|| "rankine")
+            {
+                _rankine = temp;
+                _celsius = (temp - 491.67) * 5 / 9;
+                _fahrenheit = temp - 459.67;
+                _kelvin = temp * 5 / 9;
+            }
             else
             {
                 std::cout << "invalid mode" << std::endl;
             }
-        }
-
-        ld getFahrenheit()const { return _fahrenheit; }
-        ld getCelsius()const { return _celsius; }
-        ld getKelvin()const { return _kelvin; }
-        void showFahrenheit()const { std::cout << "F: " << getFahrenheit() << std::endl; }
-        void showCelsius()const { std::cout << "C: " << getCelsius() << std::endl; }
-        void showKelvin()const { std::cout << "K: " << getKelvin() << std::endl; }
-        void showAllTemps()const
-        {
-            showFahrenheit();
-            showCelsius();
-            showKelvin();
         }
 
         /**
@@ -210,8 +216,9 @@ public:
         void set_fahrenheit(const ld f)
         {
             _fahrenheit = f;
-            _celsius = tempConverter.fahrenheit_to_celsius(_fahrenheit);
-            _kelvin = tempConverter.fahrenheit_to_kelvin(_fahrenheit);
+            _celsius = TemperatureConversions::fahrenheit_to_celsius(_fahrenheit);
+            _kelvin = TemperatureConversions::fahrenheit_to_kelvin(_fahrenheit);
+            _rankine = TemperatureConversions::fahrenheit_to_rankine(_fahrenheit);
         }
         /**
         * @brief method to set the celsius instance variable. will update other
@@ -221,8 +228,9 @@ public:
         void set_celsius(const ld c)
         {
             _celsius = c;
-            _fahrenheit = tempConverter.celsius_to_fahrenheit(_celsius);
-            _kelvin = tempConverter.celsius_to_kelvin(_celsius);
+            _fahrenheit = TemperatureConversions::celsius_to_fahrenheit(_celsius);
+            _kelvin = TemperatureConversions::celsius_to_kelvin(_celsius);
+            _rankine = TemperatureConversions::celsius_to_rankine(_celsius);
         }
         /**
         * @brief method to set the kelvin instance variable. will update other
@@ -232,8 +240,22 @@ public:
         void set_kelvin(const ld k)
         {
             _kelvin = k;
-            _celsius = tempConverter.kelvin_to_celsius(_kelvin);
-            _fahrenheit = tempConverter.kelvin_to_fahrenheit(_kelvin);
+            _celsius = TemperatureConversions::kelvin_to_celsius(_kelvin);
+            _fahrenheit = TemperatureConversions::kelvin_to_fahrenheit(_kelvin);
+            _rankine = TemperatureConversions::kelvin_to_rankine(_kelvin);
+        }
+
+        /**
+         * @brief method to set the rankine instance variable. will update other
+         * instance variables to reflect.
+         * @param r is the temp in rankine
+         */
+        void set_rankine(const ld r)
+        {
+            _rankine = r;
+            _celsius = TemperatureConversions::rankine_to_celsius(_rankine);
+            _fahrenheit = TemperatureConversions::rankine_to_fahrenheit(_rankine);
+            _kelvin = TemperatureConversions::rankine_to_kelvin(_rankine);
         }
     }T;
 
@@ -244,17 +266,19 @@ public:
      * 'c' = celsius
      * 'f' = fahrenheit
      * 'k' = kelvin
+     * 'r' = rankine
      */
     char _mode;
 
     /**
      * @brief method to set the mode to either f or fahrenheit, c for celsius or k for kelvin
-     * @param mode is a char of the mode either 'f','c','k'. be sure to include single quotes
+     * @param mode is a char of the mode either 'f','c','k', 'r'. be sure to
+     * include single quotes
      * if its a literal being passed
      */
     void set_mode(char mode)
     {
-        if(mode == 'c' || mode == 'f' || mode == 'k')
+        if(mode == 'c' || mode == 'f' || mode == 'k' || mode == 'r')
         {
             _mode = mode;
         }
@@ -276,9 +300,7 @@ public:
      */
     void set_fahrenheit(const ld f)
     {
-        T._fahrenheit = f;
-        T._celsius =  tempConverter.fahrenheit_to_celsius(T._fahrenheit);
-        T._kelvin = tempConverter.fahrenheit_to_kelvin(T._fahrenheit);
+        T.set_fahrenheit(f);
     }
     /**
  * @brief method to set the celsius instance variable. will update other
@@ -287,9 +309,7 @@ public:
  */
     void set_celsius(const ld c)
     {
-        T._celsius = c;
-        T._fahrenheit = tempConverter.celsius_to_fahrenheit(T._celsius);
-        T._kelvin = tempConverter.celsius_to_kelvin(T._celsius);
+        T.set_celsius(c);
     }
     /**
     * @brief method to set the kelvin instance variable. will update other
@@ -298,21 +318,34 @@ public:
     */
     void set_kelvin(const ld k)
     {
-        T._kelvin = k;
-        T._celsius = tempConverter.kelvin_to_celsius(T._kelvin);
-        T._fahrenheit = tempConverter.kelvin_to_fahrenheit(T._kelvin);
+        T.set_kelvin(k);
     }
-    ld getFahrenheit()const { return T._fahrenheit; }
-    ld getCelsius()const { return T._celsius; }
-    ld getKelvin()const { return T._kelvin; }
+    /**
+     * @brief method to set the rankine instance variable. will update other
+     * instance variables to reflect.
+     * @param r is the temp in rankine
+     */
+    void set_rankine(const ld r)
+    {
+        T.set_rankine(r);
+    }
+
+    [[nodiscard]] ld getFahrenheit()const { return T._fahrenheit; }
+    [[nodiscard]] ld getCelsius()const { return T._celsius; }
+    [[nodiscard]] ld getKelvin()const { return T._kelvin; }
+    [[nodiscard]] ld getRankine()const { return T._rankine; }
+
     void showFahrenheit()const { std::cout << "F: " << getFahrenheit() << std::endl; }
     void showCelsius()const { std::cout << "C: " << getCelsius() << std::endl; }
     void showKelvin()const { std::cout << "K: " << getKelvin() << std::endl; }
+    void showRankine()const { std::cout << "R: " << getRankine() << std::endl; }
     void showAllTemps()const
+
     {
         showFahrenheit();
         showCelsius();
         showKelvin();
+        showRankine();
     }
 
 
@@ -419,7 +452,7 @@ public:
      */
     static ld absolutePressure_idealGasLaw(const ld V, const ld N, const ld T)
     {
-        return (N * constants::BOLTZMANN * T) / V;
+        return (N * constants::STEFAN_BOLTZMANN * T) / V;
     }
     /**
      * @brief ideal gas law PV = NkT where reworked to solve for N
@@ -432,7 +465,7 @@ public:
      */
     static ld numberMolecules_idealGasLaw(const ld P, const ld V, const ld T)
     {
-        return (P * V)/(constants::BOLTZMANN * T);
+        return (P * V)/(constants::STEFAN_BOLTZMANN * T);
     }
 
     /**
@@ -451,23 +484,59 @@ public:
     }
 
     /**
+     * @brief ideal gas law PV = nRT where reworked to solve for V
+     * which is the volume of a gas V = (nRT)/P
+     * R = Universal gas law constant set to default in joules
+     * @param n is the number of moles in the gas
+     * @param P is the absolute pressure of a gas
+     * @param T is the absolute Temperature in kelvins
+     * @returns the volume of a gas
+     */
+    static ld volume_idealGasLaw(const ld n, const ld P, const ld T, bool print = false)
+    {
+        ld V = (n * constants::R * T) / P;
+        if(print)
+            std::cout << "The volume of the gas is: " << V << " m^3\n";
+        return V;
+    }
+
+    /**
      * @brief calculates the KE of a cloud or gas of N molecules
      * @param T is the absolute temperature in kelvin
      * @returns Thermal energy, molecular interpretation of temperature
      */
-    static ld translationalKineticEnergy_molecules(const ld T)
+    static ld molecularKineticEnergy(const ld T)
     {
-        return (3.0 / 2.0)* constants::BOLTZMANN* T;
+        return (3.0 / 2.0) * constants::BOLTZMANN * T;
     }
 
     /**
-     * @brief calculates the average speed of molecules at a certain temperature
+     * @brief calculates the thermal speed of molecules at a certain temperature
      * @param m is the mass of a single molecule
      * @param T Temp K
      */
-    static ld speedAverage_rms(const ld m, const ld T)
+    static ld thermalSpeed(const ld m, const ld T)
     {
         return sqrt((3.0 * constants::BOLTZMANN * T) / m);
+    }
+
+    /**
+     * @brief calculates the speed of a molecule wit specified energy
+     * @param m is the mass of a single molecule
+     * @param n is the number of atoms in the molecule
+     * @param k is the molecular kinetic energy
+     * @returns the speed of the molecule
+     */
+    static ld moleculeSpeed(const ld m,
+                            const ld n,
+                            const ld k,
+                            bool print = false)
+    {
+        auto total_mass = m * n * constants::ATOMIC_MASS_UNIT;
+        auto speed = sqrt((k * 2) / total_mass);
+        if(print)
+            std::cout << "The speed of the molecule is: " << speed << " m/s\n";
+        return speed;
     }
 
     /**
@@ -478,7 +547,7 @@ public:
      */
     static ld temperatureOfMoleculeAtVelocity(const ld m, const ld v)
     {
-        return (m * (v * v)) / (3.0 * constants::BOLTZMANN);
+        return (m * (v * v)) / (3.0 * constants::STEFAN_BOLTZMANN);
     }
 
     /**
@@ -534,7 +603,7 @@ public:
 
     ~Temperature()
     {
-        delete _tempPtr;
+        countDecrease();
     }
 };
 

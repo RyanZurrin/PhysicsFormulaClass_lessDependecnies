@@ -16,9 +16,12 @@
 #include "VectorND.h"
 #define THRESHOLD 1e-10
 // enum class for different random_device types
-enum class RandomGenerator {
+enum class RandomGenTypes {
     MERSENNE_TWISTER,
-    LINEAR_CONGRUENTIAL
+    LINEAR_CONGRUENTIAL,
+    KNUTH_B,
+    MINSTD_RAND,
+    RANDOM_DEVICE
 };
 
 
@@ -201,7 +204,7 @@ public:
     template<typename ... Args> // constructor with arguments
     explicit MatrixND(const int& r_, const int& c_, const T& first, const Args&... args);
     MatrixND(int r, int c); // constructor with dimensions
-    MatrixND(int r, int c, int min, int max, RandomGenerator generator); // constructor with dimensions and random values
+    MatrixND(int r, int c, int min, int max, RandomGenTypes type); // constructor with dimensions and random values
     MatrixND(std::vector<T>, int rows, int cols); // constructor with data and dimensions
     MatrixND(T* data, int rows, int cols); // constructor with data and dimensions
     MatrixND(T** data, int rows, int cols); // constructor with data and dimensions
@@ -273,7 +276,7 @@ public:
     std::vector<T> characteristicPolynomial();
     // method to create an identity matrix of a square matrix
     [[nodiscard]] MatrixND<T> identity();
-    // method to create a identity matrix of a specified size
+    // method to create an identity matrix of a specified size
     [[nodiscard]] static MatrixND<T> identity(int size);
     // method to create a zero matrix of a square matrix
     MatrixND<T> zero();
@@ -298,7 +301,7 @@ public:
     [[nodiscard]] MatrixND<T> concat(const MatrixND<T> &); // concatenate two matrices
     [[nodiscard]] MatrixND<T> stack(const MatrixND<T> &); // stack vertically
     [[nodiscard]] MatrixND<T> kronecker(const MatrixND<T> &); // kronecker product
-    // method to vind the eignenvectors of the matrix
+    // method to find the eigenvectors of the matrix
     MatrixND<T> eigenvectors(); // not implemented
     // method to return a vector of eigenvalues of the matrix
     std::vector<T> eigenvalues(); // not implemented
@@ -312,59 +315,59 @@ public:
     double corr();
     // method to take the sum of the matrix elements
     double sum();
-    // enode from row and column to index
+    // encode from row and column to index
     [[nodiscard]] int index(int row, int col)const;
 
     [[nodiscard]] int getRows()const; // returns the number of rows
     [[nodiscard]] int getCols()const; // returns the number of columns
     // find the sub matrix of the given row and column
     MatrixND<T> subMatrix(int row, int col);
-    // method to return the top number of specified rows of the matrix
-    MatrixND<T> topRows(int rows);
-    // method to return the bottom number of specified rows of the matrix
-    MatrixND<T> bottomRows(int rows);
+    // method to return the top number of specified r of the matrix
+    MatrixND<T> topRows(int r);
+    // method to return the bottom number of specified r of the matrix
+    MatrixND<T> bottomRows(int r);
     // method to return the left number of specified columns of the matrix
-    MatrixND<T> leftCols(int cols);
+    MatrixND<T> leftCols(int c);
     // method to return the right number of specified columns of the matrix
-    MatrixND<T> rightCols(int cols);
-    // method to return the top left number of specified rows and columns of the matrix
-    MatrixND<T> topLeft(int rows, int cols);
-    // method to return the top right number of specified rows and columns of the matrix
-    MatrixND<T> topRight(int rows, int cols);
-    // method to return the bottom left number of specified rows and columns of the matrix
-    MatrixND<T> bottomLeft(int rows, int cols);
-    // method to return the bottom right number of specified rows and columns of the matrix
-    MatrixND<T> bottomRight(int rows, int cols);
+    MatrixND<T> rightCols(int c);
+    // method to return the top left number of specified r and columns of the matrix
+    MatrixND<T> topLeft(int r, int c);
+    // method to return the top right number of specified r and columns of the matrix
+    MatrixND<T> topRight(int r, int c);
+    // method to return the bottom left number of specified r and columns of the matrix
+    MatrixND<T> bottomLeft(int r, int c);
+    // method to return the bottom right number of specified r and columns of the matrix
+    MatrixND<T> bottomRight(int r, int c);
     // method to return the cofactor of the matrix at the specified row and column
     T cofactor(int row, int col);
-    // method to ruturn the colwise mean of the matrix
+    // method to return the colwise mean of the matrix
     double colwiseMean(int col);
-    // method to ruturn the rowwise mean of the matrix
+    // method to return the rowwise mean of the matrix
     double rowwiseMean(int row);
-    // method to ruturn the colwise standard deviation of the matrix
+    // method to return the colwise standard deviation of the matrix
     double colwiseStd(int col);
-    // method to ruturn the rowwise standard deviation of the matrix
+    // method to return the rowwise standard deviation of the matrix
     double rowwiseStd(int row);
-    // method to ruturn the colwise covariance of the matrix
+    // method to return the colwise covariance of the matrix
     double colwiseCov(int col);
-    // method to ruturn the rowwise covariance of the matrix
+    // method to return the rowwise covariance of the matrix
     double rowwiseCov(int row);
-    // method to ruturn the colwise correlation of the matrix
+    // method to return the colwise correlation of the matrix
     double colwiseCorr(int col);
-    // method to ruturn the rowwise correlation of the matrix
+    // method to return the rowwise correlation of the matrix
     double rowwiseCorr(int row);
-    // method to ruturn the colwise sum of the matrix
+    // method to return the colwise sum of the matrix
     double colwiseSum(int col);
-    // method to ruturn the rowwise sum of the matrix
+    // method to return the rowwise sum of the matrix
     double rowwiseSum(int row);
-    // method to ruturn the colwise top number of specified rows of the matrix
-    MatrixND<T> colwiseTopRows(int rows);
-    // method to ruturn the rowwise top number of specified rows of the matrix
-    MatrixND<T> rowwiseTopRows(int rows);
-    // method to ruturn the colwise bottom number of specified rows of the matrix
-    MatrixND<T> colwiseBottomRows(int rows);
-    // method to ruturn the rowwise bottom number of specified rows of the matrix
-    MatrixND<T> rowwiseBottomRows(int rows);
+    // method to return the colwise top number of specified r of the matrix
+    MatrixND<T> colwiseTopRows(int r);
+    // method to return the rowwise top number of specified r of the matrix
+    MatrixND<T> rowwiseTopRows(int r);
+    // method to return the colwise bottom number of specified r of the matrix
+    MatrixND<T> colwiseBottomRows(int r);
+    // method to return the rowwise bottom number of specified r of the matrix
+    MatrixND<T> rowwiseBottomRows(int r);
     // colwise to return a colwise vector of the matrix
     std::vector<T> colwise(int col);
     // look at the data in a colwise fashion
@@ -406,7 +409,7 @@ public:
     // method to flatten the matrix into a vector
     std::vector<T> flatten();
     // method to reshape the matrix into a new matrix
-    MatrixND<T> reshape(int rows, int cols);
+    MatrixND<T> reshape(int r, int c);
     // method to return the diagonal elements of the matrix
     MatrixND<T> diag();
     // method to return the trace of the matrix
@@ -665,13 +668,14 @@ inline MatrixND<T>::MatrixND(int r, int c)
 
 template<typename T>
 MatrixND<T>::MatrixND(int r, int c, int min, int max,
-                      RandomGenerator generator) {
+                      RandomGenTypes type) {
     rows = r;
     cols = c;
     data = vector<T>(r * c);
-    // seed a random number generator depending on the generator
+
+    // seed a random number type depending on the type
     std::random_device rd;
-    if (generator == RandomGenerator::MERSENNE_TWISTER) {
+    if (type == RandomGenTypes::MERSENNE_TWISTER) {
         std::mt19937 gen(rd());
         std::uniform_real_distribution<> dis(min, max);
         for (int i = 0; i < rows; i++) {
@@ -679,8 +683,7 @@ MatrixND<T>::MatrixND(int r, int c, int min, int max,
                 data[i * cols + j] = dis(gen);
             }
         }
-    }
-    else if (generator == RandomGenerator::LINEAR_CONGRUENTIAL) {
+    } else if (type == RandomGenTypes::LINEAR_CONGRUENTIAL) {
         std::minstd_rand gen(rd());
         std::uniform_real_distribution<> dis(min, max);
         for (int i = 0; i < rows; i++) {
@@ -688,16 +691,50 @@ MatrixND<T>::MatrixND(int r, int c, int min, int max,
                 data[i * cols + j] = dis(gen);
             }
         }
-    } else {
-        // defalut to srand with time
-        srand(time(NULL));
+    } else if (type == RandomGenTypes::KNUTH_B) {
+        std::knuth_b gen(rd());
+        std::uniform_real_distribution<> dis(min, max);
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                data[i * cols + j] = (T)rand() / RAND_MAX * (max - min) + min;
+                data[i * cols + j] = dis(gen);
+            }
+        }
+    } else if (type == RandomGenTypes::MINSTD_RAND) {
+        std::minstd_rand gen(rd());
+        std::uniform_real_distribution<> dis(min, max);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                data[i * cols + j] = dis(gen);
+            }
+        }
+    } else if (type == RandomGenTypes::RANDOM_DEVICE) {
+        std::random_device gen;
+        std::uniform_real_distribution<> dis(min, max);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                data[i * cols + j] = dis(gen);
+            }
+        }
+    } else {
+        std::random_device gen;
+        std::uniform_real_distribution<> dis(min, max);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                data[i * cols + j] = dis(gen);
             }
         }
     }
+//    else {
+//        // default to srand with time
+//        srand(time(NULL));
+//        for (int i = 0; i < rows; i++) {
+//            for (int j = 0; j < cols; j++) {
+//                data[i * cols + j] = (T)rand() / RAND_MAX * (max - min) + min;
+//            }
+//        }
+//    }
 }
+
 
 /** Constructor
 	creates the matrix as the following:
@@ -743,28 +780,28 @@ MatrixND<T>::MatrixND(T **data, int rows, int cols) {
 
 	resets the matrix to the input
 
-	@params elements, - the elements of the matrix in Row-major form
+	@params elems, - the elems of the matrix in Row-major form
 			numRows, - the number of rows in the matrix
-			numCols; - the number of coumns in the matrix
+			numCols; - the number of columns in the matrix
 	@return void; nothing to return
 
 */
 
 template <typename T>
-void MatrixND<T>::set(std::vector<T> elements, int numRows, int numCols)
+void MatrixND<T>::set(std::vector<T> elems, int numRows, int numCols)
 {
     rows = numRows;
     cols = numCols;
     data.clear();
-    for(unsigned int i = 0; i < elements.size(); i++) {
-        data.push_back(elements[i]);
+    for(unsigned int i = 0; i < elems.size(); i++) {
+        data.push_back(elems[i]);
     }
 }
 
 
 /** operator+ (add)
 	lhs + rhs;
-	elementwise adition of rhs to lhs
+	elementwise addition of rhs to lhs
 
 	@params rhs; the matrix to add
 	@return matrix; the sum
@@ -964,7 +1001,7 @@ MatrixND<T> MatrixND<T>::operator*(const T & t)
 //}
 /** operator ==
 
-	elemetnwise comparison of two matrices of equal size
+	elementwise comparison of two matrices of equal size
 
 	@params rhs; the second matrix
 	@return bool; true if same size and elements all equal
@@ -1039,7 +1076,7 @@ MatrixND<T> MatrixND<T>::adjoint() {
     return result.transpose();
 }
 /** add
-	elementwise adition of rhs to lhs
+	elementwise addition of rhs to lhs
 	@params rhs; the matrix to add
 	@return matrix; the sum
 */
@@ -1330,12 +1367,12 @@ int MatrixND<T>::rank() {
     /* If this didn't work, then we compute the rank by finding
         the largest non-zero sub-matrix with a non-zero determinant.
 
-        Note that this method is slower for large matrices and therefore
+        Note that this method is slower for large matrices, and therefore
         it is better to use the RowEchelon method if possible. */
     int numNonZeroRows = 0;
     if (!matrixCopy.isRowEchelon())
     {
-        // Setup a std::vector to store the sub-matrices as we go.
+        // Set up a std::vector to store the sub-matrices as we go.
         std::vector<MatrixND<T>> subMatrixVector;
 
         // Store the current matrix into the array first.
@@ -1385,7 +1422,7 @@ int MatrixND<T>::rank() {
             count the number of non-zero rows to get the rank. */
 
         /* If we get to here, then we can assume that the matrix is now
-            in row-echelon form and we can compute the rank quite easily
+            in row-echelon form, and we can compute the rank quite easily
             as simply the number of non-zero rows. */
 
         int nRows = matrixCopy.getRows();
@@ -1473,8 +1510,8 @@ bool MatrixND<T>::isRowEchelon() {
 }
 /** Concat
 	append two matrices of equal row count
-	@params rhs; the matrix to concatanate
-	@return matrix; the contanated matrix
+	@params rhs; the matrix to concatenate
+	@return matrix; the contacted matrix
 
 */
 template <typename T>
@@ -1500,7 +1537,7 @@ MatrixND<T> MatrixND<T>::concat(const MatrixND<T> & rhs)
 /** stack
 	append two matrices of equal column count
 	@params rhs; the matrix to stack below
-	@return matrix; the lhs stacked ontop of rhs matrix
+	@return matrix; the lhs stacked onto of rhs matrix
 */
 
 template <typename T>
@@ -1523,7 +1560,7 @@ MatrixND<T> MatrixND<T>::stack(const MatrixND<T> & rhs)
 
 /** Kronecker
 	https://en.wikipedia.org/wiki/Kronecker_product
-	calculate kroncker product of two matrices
+	calculate kronecker product of two matrices
 
 	@params rhs; the matrix operand
 	@return matrix; the Kronecker product matrix
@@ -1537,7 +1574,7 @@ MatrixND<T> MatrixND<T>::kronecker(const MatrixND<T> & rhs)
     for(int i = 0; i < (rows*cols*rhs.rows*rhs.cols); i++) {
         int j = (i/rhs.cols)%cols + (i/(cols*rhs.rows*rhs.cols))*cols; //iterate lhs in proper order
         int k = (i%rhs.cols) + ((i / (cols * rhs.cols))%rhs.rows)*rhs.cols;  //iterate rhs in proper order
-        //can use scalar multiplactions, matrix concat and stacking, but this is a single iteration through the vector.
+        //can use scalar multiplication, matrix concat and stacking, but this is a single iteration through the vector.
         //Kronecker iterates both matrices in a pattern relative to the large product matrix.
         //std::cout << i << " : " << j << " : " << k << std::endl;
         //std::cout << i << " : " << j << " : " << k << " : " << l << std::endl;
@@ -1637,17 +1674,17 @@ T MatrixND<T>::get(int row, int col)const
  * @return VectorND<T> : the vector multiplied by the matrix
  */
 template<typename T>
-VectorND<T> MatrixND<T>::operator*(const VectorND<T> & v) {
-    assert(this->cols == v.getSize());
-    std::vector<T> vec;
+VectorND<T> MatrixND<T>::operator*(const VectorND<T> & vect) {
+    assert(this->cols == vect.getSize());
+    std::vector<T> res_vect;
     for(int i = 0; i < rows; i++) {
         T sum = 0;
         for(int j = 0; j < cols; j++) {
-            sum += data[i*cols + j] * v.get(j);
+            sum += data[i*cols + j] * vect.get(j);
         }
-        vec.push_back(sum);
+        res_vect.push_back(sum);
     }
-    return VectorND<T>(vec,rows);
+    return VectorND<T>(res_vect, rows);
 }
 
 template<typename T>
@@ -1692,9 +1729,9 @@ void MatrixND<T>::operator()(int row, int col, T value) {
 }
 
 template<typename T>
-MatrixND<T> MatrixND<T>::topRows(int rows) {
-    MatrixND<T> m(rows,cols);
-    for(int i = 0; i < rows; i++) {
+MatrixND<T> MatrixND<T>::topRows(int r) {
+    MatrixND<T> m(r, cols);
+    for(int i = 0; i < r; i++) {
         for(int j = 0; j < cols; j++) {
             m(i,j) = this->operator()(i,j);
         }
@@ -1703,21 +1740,21 @@ MatrixND<T> MatrixND<T>::topRows(int rows) {
 }
 
 template<typename T>
-MatrixND<T> MatrixND<T>::bottomRows(int rows) {
-    MatrixND<T> m(rows,cols);
-    for(int i = 0; i < rows; i++) {
+MatrixND<T> MatrixND<T>::bottomRows(int r) {
+    MatrixND<T> m(r, cols);
+    for(int i = 0; i < r; i++) {
         for(int j = 0; j < cols; j++) {
-            m(i,j) = this->operator()(rows-i-1,j);
+            m(i,j) = this->operator()(r - i - 1, j);
         }
     }
     return m;
 }
 
 template<typename T>
-MatrixND<T> MatrixND<T>::leftCols(int cols) {
-    MatrixND<T> m(rows,cols);
+MatrixND<T> MatrixND<T>::leftCols(int c) {
+    MatrixND<T> m(rows, c);
     for(int i = 0; i < rows; i++) {
-        for(int j = 0; j < cols; j++) {
+        for(int j = 0; j < c; j++) {
             m(i,j) = this->operator()(i,j);
         }
     }
@@ -1725,11 +1762,11 @@ MatrixND<T> MatrixND<T>::leftCols(int cols) {
 }
 
 template<typename T>
-MatrixND<T> MatrixND<T>::rightCols(int cols) {
-    MatrixND<T> m(rows,cols);
+MatrixND<T> MatrixND<T>::rightCols(int c) {
+    MatrixND<T> m(rows, c);
     for(int i = 0; i < rows; i++) {
-        for(int j = 0; j < cols; j++) {
-            m(i,j) = this->operator()(i,cols-j-1);
+        for(int j = 0; j < c; j++) {
+            m(i,j) = this->operator()(i, c - j - 1);
         }
     }
     return m;
@@ -1807,10 +1844,10 @@ vector<T> MatrixND<T>::flatten() {
 }
 
 template<typename T>
-MatrixND<T> MatrixND<T>::reshape(int rows, int cols) {
-    MatrixND<T> m(rows,cols);
-    for(int i = 0; i < rows; i++) {
-        for(int j = 0; j < cols; j++) {
+MatrixND<T> MatrixND<T>::reshape(int r, int c) {
+    MatrixND<T> m(r, c);
+    for(int i = 0; i < r; i++) {
+        for(int j = 0; j < c; j++) {
             m(i,j) = this->operator()(i,j);
         }
     }
@@ -1856,10 +1893,10 @@ T *MatrixND<T>::array() {
 }
 
 template<typename T>
-MatrixND<T> MatrixND<T>::topLeft(int rows, int cols) {
-    MatrixND<T> m(rows,cols);
-    for(int i = 0; i < rows; i++) {
-        for(int j = 0; j < cols; j++) {
+MatrixND<T> MatrixND<T>::topLeft(int r, int c) {
+    MatrixND<T> m(r, c);
+    for(int i = 0; i < r; i++) {
+        for(int j = 0; j < c; j++) {
             m(i,j) = this->operator()(i,j);
         }
     }
@@ -1867,33 +1904,33 @@ MatrixND<T> MatrixND<T>::topLeft(int rows, int cols) {
 }
 
 template<typename T>
-MatrixND<T> MatrixND<T>::topRight(int rows, int cols) {
-    MatrixND<T> m(rows,cols);
-    for(int i = 0; i < rows; i++) {
-        for(int j = 0; j < cols; j++) {
-            m(i,j) = this->operator()(i,cols-j-1);
+MatrixND<T> MatrixND<T>::topRight(int r, int c) {
+    MatrixND<T> m(r, c);
+    for(int i = 0; i < r; i++) {
+        for(int j = 0; j < c; j++) {
+            m(i,j) = this->operator()(i, c - j - 1);
         }
     }
     return m;
 }
 
 template<typename T>
-MatrixND<T> MatrixND<T>::bottomLeft(int rows, int cols) {
-    MatrixND<T> m(rows,cols);
-    for(int i = 0; i < rows; i++) {
-        for(int j = 0; j < cols; j++) {
-            m(i,j) = this->operator()(rows-i-1,j);
+MatrixND<T> MatrixND<T>::bottomLeft(int r, int c) {
+    MatrixND<T> m(r, c);
+    for(int i = 0; i < r; i++) {
+        for(int j = 0; j < c; j++) {
+            m(i,j) = this->operator()(r - i - 1, j);
         }
     }
     return m;
 }
 
 template<typename T>
-MatrixND<T> MatrixND<T>::bottomRight(int rows, int cols) {
-    MatrixND<T> m(rows,cols);
-    for(int i = 0; i < rows; i++) {
-        for(int j = 0; j < cols; j++) {
-            m(i,j) = this->operator()(rows-i-1,cols-j-1);
+MatrixND<T> MatrixND<T>::bottomRight(int r, int c) {
+    MatrixND<T> m(r, c);
+    for(int i = 0; i < r; i++) {
+        for(int j = 0; j < c; j++) {
+            m(i,j) = this->operator()(r - i - 1, c - j - 1);
         }
     }
     return m;
@@ -2011,9 +2048,9 @@ double MatrixND<T>::rowwiseSum(int row) {
 }
 
 template<typename T>
-MatrixND<T> MatrixND<T>::rowwiseTopRows(int rows) {
-    MatrixND<T> m(rows,cols);
-    for(int i = 0; i < rows; i++) {
+MatrixND<T> MatrixND<T>::rowwiseTopRows(int r) {
+    MatrixND<T> m(r, cols);
+    for(int i = 0; i < r; i++) {
         for(int j = 0; j < cols; j++) {
             m(i,j) = this->operator()(i,j);
         }
@@ -2022,9 +2059,9 @@ MatrixND<T> MatrixND<T>::rowwiseTopRows(int rows) {
 }
 
 template<typename T>
-MatrixND<T> MatrixND<T>::colwiseTopRows(int rows) {
-    MatrixND<T> m(rows,cols);
-    for(int i = 0; i < rows; i++) {
+MatrixND<T> MatrixND<T>::colwiseTopRows(int r) {
+    MatrixND<T> m(r, cols);
+    for(int i = 0; i < r; i++) {
         for(int j = 0; j < cols; j++) {
             m(i,j) = this->operator()(j,i);
         }
@@ -2033,9 +2070,9 @@ MatrixND<T> MatrixND<T>::colwiseTopRows(int rows) {
 }
 
 template<typename T>
-MatrixND<T> MatrixND<T>::colwiseBottomRows(int rows) {
-    MatrixND<T> m(rows,cols);
-    for(int i = 0; i < rows; i++) {
+MatrixND<T> MatrixND<T>::colwiseBottomRows(int r) {
+    MatrixND<T> m(r, cols);
+    for(int i = 0; i < r; i++) {
         for(int j = 0; j < cols; j++) {
             m(i,j) = this->operator()(cols-j-1,i);
         }
@@ -2044,11 +2081,11 @@ MatrixND<T> MatrixND<T>::colwiseBottomRows(int rows) {
 }
 
 template<typename T>
-MatrixND<T> MatrixND<T>::rowwiseBottomRows(int rows) {
-    MatrixND<T> m(rows,cols);
-    for(int i = 0; i < rows; i++) {
+MatrixND<T> MatrixND<T>::rowwiseBottomRows(int r) {
+    MatrixND<T> m(r, cols);
+    for(int i = 0; i < r; i++) {
         for(int j = 0; j < cols; j++) {
-            m(i,j) = this->operator()(rows-i-1,j);
+            m(i,j) = this->operator()(r - i - 1, j);
         }
     }
     return m;
@@ -2056,20 +2093,20 @@ MatrixND<T> MatrixND<T>::rowwiseBottomRows(int rows) {
 
 template<typename T>
 vector<T> MatrixND<T>::colwise(int col) {
-    vector<T> v(rows);
+    vector<T> vec(rows);
     for(int i = 0; i < rows; i++) {
-        v[i] = data[i*cols + col];
+        vec[i] = data[i * cols + col];
     }
-    return v;
+    return vec;
 }
 
 template<typename T>
 vector<T> MatrixND<T>::rowwise(int row) {
-    vector<T> v(cols);
+    vector<T> vec(cols);
     for(int i = 0; i < cols; i++) {
-        v[i] = data[row*cols + i];
+        vec[i] = data[row * cols + i];
     }
-    return v;
+    return vec;
 }
 template<typename T>
 int MatrixND<T>::findRowWithMaxElement(int col, int row) {

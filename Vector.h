@@ -34,7 +34,7 @@ namespace rez
         bool is_normalized = false;
         Vector() {}
 
-        Vector(std::array<coordinate_type, dimensions> _coords) : coords(_coords) {}
+        explicit Vector(std::array<coordinate_type, dimensions> _coords) : coords(_coords) {}
 
         Vector(coordinate_type _x, coordinate_type _y, coordinate_type _z) : coords({ _x,_y,_z }) {}
 
@@ -63,7 +63,7 @@ namespace rez
         Vector<coordinate_type, dimensions> operator+(const Vector<coordinate_type, dimensions>&) const;
 
         //TODO make this to modifiable
-        coordinate_type operator[](const unsigned int) const;
+        coordinate_type operator[](unsigned int) const;
 
         // Dot product
         float dot(Vector<coordinate_type, dimensions>& v1, Vector<coordinate_type, dimensions>& v2);
@@ -71,10 +71,10 @@ namespace rez
         // Cross product
         Vector<coordinate_type, dimensions> cross(const Vector<coordinate_type, dimensions>&);
 
-        void assign(const unsigned int dim, coordinate_type value);
+        void assign(unsigned int _index, coordinate_type value);
 
         // Return the magnitude of the the vector (mod(A) / |A|)
-        float magnitude() const;
+        [[nodiscard]] float magnitude() const;
 
         // Normalize the vector
         void normalize();
@@ -117,7 +117,7 @@ namespace rez
     template<typename coordinate_type, size_t dimensions>
     inline bool Vector<coordinate_type, dimensions>::operator!=(const Vector<coordinate_type, dimensions>& _other) const
     {
-        return !(*this == _other);
+        return *this != _other;
     }
 
 
@@ -141,7 +141,7 @@ namespace rez
     {
         if (*this == _other)
             return false;
-        return !(*this < _other);
+        return *this >= _other;
     }
 
     template<typename coordinate_type, size_t dimensions>
@@ -241,13 +241,37 @@ namespace rez
         return product;
     }
 
+    template<typename coordinate_type, size_t dimensions>
+    float Vector<coordinate_type, dimensions>::dot(
+            Vector<coordinate_type, dimensions> &v1,
+            Vector<coordinate_type, dimensions> &v2) {
+        return dotProduct(v1, v2);
+    }
+
+    template<typename coordinate_type, size_t dimensions>
+    Vector<coordinate_type, dimensions>
+    Vector<coordinate_type, dimensions>::cross(
+            const Vector<coordinate_type, dimensions> &) {
+        // make sure the dimensions are correct
+        if (dimensions != 3) {
+            std::cout << "Cross product is only defined for 3D vectors" << std::endl;
+            return Vector<coordinate_type, dimensions>();
+        }
+        // create the cross product
+        Vector<coordinate_type, dimensions> crossProduct;
+        crossProduct[0] = coords[1] * coords[2] - coords[2] * coords[1];
+        crossProduct[1] = coords[2] * coords[0] - coords[0] * coords[2];
+        crossProduct[2] = coords[0] * coords[1] - coords[1] * coords[0];
+        return crossProduct;
+    }
+
     Vector3f crossProduct3d(Vector3f a, Vector3f b);
 
-    float corssProduct2d(Vector2f a, Vector2f b);
+    float crossProduct2d(Vector2f a, Vector2f b);
 
     Vector2f prependicluar(Vector2f&);
 
-    float scalerTripleProduct(Vector3f a, Vector3f b, Vector3f c);
+    float scalarTripleProduct(Vector3f a, Vector3f b, Vector3f c);
 
     bool orthogonal(Vector3f a, Vector3f b);
 

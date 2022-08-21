@@ -23,15 +23,15 @@ rez::Vector3f rez::crossProduct3d(Vector3f a, Vector3f b)
     y_ = -(b[Z] * a[X] - a[Z] * b[X]);
     z_ = a[X] * b[Y] - b[X] * a[Y];
 
-    return Vector3f(x_, y_, z_);
+    return {x_, y_, z_};
 }
 
-float rez::corssProduct2d(Vector2f a, Vector2f b)
+float rez::crossProduct2d(Vector2f a, Vector2f b)
 {
     return 0.0f;
 }
 
-float rez::scalerTripleProduct(Vector3f a, Vector3f b, Vector3f c)
+float rez::scalarTripleProduct(Vector3f a, Vector3f b, Vector3f c)
 {
     Vector3f b_cross_c = crossProduct3d(b, c);
     float value = dotProduct(a, b_cross_c);
@@ -46,5 +46,5 @@ bool rez::orthogonal(Vector3f a, Vector3f b)
 
 rez::Vector2f rez::prependicluar(Vector2f& vec)
 {
-    return Vector2f(vec[Y], -vec[X]);
+    return {vec[Y], -vec[X]};
 }

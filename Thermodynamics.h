@@ -13,7 +13,7 @@
 
 static int thermodynamics_objectCount = 0;
 
-double static kiloJoulesToCalories(const double kJ)
+ld static kiloJoulesToCalories(const ld kJ)
 {
     return (kJ * 1000.0) / 4186.0;
 }
@@ -32,32 +32,26 @@ private:
     static void countIncrease() { thermodynamics_objectCount += 1; }
     static void countDecrease() { thermodynamics_objectCount -= 1; }
 public:
-    Thermodynamics* _thermodynamicPtr;
-
     /**
      * @brief  no argument constructor
      */
     Thermodynamics()
     {
-        set_celsius(0.0);
-        _thermodynamicPtr = nullptr;
+        countIncrease();
     }//end no argument constructor
     /**
      * @brief copy constructor
      */
     Thermodynamics(const Thermodynamics& t)
-            : Heat(t)
-    {
-
+     : Energy(t), Heat(t) {
         T._celsius = t.T._celsius;
         T._fahrenheit = t.T._fahrenheit;
         T._kelvin = t.T._kelvin;
-        _mode = t._mode;
-        _tempPtr = t._tempPtr;
-
-        _thermodynamicPtr = t._thermodynamicPtr;
+        T._rankine = t.T._rankine;
+        T._mode = t._mode;
         countIncrease();
-    }
+    }//end copy constructor
+
     /**
      * #brief move constructor
      */
@@ -66,7 +60,8 @@ public:
         T._fahrenheit = t.T._fahrenheit;
         T._celsius = t.T._celsius;
         T._kelvin = t.T._kelvin;
-        this->_thermodynamicPtr = t._thermodynamicPtr;
+        T._rankine = t.T._rankine;
+        _mode = t._mode;
         countIncrease();
     }
     /**
@@ -79,8 +74,8 @@ public:
             T._celsius = t.T._celsius;
             T._fahrenheit = t.T._fahrenheit;
             T._kelvin = t.T._kelvin;
+            T._rankine = t.T._rankine;
             _mode = t._mode;
-            _tempPtr = t._tempPtr;
             countIncrease();
         }
         return *this;
@@ -115,9 +110,9 @@ public:
     /**
      * @brief calculates the energy loss to environment
      */
-    static ld energyLossToEnvironment(const ld Qin, const ld eff)
+    static ld energyLossToEnvironment(const ld Qin, const ld efficiency)
     {
-        return Qin * (1.0 - (eff / 100));
+        return Qin * (1.0 - (efficiency / 100));
     }
 
     /**
@@ -156,27 +151,33 @@ public:
      * heat energy transferred during process[1], increase of internal energy of system[2]
      *
      */
-    static vector<ld> systemOfAnswers_workDone_heatTransfer_internalChange(const ld mass, const ld Ti, const ld Tf, const ld c, const ld density, const ld coefLinExp, const ld Patm = 1.0)
+    static vector<ld> systemOfAnswers_workDone_heatTransfer_internalChange(
+            const ld mass,
+            const ld Ti,
+            const ld Tf,
+            const ld c,
+            const ld density,
+            const ld coefLinExp,
+            const ld Patm = 1.0)
     {
-
         const ld v0 = mass / density;
         const ld changeV = 3.0 * coefLinExp * v0 * (Tf - Ti);
         const ld W = Patm * constants::ATM_TO_PASCAL_MULTIPLIER * changeV; // a
-        const ld Q = heatTransfer_Q(mass, c, Tf - Ti);
+        const ld Q = heatEnergy(mass, c, Tf - Ti);
         const ld U = Q - W;
         vector<ld> results = { W, Q, U };
         return results;
     }
 
     /**
-     * @brief calculates the food energy used in doing kJ worth of work at a certain eff%
-     * @param W total work in kJ
-     * @param eff efficiency of work done
+     * @brief calculates the food energy used in doing kJ worth of work at a certain efficiency%
+     * @param w total work in kJ
+     * @param efficiency efficiency of work done
      * @returns calories used
      */
-    static ld caloriesUsed(const ld W, const ld eff)
+    static ld caloriesUsed(const ld w, const ld efficiency)
     {
-        return kiloJoulesToCalories(W / (eff / 100));
+        return kiloJoulesToCalories(w / (efficiency / 100));
     }
 
 
@@ -194,12 +195,12 @@ public:
     /**
      * @brief calculates the heat transfer to an environment when the efficiency and work is known
      * @param W work done
-     * @param eff efficiency rating
+     * @param efficiency efficiency rating
      * @returns the total heat transfer to environment, usually as heat loss
      */
-    static ld heatTransferToEnvironment(const ld W, const ld eff)
+    static ld heatTransferToEnvironment(const ld W, const ld efficiency)
     {
-        return ((1.0 / (eff/100.0)) - 1.0) * W;
+        return ((1.0 / (efficiency / 100.0)) - 1.0) * W;
     }
 
     /**
@@ -229,53 +230,57 @@ public:
 
     /**
      * @brief calculates how long the energy will last in a consumed food while
-     * doing steady work in watts at an eff %
+     * doing steady work in w at an efficiency %
      * @param var either calories(default) or kiloJoules. must use a mode of 'k' if using kJ
-     * @param watts work rate of person
-     * @param eff efficiency rate
+     * @param w work rate of person
+     * @param efficiency efficiency rate
      * @param mode is 'c' for Calorie mode, use 'k' for kiloJoules input instead
      * @param timeSetting 'm' for minutes 's' of seconds and 'h' for hours 'd' for days
      * @returns how long energy from calories will last
      */
-    static ld energyDuration(const ld var, const ld watts, const ld eff, const char mode = 'c', const char timeSetting = 'm')
+    static ld energyDuration(const ld var,
+                             const ld w,
+                             const ld efficiency,
+                             const char mode = 'c',
+                             const char timeSetting = 'm')
     {
         if (mode == 'c')
         {
             if (timeSetting == 's')
             {
-                return ((var * 4.184) * 1000.0 * (eff / 100.0)) / watts;
+                return ((var * 4.184) * 1000.0 * (efficiency / 100.0)) / w;
             }
             if (timeSetting == 'h')
             {
-                return (((var * 4.184) * 1000.0 * (eff / 100.0)) / watts) / 3600.0;
+                return (((var * 4.184) * 1000.0 * (efficiency / 100.0)) / w) / 3600.0;
             }
             if (timeSetting == 'm')
             {
-                return (((var * 4.184) * 1000.0 * (eff / 100.0)) / watts) / 60.0;
+                return (((var * 4.184) * 1000.0 * (efficiency / 100.0)) / w) / 60.0;
             }
             if (timeSetting == 'd')
             {
-                return (((var * 4.184) * 1000.0 * (eff / 100.0)) / watts) / 86400.0;
+                return (((var * 4.184) * 1000.0 * (efficiency / 100.0)) / w) / 86400.0;
             }
         }
 
         if (timeSetting == 's')
         {
-            return (var * 1000.0 * (eff / 100.0)) / watts;
+            return (var * 1000.0 * (efficiency / 100.0)) / w;
         }
         if (timeSetting == 'h')
         {
-            return ((var * 1000.0 * (eff / 100.0)) / watts) / 3600.0;
+            return ((var * 1000.0 * (efficiency / 100.0)) / w) / 3600.0;
         }
         if (timeSetting == 'm')
         {
-            return ((var * 1000.0 * (eff / 100.0)) / watts) / 60.0;
+            return ((var * 1000.0 * (efficiency / 100.0)) / w) / 60.0;
         }
         if (timeSetting == 'd')
         {
-            return ((var * 1000.0 * (eff / 100.0)) / watts) / 86400.0;
+            return ((var * 1000.0 * (efficiency / 100.0)) / w) / 86400.0;
         }
-        return (var * 1000.0 * (eff / 100.0)) / watts;
+        return (var * 1000.0 * (efficiency / 100.0)) / w;
     }
 
     /**
@@ -297,7 +302,10 @@ public:
      * @param t2 time in seconds
      * @returns the EEF of a product such as a AC or Refrigerator
      */
-    static ld energyEfficiencyRating(const ld Qc,const ld t1,  const ld W, const ld t2)
+    static ld energyEfficiencyRating(const ld Qc,
+                                     const ld t1,
+                                     const ld W,
+                                     const ld t2)
     {
         return (Qc / t1) / (W / t2);
     }
@@ -317,24 +325,26 @@ public:
     /**
      * @brief  calculates the difference of internal pressure if it was at zero gauge pressure
      * @param atmP atm or pascals for pressure
-     * @param v liters default use 'm' for meters cubed as a volume
+     * @param vol liters default use 'm' for meters cubed as a volume
      * @param mode default 'l' for liters 'm' is meters cubed as a volume measurement
      * @returns the difference the internal energy would need to be
      */
-    static ld differenceOfGaugePressureToZeroGaugePressure(const ld atmP, const ld v, const char mode = 'l')
+    static ld differenceOfGaugePressureToZeroGaugePressure(const ld atmP,
+                                                           const ld vol,
+                                                           const char mode = 'l')
     {
         if (mode == 'l')
         {
-            const double U2 = 1.5 * (101325.0) * (v / 1000.0);
+            const ld U2 = 1.5 * (101325.0) * (vol / 1000.0);
             cout << "u2: " << U2 << endl;
-            const double U1 = ((1.0 + atmP) / (1.0)) * U2;
+            const ld U1 = ((1.0 + atmP) / (1.0)) * U2;
             cout << "u1: " << U1 << endl;
             return U1 - U2;
         }
         else {
-            const double U2 = 1.5 * (101325.0) * (v);
+            const ld U2 = 1.5 * (101325.0) * (vol);
             cout << "u2: " << U2 << endl;
-            const double U1 = ((atmP) / (101325.0)) * U2;
+            const ld U1 = ((atmP) / (101325.0)) * U2;
             return U1 - U2;
         }
     }
@@ -345,9 +355,12 @@ public:
      * @param coldResTempCelsius
      * @returns the temp in celsius of the Hot Reservoir
      */
-    static ld carnotEngineHotReservoir(const ld eff, const ld coldResTempCelsius)
+    static ld carnotEngineHotReservoir(const ld efficiency,
+                                       const ld coldResTempCelsius)
     {
-        return tempConverter.kelvin_to_celsius(tempConverter.celsius_to_kelvin(coldResTempCelsius) / (1.0 - (eff/100.0)));
+        return TemperatureConversions::kelvin_to_celsius(
+                TemperatureConversions::celsius_to_kelvin(coldResTempCelsius) /
+                (1.0 - (efficiency/100.0)));
     }
 
     /**
@@ -355,18 +368,21 @@ public:
      */
     static ld coefficientOfPerformance(const ld Tc, const ld Th)
     {
-        return tempConverter.celsius_to_kelvin(1);
+        return TemperatureConversions::celsius_to_kelvin(1);
     }
 
     /**
      * @brief calculates the cold reservoir of a carnot engine
-     * @param eff efficiency %
+     * @param efficiency efficiency %
      * @param hotResTempCelsius
      * @returns the temp in celsius of the Hot Reservoir
      */
-    static ld carnotEngineColdReservoir(const ld eff, const ld hotResTempCelsius)
+    static ld carnotEngineColdReservoir(const ld efficiency,
+                                        const ld hotResTempCelsius)
     {
-        return tempConverter.kelvin_to_celsius((1.0 - (eff / 100.0))*tempConverter.celsius_to_kelvin(hotResTempCelsius));
+        return TemperatureConversions::kelvin_to_celsius(
+                (1.0 - (efficiency / 100.0)) *
+                TemperatureConversions::celsius_to_kelvin(hotResTempCelsius));
     }
 
     /**
@@ -374,7 +390,9 @@ public:
      * @param kPa pressure in kilo pascals
      * @param Qin total work ii
      */
-    static ld changeInVolumeConstantPressure(const ld kPa, const ld Qin, const ld Qchange)
+    static ld changeInVolumeConstantPressure(const ld kPa,
+                                             const ld Qin,
+                                             const ld Qchange)
     {
         return (Qin - Qchange) / kPa;
     }
@@ -382,7 +400,9 @@ public:
     /**
      * @brief monoatomic ideal gas internal energy change
      */
-    static ld monoatomicInternalEnergyChange(const ld Vi, const ld Vf, const ld pressureConstant)
+    static ld monoatomicInternalEnergyChange(const ld Vi,
+                                             const ld Vf,
+                                             const ld pressureConstant)
     {
         return (pressureConstant * (Vf - Vi)) / (constants::ATOMIC_MASS_UNIT - 1);
     }
@@ -393,7 +413,9 @@ public:
      * @param d is the distance it travels
      * @returns work in J
      */
-    static ld work_isobaricProcessOnPiston(const ld gP, const ld A, const ld d)
+    static ld work_isobaricProcessOnPiston(const ld gP,
+                                           const ld A,
+                                           const ld d)
     {
         return gP * A * d;
     }
@@ -401,9 +423,8 @@ public:
     /**
      * @brief destructor
      */
-    ~Thermodynamics()
-    {
-        delete _thermodynamicPtr;
-    }//end destructor
+    ~Thermodynamics() {
+        countDecrease();
+    }
 };
 #endif //PHYSICSFORMULA_THERMODYNAMICS_H

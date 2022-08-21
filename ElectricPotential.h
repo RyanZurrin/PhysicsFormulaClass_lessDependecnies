@@ -592,13 +592,13 @@ inline ld ElectricPotential::temperatureAvgKineticEnergyGasMolecule(
         const ld q = constants::PROTON_CHARGE)
 {
 
-    return (2* q* V)/(3.0 * constants::BOLTZMANN);
+    return (2* q* V)/(3.0 * constants::STEFAN_BOLTZMANN);
 }
 
 inline ld ElectricPotential::voltageIonsMoveThroughToReachSameTemperature(
         const ld T, const ld q = constants::PROTON_CHARGE)
 {
-    return (3/2)*((constants::BOLTZMANN*T)/q);
+    return (3/2)*((constants::STEFAN_BOLTZMANN * T) / q);
 }
 
 
