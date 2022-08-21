@@ -12,8 +12,8 @@
  * @author Ryan Zurrin
  * @date   1/1/2021
  */
-//#include <SFML/Graphics.hpp>
-//#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 #include <cmath>
 #include <iomanip>
 
