@@ -1,0 +1,476 @@
+The system is: Windows - 10.0.22000 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/gcc.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
+
+The C compiler identification is GNU, found in "D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/CMakeFiles/3.23.2/CompilerIdC/a.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/g++.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
+
+The CXX compiler identification is GNU, found in "D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/CMakeFiles/3.23.2/CompilerIdCXX/a.exe"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_87510/fast && E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_87510.dir\build.make CMakeFiles/cmTC_87510.dir/build
+mingw32-make[1]: Entering directory 'D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_87510.dir/CMakeCCompilerABI.c.obj
+E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\gcc.exe   -v -o CMakeFiles\cmTC_87510.dir\CMakeCCompilerABI.c.obj -c E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\share\cmake-3.23\Modules\CMakeCCompilerABI.c
+Using built-in specs.
+COLLECT_GCC=E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\gcc.exe
+Target: x86_64-w64-mingw32
+Configured with: ../gcc-11.2.0/configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --build=x86_64-alpine-linux-musl --prefix=/win --enable-checking=release --enable-fully-dynamic-string --enable-languages=c,c++ --enable-libatomic --enable-libgomp --enable-libstdcxx-filesystem-ts=yes --enable-libstdcxx-time=yes --enable-seh-exceptions --enable-shared --enable-static --enable-threads=posix --enable-version-specific-runtime-libs --disable-bootstrap --disable-graphite --disable-libada --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-libquadmath --disable-lto --disable-nls --disable-multilib --disable-rpath --disable-symvers --disable-werror --disable-win32-registry --with-gnu-as --with-gnu-ld --with-system-libiconv --with-system-libz --with-gmp=/win/makedepends --with-mpfr=/win/makedepends --with-mpc=/win/makedepends
+Thread model: posix
+Supported LTO compression algorithms: zlib
+gcc version 11.2.0 (GCC) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_87510.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\cmTC_87510.dir\'
+ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/cc1.exe -quiet -v -iprefix E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/ -D_REENTRANT E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\share\cmake-3.23\Modules\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\cmTC_87510.dir\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\Users\ryanz\AppData\Local\Temp\cckTYZto.s
+GNU C17 (GCC) version 11.2.0 (x86_64-w64-mingw32)
+	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include"
+ignoring nonexistent directory "/win/include"
+ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../include"
+ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"
+ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"
+ignoring nonexistent directory "/mingw/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include
+ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include
+ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed
+ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include
+End of search list.
+GNU C17 (GCC) version 11.2.0 (x86_64-w64-mingw32)
+	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 23424b72d090e8b977a96775bde79257
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_87510.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\cmTC_87510.dir\'
+ as -v -o CMakeFiles\cmTC_87510.dir\CMakeCCompilerABI.c.obj C:\Users\ryanz\AppData\Local\Temp\cckTYZto.s
+GNU assembler version 2.37 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.37
+COMPILER_PATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/
+LIBRARY_PATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_87510.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\cmTC_87510.dir\CMakeCCompilerABI.c.'
+Linking C executable cmTC_87510.exe
+E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_87510.dir\link.txt --verbose=1
+E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\cmTC_87510.dir/objects.a
+E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\ar.exe qc CMakeFiles\cmTC_87510.dir/objects.a @CMakeFiles\cmTC_87510.dir\objects1.rsp
+E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\gcc.exe  -v -Wl,--whole-archive CMakeFiles\cmTC_87510.dir/objects.a -Wl,--no-whole-archive -o cmTC_87510.exe -Wl,--out-implib,libcmTC_87510.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+Using built-in specs.
+COLLECT_GCC=E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\gcc.exe
+COLLECT_LTO_WRAPPER=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/lto-wrapper.exe
+Target: x86_64-w64-mingw32
+Configured with: ../gcc-11.2.0/configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --build=x86_64-alpine-linux-musl --prefix=/win --enable-checking=release --enable-fully-dynamic-string --enable-languages=c,c++ --enable-libatomic --enable-libgomp --enable-libstdcxx-filesystem-ts=yes --enable-libstdcxx-time=yes --enable-seh-exceptions --enable-shared --enable-static --enable-threads=posix --enable-version-specific-runtime-libs --disable-bootstrap --disable-graphite --disable-libada --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-libquadmath --disable-lto --disable-nls --disable-multilib --disable-rpath --disable-symvers --disable-werror --disable-win32-registry --with-gnu-as --with-gnu-ld --with-system-libiconv --with-system-libz --with-gmp=/win/makedepends --with-mpfr=/win/makedepends --with-mpc=/win/makedepends
+Thread model: posix
+Supported LTO compression algorithms: zlib
+gcc version 11.2.0 (GCC) 
+COMPILER_PATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/
+LIBRARY_PATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_87510.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_87510.'
+ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/collect2.exe -m i386pep -Bdynamic -o cmTC_87510.exe E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtbegin.o -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0 -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../.. --whole-archive CMakeFiles\cmTC_87510.dir/objects.a --no-whole-archive --out-implib libcmTC_87510.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtend.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_87510.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_87510.'
+mingw32-make[1]: Leaving directory 'D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include]
+    add: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include]
+    add: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed]
+    add: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include]
+  end of search list found
+  collapse include dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include]
+  collapse include dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/include]
+  collapse include dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed]
+  collapse include dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/include]
+  implicit include dirs: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/include;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_87510/fast && E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_87510.dir\build.make CMakeFiles/cmTC_87510.dir/build]
+  ignore line: [mingw32-make[1]: Entering directory 'D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_87510.dir/CMakeCCompilerABI.c.obj]
+  ignore line: [E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\gcc.exe   -v -o CMakeFiles\cmTC_87510.dir\CMakeCCompilerABI.c.obj -c E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\share\cmake-3.23\Modules\CMakeCCompilerABI.c]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\gcc.exe]
+  ignore line: [Target: x86_64-w64-mingw32]
+  ignore line: [Configured with: ../gcc-11.2.0/configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --build=x86_64-alpine-linux-musl --prefix=/win --enable-checking=release --enable-fully-dynamic-string --enable-languages=c,c++ --enable-libatomic --enable-libgomp --enable-libstdcxx-filesystem-ts=yes --enable-libstdcxx-time=yes --enable-seh-exceptions --enable-shared --enable-static --enable-threads=posix --enable-version-specific-runtime-libs --disable-bootstrap --disable-graphite --disable-libada --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-libquadmath --disable-lto --disable-nls --disable-multilib --disable-rpath --disable-symvers --disable-werror --disable-win32-registry --with-gnu-as --with-gnu-ld --with-system-libiconv --with-system-libz --with-gmp=/win/makedepends --with-mpfr=/win/makedepends --with-mpc=/win/makedepends]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 11.2.0 (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_87510.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\cmTC_87510.dir\']
+  ignore line: [ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/cc1.exe -quiet -v -iprefix E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/ -D_REENTRANT E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\share\cmake-3.23\Modules\CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles\cmTC_87510.dir\ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o C:\Users\ryanz\AppData\Local\Temp\cckTYZto.s]
+  ignore line: [GNU C17 (GCC) version 11.2.0 (x86_64-w64-mingw32)]
+  ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include"]
+  ignore line: [ignoring nonexistent directory "/win/include"]
+  ignore line: [ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../include"]
+  ignore line: [ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"]
+  ignore line: [ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"]
+  ignore line: [ignoring nonexistent directory "/mingw/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include]
+  ignore line: [ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include]
+  ignore line: [ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed]
+  ignore line: [ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C17 (GCC) version 11.2.0 (x86_64-w64-mingw32)]
+  ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: 23424b72d090e8b977a96775bde79257]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_87510.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\cmTC_87510.dir\']
+  ignore line: [ as -v -o CMakeFiles\cmTC_87510.dir\CMakeCCompilerABI.c.obj C:\Users\ryanz\AppData\Local\Temp\cckTYZto.s]
+  ignore line: [GNU assembler version 2.37 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.37]
+  ignore line: [COMPILER_PATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/]
+  ignore line: [LIBRARY_PATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_87510.dir\CMakeCCompilerABI.c.obj' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\cmTC_87510.dir\CMakeCCompilerABI.c.']
+  ignore line: [Linking C executable cmTC_87510.exe]
+  ignore line: [E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_87510.dir\link.txt --verbose=1]
+  ignore line: [E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\cmTC_87510.dir/objects.a]
+  ignore line: [E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\ar.exe qc CMakeFiles\cmTC_87510.dir/objects.a @CMakeFiles\cmTC_87510.dir\objects1.rsp]
+  ignore line: [E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\gcc.exe  -v -Wl --whole-archive CMakeFiles\cmTC_87510.dir/objects.a -Wl --no-whole-archive -o cmTC_87510.exe -Wl --out-implib libcmTC_87510.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\gcc.exe]
+  ignore line: [COLLECT_LTO_WRAPPER=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/lto-wrapper.exe]
+  ignore line: [Target: x86_64-w64-mingw32]
+  ignore line: [Configured with: ../gcc-11.2.0/configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --build=x86_64-alpine-linux-musl --prefix=/win --enable-checking=release --enable-fully-dynamic-string --enable-languages=c,c++ --enable-libatomic --enable-libgomp --enable-libstdcxx-filesystem-ts=yes --enable-libstdcxx-time=yes --enable-seh-exceptions --enable-shared --enable-static --enable-threads=posix --enable-version-specific-runtime-libs --disable-bootstrap --disable-graphite --disable-libada --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-libquadmath --disable-lto --disable-nls --disable-multilib --disable-rpath --disable-symvers --disable-werror --disable-win32-registry --with-gnu-as --with-gnu-ld --with-system-libiconv --with-system-libz --with-gmp=/win/makedepends --with-mpfr=/win/makedepends --with-mpc=/win/makedepends]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 11.2.0 (GCC) ]
+  ignore line: [COMPILER_PATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/]
+  ignore line: [LIBRARY_PATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_87510.exe' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_87510.']
+  link line: [ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/collect2.exe -m i386pep -Bdynamic -o cmTC_87510.exe E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtbegin.o -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0 -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../.. --whole-archive CMakeFiles\cmTC_87510.dir/objects.a --no-whole-archive --out-implib libcmTC_87510.dll.a --major-image-version 0 --minor-image-version 0 -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc -lgcc_eh -lmoldname -lmingwex -lmsvcrt -lkernel32 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtend.o]
+    arg [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/collect2.exe] ==> ignore
+    arg [-m] ==> ignore
+    arg [i386pep] ==> ignore
+    arg [-Bdynamic] ==> search dynamic
+    arg [-o] ==> ignore
+    arg [cmTC_87510.exe] ==> ignore
+    arg [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> obj [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o]
+    arg [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtbegin.o] ==> obj [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtbegin.o]
+    arg [-LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0] ==> dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0]
+    arg [-LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc] ==> dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc]
+    arg [-LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib]
+    arg [-LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib] ==> dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib]
+    arg [-LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib] ==> dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib]
+    arg [-LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../..] ==> dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../..]
+    arg [--whole-archive] ==> ignore
+    arg [CMakeFiles\cmTC_87510.dir/objects.a] ==> ignore
+    arg [--no-whole-archive] ==> ignore
+    arg [--out-implib] ==> ignore
+    arg [libcmTC_87510.dll.a] ==> ignore
+    arg [--major-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [--minor-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [-lmingw32] ==> lib [mingw32]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lgcc_eh] ==> lib [gcc_eh]
+    arg [-lmoldname] ==> lib [moldname]
+    arg [-lmingwex] ==> lib [mingwex]
+    arg [-lmsvcrt] ==> lib [msvcrt]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [-lpthread] ==> lib [pthread]
+    arg [-ladvapi32] ==> lib [advapi32]
+    arg [-lshell32] ==> lib [shell32]
+    arg [-luser32] ==> lib [user32]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [-liconv] ==> lib [iconv]
+    arg [-lmingw32] ==> lib [mingw32]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lgcc_eh] ==> lib [gcc_eh]
+    arg [-lmoldname] ==> lib [moldname]
+    arg [-lmingwex] ==> lib [mingwex]
+    arg [-lmsvcrt] ==> lib [msvcrt]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o] ==> obj [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o]
+    arg [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtend.o] ==> obj [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtend.o]
+  remove lib [gcc_eh]
+  remove lib [msvcrt]
+  remove lib [gcc_eh]
+  remove lib [msvcrt]
+  collapse obj [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/lib/crt2.o]
+  collapse obj [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtbegin.o] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/crtbegin.o]
+  collapse obj [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/lib/default-manifest.o]
+  collapse obj [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtend.o] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/crtend.o]
+  collapse library dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0]
+  collapse library dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc]
+  collapse library dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/lib]
+  collapse library dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib]
+  collapse library dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/lib]
+  collapse library dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../..] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib]
+  implicit libs: [mingw32;gcc;moldname;mingwex;kernel32;pthread;advapi32;shell32;user32;kernel32;iconv;mingw32;gcc;moldname;mingwex;kernel32]
+  implicit objs: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/lib/crt2.o;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/crtbegin.o;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/lib/default-manifest.o;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/crtend.o]
+  implicit dirs: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/lib;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib]
+  implicit fwks: []
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_a9dfb/fast && E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_a9dfb.dir\build.make CMakeFiles/cmTC_a9dfb.dir/build
+mingw32-make[1]: Entering directory 'D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a9dfb.dir/CMakeCXXCompilerABI.cpp.obj
+E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\g++.exe   -v -o CMakeFiles\cmTC_a9dfb.dir\CMakeCXXCompilerABI.cpp.obj -c E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\share\cmake-3.23\Modules\CMakeCXXCompilerABI.cpp
+Using built-in specs.
+COLLECT_GCC=E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\g++.exe
+Target: x86_64-w64-mingw32
+Configured with: ../gcc-11.2.0/configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --build=x86_64-alpine-linux-musl --prefix=/win --enable-checking=release --enable-fully-dynamic-string --enable-languages=c,c++ --enable-libatomic --enable-libgomp --enable-libstdcxx-filesystem-ts=yes --enable-libstdcxx-time=yes --enable-seh-exceptions --enable-shared --enable-static --enable-threads=posix --enable-version-specific-runtime-libs --disable-bootstrap --disable-graphite --disable-libada --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-libquadmath --disable-lto --disable-nls --disable-multilib --disable-rpath --disable-symvers --disable-werror --disable-win32-registry --with-gnu-as --with-gnu-ld --with-system-libiconv --with-system-libz --with-gmp=/win/makedepends --with-mpfr=/win/makedepends --with-mpc=/win/makedepends
+Thread model: posix
+Supported LTO compression algorithms: zlib
+gcc version 11.2.0 (GCC) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_a9dfb.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\cmTC_a9dfb.dir\'
+ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/cc1plus.exe -quiet -v -iprefix E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/ -D_REENTRANT E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\share\cmake-3.23\Modules\CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles\cmTC_a9dfb.dir\ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o C:\Users\ryanz\AppData\Local\Temp\cczQvj1a.s
+GNU C++17 (GCC) version 11.2.0 (x86_64-w64-mingw32)
+	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"
+ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"
+ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"
+ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include"
+ignoring nonexistent directory "/win/include"
+ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../include"
+ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"
+ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"
+ignoring nonexistent directory "/mingw/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++
+ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32
+ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward
+ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include
+ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include
+ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed
+ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include
+End of search list.
+GNU C++17 (GCC) version 11.2.0 (x86_64-w64-mingw32)
+	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version none
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: 916242a6eadede3a42d72bc0142b939f
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_a9dfb.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\cmTC_a9dfb.dir\'
+ as -v -o CMakeFiles\cmTC_a9dfb.dir\CMakeCXXCompilerABI.cpp.obj C:\Users\ryanz\AppData\Local\Temp\cczQvj1a.s
+GNU assembler version 2.37 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.37
+COMPILER_PATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/
+LIBRARY_PATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_a9dfb.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\cmTC_a9dfb.dir\CMakeCXXCompilerABI.cpp.'
+Linking CXX executable cmTC_a9dfb.exe
+E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_a9dfb.dir\link.txt --verbose=1
+E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\cmTC_a9dfb.dir/objects.a
+E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\ar.exe qc CMakeFiles\cmTC_a9dfb.dir/objects.a @CMakeFiles\cmTC_a9dfb.dir\objects1.rsp
+E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\g++.exe  -v -Wl,--whole-archive CMakeFiles\cmTC_a9dfb.dir/objects.a -Wl,--no-whole-archive -o cmTC_a9dfb.exe -Wl,--out-implib,libcmTC_a9dfb.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
+Using built-in specs.
+COLLECT_GCC=E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\g++.exe
+COLLECT_LTO_WRAPPER=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/lto-wrapper.exe
+Target: x86_64-w64-mingw32
+Configured with: ../gcc-11.2.0/configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --build=x86_64-alpine-linux-musl --prefix=/win --enable-checking=release --enable-fully-dynamic-string --enable-languages=c,c++ --enable-libatomic --enable-libgomp --enable-libstdcxx-filesystem-ts=yes --enable-libstdcxx-time=yes --enable-seh-exceptions --enable-shared --enable-static --enable-threads=posix --enable-version-specific-runtime-libs --disable-bootstrap --disable-graphite --disable-libada --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-libquadmath --disable-lto --disable-nls --disable-multilib --disable-rpath --disable-symvers --disable-werror --disable-win32-registry --with-gnu-as --with-gnu-ld --with-system-libiconv --with-system-libz --with-gmp=/win/makedepends --with-mpfr=/win/makedepends --with-mpc=/win/makedepends
+Thread model: posix
+Supported LTO compression algorithms: zlib
+gcc version 11.2.0 (GCC) 
+COMPILER_PATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/
+LIBRARY_PATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a9dfb.exe' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_a9dfb.'
+ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/collect2.exe -m i386pep -Bdynamic -o cmTC_a9dfb.exe E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtbegin.o -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0 -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../.. --whole-archive CMakeFiles\cmTC_a9dfb.dir/objects.a --no-whole-archive --out-implib libcmTC_a9dfb.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtend.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a9dfb.exe' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_a9dfb.'
+mingw32-make[1]: Leaving directory 'D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++]
+    add: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32]
+    add: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward]
+    add: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include]
+    add: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include]
+    add: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed]
+    add: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include]
+  end of search list found
+  collapse include dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++]
+  collapse include dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32]
+  collapse include dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward]
+  collapse include dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include]
+  collapse include dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/include]
+  collapse include dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed]
+  collapse include dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/include]
+  implicit include dirs: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/include;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/include]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f Makefile cmTC_a9dfb/fast && E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe  -f CMakeFiles\cmTC_a9dfb.dir\build.make CMakeFiles/cmTC_a9dfb.dir/build]
+  ignore line: [mingw32-make[1]: Entering directory 'D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_a9dfb.dir/CMakeCXXCompilerABI.cpp.obj]
+  ignore line: [E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\g++.exe   -v -o CMakeFiles\cmTC_a9dfb.dir\CMakeCXXCompilerABI.cpp.obj -c E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\share\cmake-3.23\Modules\CMakeCXXCompilerABI.cpp]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\g++.exe]
+  ignore line: [Target: x86_64-w64-mingw32]
+  ignore line: [Configured with: ../gcc-11.2.0/configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --build=x86_64-alpine-linux-musl --prefix=/win --enable-checking=release --enable-fully-dynamic-string --enable-languages=c,c++ --enable-libatomic --enable-libgomp --enable-libstdcxx-filesystem-ts=yes --enable-libstdcxx-time=yes --enable-seh-exceptions --enable-shared --enable-static --enable-threads=posix --enable-version-specific-runtime-libs --disable-bootstrap --disable-graphite --disable-libada --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-libquadmath --disable-lto --disable-nls --disable-multilib --disable-rpath --disable-symvers --disable-werror --disable-win32-registry --with-gnu-as --with-gnu-ld --with-system-libiconv --with-system-libz --with-gmp=/win/makedepends --with-mpfr=/win/makedepends --with-mpc=/win/makedepends]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 11.2.0 (GCC) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_a9dfb.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\cmTC_a9dfb.dir\']
+  ignore line: [ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/cc1plus.exe -quiet -v -iprefix E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/ -D_REENTRANT E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\share\cmake-3.23\Modules\CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles\cmTC_a9dfb.dir\ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o C:\Users\ryanz\AppData\Local\Temp\cczQvj1a.s]
+  ignore line: [GNU C++17 (GCC) version 11.2.0 (x86_64-w64-mingw32)]
+  ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"]
+  ignore line: [ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"]
+  ignore line: [ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"]
+  ignore line: [ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include"]
+  ignore line: [ignoring nonexistent directory "/win/include"]
+  ignore line: [ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../include"]
+  ignore line: [ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"]
+  ignore line: [ignoring duplicate directory "E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/../../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"]
+  ignore line: [ignoring nonexistent directory "/mingw/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++]
+  ignore line: [ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32]
+  ignore line: [ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward]
+  ignore line: [ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include]
+  ignore line: [ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include]
+  ignore line: [ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed]
+  ignore line: [ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C++17 (GCC) version 11.2.0 (x86_64-w64-mingw32)]
+  ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version none]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: 916242a6eadede3a42d72bc0142b939f]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_a9dfb.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\cmTC_a9dfb.dir\']
+  ignore line: [ as -v -o CMakeFiles\cmTC_a9dfb.dir\CMakeCXXCompilerABI.cpp.obj C:\Users\ryanz\AppData\Local\Temp\cczQvj1a.s]
+  ignore line: [GNU assembler version 2.37 (x86_64-w64-mingw32) using BFD version (GNU Binutils) 2.37]
+  ignore line: [COMPILER_PATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/]
+  ignore line: [LIBRARY_PATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles\cmTC_a9dfb.dir\CMakeCXXCompilerABI.cpp.obj' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles\cmTC_a9dfb.dir\CMakeCXXCompilerABI.cpp.']
+  ignore line: [Linking CXX executable cmTC_a9dfb.exe]
+  ignore line: [E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\bin\cmake.exe -E cmake_link_script CMakeFiles\cmTC_a9dfb.dir\link.txt --verbose=1]
+  ignore line: [E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\cmTC_a9dfb.dir/objects.a]
+  ignore line: [E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\ar.exe qc CMakeFiles\cmTC_a9dfb.dir/objects.a @CMakeFiles\cmTC_a9dfb.dir\objects1.rsp]
+  ignore line: [E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\g++.exe  -v -Wl --whole-archive CMakeFiles\cmTC_a9dfb.dir/objects.a -Wl --no-whole-archive -o cmTC_a9dfb.exe -Wl --out-implib libcmTC_a9dfb.dll.a -Wl --major-image-version 0 --minor-image-version 0 ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\mingw\bin\g++.exe]
+  ignore line: [COLLECT_LTO_WRAPPER=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/lto-wrapper.exe]
+  ignore line: [Target: x86_64-w64-mingw32]
+  ignore line: [Configured with: ../gcc-11.2.0/configure --host=x86_64-w64-mingw32 --target=x86_64-w64-mingw32 --build=x86_64-alpine-linux-musl --prefix=/win --enable-checking=release --enable-fully-dynamic-string --enable-languages=c,c++ --enable-libatomic --enable-libgomp --enable-libstdcxx-filesystem-ts=yes --enable-libstdcxx-time=yes --enable-seh-exceptions --enable-shared --enable-static --enable-threads=posix --enable-version-specific-runtime-libs --disable-bootstrap --disable-graphite --disable-libada --disable-libstdcxx-pch --disable-libstdcxx-debug --disable-libquadmath --disable-lto --disable-nls --disable-multilib --disable-rpath --disable-symvers --disable-werror --disable-win32-registry --with-gnu-as --with-gnu-ld --with-system-libiconv --with-system-libz --with-gmp=/win/makedepends --with-mpfr=/win/makedepends --with-mpc=/win/makedepends]
+  ignore line: [Thread model: posix]
+  ignore line: [Supported LTO compression algorithms: zlib]
+  ignore line: [gcc version 11.2.0 (GCC) ]
+  ignore line: [COMPILER_PATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/]
+  ignore line: [LIBRARY_PATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/]
+  ignore line: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_a9dfb.exe' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_a9dfb.']
+  link line: [ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/collect2.exe -m i386pep -Bdynamic -o cmTC_a9dfb.exe E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtbegin.o -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0 -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib -LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../.. --whole-archive CMakeFiles\cmTC_a9dfb.dir/objects.a --no-whole-archive --out-implib libcmTC_a9dfb.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 -lpthread -ladvapi32 -lshell32 -luser32 -lkernel32 -liconv -lmingw32 -lgcc_s -lgcc -lmoldname -lmingwex -lmsvcrt -lkernel32 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtend.o]
+    arg [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../libexec/gcc/x86_64-w64-mingw32/11.2.0/collect2.exe] ==> ignore
+    arg [-m] ==> ignore
+    arg [i386pep] ==> ignore
+    arg [-Bdynamic] ==> search dynamic
+    arg [-o] ==> ignore
+    arg [cmTC_a9dfb.exe] ==> ignore
+    arg [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> obj [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o]
+    arg [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtbegin.o] ==> obj [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtbegin.o]
+    arg [-LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0] ==> dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0]
+    arg [-LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc] ==> dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc]
+    arg [-LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib]
+    arg [-LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib] ==> dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib]
+    arg [-LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib] ==> dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib]
+    arg [-LE:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../..] ==> dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../..]
+    arg [--whole-archive] ==> ignore
+    arg [CMakeFiles\cmTC_a9dfb.dir/objects.a] ==> ignore
+    arg [--no-whole-archive] ==> ignore
+    arg [--out-implib] ==> ignore
+    arg [libcmTC_a9dfb.dll.a] ==> ignore
+    arg [--major-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [--minor-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-lmingw32] ==> lib [mingw32]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lmoldname] ==> lib [moldname]
+    arg [-lmingwex] ==> lib [mingwex]
+    arg [-lmsvcrt] ==> lib [msvcrt]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [-lpthread] ==> lib [pthread]
+    arg [-ladvapi32] ==> lib [advapi32]
+    arg [-lshell32] ==> lib [shell32]
+    arg [-luser32] ==> lib [user32]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [-liconv] ==> lib [iconv]
+    arg [-lmingw32] ==> lib [mingw32]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lmoldname] ==> lib [moldname]
+    arg [-lmingwex] ==> lib [mingwex]
+    arg [-lmsvcrt] ==> lib [msvcrt]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o] ==> obj [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o]
+    arg [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtend.o] ==> obj [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtend.o]
+  remove lib [msvcrt]
+  remove lib [msvcrt]
+  collapse obj [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/crt2.o] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/lib/crt2.o]
+  collapse obj [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtbegin.o] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/crtbegin.o]
+  collapse obj [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib/default-manifest.o] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/lib/default-manifest.o]
+  collapse obj [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/crtend.o] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/crtend.o]
+  collapse library dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0]
+  collapse library dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc]
+  collapse library dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib/../lib] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/lib]
+  collapse library dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../lib] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib]
+  collapse library dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/lib] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/lib]
+  collapse library dir [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../..] ==> [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib]
+  implicit libs: [stdc++;mingw32;gcc_s;gcc;moldname;mingwex;kernel32;pthread;advapi32;shell32;user32;kernel32;iconv;mingw32;gcc_s;gcc;moldname;mingwex;kernel32]
+  implicit objs: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/lib/crt2.o;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/crtbegin.o;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/lib/default-manifest.o;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/crtend.o]
+  implicit dirs: [E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib/gcc;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/x86_64-w64-mingw32/lib;E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/lib]
+  implicit fwks: []
+
+

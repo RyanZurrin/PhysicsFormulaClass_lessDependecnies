@@ -20,6 +20,8 @@ int main(int argc, char* argv[])
                         Heat::molecularKineticEnergy(293.0),
                         true);
 
+    Elements::NITROGEN::display();
+
 
 
     //*************************************************************************
