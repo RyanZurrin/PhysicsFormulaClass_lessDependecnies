@@ -559,19 +559,19 @@ public:
 
     /// <summary>
     /// Calculates the peeks the current in an AC circuit using the peek voltage
-    /// of Vo and its impedance of Z.
+    /// of Vo and its impedance of Z_.
     /// </summary>
     /// <param name="Vo">The peek voltage in circuit.</param>
-    /// <param name="Z">The impedance.</param>
+    /// <param name="Z_">The impedance.</param>
     /// <returns>The peek current -> Io = peek Amps</returns>
     static ld peekCurrent_AC(const ld Vo, const ld Z);
 
     /// <summary>
     /// Calculates the RMS(root mean square) or average current in an AC circuit
-    /// using the rms Voltage and the circuits impedance of Z.
+    /// using the rms Voltage and the circuits impedance of Z_.
     /// </summary>
     /// <param name="Vrms">The rms Voltage, average voltage.</param>
-    /// <param name="Z">The impedance in circuit.</param>
+    /// <param name="Z_">The impedance in circuit.</param>
     /// <returns>the average or rms current Irms -> (A)</returns>
     static ld rmsCurrent_AC(const ld Vrms, const ld Z);
 
@@ -628,10 +628,10 @@ public:
     static ld resonantFrequency(const ld L, const ld C);
 
     /// <summary>
-    /// Calculates the power factor. cos(phi) = R/Z.
+    /// Calculates the power factor. cos(phi) = R/Z_.
     /// </summary>
     /// <param name="R">The resistance.</param>
-    /// <param name="Z">The impedance.</param>
+    /// <param name="Z_">The impedance.</param>
     /// <returns>power factor(unit-less)</returns>
     static ld powerFactor(const ld R, const ld Z);
 
@@ -646,7 +646,7 @@ public:
     /// Phases the angle.
     /// </summary>
     /// <param name="R">The resistance.</param>
-    /// <param name="Z">The impedance.</param>
+    /// <param name="Z_">The impedance.</param>
     /// <returns>phase angle</returns>
     static ld phaseAngle(const ld R, const ld Z);
 

@@ -134,7 +134,7 @@
 
         #endif
 
-    #else // Linux, FreeBSD, Mac OS X
+    #else // Linux, FreeBSD, Mac OS X_
 
         #if __GNUC__ >= 4
 

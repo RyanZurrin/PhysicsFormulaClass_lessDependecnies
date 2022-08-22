@@ -72,8 +72,8 @@ public:
     ////////////////////////////////////////////////////////////
     /// \brief Set the center of the view
     ///
-    /// \param x X coordinate of the new center
-    /// \param y Y coordinate of the new center
+    /// \param x X_ coordinate of the new center
+    /// \param y Y_ coordinate of the new center
     ///
     /// \see setSize, getCenter
     ///
@@ -195,8 +195,8 @@ public:
     ////////////////////////////////////////////////////////////
     /// \brief Move the view relatively to its current position
     ///
-    /// \param offsetX X coordinate of the move offset
-    /// \param offsetY Y coordinate of the move offset
+    /// \param offsetX X_ coordinate of the move offset
+    /// \param offsetY Y_ coordinate of the move offset
     ///
     /// \see setCenter, rotate, zoom
     ///

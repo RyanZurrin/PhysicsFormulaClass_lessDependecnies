@@ -97,7 +97,7 @@
     /// setWOOD method you can use to adjust its value of the power. Its not checked so if you
     /// put in a invalid number its on you, your calculation will be wrong.
     /// </summary>
-    long double WOOD = pow(10, 9); // 10^X conductor, OHm*m
+    long double WOOD = pow(10, 9); // 10^X_ conductor, OHm*m
     /// <summary>
     /// Sets the GLASS variable.
     /// </summary>

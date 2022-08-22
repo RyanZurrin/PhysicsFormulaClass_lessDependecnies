@@ -7,7 +7,7 @@ SFML is a simple, fast, cross-platform and object-oriented multimedia API. It pr
 ## Authors
 
   - Laurent Gomila — main developer (laurent@sfml-dev.org)
-  - Marco Antognini — OS X developer (hiura@sfml-dev.org)
+  - Marco Antognini — OS X_ developer (hiura@sfml-dev.org)
   - Jonathan De Wachter — Android developer (dewachter.jonathan@gmail.com)
   - Jan Haller (bromeon@sfml-dev.org)
   - Stefan Schindler (tank@sfml-dev.org)

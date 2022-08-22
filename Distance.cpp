@@ -37,9 +37,9 @@ float rez::distance(Line2d& line, Point2d& C)
 
 float rez::distance(Point3d& p1, Point3d& p2)
 {
-    float dx = p1[X] - p2[X];
-    float dy = p1[Y] - p2[Y];
-    float dz = p1[Z] - p2[Z];
+    float dx = p1[X_] - p2[X_];
+    float dy = p1[Y_] - p2[Y_];
+    float dz = p1[Z_] - p2[Z_];
 
     float distance = sqrt(pow(dx, 2) + pow(dy, 2) + pow(dz, 2));
     return distance;
@@ -47,8 +47,8 @@ float rez::distance(Point3d& p1, Point3d& p2)
 
 float rez::distance(Point2d& p1, Point2d& p2)
 {
-    float dx = p1[X] - p2[X];
-    float dy = p1[Y] - p2[Y];
+    float dx = p1[X_] - p2[X_];
+    float dy = p1[Y_] - p2[Y_];
     float distance = sqrt(pow(dx, 2) + pow(dy, 2));
     return distance;
 }

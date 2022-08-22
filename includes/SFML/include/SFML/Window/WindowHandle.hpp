@@ -49,7 +49,7 @@ namespace sf
 
 #elif defined(SFML_SYSTEM_MACOS)
 
-    // Window handle is NSWindow or NSView (void*) on Mac OS X - Cocoa
+    // Window handle is NSWindow or NSView (void*) on Mac OS X_ - Cocoa
     typedef void* WindowHandle;
 
 #elif defined(SFML_SYSTEM_IOS)
@@ -85,13 +85,13 @@ namespace sf
 /// ----------------|------------------------------------------------------------
 /// Windows         | \p HWND
 /// Linux/FreeBSD   | \p %Window
-/// Mac OS X        | either \p NSWindow* or \p NSView*, disguised as \p void*
+/// Mac OS X_        | either \p NSWindow* or \p NSView*, disguised as \p void*
 /// iOS             | \p UIWindow*
 /// Android         | \p ANativeWindow*
 ///
-/// \par Mac OS X Specification
+/// \par Mac OS X_ Specification
 ///
-/// On Mac OS X, a sf::Window can be created either from an
+/// On Mac OS X_, a sf::Window can be created either from an
 /// existing \p NSWindow* or an \p NSView*. When the window
 /// is created from a window, SFML will use its content view
 /// as the OpenGL area. sf::Window::getSystemHandle() will

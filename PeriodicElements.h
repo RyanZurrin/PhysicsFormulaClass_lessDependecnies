@@ -37,7 +37,7 @@ static struct UnifiedAtomicMass
 /// of mass is kilogram, the atomic mass is often expressed in the non-SI unit
 /// dalton where 1 dalton is defined as 1⁄12 of the mass of a single
 /// carbon-12 atom, at rest.\n\n
-/// atomic_number: The atomic number or proton number (symbol Z) of a chemical
+/// atomic_number: The atomic number or proton number (symbol Z_) of a chemical
 /// element is the number of protons found in the nucleus of every atom of
 /// that element. The atomic number uniquely identifies a chemical element.
 /// It is identical to the charge number of the nucleus. In an uncharged atom,
@@ -103,10 +103,10 @@ static struct Elements
     const struct HYDROGEN
     {
         const long double atomic_weight = 1.007825; // 1.007825 u
-        const int atomic_number = 1; // Z = 1
+        const int atomic_number = 1; // Z_ = 1
         const vector<long double> energy_levels = {1};
         const long double density_STP = .0899; // .0899 kg/m^3
-        const long double melting_point = -259.1; // -259.1 C
+        const long double melting_point = -259.3; // -259.3 C
         const long double boiling_point = -252.9; // -252.9 C
         const long double thermal_conductivity = .18; // .18 W/mK
         const long double electric_conductivity = FP_NAN; // FP_NAN
@@ -130,11 +130,11 @@ static struct Elements
     const struct HELIUM
     {
         const long double atomic_weight = 4.002602; // 4.002602 u
-        const int atomic_number = 2; // Z = 2
+        const int atomic_number = 2; // Z_ = 2
         const vector<long double> energy_levels = {2};
         const long double density_STP = 0.1785; // 0.1785 kg/m^3
         const long double melting_point = FP_NAN; // C
-        const long double boiling_point = -269; // -269 C
+        const long double boiling_point = -268.9; // -269 C
         const long double thermal_conductivity = 0.1513; // 0.1513 W/mK
         const long double electric_conductivity = FP_NAN; // FP_NAN
         const long double resistivity = FP_NAN; // FP_NAN
@@ -156,7 +156,7 @@ static struct Elements
     const struct LITHIUM
     {
         const long double atomic_weight = 6.941; // 6.94 u
-        const int atomic_number = 3; // Z = 3
+        const int atomic_number = 3; // Z_ = 3
         const vector<long double> energy_levels = {2, 1};
         const long double density_STP = 535.0; // 535.0 kg/m^3
         const long double melting_point = 180.54; // 180.54 C
@@ -868,7 +868,7 @@ static struct Elements
         const int atomic_number = 29;
         const vector<long double> energy_levels = {2, 8, 18, 1};
         const long double density_STP = 8940.0; // kg/m^3
-        const long double melting_point = 1084; // C
+        const long double melting_point = 1084.62; // C
         const long double boiling_point = 2562; // C
         const long double thermal_conductivity = 400; // W/mK
         const long double electric_conductivity = 59; // MS/m
@@ -1128,7 +1128,7 @@ static struct Elements
     } Sr;
 
     /// <summary>
-    /// Yttrium is a chemical element with the symbol Y and atomic number 39.
+    /// Yttrium is a chemical element with the symbol Y_ and atomic number 39.
     /// It is a silvery-metallic transition metal chemically similar to the
     /// lanthanides and has often been classified as a "rare-earth element"
     /// </summary>
@@ -2152,7 +2152,7 @@ static struct Elements
     ///	Iridium is a chemical element with the symbol Ir and atomic number 77.
     ///	A very hard, brittle, silvery-white transition metal of the platinum group,
     ///	iridium is considered to be the second-densest metal with a density of
-    ///	22.56 g/cm³ as defined by experimental X-ray crystallography.
+    ///	22.56 g/cm³ as defined by experimental X_-ray crystallography.
     /// </summary>
     const struct IRIDIUM
     {
@@ -3270,7 +3270,7 @@ static struct Elements
             displayElementImg(getFileName(118));
         }
     } Og;
-
+private:
     static void loadImage(const char* pathname, sf::Texture& texture, sf::Sprite& sprite)
     {
         texture.loadFromFile(pathname);     // load it from the file
@@ -3278,7 +3278,7 @@ static struct Elements
         // the rectangle of the texture to use for this
         sprite.setTextureRect( sf::IntRect(0,0,screenSize_X,screenSize_Y) );
     }
-
+private:
     static void displayElementImg(const char elementName[])
     {
 
@@ -3316,7 +3316,7 @@ static struct Elements
 
 
     }
-
+private:
     static const char* getFileName(int atomicNumber)
     {
         switch (atomicNumber)
@@ -3443,7 +3443,7 @@ static struct Elements
         return "no file";
     }
 #endif //PHYSICSFORMULA_PERIODICELEMENTS_H
-}elements;
+} elements;
 //
 
 template <class T>
@@ -3459,7 +3459,7 @@ template<typename ELEM>
 static void printElementData(ELEM el)
 {
     printf("\nelement:               (%s)\n", typeid(el).name()+11);
-    std::cout << setw(23) << left << "atomic #: " << el.atomic_number << " Z" << std::endl;
+    std::cout << setw(23) << left << "atomic #: " << el.atomic_number << " Z_" << std::endl;
     std::cout << setw(23) << left << "atomic Weight: " << el.atomic_weight << " u" << std::endl;
     std::cout << setw(23) << left << "energy levels: ";
     printVect(el.energy_levels);

@@ -17,7 +17,7 @@ static bool is_in_same_chain(Vertex2dDCEL* a, Vertex2dDCEL* b)
 }
 
 // Vertex should be in a monotone polygon
-// a[Y] <= b[Y]
+// a[Y_] <= b[Y_]
 static bool valid_diagonal_DCEL(Vertex2dDCEL* a, Vertex2dDCEL* b)
 {
     // TODO this is wrong. have to modify. Here only incode test would be needed.
@@ -26,7 +26,7 @@ static bool valid_diagonal_DCEL(Vertex2dDCEL* a, Vertex2dDCEL* b)
     if (edge->next->origin == b || edge->prev->origin == b)
         return false;
 
-    if (a->point[X] <= b->point[X]) {
+    if (a->point[X_] <= b->point[X_]) {
         edge = edge->prev;
         while (edge->origin != b) {
             if (!left(a->point, b->point, edge->origin->point))

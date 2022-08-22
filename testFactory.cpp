@@ -15,12 +15,8 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //*************************************************************************
 
-    Heat::moleculeSpeed(elements.N.atomic_weight,
-                        elements.N.energy_levels[0],
-                        Heat::molecularKineticEnergy(293.0),
-                        true);
+    elements.Y.display();
 
-    Elements::NITROGEN::display();
 
 
 

@@ -6,16 +6,16 @@
 
 void rez::Line::setDirection(Vector3f& _dir)
 {
-    dir.assign(X, _dir[X]);
-    dir.assign(Y, _dir[Y]);
-    dir.assign(Z, _dir[Z]);
+    dir.assign(X_, _dir[X_]);
+    dir.assign(Y_, _dir[Y_]);
+    dir.assign(Z_, _dir[Z_]);
 }
 
 void rez::Line::setPoint(Point3d& _point)
 {
-    point_in_line.assign(X, _point[X]);
-    point_in_line.assign(Y, _point[Y]);
-    point_in_line.assign(Z, _point[Z]);
+    point_in_line.assign(X_, _point[X_]);
+    point_in_line.assign(Y_, _point[Y_]);
+    point_in_line.assign(Z_, _point[Z_]);
 }
 
 rez::Vector3f rez::Line::direction() const

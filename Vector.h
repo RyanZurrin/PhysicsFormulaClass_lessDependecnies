@@ -13,9 +13,9 @@ namespace rez
 #define DIM2 2
 #define DIM3 3
 
-#define X 0
-#define Y 1
-#define Z 2
+#define X_ 0
+#define Y_ 1
+#define Z_ 2
 
     template <typename coordinate_type, size_t dimensions = DIM3 >
     class Vector

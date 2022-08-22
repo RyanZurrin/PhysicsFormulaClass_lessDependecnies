@@ -49,9 +49,9 @@ public:
     ////////////////////////////////////////////////////////////
     /// \brief Construct the vector from its coordinates
     ///
-    /// \param X X coordinate
-    /// \param Y Y coordinate
-    /// \param Z Z coordinate
+    /// \param X X_ coordinate
+    /// \param Y Y_ coordinate
+    /// \param Z Z_ coordinate
     ///
     ////////////////////////////////////////////////////////////
     Vector3(T X, T Y, T Z);
@@ -73,9 +73,9 @@ public:
     ////////////////////////////////////////////////////////////
     // Member data
     ////////////////////////////////////////////////////////////
-    T x; ///< X coordinate of the vector
-    T y; ///< Y coordinate of the vector
-    T z; ///< Z coordinate of the vector
+    T x; ///< X_ coordinate of the vector
+    T y; ///< Y_ coordinate of the vector
+    T z; ///< Z_ coordinate of the vector
 };
 
 ////////////////////////////////////////////////////////////

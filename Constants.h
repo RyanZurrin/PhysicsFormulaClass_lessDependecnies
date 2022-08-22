@@ -100,11 +100,17 @@ namespace constants {
      */
     constexpr auto BOLTZMANN = 1.38064852e-23;
 
-
     /**
-     * Gas constant, R = 8.314 J/mol K
+     * @brief Global constant _R_ is the universal gas constant struct which has _R_
+     * in different units for use in different kinds of problems all represented
+     * as unit/mol * K
      */
-    constexpr auto R = 8.314;
+    const struct UniversalGasConstant
+    {
+        const long double joules = 8.314; //8.31 J/mol * K
+        const long double cal = 1.99; // 1.99 cal/mol * k
+        const long double L_atm = .0821; // .0821 L * atm/mol * K
+    }R;
 
     constexpr auto DEGREE = 180.0/PI;
     constexpr auto RADIAN = PI/180.0;

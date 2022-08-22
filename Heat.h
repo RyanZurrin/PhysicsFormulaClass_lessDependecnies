@@ -31,6 +31,21 @@ static struct HeatEnergyUnitConversion
     static ld kiloCalorie_to_joule(const ld kCal) { return kCal * 4186.0; }
     // returns kCal from joule
     static ld joule_to_kCal(const ld joule) { return joule / 4186.0; }
+    // returns kCal/kg from kJ/kg
+    static ld kiloJoule_to_kCal_per_kg(const ld kJ_kg) { return kJ_kg/4.184; }
+    // returns kJ/kg from kCal/kg
+    static ld kCal_per_kg_to_kiloJoule(const ld kCal_kg) { return kCal_kg*4.184; }
+    // returns kJ/kg from kJ/mol
+    static ld kJ_per_mol_to_kJ_per_kg(const ld kJ_mol, const ld mol_mass)
+    {
+        return (kJ_mol/mol_mass)*1000.0;
+    }
+    // returns kJ/mol from kJ/kg
+    static ld kJ_per_kg_to_kJ_per_mol(const ld kJ_kg, const ld mol_mass)
+    {
+        return (kJ_kg/1000.0)*mol_mass;
+    }
+
 
 }heConverter;
 
@@ -174,90 +189,100 @@ static struct LatentHeatFusion
     LatentHeatFusion() {}
     const struct HELIUM {
         const ld melting_point = -269.7;
-        const ld kJ_kg = 5230.0;
+        const ld kJ_kg = 5.23;
         const ld kcal_kg = 1.25;
     } helium;
     const struct HYDROGEN {
         const ld melting_point = -259.3;
-        const ld kJ_kg = 58600.0;
+        const ld kJ_kg = 58.60;
         const ld kcal_kg = 14.0;
     } hydrogen;
     const struct NITROGEN {
         const ld melting_point = -210.0;
-        const ld kJ_kg = 25500.0;
+        const ld kJ_kg = 25.50;
         const ld kcal_kg = 6.09;
     } nitrogen;
     const struct OXYGEN {
         const ld melting_point = -218.8;
-        const ld kJ_kg = 13800.0;
+        const ld kJ_kg = 13.80;
         const ld kcal_kg = 3.3;
     } oxygen;
     const struct ETHANOL {
         const ld melting_point = -114.0;
-        const ld kJ_kg = 104000.0;
+        const ld kJ_kg = 104.0;
         const ld kcal_kg = 24.9;
     } ethanol;
     const struct AMMONIA {
         const ld melting_point = -75.0;
-        const ld kJ_kg = 0.00;
+        const ld kJ_kg = FP_NAN;
         const ld kcal_kg = 108.0;
     } ammonia;
     const struct MERCURY {
         const ld melting_point = -38.9;
-        const ld kJ_kg = 11800.0;
-        const ld kcal_kg = 2.82;
+        const ld kJ_kg = 11.40;
+        const ld kcal_kg = 2.72;
     } mercury;
     const struct WATER {
         const ld melting_point = 0.0;
-        const ld kJ_kg = 334000.0;
+        const ld kJ_kg = 334.0;
         const ld kcal_kg = 79.8;
     } water;
     const struct SULFUR {
         const ld melting_point = 119;
-        const ld kJ_kg = 38100.0;
+        const ld kJ_kg = 38.10;
         const ld kcal_kg = 9.10;
     } sulfur;
     const struct LEAD {
         const ld melting_point = 327.0;
-        const ld kJ_kg = 24500.0;
-        const ld kcal_kg = 5.85;
+        const ld kJ_kg = 23.00;
+        const ld kcal_kg = 5.49;
     } lead;
     const struct ANTIMONY {
         const ld melting_point = 631.0;
-        const ld kJ_kg = 165000.0;
+        const ld kJ_kg = 165.0;
         const ld kcal_kg = 39.4;
     } antimony;
     const struct ALUMINUM {
         const ld melting_point = 660.0;
-        const ld kJ_kg = 380000.0;
+        const ld kJ_kg = 380.0;
         const ld kcal_kg = 90.0;
     } aluminum;
     const struct SILVER {
         const ld melting_point = 961.0;
-        const ld kJ_kg = 88300.0;
+        const ld kJ_kg = 88.30;
         const ld kcal_kg = 21.1;
     } silver;
     const struct GOLD {
         const ld melting_point = 1063.0;
-        const ld kJ_kg = 64500.0;
+        const ld kJ_kg = 64.0;
         const ld kcal_kg = 15.4;
     } gold;
     const struct COPPER {
         const ld melting_point = 1083.0;
-        const ld kJ_kg = 134000.0;
-        const ld kcal_kg = 32.0;
+        const ld kJ_kg = 206.14;
+        const ld kcal_kg = 49.2;
     } copper;
     const struct URANIUM {
         const ld melting_point = 1133.0;
-        const ld kJ_kg = 84000.0;
-        const ld kcal_kg = 20.0;
+        const ld kJ_kg = 84.0;
+        const ld kcal_kg = 20.077;
     } uranium;
+    const struct URANIUM_DIOXIDE {
+        const ld melting_point = 2846.85;
+        const ld kJ_kg = 259.0;
+        const ld kcal_kg = 61.903;
+    } uraniumDioxide;
+    const struct PLATINUM {
+        const ld melting_point = 1768.0;
+        const ld kJ_kg = 103.0;
+        const ld kcal_kg = 24.618;
+    } platinum;
     const struct TUNGSTEN {
         const ld melting_point = 3410.0;
-        const ld kJ_kg = 184000.0;
-        const ld kcal_kg = 44.0;
+        const ld kJ_kg = 184.0;
+        const ld kcal_kg = 43.9;
     } tungsten;
-} LHF;
+} LF;
 
 /**
  * structure of latent heat coefficients for vaporization (boiling point)
@@ -266,91 +291,101 @@ static struct LatentHeatVaporization
 {
     LatentHeatVaporization() {}
     const struct HELIUM {
-        const ld boiling_point = -268.9;
-        const ld kJ_kg = 20900.0;
-        const ld kcal_kg = 4.99;
+        const ld boiling_point = -268.9; // C
+        const ld kJ_kg = 20.73; // kJ/kg
+        const ld kcal_kg = 4.95; // kcal/kg
     } helium;
     const struct HYDROGEN {
         const ld boiling_point = -252.9;
-        const ld kJ_kg = 452000.0;
+        const ld kJ_kg = 452.0;
         const ld kcal_kg = 108.0;
     } hydrogen;
     const struct NITROGEN {
         const ld boiling_point = -195.8;
-        const ld kJ_kg = 201000.0;
+        const ld kJ_kg = 201.0;
         const ld kcal_kg = 48.0;
     } nitrogen;
     const struct OXYGEN {
         const ld boiling_point = -183.0;
-        const ld kJ_kg = 213000.0;
+        const ld kJ_kg = 213.0;
         const ld kcal_kg = 50.9;
     } oxygen;
     const struct ETHANOL {
         const ld boiling_point = 78.3;
-        const ld kJ_kg = 854000.0;
+        const ld kJ_kg = 854.0;
         const ld kcal_kg = 204.0;
     } ethanol;
     const struct AMMONIA {
         const ld boiling_point = -33.4;
-        const ld kJ_kg = 1370000.0;
+        const ld kJ_kg = 1370.0;
         const ld kcal_kg = 327.0;
     } ammonia;
     const struct MERCURY {
         const ld boiling_point = 357;
-        const ld kJ_kg = 272000.0;
+        const ld kJ_kg = 272.0;
         const ld kcal_kg = 65.0;
     } mercury;
     const struct WATER {
         const ld boiling_point = 100.0;
-        const ld kJ_kg = 2256000.0;
+        const ld kJ_kg = 2256.0;
         const ld kcal_kg = 539.0;
     } water;
     const struct SULFUR {
         const ld boiling_point = 444.6;
-        const ld kJ_kg = 326000.0;
+        const ld kJ_kg = 326.0;
         const ld kcal_kg = 77.9;
     } sulfur;
     const struct LEAD {
         const ld boiling_point = 1750.0;
-        const ld kJ_kg = 871000.0;
-        const ld kcal_kg = 208.0;
+        const ld kJ_kg = 859.0;
+        const ld kcal_kg = 205.31;
     } lead;
     const struct ANTIMONY {
         const ld boiling_point = 1440.0;
-        const ld kJ_kg = 561000.0;
+        const ld kJ_kg = 561.0;
         const ld kcal_kg = 134.0;
     } antimony;
     const struct ALUMINUM {
         const ld melting_point = 2450.0;
-        const ld kJ_kg = 11400000.0;
+        const ld kJ_kg = 11400.0;
         const ld kcal_kg = 2720.0;
     } aluminum;
     const struct SILVER {
         const ld boiling_point = 2193.0;
-        const ld kJ_kg = 2336000.0;
+        const ld kJ_kg = 2336.0;
         const ld kcal_kg = 558.0;
     } silver;
     const struct GOLD {
         const ld boiling_point = 2660.0;
-        const ld kJ_kg = 1578000.0;
+        const ld kJ_kg = 1578.0;
         const ld kcal_kg = 377.0;
     } gold;
     const struct COPPER {
         const ld boiling_point = 2595.0;
-        const ld kJ_kg = 5069000.0;
+        const ld kJ_kg = 5069.0;
         const ld kcal_kg = 1211.0;
     } copper;
     const struct URANIUM {
         const ld boiling_point = 3900.0;
-        const ld kJ_kg = 1900000.0;
+        const ld kJ_kg = 1900.0;
         const ld kcal_kg = 454.0;
     } uranium;
+    const struct URANIUM_DIOXIDE {
+        const ld boiling_point = 3541.85;
+        const ld kJ_kg = 1533.0;
+        const ld kcal_kg = 366.396;
+    } uraniumDioxide;
+    const struct PLATINUM {
+        const ld boiling_point = 3825.0;
+        const ld kJ_kg = 2511.8;
+        const ld kcal_kg = 600.335;
+    } platinum;
     const struct TUNGSTEN {
         const ld boiling_point = 5900.0;
-        const ld kJ_kg = 4810000.0;
+        const ld kJ_kg = 4810.0;
         const ld kcal_kg = 1150.0;
     } tungsten;
-}LHV;
+}LV;
 
 /**
  * @brief structure of thermal conductivities of common substances
@@ -550,9 +585,27 @@ public:
      * @param specificHeat
      * @return  heat capacity
      */
-    static ld heatCapacity(ld mass, ld specificHeat)
+    static ld heatCapacity(ld mass, ld specificHeat, bool print = false)
     {
-        return mass * specificHeat;
+        auto heat_capacity = mass * specificHeat;
+        if (print)
+            std::cout << "\nheat capacity: " << heat_capacity << std::endl;
+        return heat_capacity;
+    }
+
+    /**
+     * @brief heat of transformation of a substance from one state to another
+     * @param mass of substance
+     * @param latentHeat is the heat of transformation (fusion or vaporization)
+     * @return heat of transformation
+     */
+    static ld heatOfTransformation(ld mass, ld latentHeat, bool print = false)
+    {
+        auto heatOfTransformation = mass * latentHeat;
+        if (print)
+            std::cout << "\nheat of transformation: " << heatOfTransformation
+                      << std::endl;
+        return heatOfTransformation;
     }
 
     /**
@@ -1057,7 +1110,7 @@ public:
     static ld thicknessOfIceOnWindshield(const ld iceTemp,
                                          const ld surfaceArea,
                                          const ld energyToMelt,
-                                         const ld lf = LHF.water.kJ_kg,
+                                         const ld lf = LF.water.kJ_kg,
                                          const ld c = SHC.iceAverageSolid.J_kgC,
                                          const ld density = 917.0)
     {
@@ -1084,7 +1137,7 @@ public:
                                                 const ld mW,
                                                 const ld cW,
                                                 const ld Tw,
-                                                const ld Lfw = LHF.water.kcal_kg)
+                                                const ld Lfw = LF.water.kcal_kg)
     {
         auto q1 = mI * cI * -Ti;
         auto q2 = mI * Lfw;

@@ -271,8 +271,8 @@ public:
     /// \param pixels Array of pixels to copy to the texture
     /// \param width  Width of the pixel region contained in \a pixels
     /// \param height Height of the pixel region contained in \a pixels
-    /// \param x      X offset in the texture where to copy the source pixels
-    /// \param y      Y offset in the texture where to copy the source pixels
+    /// \param x      X_ offset in the texture where to copy the source pixels
+    /// \param y      Y_ offset in the texture where to copy the source pixels
     ///
     ////////////////////////////////////////////////////////////
     void update(const Uint8* pixels, unsigned int width, unsigned int height, unsigned int x, unsigned int y);
@@ -308,8 +308,8 @@ public:
     /// previously created.
     ///
     /// \param texture Source texture to copy to this texture
-    /// \param x       X offset in this texture where to copy the source texture
-    /// \param y       Y offset in this texture where to copy the source texture
+    /// \param x       X_ offset in this texture where to copy the source texture
+    /// \param y       Y_ offset in this texture where to copy the source texture
     ///
     ////////////////////////////////////////////////////////////
     void update(const Texture& texture, unsigned int x, unsigned int y);
@@ -345,8 +345,8 @@ public:
     /// previously created.
     ///
     /// \param image Image to copy to the texture
-    /// \param x     X offset in the texture where to copy the source image
-    /// \param y     Y offset in the texture where to copy the source image
+    /// \param x     X_ offset in the texture where to copy the source image
+    /// \param y     Y_ offset in the texture where to copy the source image
     ///
     ////////////////////////////////////////////////////////////
     void update(const Image& image, unsigned int x, unsigned int y);
@@ -382,8 +382,8 @@ public:
     /// was not previously created.
     ///
     /// \param window Window to copy to the texture
-    /// \param x      X offset in the texture where to copy the source window
-    /// \param y      Y offset in the texture where to copy the source window
+    /// \param x      X_ offset in the texture where to copy the source window
+    /// \param y      Y_ offset in the texture where to copy the source window
     ///
     ////////////////////////////////////////////////////////////
     void update(const Window& window, unsigned int x, unsigned int y);
@@ -456,7 +456,7 @@ public:
     /// outside the texture rectangle [0, 0, width, height].
     /// In this case, if repeat mode is enabled, the whole texture
     /// will be repeated as many times as needed to reach the
-    /// coordinate (for example, if the X texture coordinate is
+    /// coordinate (for example, if the X_ texture coordinate is
     /// 3 * width, the texture will be repeated 3 times).
     /// If repeat mode is disabled, the "extra space" will instead
     /// be filled with border pixels.
@@ -622,7 +622,7 @@ private:
     bool         m_isSmooth;      ///< Status of the smooth filter
     bool         m_sRgb;          ///< Should the texture source be converted from sRGB?
     bool         m_isRepeated;    ///< Is the texture in repeat mode?
-    mutable bool m_pixelsFlipped; ///< To work around the inconsistency in Y orientation
+    mutable bool m_pixelsFlipped; ///< To work around the inconsistency in Y_ orientation
     bool         m_fboAttachment; ///< Is this texture owned by a framebuffer object?
     bool         m_hasMipmap;     ///< Has the mipmap been generated?
     Uint64       m_cacheId;       ///< Unique number that identifies the texture to the render target's cache

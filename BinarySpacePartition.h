@@ -83,10 +83,10 @@ namespace rez {
         rez::Line2dStd line;
 
         if (!_prev_line) {
-            p1.assign(X, (_points_list[0][X] + _points_list[1][X]) / 2);
-            p1.assign(Y, (_points_list[0][Y] + _points_list[1][Y]) / 2);
-            p2.assign(X, (_points_list[size - 1][X] + _points_list[size - 2][X]) / 2);
-            p2.assign(Y, (_points_list[size - 1][Y] + _points_list[size - 2][Y]) / 2);
+            p1.assign(X_, (_points_list[0][X_] + _points_list[1][X_]) / 2);
+            p1.assign(Y_, (_points_list[0][Y_] + _points_list[1][Y_]) / 2);
+            p2.assign(X_, (_points_list[size - 1][X_] + _points_list[size - 2][X_]) / 2);
+            p2.assign(Y_, (_points_list[size - 1][Y_] + _points_list[size - 2][Y_]) / 2);
             line = rez::Line2dStd(p1, p2, true);
         }
         else if (false) {
@@ -95,9 +95,9 @@ namespace rez {
 
             for (const auto& point : _points_list)
             {
-                nxy += point[X] * point[Y];
-                x_sum += point[X];
-                y_sum += point[Y];
+                nxy += point[X_] * point[Y_];
+                x_sum += point[X_];
+                y_sum += point[Y_];
                 n_x_sqr_sum += x_sum * x_sum;
             }
 
@@ -110,8 +110,8 @@ namespace rez {
             srand((unsigned)time(0));
             auto s = rand() % 50;
             s /= 25.0;
-            p2.assign(X, -slope * s);
-            p2.assign(Y, 1 + s);
+            p2.assign(X_, -slope * s);
+            p2.assign(Y_, 1 + s);
 
             line = rez::Line2dStd(p1, p2, false);
         }
@@ -119,19 +119,19 @@ namespace rez {
             float x_sum = 0.0, y_sum = 0.0;
             for (const auto& point : _points_list)
             {
-                x_sum += point[X];
-                y_sum += point[Y];
+                x_sum += point[X_];
+                y_sum += point[Y_];
             }
-            p1.assign(X, x_sum / size);
-            p1.assign(Y, y_sum / size);
+            p1.assign(X_, x_sum / size);
+            p1.assign(Y_, y_sum / size);
 
-            p2.assign(X, -_prev_line->getDir()[Y] + 0.2);
-            p2.assign(Y, _prev_line->getDir()[X] + 0.2);
+            p2.assign(X_, -_prev_line->getDir()[Y_] + 0.2);
+            p2.assign(Y_, _prev_line->getDir()[X_] + 0.2);
 
             line = rez::Line2dStd(p1, p2, false);
         }
 
-        Vector2f normal(-line.getDir()[Y], line.getDir()[X]);
+        Vector2f normal(-line.getDir()[Y_], line.getDir()[X_]);
         auto d = dotProduct(normal, p2);
         line.setD(d);
         return line;
@@ -315,8 +315,8 @@ namespace rez {
         int space = 0;
         while (space < depth)
             std::cout << " ";
-        std::cout << "< (" << _node->segment.p1[X] << "," << _node->segment.p1[Y] << ") - ("
-                  << _node->segment.p2[X] << "," << _node->segment.p2[Y] << ")\n";
+        std::cout << "< (" << _node->segment.p1[X_] << "," << _node->segment.p1[Y_] << ") - ("
+                  << _node->segment.p2[X_] << "," << _node->segment.p2[Y_] << ")\n";
 
         printNode(_node->neg, depth + 1);
     }

@@ -388,8 +388,8 @@ Related Functions</h2></td></tr>
 <p>This function returns a reference to *this, so that calls can be chained. </p><div class="fragment"><div class="line"><a class="code" href="classsf_1_1Transform.html">sf::Transform</a> transform;</div><div class="line">transform.<a class="code" href="classsf_1_1Transform.html#a3e548c3c9e3fb9d4bd43cf852669e555">rotate</a>(90, 8, 3).<a class="code" href="classsf_1_1Transform.html#ab54f6c8070cc05e2afcb3145fbf4395a">translate</a>(50, 20);</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">angle</td><td>Rotation angle, in degrees </td></tr>
-    <tr><td class="paramname">centerX</td><td>X coordinate of the center of rotation </td></tr>
-    <tr><td class="paramname">centerY</td><td>Y coordinate of the center of rotation</td></tr>
+    <tr><td class="paramname">centerX</td><td>X_ coordinate of the center of rotation </td></tr>
+    <tr><td class="paramname">centerY</td><td>Y_ coordinate of the center of rotation</td></tr>
   </table>
   </dd>
 </dl>
@@ -467,8 +467,8 @@ Related Functions</h2></td></tr>
 <p>Combine the current transform with a scaling. </p>
 <p>This function returns a reference to *this, so that calls can be chained. </p><div class="fragment"><div class="line"><a class="code" href="classsf_1_1Transform.html">sf::Transform</a> transform;</div><div class="line">transform.<a class="code" href="classsf_1_1Transform.html#a3f46af807f69d74120fb836334268671">scale</a>(2, 1).<a class="code" href="classsf_1_1Transform.html#a3e548c3c9e3fb9d4bd43cf852669e555">rotate</a>(45);</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">scaleX</td><td>Scaling factor on the X axis </td></tr>
-    <tr><td class="paramname">scaleY</td><td>Scaling factor on the Y axis</td></tr>
+    <tr><td class="paramname">scaleX</td><td>Scaling factor on the X_ axis </td></tr>
+    <tr><td class="paramname">scaleY</td><td>Scaling factor on the Y_ axis</td></tr>
   </table>
   </dd>
 </dl>
@@ -519,10 +519,10 @@ Related Functions</h2></td></tr>
 <p>The center of scaling is provided for convenience as a second argument, so that you can build scaling around arbitrary points more easily (and efficiently) than the usual translate(-center).scale(factors).translate(center).</p>
 <p>This function returns a reference to *this, so that calls can be chained. </p><div class="fragment"><div class="line"><a class="code" href="classsf_1_1Transform.html">sf::Transform</a> transform;</div><div class="line">transform.<a class="code" href="classsf_1_1Transform.html#a3f46af807f69d74120fb836334268671">scale</a>(2, 1, 8, 3).<a class="code" href="classsf_1_1Transform.html#a3e548c3c9e3fb9d4bd43cf852669e555">rotate</a>(45);</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">scaleX</td><td>Scaling factor on X axis </td></tr>
-    <tr><td class="paramname">scaleY</td><td>Scaling factor on Y axis </td></tr>
-    <tr><td class="paramname">centerX</td><td>X coordinate of the center of scaling </td></tr>
-    <tr><td class="paramname">centerY</td><td>Y coordinate of the center of scaling</td></tr>
+    <tr><td class="paramname">scaleX</td><td>Scaling factor on X_ axis </td></tr>
+    <tr><td class="paramname">scaleY</td><td>Scaling factor on Y_ axis </td></tr>
+    <tr><td class="paramname">centerX</td><td>X_ coordinate of the center of scaling </td></tr>
+    <tr><td class="paramname">centerY</td><td>Y_ coordinate of the center of scaling</td></tr>
   </table>
   </dd>
 </dl>
@@ -628,8 +628,8 @@ Related Functions</h2></td></tr>
 <p><a class="el" href="classsf_1_1Transform.html" title="Define a 3x3 transform matrix. ">Transform</a> a 2D point. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>X coordinate of the point to transform </td></tr>
-    <tr><td class="paramname">y</td><td>Y coordinate of the point to transform</td></tr>
+    <tr><td class="paramname">x</td><td>X_ coordinate of the point to transform </td></tr>
+    <tr><td class="paramname">y</td><td>Y_ coordinate of the point to transform</td></tr>
   </table>
   </dd>
 </dl>
@@ -721,8 +721,8 @@ Related Functions</h2></td></tr>
 <p>Combine the current transform with a translation. </p>
 <p>This function returns a reference to *this, so that calls can be chained. </p><div class="fragment"><div class="line"><a class="code" href="classsf_1_1Transform.html">sf::Transform</a> transform;</div><div class="line">transform.<a class="code" href="classsf_1_1Transform.html#ab54f6c8070cc05e2afcb3145fbf4395a">translate</a>(100, 200).<a class="code" href="classsf_1_1Transform.html#a3e548c3c9e3fb9d4bd43cf852669e555">rotate</a>(45);</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x</td><td>Offset to apply on X axis </td></tr>
-    <tr><td class="paramname">y</td><td>Offset to apply on Y axis</td></tr>
+    <tr><td class="paramname">x</td><td>Offset to apply on X_ axis </td></tr>
+    <tr><td class="paramname">y</td><td>Offset to apply on Y_ axis</td></tr>
   </table>
   </dd>
 </dl>

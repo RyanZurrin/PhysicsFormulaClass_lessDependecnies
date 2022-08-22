@@ -61,8 +61,8 @@ public:
     /// See the move function to apply an offset based on the previous position instead.
     /// The default position of a transformable object is (0, 0).
     ///
-    /// \param x X coordinate of the new position
-    /// \param y Y coordinate of the new position
+    /// \param x X_ coordinate of the new position
+    /// \param y Y_ coordinate of the new position
     ///
     /// \see move, getPosition
     ///
@@ -136,8 +136,8 @@ public:
     /// transformations (position, scale, rotation).
     /// The default origin of a transformable object is (0, 0).
     ///
-    /// \param x X coordinate of the new origin
-    /// \param y Y coordinate of the new origin
+    /// \param x X_ coordinate of the new origin
+    /// \param y Y_ coordinate of the new origin
     ///
     /// \see getOrigin
     ///
@@ -214,8 +214,8 @@ public:
     /// object.setPosition(pos.x + offsetX, pos.y + offsetY);
     /// \endcode
     ///
-    /// \param offsetX X offset
-    /// \param offsetY Y offset
+    /// \param offsetX X_ offset
+    /// \param offsetY Y_ offset
     ///
     /// \see setPosition
     ///

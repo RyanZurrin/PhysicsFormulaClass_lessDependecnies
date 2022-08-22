@@ -151,7 +151,7 @@ public:
 
     /**
      * @brief calculates the displacement using the kinematic formula
-     * X = Vi*t+ 1/2*a*t^2
+     * X_ = Vi*t+ 1/2*a*t^2
      * @param velocity in m/s
      * @param acceleration in m/s^2
      * @param time in s
@@ -617,7 +617,7 @@ public:
      * method: horizontal_velocity_using_distance_angle_height(ld targetDistance, ld targetHeight, ld angle, ld acceleration)
      * arguments: distance, height, angle, acceleration = default is -9.8
      * purpose:	finds x component velocity
-     * returns: ld, velocity of X component
+     * returns: ld, velocity of X_ component
      */
     static ld horizontal_velocity_using_distance_angle_height(ld targetDistance, ld targetHeight, ld angle, ld acceleration = constants::Ga)
     {
@@ -739,9 +739,9 @@ public:
 
     /**
         You and your roommate plot to drop water balloons from your window on
-        students entering your dorm. You plan to place an X on the sidewalk to
+        students entering your dorm. You plan to place an X_ on the sidewalk to
         mark the spot a student must be when you drop the balloon. You note that
-        most students approach the dorm at about v0 (L/T). If you place the X at a
+        most students approach the dorm at about v0 (L/T). If you place the X_ at a
         distance of d (L) from the impact point, what is the height of your
         window from ground level?
      */

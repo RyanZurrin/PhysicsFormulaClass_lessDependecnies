@@ -322,7 +322,7 @@ public:
     /// <summary>
     /// Calculates the displacements as a function of time(t).
     /// </summary>
-    /// <param name="X">The Amplitude.</param>
+    /// <param name="X_">The Amplitude.</param>
     /// <param name="t">The total time.</param>
     /// <param name="T">The period T of the oscillation.</param>
     /// <returns>displacement</returns>
@@ -351,7 +351,7 @@ public:
     /// </summary>
     /// <param name="vMax">The vMax.</param>
     /// <param name="x">The x.</param>
-    /// <param name="X">The .</param>
+    /// <param name="X_">The .</param>
     /// <returns>velocity of a oscillator wave</returns>
     static ld velocity_oscillator(const ld vMax, const ld x, const ld X)
     {
@@ -432,7 +432,7 @@ public:
     /// Calculates the acceleration as a function of time.
     /// </summary>
     /// <param name="k">The force constant.</param>
-    /// <param name="X">The amplitude.</param>
+    /// <param name="X_">The amplitude.</param>
     /// <param name="m">The mass.</param>
     /// <param name="t">The time.</param>
     /// <param name="T">The period T.</param>

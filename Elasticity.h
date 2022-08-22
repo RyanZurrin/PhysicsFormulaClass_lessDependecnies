@@ -114,7 +114,7 @@ public:
 
     /**
      * structure: Elastic_Moduli vector
-     * components: <young's modulus, Shear modulus, Bulk modulus> Y, S, B
+     * components: <young's modulus, Shear modulus, Bulk modulus> Y_, S, B
      * purpose:	store data on elastic moduli for using in physics calculations
      * returns: specified component value
      */

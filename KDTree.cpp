@@ -35,13 +35,13 @@ bool KDTree::isContained(const KDRange& r1, const KDRange& r2) {
 }
 
 bool KDTree::isInRange(const Vector2f& p, const KDRange& r) {
-    if (p[X] >= r.x_min && p[X] <= r.x_max && p[Y] >= r.y_min && p[Y] <= r.y_max)
+    if (p[X_] >= r.x_min && p[X_] <= r.x_max && p[Y_] >= r.y_min && p[Y_] <= r.y_max)
         return true;
     return false;
 }
 
 static float sqrd_distance(const Vector2f& v1, const Vector2f& v2) {
-    return (v1[X] - v2[X]) * (v1[X] - v2[X]) + (v1[Y] - v2[Y]) * (v1[Y] - v2[Y]);
+    return (v1[X_] - v2[X_]) * (v1[X_] - v2[X_]) + (v1[Y_] - v2[Y_]) * (v1[Y_] - v2[Y_]);
 }
 
 KDTree::KDRange KDTree::intersection(const KDRange& r1, const KDRange& r2) {
@@ -66,9 +66,9 @@ KDTree::KDNode* rez::KDTree::constructKDTree(std::list<Vector2f>& _data, uint32_
     if (size == 1)
         return new KDNode(_data.front());
     if (_depth % 2 == 0)
-        _data.sort([](Vector2f a, Vector2f b) { return (a[X] < b[X]); });
+        _data.sort([](Vector2f a, Vector2f b) { return (a[X_] < b[X_]); });
     else {
-        _data.sort([](Vector2f a, Vector2f b) { return (a[Y] < b[Y]); });
+        _data.sort([](Vector2f a, Vector2f b) { return (a[Y_] < b[Y_]); });
     }
 
     auto mid = size / 2;
@@ -146,7 +146,7 @@ void rez::KDTree::nearestNeighbour(KDNode* _node, const Vector2f& _value, float&
         }
     }
     else {
-        auto index = _even_depth ? X : Y;
+        auto index = _even_depth ? X_ : Y_;
         if (_value[index] < _node->value) {
             nearestNeighbour(_node->left, _value, _current_distance, !_even_depth, _current_nn);
             if (fabs(_value[index] - _node->value) < _current_distance)

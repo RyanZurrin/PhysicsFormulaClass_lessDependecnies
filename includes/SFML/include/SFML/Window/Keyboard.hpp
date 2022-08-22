@@ -71,9 +71,9 @@ public:
         U,            ///< The U key
         V,            ///< The V key
         W,            ///< The W key
-        X,            ///< The X key
-        Y,            ///< The Y key
-        Z,            ///< The Z key
+        X,            ///< The X_ key
+        Y,            ///< The Y_ key
+        Z,            ///< The Z_ key
         Num0,         ///< The 0 key
         Num1,         ///< The 1 key
         Num2,         ///< The 2 key
@@ -88,11 +88,11 @@ public:
         LControl,     ///< The left Control key
         LShift,       ///< The left Shift key
         LAlt,         ///< The left Alt key
-        LSystem,      ///< The left OS specific key: window (Windows and Linux), apple (MacOS X), ...
+        LSystem,      ///< The left OS specific key: window (Windows and Linux), apple (MacOS X_), ...
         RControl,     ///< The right Control key
         RShift,       ///< The right Shift key
         RAlt,         ///< The right Alt key
-        RSystem,      ///< The right OS specific key: window (Windows and Linux), apple (MacOS X), ...
+        RSystem,      ///< The right OS specific key: window (Windows and Linux), apple (MacOS X_), ...
         Menu,         ///< The Menu key
         LBracket,     ///< The [ key
         RBracket,     ///< The ] key

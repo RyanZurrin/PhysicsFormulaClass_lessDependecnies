@@ -775,7 +775,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>RenderTarget</b></td
 </div><div class="memdoc">
 
 <p>Enable or disable repeating. </p>
-<p>Repeating is involved when using texture coordinates outside the texture rectangle [0, 0, width, height]. In this case, if repeat mode is enabled, the whole texture will be repeated as many times as needed to reach the coordinate (for example, if the X texture coordinate is 3 * width, the texture will be repeated 3 times). If repeat mode is disabled, the "extra space" will instead be filled with border pixels. Warning: on very old graphics cards, white pixels may appear when the texture is repeated. With such cards, repeat mode can be used reliably only if the texture has power-of-two dimensions (such as 256x128). Repeating is disabled by default.</p>
+<p>Repeating is involved when using texture coordinates outside the texture rectangle [0, 0, width, height]. In this case, if repeat mode is enabled, the whole texture will be repeated as many times as needed to reach the coordinate (for example, if the X_ texture coordinate is 3 * width, the texture will be repeated 3 times). If repeat mode is disabled, the "extra space" will instead be filled with border pixels. Warning: on very old graphics cards, white pixels may appear when the texture is repeated. With such cards, repeat mode can be used reliably only if the texture has power-of-two dimensions (such as 256x128). Repeating is disabled by default.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">repeated</td><td>True to repeat the texture, false to disable repeating</td></tr>
@@ -952,8 +952,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>RenderTarget</b></td
     <tr><td class="paramname">pixels</td><td>Array of pixels to copy to the texture </td></tr>
     <tr><td class="paramname">width</td><td>Width of the pixel region contained in <em>pixels</em> </td></tr>
     <tr><td class="paramname">height</td><td>Height of the pixel region contained in <em>pixels</em> </td></tr>
-    <tr><td class="paramname">x</td><td>X offset in the texture where to copy the source pixels </td></tr>
-    <tr><td class="paramname">y</td><td>Y offset in the texture where to copy the source pixels </td></tr>
+    <tr><td class="paramname">x</td><td>X_ offset in the texture where to copy the source pixels </td></tr>
+    <tr><td class="paramname">y</td><td>Y_ offset in the texture where to copy the source pixels </td></tr>
   </table>
   </dd>
 </dl>
@@ -1027,8 +1027,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>RenderTarget</b></td
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">texture</td><td>Source texture to copy to this texture </td></tr>
-    <tr><td class="paramname">x</td><td>X offset in this texture where to copy the source texture </td></tr>
-    <tr><td class="paramname">y</td><td>Y offset in this texture where to copy the source texture </td></tr>
+    <tr><td class="paramname">x</td><td>X_ offset in this texture where to copy the source texture </td></tr>
+    <tr><td class="paramname">y</td><td>Y_ offset in this texture where to copy the source texture </td></tr>
   </table>
   </dd>
 </dl>
@@ -1102,8 +1102,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>RenderTarget</b></td
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">image</td><td><a class="el" href="classsf_1_1Image.html" title="Class for loading, manipulating and saving images. ">Image</a> to copy to the texture </td></tr>
-    <tr><td class="paramname">x</td><td>X offset in the texture where to copy the source image </td></tr>
-    <tr><td class="paramname">y</td><td>Y offset in the texture where to copy the source image </td></tr>
+    <tr><td class="paramname">x</td><td>X_ offset in the texture where to copy the source image </td></tr>
+    <tr><td class="paramname">y</td><td>Y_ offset in the texture where to copy the source image </td></tr>
   </table>
   </dd>
 </dl>
@@ -1177,8 +1177,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>RenderTarget</b></td
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">window</td><td><a class="el" href="classsf_1_1Window.html" title="Window that serves as a target for OpenGL rendering. ">Window</a> to copy to the texture </td></tr>
-    <tr><td class="paramname">x</td><td>X offset in the texture where to copy the source window </td></tr>
-    <tr><td class="paramname">y</td><td>Y offset in the texture where to copy the source window </td></tr>
+    <tr><td class="paramname">x</td><td>X_ offset in the texture where to copy the source window </td></tr>
+    <tr><td class="paramname">y</td><td>Y_ offset in the texture where to copy the source window </td></tr>
   </table>
   </dd>
 </dl>

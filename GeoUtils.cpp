@@ -32,7 +32,7 @@
 //		return LEFT;
 //	if (area < 0.0)
 //		return RIGHT;
-//	if ((ab[X] * ac[X] < 0.0) || (ab[Y] * ac[Y] < 0.0))
+//	if ((ab[X_] * ac[X_] < 0.0) || (ab[Y_] * ac[Y_] < 0.0))
 //		return BEHIND;
 //	if (ab.magnitude() < ac.magnitude())
 //		return BEYOND;
@@ -61,10 +61,10 @@ int rez::orientation3d(const Point3d& a, const Point3d& b, const Point3d& c)
 
     double p1x, p1y, p2x, p2y;
 
-    p1x = p1[X];
-    p1y = p1[Y];
-    p2x = p2[X];
-    p2y = p2[Y];
+    p1x = p1[X_];
+    p1y = p1[Y_];
+    p2x = p2[X_];
+    p2y = p2[Y_];
 
     if (area > 0.0)
         return LEFT;
@@ -105,7 +105,7 @@ int rez::orientation2d(const Point2d& a, const Point2d& b, const Point2d& c)
         return LEFT;
     if (area < 0.0)
         return RIGHT;
-    if ((ab[X] * ac[X] < 0.0) || (ab[Y] * ac[Y] < 0.0))
+    if ((ab[X_] * ac[X_] < 0.0) || (ab[Y_] * ac[Y_] < 0.0))
         return BEHIND;
     if (ab.magnitude() < ac.magnitude())
         return BEYOND;
@@ -136,7 +136,7 @@ bool rez::left(const Point2d& a, const Point2d& b, const Point2d& c)
 bool rez::left(const Line2dStd& l, const Point2d& p)
 {
     auto line_dir = l.getDir();
-    Vector2f line_normal(-line_dir[Y], line_dir[X]);
+    Vector2f line_normal(-line_dir[Y_], line_dir[X_]);
     auto value = dotProduct(line_normal, p);
     return (dotProduct(line_normal, p) - l.getD()) < 0 ? false : true;
 }
@@ -218,8 +218,8 @@ bool rez::isDiagonal(const Vertex2dSimple* v1, const Vertex2dSimple* v2, Polygon
 float rez::polarAngle(const Point2d& _other, const Point2d& _ref)
 {
     // Consider the given points as 2D ones which are in XY plane
-    float _x = _other[X] - _ref[X];
-    float _y = _other[Y] - _ref[Y];
+    float _x = _other[X_] - _ref[X_];
+    float _y = _other[Y_] - _ref[Y_];
 
     if ((isEqualD(_x, 0.0)) && (isEqualD(_y, 0.0)))
         return -1.0;
@@ -238,12 +238,12 @@ float rez::polarAngle(const Point2d& _other, const Point2d& _ref)
 
 double rez::areaTriangle2d(const Point3d& a, const Point3d& b, const Point3d& c)
 {
-    return 0.5 * ((b[X] - a[X]) * (c[Y] - a[Y]) - (c[X] - a[X]) * (b[Y] - a[Y]));
+    return 0.5 * ((b[X_] - a[X_]) * (c[Y_] - a[Y_]) - (c[X_] - a[X_]) * (b[Y_] - a[Y_]));
 }
 
 double rez::areaTriangle2d(const Point2d& a, const Point2d& b, const Point2d& c)
 {
-    return 0.5 * ((b[X] - a[X]) * (c[Y] - a[Y]) - (c[X] - a[X]) * (b[Y] - a[Y]));
+    return 0.5 * ((b[X_] - a[X_]) * (c[Y_] - a[Y_]) - (c[X_] - a[X_]) * (b[Y_] - a[Y_]));
 }
 
 double rez::areaTriangle3d(const Point3d& a, const Point3d& b, const Point3d& c)
@@ -253,9 +253,9 @@ double rez::areaTriangle3d(const Point3d& a, const Point3d& b, const Point3d& c)
     Vector3f AB = b - a;
     Vector3f AC = c - a;
 
-    x_ = AB[Y] * AC[Z] - AB[Z] * AC[Y];
-    y_ = AB[X] * AC[Z] - AB[Z] * AC[X];
-    z_ = AB[X] * AC[Y] - AB[Y] * AC[X];
+    x_ = AB[Y_] * AC[Z_] - AB[Z_] * AC[Y_];
+    y_ = AB[X_] * AC[Z_] - AB[Z_] * AC[X_];
+    z_ = AB[X_] * AC[Y_] - AB[Y_] * AC[X_];
 
     float sum_of_powers = pow(x_, 2.0) + pow(y_, 2.0) + pow(z_, 2.0);
     float root = sqrtf(sum_of_powers);
@@ -347,9 +347,9 @@ bool rez::collinear(const Point3d& a, const Point3d& b, const Point3d& c)
 
 bool rez::collinear(const Vector3f& a, const Vector3f& b)
 {
-    auto v1 = a[X] * b[Y] - a[Y] * b[X];
-    auto v2 = a[Y] * b[Z] - a[Z] * b[Y];
-    auto v3 = a[X] * b[Z] - a[Z] * b[X];
+    auto v1 = a[X_] * b[Y_] - a[Y_] * b[X_];
+    auto v2 = a[Y_] * b[Z_] - a[Z_] * b[Y_];
+    auto v3 = a[X_] * b[Z_] - a[Z_] * b[X_];
 
     return isEqualD(v1, ZERO) && isEqualD(v2, ZERO) && isEqualD(v3, ZERO);
 }
@@ -370,5 +370,5 @@ bool rez::coplaner(const Vector3f& _v1, const Vector3f& _v2, const Vector3f& _v3
 
 bool rez::segmentIsLeft(const Segment2d& base, const Segment2d& compare, const Point2d& _point)
 {
-    return base.get_x(_point[Y]) < compare.get_x(_point[Y]);
+    return base.get_x(_point[Y_]) < compare.get_x(_point[Y_]);
 }

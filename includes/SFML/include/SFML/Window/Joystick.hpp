@@ -59,14 +59,14 @@ public:
     ////////////////////////////////////////////////////////////
     enum Axis
     {
-        X,    ///< The X axis
-        Y,    ///< The Y axis
-        Z,    ///< The Z axis
+        X,    ///< The X_ axis
+        Y,    ///< The Y_ axis
+        Z,    ///< The Z_ axis
         R,    ///< The R axis
         U,    ///< The U axis
         V,    ///< The V axis
-        PovX, ///< The X axis of the point-of-view hat
-        PovY  ///< The Y axis of the point-of-view hat
+        PovX, ///< The X_ axis of the point-of-view hat
+        PovY  ///< The Y_ axis of the point-of-view hat
     };
 
     ////////////////////////////////////////////////////////////
@@ -212,14 +212,14 @@ public:
 /// // How many buttons does joystick #0 support?
 /// unsigned int buttons = sf::Joystick::getButtonCount(0);
 ///
-/// // Does joystick #0 define a X axis?
-/// bool hasX = sf::Joystick::hasAxis(0, sf::Joystick::X);
+/// // Does joystick #0 define a X_ axis?
+/// bool hasX = sf::Joystick::hasAxis(0, sf::Joystick::X_);
 ///
 /// // Is button #2 pressed on joystick #0?
 /// bool pressed = sf::Joystick::isButtonPressed(0, 2);
 ///
-/// // What's the current position of the Y axis on joystick #0?
-/// float position = sf::Joystick::getAxisPosition(0, sf::Joystick::Y);
+/// // What's the current position of the Y_ axis on joystick #0?
+/// float position = sf::Joystick::getAxisPosition(0, sf::Joystick::Y_);
 /// \endcode
 ///
 /// \see sf::Keyboard, sf::Mouse

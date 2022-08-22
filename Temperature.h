@@ -56,40 +56,84 @@ static struct TemperatureConversions
 	 */
 static struct ThermalExpansionCoefficients
 {
-    const std::vector<ld> aluminum_S = { 25 * pow(10, -6), 75 * pow(10, -6) };
-    const std::vector<ld> brass_S = { 19 * pow(10, -6), 56 * pow(10, -6) };
-    const std::vector<ld> copper_S = { 17 * pow(10, -6), 51 * pow(10, -6) };
-    const std::vector<ld> gold_S = { 14 * pow(10, -6), 42 * pow(10, -6) };
-    const std::vector<ld> iron_or_steel_S = { 12 * pow(10, -6), 35 * pow(10, -6) };
-    const std::vector<ld> invar_nickel_iron_allow_S = { 0.9 * pow(10, -6), 2.7 * pow(10, -6) };
-    const std::vector<ld> lead_S = { 29 * pow(10, -6), 87 * pow(10, -6) };
-    const std::vector<ld> silver_S = { 18 * pow(10, -6), 54 * pow(10, -6) };
-    const std::vector<ld> glass_ordinary_S = { 9 * pow(10, -6), 27 * pow(10, -6) };
-    const std::vector<ld> glass_pyrex_S = { 3 * pow(10, -6), 9 * pow(10, -6) };
-    const std::vector<ld> quartz_S = { 0.4 * pow(10, -6), 1 * pow(10, -6) };
-    const std::vector<ld> concrete_brick_S = { 12 * pow(10, -6), 36 * pow(10, -6) }; //average
-    const std::vector<ld> marble_S = { 7 * pow(10, -6), 2.1 * pow(10, -6) }; //average
-    const ld ether_L = 1650 * pow(10, -6);
-    const ld ethyl_alcohol = 1100 * pow(10, -6);
-    const ld petrol = 950 * pow(10, -6);
-    const ld glycerin = 500 * pow(10, -6);
-    const ld mercury = 180 * pow(10, -6);
-    const ld water = 210 * pow(10, -6);
-    const ld air_and_most_gases_at_atmospheric_pressure = 3400 * pow(10, -6);
+    ThermalExpansionCoefficients() {}
+    const struct ALUMINUM_SOLID {
+        const ld linear = 25e-6;
+        const ld volume = 75e-6;
+    } aluminum_S;
+    const struct BRASS_SOLID {
+        const ld linear = 19e-6;
+        const ld volume = 56e-6;
+    } brass_S;
+    const struct COPPER_SOLID {
+        const ld linear = 17e-6;
+        const ld volume = 51e-6;
+    } copper_S;
+    const struct GOLD_SOLID {
+        const ld linear = 14e-6;
+        const ld volume = 42e-6;
+    } gold_S;
+    const struct IRON_OR_STEEL_SOLID {
+        const ld linear = 12e-6;
+        const ld volume = 35e-6;
+    } iron_or_steel_S;
+    const struct INVAR_NICKEL_IRON_ALLOW_SOLID {
+        const ld linear = 0.9e-6;
+        const ld volume = 2.7e-6;
+    } invar_nickel_iron_allow_S;
+    const struct LEAD_SOLID {
+        const ld linear = 29e-6;
+        const ld volume = 87e-6;
+    } lead_S;
+    const struct SILVER_SOLID {
+        const ld linear = 18e-6;
+        const ld volume = 54e-6;
+    } silver_S;
+    const struct GLASS_ORDINARY_SOLID {
+        const ld linear = 9e-6;
+        const ld volume = 27e-6;
+    } glass_ordinary_S;
+    const struct GLASS_PYREX_SOLID {
+        const ld linear = 3e-6;
+        const ld volume = 9e-6;
+    } glass_pyrex_S;
+    const struct QUARTZ_SOLID {
+        const ld linear = 0.4e-6;
+        const ld volume = 1e-6;
+    } quartz_S;
+    const struct CONCRETE_BRICK_SOLID {
+        const ld linear = 12e-6;
+        const ld volume = 36e-6;
+    } concrete_brick_S;
+    const struct MARBLE_SOLID {
+        const ld linear = 7e-6;
+        const ld volume = 2.1e-6;
+    } marble_S;
+    const struct ETHER_LIQUID {
+        const ld volume = 1650e-6;
+    } ether_L;
+    const struct ETHYL_ALCOHOL {
+        const ld volume = 1100e-6;
+    } ethyl_alcohol;
+    const struct PETROL {
+        const ld volume = 950e-6;
+    } petrol;
+    const struct GLCERIN {
+        const ld volume = 500e-6;
+    } glycerin;
+    const struct MERCURY {
+        const ld volume = 180e-6;
+    } mercury;
+    const struct WATER {
+        const ld volume = 210e-6;
+    } water;
+    const struct AIR_AND_MOST_GASES_AT_ATMOSPHERIC_PRESSURE {
+        const ld volume = 3400e-6;
+    } air_and_most_gases_at_atmospheric_pressure;
 
-}tec;
+}TEC;
 
-/**
- * @brief Global constant _R_ is the universal gas constant struct which has _R_
- * in different units for use in different kinds of problems all represented
- * as unit/mol * K
- */
-const struct UniversalGasConstant
-{
-    const ld joules = 8.31; //8.31 J/mol * K
-    const ld cal = 1.99; // 1.99 cal/mol * k
-    const ld L_atm = .0821; // .0821 L * atm/mol * K
-}R;
+
 
 
 static int temperature_objectCount = 0;
@@ -412,6 +456,50 @@ public:
     }
 
     /**
+     * @brief coefficient of volume expansion
+     * @param V_i is the initial volume of the object
+     * @param V_f is the final volume of the object
+     * @param Ti is the initial temperature of the object
+     * @param Tf is the final temperature of the object
+     * @returns the coefficient of volume expansion
+     */
+    static ld coefficientVolumeExpansion(const ld V_i,
+                                         const ld V_f,
+                                         const ld Ti,
+                                         const ld Tf,
+                                         bool print = false)
+    {
+        auto V_change = V_f - V_i;
+        auto T_change = Tf - Ti;
+        auto coeff_v_exp = (V_change / V_i) / (T_change);
+        if (print)
+            std::cout << "Coefficient of volume expansion: " << coeff_v_exp << std::endl;
+        return coeff_v_exp;
+    }
+
+    /**
+     * @brief coefficient of linear expansion
+     * @param L_i is the initial length of the object
+     * @param L_f is the final length of the object
+     * @param Ti is the initial temperature of the object
+     * @param Tf is the final temperature of the object
+     * @returns the coefficient of linear expansion
+     */
+    static ld coefficientLinearExpansion(const ld L_i,
+                                         const ld L_f,
+                                         const ld Ti,
+                                         const ld Tf,
+                                         bool print = false)
+    {
+        auto L_change = L_f - L_i;
+        auto T_change = Tf - Ti;
+        auto coeff_l_exp = (L_change / L_i) / (T_change);
+        if (print)
+            std::cout << "Coefficient of linear expansion: " << coeff_l_exp << std::endl;
+        return coeff_l_exp;
+    }
+
+    /**
      * @brief calculate the gas pressure in a tank
      * @param F is the total change in volume calculated previously
      * @param A is the total volume of tank
@@ -478,7 +566,10 @@ public:
      * @param _R is the universal gas law constant default in J
      * @returns the absolute pressure
      */
-    static ld numberMoles_idealGasLaw(const ld P, const ld V, const ld T, const ld _R = R.joules)
+    static ld numberMoles_idealGasLaw(const ld P,
+                                      const ld V,
+                                      const ld T,
+                                      const ld _R = constants::R.joules)
     {
         return (P * V) / (_R * T);
     }
@@ -494,7 +585,7 @@ public:
      */
     static ld volume_idealGasLaw(const ld n, const ld P, const ld T, bool print = false)
     {
-        ld V = (n * constants::R * T) / P;
+        ld V = (n * constants::R.joules * T) / P;
         if(print)
             std::cout << "The volume of the gas is: " << V << " m^3\n";
         return V;
@@ -553,9 +644,12 @@ public:
     /**
      * @brief calculates the density of vapor
      */
-    static ld vaporDensity(const ld p, const ld m, const ld T, const ld _R = R.joules)
+    static ld vaporDensity(const ld p,
+                           const ld m,
+                           const ld T,
+                           const ld R = constants::R.joules)
     {
-        return (p * m) / (_R * T);
+        return (p * m) / (R * T);
     }
 
     /**
@@ -589,7 +683,7 @@ public:
     static ld iceNeeded(const ld m_w, const ld t_i, const ld t_f, bool print =
             false)
     {
-        auto hf_ice = LHF.water.kJ_kg;
+        auto hf_ice = LF.water.kJ_kg;
         auto shw = SHC.waterLiquid.J_kgC;
         auto deltaT = temperatureChange(t_i, t_f);
         // mass_ice = (m_w * specific_heat_water * (t_i - t_f)) / hf_ice;

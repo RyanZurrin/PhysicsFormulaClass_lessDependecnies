@@ -57,9 +57,9 @@ struct EventComparator {
         Point2d point = e1->site;
         Point2d other = e2->site;
 
-        if (point[Y] < other[Y])
+        if (point[Y_] < other[Y_])
             return true;
-        else if (isEqualD(point[Y], other[Y]) && point[X] < other[X])
+        else if (isEqualD(point[Y_], other[Y_]) && point[X_] < other[X_])
         {
             return true;
         }
@@ -83,82 +83,82 @@ void add_outer_edge(BeachLineItem* item, BoundRectangle& bound, std::vector<Edge
     Point2d p_end;
 
     //Check edge start with in bounds
-    if (p_start[X] >= bound.left_x && p_start[X] <= bound.right_x &&
-        p_start[Y] >= bound.bot_y && p_start[Y] <= bound.top_y)
+    if (p_start[X_] >= bound.left_x && p_start[X_] <= bound.right_x &&
+        p_start[Y_] >= bound.bot_y && p_start[Y_] <= bound.top_y)
     {
-        if (dir[X] > 0 && dir[Y] > 0)
+        if (dir[X_] > 0 && dir[Y_] > 0)
         {
             //Direction vector is point in first quadrant
-            auto t = (bound.right_x - p_start[X]) / dir[X];
-            auto y = p_start[Y] + t * dir[Y];
+            auto t = (bound.right_x - p_start[X_]) / dir[X_];
+            auto y = p_start[Y_] + t * dir[Y_];
 
             if (y <= bound.top_y)
             {
-                p_end.assign(X, bound.right_x);
-                p_end.assign(Y, y);
+                p_end.assign(X_, bound.right_x);
+                p_end.assign(Y_, y);
             }
             else
             {
-                auto s = (bound.top_y - p_start[Y]) / dir[Y];
-                auto x = p_start[X] + s * dir[X];
-                p_end.assign(X, x);
-                p_end.assign(Y, bound.top_y);
+                auto s = (bound.top_y - p_start[Y_]) / dir[Y_];
+                auto x = p_start[X_] + s * dir[X_];
+                p_end.assign(X_, x);
+                p_end.assign(Y_, bound.top_y);
             }
         }
-        else if (dir[X] < 0 && dir[Y] > 0)
+        else if (dir[X_] < 0 && dir[Y_] > 0)
         {
-            auto t = (bound.left_x - p_start[X]) / dir[X];
-            auto y = p_start[Y] + t * dir[Y];
+            auto t = (bound.left_x - p_start[X_]) / dir[X_];
+            auto y = p_start[Y_] + t * dir[Y_];
 
             if (y <= bound.top_y)
             {
-                p_end.assign(X, bound.left_x);
-                p_end.assign(Y, y);
+                p_end.assign(X_, bound.left_x);
+                p_end.assign(Y_, y);
             }
             else
             {
-                auto s = (bound.top_y - p_start[Y]) / dir[Y];
-                auto x = p_start[X] + s * dir[X];
-                p_end.assign(X, x);
-                p_end.assign(Y, bound.top_y);
+                auto s = (bound.top_y - p_start[Y_]) / dir[Y_];
+                auto x = p_start[X_] + s * dir[X_];
+                p_end.assign(X_, x);
+                p_end.assign(Y_, bound.top_y);
             }
         }
-        else if (dir[X] < 0 && dir[Y] < 0)
+        else if (dir[X_] < 0 && dir[Y_] < 0)
         {
             //Direction vector is point in third quadrant
-            auto t = (bound.left_x - p_start[X]) / dir[X];
-            auto y = p_start[Y] + t * dir[Y];
+            auto t = (bound.left_x - p_start[X_]) / dir[X_];
+            auto y = p_start[Y_] + t * dir[Y_];
 
             if (y >= bound.bot_y)
             {
-                p_end.assign(X, bound.left_x);
-                p_end.assign(Y, y);
+                p_end.assign(X_, bound.left_x);
+                p_end.assign(Y_, y);
             }
             else
             {
-                auto s = (bound.bot_y - p_start[Y]) / dir[Y];
-                auto x = p_start[X] + s * dir[X];
-                p_end.assign(X, x);
-                p_end.assign(Y, bound.bot_y);
+                auto s = (bound.bot_y - p_start[Y_]) / dir[Y_];
+                auto x = p_start[X_] + s * dir[X_];
+                p_end.assign(X_, x);
+                p_end.assign(Y_, bound.bot_y);
             }
         }
         else
         {
             //Direction vector is point in furth quadrant
-            auto t = (bound.right_x - p_start[X]) / dir[X];
-            auto y = p_start[Y] + t * dir[Y];
+            auto t = (bound.right_x - p_start[X_]) / dir[X_];
+            auto y = p_start[Y_] + t * dir[Y_];
 
             if (y >= bound.bot_y)
             {
-                p_end.assign(X, bound.right_x);
-                p_end.assign(Y, y);
+                p_end.assign(X_, bound.right_x);
+                p_end.assign(Y_, y);
             }
             else
             {
-                auto s = (bound.bot_y - p_start[Y]) / dir[Y];
-                auto x = p_start[X] + s * dir[X];
-                p_end.assign(X, x);
-                p_end.assign(Y, bound.bot_y);
+                auto s = (bound.bot_y - p_start[Y_]) / dir[Y_];
+                auto x = p_start[X_] + s * dir[X_];
+                p_end.assign(X_, x);
+                p_end.assign(Y_, bound.bot_y);
             }
         }
 
@@ -172,10 +172,10 @@ void add_outer_edge(BeachLineItem* item, BoundRectangle& bound, std::vector<Edge
 
 double computeArcY(Point2d& _arc_site, Point2d& _current_point)
 {
-    double yf = _arc_site[Y];
-    double yd = _current_point[Y];
-    double xf = _arc_site[X];
-    double xd = _current_point[X];
+    double yf = _arc_site[Y_];
+    double yd = _current_point[Y_];
+    double xf = _arc_site[X_];
+    double xd = _current_point[X_];
 
     if (isEqualD(yf, yd))
         return 0.0;
@@ -224,7 +224,7 @@ BeachLineItr getArcAbove(Point2d& _point)
             }
             else
             {
-                if ((*itr)->site[X] > _point[X])
+                if ((*itr)->site[X_] > _point[X_])
                     found_arc_with_greater_x = true;
             }
         }
@@ -255,13 +255,13 @@ BeachLineItr addNewArc(BeachLineItr& itr, Point2d& site)
 
     //Start point of the edges is
     auto arc_y = computeArcY((*itr)->site, site);
-    Point2d start_point(site[X], arc_y);
+    Point2d start_point(site[X_], arc_y);
 
     // Direction vectors for the two edges are prependicular to the vector between the two focuses
     // - focus of new_arc and arc_to_replace
     Vector2f fnfo = new_arc->site - arc_to_replace->site;	 // Direction vector from new site to arc_to_replace->site
     Vector2f dir = prependicluar(fnfo);						 // Prependicular vector to fnfo
-    Vector2f neg_dir(-dir[X], -dir[Y]);
+    Vector2f neg_dir(-dir[X_], -dir[Y_]);
     EdgeItem l_edge(start_point, dir);
     EdgeItem r_edge(start_point, neg_dir);
 
@@ -347,9 +347,9 @@ void addCircleEvents(BeachLineItem* middle_arc)
 
         if (is_intersect)
         {
-            //Finding the circle event Y. which is (intersection.y - circle.radius)
+            //Finding the circle event Y_. which is (intersection.y - circle.radius)
             float circle_radius = distance(*intersection_point, middle_arc->site);
-            float circle_event_y = (*intersection_point)[Y] - circle_radius;
+            float circle_event_y = (*intersection_point)[Y_] - circle_radius;
 
             // If there is already a circle event for this arc, check the y coordinates.
             // If already exsisting event's y coordinate is lower we can replace the circle event with the new one
@@ -357,7 +357,7 @@ void addCircleEvents(BeachLineItem* middle_arc)
             //if (middle_arc->event)
             //{
             //	// Make previous circle event invalid one from queue
-            //	if (middle_arc->event->site[Y] > circle_event_y)
+            //	if (middle_arc->event->site[Y_] > circle_event_y)
             //		middle_arc->event->valid = false;
             //	else
             //		return; // If the previous circle event's y coordinate is higher we keep that event
@@ -365,7 +365,7 @@ void addCircleEvents(BeachLineItem* middle_arc)
 
             for (auto event : middle_arc->events)
             {
-                if (event->site[Y] < circle_event_y)
+                if (event->site[Y_] < circle_event_y)
                     event->valid = false;
                 else
                     has_higher_cycle_events = true;
@@ -376,7 +376,7 @@ void addCircleEvents(BeachLineItem* middle_arc)
                 Event* circle_event = new Event();
                 circle_event->type = EVENT_TYPE::CIRCLE;
                 circle_event->arc = middle_arc;
-                circle_event->site = Point2d((*intersection_point)[X], circle_event_y);
+                circle_event->site = Point2d((*intersection_point)[X_], circle_event_y);
                 circle_event->intersetion_point = intersection_point;
                 p_queue.push(circle_event);
 
@@ -444,8 +444,8 @@ void handleCircleEvent(Event* event, std::vector<Edge2dSimple>& _edges)
     if (left_arc && right_arc)
     {
         Vector2f fnfo = right_arc->site - left_arc->site;	 // Direction vector from new site to arc_to_replace->site
-        dir_x = fnfo[Y];
-        dir_y = -fnfo[X];
+        dir_x = fnfo[Y_];
+        dir_y = -fnfo[X_];
     }
     else
     {

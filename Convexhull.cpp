@@ -24,8 +24,8 @@ void rez::convexhull2DGiftwrapping(std::vector<Point2d>& _points, std::vector<Po
     Point2d bottom_point = _points[0];
 
     for (Point2d& point : _points) {
-        if ((point[Y] < bottom_point[Y])
-            || (point[Y] == bottom_point[Y]) && (point[X] < bottom_point[X])) {
+        if ((point[Y_] < bottom_point[Y_])
+            || (point[Y_] == bottom_point[Y_]) && (point[X_] < bottom_point[X_])) {
             bottom_point = point;
         }
     }
@@ -137,8 +137,8 @@ void rez::convexhull2DIncremental(std::vector<Point3d>& _points, std::vector<Poi
 {
     //Sort the points left to right order
     std::sort(_points.begin(), _points.end(), [](const Point3d& a, const Point3d& b) {
-        if ((a[X] < b[X])
-            || (a[X] == b[X]) && (a[Y] < b[Y]))
+        if ((a[X_] < b[X_])
+            || (a[X_] == b[X_]) && (a[Y_] < b[Y_]))
         {
             return true;
         }
@@ -234,8 +234,8 @@ void rez::convexhull2DDivideAndConquer(std::vector<Point3d>& _points, Polygon& _
 {
     //Sort the points left to right order
     std::sort(_points.begin(), _points.end(), [](const Point3d& a, const Point3d& b) {
-        if ((a[X] < b[X])
-            || (a[X] == b[X]) && (a[Y] < b[Y]))
+        if ((a[X_] < b[X_])
+            || (a[X_] == b[X_]) && (a[Y_] < b[Y_]))
         {
             return true;
         }
@@ -297,14 +297,14 @@ void rez::convexhull2DQuickhull(std::vector<Point3d>& _points, std::vector<Point
 
     for (Point3d& point : _points)
     {
-        if ((point[X] < left_top[X])
-            || (point[X] == left_top[X]) && (point[Y] > left_top[X]))
+        if ((point[X_] < left_top[X_])
+            || (point[X_] == left_top[X_]) && (point[Y_] > left_top[X_]))
         {
             left_top = point;
         }
 
-        if ((point[X] > right_bot[X])
-            || (point[X] == right_bot[X]) && (point[Y] < right_bot[X]))
+        if ((point[X_] > right_bot[X_])
+            || (point[X_] == right_bot[X_]) && (point[Y_] < right_bot[X_]))
         {
             right_bot = point;
         }
@@ -439,9 +439,9 @@ void rez::convexhull3D(std::vector<Point3d>& _points, std::vector<Face*>& faces)
     }
 
     // We need to find a point inside the
-    float x_mean = (_points[i][X] + _points[i + 1][X] + _points[i + 2][X] + _points[i + 3][X]) / 4;
-    float y_mean = (_points[i][Y] + _points[i + 1][Y] + _points[i + 2][Y] + _points[i + 3][Y]) / 4;
-    float z_mean = (_points[i][Z] + _points[i + 1][Z] + _points[i + 2][Z] + _points[i + 3][Z]) / 4;
+    float x_mean = (_points[i][X_] + _points[i + 1][X_] + _points[i + 2][X_] + _points[i + 3][X_]) / 4;
+    float y_mean = (_points[i][Y_] + _points[i + 1][Y_] + _points[i + 2][Y_] + _points[i + 3][Y_]) / 4;
+    float z_mean = (_points[i][Z_] + _points[i + 1][Z_] + _points[i + 2][Z_] + _points[i + 3][Z_]) / 4;
     float x_p = x_mean;
     float y_p = y_mean;
     float z_p = z_mean;

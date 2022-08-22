@@ -15,8 +15,8 @@ namespace rez {
         float y_max;
 
         bool isInside(Point2d& point) {
-            if (x_min <= point[X] && point[X] <= x_max
-                && y_min <= point[Y] && point[Y] <= y_max)
+            if (x_min <= point[X_] && point[X_] <= x_max
+                && y_min <= point[Y_] && point[Y_] <= y_max)
                 return true;
             return false;
         }

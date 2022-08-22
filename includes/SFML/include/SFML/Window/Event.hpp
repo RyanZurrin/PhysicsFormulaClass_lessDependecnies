@@ -83,8 +83,8 @@ public:
     ////////////////////////////////////////////////////////////
     struct MouseMoveEvent
     {
-        int x; ///< X position of the mouse pointer, relative to the left of the owner window
-        int y; ///< Y position of the mouse pointer, relative to the top of the owner window
+        int x; ///< X_ position of the mouse pointer, relative to the left of the owner window
+        int y; ///< Y_ position of the mouse pointer, relative to the top of the owner window
     };
 
     ////////////////////////////////////////////////////////////
@@ -95,8 +95,8 @@ public:
     struct MouseButtonEvent
     {
         Mouse::Button button; ///< Code of the button that has been pressed
-        int           x;      ///< X position of the mouse pointer, relative to the left of the owner window
-        int           y;      ///< Y position of the mouse pointer, relative to the top of the owner window
+        int           x;      ///< X_ position of the mouse pointer, relative to the left of the owner window
+        int           y;      ///< Y_ position of the mouse pointer, relative to the top of the owner window
     };
 
     ////////////////////////////////////////////////////////////
@@ -109,8 +109,8 @@ public:
     struct MouseWheelEvent
     {
         int delta; ///< Number of ticks the wheel has moved (positive is up, negative is down)
-        int x;     ///< X position of the mouse pointer, relative to the left of the owner window
-        int y;     ///< Y position of the mouse pointer, relative to the top of the owner window
+        int x;     ///< X_ position of the mouse pointer, relative to the left of the owner window
+        int y;     ///< Y_ position of the mouse pointer, relative to the top of the owner window
     };
 
     ////////////////////////////////////////////////////////////
@@ -121,8 +121,8 @@ public:
     {
         Mouse::Wheel wheel; ///< Which wheel (for mice with multiple ones)
         float        delta; ///< Wheel offset (positive is up/left, negative is down/right). High-precision mice may use non-integral offsets.
-        int          x;     ///< X position of the mouse pointer, relative to the left of the owner window
-        int          y;     ///< Y position of the mouse pointer, relative to the top of the owner window
+        int          x;     ///< X_ position of the mouse pointer, relative to the left of the owner window
+        int          y;     ///< Y_ position of the mouse pointer, relative to the top of the owner window
     };
 
     ////////////////////////////////////////////////////////////
@@ -164,8 +164,8 @@ public:
     struct TouchEvent
     {
         unsigned int finger; ///< Index of the finger in case of multi-touch events
-        int x;               ///< X position of the touch, relative to the left of the owner window
-        int y;               ///< Y position of the touch, relative to the top of the owner window
+        int x;               ///< X_ position of the touch, relative to the left of the owner window
+        int y;               ///< Y_ position of the touch, relative to the top of the owner window
     };
 
     ////////////////////////////////////////////////////////////
@@ -175,9 +175,9 @@ public:
     struct SensorEvent
     {
         Sensor::Type type; ///< Type of the sensor
-        float x;           ///< Current value of the sensor on X axis
-        float y;           ///< Current value of the sensor on Y axis
-        float z;           ///< Current value of the sensor on Z axis
+        float x;           ///< Current value of the sensor on X_ axis
+        float y;           ///< Current value of the sensor on Y_ axis
+        float z;           ///< Current value of the sensor on Z_ axis
     };
 
     ////////////////////////////////////////////////////////////

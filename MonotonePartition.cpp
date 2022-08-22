@@ -33,14 +33,14 @@ VERTEX_CATEGORY categorize_vertex(Vertex2dDCEL* vertex)
 
     bool is_left = left(p_prev, p, p_next);
 
-    if (p[Y] > p_prev[Y] && p[Y] > p_next[Y])
+    if (p[Y_] > p_prev[Y_] && p[Y_] > p_next[Y_])
     {
         if (is_left)
             return VERTEX_CATEGORY::START;
         else
             return VERTEX_CATEGORY::SPLIT;
     }
-    else if (p[Y] < p_prev[Y] && p[Y] < p_next[Y])
+    else if (p[Y_] < p_prev[Y_] && p[Y_] < p_next[Y_])
     {
         if (is_left)
             return VERTEX_CATEGORY::END;
@@ -70,10 +70,10 @@ struct Edge2dDCELWrapper {
     }
 
     const float computeX(const Point2d& point) const {
-        float _deno = (dest[Y] - orgin[Y]);
-        float _x = point[X];
+        float _deno = (dest[Y_] - orgin[Y_]);
+        float _x = point[X_];
         if (_deno != 0) {
-            _x = (point[Y] - orgin[Y]) * (dest[X] - orgin[X]) / _deno + orgin[X];
+            _x = (point[Y_] - orgin[Y_]) * (dest[X_] - orgin[X_]) / _deno + orgin[X_];
         }
         return _x;
     }
@@ -86,8 +86,8 @@ struct Vertex2DWrapperSort {
     bool operator()(Vertex2dDCELWrapper& current, Vertex2dDCELWrapper& ref) {
         auto cur_pnt = current.vert->point;
         auto ref_pnt = ref.vert->point;
-        if ((cur_pnt[Y] > ref_pnt[Y])
-            || (cur_pnt[Y] == ref_pnt[Y]) && (cur_pnt[X] < ref_pnt[X]))
+        if ((cur_pnt[Y_] > ref_pnt[Y_])
+            || (cur_pnt[Y_] == ref_pnt[Y_]) && (cur_pnt[X_] < ref_pnt[X_]))
         {
             return true;
         }
@@ -191,9 +191,9 @@ static void handle_regular_vertices(Vertex2dDCELWrapper& vertex
         , std::map<Edge2dDCEL*, Edge2dDCELWrapper*>& edge_mapper, Polygon2d* poly)
 {
     // Check whether the interior of the polygon lies right to vertex point
-    auto prev_y = vertex.vert->incident_edge->prev->origin->point[Y];
-    auto current_y = vertex.vert->point[Y];
-    auto next_y = vertex.vert->incident_edge->next->origin->point[Y];
+    auto prev_y = vertex.vert->incident_edge->prev->origin->point[Y_];
+    auto current_y = vertex.vert->point[Y_];
+    auto next_y = vertex.vert->incident_edge->next->origin->point[Y_];
 
     Edge2dDCELWrapper* edge = new Edge2dDCELWrapper(vertex.vert->incident_edge, vertex);
 
@@ -243,8 +243,8 @@ void rez::get_monotone_polygons(Polygon2d* poly, std::vector<Polygon2d*>& mono_p
     std::sort(vertices.begin(), vertices.end(), Vertex2DWrapperSort());
 
     Point2d* sweep_point = new Point2d();
-    sweep_point->assign(X, vertices[0].vert->point[X]);
-    sweep_point->assign(Y, vertices[0].vert->point[Y]);
+    sweep_point->assign(X_, vertices[0].vert->point[X_]);
+    sweep_point->assign(Y_, vertices[0].vert->point[Y_]);
 
     SweepLineComparator comp(sweep_point);
     std::set<Edge2dDCELWrapper*, SweepLineComparator> sweep_line(comp);
@@ -252,8 +252,8 @@ void rez::get_monotone_polygons(Polygon2d* poly, std::vector<Polygon2d*>& mono_p
 
     for (auto vertex : vertices)
     {
-        sweep_point->assign(X, vertex.vert->point[X]);
-        sweep_point->assign(Y, vertex.vert->point[Y]);
+        sweep_point->assign(X_, vertex.vert->point[X_]);
+        sweep_point->assign(Y_, vertex.vert->point[Y_]);
 
         switch (vertex.category)
         {

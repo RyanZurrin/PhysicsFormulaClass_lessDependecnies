@@ -274,7 +274,7 @@ private:
         Row(unsigned int rowTop, unsigned int rowHeight) : width(0), top(rowTop), height(rowHeight) {}
 
         unsigned int width;  ///< Current width of the row
-        unsigned int top;    ///< Y position of the row into the texture
+        unsigned int top;    ///< Y_ position of the row into the texture
         unsigned int height; ///< Height of the row
     };
 
@@ -293,7 +293,7 @@ private:
 
         GlyphTable       glyphs;  ///< Table mapping code points to their corresponding glyph
         Texture          texture; ///< Texture containing the pixels of the glyphs
-        unsigned int     nextRow; ///< Y position of the next new row in the texture
+        unsigned int     nextRow; ///< Y_ position of the next new row in the texture
         std::vector<Row> rows;    ///< List containing the position of all the existing rows
     };
 

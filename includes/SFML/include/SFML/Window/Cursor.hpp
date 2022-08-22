@@ -53,7 +53,7 @@ public:
     /// Refer to the following table to determine which cursor
     /// is available on which platform.
     ///
-    ///  Type                               | Linux | Mac OS X | Windows  |
+    ///  Type                               | Linux | Mac OS X_ | Windows  |
     /// ------------------------------------|:-----:|:--------:|:--------:|
     ///  sf::Cursor::Arrow                  |  yes  |    yes   |   yes    |
     ///  sf::Cursor::ArrowWait              |  no   |    no    |   yes    |

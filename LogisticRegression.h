@@ -42,7 +42,7 @@
 
 
         MatrixND<T> Z = (W.transpose() * X.transpose()).array() + b;
-        MatrixND<T> A = 1 / (1 + (-Z.array()).exp());//Sigmoid(Z);
+        MatrixND<T> A = 1 / (1 + (-Z.array()).exp());//Sigmoid(Z_);
         auto ce_var1 =
                 y.transpose() * (MatrixND<T>) A.array().log().transpose();
         auto ce_var2 = ((MatrixND<T>)(1 - y.array())).transpose();
@@ -105,7 +105,7 @@
         MatrixND<T> y_pred = MatrixND<T>::Zero(m).transpose();
 
         MatrixND<T> Z = (W.transpose() * X.transpose()).array() + b;
-        MatrixND<T> A = 1 / (1 + (-Z.array()).exp());//Sigmoid(Z);
+        MatrixND<T> A = 1 / (1 + (-Z.array()).exp());//Sigmoid(Z_);
 
         for (int i = 0; i < A.cols(); i++) {
             if (A(0, i) <= 0.5) {

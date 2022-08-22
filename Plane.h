@@ -12,7 +12,7 @@ namespace rez {
 
     template<class T>
     class Plane {
-        // Based on the normal-point form ( n . X = d ) definition of a plane
+        // Based on the normal-point form ( n . X_ = d ) definition of a plane
 //        Vector3f normal;
 //        float d = 0;
     public:

@@ -112,7 +112,7 @@ public:
     static ld distanceFromRadarStation(const ld t);
 
     /// <summary>
-    /// Determine the amount of time it takes for X-rays to travel
+    /// Determine the amount of time it takes for X_-rays to travel
     /// a distance of d(m).
     /// </summary>
     /// <param name="d">The distance.</param>

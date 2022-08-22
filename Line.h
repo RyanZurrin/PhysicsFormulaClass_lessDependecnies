@@ -46,8 +46,8 @@ namespace rez {
             point_in_line = p1;
             dir = _dir;
             dir.normalize();
-            normal_vec.assign(X, -dir[Y]);
-            normal_vec.assign(Y, dir[X]);
+            normal_vec.assign(X_, -dir[Y_]);
+            normal_vec.assign(Y_, dir[X_]);
         }
 
         [[nodiscard]] Vector2f direction() const;

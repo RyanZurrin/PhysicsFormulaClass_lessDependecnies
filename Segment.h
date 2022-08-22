@@ -23,10 +23,10 @@ namespace rez {
 
         double get_x(double y) const
         {
-            double x1 = p1[X];
-            double y1 = p1[Y];
-            double x2 = p2[X];
-            double y2 = p2[Y];
+            double x1 = p1[X_];
+            double y1 = p1[Y_];
+            double x2 = p2[X_];
+            double y2 = p2[Y_];
 
             double y2_y1 = y2 - y1;
 

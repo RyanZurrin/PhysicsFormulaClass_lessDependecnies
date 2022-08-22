@@ -451,19 +451,19 @@ public:
     }
 
     /**
-     * @brief X has a nuclei density around rhoX while Y's density is rhoY.
-     * Roughly what fraction of Y's volume is not empty space?
-     * @param rhoX nuclei density of X
-     * @param rhoY nuclei density of Y
+     * @brief X_ has a nuclei density around rhoX while Y_'s density is rhoY.
+     * Roughly what fraction of Y_'s volume is not empty space?
+     * @param rhoX nuclei density of X_
+     * @param rhoY nuclei density of Y_
      * @param print print results to console
-     * @return fraction of Y's volume that is not empty space
+     * @return fraction of Y_'s volume that is not empty space
      */
     static ld fractionOfYVolumeNotEmptySpace(const ld rhoX,
                                              const ld rhoY,
                                              bool print = false) {
         auto fraction = (rhoY / rhoX);
         if (print) {
-            std::cout << "fraction of Y's volume that is not empty space: "
+            std::cout << "fraction of Y_'s volume that is not empty space: "
             << fraction << std::endl;
         }
         return fraction;

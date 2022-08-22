@@ -190,8 +190,8 @@ public:
     /// copied unchanged with their alpha value.
     ///
     /// \param source     Source image to copy
-    /// \param destX      X coordinate of the destination position
-    /// \param destY      Y coordinate of the destination position
+    /// \param destX      X_ coordinate of the destination position
+    /// \param destY      Y_ coordinate of the destination position
     /// \param sourceRect Sub-rectangle of the source image to copy
     /// \param applyAlpha Should the copy take into account the source transparency?
     ///
@@ -205,8 +205,8 @@ public:
     /// coordinates, using out-of-range values will result in
     /// an undefined behavior.
     ///
-    /// \param x     X coordinate of pixel to change
-    /// \param y     Y coordinate of pixel to change
+    /// \param x     X_ coordinate of pixel to change
+    /// \param y     Y_ coordinate of pixel to change
     /// \param color New color of the pixel
     ///
     /// \see getPixel
@@ -221,8 +221,8 @@ public:
     /// coordinates, using out-of-range values will result in
     /// an undefined behavior.
     ///
-    /// \param x X coordinate of pixel to get
-    /// \param y Y coordinate of pixel to get
+    /// \param x X_ coordinate of pixel to get
+    /// \param y Y_ coordinate of pixel to get
     ///
     /// \return Color of the pixel at coordinates (x, y)
     ///

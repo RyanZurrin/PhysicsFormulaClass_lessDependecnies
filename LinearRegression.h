@@ -25,7 +25,7 @@ public:
     /// <summary>
     /// Ordinary least squares (OLS) used to find the slope m of a data set
     /// </summary>
-    /// <param name="X">The x.</param>
+    /// <param name="X_">The x.</param>
     /// <param name="y">The y.</param>
     /// <param name="theta">The theta.</param>
     /// <returns></returns>

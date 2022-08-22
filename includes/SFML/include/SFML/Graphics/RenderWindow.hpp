@@ -87,7 +87,7 @@ public:
     /// parameters for a regular usage of the graphics module.
     ///
     /// \param handle   Platform-specific handle of the control (\a HWND on
-    ///                 Windows, \a %Window on Linux/FreeBSD, \a NSWindow on OS X)
+    ///                 Windows, \a %Window on Linux/FreeBSD, \a NSWindow on OS X_)
     /// \param settings Additional settings for the underlying OpenGL context
     ///
     ////////////////////////////////////////////////////////////

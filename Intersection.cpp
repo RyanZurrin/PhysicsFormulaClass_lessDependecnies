@@ -15,12 +15,12 @@ bool rez::intersect(rez::Line2d& l1, rez::Line2d& l2, rez::Point2d& pi) {
 
     float a, b, c, d, e, f;
 
-    a = l1d[X];
-    b = -l2d[X];
-    c = l2p[X] - l1p[X];
-    d = l1d[Y];
-    e = -l2d[Y];
-    f = l2p[Y] - l1p[Y];
+    a = l1d[X_];
+    b = -l2d[X_];
+    c = l2p[X_] - l1p[X_];
+    d = l1d[Y_];
+    e = -l2d[Y_];
+    f = l2p[Y_] - l1p[Y_];
 
     Vector2f diff = l2p - l1p;
     auto prep_l2d = prependicluar(l2d);
@@ -34,17 +34,17 @@ bool rez::intersect(rez::Line2d& l1, rez::Line2d& l2, rez::Point2d& pi) {
 
         float t = t_numerator / denominator;
 
-        float x = l1p[X] + t * l1d[X];
-        float y = l1p[Y] + t * l1d[Y];
+        float x = l1p[X_] + t * l1d[X_];
+        float y = l1p[Y_] + t * l1d[Y_];
 
-        if ((x - l1p[X]) / l1d[X] < 0) return false;
-        if ((y - l1p[Y]) / l1d[Y] < 0) return false;
+        if ((x - l1p[X_]) / l1d[X_] < 0) return false;
+        if ((y - l1p[Y_]) / l1d[Y_] < 0) return false;
 
-        if ((x - l2p[X]) / l2d[X] < 0) return false;
-        if ((y - l2p[Y]) / l2d[Y] < 0) return false;
+        if ((x - l2p[X_]) / l2d[X_] < 0) return false;
+        if ((y - l2p[Y_]) / l2d[Y_] < 0) return false;
 
-        pi.assign(X, x);
-        pi.assign(Y, y);
+        pi.assign(X_, x);
+        pi.assign(Y_, y);
         return true;
     }
     else
@@ -74,7 +74,7 @@ bool rez::intersect(rez::Point2d& a, rez::Point2d& b, rez::Point2d& c, rez::Poin
     Vector2f CD = d - c;
 
     //Normal vector to CD
-    Vector2f n(CD[Y], -CD[X]);
+    Vector2f n(CD[Y_], -CD[X_]);
 
     //Denominator = n.(b-a)
     auto deno = dotProduct(n, AB);
@@ -85,11 +85,11 @@ bool rez::intersect(rez::Point2d& a, rez::Point2d& b, rez::Point2d& c, rez::Poin
         auto nume = dotProduct(n, AC);
         auto t = nume / deno;
 
-        auto x = a[X] + t * AB[X];
-        auto y = a[Y] + t * AB[Y];
+        auto x = a[X_] + t * AB[X_];
+        auto y = a[Y_] + t * AB[Y_];
 
-        interseciton.assign(X, x);
-        interseciton.assign(Y, y);
+        interseciton.assign(X_, x);
+        interseciton.assign(Y_, y);
         return true;
     }
     else
@@ -110,9 +110,9 @@ bool rez::intersect(rez::Planef& plane, rez::Line& line, rez::Point3d& point) {
 
     if (!isEqualD(denominator, ZERO)) {
         auto t = (-1 * dotProduct(n, p) + D) / denominator;
-        point.assign(X, p[X] + t * d[X]);
-        point.assign(Y, p[Y] + t * d[Y]);
-        point.assign(Z, p[Z] + t * d[Z]);
+        point.assign(X_, p[X_] + t * d[X_]);
+        point.assign(Y_, p[Y_] + t * d[Y_]);
+        point.assign(Z_, p[Z_] + t * d[Z_]);
         return true;
     }
     else {

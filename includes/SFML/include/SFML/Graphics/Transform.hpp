@@ -100,8 +100,8 @@ public:
     ////////////////////////////////////////////////////////////
     /// \brief Transform a 2D point
     ///
-    /// \param x X coordinate of the point to transform
-    /// \param y Y coordinate of the point to transform
+    /// \param x X_ coordinate of the point to transform
+    /// \param y Y_ coordinate of the point to transform
     ///
     /// \return Transformed point
     ///
@@ -158,8 +158,8 @@ public:
     /// transform.translate(100, 200).rotate(45);
     /// \endcode
     ///
-    /// \param x Offset to apply on X axis
-    /// \param y Offset to apply on Y axis
+    /// \param x Offset to apply on X_ axis
+    /// \param y Offset to apply on Y_ axis
     ///
     /// \return Reference to *this
     ///
@@ -222,8 +222,8 @@ public:
     /// \endcode
     ///
     /// \param angle Rotation angle, in degrees
-    /// \param centerX X coordinate of the center of rotation
-    /// \param centerY Y coordinate of the center of rotation
+    /// \param centerX X_ coordinate of the center of rotation
+    /// \param centerY Y_ coordinate of the center of rotation
     ///
     /// \return Reference to *this
     ///
@@ -267,8 +267,8 @@ public:
     /// transform.scale(2, 1).rotate(45);
     /// \endcode
     ///
-    /// \param scaleX Scaling factor on the X axis
-    /// \param scaleY Scaling factor on the Y axis
+    /// \param scaleX Scaling factor on the X_ axis
+    /// \param scaleY Scaling factor on the Y_ axis
     ///
     /// \return Reference to *this
     ///
@@ -292,10 +292,10 @@ public:
     /// transform.scale(2, 1, 8, 3).rotate(45);
     /// \endcode
     ///
-    /// \param scaleX Scaling factor on X axis
-    /// \param scaleY Scaling factor on Y axis
-    /// \param centerX X coordinate of the center of scaling
-    /// \param centerY Y coordinate of the center of scaling
+    /// \param scaleX Scaling factor on X_ axis
+    /// \param scaleY Scaling factor on Y_ axis
+    /// \param centerX X_ coordinate of the center of scaling
+    /// \param centerY Y_ coordinate of the center of scaling
     ///
     /// \return Reference to *this
     ///

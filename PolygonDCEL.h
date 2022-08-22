@@ -27,7 +27,7 @@ namespace rez {
         VertexDCEL(Vector<type, dim>& _point) : point(_point) {}
 
         void print() {
-            std::cout << "(" << point[X] << "," << point[Y] << ") \n";
+            std::cout << "(" << point[X_] << "," << point[Y_] << ") \n";
         }
     };
 
@@ -383,8 +383,8 @@ namespace rez {
         bool operator()(Vertex2dDCEL* ref1, Vertex2dDCEL* ref2) {
             auto a = ref1->point;
             auto b = ref2->point;
-            if ((a[Y] > b[Y])
-                || (a[Y] == b[Y]) && (a[X] < b[X]))
+            if ((a[Y_] > b[Y_])
+                || (a[Y_] == b[Y_]) && (a[X_] < b[X_]))
             {
                 return true;
             }
