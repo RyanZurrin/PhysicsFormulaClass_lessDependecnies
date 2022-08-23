@@ -109,7 +109,7 @@ namespace constants {
     {
         const long double joules = 8.314; //8.31 J/mol * K
         const long double cal = 1.99; // 1.99 cal/mol * k
-        const long double L_atm = .0821; // .0821 L * atm/mol * K
+        const long double L_atm = .08206; // .0821 L * atm/mol * K
     }R;
 
     constexpr auto DEGREE = 180.0/PI;

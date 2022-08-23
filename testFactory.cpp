@@ -15,7 +15,8 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //*************************************************************************
 
-    elements.Y.display();
+    Temperature::vanDerWaals(0.02, 300.0, .4, 42.69e-6, 3.96e-1,
+                             constants::R.L_atm, true);
 
 
 
