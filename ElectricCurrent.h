@@ -112,7 +112,7 @@ static struct TemperatureCoefficientsOfResistivity
 {
     const long double SILVER = 3.8 * pow(10, -3); //3.8e-3 1/C
     const long double COPPER = 3.9 * pow(10, -3); //3.9e-3 1/C
-    const long double GOlong = 3.4 * pow(10, -3); //3.4e-3 1/C
+    const long double GOLD = 3.4 * pow(10, -3); //3.4e-3 1/C
     const long double ALUMINUM = 3.9 * pow(10, -3); //3.9e-3 1/C
     const long double TUNGSTEN = 4.5 * pow(10, -3); //4.5e-3 1/C
     const long double IRON = 5.0 * pow(10, -3); //5.0e-3 1/C
@@ -124,7 +124,7 @@ static struct TemperatureCoefficientsOfResistivity
     const long double NICHROME = .4 * pow(10, -3); //.4e-3 1/C
     const long double CARBON = -.5 * pow(10, -3); //-.5e-3 1/C
     const long double GERMANIUM = -50 * pow(10, -3); //-50e-3 1/C
-    const long double SILCONE = -70 * pow(10, -3); //-70e-3 1/C
+    const long double SILICONE = -70 * pow(10, -3); //-70e-3 1/C
 
 }tempCoefResistivity;
 
@@ -168,20 +168,16 @@ static int electricCurrent_objectCount = 0;
 class ElectricCurrent
 {
 public:
-    ElectricCurrent* _electricCurrentPtr;
-
 
     ElectricCurrent()
     {
-        _electricCurrentPtr = nullptr;
         _electricCurrentVal = 0.0;
         countIncrease();
-        //cout << "in electicCurrent count: " << electricCurrent_objectCount << endl;
+        //cout << "in electricCurrent count: " << electricCurrent_objectCount << endl;
     }
 
-    ElectricCurrent(long double val)
+    explicit ElectricCurrent(long double val)
     {
-        _electricCurrentPtr = nullptr;
         _electricCurrentVal = 0.0;
         countIncrease();
 
@@ -192,7 +188,6 @@ public:
      */
     ElectricCurrent(const ElectricCurrent& t)
     {
-        _electricCurrentPtr = t._electricCurrentPtr;
         _electricCurrentVal = t._electricCurrentVal;
         countIncrease();
     }
@@ -201,7 +196,6 @@ public:
      */
     ElectricCurrent(ElectricCurrent&& t) noexcept
     {
-        _electricCurrentPtr = t._electricCurrentPtr;
         _electricCurrentVal = t._electricCurrentVal;
         countIncrease();
     }
@@ -212,7 +206,6 @@ public:
     {
         if (this != &t)
         {
-            _electricCurrentPtr = t._electricCurrentPtr;
             _electricCurrentVal = t._electricCurrentVal;
             countIncrease();
         }
@@ -228,14 +221,14 @@ public:
     /// </summary>
     /// <param name="r">The radius.</param>
     /// <returns>area(m^2)</returns>
-    static long double area_r(const long double r);
+    static long double area_r(long double r);
 
     /// <summary>
     /// Calculates the area from the diameter
     /// </summary>
     /// <param name="d">The diameter.</param>
     /// <returns>area(m^2)</returns>
-    static long double area_d(const long double d);
+    static long double area_d(long double d);
 
     /// <summary>
     /// calculates the electric current (I) defined as the rate at which charge
@@ -244,7 +237,7 @@ public:
     /// <param name="COULOMB">The change in current.</param>
     /// <param name="t">The time over which current passes through.</param>
     /// <returns>the electric current SI unit of ampere (A)</returns>
-    static long double electricCurrent(const long double Q, const long double t);
+    static long double electricCurrent(long double Q, long double t);
 
     /// <summary>
     /// Times it takes charge COULOMB to flow through a current of I amperes
@@ -252,7 +245,7 @@ public:
     /// <param name="COULOMB">The charge.</param>
     /// <param name="I">The current.</param>
     /// <returns>time in seconds</returns>
-    static long double timeItTakesChargeToFlow(const long double Q, const long double I);
+    static long double timeItTakesChargeToFlow(long double Q, long double I);
 
     /// <summary>
     /// Calculates the Electrics  charge COULOMB
@@ -260,7 +253,7 @@ public:
     /// <param name="I">The current.</param>
     /// <param name="t">The time in seconds.</param>
     /// <returns>the charge in coulombs</returns>
-    static long double electricCharge(const long double I, const long double t);
+    static long double electricCharge(long double I, long double t);
 
     /// <summary>
     /// Calculates the current (I) using the number of free charges(n) per unit
@@ -273,7 +266,10 @@ public:
     /// where for a circle woulong double be pi*r^2 * x where x is the length.</param>
     /// <param name="t">The unit time the charge is moved over.</param>
     /// <returns>The current</returns>
-    static long double current_qnAx_t(const long double q, const long double n, const long double Ax, const long double t);
+    static long double current_qnAx_t(long double q,
+                                      long double n,
+                                      long double Ax,
+                                      long double t);
 
     /// <summary>
     /// Calculates the current (I) using the number of free charges(n) per unit
@@ -284,7 +280,10 @@ public:
     /// <param name="A">the area.</param>
     /// <param name="vd">The drift velocity.</param>
     /// <returns>the current</returns>
-    static long double current_nqAvd(const long double n, const long double q, const long double A, const long double vd);
+    static long double current_nqAvd(long double n,
+                                     long double q,
+                                     long double A,
+                                     long double vd);
 
     /// <summary>
     /// Calculates the currents using ohms law of voltage over resistances.
@@ -292,7 +291,7 @@ public:
     /// <param name="V">The voltage.</param>
     /// <param name="R">The resistance.</param>
     /// <returns>current in Amperes</returns>
-    static long double current_ohms(const long double V, const long double R);
+    static long double current_ohms(long double V, long double R);
 
     /// <summary>
     /// Calculates the current from rearranging the power equations
@@ -300,7 +299,7 @@ public:
     /// <param name="P">The power in watts.</param>
     /// <param name="R">The resistance.</param>
     /// <returns>the current in amperes(I)</returns>
-    static long double current_fromPowerEq(const long double P, const long double R);
+    static long double current_fromPowerEq(long double P, long double R);
 
     /// <summary>
     /// Calculates the currents from power and volts.
@@ -308,7 +307,7 @@ public:
     /// <param name="P">The power in watts.</param>
     /// <param name="V">The volts.</param>
     /// <returns></returns>
-    static long double current_fromPowerAndVolts(const long double P, const long double V);
+    static long double current_fromPowerAndVolts(long double P, long double V);
 
     /// <summary>
     /// calculates the resistances of an ohmic conducting material
@@ -316,7 +315,7 @@ public:
     /// <param name="V">The volts.</param>
     /// <param name="I">The current (A).</param>
     /// <returns>(V/A)one volt per Ampere</returns>
-    static long double resistance_ohmic(const long double V, const long double I);
+    static long double resistance_ohmic(long double V, long double I);
 
     /// <summary>
     /// Calculates the resistance of resistor with a resistivity of p and a
@@ -326,7 +325,9 @@ public:
     /// <param name="l">The length.</param>
     /// <param name="A">The cross sectional area.</param>
     /// <returns>Resistance Ohms</returns>
-    static long double resistanceUsingResistivity(const long double p, const long double l, const long double A);
+    static long double resistanceUsingResistivity(long double p,
+                                                  long double l,
+                                                  long double A);
 
     /// <summary>
     /// calculates the resistance of a piece of wire with a length of l,
@@ -337,7 +338,9 @@ public:
     /// <param name="l">The length.</param>
     /// <param name="d">The diameter.</param>
     /// <returns>the resistance in Ohms</returns>
-    static long double resistanceUsingResistivityWire(const long double p, const long double l, const long double d);
+    static long double resistanceUsingResistivityWire(long double p,
+                                                      long double l,
+                                                      long double d);
 
     /// <summary>
     /// calculates the cross sectional areas the of a resistor.
@@ -346,7 +349,9 @@ public:
     /// <param name="R">The Resistance.</param>
     /// <param name="l">The length.</param>
     /// <returns>area of resistor (m^2)</returns>
-    static long double areaOfResistor(const long double p, const long double R, const long double l);
+    static long double areaOfResistor(long double p,
+                                      long double R,
+                                      long double l);
 
     /// <summary>
     /// Calculates the length of a resistor.
@@ -355,7 +360,9 @@ public:
     /// <param name="R">The resistance.</param>
     /// <param name="p">The resistivity.</param>
     /// <returns>the length of resistor (m)</returns>
-    static long double lengthOfResistor(const long double A, const long double R, const long double p);
+    static long double lengthOfResistor(long double A,
+                                        long double R,
+                                        long double p);
 
 
     /// <summary>
@@ -365,7 +372,9 @@ public:
     /// <param name="R">The resistance.</param>
     /// <param name="p">The resistivity.</param>
     /// <returns></returns>
-    static long double lengthOfFilament(const long double d, const long double R, const long double p);
+    static long double lengthOfFilament(long double d,
+                                        long double R,
+                                        long double p);
 
     /// <summary>
     /// As part of a class project you are given m g of copper and asked
@@ -378,7 +387,10 @@ public:
     /// <param name="p">The resistivity.</param>
     /// <param name="pd">The density.</param>
     /// <returns>length of wire</returns>
-    static long double lengthOfWireMade(const long double m, const long double R, const long double p, const long double pd);
+    static long double lengthOfWireMade(long double m,
+                                        long double R,
+                                        long double p,
+                                        long double pd);
 
     /// <summary>
     /// Calculates the resistivity of a resistor.
@@ -387,7 +399,9 @@ public:
     /// <param name="A">area.</param>
     /// <param name="l">The length.</param>
     /// <returns></returns>
-    static long double resistivityOfResistor(const long double R, const long double A, const long double l);
+    static long double resistivityOfResistor(long double R,
+                                             long double A,
+                                             long double l);
 
     /// <summary>
     /// Of what material is a wire made, if it is a length of (l)m long with a
@@ -397,7 +411,9 @@ public:
     /// <param name="d">The diameter.</param>
     /// <param name="R">The resistance.</param>
     /// <returns>Ohm m</returns>
-    static long double resistivity(const long double l, const long double d, const long double R);
+    static long double resistivity(long double l,
+                                   long double d,
+                                   long double R);
 
     /// <summary>
     /// Calculates the voltages drop across a resistor.
@@ -405,7 +421,7 @@ public:
     /// <param name="I">The current (Amperes).</param>
     /// <param name="R">The resistance.</param>
     /// <returns>The voltage</returns>
-    static long double voltageDropAcrossResistor(const long double I, const long double R);
+    static long double voltageDropAcrossResistor(long double I, long double R);
 
     /// <summary>
     /// Calculates the drifts the velocity (V_d) of a common wire.
@@ -416,11 +432,11 @@ public:
     /// <param name="p">The density per kg/m^3.</param>
     /// <param name="mass">The atomic mass.</param>
     /// <returns>drift velocity m/s</returns>
-    static long double driftVelocity_commonWire(const long double q,
-                                       const long double diameter,
-                                       const long double I,
-                                       const long double p,
-                                       const long double mass);
+    static long double driftVelocity_commonWire(long double q,
+                                                long double diameter,
+                                                long double I,
+                                                long double p,
+                                                long double mass);
 
     /// <summary>
     /// Drifts the velocity common wire n.
@@ -430,10 +446,10 @@ public:
     /// <param name="diameter">The diameter.</param>
     /// <param name="I">The current.</param>
     /// <returns>drift velocity m/s</returns>
-    static long double driftVelocity_commonWire_n(const long double n,
-                                         const long double q,
-                                         const long double diameter,
-                                         const long double I);
+    static long double driftVelocity_commonWire_n(long double n,
+                                                  long double q,
+                                                  long double diameter,
+                                                  long double I);
 
     /// <summary>
     /// Calculates the crosses sectional area
@@ -442,7 +458,9 @@ public:
     /// <param name="l">The length.</param>
     /// <param name="R">The resistance.</param>
     /// <returns>cross sectional area (m^2)</returns>
-    static long double crossSectionalArea(const long double p, const long double l, const long double R);
+    static long double crossSectionalArea(long double p,
+                                          long double l,
+                                          long double R);
 
     /// <summary>
     /// Calculates the change in resistances from the effects of a
@@ -452,9 +470,9 @@ public:
     /// <param name="tCoR">The temperature coefficients of resistivity.</param>
     /// <param name="tempChange">The change in the temperature.</param>
     /// <returns>the new resistance in Ohms</returns>
-    static long double resistanceChangeFromTemperature(const long double R0,
-                                              const long double tCoR,
-                                              const long double tempChange);
+    static long double resistanceChangeFromTemperature(long double R0,
+                                                       long double tCoR,
+                                                       long double tempChange);
 
 
 
@@ -464,7 +482,7 @@ public:
     /// <param name="I">The current.</param>
     /// <param name="V">The volts.</param>
     /// <returns>energy from electrical(W)</returns>
-    static long double electricalPowerAndEnergy_IV(const long double I, const long double V);
+    static long double electricalPowerAndEnergy_IV(long double I, long double V);
 
     /// <summary>
     /// calculates the electrical power from volts and resistance
@@ -472,7 +490,7 @@ public:
     /// <param name="V">The volts.</param>
     /// <param name="R">The resistance.</param>
     /// <returns>energy from electrical (W)</returns>
-    static long double electricalPowerAndEnergy_V2R(const long double V, const long double R);
+    static long double electricalPowerAndEnergy_V2R(long double V, long double R);
 
     /// <summary>
     /// Some makes of olong doubleer cars have 6.00-V electrical systems. (a) What is
@@ -481,7 +499,7 @@ public:
     /// <param name="P">The power.</param>
     /// <param name="V">The volts.</param>
     /// <returns>resistance</returns>
-    static long double resistanceFromPowerAndVolts(const long double P, const long double V);
+    static long double resistanceFromPowerAndVolts(long double P, long double V);
 
     /// <summary>
     /// Calculates the resistance from power and current.
@@ -489,7 +507,7 @@ public:
     /// <param name="P">The power.</param>
     /// <param name="I">The current.</param>
     /// <returns>Ohms</returns>
-    static long double resistanceFromPowerAndCurrent(const long double P, const long double I);
+    static long double resistanceFromPowerAndCurrent(long double P, long double I);
 
     /// <summary>
     /// calculates the electrical power from current and resistance
@@ -497,7 +515,7 @@ public:
     /// <param name="I">The current.</param>
     /// <param name="R">The resistance.</param>
     /// <returns>energy from electrical (W)</returns>
-    static long double electricalPowerAndEnergy_I2R(const long double I, const long double R);
+    static long double electricalPowerAndEnergy_I2R(long double I, long double R);
 
     /// <summary>
     /// A charge of (COULOMB) C of charge passes through a pocket calculator’s solar
@@ -508,14 +526,14 @@ public:
     /// <param name="t">The time.</param>
     /// <param name="V">The voltage.</param>
     /// <returns>the watts</returns>
-    static long double powerOutputOverTime(const long double Q, const long double t, const long double V);
+    static long double powerOutputOverTime(long double Q, long double t, long double V);
 
     /// <summary>
     /// Calculates the total electrons  that pass through a charge.
     /// </summary>
     /// <param name="COULOMB">The charge in coulombs.</param>
     /// <returns>Ne, number of electrons</returns>
-    static long double electronsThatPassThroughACharge(const long double Q);
+    static long double electronsThatPassThroughACharge(long double Q);
 
     /// <summary>
     /// If a large cyclotron directs a beam of freeProtons nuclei onto a target
@@ -525,7 +543,7 @@ public:
     /// <param name="I">The current.</param>
     /// <param name="freeProtons">The number of free protons.</param>
     /// <returns>nuclei/second</returns>
-    static long double nucleiPerSecond(const long double I, const long double freeProtons);
+    static long double nucleiPerSecond(long double I, long double freeProtons);
 
     /// <summary>
     /// Calculates the ratio of the resistivity of wire1 to that of wire2, if they have
@@ -535,7 +553,7 @@ public:
     /// <param name="p2">The smaller resistivity.</param>
     /// <returns>the ratio meaning the size of the smaller resistivity value will
     /// to by this value bigger</returns>
-    static long double ratioOfDiametersInWires(const long double p1, const long double p2);
+    static long double ratioOfDiametersInWires(long double p1, long double p2);
 
     /// <summary>
     /// Calculates the current flows through a diameter of (d) rod with a
@@ -548,10 +566,10 @@ public:
     /// <param name="d">The diameter.</param>
     /// <param name="l">The length.</param>
     /// <returns>the Amperes</returns>
-    static long double currentFlowThroughOfMaterial(const long double V,
-                                           const long double p,
-                                           const long double d,
-                                           const long double l);
+    static long double currentFlowThroughOfMaterial(long double V,
+                                                    long double p,
+                                                    long double d,
+                                                    long double l);
 
     /// <summary>
     /// A resistor made of Nichrome wire is used in an application where its
@@ -561,8 +579,8 @@ public:
     /// <param name="tempCoEffOfResistivity">The temperature coefficient of resistivity.</param>
     /// <param name="maxChangePercent">The maximum change percent.</param>
     /// <returns>temperature</returns>
-    static long double maximumTempchange(const long double tempCoEffOfResistivity,
-                                const long double maxChangePercent);
+    static long double maximumTempchange(long double tempCoEffOfResistivity,
+                                         long double maxChangePercent);
 
     /// <summary>
     /// With a 1200-W toaster, how much electrical energy is needed to make a
@@ -572,7 +590,9 @@ public:
     /// <param name="t">The time in seconds.</param>
     /// <param name="ratePerKwh">The rate per KWH.</param>
     /// <returns>total cost to use electricity</returns>
-    static long double costOfElectricityUsed_kWh(const long double P, const long double t, const long double ratePerKwh);
+    static long double costOfElectricityUsed_kWh(long double P,
+                                                 long double t,
+                                                 long double ratePerKwh);
 
     /// <summary>
     /// An olong double light bulb draws only 50.0 W, rather than its original 60.0 W,
@@ -583,7 +603,7 @@ public:
     /// <param name="Pi">The starting wattage.</param>
     /// <param name="Pf">The final wattage.</param>
     /// <returns>factor which diameter decreases</returns>
-    static long double factorDiameterReduced(const long double Pi, const long double Pf);
+    static long double factorDiameterReduced(long double Pi, long double Pf);
 
     /// <summary>
     /// Calculates the total time.
@@ -591,7 +611,7 @@ public:
     /// <param name="COULOMB">The charge.</param>
     /// <param name="P">The power.</param>
     /// <returns>time</returns>
-    static long double timeTotal(const long double Q, const long double P);
+    static long double timeTotal(long double Q, long double P);
 
     /// <summary>
     /// Times the total.
@@ -600,7 +620,7 @@ public:
     /// <param name="I">The current.</param>
     /// <param name="V">The volts.</param>
     /// <returns>time</returns>
-    static long double timeTotal(const long double Q, const long double I, const long double V);
+    static long double timeTotal(long double Q, long double I, long double V);
 
     /// <summary>
     /// How much time is needed for a surgical cauterizer to raise the
@@ -617,14 +637,14 @@ public:
     /// <param name="I">The current.</param>
     /// <param name="V">The volts.</param>
     /// <returns>time in seconds</returns>
-    static long double timeToRaiseTemperature(const long double m1,
-                                     const long double c,
-                                     const long double Ti,
-                                     const long double Tf,
-                                     const long double m2,
-                                     const long double Lv,
-                                     const long double I,
-                                     const long double V);
+    static long double timeToRaiseTemperature(long double m1,
+                                              long double c,
+                                              long double Ti,
+                                              long double Tf,
+                                              long double m2,
+                                              long double Lv,
+                                              long double I,
+                                              long double V);
 
     /// <summary>
     /// What is the cost of heating a hot tub containing 1500 kg of water from
@@ -638,40 +658,39 @@ public:
     /// <param name="eff">The eff.</param>
     /// <param name="rate">The rate.</param>
     /// <returns>cost in cents</returns>
-    static long double costToHeatHotTub(const long double m,
-                               const long double c,
-                               const long double Ti,
-                               const long double Tf,
-                               const long double eff,
-                               const long double rate);
-
+    static long double costToHeatHotTub(long double m,
+                                        long double c,
+                                        long double Ti,
+                                        long double Tf,
+                                        long double eff,
+                                        long double rate);
     /// <summary>
     /// RMSs the current.
     /// </summary>
     /// <param name="Io">The peek current.</param>
     /// <returns>rms current</returns>
-    static long double rmsCurrent(const long double Io);
+    static long double rmsCurrent(long double Io);
 
     /// <summary>
     /// Peeks the current.
     /// </summary>
     /// <param name="Irms">The rms current.</param>
     /// <returns></returns>
-    static long double peekCurrent(const long double Irms);
+    static long double peekCurrent(long double Irms);
 
     /// <summary>
     /// RMSs the voltage.
     /// </summary>
     /// <param name="Vo">The peek voltage.</param>
     /// <returns>voltage</returns>
-    static long double rmsVoltage(const long double Vo);
+    static long double rmsVoltage(long double Vo);
 
     /// <summary>
     /// Peeks the voltage.
     /// </summary>
     /// <param name="Vrms">The VRMS.</param>
     /// <returns>peek volage</returns>
-    static long double peekVoltage(const long double Vrms);
+    static long double peekVoltage(long double Vrms);
 
     /// <summary>
     /// What is the peak power consumption of a Vrms AC microwave oven
@@ -680,7 +699,7 @@ public:
     /// <param name="Vrms">The VRMS.</param>
     /// <param name="Irms">The irms.</param>
     /// <returns></returns>
-    static long double peekPower(const long double Vrms, const long double Irms);
+    static long double peekPower(long double Vrms, long double Irms);
 
     /// <summary>
     /// Voltages the ac.
@@ -689,7 +708,7 @@ public:
     /// <param name="f">The frequency in hertz.</param>
     /// <param name="t">The time we are looking to find the voltage at.</param>
     /// <returns>voltage</returns>
-    static long double voltageAC(const long double Vo, const long double f, const long double t);
+    static long double voltageAC(long double Vo, long double f, long double t);
 
     /// <summary>
     /// Currents the ac.
@@ -698,7 +717,7 @@ public:
     /// <param name="f">The frequency in hertz.</param>
     /// <param name="t">The time we are looking to find the current at.</param>
     /// <returns>amperes</returns>
-    static long double currentAC(const long double Io, const long double f, const long double t);
+    static long double currentAC(long double Io, long double f, long double t);
 
     /// <summary>
     /// Temporaries the coeff of resistivity.
@@ -708,16 +727,16 @@ public:
     /// <param name="T_i">The t i.</param>
     /// <param name="T_f">The t f.</param>
     /// <returns></returns>
-    static long double tempCoeffOfResistivity(const long double R,
-                                     const long double R_o,
-                                     const long double T_i,
-                                     const long double T_f);
+    static long double tempCoeffOfResistivity(long double R,
+                                              long double R_o,
+                                              long double T_i,
+                                              long double T_f);
 
     void setElectricCurrentVal(long double val) { _electricCurrentVal = val; }
 
     ~ElectricCurrent()
     {
-        delete _electricCurrentPtr;
+        countDecrease();
     }
 
 private:

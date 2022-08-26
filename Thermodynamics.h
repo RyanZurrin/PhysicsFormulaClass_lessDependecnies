@@ -85,6 +85,22 @@ public:
     static int get_thermodynamics_objectCount() { return thermodynamics_objectCount; }
 
     /**
+     * @brief the first law of thermodynamics
+     * @param Q the heat transferred
+     * @param W the work done
+     * @return the change in the system's internal energy
+     */
+     static ld firstLaw(const ld Q, const ld W, bool print = false)
+     {
+         ld E = Q + W;
+         if (print)
+             cout << "the change in the system's internal energy is "
+                  << E << " J" << std::endl;
+         return E;
+     }
+
+
+    /**
      * @brief first law of thermodynamics  delta_U = COULOMB - W
      * @param Q is the sum of all heat transfer into and out of the system
      * @param W is the sum of all work done on or by the system
@@ -94,6 +110,71 @@ public:
     {
         return Q - W;
     }
+
+    /**
+     * @brief isothermal process, work done is proportional to temperature difference
+     * @param T the temperature of the system
+     * @param n the number of moles in the system
+     * @param Vi the initial volume of the system
+     * @param Vf the final volume of the system
+     * @return the heat supplied to the system during an isothermal process
+     */
+     static ld workByIsothermalProcess(const ld T,
+                                 const ld n,
+                                 const ld Vi,
+                                 const ld Vf,
+                                 bool print = false)
+     {
+         auto Q = (n * constants::R.L_atm * T * log10l(Vi / Vf));
+         if (print)
+             cout << "the heat supplied to the system during an isothermal process is "
+                  << Q << " J" << std::endl;
+         return Q;
+     }
+
+     /**
+      * @brief isobaric process, work done
+      * @param p the pressure of the system
+      * @param Vi the initial volume of the system
+      * @param Vf the final volume of the system
+      * @return the heat supplied to the system during an isobaric process
+      */
+      static ld workByIsobaricProcess(const ld p,
+                                const ld Vi,
+                                const ld Vf,
+                                bool print = false)
+      {
+          auto Q = -p*(Vi - Vf);
+          if (print)
+              cout << "the heat supplied to the system during an isobaric process is "
+              << Q << " J" << std::endl;
+          return Q;
+      }
+
+    /*
+     * @brief adiabatic process, work done
+     * @param lambda the ratio of molar specific heats
+     * @param pi the initial pressure of the system
+     * @param pf the final pressure of the system
+     * @param Vi the initial volume of the system
+     * @param Vf the final volume of the system
+     * @return the heat supplied to the system during an adiabatic process
+     */
+    static ld workByAdiabaticProcess(const ld lambda,
+                                const ld pi,
+                                const ld pf,
+                                const ld Vi,
+                                const ld Vf,
+                                bool print = false)
+    {
+        auto Q = (pf * Vf - pi * Vi) / (lambda - 1);
+        if (print)
+            cout << "the heat supplied to the system during an adiabatic process is "
+                 << Q << " J" << std::endl;
+        return Q;
+    }
+
+
 
     /**
      * @brief first law of thermodynamics  delta_U = COULOMB - W

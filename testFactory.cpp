@@ -14,9 +14,8 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //*************************************************************************
+    cout << EMW::resistivityOfResistor(1.5e3, .025, 1.5) << endl;
 
-    Temperature::vanDerWaals(0.02, 300.0, .4, 42.69e-6, 3.96e-1,
-                             constants::R.L_atm, true);
 
 
 
