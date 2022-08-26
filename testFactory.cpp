@@ -14,7 +14,10 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //*************************************************************************
-    cout << EMW::resistivityOfResistor(1.5e3, .025, 1.5) << endl;
+    EMW::coulombsLaw(1.0e-3, pair(0, 0), -1.5e-3, pair(5.0, 0.0), true);
+
+
+
 
 
 

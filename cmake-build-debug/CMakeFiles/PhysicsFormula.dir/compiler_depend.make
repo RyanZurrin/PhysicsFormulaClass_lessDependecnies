@@ -3419,6 +3419,7 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: ../testFactory.cpp \
   ../ElectroMagneticInduction.h \
   ../Magnetism.h \
   ../ElectricCharge.h \
+  ../UnitVector.h \
   ../FluidStatics.h \
   ../Hearing.h \
   ../Waves.h \
@@ -4360,6 +4361,8 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/m
 ../ElectroMagneticInduction.h:
 
 ../ElectricCharge.h:
+
+../UnitVector.h:
 
 ../Energy.h:
 
