@@ -65,18 +65,15 @@ static struct DielectricStrength
 class ElectricPotential
 {
 public:
-    ElectricPotential* _electricalPotentialPtr;
 
     ElectricPotential()
     {
-        _electricalPotentialPtr = nullptr;
         _electricPotentialVal = 0.0;
         countIncrease();
     }
 
-    ElectricPotential(ld val)
+    explicit ElectricPotential(ld val)
     {
-        _electricalPotentialPtr = nullptr;
         _electricPotentialVal = 0.0;
         countIncrease();
     }
@@ -86,7 +83,6 @@ public:
      */
     ElectricPotential(const ElectricPotential& t)
     {
-        _electricalPotentialPtr = t._electricalPotentialPtr;
         _electricPotentialVal = t._electricPotentialVal;
         countIncrease();
     }
@@ -95,7 +91,6 @@ public:
      */
     ElectricPotential(ElectricPotential&& t) noexcept
     {
-        _electricalPotentialPtr = t._electricalPotentialPtr;
         _electricPotentialVal = t._electricPotentialVal;
         countIncrease();
     }
@@ -106,7 +101,6 @@ public:
     {
         if (this != &t)
         {
-            _electricalPotentialPtr = t._electricalPotentialPtr;
             _electricPotentialVal = t._electricPotentialVal;
             countIncrease();
         }
@@ -124,23 +118,23 @@ public:
     /// <param name="PE">The potential energy.</param>
     /// <param name="q">The charge that can be moved.</param>
     /// <returns>the electrical potential, volts(V)</returns>
-    static ld electricalPotential_V(const ld PE, const ld q);
+    static ld electricalPotential_V(ld PE, ld q);
 
     /// <summary>
     /// Potentials the difference.
     /// </summary>
     /// <param name="q">The charge.</param>
-    /// <param name="V">The voltage.</param>
+    /// <param name="volts">The voltage.</param>
     /// <returns>the potential difference (PE)</returns>
-    static ld potentialDifference_PE(const ld q, const ld V);
+    static ld potentialDifference_PE(ld q, ld volts);
 
     /// <summary>
     /// calculates the total charge moved in Coulombs
     /// </summary>
     /// <param name="PE">The Potential difference.</param>
-    /// <param name="V">The electrical potential.</param>
+    /// <param name="volts">The electrical potential.</param>
     /// <returns>the charge(q) in Coulombs(C) moved</returns>
-    static ld chargeMoved_q(const ld PE, const ld V);
+    static ld chargeMoved_q(ld PE, ld volts);
 
     /// <summary>
     /// Calculates the numbers of electrons that pass through a charge per
@@ -148,31 +142,31 @@ public:
     /// </summary>
     /// <param name="chargeMoved">The charge moved(q).</param>
     /// <returns>number of electrons(Ne)</returns>
-    static ld electronsPerSecond(const ld chargeMoved);
+    static ld electronsPerSecond(ld chargeMoved);
 
     /// <summary>
     /// 1 eV = (1.60e-19 C)(1V)= (1.60e-19 C)(1 J/C)joule per Coulomb
     /// </summary>
-    /// <param name="V">The Volts.</param>
+    /// <param name="volts">The Volts.</param>
     /// <returns></returns>
-    static ld electronVolts_eV(const ld V);
+    static ld electronVolts_eV(ld volts);
 
     /// <summary>
-    /// Converts to electron volts from known joules
+    /// Converts to electron volts from known j
     /// </summary>
-    /// <param name="joules">The joules.</param>
+    /// <param name="j">The j.</param>
     /// <returns>electron volts (eV)</returns>
-    static ld electronVoltsFromJoules(const ld joules);
+    static ld electronVoltsFromJoules(ld j);
 
     /// <summary>
     /// Calculates the final speed of a particle with a mass of m, a charge
-    /// of q and a potential difference of V.
+    /// of q and a potential difference of volts.
     /// </summary>
     /// <param name="q">The charge.</param>
-    /// <param name="V">The electrical potential.</param>
+    /// <param name="volts">The electrical potential.</param>
     /// <param name="m">The mass.</param>
     /// <returns>velocity (m/s)</returns>
-    static ld velocityFinal(const ld q, const ld V, const ld m);
+    static ld velocityFinal(ld q, ld volts, ld m);
 
     /// <summary>
     /// Calculates the final speed of a particle with a mass of m, a charge
@@ -181,7 +175,7 @@ public:
     /// <param name="KE">The Kinetic Energy (J).</param>
     /// <param name="m">The mass.</param>
     /// <returns>velocity (m/s)</returns>
-    static ld velocityFinal(const ld KE,  const ld m);
+    static ld velocityFinal(ld KE,  ld m);
 
     /// <summary>
     /// Calculates the voltages between two points for a uniform electric field only
@@ -189,25 +183,25 @@ public:
     /// <param name="E">The max electric field strength.</param>
     /// <param name="d">The distance of separation.</param>
     /// <returns>maximum voltage (V)</returns>
-    static ld voltageBetween2points_Vab(const ld E, const ld d);
+    static ld voltageBetween2points_Vab(ld E, ld d);
 
     /// <summary>
     /// Calculates the Electric field strength between two points/plates for
     /// a uniform electric field only
     /// </summary>
-    /// <param name="V">The potential difference or volts.</param>
+    /// <param name="volts">The potential difference or volts.</param>
     /// <param name="d">The distance between points.</param>
-    /// <returns>magnitude of electric field(N/C)(V/m)</returns>
-    static ld electricFieldMagnitude(const ld V, const ld d);
+    /// <returns>magnitude of electric field(N/C)(volts/m)</returns>
+    static ld electricFieldMagnitude(ld volts, ld d);
 
     /// <summary>
     /// Calculates the electric field. which ius said to be the gradient fo the
     /// electric potential.
     /// </summary>
-    /// <param name="V">The volts.</param>
+    /// <param name="volts">The volts.</param>
     /// <param name="s">The distance the change in volts occurs.</param>
     /// <returns>electric field</returns>
-    static ld electricField(const ld V, const ld s);
+    static ld electricField(ld volts, ld s);
 
     /// <summary>
     /// Calculates the volts from electric field.
@@ -216,23 +210,23 @@ public:
     /// <param name="s">The distance over which the change in potential takes
     /// place.</param>
     /// <returns></returns>
-    static ld voltsFromElectricFieldGradient(const ld E, const ld s);
+    static ld voltsFromElectricFieldGradient(ld E, ld s);
 
     /// <summary>
     /// Calculates the distances over which the change in volts occurs.
     /// </summary>
-    /// <param name="V">The change in volts.</param>
+    /// <param name="volts">The change in volts.</param>
     /// <param name="E">The Electric field strength.</param>
     /// <returns>distance(m)</returns>
-    static ld distanceOverChangeInVolts_s(const ld V, const ld E);
+    static ld distanceOverChangeInVolts_s(ld volts, ld E);
 
     /// <summary>
-    /// How far from a COULOMB charged point charge will the potential be V volts?
+    /// How far from a COULOMB charged point charge will the potential be volts volts?
     /// </summary>
     /// <param name="COULOMB">The charge (C).</param>
-    /// <param name="V">The volts.</param>
+    /// <param name="volts">The volts.</param>
     /// <returns>distance (meters)</returns>
-    static ld distancePointChargeToEqualVoltsOf(const ld Q, const ld V);
+    static ld distancePointChargeToEqualVoltsOf(ld Q, ld volts);
 
     /// <summary>
     /// Electrics the potential point charge.
@@ -240,35 +234,35 @@ public:
     /// <param name="COULOMB">The point charge.</param>
     /// <param name="r">The distance.</param>
     /// <returns>voltage</returns>
-    static ld electricPotential_pointCharge(const ld Q, const ld r);
+    static ld electricPotential_pointCharge(ld Q, ld r);
 
     /// <summary>
     /// calculates the excesses charge.
     /// </summary>
     /// <param name="r">The radius.</param>
-    /// <param name="V">The voltage.</param>
+    /// <param name="volts">The voltage.</param>
     /// <returns>charge in Coulombs(C)</returns>
-    static ld excessCharge(const ld r, const ld V);
+    static ld excessCharge(ld r, ld volts);
 
     /// <summary>
     /// Calculates the voltage needed to obtain a certain energy.
     /// </summary>
     /// <param name="m">The m.</param>
-    /// <param name="v">The v.</param>
+    /// <param name="volts">The volts.</param>
     /// <param name="q">The q.</param>
     /// <param name="numProtons">number of protons in atom of consideration</param>
     /// <returns>voltage (V)</returns>
-    static ld voltageNeededToObtainEnergy(const ld m, const ld v, const ld q, const ld numProtons);
+    static ld voltageNeededToObtainEnergy(ld m, ld volts, ld q, ld numProtons);
 
     /// <summary>
     /// ions with a charge iof q are accelerated from rest through a voltage
-    /// of V. At what temperature will the average kinetic energy of gas
+    /// of volts. At what temperature will the average kinetic energy of gas
     /// molecules be the same as that given these ions?
     /// </summary>
     /// <param name="q">The charge.</param>
-    /// <param name="V">The voltage.</param>
+    /// <param name="volts">The voltage.</param>
     /// <returns>temperature in Kelvin(k)</returns>
-    static ld temperatureAvgKineticEnergyGasMolecule(const ld V, const ld q);
+    static ld temperatureAvgKineticEnergyGasMolecule(ld volts, ld q);
 
     /// <summary>
     /// The temperature of ion particles is T degrees Celsius. Through what voltage
@@ -278,26 +272,26 @@ public:
     /// <param name="T">The t.</param>
     /// <param name="q">The q.</param>
     /// <returns>voltage (V)</returns>
-    static ld voltageIonsMoveThroughToReachSameTemperature(const ld T, const ld q);
+    static ld voltageIonsMoveThroughToReachSameTemperature(ld T, ld q);
 
     //static ld massToRaisFromTemp1ToTemp2(const ld)
 
 
     /// <summary>
-    /// Capacitance of a capacitor. units of C/V or A^2s^2/kg*m^2
+    /// Capacitance of a capacitor. units of C/volts or A^2s^2/kg*m^2
     /// </summary>
     /// <param name="COULOMB">The charge.</param>
-    /// <param name="V">The volts.</param>
-    /// <returns>the capacitance (C/V)</returns>
-    static ld capacitance(const ld Q, const ld V);
+    /// <param name="volts">The volts.</param>
+    /// <returns>the capacitance (C/volts)</returns>
+    static ld capacitance(ld Q, ld volts);
 
     /// <summary>
     /// Calculates the charge stored in a capacitor.
     /// </summary>
     /// <param name="C">The Capacitance.</param>
-    /// <param name="V">The volts.</param>
+    /// <param name="volts">The volts.</param>
     /// <returns>the charge (COULOMB)</returns>
-    static ld capacitanceCharge(const ld C, const ld V);
+    static ld capacitanceCharge(ld C, ld volts);
 
     /// <summary>
     /// Calculates the voltage applied to a C (F) capacitor when it holds
@@ -306,7 +300,7 @@ public:
     /// <param name="COULOMB">The charge.</param>
     /// <param name="C">The capacitance.</param>
     /// <returns>volts (V)</returns>
-    static ld capacitanceVolts(const ld Q, const ld C);
+    static ld capacitanceVolts(ld Q, ld C);
 
     /// <summary>
     /// Calculates the capacitance of a parallel plate capacitor
@@ -314,7 +308,7 @@ public:
     /// <param name="A">the area.</param>
     /// <param name="d">The distance between plates.</param>
     /// <returns>the capacitance C in farads</returns>
-    static ld capacitanceParallelPlate(const ld A, const ld d);
+    static ld capacitanceParallelPlate(ld A, ld d);
 
     /// <summary>
     /// Calculates the capacitance of a parallel plate capacitor with a
@@ -324,7 +318,7 @@ public:
     /// <param name="A"> The area of the capacitor.</param>
     /// <param name="d">The distance between plates.</param>
     /// <returns>the capacitance C in farads</returns>
-    static ld capacitanceParallelPlateDielectric(const ld d_k, const ld A, const ld d);
+    static ld capacitanceParallelPlateDielectric(ld d_k, ld A, ld d);
 
     /// <summary>
     /// the dielectric constant is generally defined to be the ratio of the
@@ -334,25 +328,25 @@ public:
     /// <param name="E0">The electric field in a vacuum.</param>
     /// <param name="E">The electric field of the dielectric.</param>
     /// <returns>dielectric constant</returns>
-    static ld dielectricConstant(const ld E0, const ld E);
+    static ld dielectricConstant(ld E0, ld E);
 
     /// <summary>
     /// calculates the energy stored in a capacitor
-    /// Ecap = (COULOMB*V)/2.
+    /// Ecap = (COULOMB*volts)/2.
     /// </summary>
     /// <param name="COULOMB">The charge.</param>
-    /// <param name="V">The volts.</param>
+    /// <param name="volts">The volts.</param>
     /// <returns>Energy stored in capacitor</returns>
-    static ld capacitorEnergy_Ecap_QV(const ld Q, const ld V);
+    static ld capacitorEnergy_Ecap_QV(ld Q, ld volts);
 
     /// <summary>
     /// calculates the energy stored in a capacitor
-    /// Ecap = (C * V^2)/2.0.
+    /// Ecap = (C * volts^2)/2.0.
     /// </summary>
     /// <param name="C">The capacitance.</param>
-    /// <param name="V">The volts.</param>
+    /// <param name="volts">The volts.</param>
     /// <returns>Energy stored in capacitor</returns>
-    static ld capacitorEnergy_Ecap_CV(const ld C, const ld V);
+    static ld capacitorEnergy_Ecap_CV(ld C, ld volts);
 
     /// <summary>
     /// calculates the energy stored in a capacitor
@@ -361,7 +355,7 @@ public:
     /// <param name="COULOMB">The charge.</param>
     /// <param name="C">The capacitance.</param>
     /// <returns>Energy stored in capacitor</returns>
-    static ld capacitorEnergy_Ecap_QC(const ld Q, const ld C);
+    static ld capacitorEnergy_Ecap_QC(ld Q, ld C);
 
     /// <summary>
     /// Potentials the across ecap ce.
@@ -369,7 +363,7 @@ public:
     /// <param name="C">The c.</param>
     /// <param name="Ecap">The ecap.</param>
     /// <returns></returns>
-    static ld potentialAcross_Ecap_CE(const ld C, const ld Ecap);
+    static ld potentialAcross_Ecap_CE(ld C, ld Ecap);
 
     /// <summary>
     ///  Calculate the area the parallel plates of a capacitor of capacitance C
@@ -379,7 +373,7 @@ public:
     /// <param name="C">The capacitance.</param>
     /// <param name="d">The distance.</param>
     /// <returns>the area of the parallel plates of a capacitor (m^2)</returns>
-    static ld capacitorPlateArea(const ld C, const ld d);
+    static ld capacitorPlateArea(ld C, ld d);
 
     /// <summary>
     ///  Calculate the area the parallel plates of a capacitor with a capacitance
@@ -390,7 +384,7 @@ public:
     /// <param name="d">The distance of separation .</param>
     /// <param name="k">The dielectric constant.</param>
     /// <returns>the area of the parallel plates of a capacitor (m^2)</returns>
-    static ld capacitorPlateAreaDielectric(const ld C, const ld d, const ld k);
+    static ld capacitorPlateAreaDielectric(ld C, ld d, ld k);
 
     /// <summary>
     /// vs the maximum on capacitor.
@@ -398,7 +392,7 @@ public:
     /// <param name="dStrength">The dielectric strength.</param>
     /// <param name="d">The distance between plates.</param>
     /// <returns>max voltage that can be applied</returns>
-    static ld vMaxOnCapacitor(const ld dStrength, const ld d);
+    static ld vMaxOnCapacitor(ld dStrength, ld d);
 
     /// <summary>
     /// Maximums the charge can be stored capacitor.
@@ -406,7 +400,7 @@ public:
     /// <param name="C">The capacitance.</param>
     /// <param name="vMax">The max voltage.</param>
     /// <returns>max charge that can be stored in a capacitor (C)</returns>
-    static ld maxChargeCanBeStoredCapacitor(const ld C, const ld vMax);
+    static ld maxChargeCanBeStoredCapacitor(ld C, ld vMax);
 
     /// <summary>
     /// Calculates the Volume the of dielectric material.
@@ -414,7 +408,7 @@ public:
     /// <param name="A">area.</param>
     /// <param name="d">The distance.</param>
     /// <returns></returns>
-    static ld volumeOfDielectricMaterial(const ld A, const ld d);
+    static ld volumeOfDielectricMaterial(ld A, ld d);
 
     /// <summary>
     /// Electrics the field strength between2plates.
@@ -423,7 +417,7 @@ public:
     /// <param name="q">The charge.</param>
     /// <param name="d">The distance.</param>
     /// <returns>Electric field strength(V/m)</returns>
-    static ld electricFieldStrengthBetween2plates(const ld KE, const ld q, const ld d);
+    static ld electricFieldStrengthBetween2plates(ld KE, ld q, ld d);
 
     /// <summary>
     /// A  plastic sphere of diameter d is used in a static electricity
@@ -433,40 +427,40 @@ public:
     /// <param name="d">The diameter of sphere.</param>
     /// <param name="q">The charge.</param>
     /// <returns>volts</returns>
-    static ld potentialNearSurfaceOfSphere(const ld d, const ld q);
+    static ld potentialNearSurfaceOfSphere(ld d, ld q);
 
     /// <summary>
     /// An electrostatic paint sprayer has a metal sphere of diameter d and
-    /// a potential of V volts that repels paint droplets onto a grounded
+    /// a potential of volts volts that repels paint droplets onto a grounded
     /// object.  What charge is on the sphere?
     /// </summary>
     /// <param name="d">The diameter.</param>
-    /// <param name="V">The volts.</param>
+    /// <param name="volts">The volts.</param>
     /// <returns>the charge (C)</returns>
-    static ld chargeOnSphere(const ld d, const ld V);
+    static ld chargeOnSphere(ld d, ld volts);
 
     /// <summary>
-    /// What charge must a 0.100-mg point with a potential of V have to arrive at an object
-    /// with a speed of v m/s?
+    /// What charge must a 0.100-mg point with a potential of volts have to arrive at an object
+    /// with a speed of velocity m/s?
     /// </summary>
     /// <param name="m">The mass in kg.</param>
-    /// <param name="v">The velocity.</param>
-    /// <param name="V">The voltage.</param>
+    /// <param name="velocity">The velocity.</param>
+    /// <param name="volts">The voltage.</param>
     /// <returns>charge (C)</returns>
-    static ld chargeOnPointToArriveWithSpeed(const ld m, const ld v, const ld V);
+    static ld chargeOnPointToArriveWithSpeed(ld m, ld velocity, ld volts);
 
     /// <summary>
-    /// A prankster applies a voltage of V to an capacitor of C farad and then tosses it
+    /// A prankster applies a voltage of volts to an capacitor of C farad and then tosses it
     /// to an unsuspecting victim. The victim's finger is burned by the discharge
     /// of the capacitor through m g of flesh. What is the temperature increase
     /// of the flesh? Is it reasonable to assume no phase change?
     /// </summary>
-    /// <param name="V">The voltage.</param>
+    /// <param name="volts">The voltage.</param>
     /// <param name="C">The capacitance.</param>
     /// <param name="m">The mass.</param>
     /// <param name="_c">The specific heat.</param>
     /// <returns></returns>
-    static ld temperatureChangeFromCapacitanceBurn(const ld V, const ld C, const ld m, const ld _c );
+    static ld temperatureChangeFromCapacitanceBurn(ld volts, ld C, ld m, ld _c );
 
     /// <summary>
     /// Potential energy used to move positive charge.
@@ -474,7 +468,7 @@ public:
     /// <param name="q">The positive charge.</param>
     /// <param name="Vab">The change in volts.</param>
     /// <returns>KE (J)</returns>
-    static ld kineticEnergyFinalToMovePositiveCharge(const ld q, const ld Vab);
+    static ld kineticEnergyFinalToMovePositiveCharge(ld q, ld Vab);
 
 
 
@@ -485,7 +479,7 @@ public:
 
     ~ElectricPotential()
     {
-        delete _electricalPotentialPtr;
+        countDecrease();
     }
 
 private:
@@ -503,14 +497,14 @@ inline ld ElectricPotential::electricalPotential_V(const ld PE, const ld q)
     return PE/q;
 }
 
-inline ld ElectricPotential::potentialDifference_PE(const ld q, const ld V)
+inline ld ElectricPotential::potentialDifference_PE(const ld q, const ld volts)
 {
-    return q*V;
+    return q * volts;
 }
 
-inline ld ElectricPotential::chargeMoved_q(const ld PE, const ld V)
+inline ld ElectricPotential::chargeMoved_q(const ld PE, const ld volts)
 {
-    return PE / V;
+    return PE / volts;
 }
 
 inline ld ElectricPotential::electronsPerSecond(const ld chargeMoved)
@@ -518,19 +512,19 @@ inline ld ElectricPotential::electronsPerSecond(const ld chargeMoved)
     return chargeMoved/constants::ELECTRON_CHARGE;
 }
 
-inline ld ElectricPotential::electronVolts_eV(const ld V)
+inline ld ElectricPotential::electronVolts_eV(const ld volts)
 {
-    return constants::eV * V;
+    return constants::eV * volts;
 }
 
-inline ld ElectricPotential::electronVoltsFromJoules(const ld joules)
+inline ld ElectricPotential::electronVoltsFromJoules(const ld j)
 {
-    return joules/constants::PROTON_CHARGE;
+    return j / constants::PROTON_CHARGE;
 }
 
-inline ld ElectricPotential::velocityFinal(const ld q, const ld V, const ld m)
+inline ld ElectricPotential::velocityFinal(const ld q, const ld volts, const ld m)
 {
-    return sqrt((2.0 * q * V) / m);
+    return sqrt((2.0 * q * volts) / m);
 }
 
 inline ld ElectricPotential::velocityFinal(const ld KE, const ld m)
@@ -543,14 +537,14 @@ inline ld ElectricPotential::voltageBetween2points_Vab(const ld E, const ld d)
     return E * d;
 }
 
-inline ld ElectricPotential::electricFieldMagnitude(const ld V, const ld d)
+inline ld ElectricPotential::electricFieldMagnitude(const ld volts, const ld d)
 {
-    return V / d;
+    return volts / d;
 }
 
-inline ld ElectricPotential::electricField(const ld V, const ld s)
+inline ld ElectricPotential::electricField(const ld volts, const ld s)
 {
-    return -(V / s);
+    return -(volts / s);
 }
 
 inline ld ElectricPotential::voltsFromElectricFieldGradient(const ld E, const ld s)
@@ -558,15 +552,15 @@ inline ld ElectricPotential::voltsFromElectricFieldGradient(const ld E, const ld
     return -E * s;
 }
 
-inline ld ElectricPotential::distanceOverChangeInVolts_s(const ld V, const ld E)
+inline ld ElectricPotential::distanceOverChangeInVolts_s(const ld volts, const ld E)
 {
-    return V / E;
+    return volts / E;
 }
 
 inline ld ElectricPotential::distancePointChargeToEqualVoltsOf(const ld Q,
-                                                               const ld V)
+                                                               const ld volts)
 {
-    return (constants::K*Q)/V;
+    return (constants::K*Q) / volts;
 }
 
 inline ld ElectricPotential::electricPotential_pointCharge(const ld Q, const ld r)
@@ -574,42 +568,42 @@ inline ld ElectricPotential::electricPotential_pointCharge(const ld Q, const ld 
     return (constants::K * Q) / r;
 }
 
-inline ld ElectricPotential::excessCharge(const ld r, const ld V)
+inline ld ElectricPotential::excessCharge(const ld r, const ld volts)
 {
-    return (r * V) / constants::K;
+    return (r * volts) / constants::K;
 }
 
 inline ld ElectricPotential::voltageNeededToObtainEnergy(const ld m,
-                                                         const ld v,
+                                                         const ld volts,
                                                          const ld q,
                                                          const ld numProtons)
 {
-    return -(m * (v*v)) / (2.0 * (numProtons*q));
+    return -(m * (volts * volts)) / (2.0 * (numProtons * q));
 }
 
 inline ld ElectricPotential::temperatureAvgKineticEnergyGasMolecule(
-        const ld V,
+        const ld volts,
         const ld q = constants::PROTON_CHARGE)
 {
 
-    return (2* q* V)/(3.0 * constants::STEFAN_BOLTZMANN);
+    return (2 * q * volts) / (3.0 * constants::STEFAN_BOLTZMANN);
 }
 
 inline ld ElectricPotential::voltageIonsMoveThroughToReachSameTemperature(
         const ld T, const ld q = constants::PROTON_CHARGE)
 {
-    return (3/2)*((constants::STEFAN_BOLTZMANN * T) / q);
+    return (3.0/2.0)*((constants::STEFAN_BOLTZMANN * T) / q);
 }
 
 
-inline ld ElectricPotential::capacitance(const ld Q, const ld V)
+inline ld ElectricPotential::capacitance(const ld Q, const ld volts)
 {
-    return Q/V;
+    return Q / volts;
 }
 
-inline ld ElectricPotential::capacitanceCharge(const ld C, const ld V)
+inline ld ElectricPotential::capacitanceCharge(const ld C, const ld volts)
 {
-    return C * V;
+    return C * volts;
 }
 
 inline ld ElectricPotential::capacitanceVolts(const ld Q, const ld C)
@@ -633,14 +627,14 @@ inline ld ElectricPotential::dielectricConstant(const ld E0, const ld E)
     return E0/E;
 }
 
-inline ld ElectricPotential::capacitorEnergy_Ecap_QV(const ld Q, const ld V)
+inline ld ElectricPotential::capacitorEnergy_Ecap_QV(const ld Q, const ld volts)
 {
-    return (Q * V) / 2.0;
+    return (Q * volts) / 2.0;
 }
 
-inline ld ElectricPotential::capacitorEnergy_Ecap_CV(const ld C, const ld V)
+inline ld ElectricPotential::capacitorEnergy_Ecap_CV(const ld C, const ld volts)
 {
-    return (C*(V*V))/2.0;
+    return (C*(volts * volts)) / 2.0;
 }
 
 inline ld ElectricPotential::capacitorEnergy_Ecap_QC(const ld Q, const ld C)
@@ -696,25 +690,25 @@ inline ld ElectricPotential::potentialNearSurfaceOfSphere(const ld d, const ld q
     return (2.0*constants::K * q)/d;
 }
 
-inline ld ElectricPotential::chargeOnSphere(const ld d, const ld V)
+inline ld ElectricPotential::chargeOnSphere(const ld d, const ld volts)
 {
-    return (d*V)/(2.0 * constants::K);
+    return (d * volts) / (2.0 * constants::K);
 }
 
 inline ld ElectricPotential::chargeOnPointToArriveWithSpeed(const ld m,
-                                                            const ld v,
-                                                            const ld V)
+                                                            const ld velocity,
+                                                            const ld volts)
 {
-    return (m*(v*v))/(2.0*V);
+    return (m*(velocity * velocity)) / (2.0 * volts);
 }
 
 inline ld ElectricPotential::temperatureChangeFromCapacitanceBurn(
-        const ld V,
+        const ld volts,
         const ld C,
         const ld m,
         const ld _c_ = SHC.humanBodyAverageSolid.J_kgC)
 {
-    return (C*(V*V))/(2.0*m*_c_);
+    return (C*(volts * volts)) / (2.0 * m * _c_);
 }
 
 inline ld ElectricPotential::kineticEnergyFinalToMovePositiveCharge(

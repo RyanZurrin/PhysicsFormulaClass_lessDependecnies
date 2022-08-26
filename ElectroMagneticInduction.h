@@ -23,19 +23,14 @@ class ElectroMagneticInduction :
 {
 
 public:
-    ElectroMagneticInduction* _emiPtr;
-
-
     ElectroMagneticInduction()
     {
-        _emiPtr = nullptr;
         _electroMagVar = 0.0;
         countIncrease();
     }
 
-    ElectroMagneticInduction(ld val)
+    explicit ElectroMagneticInduction(ld val)
     {
-        _emiPtr = nullptr;
         _electroMagVar = val;
         countIncrease();
     }
@@ -44,8 +39,7 @@ public:
      * @brief copy constructor
      */
     ElectroMagneticInduction(const ElectroMagneticInduction& t)
-    {
-        _emiPtr = t._emiPtr;
+     : Magnetism(t) {
         _electroMagVar = t._electroMagVar;
         countIncrease();
     }
@@ -54,7 +48,6 @@ public:
      */
     ElectroMagneticInduction(ElectroMagneticInduction&& t) noexcept
     {
-        _emiPtr = t._emiPtr;
         _electroMagVar = t._electroMagVar;
         countIncrease();
     }
@@ -65,14 +58,13 @@ public:
     {
         if (this != &t)
         {
-            _emiPtr = t._emiPtr;
             _electroMagVar = t._electroMagVar;
             countIncrease();
         }
         return *this;
     }
     void setElectroMagVar(ld var) { _electroMagVar = var; }
-    ld getElectroMagVar()const { return _electroMagVar; }
+    [[nodiscard]] ld getElectroMagVar()const { return _electroMagVar; }
     static void show_objectCount() { std::cout << "\n electromagnetic induction object count: "
                                                << emi_objectCount << std::endl; }
     static int get_objectCount() { return emi_objectCount; }
@@ -89,7 +81,7 @@ public:
     /// <param name="theta">The angle theta default is at 0 degrees which
     /// is equal to 1 making the equation flux = B*A.</param>
     /// <returns>the magnetic flux (T*m^2)</returns>
-    static ld magneticFlux(const ld B, const ld A, const ld theta);
+    static ld magneticFlux( ld B, ld A, ld theta);
 
     /// <summary>
     /// A generator coil is rotated through a revolution from 0 to theta degrees,
@@ -103,7 +95,7 @@ public:
     /// <param name="thetaS">The starting angle of rotation.</param>
     /// <param name="thetaF">The finishing angle of rotation.</param>
     /// <returns>emf average (V)</returns>
-    static ld emfFaradyFullEquation(const ld N, const ld r, const ld B, const ld t, const ld thetaS, const ld thetaF);
+    static ld emfFaradyFullEquation(ld N, ld r, ld B, ld t, ld thetaS, ld thetaF);
 
     /// <summary>
     /// Calculates the magnitude of an induced emf when a bar magnet  is thrust
@@ -118,7 +110,7 @@ public:
     /// <param name="t">The time over which the increase of the
     /// magnetic field takes place.</param>
     /// <returns>magnitude of emf (V)</returns>
-    static ld emfMagnitude_FaradayNoMinus(const ld N, const ld r, const ld B1, const ld B2, const ld t, const ld theta);
+    static ld emfMagnitude_FaradayNoMinus(ld N, ld r, ld B1, ld B2, ld t, ld theta);
 
     /// <summary>
     /// Calculates the change in flux.
@@ -126,7 +118,7 @@ public:
     /// <param name="A">the area = pi*r^2.</param>
     /// <param name="deltaB">The delta b = .</param>
     /// <returns></returns>
-    static ld deltaFlux(const ld A, const ld deltaB);
+    static ld deltaFlux(ld A, ld deltaB);
 
     /// <summary>
     /// EMFs the induced in generator coil.
@@ -138,7 +130,7 @@ public:
     /// <param name="B">The magnetic field strength.</param>
     /// <param name="t">The time for a rotation.</param>
     /// <returns>emf total from generator coil (V)</returns>
-    static ld emf_inducedInGeneratorCoil(const ld N, const ld l, const ld w, const ld aW, const ld B, const ld t);
+    static ld emf_inducedInGeneratorCoil(ld N, ld l, ld w, ld aW, ld B, ld t);
 
     /// <summary>
     /// Calculates the peek emf.
@@ -148,7 +140,7 @@ public:
     /// <param name="B">The magnetic field strength.</param>
     /// <param name="aW">The angular velocity.</param>
     /// <returns>peek emf (V)</returns>
-    static ld emf_peek(const ld N, const ld A, const ld B, const ld aW);
+    static ld emf_peek(ld N, ld A, ld B, ld aW);
 
     /// <summary>
     /// Calculates the peek emf.
@@ -159,7 +151,7 @@ public:
     /// <param name="rad">The angle of rotation in radians.</param>
     /// <param name="t">The time for a rotation.</param>
     /// <returns>peek emf (V)</returns>
-    static ld emf_peek(const ld N, const ld r, const ld B, const ld rad, const ld t);
+    static ld emf_peek(ld N, ld r, ld B, ld rad, ld t);
 
     /// <summary>
     /// A N turn, r(m) radius coil rotates at an angular velocity of
@@ -172,7 +164,7 @@ public:
     /// <param name="B">The magnetic field strength.</param>
     /// <param name="aW">a angular velocity.</param>
     /// <returns>peek emf</returns>
-    static ld emfPeek_r(const ld N, const ld r, const ld B, const ld aW);
+    static ld emfPeek_r(ld N, ld r, ld B, ld aW);
 
     /// <summary>
     /// Calculate the peak voltage of a generator that rotates its N-turn,
@@ -183,7 +175,7 @@ public:
     /// <param name="B">The magnetic filed strength.</param>
     /// <param name="rpm">The RPMs.</param>
     /// <returns>peek emf voltage</returns>
-    static ld emf_peekFromDiameterAndRPMs(const ld N, const ld d, const ld B, const ld rpm);
+    static ld emf_peekFromDiameterAndRPMs(ld N, ld d, ld B, ld rpm);
 
     /// <summary>
     /// Calculates the EMF induced by magnetic flux over t time having N turns
@@ -194,7 +186,7 @@ public:
     /// <param name="f">The flux.</param>
     /// <param name="t">The time.</param>
     /// <returns>emf = volts(V)</returns>
-    static ld emf_inducedByMagneticFlux(const ld N, const ld f, const ld t);
+    static ld emf_inducedByMagneticFlux(ld N, ld f, ld t);
 
     /// <summary>
     /// An MRI technician moves his hand from a region of very low magnetic field
@@ -207,7 +199,7 @@ public:
     /// <param name="d">The diameter.</param>
     /// <param name="t">The time in seconds.</param>
     /// <returns>average emf (V)</returns>
-    static ld emf_avgOnCoil(const ld B, const ld d, const ld t);
+    static ld emf_avgOnCoil(ld B, ld d, ld t);
 
     /// <summary>
     /// number of turns in a coil from EMF and time t over the flux;
@@ -216,7 +208,7 @@ public:
     /// <param name="emf">The EMF.</param>
     /// <param name="f">The flux.</param>
     /// <returns>turns in a coil</returns>
-    static ld n_turnsInCoilFromEMFEquation(const ld t, const ld emf, const ld f);
+    static ld n_turnsInCoilFromEMFEquation(ld t, ld emf, ld f);
 
     /// <summary>
     /// calculates the fluxes from EMF equation, with a time of t and N turns in
@@ -226,7 +218,7 @@ public:
     /// <param name="t">The time.</param>
     /// <param name="N">The number of turns in a coil.</param>
     /// <returns>magnetic flux(T*m^2)</returns>
-    static ld flux_fromEMFEquation(const ld emf, const ld t, const ld N);
+    static ld flux_fromEMFEquation(ld emf, ld t, ld N);
 
     /// <summary>
     /// calculates the times from EMF equation with a flux and emf with N turns
@@ -236,7 +228,7 @@ public:
     /// <param name="f">The flux.</param>
     /// <param name="emf">The EMF.</param>
     /// <returns>time in seconds</returns>
-    static ld time_fromEMFEquation(const ld N, const ld f, const ld emf);
+    static ld time_fromEMFEquation(ld N, ld f, ld emf);
 
     /// <summary>
     /// Calculates the motional  EMF.
@@ -246,7 +238,7 @@ public:
     /// <param name="x">The distance the rod moves.</param>
     /// <param name="t">The time it moves over.</param>
     /// <returns>emf from motion (V)</returns>
-    static ld motionalEMF(const ld B, const ld l, const ld x, const ld t);
+    static ld motionalEMF(ld B, ld l, ld x, ld t);
 
     /// <summary>
     /// Calculates the motional EMF.
@@ -255,7 +247,7 @@ public:
     /// <param name="l">The length of rod.</param>
     /// <param name="v">The velocity -> x/t .</param>
     /// <returns>emf from motion(V)</returns>
-    static ld motionalEMF(const ld B, const ld l, const ld v);
+    static ld motionalEMF(ld B, ld l, ld v);
 
     /// <summary>
     /// calculates the length a magnetic rod must be when producing an emf of V.
@@ -264,7 +256,7 @@ public:
     /// <param name="B">The magnetic field (B).</param>
     /// <param name="v">The velocity (v).</param>
     /// <returns>length of magnetic rod</returns>
-    static ld lengthOfRod_emfEq(const ld V, const ld B, const ld v);
+    static ld lengthOfRod_emfEq(ld V, ld B, ld v);
 
     /// <summary>
     /// Calculates the velocity of the motion of magnetic rod when a emf of V is
@@ -274,7 +266,7 @@ public:
     /// <param name="B">The magnetic field (T).</param>
     /// <param name="l">The length of rod (m).</param>
     /// <returns>velocity (m/s)</returns>
-    static ld velocityOfMotion_emfEq(const ld V, const ld B, const ld l);
+    static ld velocityOfMotion_emfEq(ld V, ld B, ld l);
 
     /// <summary>
     /// Calculates the magnetic field from when a rod of length l moves at a
@@ -284,7 +276,7 @@ public:
     /// <param name="l">The length of rod.</param>
     /// <param name="v">The velocity.</param>
     /// <returns>magnetic field strength (T)</returns>
-    static ld magneticFieldFrom_emfEq(const ld V, const ld l, const ld v);
+    static ld magneticFieldFrom_emfEq(ld V, ld l, ld v);
 
     /// <summary>
     /// Magnetics the field magnitude.
@@ -297,7 +289,7 @@ public:
     /// for diameter and if you are using the already calculated cross sectional
     /// then leave out..</param>
     /// <returns>magnetic field (T)</returns>
-    static ld magneticFieldMagnitude(const ld flux, const ld Ard, const ld theta, const ld mode);
+    static ld magneticFieldMagnitude(ld flux, ld Ard, ld theta, ld mode);
 
     /// <summary>
     /// Calculates the voltage or number of loops in a transformer. Use a 0 as
@@ -315,7 +307,7 @@ public:
     /// example: transformerEquation(2.5,3.4,5,10,"Ns");\n
     /// this would solve for the number of loops in the secondary transformer</param>
     /// <returns>volts or loops depending on mode used</returns>
-    static ld transformerEquations_VN(const ld Vs, const ld Vp, const ld Ns, const ld Np, std::string mode);
+    static ld transformerEquations_VN(ld Vs, ld Vp, ld Ns, ld Np, std::string mode);
 
     /// <summary>
     /// Calculates the voltage or current in a transformer. use a 0 as a place
@@ -333,7 +325,7 @@ public:
     /// example: transformerEquation(2.5,3.4,5,10,"Is");\n
     /// this would solve for the current in the secondary transformer</param>
     /// <returns>volts or current depending on the mode picked</returns>
-    static ld transformerEquations_VI(const ld Vs, const ld Vp, const ld Is, const ld Ip, std::string mode);
+    static ld transformerEquations_VI(ld Vs, ld Vp, ld Is, ld Ip, std::string mode);
 
     /// <summary>
     /// Calculates the current or number of loops in a transformer. use a 0 as a place
@@ -351,21 +343,21 @@ public:
     /// example: transformerEquation(2.5,3.4,5,10,"Is");\n
     /// this would solve for the current in the secondary transformer</param>
     /// <returns>current or number of loops depending on the mode picked</returns>
-    static ld transformerEquations_IN(const ld Is, const ld Ip, const ld Ns, const ld Np, std::string mode);
+    static ld transformerEquations_IN(ld Is, ld Ip, ld Ns, ld Np, std::string mode);
 
     /// <summary>
     /// Calculates the frequencies from a know angular velocity of aW.
     /// </summary>
     /// <param name="aW">a angular velocity.</param>
     /// <returns>frequency (Hz</returns>
-    static ld frequency(const ld aW);
+    static ld frequency(ld aW);
 
     /// <summary>
     /// Calculates the period from the known frequency of f.
     /// </summary>
     /// <param name="f">The frequency.</param>
     /// <returns></returns>
-    static ld period(const ld f);
+    static ld period(ld f);
 
     /// <summary>
     /// Calculates the current in the coil.
@@ -373,7 +365,7 @@ public:
     /// <param name="emf">The EMF.</param>
     /// <param name="R">The resistance.</param>
     /// <returns>current (A)</returns>
-    static ld currentInCoil(const ld emf, const ld R);
+    static ld currentInCoil(ld emf, ld R);
 
     /// <summary>
     /// Calculates the emf2 from the mutual inductance of M between two devices
@@ -384,7 +376,7 @@ public:
     /// <param name="I">The current.</param>
     /// <param name="t">The time.</param>
     /// <returns>emf voltage</returns>
-    static ld emf_byMutualInductance(const ld M, const ld I, const ld t);
+    static ld emf_byMutualInductance(ld M, ld I, ld t);
 
 
     /// <summary>
@@ -394,7 +386,7 @@ public:
     /// <param name="I">The current.</param>
     /// <param name="t">The time.</param>
     /// <returns>henry(H)</returns>
-    static ld mutualInductance(const ld emf, const ld I, const ld t);
+    static ld mutualInductance(ld emf, ld I, ld t);
 
     /// <summary>
     /// calculates the EMF by self inductance. also the back emf calculated with
@@ -404,7 +396,7 @@ public:
     /// <param name="I">The current.</param>
     /// <param name="t">The time.</param>
     /// <returns>emf voltage</returns>
-    static ld emf_bySelfInductance(const ld L, const ld I, const ld t);
+    static ld emf_bySelfInductance(ld L, ld I, ld t);
 
     /// <summary>
     /// calculates the self inductance.
@@ -413,7 +405,7 @@ public:
     /// <param name="I">The current.</param>
     /// <param name="t">The time.</param>
     /// <returns>inductance of inductor(H)</returns>
-    static ld selfInductance(const ld emf, const ld I, const ld t);
+    static ld selfInductance(ld emf, ld I, ld t);
 
     /// <summary>
     /// calculates the self inductance.
@@ -422,7 +414,7 @@ public:
     /// <param name="B">The flux.</param>
     /// <param name="I">The current.</param>s
     /// <returns>inductance(H)</returns>
-    static ld selfInductance_N(const ld N, const ld B, const ld I);
+    static ld selfInductance_N(ld N, ld B, ld I);
 
     /// <summary>
     /// Calculates the self the inductance using the time constant and resistance
@@ -430,7 +422,7 @@ public:
     /// <param name="toa">The time constant.</param>
     /// <param name="R">The resistance.</param>
     /// <returns>self inductance</returns>
-    static ld selfInductance_timeConstant(const ld toa, const ld R);
+    static ld selfInductance_timeConstant(ld toa, ld R);
 
     /// <summary>
     /// Calculates the inductance of a solenoid.
@@ -441,7 +433,7 @@ public:
     /// <param name="mode">put a 'r' if use a radius or a 'd' if using the
     /// diameter in the Ard argument.</param>
     /// <returns>inductance(H)</returns>
-    static ld inductanceSolenoid_L(const ld N, const ld A, const ld l, char mode);
+    static ld inductanceSolenoid_L(ld N, ld A, ld l, char mode);
 
     /// <summary>
     /// Calculates the inductance from total energy of E stored in inductor
@@ -450,7 +442,7 @@ public:
     /// <param name="E">The energy of inductor.</param>
     /// <param name="I">The current.</param>
     /// <returns>the inductance (H)</returns>
-    static ld inductanceFromEnergyStored(const ld E, const ld I);
+    static ld inductanceFromEnergyStored(ld E, ld I);
 
     /// <summary>
     /// Calculates the energy stored in an inductor.
@@ -458,7 +450,7 @@ public:
     /// <param name="L">The inductance.</param>
     /// <param name="I">The current.</param>
     /// <returns>energy (J)</returns>
-    static ld energyStoredInInductor(const ld L, const ld I);
+    static ld energyStoredInInductor(ld L, ld I);
 
     /// <summary>
     /// Camera flashes charge a capacitor to high voltage by switching the
@@ -470,7 +462,7 @@ public:
     /// <param name="L">The inductance.</param>
     /// <param name="emf">The EMF.</param>
     /// <returns>time to switch on off current through an inductor</returns>
-    static ld timeOnOffToinduceCurrent(const ld I, const ld L, const ld emf);
+    static ld timeOnOffToinduceCurrent(ld I, ld L, ld emf);
 
     /// <summary>
     /// Calculate  the current of a system with duel rails,
@@ -488,7 +480,7 @@ public:
     /// <param name="R">The radius.</param>
     /// <param name="t">The time.</param>
     /// <returns>current</returns>
-    static ld currentSystemOnRails(const ld B, const ld l, const ld v, const ld A, const ld p, const ld R, const ld t);
+    static ld currentSystemOnRails(ld B, ld l, ld v, ld A, ld p, ld R, ld t);
 
     /// <summary>
     /// Calculates the Characteristic time constant. (cTc)
@@ -496,7 +488,7 @@ public:
     /// <param name="L">The inductance.</param>
     /// <param name="R">The resistance.</param>
     /// <returns>the time constant</returns>
-    static ld characteristicTimeConstant(const ld L, const ld R);
+    static ld characteristicTimeConstant(ld L, ld R);
 
     /// <summary>
     /// Inductances the reactance (XL)
@@ -504,7 +496,7 @@ public:
     /// <param name="f">The frequency.</param>
     /// <param name="L">The inductance.</param>
     /// <returns>inductive reactance (H)</returns>
-    static ld inductance_reactance_XL(const ld f, const ld L);
+    static ld inductance_reactance_XL(ld f, ld L);
 
     /// <summary>
     /// calculates the Capacitive reactance (XC).
@@ -512,7 +504,7 @@ public:
     /// <param name="f">The frequency.</param>
     /// <param name="C">The capacitance.</param>
     /// <returns>capacitive reactance (ohms)</returns>
-    static ld capacitive_reactance_XC(const ld f, const ld C);
+    static ld capacitive_reactance_XC(ld f, ld C);
 
     /// <summary>
     /// Calculates the capacitance from reactance and frequency
@@ -520,7 +512,7 @@ public:
     /// <param name="f">The frequency in Hz.</param>
     /// <param name="_xc">The capacitive reactance.</param>
     /// <returns>farads</returns>
-    static ld capacitanceFromReactance(const ld f, const ld _xc);
+    static ld capacitanceFromReactance(ld f, ld _xc);
 
     /// <summary>
     /// Calculates the current in an inductor of an RC circuit at specific moments
@@ -530,7 +522,7 @@ public:
     /// <param name="t">The time in seconds.</param>
     /// <param name="cTc">The characteristic time constant.</param>
     /// <returns>current at specified time when switched on (A)</returns>
-    static ld current_RLCircuit_switchON(const ld Io, const ld t, const ld cTc);
+    static ld current_RLCircuit_switchON(ld Io, ld t, ld cTc);
 
     /// <summary>
     /// Calculates the current of an inductor of an RC circuit switch off.
@@ -539,7 +531,7 @@ public:
     /// <param name="t">The time in seconds.</param>
     /// <param name="cTc">The characteristic time  constant.</param>
     /// <returns>current at specified time when switched off </returns>
-    static ld current_RICircuit_switchOFF(const ld Io, const ld t, const ld cTc);
+    static ld current_RICircuit_switchOFF(ld Io, ld t, ld cTc);
 
     /// <summary>
     /// Calculates the current through inductor.
@@ -547,7 +539,7 @@ public:
     /// <param name="Vrms">The rms Voltage.</param>
     /// <param name="_xl">The inductance reactance.</param>
     /// <returns>current</returns>
-    static ld currentRMS_throughInductor(const ld Vrms, const ld _xl);
+    static ld currentRMS_throughInductor(ld Vrms, ld _xl);
 
     /// <summary>
     /// Calculates the current through capacitor.
@@ -555,7 +547,7 @@ public:
     /// <param name="Vrms">The Voltage RMS.</param>
     /// <param name="_xc">The conductive reactance.</param>
     /// <returns>current</returns>
-    static ld currentRMS_throughCapacitor(const ld Vrms, const ld _xc);
+    static ld currentRMS_throughCapacitor(ld Vrms, ld _xc);
 
     /// <summary>
     /// Calculates the peeks the current in an AC circuit using the peek voltage
@@ -564,7 +556,7 @@ public:
     /// <param name="Vo">The peek voltage in circuit.</param>
     /// <param name="Z_">The impedance.</param>
     /// <returns>The peek current -> Io = peek Amps</returns>
-    static ld peekCurrent_AC(const ld Vo, const ld Z);
+    static ld peekCurrent_AC(ld Vo, ld Z);
 
     /// <summary>
     /// Calculates the RMS(root mean square) or average current in an AC circuit
@@ -573,7 +565,7 @@ public:
     /// <param name="Vrms">The rms Voltage, average voltage.</param>
     /// <param name="Z_">The impedance in circuit.</param>
     /// <returns>the average or rms current Irms -> (A)</returns>
-    static ld rmsCurrent_AC(const ld Vrms, const ld Z);
+    static ld rmsCurrent_AC(ld Vrms, ld Z);
 
     /// <summary>
     /// Calculates the RMS(root mean square current or average current in a AC
@@ -584,7 +576,7 @@ public:
     /// <param name="_xl">The inductive reactance.</param>
     /// <param name="_xc">The conductive reactance.</param>
     /// <returns>Irms or root mean square current, average current(A)</returns>
-    static ld rmsCurrent_AC(const ld Vrms, const ld R, const ld _xl, const ld _xc);
+    static ld rmsCurrent_AC(ld Vrms, ld R, ld _xl, ld _xc);
 
     /// <summary>
     /// Calculates the RMS(root mean square current or average current in a AC
@@ -596,7 +588,7 @@ public:
     /// <param name="C">The capacitance.</param>
     /// <param name="f">The frequency.</param>
     /// <returns>Irms or root mean square current, average current(A)</returns>
-    static ld rmsCurrent_AC(const ld Vrms, const ld R, const ld L, const ld C, const ld f);
+    static ld rmsCurrent_AC(ld Vrms, ld R, ld L, ld C, ld f);
 
     /// <summary>
     /// Calculates the Impedance in a RLC series AC circuit. For circuits without
@@ -607,7 +599,7 @@ public:
     /// <param name="_xl">The inductive reactance.</param>
     /// <param name="_xc">The capacitive reactance.</param>
     /// <returns>the impedance on an AC circuit (Ohms)</returns>
-    static ld impedance(const ld R, const ld _xl, const ld _xc);
+    static ld impedance(ld R, ld _xl, ld _xc);
 
     /// <summary>
     /// Calculates the impedance in a RLC series AS circuit.
@@ -617,7 +609,7 @@ public:
     /// <param name="C">The capacitance.</param>
     /// <param name="f">The frequency.</param>
     /// <returns>the impedance on an AC circuit (Ohms)</returns>
-    static ld impedance(const ld R, const ld L, const ld C, const ld f);
+    static ld impedance(ld R, ld L, ld C, ld f);
 
     /// <summary>
     /// Calculates the resonant frequency in an RLC series AC circuit
@@ -625,7 +617,7 @@ public:
     /// <param name="L">The inductance.</param>
     /// <param name="C">The capacitance.</param>
     /// <returns>resonant frequency (Hz)</returns>
-    static ld resonantFrequency(const ld L, const ld C);
+    static ld resonantFrequency(ld L, ld C);
 
     /// <summary>
     /// Calculates the power factor. cos(phi) = R/Z_.
@@ -633,14 +625,14 @@ public:
     /// <param name="R">The resistance.</param>
     /// <param name="Z_">The impedance.</param>
     /// <returns>power factor(unit-less)</returns>
-    static ld powerFactor(const ld R, const ld Z);
+    static ld powerFactor(ld R, ld Z);
 
     /// <summary>
     /// Phases the angle.
     /// </summary>
     /// <param name="pf">The pf.</param>
     /// <returns>phase angle</returns>
-    static ld phaseAngle(const ld pf);
+    static ld phaseAngle(ld pf);
 
     /// <summary>
     /// Phases the angle.
@@ -648,7 +640,7 @@ public:
     /// <param name="R">The resistance.</param>
     /// <param name="Z_">The impedance.</param>
     /// <returns>phase angle</returns>
-    static ld phaseAngle(const ld R, const ld Z);
+    static ld phaseAngle(ld R, ld Z);
 
     /// <summary>
     /// Powers the average RLC.
@@ -657,7 +649,7 @@ public:
     /// <param name="Vrms">The average voltage.</param>
     /// <param name="pf">The power factor.</param>
     /// <returns>power in an RLC series AC circuit</returns>
-    static ld powerAvgRLC(const ld Irms, const ld Vrms, const ld pf);
+    static ld powerAvgRLC(ld Irms, ld Vrms, ld pf);
 
     /// <summary>
     /// Calculates the peak emf  generated by a r(m) radius, N-turn
@@ -670,12 +662,12 @@ public:
     /// <param name="t">The time in seconds.</param>
     /// <param name="B">The magnetic field strength.</param>
     /// <returns>peek emf</returns>
-    static ld emfPeek(const ld r, const ld N, const ld t, const ld B);
+    static ld emfPeek(ld r, ld N, ld t, ld B);
 
 
     ~ElectroMagneticInduction()
     {
-        delete _emiPtr;
+        countDecrease();
     }
 
 private:

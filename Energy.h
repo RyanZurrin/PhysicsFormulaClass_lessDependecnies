@@ -45,7 +45,7 @@ static struct EnergyOfEventsInJoules
     const ld mosquito_point5ms = 1.3 * pow(10, -6);
     const ld single_electron_in_tv_tube_beam = 4.0 * pow(10, -15);
     const ld energy_to_break_dna_strand = pow(10, -19);
-}joules;
+}eventEnergy;
 /**
  * @brief a structure containing the efficiency percent of common human
  * body and mechanical devices
@@ -96,7 +96,8 @@ class Energy
 {
 
 public:
-    static void countShow() { std::cout << "energy object count: " << energy_objectCount << std::endl; }
+    static void countShow() { std::cout << "energy object count: "
+    << energy_objectCount << std::endl; }
 
     //constructor
     Energy()
@@ -105,7 +106,7 @@ public:
         countIncrease();
     }
 
-    Energy(ld val)
+    explicit Energy(ld val)
     {
         _work = 0.0;
         countIncrease();
@@ -237,14 +238,12 @@ public:
         return fx;
     }
 
-    static ld velocity(const ld m, const ld x, const ld F, const ld print = false)
+    static ld velocity(const ld m, const ld x, const ld F, bool print = false)
     {
         const ld a = F / m;
         const ld fx = sqrt(2.0 * a * x);
         if (print)
-        {
             cout << "Velocity: " << fx << endl;
-        }
         return fx;
     }
 

@@ -13,12 +13,8 @@ class ElectromagneticWaves :
 {
 
 public:
-    ElectromagneticWaves* _emWavesPtr;
-
-
     ElectromagneticWaves()
     {
-        _emWavesPtr = nullptr;
         emWaveVar = 0.0;
         countIncrease();
     }
@@ -28,7 +24,6 @@ public:
      */
     ElectromagneticWaves(const ElectromagneticWaves& t)
     {
-        _emWavesPtr = t._emWavesPtr;
         emWaveVar = t.getMagVar();
         countIncrease();
     }
@@ -37,7 +32,6 @@ public:
      */
     ElectromagneticWaves(ElectromagneticWaves&& t) noexcept
     {
-        _emWavesPtr = t._emWavesPtr;
         emWaveVar = t.getEmWaveVar();
         countIncrease();
     }
@@ -48,7 +42,6 @@ public:
     {
         if (this != &t)
         {
-            _emWavesPtr = t._emWavesPtr;
             emWaveVar = getEmWaveVar();
             countIncrease();
         }
@@ -69,14 +62,14 @@ public:
     /// </summary>
     /// <param name="E">The e field strength.</param>
     /// <returns>electromagnetic B field strength</returns>
-    static ld magneticFieldStrength_emWave(const ld E);
+    static ld magneticFieldStrength_emWave(ld E);
 
     /// <summary>
     /// magnetic field strength of em wave. E field
     /// </summary>
     /// <param name="B">The B field strength of an emWave.</param>
     /// <returns>electromagnetic E field strength</returns>
-    static ld electricFieldStrength_emWave(const ld B);
+    static ld electricFieldStrength_emWave(ld B);
 
     /// <summary>
     /// The maximum magnetic field strength of an electromagnetic field is B
@@ -86,21 +79,21 @@ public:
     /// <param name="B">The B field strength of an emWave.</param>
     /// <param name="percentOfc">The percent ofc.</param>
     /// <returns></returns>
-    static ld electricFieldStrength_emWave(const ld B, const ld percentOfc);
+    static ld electricFieldStrength_emWave(ld B, ld percentOfc);
 
     /// <summary>
     /// Calculates the wave length of a em wave having a frequency of f.
     /// </summary>
     /// <param name="f">The frequency.</param>
     /// <returns>the wave length (m)</returns>
-    static ld waveLength_emWave(const ld f);
+    static ld waveLength_emWave(ld f);
 
     /// <summary>
     /// Calculates the frequency an em wave having a wave length of waveLen.
     /// </summary>
     /// <param name="waveLen">Length of the wave.</param>
     /// <returns>frequency(Hz)</returns>
-    static ld frequency_emWave(const ld waveLen);
+    static ld frequency_emWave(ld waveLen);
 
     /// <summary>
     /// A radar used to detect the presence of aircraft receives a pulse that
@@ -109,7 +102,7 @@ public:
     /// </summary>
     /// <param name="t">The time in seconds.</param>
     /// <returns>distance from radar station (m)</returns>
-    static ld distanceFromRadarStation(const ld t);
+    static ld distanceFromRadarStation(ld t);
 
     /// <summary>
     /// Determine the amount of time it takes for X_-rays to travel
@@ -117,7 +110,7 @@ public:
     /// </summary>
     /// <param name="d">The distance.</param>
     /// <returns>time is seconds</returns>
-    static ld timeFor_emWaveToTravelDistance(const ld d);
+    static ld timeFor_emWaveToTravelDistance(ld d);
 
     /// <summary>
     /// What is the echo time for a car d m from a Highway Police radar
@@ -125,7 +118,7 @@ public:
     /// </summary>
     /// <param name="d">The distance.</param>
     /// <returns>time for radar echo to return</returns>
-    static ld echoTime(const ld d);
+    static ld echoTime(ld d);
 
     /// <summary>
     /// Find the intensity of an electromagnetic wave having a peak magnetic
@@ -133,7 +126,7 @@ public:
     /// </summary>
     /// <param name="B">The magnetic field strength.</param>
     /// <returns>Intensity ( W/m^2)</returns>
-    static ld intensityAvg_emWave_B(const ld B);
+    static ld intensityAvg_emWave_B(ld B);
 
     /// <summary>
     /// A university communications satellite dish receives
@@ -142,7 +135,7 @@ public:
     /// </summary>
     /// <param name="E">The maximum electric field strength.</param>
     /// <returns>intensity W/m^2</returns>
-    static ld intensityAvg_emWave_E(const ld E);
+    static ld intensityAvg_emWave_E(ld E);
 
     /// <summary>
     /// A d(m)-diameter university communications satellite dish receives
@@ -152,7 +145,7 @@ public:
     /// <param name="d">The d.</param>
     /// <param name="I">The I.</param>
     /// <returns>power in (W)</returns>
-    static ld powerReceivedByAntenna(const ld d, const ld I);
+    static ld powerReceivedByAntenna(ld d, ld I);
 
     /// <summary>
     /// Astronomers determine that a particular star in our galaxy is moving
@@ -163,7 +156,7 @@ public:
     /// <param name="v">The speed.</param>
     /// <param name="receivedWL">The received wavelength.</param>
     /// <returns></returns>
-    static ld waveLength_dopplerEffect(const ld v, const ld receivedWL);
+    static ld waveLength_dopplerEffect(ld v, ld receivedWL);
 
     /// <summary>
     /// Calculates the inductance of a LC circuit containing a C-F capacitor
@@ -172,7 +165,7 @@ public:
     /// <param name="theta">The theta.</param>
     /// <param name="C">The c.</param>
     /// <returns>inductance</returns>
-    static ld inductanceOfCircuitFromWavelength(const ld theta, const ld C);
+    static ld inductanceOfCircuitFromWavelength(ld theta, ld C);
 
     /// <summary>
     /// Calculates the capacitance of a LC circuit containing a L-H inductor
@@ -181,11 +174,11 @@ public:
     /// <param name="theta">The theta.</param>
     /// <param name="L">The l.</param>
     /// <returns>capacitance</returns>
-    static ld capacitanceOfCircuitFromWavelength(const ld theta, const ld L);
+    static ld capacitanceOfCircuitFromWavelength(ld theta, ld L);
 
     ~ElectromagneticWaves()
     {
-        delete _emWavesPtr;
+        countDecrease();
     }
 private:
     ld emWaveVar;
@@ -251,9 +244,9 @@ inline ld ElectromagneticWaves::powerReceivedByAntenna(const ld d, const ld I)
     return (I * constants::PI * (d * d)) / 4.0;
 }
 
-inline ld ElectromagneticWaves::waveLength_dopplerEffect(const ld v, const ld recievedWL)
+inline ld ElectromagneticWaves::waveLength_dopplerEffect(const ld v, const ld receivedWL)
 {
-    return recievedWL / (1.0 - (v / constants::LIGHT_SPEED));
+    return receivedWL / (1.0 - (v / constants::LIGHT_SPEED));
 }
 
 inline ld ElectromagneticWaves::inductanceOfCircuitFromWavelength(const ld theta, const ld C)

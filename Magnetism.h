@@ -19,18 +19,14 @@ class Magnetism :
         public ElectricCurrent, public ElectricCharge
 {
 public:
-    Magnetism* _magnetismPtr;
-
     Magnetism()
     {
-        _magnetismPtr= nullptr;
         _magnetismVar = 0.0;
         countIncrease();
     }
 
-    Magnetism(ld var)
+    explicit Magnetism(ld var)
     {
-        _magnetismPtr= nullptr;
         _magnetismVar = 0.0;
         countIncrease();
     }
@@ -40,8 +36,7 @@ public:
      * @brief copy constructor
      */
     Magnetism(const Magnetism& t)
-    {
-        _magnetismPtr = t._magnetismPtr;
+     : ElectricCurrent(t), ElectricCharge(t) {
         _magnetismVar = t._magnetismVar;
         countIncrease();
     }
@@ -51,7 +46,6 @@ public:
      */
     Magnetism(Magnetism&& t) noexcept
     {
-        _magnetismPtr = t._magnetismPtr;
         _magnetismVar = t._magnetismVar;
         countIncrease();
     }
@@ -62,14 +56,13 @@ public:
     {
         if (this != &t)
         {
-            _magnetismPtr = t._magnetismPtr;
             _magnetismVar = t._magnetismVar;
             countIncrease();
         }
         return *this;
     }
     void setMagnetismVar(ld var) { _magnetismVar = var; }
-    ld getMagVar() const { return _magnetismVar; }
+    [[nodiscard]] ld getMagVar() const { return _magnetismVar; }
     static void show_objectCount() { std::cout << "\n magnetism object count: "
                                                << magnetism_objectCount << std::endl; }
     static int get_objectCount() { return magnetism_objectCount; }
@@ -85,7 +78,7 @@ public:
     /// <param name="theta">The angle theta between the directions
     /// of v and B.</param>
     /// <returns>the magnetic force in newtons</returns>
-    static ld magneticForce(const ld q, const ld v, const ld B, const ld theta);
+    static ld magneticForce(ld q, ld v, ld B, ld theta);
 
     /// <summary>
     /// Calculates the magnetic force at a maximum angle of sin(90) which is 1.
@@ -94,7 +87,7 @@ public:
     /// <param name="B">The b.</param>
     /// <param name="v">The v.</param>
     /// <returns>magnetic force (N)</returns>
-    static ld magneticForceMax(const ld q, const ld B, const ld v);
+    static ld magneticForceMax(ld q, ld B, ld v);
 
     /// <summary>
     /// Calculates the charge of a particle moving at right angles to the
@@ -106,7 +99,7 @@ public:
     /// <param name="v">The velocity.</param>
     /// <param name="B">The magnetic field strength.</param>
     /// <returns>charge (C)</returns>
-    static ld chargeOfParticle(const ld F, const ld v, const ld B);
+    static ld chargeOfParticle(ld F, ld v, ld B);
 
     /// <summary>
     /// A charged particle moving through a magnetic field at an angles theta1 to
@@ -121,7 +114,7 @@ public:
     /// <param name="theta1">The angle theta of particle 1.</param>
     /// <param name="theta2">The angle theta of particle 2.</param>
     /// <returns>force on particle 2</returns>
-    static ld magneticForceOnIdenticalParticle(const ld v1, const ld v2, const ld F1, const ld theta1, const ld theta2);
+    static ld magneticForceOnIdenticalParticle(ld v1, ld v2, ld F1, ld theta1, ld theta2);
 
     /// <summary>
     /// calculates the magnetic the field strength.\n
@@ -132,7 +125,7 @@ public:
     /// <param name="v">The speed (m/s).</param>
     /// <param name="theta">The angle theta.</param>
     /// <returns>Tesla(T)</returns>
-    static ld magneticFieldStrength(const ld F, const ld q, const ld v, const ld theta);
+    static ld magneticFieldStrength(ld F, ld q, ld v, ld theta);
 
     /// <summary>
     /// Calculates the magnetic field strength from the centripetal motion of a
@@ -144,7 +137,7 @@ public:
     /// <param name="q">The charge.</param>
     /// <param name="r">The radius.</param>
     /// <returns>Tesla's (T)</returns>
-    static ld magneticFieldStrength_Fc(const ld m, const ld v, const ld q, const ld r);
+    static ld magneticFieldStrength_Fc(ld m, ld v, ld q, ld r);
 
     /// <summary>
     /// Calculates the Magnetic field strength of a straight current carrying wire.
@@ -152,7 +145,7 @@ public:
     /// <param name="I">The current.</param>
     /// <param name="r">The shortest distance to the wire.</param>
     /// <returns>magnitude of magnetic field strength</returns>
-    static ld magneticFieldStrength_straightCurrentCarryingWire(const ld I, const ld r);
+    static ld magneticFieldStrength_straightCurrentCarryingWire(ld I, ld r);
 
     /// <summary>
     /// Calculates the magnetic field strength center circular loop(s).
@@ -161,7 +154,7 @@ public:
     /// <param name="R">The radius of loop.</param>
     /// <param name="N">The number of loops, default is 1.</param>
     /// <returns>magnetic field strength (T)</returns>
-    static ld magneticFieldStrengthCenterCircularLoop(const ld I, const ld R, const ld N);
+    static ld magneticFieldStrengthCenterCircularLoop(ld I, ld R, ld N);
 
     /// <summary>
     /// Calculates the magnetic field strength inside solenoid.
@@ -169,7 +162,7 @@ public:
     /// <param name="n">The number of loops per unit length n = N/l.</param>
     /// <param name="I">The current.</param>
     /// <returns>magnetic field strength inside a solenoid</returns>
-    static ld magneticFieldStrengthInsideSolenoid(const ld n, const ld I);
+    static ld magneticFieldStrengthInsideSolenoid(ld n, ld I);
 
     /// <summary>
     /// Calculates the magnetic field strength inside solenoid.
@@ -178,7 +171,7 @@ public:
     /// <param name="l">The length.</param>
     /// <param name="I">The current.</param>
     /// <returns>magnetic field strength (T)</returns>
-    static ld magneticFieldStrengthInsideSolenoid(const ld N, const ld l, const ld I);
+    static ld magneticFieldStrengthInsideSolenoid(ld N, ld l, ld I);
 
     /// <summary>
     /// Frustrated by the small Hall voltage obtained in blood flow measurements,
@@ -190,7 +183,7 @@ public:
     /// <param name="d">The diameter of vessel.</param>
     /// <param name="v">The speed.</param>
     /// <returns>the magnetic field strength</returns>
-    static ld magneticFieldStrengthHallVoltage(const ld E, const ld d, const ld v);
+    static ld magneticFieldStrengthHallVoltage(ld E, ld d, ld v);
 
     /// <summary>
     /// Loops per unit length.
@@ -198,7 +191,7 @@ public:
     /// <param name="N">The number of loops.</param>
     /// <param name="l">The length.</param>
     /// <returns></returns>
-    static ld loopsPerUnitLength(const ld N, const ld l);
+    static ld loopsPerUnitLength(ld N, ld l);
 
     /// <summary>
     /// calculates the centripetal force.
@@ -207,7 +200,7 @@ public:
     /// <param name="v">The velocity.</param>
     /// <param name="r">The radius.</param>
     /// <returns>centripetal force</returns>
-    static ld centripetalForce(const ld m, const ld v, const ld r);
+    static ld centripetalForce(ld m, ld v, ld r);
 
     /// <summary>
     /// calculates the radius of the curvature of the path of a charged particle
@@ -220,7 +213,7 @@ public:
     /// <param name="B">The magnetic field strength.</param>
     /// <param name="theta">The angle theta, defaulted at 90.</param>
     /// <returns>radius in meters</returns>
-    static ld radiusCurvatureOfPath(const ld m, const ld v, const ld q, const ld B, const ld theta);
+    static ld radiusCurvatureOfPath(ld m, ld v, ld q, ld B, ld theta);
 
     /// <summary>
     /// If a single circular loop of wire carries a current of I A and produces
@@ -230,7 +223,7 @@ public:
     /// <param name="I">The current.</param>
     /// <param name="B">The magnetic field strength.</param>
     /// <returns>radius of loop (m)</returns>
-    static ld radiusLoopOfCurrentCarryingWire(const ld I, const ld B);
+    static ld radiusLoopOfCurrentCarryingWire(ld I, ld B);
 
     /// <summary>
     /// The wire carrying I1 A to the motor of a commuter train feels an
@@ -242,7 +235,7 @@ public:
     /// <param name="I2">The current second wire.</param>
     /// <param name="Fl">The force per unit length.</param>
     /// <returns>distance between wires (m)</returns>
-    static ld distanceBetween2wires(const ld I1, const ld I2, const ld Fl);
+    static ld distanceBetween2wires(ld I1, ld I2, ld Fl);
 
     /// <summary>
     /// Two power lines run parallel for a distance of l m and are separated
@@ -255,7 +248,7 @@ public:
     /// <param name="l">The length of wires.</param>
     /// <param name="r">The distance between the wires.</param>
     /// <returns>magnitude of force</returns>
-    static ld forceMagnitude2wires(const ld I1, const ld I2, const ld l, const ld r);
+    static ld forceMagnitude2wires(ld I1, ld I2, ld l, ld r);
 
     /// <summary>
     /// Calculates the mass of a charged particle of charge q moving in a
@@ -266,7 +259,7 @@ public:
     /// <param name="B">The magnetic field strength.</param>
     /// <param name="v">The velocity.</param>
     /// <returns>mass of particle in kg</returns>
-    static ld massOfChargedParticle(const ld r, const ld q, const ld B, const ld v);
+    static ld massOfChargedParticle(ld r, ld q, ld B, ld v);
 
     /// <summary>
     /// Calculates the velocity of a charged particle moving on a curvature of
@@ -278,7 +271,7 @@ public:
     /// <param name="B">The magnetic field strength.</param>
     /// <param name="m">The mass.</param>
     /// <returns>the speed of particle (m/s)</returns>
-    static ld velocityOfChargedParticle(const ld r, const ld q, const ld B, const ld m);
+    static ld velocityOfChargedParticle(ld r, ld q, ld B, ld m);
 
     /// <summary>
     /// Calculates the Hall effect voltage (where B,v, and l are mutually
@@ -289,7 +282,7 @@ public:
     /// <param name="l">The width.</param>
     /// <param name="v">The speed.</param>
     /// <returns>the hall emf (V)</returns>
-    static ld hallEMF(const ld B, const ld l, const ld v);
+    static ld hallEMF(ld B, ld l, ld v);
 
     /// <summary>
     /// Calculates the force on wire.
@@ -302,7 +295,7 @@ public:
     /// <param name="B">The uniform magnetic field strength.</param>
     /// <param name="theta">The angle theta between vD and B.</param>
     /// <returns>force in newtons</returns>
-    static ld forceOnWire(const ld n, const ld q, const ld A, const ld vD, const ld l, const ld B, const ld theta);
+    static ld forceOnWire(ld n, ld q, ld A, ld vD, ld l, ld B, ld theta);
 
     /// <summary>
     /// Calculates the force on a wire.
@@ -312,7 +305,7 @@ public:
     /// <param name="B">The magnetic field strength.</param>
     /// <param name="theta">The angle theta.</param>
     /// <returns>force in newtons</returns>
-    static ld forceOnWire(const ld I, const ld l, const ld B, const ld theta);
+    static ld forceOnWire(ld I, ld l, ld B, ld theta);
 
     /// <summary>
     /// Calculates the force per unit length between two parallel wires.
@@ -321,7 +314,7 @@ public:
     /// <param name="I2">The current 2.</param>
     /// <param name="r">The distance of separation.</param>
     /// <returns>N/m</returns>
-    static ld forcePerUnitLengthBetween2ParallelWires(const ld I1, const ld I2, const ld r);
+    static ld forcePerUnitLengthBetween2ParallelWires(ld I1, ld I2, ld r);
 
     /// <summary>
     /// Two long straight current-carrying wires run parallel to each other.
@@ -332,7 +325,7 @@ public:
     /// <param name="r">The distance between wires.</param>
     /// <param name="Fl">The force per unit length.</param>
     /// <returns>unknown current in wire 2 (A)</returns>
-    static ld currentFromWire2ParallelRunning(const ld I1, const ld r, const ld Fl);
+    static ld currentFromWire2ParallelRunning(ld I1, ld r, ld Fl);
 
     /// <summary>
     /// Calculates the torque on a current carrying loop of uniform magnetic
@@ -347,7 +340,7 @@ public:
     /// <param name="theta">The angle between the loop and the magnetic
     /// field.</param>
     /// <returns>torque (N*m)</returns>
-    static ld torqueOnCurrentCarryingLoop_umf(const ld N, const ld I, const ld A, const ld B, const ld theta);
+    static ld torqueOnCurrentCarryingLoop_umf(ld N, ld I, ld A, ld B, ld theta);
 
     /// <summary>
     /// Calculates the maximum torque on a current carrying loop of uniform magnetic
@@ -361,7 +354,7 @@ public:
     /// <param name="A">The area (m^2).</param>
     /// <param name="B">The uniform magnetic field strength (T).</param>
     /// <returns>torque (N*m)</returns>
-    static ld torqueMaxOnCurrentCarryingLoop_umf(const ld N, const ld I, const ld A, const ld B);
+    static ld torqueMaxOnCurrentCarryingLoop_umf(ld N, ld I, ld A, ld B);
 
     /// <summary>
     /// Calculates the current in a current carrying loop using known torque when
@@ -373,7 +366,7 @@ public:
     /// <param name="A">The area.</param>
     /// <param name="B">The magnetic filed strength.</param>
     /// <returns>current in loops (A)</returns>
-    static ld currentFromTorqueMax(const ld tMax, const ld N, const ld A, const ld B);
+    static ld currentFromTorqueMax(ld tMax, ld N, ld A, ld B);
 
     /// <summary>
     /// Calculates the current in a long straight wire that would produce a
@@ -382,7 +375,7 @@ public:
     /// <param name="r">The shortest distance to the wire.</param>
     /// <param name="B">The magnetic field strength.</param>
     /// <returns>current (A)</returns>
-    static ld currentInLongStraightWire(const ld r, const ld B);
+    static ld currentInLongStraightWire(ld r, ld B);
 
     /// <summary>
     /// You have designed and constructed a solenoid to produce a magnetic field
@@ -394,7 +387,7 @@ public:
     /// <param name="n">The number of turns on the solenoid.</param>
     /// <param name="l">The length of the solenoid.</param>
     /// <returns>the current needed (I)</returns>
-    static ld currentSolenoid(const ld B, const ld n, const ld l);
+    static ld currentSolenoid(ld B, ld n, ld l);
 
     /// <summary>
     /// Calculate the angle the velocity of the electron
@@ -406,7 +399,7 @@ public:
     /// <param name="F">The force.</param>
     /// <param name="q">The charge, default is elementary charge of electron.</param>
     /// <returns>angle theta</returns>
-    static ld angleThetaOfElectronToMagneticField(const ld v, const ld B, const ld F, const ld q);
+    static ld angleThetaOfElectronToMagneticField(ld v, ld B, ld F, ld q);
 
     /// <summary>
     /// A velocity selector in a mass spectrometer uses a B(T) magnetic field.
@@ -417,15 +410,12 @@ public:
     /// <param name="B">The magnetic field strength.</param>
     /// <param name="theta">The angle theta, default at sin(90) = 1.</param>
     /// <returns>electric field strength newton/coulombs (N/C)</returns>
-    static ld electricFieldStrength_vB(const ld v, const ld B, const ld theta);
-
-
-
+    static ld electricFieldStrength_vB(ld v, ld B, ld theta);
 
 
     ~Magnetism()
     {
-        delete _magnetismPtr;
+        countDecrease();
     }
 
 

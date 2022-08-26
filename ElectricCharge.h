@@ -22,6 +22,15 @@ static int electricCharge_objectCount = 0;
 static struct ScientificNotationUnits
 {
     typedef ScientificNotationUnits snu;
+    ScientificNotationUnits()
+    {
+        refVal = 0.0;
+    }
+    ScientificNotationUnits(ld v)
+    {
+        refVal = v;
+    }
+    ~ScientificNotationUnits() = default;
     ld refVal;
     const ld YOTTA = pow(10, 24);  //10^24
     const ld ZETTA = pow(10, 21);  //10^21
@@ -59,33 +68,21 @@ static struct ScientificNotationUnits
     {	return  l.refVal / r.refVal;	}
     snu operator/(ld rhs)const
     {	return this->refVal / rhs;	}
-    ScientificNotationUnits()
-    {
-        refVal = 0.0;
-    }
-    ScientificNotationUnits(ld v)
-    {
-        refVal = v;
-    }
-    ~ScientificNotationUnits() = default;
+
 } SU;
 
 
 class ElectricCharge
 {
 public:
-    ElectricCharge* _electricChargePtr;
-
     ElectricCharge()
     {
-        _electricChargePtr = nullptr;
         _electricChargeVal = 0.0;
         countIncrease();
     }
 
-    ElectricCharge(ld val)
+    explicit ElectricCharge(ld val)
     {
-        _electricChargePtr = nullptr;
         _electricChargeVal = 0.0;
         countIncrease();
     }
@@ -95,7 +92,6 @@ public:
      */
     ElectricCharge(const ElectricCharge& t)
     {
-        _electricChargePtr = t._electricChargePtr;
         _electricChargeVal = t._electricChargeVal;
         countIncrease();
     }
@@ -105,7 +101,6 @@ public:
      */
     ElectricCharge(ElectricCharge&& t) noexcept
     {
-        _electricChargePtr = t._electricChargePtr;
         _electricChargeVal = t._electricChargeVal;
         countIncrease();
     }
@@ -117,7 +112,6 @@ public:
     {
         if (this != &t)
         {
-            _electricChargePtr = t._electricChargePtr;
             _electricChargeVal = t._electricChargeVal;
             countIncrease();
         }
@@ -274,7 +268,7 @@ public:
     /// <param name="F">The force acting on a charge.</param>
     /// <param name="E">The electric field strength.</param>
     /// <returns></returns>
-    static constexpr ld charge(const ld F, const ld E);
+    static constexpr ld charge(ld F, ld E);
 
 
 
@@ -452,7 +446,7 @@ public:
 
     ~ElectricCharge()
     {
-        delete _electricChargePtr;
+        countDecrease();
     }
 
 private:
