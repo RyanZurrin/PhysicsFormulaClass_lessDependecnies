@@ -14,7 +14,13 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //*************************************************************************
-    cout << EMW::resistivityOfResistor(1.5e3, .025, 1.5) << endl;
+    auto q = constants::PROTON_CHARGE;
+    vector<ld> charges = { -q, q};
+    vector<pair<ld, ld>> points = { {-1, 0}, {1, 0} };
+    EMW::superpositionPrinciple(q, pair(0, 3), charges, points, true);
+
+
+
 
 
 

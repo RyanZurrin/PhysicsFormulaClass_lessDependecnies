@@ -43,7 +43,7 @@ namespace constants {
     /// its ground state. The hydrogen spectral series can be expressed simply in
     /// terms of the Rydberg constant for hydrogen R_H and the Rydberg formula.
     /// </summary>
-    constexpr auto RYDBERG = 1.09678e7;
+    constexpr auto RYDBERG = 10973731.568527;//1/m
 
     /// <summary>
     /// The Bohr radius is a physical constant, equal to the most probable distance
@@ -72,11 +72,26 @@ namespace constants {
     /// <summary>
     /// Coulombs constant 8.988 * pow(10.0, 9)Nm^2)/C^2
     /// </summary>
-    constexpr auto K = 1.0 / (4.0 * PI * e0);
     constexpr auto COULOMB = 1.0 / (ELECTRON_CHARGE);
+    /// <summary>
+    /// The proportionality constant.
+    /// </summary>
+    constexpr auto K = 1.0 / (4.0 * PI * e0);
+
     constexpr auto PLANKS_J = 6.62607004e-34;
     constexpr auto PLANKS_EM = 4.14e-15;
     constexpr auto PLANKS_C = PLANKS_EM * 2.99792e8;
+    constexpr struct PLANKS_CONSTANT {
+        long double Joules_Hz = 6.62607015e-34;
+        long double Joules_s = 1.054571817e-34;
+        long double eV_Hz = 4.135667696e-15;
+        long double eV_s_hc = 6.582119569e-16;
+        long double J_m = 1.98644586e-25;
+        long double J_m2 = 3.16152677e-26;
+        long double eV_m = 1.23984198e-6;
+        long double eV_m2 = 1.973269804e-7;
+    } PLANKS;
+
     constexpr auto A_B = (PLANKS_J*PLANKS_J)/(4.0*(PI*PI)*ELECTRON_MASS*
             K*(PROTON_CHARGE*PROTON_CHARGE));
     /// <summary>
@@ -125,7 +140,13 @@ namespace constants {
     /// </summary>
     constexpr auto METERS_1LY = 9460730472580800;
 
-    constexpr auto ATOMIC_MASS_UNIT = 1.66e-27;
+    constexpr auto ATOMIC_MASS_UNIT = 1.66053886e-27; //kg
+
+    constexpr auto MOLAR_MASS_UMIT = .999999999e-3; //kg/mol
+
+    constexpr auto FARADAY = 96485.33212; //Coulombs/mol
+
+    constexpr auto MOLAR_PLANCK = 3.9903127128934314e-10; //Js/mol
 
 
 
