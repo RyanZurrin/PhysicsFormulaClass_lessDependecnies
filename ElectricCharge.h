@@ -193,7 +193,7 @@ public:
 
 
     static constexpr ld coulombsLaw(ld q1, pair<ld, ld> xy1, ld q2, pair<ld, ld> xy2,
-                                    bool print = false);
+                                    int multiplier = 1, bool print = false);
 
 
     /// <summary>
@@ -338,15 +338,17 @@ public:
     /// <summary>
     /// Superposition principle. Adding charges up.
     /// </summary>
-    /// <param name="f1">The f1.</param>
-    /// <param name="f2">The f2.</param>
-    /// <param name="f3">The f3.</param>
-    /// <param name="f4">The f4.</param>
-    /// <param name="f5">The f5.</param>
-    /// <param name="f6">The f6.</param>
-    /// <returns>net charge</returns>
-    static constexpr ld superpositionPrinciple
-            (ld f1, ld f2, ld f3, ld f4, ld f5, ld f6);
+    /// <param name="Qref">The refrence charge to find the total charge.</param>
+    /// <param name="Qloc"> the pair of coordinates of the charge.</param>
+    /// <param name="charges">a vector of charges</param>
+    /// <param name="locations">a vector of pairs for each of the charges coordinates.</param>
+    /// <returns>net charge vector</returns>
+    static vector<ld> superpositionPrinciple(
+            ld Qref,
+            pair<ld, ld> Qloc,
+            const vector<ld>& charges,
+            const vector<pair<ld, ld>>& locations,
+            bool print = false);
 
     /// <summary>
     /// Distance between points.
@@ -516,15 +518,18 @@ constexpr ld ElectricCharge::coulombsLaw(
 }
 
 constexpr ld ElectricCharge::coulombsLaw(
-        ld q1, pair<ld, ld> xy1, ld q2, pair<ld, ld> xy2, bool print)
+        ld q1,
+        pair<ld, ld> xy1,
+        ld q2, pair<ld, ld> xy2,
+        int multiplier,
+        bool print)
 {
     // get the distance between the two points
-    auto r = ::distanceBetweenPoints(xy1, xy2);
+    auto r = ::distanceBetweenPoints(xy1, xy2) * multiplier;
     auto F = coulombsLaw(q1, q2, r);
     // get the direction of the force
     auto theta = ::directionOfForce(xy1, xy2)*(180.0/M_PI);
     auto unitVector = UnitVector(xy1, xy2);
-    unitVector.print();
     if (print) {
         std::cout << "F = " << F << " N, " << unitVector.toString() <<
         " at angle " << theta << " degrees" << std::endl;
@@ -621,11 +626,51 @@ inline ld ElectricCharge::minimumChargeToLiftCar(
     return (r + l) * sqrt((m * constants::Ga) / constants::K);
 }
 
-constexpr ld ElectricCharge::superpositionPrinciple(
-        const ld f1 = 0, const ld f2 = 0, const ld f3 = 0, const ld f4 = 0,
-        const ld f5 = 0, const ld f6 = 0)
+vector<ld> ElectricCharge::superpositionPrinciple(
+        ld Qref,
+        pair<ld, ld> Qloc,
+        const vector<ld>& charges,
+        const vector<pair<ld, ld>>& locations,
+        bool print)
 {
-    return f1 + f2 + f3 + f4 + f5 + f6;
+    // get the distance and direction of each force from the reference point
+    // to all the other points
+    vector<ld> forces;
+    for (auto i = 0; i < charges.size(); i++) {
+        auto F = coulombsLaw(Qref, Qloc, charges[i], locations[i], 1, print);
+        forces.push_back(F);
+    }
+    // get all the direction vectors
+    vector<UnitVector> directionVectors;
+    for (auto i = 0; i < forces.size(); i++) {
+        directionVectors.emplace_back(UnitVector(Qloc, locations[i]));
+    }
+    // get the total force
+    ld totalForce = 0.0;
+    for (auto i = 0; i < forces.size(); i++) {
+        totalForce += forces[i];
+    }
+    // get the total direction vector
+    UnitVector totalDirectionVector;
+    for (auto i = 0; i < forces.size(); i++) {
+        totalDirectionVector += directionVectors[i];
+    }
+    // get the total direction vector
+    totalDirectionVector.normalize();
+    // add the total force and direction vector to the return vector
+    vector<ld> returnVector;
+    returnVector.push_back(totalForce);
+    returnVector.push_back(totalDirectionVector.getX());
+    returnVector.push_back(totalDirectionVector.getY());
+
+    if (print) {
+        std::cout << "Total force = " << totalForce << " N" << std::endl;
+        std::cout << "Total direction vector = " << totalDirectionVector.toString() << std::endl;
+        totalDirectionVector.print();
+    }
+
+    return returnVector;
+
 }
 
 inline ld ElectricCharge::distanceBetweenPoints(

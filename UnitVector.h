@@ -110,7 +110,7 @@ public:
     void setY2(long double y2_) { this->y2 = y2_; }
     void setZ2(long double z2_) { this->z2 = z2_; }
 
-    [[nodiscard]] long double calculateMagnitude() const {
+    [[nodiscard]] constexpr long double calculateMagnitude() const {
         return sqrt((x2-x)*(x2-x) + (y2-y)*(y2-y) + (z2-z)*(z2-z));
     }
 
@@ -141,6 +141,89 @@ public:
             cout << "(" << (x+x2) / magnitude << "i, + " << (y+y2) / magnitude
                  << "j, + " << (z+z2)/magnitude << "k)";
         }
+    }
+
+    // add Unit Vectors
+    constexpr UnitVector operator+(const UnitVector& u_) const {
+        return UnitVector(x + u_.x, y + u_.y, z + u_.z, x2 + u_.x2, y2 + u_.y2, z2 + u_.z2);
+    }
+    constexpr UnitVector operator+(const UnitVector&& u_) const {
+        return UnitVector(x + u_.x, y + u_.y, z + u_.z, x2 + u_.x2, y2 + u_.y2, z2 + u_.z2);
+    }
+    constexpr UnitVector& operator+=(const UnitVector& u_) {
+        this->x += u_.x;
+        this->y += u_.y;
+        this->z += u_.z;
+        this->x2 += u_.x2;
+        this->y2 += u_.y2;
+        this->z2 += u_.z2;
+        this->magnitude = this->calculateMagnitude();
+        return *this;
+    }
+    constexpr UnitVector& operator+=(const UnitVector&& u_) {
+        this->x += u_.x;
+        this->y += u_.y;
+        this->z += u_.z;
+        this->x2 += u_.x2;
+        this->y2 += u_.y2;
+        this->z2 += u_.z2;
+        this->magnitude = this->calculateMagnitude();
+        return *this;
+    }
+    // subtract Unit Vectors
+    constexpr UnitVector operator-(const UnitVector& u_) const {
+        return UnitVector(x - u_.x, y - u_.y, z - u_.z, x2 - u_.x2, y2 - u_.y2, z2 - u_.z2);
+    }
+    constexpr UnitVector operator-(const UnitVector&& u_) const {
+        return UnitVector(x - u_.x, y - u_.y, z - u_.z, x2 - u_.x2, y2 - u_.y2, z2 - u_.z2);
+    }
+    constexpr UnitVector& operator-=(const UnitVector& u_) {
+        this->x -= u_.x;
+        this->y -= u_.y;
+        this->z -= u_.z;
+        this->x2 -= u_.x2;
+        this->y2 -= u_.y2;
+        this->z2 -= u_.z2;
+        this->magnitude = this->calculateMagnitude();
+        return *this;
+    }
+    constexpr UnitVector& operator-=(const UnitVector&& u_) {
+        this->x -= u_.x;
+        this->y -= u_.y;
+        this->z -= u_.z;
+        this->x2 -= u_.x2;
+        this->y2 -= u_.y2;
+        this->z2 -= u_.z2;
+        this->magnitude = this->calculateMagnitude();
+        return *this;
+    }
+    // multiply Unit and Scalar
+    constexpr UnitVector operator*(const long double& s_) const {
+        return UnitVector(x * s_, y * s_, z * s_, x2 * s_, y2 * s_, z2 * s_);
+    }
+    constexpr UnitVector operator*(const long double&& s_) const {
+        return UnitVector(x * s_, y * s_, z * s_, x2 * s_, y2 * s_, z2 * s_);
+    }
+    constexpr UnitVector& operator*=(const long double& s_) {
+        this->x *= s_;
+        this->y *= s_;
+        this->z *= s_;
+        this->x2 *= s_;
+        this->y2 *= s_;
+        this->z2 *= s_;
+        this->magnitude = this->calculateMagnitude();
+        return *this;
+    }
+    // normalize Unit Vector in place
+    constexpr void normalize() {
+        this->x /= magnitude;
+        this->y /= magnitude;
+        this->z /= magnitude;
+        this->x2 /= magnitude;
+        this->y2 /= magnitude;
+        this->z2 /= magnitude;
+        this->magnitude = this->calculateMagnitude();
+
     }
 
 }; // end of class UnitVector

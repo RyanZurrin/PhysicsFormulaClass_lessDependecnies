@@ -14,7 +14,10 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //*************************************************************************
-    EMW::coulombsLaw(1.0e-3, pair(0, 0), -1.5e-3, pair(5.0, 0.0), true);
+    auto q = constants::PROTON_CHARGE;
+    vector<ld> charges = { -q, q};
+    vector<pair<ld, ld>> points = { {-1, 0}, {1, 0} };
+    EMW::superpositionPrinciple(q, pair(0, 3), charges, points, true);
 
 
 
