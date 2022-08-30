@@ -126,9 +126,10 @@ public:
 
     [[nodiscard]] string toString() const {
         // print in form of using i, j, k notation
-        return "(" + to_string((x + x2)/magnitude) + "i, + " + to_string
-                ((y + y2)/magnitude) + "j, + "
-               + to_string((z+ z2)/magnitude) + "k)";
+        return "(" + to_string((x2 - x)/magnitude) + "i, + " + to_string
+                ((y2 - y)/magnitude) + "j, + "
+               + to_string((z2 - z)/magnitude) + "k)" + " = " + to_string
+               (magnitude);
     }
     constexpr void print(bool print = true) const {
         // print in form of using i, j, k notation
@@ -138,8 +139,9 @@ public:
             cout << this->getX2() << "i + " << this->getY2() << "j + "
                  << this->getZ2() << "k" << endl;
             cout << "Magnitude: " << this->getMagnitude() << endl;
-            cout << "(" << (x+x2) / magnitude << "i, + " << (y+y2) / magnitude
-                 << "j, + " << (z+z2)/magnitude << "k)";
+            cout << "(" << (x2 - x) / magnitude << "i, + " << (y2 - y) /
+            magnitude
+                 << "j, + " << (z2 - z)/magnitude << "k)";
         }
     }
 

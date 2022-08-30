@@ -736,7 +736,7 @@ inline ld ElectroMagneticInduction::emfPeek_r(const ld N, const ld r, const ld B
 inline ld ElectroMagneticInduction::emf_peekFromDiameterAndRPMs(const ld N, const ld d, const ld B, const ld rpm)
 {
     const ld aW = (rpm * 2.0 * constants::PI) / 60.0;//angular velocity
-    const ld A = (constants::PI * (d * d)) / 4;//cross sectional
+    const ld A = (constants::PI * (d * d)) / 4;//cross-sectional
     return N * A * B * aW;//V
 }
 
