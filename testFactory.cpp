@@ -15,7 +15,8 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
     vector<ld> x{1000, 150, 500, 2000};
-    Circuits::parallelCapacitance(x, true);
+    Thermodynamics::vanDerWaalsPressure(5.0, 300.0, 3.5, vanderwaals.argon.b,
+                                        vanderwaals.argon.a, true);
 
 
 

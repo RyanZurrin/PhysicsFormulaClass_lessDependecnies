@@ -10,7 +10,8 @@
  * @author Ryan Zurrin
  * @date   12/6/2020
  */
-
+#include "Heat.h"
+#include "Energy.h"
 static int thermodynamics_objectCount = 0;
 
 ld static kiloJoulesToCalories(const ld kJ)
@@ -22,8 +23,320 @@ static double Eff(const double W, const double Qh)
     return W / Qh;
 }
 
-#include "Heat.h"
-#include "Energy.h"
+static struct VanderWaalsConstants {
+    VanderWaalsConstants() {}
+//    Acetic acid 	17.7098 L^2bar / mol^2 	0.1065 L/mol
+    struct ACETIC_ACID {
+        const ld a = 17.7098; // L^2bar / mol^2
+        const ld b = 0.1065; // L/mol
+    }aceticAcid;
+//    Acetic anhydride 	20.158 L^2bar / mol^2 	0.1263 L/mol
+    struct ACETIC_ANHYDRIDE {
+        const ld a = 20.158; // L^2bar / mol^2
+        const ld b = 0.1263; // L/mol
+    }aceticAnhydride;
+//    Acetone 	16.02 L^2bar / mol^2 	0.1124 L/mol
+    struct ACETONE {
+        const ld a = 16.02; // L^2bar / mol^2
+        const ld b = 0.1124; // L/mol
+    }acetone;
+//    Acetonitrile 	17.81 L^2bar / mol^2 	0.1168 L/mol
+    struct ACETONITRILE {
+        const ld a = 17.81; // L^2bar / mol^2
+        const ld b = 0.1168; // L/mol
+    }acetonitrile;
+//    Acetylene 	4.516 L^2bar / mol^2 	0.0522 L/mol
+    struct ACETYLENE {
+        const ld a = 4.516; // L^2bar / mol^2
+        const ld b = 0.0522; // L/mol
+    }acetylene;
+//    Ammonia 	4.225 L^2bar / mol^2 	0.0371 L/mol
+    struct AMMONIA {
+        const ld a = 4.225; // L^2bar / mol^2
+        const ld b = 0.0371; // L/mol
+    }ammonia;
+//    Argon 	1.355 L^2bar / mol^2 	0.03201 L/mol
+    struct ARGON {
+        const ld a = 1.355; // L^2bar / mol^2
+        const ld b = 0.03201; // L/mol
+    }argon;
+//    Benzene 	18.24 L^2bar / mol^2 	0.1193 L/mol
+    struct BENZENE {
+        const ld a = 18.24; // L^2bar / mol^2
+        const ld b = 0.1193; // L/mol
+    }benzene;
+//    Bromobenzene 	28.94 L^2bar / mol^2 	0.1539 L/mol
+    struct BROMOBENZENE {
+        const ld a = 28.94; // L^2bar / mol^2
+        const ld b = 0.1539; // L/mol
+    }bromobenzene;
+//    Butane 	14.66 L^2bar / mol^2 	0.1226 L/mol
+    struct BUTANE {
+        const ld a = 14.66; // L^2bar / mol^2
+        const ld b = 0.1226; // L/mol
+    }butane;
+//    Carbon dioxide 	3.640 L^2bar / mol^2 	0.04267 L/mol
+    struct CARBON_DIOXIDE {
+        const ld a = 3.640; // L^2bar / mol^2
+        const ld b = 0.04267; // L/mol
+    }carbonDioxide;
+//    Carbon disulfide 	11.77 L^2bar / mol^2 	0.07685 L/mol
+    struct CARBON_DISULFIDE {
+        const ld a = 11.77; // L^2bar / mol^2
+        const ld b = 0.07685; // L/mol
+    }carbonDisulfide;
+//    Carbon monoxide 	1.505 L^2bar / mol^2 	0.0398500 L/mol
+    struct CARBON_MONOXIDE {
+        const ld a = 1.505; // L^2bar / mol^2
+        const ld b = 0.0398500; // L/mol
+    }carbonMonoxide;
+//    Carbon tetrachloride 	19.7483 L^2bar / mol^2 	0.1281 L/mol
+    struct CARBON_TETRACHLORIDE {
+        const ld a = 19.7483; // L^2bar / mol^2
+        const ld b = 0.1281; // L/mol
+    }carbonTetrachloride;
+//    Chlorine 	6.579 L^2bar / mol^2 	0.05622 L/mol
+    struct CHLORINE {
+        const ld a = 6.579; // L^2bar / mol^2
+        const ld b = 0.05622; // L/mol
+    }chlorine;
+//    Chlorobenzene 	25.77 L^2bar / mol^2 	0.1453 L/mol
+    struct CHLOROBENZENE {
+        const ld a = 25.77; // L^2bar / mol^2
+        const ld b = 0.1453; // L/mol
+    }chlorobenzene;
+//    Chloroethane 	11.05 L^2bar / mol^2 	0.08651 L/mol
+    struct CHLOROETHANE {
+        const ld a = 11.05; // L^2bar / mol^2
+        const ld b = 0.08651; // L/mol
+    }chloroethane;
+//    Chloromethane 	7.570 L^2bar / mol^2 	0.06483 L/mol
+    struct CHLOROMETHANE {
+        const ld a = 7.570; // L^2bar / mol^2
+        const ld b = 0.06483; // L/mol
+    }chloromethane;
+//    Cyanogen 	7.769 L^2bar / mol^2 	0.06901 L/mol
+    struct CYANOGEN {
+        const ld a = 7.769; // L^2bar / mol^2
+        const ld b = 0.06901; // L/mol
+    }cyanogen;
+//    Cyclohexane 	23.11 L^2bar / mol^2 	0.1424 L/mol
+    struct CYCLOhexANE {
+        const ld a = 23.11; // L^2bar / mol^2
+        const ld b = 0.1424; // L/mol
+    }cyclohexane;
+//    Diethyl ether 	17.61 L^2bar / mol^2 	0.1344 L/mol
+    struct DIETHYL_ETHER {
+        const ld a = 17.61; // L^2bar / mol^2
+        const ld b = 0.1344; // L/mol
+    }diethylEther;
+//    Diethyl sulfide 	19.00 L^2bar / mol^2 	0.1214 L/mol
+    struct DIETHYL_SULFIDE {
+        const ld a = 19.00; // L^2bar / mol^2
+        const ld b = 0.1214; // L/mol
+    }diethylSulfide;
+//    Dimethyl ether 	8.180 L^2bar / mol^2 	0.07246 L/mol
+    struct DIMETHYL_ETHER {
+        const ld a = 8.180; // L^2bar / mol^2
+        const ld b = 0.07246; // L/mol
+    }dimethylEther;
+//    Dimethyl sulfide 	13.04 L^2bar / mol^2 	0.09213 L/mol
+    struct DIMETHYL_SULFIDE {
+        const ld a = 13.04; // L^2bar / mol^2
+        const ld b = 0.09213; // L/mol
+    }dimethylSulfide;
+//    Ethane 	5.562 L^2bar / mol^2 	0.0638 L/mol
+    struct ETHANE {
+        const ld a = 5.562; // L^2bar / mol^2
+        const ld b = 0.0638; // L/mol
+    }ethane;
+//    Ethanethiol 	11.39 L^2bar / mol^2 	0.08098 L/mol
+    struct ETHANETHIOL {
+        const ld a = 11.39; // L^2bar / mol^2
+        const ld b = 0.08098; // L/mol
+    }ethanethiol;
+//    Ethanol 	12.18 L^2bar / mol^2 	0.08407 L/mol
+    struct ETHANOL {
+        const ld a = 12.18; // L^2bar / mol^2
+        const ld b = 0.08407; // L/mol
+    }ethanol;
+//    Ethyl acetate 	20.72 L^2bar / mol^2 	0.1412 L/mol
+    struct ETHYL_ACETATE {
+        const ld a = 20.72; // L^2bar / mol^2
+        const ld b = 0.1412; // L/mol
+    }ethylAcetate;
+//    Ethylamine 	10.74 L^2bar / mol^2 	0.08409 L/mol
+    struct ETHYLANE {
+        const ld a = 10.74; // L^2bar / mol^2
+        const ld b = 0.08409; // L/mol
+    }ethylamine;
+//    Fluorobenzene 	20.19 L^2bar / mol^2 	0.1286 L/mol
+    struct FLUOROBENZENE {
+        const ld a = 20.19; // L^2bar / mol^2
+        const ld b = 0.1286; // L/mol
+    }fluorobenzene;
+//    Fluoromethane 	4.692 L^2bar / mol^2 	0.05264 L/mol
+    struct FLUOROMETHANE {
+        const ld a = 4.692; // L^2bar / mol^2
+        const ld b = 0.05264; // L/mol
+    }fluoromethane;
+//    Freon 	10.78 L^2bar / mol^2 	0.0998 L/mol
+    struct FREON {
+        const ld a = 10.78; // L^2bar / mol^2
+        const ld b = 0.0998; // L/mol
+    }freon;
+//    Germanium tetrachloride 	22.90 L^2bar / mol^2 	0.1485 L/mol
+    struct GERMANIUM_TETRACHLORIDE {
+        const ld a = 22.90; // L^2bar / mol^2
+        const ld b = 0.1485; // L/mol
+    }germaniumTetrachloride;
+//    Helium 	0.0346 L^2bar / mol^2 	0.0238 L/mol
+    struct HELIUM {
+        const ld a = 0.0346; // L^2bar / mol^2
+        const ld b = 0.0238; // L/mol
+    }helium;
+//    Hexane 	24.71 L^2bar / mol^2 	0.1735 L/mol
+    struct HEXANE {
+        const ld a = 24.71; // L^2bar / mol^2
+        const ld b = 0.1735; // L/mol
+    }hexane;
+//    Hydrogen 	0.2476 L^2bar / mol^2 	0.02661 L/mol
+    struct HYDROGEN {
+        const ld a = 0.2476; // L^2bar / mol^2
+        const ld b = 0.02661; // L/mol
+    }hydrogen;
+//    Hydrogen bromide 	4.510 L^2bar / mol^2 	0.04431 L/mol
+    struct HYDROGEN_BROMIDE {
+        const ld a = 4.510; // L^2bar / mol^2
+        const ld b = 0.04431; // L/mol
+    }hydrogenBromide;
+//    Hydrogen chloride 	3.716 L^2bar / mol^2 	0.04081 L/mol
+    struct HYDROGEN_CHLORIDE {
+        const ld a = 3.716; // L^2bar / mol^2
+        const ld b = 0.04081; // L/mol
+    }hydrogenChloride;
+//    Hydrogen selenide 	5.338 L^2bar / mol^2 	0.04637 L/mol
+    struct HYDROGEN_SELENIDE {
+        const ld a = 5.338; // L^2bar / mol^2
+        const ld b = 0.04637; // L/mol
+    }hydrogenSelenide;
+//    Hydrogen sulfide 	4.490 L^2bar / mol^2 	0.04287 L/mol
+    struct HYDROGEN_SULFIDE {
+        const ld a = 4.490; // L^2bar / mol^2
+        const ld b = 0.04287; // L/mol
+    }hydrogenSulfide;
+//    Iodobenzene 	33.52 L^2bar / mol^2 	0.1656 L/mol
+    struct IODOBENZENE {
+        const ld a = 33.52; // L^2bar / mol^2
+        const ld b = 0.1656; // L/mol
+    }iodobenzene;
+//    Krypton 	2.349 L^2bar / mol^2 	0.03978 L/mol
+    struct KRYPTON {
+        const ld a = 2.349; // L^2bar / mol^2
+        const ld b = 0.03978; // L/mol
+    }krypton;
+//    Mercury 	8.200 L^2bar / mol^2	0.01696 L/mol
+    struct MERCURY {
+        const ld a = 8.200; // L^2bar / mol^2
+        const ld b = 0.01696; // L/mol
+    }mercury;
+//    Methane 	2.283 L^2bar / mol^2 	0.04278 L/mol
+    struct METHANE {
+        const ld a = 2.283; // L^2bar / mol^2
+        const ld b = 0.04278; // L/mol
+    }methane;
+//    Methanol 	9.649 L^2bar / mol^2 	0.06702 L/mol
+    struct METHANOL {
+        const ld a = 9.649; // L^2bar / mol^2
+        const ld b = 0.06702; // L/mol
+    }methanol;
+//    Neon 	0.2135 L^2bar / mol^2 	0.01709 L/mol
+    struct NEON {
+        const ld a = 0.2135; // L^2bar / mol^2
+        const ld b = 0.01709; // L/mol
+    }neon;
+//    Nitric oxide 	1.358 L^2bar / mol^2 	0.02789 L/mol
+    struct NITRIC_OXIDE {
+        const ld a = 1.358; // L^2bar / mol^2
+        const ld b = 0.02789; // L/mol
+    }nitricOxide;
+//    Nitrogen 	1.370 L^2bar / mol^2 	0.0387 L/mol
+    struct NITROGEN {
+        const ld a = 1.370; // L^2bar / mol^2
+        const ld b = 0.0387; // L/mol
+    }nitrogen;
+//    Nitrogen dioxide 	5.354 L^2bar / mol^2 	0.04424 L/mol
+    struct NITROGEN_DIOXIDE {
+        const ld a = 5.354; // L^2bar / mol^2
+        const ld b = 0.04424; // L/mol
+    }nitrogenDioxide;
+//    Nitrous oxide 	3.832 L^2bar / mol^2 	0.04415 L/mol
+    struct NITROUS_OXIDE {
+        const ld a = 3.832; // L^2bar / mol^2
+        const ld b = 0.04415; // L/mol
+    }nitrousOxide;
+//    Oxygen 	1.382 L^2bar / mol^2 	0.03186 L/mol
+    struct OXYGEN {
+        const ld a = 1.382; // L^2bar / mol^2
+        const ld b = 0.03186; // L/mol
+    }oxygen;
+//    Pentane 	19.26 L^2bar / mol^2 	0.146 L/mol
+    struct PENTANE {
+        const ld a = 19.26; // L^2bar / mol^2
+        const ld b = 0.146; // L/mol
+    }pentane;
+//    Phosphine 	4.692 L^2bar / mol^2 	0.05156 L/mol
+    struct PHOSPHINE {
+        const ld a = 4.692; // L^2bar / mol^2
+        const ld b = 0.05156; // L/mol
+    }phosphine;
+//    Propane 	8.779 L^2bar / mol^2 	0.08445 L/mol
+    struct PROPANE {
+        const ld a = 8.779; // L^2bar / mol^2
+        const ld b = 0.08445; // L/mol
+    }propane;
+//    Radon 	6.601 L^2bar / mol^2 	0.06239 L/mol
+    struct RADON {
+        const ld a = 6.601; // L^2bar / mol^2
+        const ld b = 0.06239; // L/mol
+    }radon;
+//    Silane 	4.377 L^2bar / mol^2 	0.05786 L/mol
+    struct SILANE {
+        const ld a = 4.377; // L^2bar / mol^2
+        const ld b = 0.05786; // L/mol
+    }silane;
+//    Silicon tetrafluoride 	4.251 L^2bar / mol^2 	0.05571 L/mol
+    struct SILICON_TETRAFLUORIDE {
+        const ld a = 4.251; // L^2bar / mol^2
+        const ld b = 0.05571; // L/mol
+    }siliconTetrafluoride;
+//    Sulfur dioxide 	6.803 L^2bar / mol^2 	0.05636 L/mol
+    struct SULFUR_DIOXIDE {
+        const ld a = 6.803; // L^2bar / mol^2
+        const ld b = 0.05636; // L/mol
+    }sulfurDioxide;
+//    Tin tetrachloride 	27.27 L^2bar / mol^2 	0.1642 L/mol
+    struct TIN_TETRACHLORIDE {
+        const ld a = 27.27; // L^2bar / mol^2
+        const ld b = 0.1642; // L/mol
+    }tinTetrachloride;
+//    Toluene 	24.38 L^2bar / mol^2 	0.1463 L/mol
+    struct TOLUENE {
+        const ld a = 24.38; // L^2bar / mol^2
+        const ld b = 0.1463; // L/mol
+    }toluene;
+//    Water 	5.536 L^2bar / mol^2 	0.03049 L/mol
+    struct WATER {
+        const ld a = 5.536; // L^2bar / mol^2
+        const ld b = 0.03049; // L/mol
+    }water;
+//    Xenon 	4.250 L^2bar / mol^2 	0.05105 L/mol
+    struct XENON {
+        const ld a = 4.250; // L^2bar / mol^2
+        const ld b = 0.05105; // L/mol
+    }xenon;
+}vanderwaals;
+
 
 class Thermodynamics :
         public Energy, public Heat
@@ -500,6 +813,54 @@ public:
     {
         return gP * A * d;
     }
+
+    static ld criticalPressure(const ld a, const ld b, bool print = false)
+    {
+        auto cp = a/(27.0*(b*b));
+        if (print)
+            cout << "Critical Pressure: " << cp << " kPa" << endl;
+        return cp;
+    }
+
+    /**
+     * @brief van der Waals equation for calculating the gas pressure
+     * @param n is the number of moles in the gas
+     * @param T is the temperature in Kelvin
+     * @param V is the molar volume in m^3/mol
+     * @param b is the vanderwaals constant b
+     * @param a is the vanderwaals constant a
+     * @param R is the gas constant R
+     *@returns the gas pressure in Pa
+     */
+    static ld vanDerWaalsPressure(const ld n,
+                                  const ld T,
+                                  const ld V,
+                                  const ld b,
+                                  const ld a,
+                                  bool print = false)
+    {
+        const ld R = constants::R.joules;
+        auto P = ((n * R * T) / (V - (n * b))) - ((n * n * a) / (V * V));
+        if (print)
+            std::cout << "The gas pressure is: " << P << " Pa\n";
+        return P;
+    }
+
+
+    static ld vanDerWaalsInternalEnergy(const ld f,
+                                        const ld T,
+                                        const ld n,
+                                        const ld a,
+                                        const ld V,
+                                        bool print = false)
+    {
+        auto U = (1.0/2.0) * f * n * (T * constants::R.joules) -
+                ((n*n) * a) / V;
+        if (print)
+            std::cout << "The internal energy is: " << U << " J\n";
+        return U;
+    }
+
 
     /**
      * @brief destructor
