@@ -13,11 +13,8 @@ int main(int argc, char* argv[])
     timer.start();
     //_________________________________________________________________________
     //add test code between starred areas
-    //*************************************************************************
-    auto q = constants::PROTON_CHARGE;
-    vector<ld> charges = { -q, q};
-    vector<pair<ld, ld>> points = { {-1, 0}, {1, 0} };
-    EMW::superpositionPrinciple(q, pair(0, 3), charges, points, true);
+    //**************************************************************************
+    EMI::gaussLaw();
 
 
 
@@ -26,7 +23,8 @@ int main(int argc, char* argv[])
 
 
 
-    //*************************************************************************
+
+    //**************************************************************************
     //Stopping timer and displaying the programs' execution time
     //_________________________________________________________________________
     timer.stop();

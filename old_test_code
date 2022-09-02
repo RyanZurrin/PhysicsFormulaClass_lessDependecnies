@@ -54,3 +54,19 @@
             std::cout << M[i][j] << '\t';
         std::cout << "\n";
     }
+
+    //    auto q = constants::PROTON_CHARGE;
+    //    vector<ld> charges = { q, q};
+    //    vector<pair<ld, ld>> points = { {-1, 0}, {1, 0} };
+    //    EMW::superpositionPrinciple(q, pair(0, 3), charges, points, true);
+
+        auto q1 = UnitVector(pair(0, 3), pair(-1, 0));
+        auto q2 = UnitVector(pair(1, 0), pair(0, 3));
+        cout << "q1: " << endl;
+        q1.print();
+        cout << endl;
+        cout << "q2: " << endl;
+        q2.print();
+        cout << endl;
+        cout << "q1 + q2: " << endl;
+        (q1 + q2).print();

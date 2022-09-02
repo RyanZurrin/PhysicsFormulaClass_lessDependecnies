@@ -516,29 +516,6 @@ public:
         return P;
     }
 
-    /**
-     * @brief van der Waals equation for calculating the gas pressure
-     * @param n is the number of moles in the gas
-     * @param T is the temperature in Kelvin
-     * @param V is the molar volume in m^3/mol
-     * @param b is the gas constant b
-     * @param a is the gas constant a
-     * @param R is the gas constant R
-     *@returns the gas pressure in Pa
-     */
-    static ld vanDerWaals(const ld n,
-                          const ld T,
-                          const ld V,
-                          const ld b = 0.031,
-                          const ld a = 1.382,
-                          const ld R = constants::R.joules,
-                          bool print = false)
-    {
-        auto P = ((n * R * T) / (V - (n * b))) - ((n * n * a) / (V * V));
-        if (print)
-            std::cout << "The gas pressure is: " << P << " Pa\n";
-        return P;
-    }
 
     /**
      * @brief calculates pressure change due to temperature change in a system using the

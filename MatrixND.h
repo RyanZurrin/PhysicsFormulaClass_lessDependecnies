@@ -265,7 +265,7 @@ public:
     //checks if the f1 - f2  close to 0
     bool closeEnough(T f1, T f2);
     // prints the matrix
-    void print();
+    void print() const;
     // returns the transpose of the matrix
     MatrixND<T> transpose();
     // returns the inverse of the matrix
@@ -1200,8 +1200,7 @@ MatrixND<T> MatrixND<T>::sub(const MatrixND<T> & rhs)
 }
 
 template <typename T>
-void MatrixND<T>::print()
-{
+void MatrixND<T>::print() const {
    // print out in a nice format using setw and setprecision
    std::cout << std::endl << std::setprecision(4);
    for(unsigned int i = 0; i < data.size(); i++) {

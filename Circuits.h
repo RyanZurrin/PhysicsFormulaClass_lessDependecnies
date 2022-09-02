@@ -21,18 +21,14 @@ class Circuits:
 {
 
 public:
-    Circuits* _circuitPtr;
-
 
     Circuits()
     {
-        _circuitPtr = nullptr;
         _circuitVal = 0.0;
         countIncrease();
     }
-    Circuits(long double val)
+    explicit Circuits(long double val)
     {
-        _circuitPtr = nullptr;
         _circuitVal = val;
         countIncrease();
     }
@@ -41,8 +37,7 @@ public:
      * @brief copy constructor
      */
     Circuits(const Circuits& c)
-    {
-        _circuitPtr = c._circuitPtr;
+     : ElectricCurrent(c) {
         _circuitVal = 0.0;
         countIncrease();
     }
@@ -51,7 +46,6 @@ public:
      */
     Circuits(Circuits&& c) noexcept
     {
-        _circuitPtr = c._circuitPtr;
         _circuitVal = c._circuitVal;
         countIncrease();
     }
@@ -62,7 +56,6 @@ public:
     {
         if (this != &c)
         {
-            _circuitPtr = c._circuitPtr;
             _circuitVal = c._circuitVal;
             countIncrease();
         }
@@ -76,74 +69,45 @@ public:
     constexpr void setCircuitVal(long double val) { _circuitVal = val; }
 
 
-    /// <summary>
-    /// Calculates the total resistance of a Series of   resistors.
-    /// </summary>
-    /// <param name="R1">The resistor 1.</param>
-    /// <param name="R2">The resistor 2.</param>
-    /// <param name="R3">The resistor 3.</param>
-    /// <param name="R4">The resistor 4.</param>
-    /// <param name="R5">The resistor 5.</param>
-    /// <param name="R6">The resistor 6.</param>
-    /// <param name="R7">The resistor 7.</param>
-    /// <param name="R8">The resistor 8.</param>
-    /// <param name="R9">The resistor 9.</param>
-    /// <param name="R10">The resistor 10.</param>
-    /// <returns>resistance in ohms</returns>
-    static constexpr long double seriesResistance(const long double R1, const long double R2, const long double R3, const long double R4,
-                                                  const long double R5, const long double R6, const long double R7, const long double R8, const long double R9, const long double R10);
 
-    /// <summary>
-    /// Calculates the total resistance of resistors hooked up in parallel.
-    /// </summary>
-    /// <param name="R1">The resistor 1.</param>
-    /// <param name="R2">The resistor 2.</param>
-    /// <param name="R3">The resistor 3.</param>
-    /// <param name="R4">The resistor 4.</param>
-    /// <param name="R5">The resistor 5.</param>
-    /// <param name="R6">The resistor 6.</param>
-    /// <param name="R7">The resistor 7.</param>
-    /// <param name="R8">The resistor 8.</param>
-    /// <param name="R9">The resistor 9.</param>
-    /// <param name="R10">The resistor 10.</param>
-    /// <returns>resistance in ohms</returns>
-    static constexpr long double parallelResistance(const long double R1, const long double R2, const long double R3, const long double R4,
-                                                    const long double R5, const long double R6, const long double R7, const long double R8, const long double R9, const long double R10);
+    /**
+     * @brief Calculates the total resistance of a series of resistors.
+     * @param R  The array of resistors.
+     * @param print Whether to print the results.
+     * @return  The total resistance in ohms.
+     */
+    static long double seriesResistance(const vector<long double>& R,
+                                                  bool print);
 
-    /// <summary>
-    /// Calculates the total capacitor of a Series of   capacitors.
-    /// </summary>
-    /// <param name="C1">The capacitor 1.</param>
-    /// <param name="C2">The capacitor 2.</param>
-    /// <param name="C3">The capacitor 3.</param>
-    /// <param name="C4">The capacitor 4.</param>
-    /// <param name="C5">The capacitor 5.</param>
-    /// <param name="C6">The capacitor 6.</param>
-    /// <param name="C7">The capacitor 7.</param>
-    /// <param name="C8">The capacitor 8.</param>
-    /// <param name="C9">The capacitor 9.</param>
-    /// <param name="C10">The capacitor 10.</param>
-    /// <returns>capacitance (F)</returns>
-    static constexpr long double seriesCapacitance(const long double C1, const long double C2, const long double C3, const long double C4,
-                                                   const long double C5, const long double C6, const long double C7, const long double C8, const long double C9, const long double C10);
 
-    /// <summary>
-    /// Calculates the total resistance of resistors hooked up in parallel.
-    /// </summary>
-    /// <param name="C1">The capacitor 1.</param>
-    /// <param name="C2">The capacitor 2.</param>
-    /// <param name="C3">The capacitor 3.</param>
-    /// <param name="C4">The capacitor 4.</param>
-    /// <param name="C5">The capacitor 5.</param>
-    /// <param name="C6">The capacitor 6.</param>
-    /// <param name="C7">The capacitor 7.</param>
-    /// <param name="C8">The capacitor 8.</param>
-    /// <param name="C9">The capacitor 9.</param>
-    /// <param name="C10">The capacitor 10.</param>
-    /// <returns>capacitance (F)</returns>
-    static constexpr long double parallelCapacitance(const long double C1, const long double C2, const long double C3, const long double C4,
-                                                     const long double C5, const long double C6, const long double C7, const long double C8, const long double C9, const long double C10);
+    /**
+     * @brief Calculates the total resistance of resistors hooked up in parallel.
+     * @param R  The array of resistors.
+     * @param print  Whether or not to print the results.
+     * @return  The total resistance in ohms.
+     */
+    static long double parallelResistance(const vector<long
+            double>& R,
+                                                    bool print);
 
+
+    /**
+     * @brief Calculates the total capacitor of a series of capacitors.
+     * @param C  The array of capacitors.
+     * @param print  Whether or not to print the results.
+     * @return  The total capacitance (F).
+     */
+    static long double seriesCapacitance(const vector<long double>& C,
+                                                   bool print);
+
+    /**
+     * @brief Calculates the total capacitance of capacitors hooked up in parallel.
+     * @param C  The array of capacitors.
+     * @param print  Whether or not to print the results.
+     * @return  The total capacitance (F).
+     */
+    static long double parallelCapacitance(const vector<long double>& C,
+                                                     bool print);
 
     /// <summary>
     /// Calculates the terminal  voltage.
@@ -152,7 +116,7 @@ public:
     /// <param name="r">The internal resistance.</param>
     /// <param name="I">The Charge.</param>
     /// <returns>Voltage</returns>
-    static constexpr long double terminalVoltage(const long double emf, const long double r, const long double I);
+    static constexpr long double terminalVoltage(long double emf, long double r, long double I);
 
 
     /// <summary>
@@ -162,7 +126,7 @@ public:
     /// <param name="RLoad">The resistance load of all resistors connected.</param>
     /// <param name="r">The internal resistance.</param>
     /// <returns>current I in amperes</returns>
-    static constexpr long double current_OhmsLaw(const long double emf, const long double RLoad, const long double r);
+    static constexpr long double current_OhmsLaw(long double emf, long double RLoad, long double r);
 
     /// <summary>
     /// Calculates the powers dissipated
@@ -170,7 +134,7 @@ public:
     /// <param name="I">The current.</param>
     /// <param name="Rload">The Resistance load.</param>
     /// <returns>power output in watts (W)S</returns>
-    static constexpr long double powerDissipation(const long double I, const long double R);
+    static constexpr long double powerDissipation(long double I, long double R);
 
     /// <summary>
     /// add the total emfs for a series connection. where emf is the electromagnetic force
@@ -180,7 +144,7 @@ public:
     /// <param name="emf3">The emf3.</param>
     /// <param name="emf4">The emf4.</param>
     /// <returns>net emf</returns>
-    static constexpr long double emfsParallelConnection_added(const long double emf1, const long double emf2, const long double emf3, const long double emf4);
+    static constexpr long double emfsParallelConnection_added(long double emf1, long double emf2, long double emf3, long double emf4);
 
     /// <summary>
     /// add the total emfs for a series connection. where emf is the electromagnetic force
@@ -190,7 +154,7 @@ public:
     /// <param name="emf3">The emf3.</param>
     /// <param name="emf4">The emf4.</param>
     /// <returns></returns>
-    static constexpr long double emfsSeriesConnection_subtracted(const long double emf1, const long double emf2, const long double emf3, const long double emf4);
+    static constexpr long double emfsSeriesConnection_subtracted(long double emf1, long double emf2, long double emf3, long double emf4);
 
     /// <summary>
     /// calculates the internals resistance.
@@ -199,7 +163,7 @@ public:
     /// <param name="E">The emf.</param>
     /// <param name="I">The current.</param>
     /// <returns>the internal resistance (r)</returns>
-    static constexpr long double internalResistance(const long double Vt, const long double E, const long double I);
+    static constexpr long double internalResistance(long double Vt, long double E, long double I);
 
     /// <summary>
     /// calculates the RC time constant of a circuit containing a resistor and a
@@ -208,7 +172,7 @@ public:
     /// <param name="R">The resistance.</param>
     /// <param name="C">The capacitance.</param>
     /// <returns>tau(Greek letter)</returns>
-    static constexpr long double timeConstant_RC(const long double R, const long double C);
+    static constexpr long double timeConstant_RC(long double R, long double C);
 
     /// <summary>
     /// calculates the resistances from time constant and capacitance.
@@ -216,7 +180,7 @@ public:
     /// <param name="tau">The tau(time constant).</param>
     /// <param name="C">The capacitance.</param>
     /// <returns>the resistance Ohms</returns>
-    static constexpr long double resistance_fromTimeConstant(const long double tau, const long double C);
+    static constexpr long double resistance_fromTimeConstant(long double tau, long double C);
 
     /// <summary>
     /// calculates the capacitance from time constant and resistance.
@@ -224,7 +188,7 @@ public:
     /// <param name="tau">The tau.</param>
     /// <param name="R">The resistance.</param>
     /// <returns></returns>
-    static constexpr long double capacitance_fromTimeConstant(const long double tau, const long double R);
+    static constexpr long double capacitance_fromTimeConstant(long double tau, long double R);
 
     /// <summary>
     /// Voltages the vs time charging capacitor.
@@ -234,7 +198,7 @@ public:
     /// <param name="R">The resistance.</param>
     /// <param name="C">The capacitance.</param>
     /// <returns></returns>
-    static long double voltageVsTimeChargingCapacitor(const long double emf, const long double t, const long double R, const long double C);
+    static long double voltageVsTimeChargingCapacitor(long double emf, long double t, long double R, long double C);
 
     /// <summary>
     /// calculates the Frequency from cycles and seconds.
@@ -242,22 +206,21 @@ public:
     /// <param name="cycles">The cycles.</param>
     /// <param name="seconds">The seconds.</param>
     /// <returns>frequency</returns>
-    static constexpr long double frequency(const long double cycles, const long double seconds);
+    static constexpr long double frequency(long double cycles, long double seconds);
 
     /// <summary>
     /// Frequencies the specified period.
     /// </summary>
     /// <param name="period">The period.</param>
     /// <returns></returns>
-    static constexpr long double frequency(const long double period);
+    static constexpr long double frequency(long double period);
 
     /// <summary>
     /// calculates the periods from the specified f.
     /// </summary>
     /// <param name="f">The f.</param>
     /// <returns>period</returns>
-    static constexpr long double period(const long double f);
-
+    static constexpr long double period(long double f);
 
     /// <summary>
     /// Resistances from DC equations.
@@ -266,7 +229,7 @@ public:
     /// <param name="VoverE">The V/E .</param>
     /// <param name="C">The capacitance.</param>
     /// <returns></returns>
-    static long double resistance_fromDCequations(const long double t, const long double VoverE, const long double C);
+    static long double resistance_fromDCequations(long double t, long double VoverE, long double C);
 
     /// <summary>
     /// calculates using the exact exponential treatment, how much time is required to
@@ -277,7 +240,7 @@ public:
     /// <param name="R">The resistance.</param>
     /// <param name="pOv">The percent of original voltage.</param>
     /// <returns>time in seconds</returns>
-    static long double time_fromDischargeEquation(const long double C, const long double R, const long double pOv);
+    static long double time_fromDischargeEquation(long double C, long double R, long double pOv);
 
     /// <summary>
     /// If you wish to take a picture of a bullet traveling at v m/s, then a
@@ -290,7 +253,7 @@ public:
     /// <param name="C">The capacitance.</param>
     /// <param name="v">The velocity.</param>
     /// <returns>resistance in Ohms</returns>
-    static constexpr long double resistance_fromDistanceVelocity(const long double d, const long double C, const long double v);
+    static constexpr long double resistance_fromDistanceVelocity(long double d, long double C, long double v);
 
     /// <summary>
     /// A flashing lamp in a Christmas earring is based on an RC discharge of a
@@ -301,7 +264,7 @@ public:
     /// <param name="P">The power.</param>
     /// <param name="t">The time.</param>
     /// <returns>energy in joules</returns>
-    static constexpr long double energyUsed(const long double P, const long double t);
+    static constexpr long double energyUsed(long double P, long double t);
 
     /// A flashing lamp in a Christmas earring is based on an RC discharge of a
     /// capacitor through its resistance. The effective duration of the flash
@@ -311,7 +274,7 @@ public:
     /// <param name="V">The volts.</param>
     /// <param name="t">The time.</param>
     /// <returns>coulombs</returns>
-    static constexpr long double charge_fromPowerVoltsTime(const long double P, const long double V, const long double t);
+    static constexpr long double charge_fromPowerVoltsTime(long double P, long double V, long double t);
 
     /// <summary>
     /// A C F capacitor charged to V is discharged through a resistor.
@@ -324,7 +287,7 @@ public:
     /// <param name="mass">The mass.</param>
     /// <param name="c">The specific heat.</param>
     /// <returns>temp in C</returns>
-    static constexpr long double temperatureIncreaseOfResistor(const long double C, const long double V, const long double mass, const long double c);
+    static constexpr long double temperatureIncreaseOfResistor(long double C, long double V, long double mass, long double c);
 
     /// <summary>
     /// EMFs the specified r.
@@ -333,13 +296,13 @@ public:
     /// <param name="R_load">The r load.</param>
     /// <param name="I">The i.</param>
     /// <returns></returns>
-    static constexpr long double emf(const long double r, const long double R_load, const long double I);
+    static constexpr long double emf(long double r, long double R_load, long double I);
 
 
 
     ~Circuits()
     {
-        delete _circuitPtr;
+        countDecrease();
     }
 
 private:
@@ -350,114 +313,48 @@ private:
 };
 #endif //PHYSICSFORMULA_CIRCUITS_H
 
-constexpr long double Circuits::seriesResistance(const long double R1 = 0, const long double R2 = 0, const long double R3 = 0,
-                                                 const long double R4 = 0, const long double R5 = 0, const long double R6 = 0, const long double R7 = 0, const long double R8 = 0,
-                                                 const long double R9 = 0, const long double R10 = 0)
-{
-
-    return R1 + R2 + R3 + R4 + R5 + R6 + R7 + R8 + R9 + R10;//Ohms
+long double Circuits::seriesResistance(const vector<long double> &R,
+                                                 bool print = false) {
+    long double sum = 0;
+    for (long double r : R) {
+        sum += r;
+    }
+    if (print)
+        cout << "The sum of the resistances is " << sum << " Ohms." << endl;
+    return sum;
 }
 
-constexpr long double Circuits::parallelResistance(const long double R1 = 0, const long double R2 = 0, const long double R3 = 0,
-                                                   const long double R4 = 0, const long double R5 = 0, const long double R6 = 0, const long double R7 = 0, const long double R8 = 0,
-                                                   const long double R9 = 0, const long double R10 = 0)
-{
+long double
+Circuits::parallelResistance(const vector<long double> &R, bool print) {
+    long double sum = 0;
+    for (long double r : R) {
+        sum += 1 / r;
+    }
+    if (print)
+        cout << "The sum of the resistances is " << 1 / sum << " Ohms." << endl;
+    return 1 / sum;
+}
+
+long double
+Circuits::seriesCapacitance(const vector<long double> &C, bool print) {
     long double total = 0;
-    if (R1>0)
-    {
-        total += 1 / R1;
+    for (long double c : C) {
+        total += 1.0 / c;
     }
-    if (R2>0)
-    {
-        total += 1 / R2;
-    }
-    if (R3 > 0)
-    {
-        total += 1 / R3;
-    }
-    if (R4 > 0)
-    {
-        total += 1 / R4;
-    }
-    if (R5 > 0)
-    {
-        total += 1 / R5;
-    }
-    if (R6 > 0)
-    {
-        total += 1 / R6;
-    }
-    if (R7 > 0)
-    {
-        total += 1 / R7;
-    }
-    if (R8 > 0)
-    {
-        total += 1 / R8;
-    }
-    if (R9 > 0)
-    {
-        total += 1 / R9;
-    }
-    if (R10 > 0)
-    {
-        total += 1 / R10;
-    }
-    return 1/total;
+    if (print)
+        cout << "The sum of the capacitance's is " << 1.0/total << " Farads." << endl;
+    return 1.0/total;
 }
 
-constexpr long double Circuits::seriesCapacitance(const long double C1, const long double C2, const long double C3, const long double C4, const long double C5, const long double C6, const long double C7, const long double C8, const long double C9, const long double C10)
-{
+long double
+Circuits::parallelCapacitance(const vector<long double> &C, bool print) {
     long double total = 0;
-    if (C1>0)
-    {
-        total += 1 / C1;
+    for (long double c : C) {
+        total += c;
     }
-    if (C2>0)
-    {
-        total += 1 / C2;
-    }
-    if (C3 > 0)
-    {
-        total += 1 / C3;
-    }
-    if (C4 > 0)
-    {
-        total += 1 / C4;
-    }
-    if (C5 > 0)
-    {
-        total += 1 / C5;
-    }
-    if (C6 > 0)
-    {
-        total += 1 / C6;
-    }
-    if (C7 > 0)
-    {
-        total += 1 / C7;
-    }
-    if (C8 > 0)
-    {
-        total += 1 / C8;
-    }
-    if (C9 > 0)
-    {
-        total += 1 / C9;
-    }
-    if (C10 > 0)
-    {
-        total += 1 / C10;
-    }
-    return 1/total;
-
-
-}
-
-constexpr long double Circuits::parallelCapacitance(const long double C1, const long double C2, const long double C3, const long double C4, const long double C5, const long double C6, const long double C7, const long double C8, const long double C9, const long double C10)
-{
-    return  C1 + C2 + C3 + C4 + C5 + C6 + C7 + C8 + C9 + C10;//Ohms
-
+    if (print)
+        cout << "The sum of the capacitance's is " << total << " Farads." << endl;
+    return total;
 }
 
 constexpr long double Circuits::terminalVoltage(const long double emf, const long double r, const long double I)
@@ -561,3 +458,8 @@ constexpr long double Circuits::emf(const long double r, const long double R_loa
 {
     return I * (r + R_load);
 }
+
+
+
+
+

@@ -224,6 +224,9 @@
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Kinematics.h">
 			<Option target="PhysicsFormula"/>
 		</Unit>
+		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Kirschoff.h">
+			<Option target="PhysicsFormula"/>
+		</Unit>
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Line.cpp">
 			<Option target="PhysicsFormula"/>
 		</Unit>
