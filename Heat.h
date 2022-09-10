@@ -392,28 +392,132 @@ static struct LatentHeatVaporization
  */
 static struct ThermalConductivity
 {
-    const ld silver = 420.0;
-    const ld copper = 390.0;
-    const ld gold = 318.0;
-    const ld aluminum = 220.0;
-    const ld steel_iron = 80.0;
-    const ld steel_stainless = 14.0;
-    const ld ice = 2.2;
-    const ld glass = .84;
-    const ld concrete_brick = .84;
-    const ld water = .61;
-    const ld fatty_tissue_no_blood = .2;
-    const ld asbestos = .16;
-    const ld plasterboard = .16;
-    const ld wood_soft = .08;
-    const ld wood_medium = .12;
-    const ld wood_hard = .16;
-    const ld snow_dry = .10;
-    const ld cork = .042;
-    const ld glass_wool = .042;
-    const ld downFeathers = .025;
-    const ld air = .023;
-    const ld styrofoam = .010;
+    ThermalConductivity() {}
+//    const ld silver = 420.0;
+    const struct SILVER {
+        const ld W_mK = 403.0;
+        const ld Btu_in_h_ft = 2790.0;
+    } silver;
+//    const ld copper = 390.0;
+    const struct COPPER {
+        const ld kJ_kgC = 401.0;
+        const ld kcal_kgF = 2780.0;
+    } copper;
+//    const ld gold = 318.0;
+    const struct GOLD {
+        const ld W_mK = 327.0;
+        const ld Btu_in_h_ft = 2270.0;
+    } gold;
+//    const ld aluminum = 220.0;
+    const struct ALUMINUM {
+        const ld W_mK = 237.0;
+        const ld Btu_in_h_ft = 1640.0;
+    } aluminum;
+//    const ld steel_iron = 80.0;
+    const struct IRON {
+        const ld W_mK = 80.4;
+        const ld Btu_in_h_ft = 558.0;
+    } iron;
+//    const ld steel_stainless = 14.0;
+    const struct STEEL_STAINLESS {
+        const ld W_mK = 14.0;
+        const ld Btu_in_h_ft = 95.0;
+    } steel_stainless;
+//    const ld steele = 46.0;
+    const struct STEEL {
+        const ld W_mK = 46.0;
+        const ld Btu_in_h_ft = 319.0;
+    } steel;
+//    const ld ice = 2.2;
+    const struct ICE {
+        const ld W_mK = 2.2;
+        const ld Btu_in_h_ft = 15.3;
+    } ice;
+//    const ld glass = .84;
+    const struct GLASS {
+        const ld W_mK = 0.84;
+        const ld Btu_in_h_ft = 5.8;
+    } glass;
+//    const ld concrete_brick = .84;
+    const struct CONCRETE {
+        const ld W_mK = 1.0;
+        const ld Btu_in_h_ft = 7.0;
+    } concrete;
+//    const ld water = .61;
+    const struct WATER {
+        const ld W_mK = 0.61;
+        const ld Btu_in_h_ft = 4.2;
+    } water;
+//    const ld fatty_tissue_no_blood = .2;
+    const struct FATTY_TISSUE {
+        const ld W_mK = 0.2;
+        const ld Btu_in_h_ft = 1.39;
+    } fatty_tissue_no_blood;
+//    const ld asbestos = .16;
+    const struct ASBESTOS {
+        const ld W_mK = 0.16;
+        const ld Btu_in_h_ft = 1.11;
+    } asbestos;
+//    const ld plasterboard = .16;
+    const struct PLASTERBOARD {
+        const ld W_mK = 0.16;
+        const ld Btu_in_h_ft = 1.11;
+    } plasterboard;
+//    const ld wood_soft = .08;
+    const struct WOOD_SOFT {
+        const ld W_mK = 0.08;
+        const ld Btu_in_h_ft = 0.555;
+    } wood_soft;
+//    const ld wood_medium = .12;
+    const struct WOOD_MEDIUM {
+        const ld W_mK = 0.12;
+        const ld Btu_in_h_ft = 0.832;
+    } wood_medium;
+//    const ld wood_hard = .16;
+    const struct WOOD_HARD {
+        const ld W_mK = 0.16;
+        const ld Btu_in_h_ft = 1.11;
+    } wood_hard;
+//    const ld wood_pine= .11
+    const struct WOOD_PINE {
+        const ld W_mK = 0.11;
+        const ld Btu_in_h_ft = 0.78;
+    } wood_pine;
+//    const ld snow_dry = .10;
+    const struct SNOW_DRY {
+        const ld W_mK = 0.10;
+        const ld Btu_in_h_ft = 0.693;
+    } snow_dry;
+//    const ld cork = .042;
+    const struct CORK {
+        const ld W_mK = 0.042;
+        const ld Btu_in_h_ft = 0.291;
+    } cork;
+//    const ld glass_wool = .042;
+    const struct GOOSE_DOWN {
+        const ld W_mK = 0.043;
+        const ld Btu_in_h_ft = 0.30;
+    } goose_down;
+//    const ld fiberglass = .042;
+    const struct FIBERGLASS {
+        const ld W_mK = 0.042;
+        const ld Btu_in_h_ft = 0.29;
+    } fiberglass;
+//    const ld air = .023;
+    const struct AIR {
+        const ld W_mK = 0.026;
+        const ld Btu_in_h_ft = 0.18;
+    } air;
+//    const ld styrofoam = .010;
+    const struct STYROFOAM {
+        const ld W_mK = 0.029;
+        const ld Btu_in_h_ft = 0.20;
+    } styrofoam;
+//    const ld helium = .14;
+    const struct HELIUM {
+        const ld W_mK = 0.14;
+        const ld Btu_in_h_ft = 0.97;
+    } helium;
 }K;
 
 /**
@@ -769,7 +873,7 @@ public:
      * @param k is the thermal conductivity
      * @param A is total surface area
      * @param deltaTemp is the change in temperature
-     * @param d the thickness of substance
+     * @param d the thickness/length of substance
      * @returns the COULOMB value or heat transfer total
      */
     static ld heatConduction(const ld k,
@@ -778,11 +882,32 @@ public:
                              const ld d,
                              bool print = false)
     {
-        auto heat_trans = -((k * A * deltaTemp) / d);
+        auto heat_trans = ((k * A * deltaTemp) / d);
         if (print)
             std:: cout << "heat transfer from conduction: " << heat_trans <<
             std::endl;
         return heat_trans;
+    }
+
+    /**
+     * Using the heat conduction and change of temperature of a substance,
+     * calculate the length of thickness of the substance
+     * @param H  heat conduction
+     * @param k  thermal conductivity
+     * @param A  cross sectional area
+     * @param deltaTemp  change in temperature
+     * @param print  print to console
+     * @return thickness of substance
+     */
+    static ld lengthOfRod(const ld H,
+                          const ld k,
+                          const ld A,
+                          const ld deltaTemp,
+                          bool print = false) {
+        auto length = (k * A * deltaTemp) / H;
+        if (print)
+            std::cout << "length of rod: " << length << std::endl;
+        return length;
     }
 
     /**
@@ -857,9 +982,16 @@ public:
      * @param T absolute temperature in Kelvin
      * @returns heat transfer by emitted radiation
      */
-    static ld stefanBoltzmannLawOfRadiation(const ld e, const ld A, const ld T)
+    static ld stefanBoltzmannLawOfRadiation(const ld e,
+                                            const ld A,
+                                            const ld T,
+                                            bool print = false)
     {
-        return constants::STEFAN_BOLTZMANN * e * A * pow(T, 4);
+        auto P = constants::STEFAN_BOLTZMANN * e * A * pow(T, 4);
+        if (print)
+            std::cout << "heat transfer by emitted radiation: " << P << " W"
+            << std::endl;
+        return P;
     }
 
     /**
@@ -1214,6 +1346,14 @@ public:
         if(print)
             cout << "time to heat object: " << time << endl;
         return time;
+    }
+
+    static ld rFactor(const ld x, const ld k, bool print = false)
+    {
+        auto r = x / k;
+        if(print)
+            cout << "r factor: " << r << endl;
+        return r;
     }
 
     /**

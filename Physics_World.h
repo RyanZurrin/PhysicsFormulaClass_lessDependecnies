@@ -733,6 +733,12 @@ static struct Conversions
     static auto lbs_kg(T lbs = _val_) {
         return lbs * .45359237;
     }
+
+    template<typename T>
+    static auto liters_to_kilograms(T liters = _val_, T density = _val_) {
+        return liters * density;
+    }
+
 }converter;
 
 /// <summary>
