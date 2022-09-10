@@ -1357,6 +1357,141 @@ public:
     }
 
     /**
+     * @brief calculates the surface areas of a house
+     * @param length  length of house
+     * @param width  width of house
+     * @param heightToBaseOfRoof  height of house to base of roof
+     * @param heightOfGable  height of gable
+     * @param angelOfRoof  angle of roof
+     * @param numberOfWindows  number of windows
+     * @param widthOfWindows  width of windows
+     * @param heightOfWindows  height of windows
+     * @param print  print results
+     * @return surface area of house
+     */
+    static vector<ld> calculateSurfaceAreaOfHouse(bool print = false,
+                                                  ld length=0.0,
+                                                  ld width=0.0,
+                                                  ld heightToBaseOfRoof=0.0,
+                                                  ld heightOfGable=0.0,
+                                                  ld angelOfRoof=0.0,
+                                                  ld numberOfWindows=0.0,
+                                                  ld widthOfWindows=0.0,
+                                                  ld heightOfWindows=0.0) {
+        ld surfaceAreaOfWalls = 0.0;
+        ld surfaceAreaOfRoof = 0.0;
+        ld surfaceAreaOfWindows = 0.0;
+        ld totalSurfaceArea = 0.0;
+        vector<ld> results;
+        // check if length and width are 0 and if so prompt user for input
+        if (length == 0.0 && width == 0.0) {
+            std::cout << "Enter the length of the house: ";
+            std::cin >> length;
+            std::cout << "Enter the width of the house: ";
+            std::cin >> width;
+            std::cout << "Enter the height to the base of the roof: ";
+            std::cin >> heightToBaseOfRoof;
+            std::cout << "Enter the height of the gable: ";
+            std::cin >> heightOfGable;
+            std::cout << "Enter the angle of the roof: ";
+            std::cin >> angelOfRoof;
+            std::cout << "Enter the number of windows: ";
+            std::cin >> numberOfWindows;
+            std::cout << "Enter the width of the windows: ";
+            std::cin >> widthOfWindows;
+            std::cout << "Enter the height of the windows: ";
+            std::cin >> heightOfWindows;
+        }
+
+        // caluculate the surface area of the walls
+        surfaceAreaOfWalls = (length * heightToBaseOfRoof * 2) +
+                             (width * heightToBaseOfRoof * 2) +
+                             ((1.0/2.0) * heightOfGable * tan(angelOfRoof*constants::RADIAN) *
+                              width * 2);
+
+        // calculate the surface area of the roof
+        surfaceAreaOfRoof = (2.0 * length * (heightOfGable/cos
+                (angelOfRoof*constants::RADIAN)));
+
+        // calculate the surface area of the windows
+        surfaceAreaOfWindows = numberOfWindows * widthOfWindows * heightOfWindows;
+
+        // calculate the total surface area of the house
+        totalSurfaceArea = surfaceAreaOfWalls + surfaceAreaOfRoof;
+
+        // print the results
+        if (print) {
+            std::cout << "The surface area of the house is: " << totalSurfaceArea << std::endl;
+            // print the surface area of the walls
+            std::cout << "The surface area of the walls is: " << surfaceAreaOfWalls
+                      << std::endl;
+            // print the surface area of the roof
+            std::cout << "The surface area of the roof is: " << surfaceAreaOfRoof << std::endl;
+            // print the surface area of the windows
+            std::cout << "The surface area of the windows is: " << surfaceAreaOfWindows << std::endl;
+        }
+
+        results.push_back(totalSurfaceArea);
+        results.push_back(surfaceAreaOfWalls);
+        results.push_back(surfaceAreaOfRoof);
+        results.push_back(surfaceAreaOfWindows);
+
+        return results;
+    }
+
+    static ld calculateHeatLossOfHouse(
+            ld temperatureOfHouse,
+            ld temperatureOfOutside,
+            ld rValueOfWalls,
+            ld rValueOfRoof,
+            ld rValueOfWindows,
+            bool print = false,
+            ld surfaceAreaOfHouse=0.0,
+            ld surfaceAreaOfWalls=0.0,
+            ld surfaceAreaOfRoof=0.0,
+            ld surfaceAreaOfWindows=0.0)
+    {
+        ld heatLossOfWalls = 0.0;
+        ld heatLossOfRoof = 0.0;
+        ld heatLossOfWindows = 0.0;
+        ld totalHeatLoss = 0.0;
+        // check if surface area of house is 0 and if so call calculateSurfaceAreaOfHouse
+        if (surfaceAreaOfHouse == 0.0) {
+            vector<ld> results = calculateSurfaceAreaOfHouse(true);
+            surfaceAreaOfHouse = results[0];
+            surfaceAreaOfWalls = results[1];
+            surfaceAreaOfRoof = results[2];
+            surfaceAreaOfWindows = results[3];
+        }
+
+        // calculate the heat loss of the walls
+        heatLossOfWalls = (temperatureOfHouse - temperatureOfOutside) *
+                          ((surfaceAreaOfWalls - surfaceAreaOfWindows) /
+                          rValueOfWalls);
+        // calculate the heat loss of the roof
+        heatLossOfRoof = (temperatureOfHouse - temperatureOfOutside) *
+                         (surfaceAreaOfRoof / rValueOfRoof);
+        // calculate the heat loss of the windows
+        heatLossOfWindows = (temperatureOfHouse - temperatureOfOutside) *
+                            (surfaceAreaOfWindows / rValueOfWindows);
+        // calculate the total heat loss of the house
+        totalHeatLoss = heatLossOfWalls + heatLossOfRoof + heatLossOfWindows;
+        // print the results
+        if (print) {
+            std::cout << "The total heat loss of the house is: " <<
+            totalHeatLoss << " Btu/hr" << std::endl;
+            // print the heat loss of the walls
+            std::cout << "The heat loss of the walls is: " << heatLossOfWalls << std::endl;
+            // print the heat loss of the roof
+            std::cout << "The heat loss of the roof is: " << heatLossOfRoof << std::endl;
+            // print the heat loss of the windows
+            std::cout << "The heat loss of the windows is: " << heatLossOfWindows << std::endl;
+        }
+        return totalHeatLoss;
+    }
+
+
+    /**
      *@brief destructor
      */
     ~Heat()

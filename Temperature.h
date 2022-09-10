@@ -597,7 +597,7 @@ public:
      * @param T is the absolute temperature in kelvin
      * @returns Thermal energy, molecular interpretation of temperature
      */
-    static ld molecularKineticEnergy(const ld T)
+    static ld averageMolecularKineticEnergy(const ld T)
     {
         return (3.0 / 2.0) * constants::BOLTZMANN * T;
     }
@@ -694,6 +694,57 @@ public:
             std::cout << "mass_ice = " << mass_ice << " kg" << std::endl;
         }
         return mass_ice;
+    }
+
+    /**
+     * @brief calculates the amount of ice in kg needed to cool a certain amount of water
+     * @param m_w  is the mass of water in kg
+     * @param c_w  is the specific heat of water in J/kgC
+     * @param t_i  is the initial temp of the water in C
+     * @param t_f  is the final temp of the water in C
+     * @param c_i  is the specific heat of ice in J/kgC
+     * @param t_i_i  is the initial temp of the ice in C
+     * @param hf_water  is the heat of fusion of water in J/kg
+     * @param print  is a boolean to print the result
+     * @return  the amount of ice in kg needed to cool the water
+     */
+    static ld iceNeeded(const ld m_w,
+                        const ld c_w,
+                        const ld t_i,
+                        const ld t_f,
+                        const ld c_i,
+                        const ld t_i_i,
+                        const ld hf_water,
+                        bool print = false)
+    {
+        auto mass_ice = (m_w * c_w * (t_i - t_f)) / (c_i * abs(t_i_i) +
+                hf_water + c_w * t_f);
+        if (print)
+        {
+            std::cout << "mass_ice = " << mass_ice << " kg" << std::endl;
+        }
+        return mass_ice;
+    }
+
+    /**
+     * @brief calculates the root mean square speed of a gas
+     * @param m  is the molecular mass of the gas molecule in u
+     * @param T  is the temperature of the gas in K
+     * @return  the root mean square speed of the gas
+     */
+    static ld rootMeanSquareSpeed(const ld m,
+                                  const ld T,
+                                  bool print = false)
+    {
+        // convert the mass to kg
+        auto mass =  m / 1000.0;
+        auto r = constants::R.joules;
+        auto rms = sqrt((3.0 * r * T) / mass);
+        if (print)
+        {
+            std::cout << "rms = " << rms << " m/s" << std::endl;
+        }
+        return rms;
     }
 
     ~Temperature()
