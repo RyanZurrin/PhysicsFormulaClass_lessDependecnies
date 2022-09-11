@@ -861,6 +861,21 @@ public:
         return U;
     }
 
+        /**
+         * @brief calculates the power in watts (joles per second)
+         * @param Q  is the heat transfered in joules
+         * @param t  is the time in seconds
+         * @param print  prints the result
+         * @return  the power in watts
+         */
+    static ld thermodynamicPower(const ld Q, const ld t, bool print = false)
+    {
+        auto P = Q / t;
+        if (print)
+            std::cout << "The thermodynamic power is: " << P << " W\n";
+        return P;
+    }
+
 
     /**
      * @brief destructor

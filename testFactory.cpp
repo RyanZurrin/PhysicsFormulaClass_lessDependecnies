@@ -14,9 +14,12 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //**************************************************************************
-   Thermodynamics::rootMeanSquareSpeed(elements.H.atomic_weight*2,
-                                       tempConverter.celsius_to_kelvin(100),
-                                       true);
+   Thermodynamics::tempOfSystemAfterBeingInStateForTime(3600,
+                                                        2880,
+                                                        36.6,
+                                                        .250,
+                                                        2100,
+                                                        true);
 
 
 

@@ -1348,6 +1348,25 @@ public:
         return time;
     }
 
+    /**
+     * @brief calculates the time to reach a certain phase change
+     * @param L  latent heat of fusion
+     * @param ti  initial temp
+     * @param c  specific heat
+     * @param deltaT  change in temp
+     * @param print  print results
+     * @return  time to reach phase change
+     */
+    static ld timeToReachPhaseChange(const ld L, const ld ti, const ld c,
+                                    const ld deltaT, bool print = false)
+    {
+        auto time = (L * ti) / (c * deltaT);
+        if(print)
+            cout << "time to reach phase change: " << time << endl;
+        return time;
+    }
+
+
     static ld rFactor(const ld x, const ld k, bool print = false)
     {
         auto r = x / k;
@@ -1488,6 +1507,22 @@ public:
             std::cout << "The heat loss of the windows is: " << heatLossOfWindows << std::endl;
         }
         return totalHeatLoss;
+    }
+
+    static ld tempOfSystemAfterBeingInStateForTime(const ld t,
+                                                   const ld tb,
+                                                   const ld P,
+                                                   const ld m,
+                                                   const ld c,
+                                                   bool print = false)
+    {
+        ld temp = 0.0;
+        temp = -(t - tb) * P / (m*c);
+        if (print) {
+            std::cout << "The temperature of the system after being in the state for " << t
+                      << " seconds is: " << temp << " degrees C" << std::endl;
+        }
+        return temp;
     }
 
 
