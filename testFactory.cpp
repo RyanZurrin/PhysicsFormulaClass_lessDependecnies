@@ -14,9 +14,14 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //**************************************************************************
+   Thermodynamics::tempOfSystemAfterBeingInStateForTime(3600,
+                                                        2880,
+                                                        36.6,
+                                                        .250,
+                                                        2100,
+                                                        true);
 
-    Thermodynamics::thermalEquilibriumTemp(1.95, 447.0, 184.0, 10.9, 4184.0,
-                                           20, true);
+
 
 
 

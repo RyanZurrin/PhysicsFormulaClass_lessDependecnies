@@ -102,7 +102,7 @@ static struct Elements
     /// </summary>
     const struct HYDROGEN
     {
-        const long double atomic_weight = 1.007825; // 1.007825 u
+        const long double atomic_weight = 1.007825; // 1.007825 u (g/mol)
         const int atomic_number = 1; // Z_ = 1
         const vector<long double> energy_levels = {1};
         const long double density_STP = .0899; // .0899 kg/m^3
@@ -129,7 +129,7 @@ static struct Elements
     /// </summary>
     const struct HELIUM
     {
-        const long double atomic_weight = 4.002602; // 4.002602 u
+        const long double atomic_weight = 4.002602; // 4.002602 u (g/mol)
         const int atomic_number = 2; // Z_ = 2
         const vector<long double> energy_levels = {2};
         const long double density_STP = 0.1785; // 0.1785 kg/m^3
@@ -155,7 +155,7 @@ static struct Elements
     /// </summary>
     const struct LITHIUM
     {
-        const long double atomic_weight = 6.941; // 6.94 u
+        const long double atomic_weight = 6.941; // 6.94 u (g/mol)
         const int atomic_number = 3; // Z_ = 3
         const vector<long double> energy_levels = {2, 1};
         const long double density_STP = 535.0; // 535.0 kg/m^3
@@ -183,7 +183,7 @@ static struct Elements
     /// </summary>
     const struct BERYLLIUM
     {
-        const long double atomic_weight = 9.0121831; // 9.0121831 u
+        const long double atomic_weight = 9.0121831; // 9.0121831 u (g/mol)
         const int atomic_number = 4; //4
         const vector<long double> energy_levels = {2, 2};
         const long double density_STP = 1848.0; // 1848.0 kg/m^3
@@ -211,9 +211,9 @@ static struct Elements
     /// </summary>
     const struct BORON
     {
-        const long double atomic_weight = 10.81; // 10.81 u
+        const long double atomic_weight = 10.81; // 10.81 u (g/mol)
         const int atomic_number = 5; // 5
-        const vector<long double> energy_levels = {2, 3}; //add up to atomic number
+        const vector<long double> energy_levels = {2, 3}; //add u (g/mol)p to atomic number
         const long double density_STP = 2460.0; // 2460.0 kg/m^3
         const long double melting_point = 2075; // 2075 C
         const long double boiling_point = 4000; // 4000 C
@@ -238,7 +238,7 @@ static struct Elements
     /// </summary>
     const struct CARBON
     {
-        const long double atomic_weight = 12.011; // u
+        const long double atomic_weight = 12.011; // u (g/mol)
         const int atomic_number = 6;
         const vector<long double> energy_levels = {2, 4};
         const long double density_STP = 2260.0; // kg/m^3
@@ -264,7 +264,7 @@ static struct Elements
     /// </summary>
     const struct NITROGEN
     {
-        const long double atomic_weight = 14.007; // u
+        const long double atomic_weight = 14.007; // u (g/mol)
         const int atomic_number = 7;
         const vector<long double> energy_levels = {2, 5};
         const long double density_STP = 1.251; // kg/m^3
@@ -291,7 +291,7 @@ static struct Elements
     /// </summary>
     const struct OXYGEN
     {
-        const long double atomic_weight = 15.999; // u
+        const long double atomic_weight = 15.999; // u (g/mol)
         const int atomic_number = 8;
         const vector<long double> energy_levels = {2, 6};
         const long double density_STP = 1.251; // kg/m^3
@@ -319,7 +319,7 @@ static struct Elements
     /// </summary>
     const struct FLUORINE
     {
-        const long double atomic_weight = 18.998403163; // u
+        const long double atomic_weight = 18.998403163; // u (g/mol)
         const int atomic_number = 9;
         const vector<long double> energy_levels = {2, 7};
         const long double density_STP = 1.696; // kg/m^3
@@ -341,11 +341,11 @@ static struct Elements
     /// <summary>
     /// Neon is a chemical element with the symbol Ne and atomic number 10.
     /// It is a noble gas. Neon is a colorless, odorless, inert monatomic gas
-    /// under standard conditions, with about two-thirds the density of air.
+    /// u (g/mol)nder standard conditions, with about two-thirds the density of air.
     /// </summary>
     const struct NEON
     {
-        const long double atomic_weight = 20.1797; // u
+        const long double atomic_weight = 20.1797; // u (g/mol)
         const int atomic_number = 10;
         const vector<long double> energy_levels = {2, 8};
         const long double density_STP = .900; // kg/m^3
@@ -373,7 +373,7 @@ static struct Elements
     /// </summary>
     const struct SODIUM
     {
-        const long double atomic_weight = 22.98976928; // u
+        const long double atomic_weight = 22.98976928; // u (g/mol)
         const int atomic_number = 11;
         const vector<long double> energy_levels = {2, 8, 1};
         const long double density_STP = 968; // kg/m^3
@@ -399,7 +399,7 @@ static struct Elements
     /// </summary>
     const struct MAGNESIUM
     {
-        const long double atomic_weight = 24.305; // u
+        const long double atomic_weight = 24.305; // u (g/mol)
         const int atomic_number = 12;
         const vector<long double> energy_levels = {2, 8, 2};
         const long double density_STP = 1738.0; // kg/m^3
@@ -427,7 +427,7 @@ static struct Elements
     /// </summary>
     const struct ALUMINIUM
     {
-        const long double atomic_weight = 26.9815385; // 26.9815385 u
+        const long double atomic_weight = 26.9815385; // 26.9815385 u (g/mol)
         const int atomic_number = 13; // 13
         const vector<long double> energy_levels = {2, 8, 3};
         const long double density_STP = 2700; // 2700 kg/m^3
@@ -455,7 +455,7 @@ static struct Elements
     /// </summary>
     const struct SILICON
     {
-        const long double atomic_weight = 28.085; // 28.085 u
+        const long double atomic_weight = 28.085; // 28.085 u (g/mol)
         const int atomic_number = 14; //14
         const vector<long double> energy_levels = {2, 8, 4};
         const long double density_STP = 2330.0; // 2330 kg/m^3
@@ -482,7 +482,7 @@ static struct Elements
     /// </summary>
     const struct PHOSPHORUS
     {
-        const long double atomic_weight = 30.973761998; // 30.973761998 u
+        const long double atomic_weight = 30.973761998; // 30.973761998 u (g/mol)
         const int atomic_number = 15; //15
         const vector<long double> energy_levels = {2, 8, 5};
         const long double density_STP = 1823.0; // 1823 kg/m^3
@@ -509,7 +509,7 @@ static struct Elements
     /// </summary>
     const struct SULFUR
     {
-        const long double atomic_weight = 32.06; // 32.06 u
+        const long double atomic_weight = 32.06; // 32.06 u (g/mol)
         const int atomic_number = 16; // 16
         const vector<long double> energy_levels = {2, 8, 6};
         const long double density_STP = 1960.0; // 1960.0 kg/m^3
@@ -536,7 +536,7 @@ static struct Elements
     /// </summary>
     const struct CHLORINE
     {
-        const long double atomic_weight = 35.45; // 35.45 u
+        const long double atomic_weight = 35.45; // 35.45 u (g/mol)
         const int atomic_number = 17; //17
         const vector<long double> energy_levels = {2, 8, 7};
         const long double density_STP = 3.214; // 3.214 kg/m^3
@@ -562,7 +562,7 @@ static struct Elements
     /// </summary>
     const struct ARGON
     {
-        const long double atomic_weight = 39.948; // 39.948 u
+        const long double atomic_weight = 39.948; // 39.948 u (g/mol)
         const int atomic_number = 18; //18
         const vector<long double> energy_levels = {2, 8, 8};
         const long double density_STP = 1784.0; // 1784 kg/m^3
@@ -589,7 +589,7 @@ static struct Elements
     /// </summary>
     const struct POTASSIUM
     {
-        const long double atomic_weight = 39.0983; // 39.0983 u
+        const long double atomic_weight = 39.0983; // 39.0983 u (g/mol)
         const int atomic_number = 19; // 19
         const vector<long double> energy_levels = {2, 8, 8, 1};
         const long double density_STP = 856; // 856 kg/m^3
@@ -617,7 +617,7 @@ static struct Elements
     /// </summary>
     const struct CALCIUM
     {
-        const long double atomic_weight = 40.078; // 40.078 u
+        const long double atomic_weight = 40.078; // 40.078 u (g/mol)
         const int atomic_number = 20; // 20
         const vector<long double> energy_levels = {2, 8, 8, 2};
         const long double density_STP = 1550.0; // 1550kg/m^3
@@ -644,7 +644,7 @@ static struct Elements
     /// </summary>
     const struct SCANDIUM
     {
-        const long double atomic_weight = 44.955908; // 44.955908 u
+        const long double atomic_weight = 44.955908; // 44.955908 u (g/mol)
         const int atomic_number = 21; // 21
         const vector<long double> energy_levels = {2, 8, 9, 2};
         const long double density_STP = 2985.0; // 2985 kg/m^3
@@ -671,9 +671,9 @@ static struct Elements
     /// </summary>
     const struct TITANIUM
     {
-        const long double atomic_weight = 47.867; // 47.867 u
+        const long double atomic_weight = 47.867; // 47.867 u (g/mol)
         const int atomic_number = 22; //22
-        // energy_levels must add up to atomic_number
+        // energy_levels must add u (g/mol)p to atomic_number
         const vector<long double> energy_levels = {2, 8, 10, 2};
         const long double density_STP = 4507.0; // 4507 kg/m^3
         const long double melting_point = 1668.0; // 1668 C
@@ -700,7 +700,7 @@ static struct Elements
     /// </summary>
     const struct VANADIUM
     {
-        const long double atomic_weight = 50.9415; // 50.9415 u
+        const long double atomic_weight = 50.9415; // 50.9415 u (g/mol)
         const int atomic_number = 23; // 23
         const vector<long double> energy_levels = {2, 8, 11, 2};
         const long double density_STP = 6110; // kg/m^3
@@ -727,7 +727,7 @@ static struct Elements
     /// </summary>
     const struct CHROMIUM
     {
-        const long double atomic_weight = 51.996; // u
+        const long double atomic_weight = 51.996; // u (g/mol)
         const int atomic_number = 24; // 24
         const vector<long double> energy_levels = {2, 8, 13, 1};
         const long double density_STP = 7190; // kg/m^3
@@ -750,12 +750,12 @@ static struct Elements
     /// Manganese is a chemical element with the symbol Mn and atomic number 25.
     /// It is not found as a free element in nature; it is often found in minerals
     /// in combination with iron. Manganese is a transition metal with a
-    /// multifaceted array of industrial alloy uses, particularly in
+    /// multifaceted array of industrial alloy u (g/mol)ses, particularly in
     /// stainless steels.
     /// </summary>
     const struct MANGANESE
     {
-        const long double atomic_weight = 54.938; // u
+        const long double atomic_weight = 54.938; // u (g/mol)
         const int atomic_number = 25;
         const vector<long double> energy_levels = {2, 8, 13, 2};
         const long double density_STP = 7470; // kg/m^3
@@ -783,7 +783,7 @@ static struct Elements
     /// </summary>
     const struct IRON
     {
-        const long double atomic_weight = 55.845; // u
+        const long double atomic_weight = 55.845; // u (g/mol)
         const int atomic_number = 26;
         const vector<long double> energy_levels = {2, 8, 14, 2};
         const long double density_STP = 7874; // kg/m^3
@@ -811,7 +811,7 @@ static struct Elements
     /// </summary>
     const struct COBALT
     {
-        const long double atomic_weight = 58.933; // u
+        const long double atomic_weight = 58.933; // u (g/mol)
         const int atomic_number = 27;
         const vector<long double> energy_levels = {2, 8, 15, 2};
         const long double density_STP = 8900; // kg/m^3
@@ -837,7 +837,7 @@ static struct Elements
     /// </summary>
     const struct NICKEL
     {
-        const long double atomic_weight = 58.693; // u
+        const long double atomic_weight = 58.693; // u (g/mol)
         const int atomic_number = 28;
         const vector<long double> energy_levels = {2, 8, 16, 2};
         const long double density_STP = 8908.0; // kg/m^3
@@ -864,7 +864,7 @@ static struct Elements
     /// </summary>
     const struct COPPER
     {
-        const long double atomic_weight = 63.546; // u
+        const long double atomic_weight = 63.546; // u (g/mol)
         const int atomic_number = 29;
         const vector<long double> energy_levels = {2, 8, 18, 1};
         const long double density_STP = 8940.0; // kg/m^3
@@ -891,7 +891,7 @@ static struct Elements
     /// </summary>
     const struct ZINC
     {
-        const long double atomic_weight = 65.38; // u
+        const long double atomic_weight = 65.38; // u (g/mol)
         const int atomic_number = 30;
         const vector<long double> energy_levels = {2, 8, 18, 2};
         const long double density_STP = 7140; // kg/m^3
@@ -918,7 +918,7 @@ static struct Elements
     /// </summary>
     const struct GALLIUM
     {
-        const long double atomic_weight = 69.723; // u
+        const long double atomic_weight = 69.723; // u (g/mol)
         const int atomic_number = 31;
         const vector<long double> energy_levels = {2, 8, 18, 3};
         const long double density_STP = 5904.0; // kg/m^3
@@ -946,7 +946,7 @@ static struct Elements
     /// </summary>
     const struct GERMANIUM
     {
-        const long double atomic_weight = 72.630; // u
+        const long double atomic_weight = 72.630; // u (g/mol)
         const int atomic_number = 32;
         const vector<long double> energy_levels = {2, 8, 18, 4};
         const long double density_STP = 5323; // kg/m^3
@@ -967,12 +967,12 @@ static struct Elements
 
     /// <summary>
     /// Arsenic is a chemical element with the symbol As and atomic number 33.
-    /// Arsenic occurs in many minerals, usually in combination with sulfur and
+    /// Arsenic occurs in many minerals, u (g/mol)sually in combination with sulfur and
     /// metals, but also as a pure elemental crystal. Arsenic is a metalloid.
     /// </summary>
     const struct ARSENIC
     {
-        const long double atomic_weight = 74.922; // u
+        const long double atomic_weight = 74.922; // u (g/mol)
         const int atomic_number = 33;
         const vector<long double> energy_levels = {2, 8, 18, 5};
         const long double density_STP = 5727; // kg/m^3
@@ -999,7 +999,7 @@ static struct Elements
     /// </summary>
     const struct SELENIUM
     {
-        const long double atomic_weight = 78.971; // u
+        const long double atomic_weight = 78.971; // u (g/mol)
         const int atomic_number = 34;
         const vector<long double> energy_levels = {2, 8, 18, 6};
         const long double density_STP = 4819; // kg/m^3
@@ -1027,7 +1027,7 @@ static struct Elements
     /// </summary>
     const struct BROMINE
     {
-        const long double atomic_weight = 79.904; // u
+        const long double atomic_weight = 79.904; // u (g/mol)
         const int atomic_number = 35;
         const vector<long double> energy_levels = {2, 8, 18, 7};
         const long double density_STP = 3120; // kg/m^3
@@ -1049,12 +1049,12 @@ static struct Elements
     /// <summary>
     /// Krypton is a chemical element with the symbol Kr and atomic number 36.
     /// It is a colorless, odorless, tasteless noble gas that occurs in trace
-    /// amounts in the atmosphere and is often used with other rare gases in
+    /// amounts in the atmosphere and is often u (g/mol)sed with other rare gases in
     /// fluorescent lamps. With rare exceptions, krypton is chemically inert
     /// </summary>
     const struct KRYPTON
     {
-        const long double atomic_weight = 83.798; // u
+        const long double atomic_weight = 83.798; // u (g/mol)
         const int atomic_number = 36;
         const vector<long double> energy_levels = {2, 8, 18, 8};
         const long double density_STP = 3.75; // kg/m^3
@@ -1081,7 +1081,7 @@ static struct Elements
     /// </summary>
     const struct RUBIDIUM
     {
-        const long double atomic_weight = 85.468; // u
+        const long double atomic_weight = 85.468; // u (g/mol)
         const int atomic_number = 37;
         const vector<long double> energy_levels = {2, 8, 18, 8, 1};
         const long double density_STP = 1532; // kg/m^3
@@ -1108,7 +1108,7 @@ static struct Elements
     /// </summary>
     const struct STRONTIUM
     {
-        const long double atomic_weight = 87.62; // u
+        const long double atomic_weight = 87.62; // u (g/mol)
         const int atomic_number = 38;
         const vector<long double> energy_levels = {2, 8, 18, 8, 2};
         const long double density_STP = 2630; // kg/m^3
@@ -1134,7 +1134,7 @@ static struct Elements
     /// </summary>
     const struct YTTRIUM
     {
-        const long double atomic_weight = 88.906; // u
+        const long double atomic_weight = 88.906; // u (g/mol)
         const int atomic_number = 39;
         const vector<long double> energy_levels = {2, 8, 18, 9, 2};
         const long double density_STP = 4472; // kg/m^3
@@ -1162,7 +1162,7 @@ static struct Elements
     /// </summary>
     const struct ZIRCONIUM
     {
-        const long double atomic_weight = 91.224; // u
+        const long double atomic_weight = 91.224; // u (g/mol)
         const int atomic_number = 40;
         const vector<long double> energy_levels = {2, 8, 18, 10, 2};
         const long double density_STP = 6511; // kg/m^3
@@ -1190,7 +1190,7 @@ static struct Elements
     /// </summary>
     const struct NIOBIUM
     {
-        const long double atomic_weight = 92.906; // u
+        const long double atomic_weight = 92.906; // u (g/mol)
         const int atomic_number = 41;
         const vector<long double> energy_levels = {2, 8, 18, 12, 1};
         const long double density_STP = 8570; // kg/m^3
@@ -1216,7 +1216,7 @@ static struct Elements
     /// </summary>
     const struct MOLYBDENUM
     {
-        const long double atomic_weight = 95.95; // u
+        const long double atomic_weight = 95.95; // u (g/mol)
         const int atomic_number = 42;
         const vector<long double> energy_levels = {2, 8, 18, 13, 1};
         const long double density_STP = 10280; // kg/m^3
@@ -1243,7 +1243,7 @@ static struct Elements
     /// </summary>
     const struct TECHNETIUM
     {
-        const long double atomic_weight = (98); // u
+        const long double atomic_weight = (98); // u (g/mol)
         const int atomic_number = 43;
         const vector<long double> energy_levels = {2, 8, 18, 13, 2};
         const long double density_STP = 11500; // kg/m^3
@@ -1270,7 +1270,7 @@ static struct Elements
     /// </summary>
     const struct RUTHENIUM
     {
-        const long double atomic_weight = 101.07; // u
+        const long double atomic_weight = 101.07; // u (g/mol)
         const int atomic_number = 44;
         const vector<long double> energy_levels = {2, 8, 18, 15, 1};
         const long double density_STP = 12370; // kg/m^3
@@ -1297,7 +1297,7 @@ static struct Elements
     /// </summary>
     const struct RHODIUM
     {
-        const long double atomic_weight = 102.91; // u
+        const long double atomic_weight = 102.91; // u (g/mol)
         const int atomic_number = 45;
         const vector<long double> energy_levels = {2, 8, 18, 16, 1};
         const long double density_STP = 12450; // kg/m^3
@@ -1323,7 +1323,7 @@ static struct Elements
     /// </summary>
     const struct PALLADIUM
     {
-        const long double atomic_weight = 106.42; // u
+        const long double atomic_weight = 106.42; // u (g/mol)
         const int atomic_number = 46;
         const vector<long double> energy_levels = {2, 8, 18, 18};
         const long double density_STP = 12023; // kg/m^3
@@ -1350,7 +1350,7 @@ static struct Elements
     /// </summary>
     const struct SILVER
     {
-        const long double atomic_weight = 107.87; // u
+        const long double atomic_weight = 107.87; // u (g/mol)
         const int atomic_number = 47;
         const vector<long double> energy_levels = {2, 8, 18, 18, 1};
         const long double density_STP = 10490; // kg/m^3
@@ -1376,9 +1376,9 @@ static struct Elements
     /// </summary>
     const struct CADMIUM
     {
-        const long double atomic_weight = 112.41; // u
+        const long double atomic_weight = 112.41; // u (g/mol)
         const int atomic_number = 48;
-        // energy_levels must add up to the atomic number
+        // energy_levels must add u (g/mol)p to the atomic number
         const vector<long double> energy_levels = {2, 8, 18, 18, 2};
         const long double density_STP = 8650; // kg/m^3
         const long double melting_point = 321.07; // C
@@ -1400,12 +1400,12 @@ static struct Elements
     /// Indium is a chemical element with the symbol In and atomic number 49.
     /// Indium is the softest metal that is not an alkali metal. It is a
     /// silvery-white metal that resembles tin in appearance. It is a
-    /// post-transition metal that makes up 0.21 parts per million of the
+    /// post-transition metal that makes u (g/mol)p 0.21 parts per million of the
     /// Earth's crust
     /// </summary>
     const struct INDIUM
     {
-        const long double atomic_weight = 114.82; // u
+        const long double atomic_weight = 114.82; // u (g/mol)
         const int atomic_number = 49;
         const vector<long double> energy_levels = {2, 8, 18, 18, 3};
         const long double density_STP = 7310; // kg/m^3
@@ -1431,7 +1431,7 @@ static struct Elements
     /// </summary>
     const struct TIN
     {
-        const long double atomic_weight = 118.71; // u
+        const long double atomic_weight = 118.71; // u (g/mol)
         const int atomic_number = 50;
         const vector<long double> energy_levels = {2, 8, 18, 18, 4};
         const long double density_STP = 7310; // kg/m^3
@@ -1454,12 +1454,12 @@ static struct Elements
     /// Antimony is a chemical element with the symbol Sb and atomic number 51.
     /// A lustrous gray metalloid, it is found in nature mainly as the sulfide
     /// mineral stibnite. Antimony compounds have been known since ancient times
-    /// and were powdered for use as medicine and cosmetics, often known by the
+    /// and were powdered for u (g/mol)se as medicine and cosmetics, often known by the
     /// Arabic name kohl.
     /// </summary>
     const struct ANTIMONY
     {
-        const long double atomic_weight = 121.76; // u
+        const long double atomic_weight = 121.76; // u (g/mol)
         const int atomic_number = 51;
         const vector<long double> energy_levels = {2, 8, 18, 18, 5};
         const long double density_STP = 6697; // kg/m^3
@@ -1486,7 +1486,7 @@ static struct Elements
     /// </summary>
     const struct TELLURIUM
     {
-        const long double atomic_weight = 127.60; // u
+        const long double atomic_weight = 127.60; // u (g/mol)
         const int atomic_number = 52;
         const vector<long double> energy_levels = {2, 8, 18, 18, 6};
         const long double density_STP = 62420; // kg/m^3
@@ -1514,7 +1514,7 @@ static struct Elements
     /// </summary>
     const struct IODINE
     {
-        const long double atomic_weight = 126.90; // u
+        const long double atomic_weight = 126.90; // u (g/mol)
         const int atomic_number = 53;
         const vector<long double> energy_levels = {2, 8, 18, 18, 7};
         const long double density_STP = 4940; // kg/m^3
@@ -1540,7 +1540,7 @@ static struct Elements
     /// </summary>
     const struct XENON
     {
-        const long double atomic_weight = 131.29; // u
+        const long double atomic_weight = 131.29; // u (g/mol)
         const int atomic_number = 54;
         const vector<long double> energy_levels = {2, 8, 18, 18, 8};
         const long double density_STP = 5.9; // kg/m^3
@@ -1567,7 +1567,7 @@ static struct Elements
     /// </summary>
     const struct CAESIUM
     {
-        const long double atomic_weight = 132.91; // u
+        const long double atomic_weight = 132.91; // u (g/mol)
         const int atomic_number = 55;
         const vector<long double> energy_levels = {2, 8, 18, 18, 8, 1};
         const long double density_STP = 1879; // kg/m^3
@@ -1594,7 +1594,7 @@ static struct Elements
     /// </summary>
     const struct BARIUM
     {
-        const long double atomic_weight = 137.33; // u
+        const long double atomic_weight = 137.33; // u (g/mol)
         const int atomic_number = 56;
         const vector<long double> energy_levels = {2, 8, 18, 18, 8, 2};
         const long double density_STP = 3510; // kg/m^3
@@ -1621,7 +1621,7 @@ static struct Elements
     /// </summary>
     const struct LANTHANUM
     {
-        const long double atomic_weight = 138.91; // u
+        const long double atomic_weight = 138.91; // u (g/mol)
         const int atomic_number = 57;
         // energy_levels must add up to the atomic number
         const vector<long double> energy_levels = {2, 8, 18, 18, 9, 2};
@@ -1648,7 +1648,7 @@ static struct Elements
     /// </summary>
     const struct CERIUM
     {
-        const long double atomic_weight = 140.12; // u
+        const long double atomic_weight = 140.12; // u (g/mol)
         const int atomic_number = 58;
         const vector<long double> energy_levels = {2, 8, 18, 19, 9, 2};
         const long double density_STP = 6689; // kg/m^3
@@ -1674,7 +1674,7 @@ static struct Elements
     /// </summary>
     const struct PRASEODYMIUM
     {
-        const long double atomic_weight = 140.91; // u
+        const long double atomic_weight = 140.91; // u (g/mol)
         const int atomic_number = 59;
         const vector<long double> energy_levels = {2, 8, 18, 21, 8, 2};
         const long double density_STP = 6640; // kg/m^3
@@ -1701,7 +1701,7 @@ static struct Elements
     /// </summary>
     const struct NEODYMIUM
     {
-        const long double atomic_weight = 144.24; // u
+        const long double atomic_weight = 144.24; // u (g/mol)
         const int atomic_number = 60;
         const vector<long double> energy_levels = {2, 8, 18, 22, 8, 2};
         const long double density_STP = 7010; // kg/m^3
@@ -1728,7 +1728,7 @@ static struct Elements
     /// </summary>
     const struct PROMETHIUM
     {
-        const long double atomic_weight = (145); // u
+        const long double atomic_weight = (145); // u (g/mol)
         const int atomic_number = 61;
         const vector<long double> energy_levels = {2, 8, 18, 23, 8, 2};
         const long double density_STP = 7264; // kg/m^3
@@ -1755,7 +1755,7 @@ static struct Elements
     /// </summary>
     const struct SAMARIUM
     {
-        const long double atomic_weight = 150.36; // u
+        const long double atomic_weight = 150.36; // u (g/mol)
         const int atomic_number = 62;
         const vector<long double> energy_levels = {2, 8, 18, 24, 8, 2};
         const long double density_STP = 7353; // kg/m^3
@@ -1781,7 +1781,7 @@ static struct Elements
     /// </summary>
     const struct EUROPIUM
     {
-        const long double atomic_weight = 151.96; // u
+        const long double atomic_weight = 151.96; // u (g/mol)
         const int atomic_number = 63;
         const vector<long double> energy_levels = {2, 8, 18, 25, 8, 2};
         const long double density_STP = 5244; // kg/m^3
@@ -1808,7 +1808,7 @@ static struct Elements
     /// </summary>
     const struct GADOLINIUM
     {
-        const long double atomic_weight = 157.25; // u
+        const long double atomic_weight = 157.25; // u (g/mol)
         const int atomic_number = 64;
         const vector<long double> energy_levels = {2, 8, 18, 25, 9, 2};
         const long double density_STP = 7901; // kg/m^3
@@ -1836,7 +1836,7 @@ static struct Elements
     /// </summary>
     const struct TERBIUM
     {
-        const long double atomic_weight = 158.93; // u
+        const long double atomic_weight = 158.93; // u (g/mol)
         const int atomic_number = 65;
         const vector<long double> energy_levels = {2, 8, 18, 27, 8, 2};
         const long double density_STP = 8219; // kg/m^3
@@ -1863,7 +1863,7 @@ static struct Elements
     /// </summary>
     const struct DYSPROSIUM
     {
-        const long double atomic_weight = 162.50; // u
+        const long double atomic_weight = 162.50; // u (g/mol)
         const int atomic_number = 66;
         const vector<long double> energy_levels = {2, 8, 18, 28, 8, 2};
         const long double density_STP = 8551; // kg/m^3
@@ -1891,7 +1891,7 @@ static struct Elements
     /// </summary>
     const struct HOLMIUM
     {
-        const long double atomic_weight = 164.93; // u
+        const long double atomic_weight = 164.93; // u (g/mol)
         const int atomic_number = 67;
         const vector<long double> energy_levels = {2, 8, 18, 29, 8, 2};
         const long double density_STP = 8795; // kg/m^3
@@ -1917,7 +1917,7 @@ static struct Elements
     /// </summary>
     const struct ERBIUM
     {
-        const long double atomic_weight = 167.26; // u
+        const long double atomic_weight = 167.26; // u (g/mol)
         const int atomic_number = 68;
         const vector<long double> energy_levels = {2, 8, 18, 30, 8, 2};
         const long double density_STP = 9066; // kg/m^3
@@ -1942,7 +1942,7 @@ static struct Elements
     /// </summary>
     const struct THULIUM
     {
-        const long double atomic_weight = 168.93; // u
+        const long double atomic_weight = 168.93; // u (g/mol)
         const int atomic_number = 69;
         const vector<long double> energy_levels = {2, 8, 18, 31, 8, 2};
         const long double density_STP = 9320; // kg/m^3
@@ -1968,7 +1968,7 @@ static struct Elements
     /// </summary>
     const struct YTTERBIUM
     {
-        const long double atomic_weight = 173.05; // u
+        const long double atomic_weight = 173.05; // u (g/mol)
         const int atomic_number = 70;
         const vector<long double> energy_levels = {2, 8, 18, 32, 8, 2};
         const long double density_STP = 6570; // kg/m^3
@@ -1995,7 +1995,7 @@ static struct Elements
     /// </summary>
     const struct LUTERTIUM
     {
-        const long double atomic_weight = 174.97; // u
+        const long double atomic_weight = 174.97; // u (g/mol)
         const int atomic_number = 71;
         const vector<long double> energy_levels = {2, 8, 18, 32, 9, 2};
         const long double density_STP = 9841; // kg/m^3
@@ -2022,7 +2022,7 @@ static struct Elements
     /// </summary>
     const struct HAFNIUM
     {
-        const long double atomic_weight = 178.49; // u
+        const long double atomic_weight = 178.49; // u (g/mol)
         const int atomic_number = 72;
         const vector<long double> energy_levels = {2, 8, 18, 32, 10, 2};
         const long double density_STP = 13310; // kg/m^3
@@ -2050,7 +2050,7 @@ static struct Elements
     /// </summary>
     const struct TANTALUM
     {
-        const long double atomic_weight = 180.95; // u
+        const long double atomic_weight = 180.95; // u (g/mol)
         const int atomic_number = 73;
         const vector<long double> energy_levels = {2, 8, 18, 32, 11, 2};
         const long double density_STP = 16650; // kg/m^3
@@ -2076,7 +2076,7 @@ static struct Elements
     /// </summary>
     const struct TUNGSTEN
     {
-        const long double atomic_weight = 183.84; // u
+        const long double atomic_weight = 183.84; // u (g/mol)
         const int atomic_number = 74;
         const vector<long double> energy_levels = {2, 8, 18, 32, 12, 2};
         const long double density_STP = 19250; // kg/m^3
@@ -2103,7 +2103,7 @@ static struct Elements
     /// </summary>
     const struct RHENIUM
     {
-        const long double atomic_weight = 186.21; // u
+        const long double atomic_weight = 186.21; // u (g/mol)
         const int atomic_number = 75;
         const vector<long double> energy_levels = {2, 8, 18, 32, 13, 2};
         const long double density_STP = 21020; // kg/m^3
@@ -2129,7 +2129,7 @@ static struct Elements
     /// </summary>
     const struct OSMIUM
     {
-        const long double atomic_weight = 190.23; // u
+        const long double atomic_weight = 190.23; // u (g/mol)
         const int atomic_number = 76;
         const vector<long double> energy_levels = {2, 8, 18, 32, 14, 2};
         const long double density_STP = 22590; // kg/m^3
@@ -2156,7 +2156,7 @@ static struct Elements
     /// </summary>
     const struct IRIDIUM
     {
-        const long double atomic_weight = 192.22; // u
+        const long double atomic_weight = 192.22; // u (g/mol)
         const int atomic_number = 77;
         const vector<long double> energy_levels = {2, 8, 18, 32, 15, 2};
         const long double density_STP = 22560; // kg/m^3
@@ -2183,7 +2183,7 @@ static struct Elements
     /// </summary>
     const struct PLATINUM
     {
-        const long double atomic_weight = 195.08; // u
+        const long double atomic_weight = 195.08; // u (g/mol)
         const int atomic_number = 78;
         const vector<long double> energy_levels = {2, 8, 18, 32, 17, 1};
         const long double density_STP = 21450; // kg/m^3
@@ -2211,7 +2211,7 @@ static struct Elements
     /// </summary>
     const struct GOLD
     {
-        const long double atomic_weight = 196.97; // u
+        const long double atomic_weight = 196.97; // u (g/mol)
         const int atomic_number = 79;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 1};
         const long double density_STP = 19300; // kg/m^3
@@ -2236,7 +2236,7 @@ static struct Elements
     /// </summary>
     const struct MERCURY
     {
-        const long double atomic_weight = 200.59; // u
+        const long double atomic_weight = 200.59; // u (g/mol)
         const int atomic_number = 80;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 2};
         const long double density_STP = 13534; // kg/m^3
@@ -2262,7 +2262,7 @@ static struct Elements
     /// </summary>
     const struct THALLIUM
     {
-        const long double atomic_weight = 204.38; // u
+        const long double atomic_weight = 204.38; // u (g/mol)
         const int atomic_number = 81;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 3};
         const long double density_STP = 11850; // kg/m^3
@@ -2290,7 +2290,7 @@ static struct Elements
     /// </summary>
     const struct LEAD
     {
-        const long double atomic_weight = 207.2; // u
+        const long double atomic_weight = 207.2; // u (g/mol)
         const int atomic_number = 82;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 4};
         const long double density_STP = 11340; // kg/m^3
@@ -2317,7 +2317,7 @@ static struct Elements
     /// </summary>
     const struct BISMUTH
     {
-        const long double atomic_weight = 208.98; // u
+        const long double atomic_weight = 208.98; // u (g/mol)
         const int atomic_number = 83;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 5};
         const long double density_STP = 9780; // kg/m^3
@@ -2345,7 +2345,7 @@ static struct Elements
     /// </summary>
     const struct POLONIUM
     {
-        const long double atomic_weight = (209); // u
+        const long double atomic_weight = (209); // u (g/mol)
         const int atomic_number = 84;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 6};
         const long double density_STP = 9196.0; // kg/m^3
@@ -2373,7 +2373,7 @@ static struct Elements
     /// </summary>
     const struct ASTATINE
     {
-        const long double atomic_weight = (210); // u
+        const long double atomic_weight = (210); // u (g/mol)
         const int atomic_number = 85;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 7};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -2398,7 +2398,7 @@ static struct Elements
     /// </summary>
     const struct RADON
     {
-        const long double atomic_weight = (222); // u
+        const long double atomic_weight = (222); // u (g/mol)
         const int atomic_number = 86;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 8};
         const long double density_STP = 9.73; // kg/m^3
@@ -2425,7 +2425,7 @@ static struct Elements
     /// </summary>
     const struct FRANCIUM
     {
-        const long double atomic_weight = (223); // u
+        const long double atomic_weight = (223); // u (g/mol)
         const int atomic_number = 87;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 8, 1};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -2453,7 +2453,7 @@ static struct Elements
     /// </summary>
     const struct RADIUM
     {
-        const long double atomic_weight = (226); // u
+        const long double atomic_weight = (226); // u (g/mol)
         const int atomic_number = 88;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 8, 2};
         const long double density_STP = 5000.0; // kg/m^3
@@ -2481,7 +2481,7 @@ static struct Elements
     /// </summary>
     const struct ACTINIUM
     {
-        const long double atomic_weight = (227); // u
+        const long double atomic_weight = (227); // u (g/mol)
         const int atomic_number = 89;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 9, 2};
         const long double density_STP = 10070.0; // kg/m^3
@@ -2507,7 +2507,7 @@ static struct Elements
     /// </summary>
     const struct THORIUM
     {
-        const long double atomic_weight = 232.04; // u
+        const long double atomic_weight = 232.04; // u (g/mol)
         const int atomic_number = 90;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 10, 2};
         const long double density_STP = 11724.0; // kg/m^3
@@ -2533,7 +2533,7 @@ static struct Elements
     /// </summary>
     const struct PROTACTINIUM
     {
-        const long double atomic_weight = 231.04; // u
+        const long double atomic_weight = 231.04; // u (g/mol)
         const int atomic_number = 91;
         const vector<long double> energy_levels = {2, 8, 18, 32, 20, 9, 2};
         const long double density_STP = 15370.0; // kg/m^3
@@ -2560,7 +2560,7 @@ static struct Elements
     /// </summary>
     const struct URANIUM
     {
-        const long double atomic_weight = 238.03; // u
+        const long double atomic_weight = 238.03; // u (g/mol)
         const int atomic_number = 92;
         const vector<long double> energy_levels = {2, 8, 18, 32, 21, 9, 2};
         const long double density_STP = 19050.0; // kg/m^3
@@ -2588,7 +2588,7 @@ static struct Elements
     /// </summary>
     const struct NEPTUNIUM
     {
-        const long double atomic_weight = (237); // u
+        const long double atomic_weight = (237); // u (g/mol)
         const int atomic_number = 93;
         const vector<long double> energy_levels = {2, 8, 18, 32, 22, 9, 2};
         const long double density_STP = 20450.0; // kg/m^3
@@ -2615,7 +2615,7 @@ static struct Elements
     /// </summary>
     const struct PLUTONIUM
     {
-        const long double atomic_weight = (244); // u
+        const long double atomic_weight = (244); // u (g/mol)
         const int atomic_number = 94;
         const vector<long double> energy_levels = {2, 8, 18, 32, 24, 8, 2};
         const long double density_STP = 19816.0; // kg/m^3
@@ -2641,7 +2641,7 @@ static struct Elements
     /// </summary>
     const struct AMERICIUM
     {
-        const long double atomic_weight = (243); // u
+        const long double atomic_weight = (243); // u (g/mol)
         const int atomic_number = 95;
         const vector<long double> energy_levels = {2, 8, 18, 32, 25, 8, 2};
         const long double density_STP = 13670.0; // kg/m^3
@@ -2667,7 +2667,7 @@ static struct Elements
     /// </summary>
     const struct CURIUM
     {
-        const long double atomic_weight = (247); // u
+        const long double atomic_weight = (247); // u (g/mol)
         const int atomic_number = 96;
         const vector<long double> energy_levels = {2, 8, 18, 32, 25, 9, 2};
         const long double density_STP = 13510.0; // kg/m^3
@@ -2694,7 +2694,7 @@ static struct Elements
     /// </summary>
     const struct BERKELIUM
     {
-        const long double atomic_weight = (247); // u
+        const long double atomic_weight = (247); // u (g/mol)
         const int atomic_number = 97;
         const vector<long double> energy_levels = {2, 8, 18, 32, 27, 8, 2};
         const long double density_STP = 14780.00; // kg/m^3
@@ -2720,7 +2720,7 @@ static struct Elements
     /// </summary>
     const struct CALIFORNIUM
     {
-        const long double atomic_weight = (251); // u
+        const long double atomic_weight = (251); // u (g/mol)
         const int atomic_number = 98;
         const vector<long double> energy_levels = {2, 8, 18, 32, 28, 8, 2};
         const long double density_STP = 15100.0; // kg/m^3
@@ -2747,7 +2747,7 @@ static struct Elements
     /// </summary>
     const struct EINSTEINIUM
     {
-        const long double atomic_weight = (252); // u
+        const long double atomic_weight = (252); // u (g/mol)
         const int atomic_number = 99;
         const vector<long double> energy_levels = {2, 8, 18, 32, 29, 8, 2};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -2775,7 +2775,7 @@ static struct Elements
     /// </summary>
     const struct FERMIUM
     {
-        const long double atomic_weight = (257); // u
+        const long double atomic_weight = (257); // u (g/mol)
         const int atomic_number = 100;
         const vector<long double> energy_levels = {2, 8, 18, 32, 30, 8, 2};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -2802,7 +2802,7 @@ static struct Elements
     /// </summary>
     const struct MANDELEVIUM
     {
-        const long double atomic_weight = (258); // u
+        const long double atomic_weight = (258); // u (g/mol)
         const int atomic_number = 101;
         const vector<long double> energy_levels = {2, 8, 18, 32, 31, 8, 2};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -2829,7 +2829,7 @@ static struct Elements
     /// </summary>
     const struct NOBELIUM
     {
-        const long double atomic_weight = (259); // u
+        const long double atomic_weight = (259); // u (g/mol)
         const int atomic_number = 102;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 8, 2};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -2855,7 +2855,7 @@ static struct Elements
     /// </summary>
     const struct LAWRENCIUM
     {
-        const long double atomic_weight = (266); // u
+        const long double atomic_weight = (266); // u (g/mol)
         const int atomic_number = 103;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 8, 3};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -2881,7 +2881,7 @@ static struct Elements
     /// </summary>
     const struct RUTHERFORDIUM
     {
-        const long double atomic_weight = (267); // u
+        const long double atomic_weight = (267); // u (g/mol)
         const int atomic_number = 104;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 10, 2};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -2909,7 +2909,7 @@ static struct Elements
     /// </summary>
     const struct DUBNIUM
     {
-        const long double atomic_weight = (268); // u
+        const long double atomic_weight = (268); // u (g/mol)
         const int atomic_number = 105;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 11, 2};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -2935,7 +2935,7 @@ static struct Elements
     /// </summary>
     const struct SEABORGIUM
     {
-        const long double atomic_weight = (269); // u
+        const long double atomic_weight = (269); // u (g/mol)
         const int atomic_number = 106;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 12, 2};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -2961,7 +2961,7 @@ static struct Elements
     /// </summary>
     const struct BOHRIUM
     {
-        const long double atomic_weight = (270); // u
+        const long double atomic_weight = (270); // u (g/mol)
         const int atomic_number = 107;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 13, 2};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -2987,7 +2987,7 @@ static struct Elements
     /// </summary>
     const struct HASSIUM
     {
-        const long double atomic_weight = 277; // u
+        const long double atomic_weight = 277; // u (g/mol)
         const int atomic_number = 108;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 14, 2};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -3014,7 +3014,7 @@ static struct Elements
     /// </summary>
     const struct MEITNERIUM
     {
-        const long double atomic_weight = 278; // u
+        const long double atomic_weight = 278; // u (g/mol)
         const int atomic_number = 109;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 15, 2};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -3040,7 +3040,7 @@ static struct Elements
     /// </summary>
     const struct DARMSTADTIUM
     {
-        const long double atomic_weight = 281; // u
+        const long double atomic_weight = 281; // u (g/mol)
         const int atomic_number = 110;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 17, 1};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -3067,7 +3067,7 @@ static struct Elements
     /// </summary>
     const struct ROENTGENUIM
     {
-        const long double atomic_weight = 282; // u
+        const long double atomic_weight = 282; // u (g/mol)
         const int atomic_number = 111;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 17, 2};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -3093,7 +3093,7 @@ static struct Elements
     /// </summary>
     const struct COPERNICIUM
     {
-        const long double atomic_weight = 285; // u
+        const long double atomic_weight = 285; // u (g/mol)
         const int atomic_number = 112;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 2};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -3121,7 +3121,7 @@ static struct Elements
     /// </summary>
     const struct NIHONIUM
     {
-        const long double atomic_weight = 286; // u
+        const long double atomic_weight = 286; // u (g/mol)
         const int atomic_number = 113;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 3};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -3148,7 +3148,7 @@ static struct Elements
     /// </summary>
     const struct FLEROVIUM
     {
-        const long double atomic_weight = 289; // u
+        const long double atomic_weight = 289; // u (g/mol)
         const int atomic_number = 114;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 4};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -3174,7 +3174,7 @@ static struct Elements
     /// </summary>
     const struct MOSCOVIUM
     {
-        const long double atomic_weight = 290; // u
+        const long double atomic_weight = 290; // u (g/mol)
         const int atomic_number = 115;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 5};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -3200,7 +3200,7 @@ static struct Elements
     /// </summary>
     const struct LIVERMORIUM
     {
-        const long double atomic_weight = 293; // u
+        const long double atomic_weight = 293; // u (g/mol)
         const int atomic_number = 116;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 6};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -3226,7 +3226,7 @@ static struct Elements
     /// </summary>
     const struct TENNESSINE
     {
-        const long double atomic_weight = 294; // u
+        const long double atomic_weight = 294; // u (g/mol)
         const int atomic_number = 117;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 7};
         const long double density_STP = FP_NAN; // kg/m^3
@@ -3252,7 +3252,7 @@ static struct Elements
     /// </summary>
     const struct OGANESSON
     {
-        const long double atomic_weight = 294; // u
+        const long double atomic_weight = 294; // u (g/mol)
         const int atomic_number = 118;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 8};
         const long double density_STP = FP_NAN; // kg/m^3

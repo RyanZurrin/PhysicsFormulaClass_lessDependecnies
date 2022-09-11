@@ -117,7 +117,6 @@ void print_type_properties()
 static long double _val_;// = 0.0;
 
 
-
 /// <summary>
 /// Sets the value of the static member _val_
 /// </summary>
