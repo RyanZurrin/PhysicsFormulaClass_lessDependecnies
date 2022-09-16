@@ -476,6 +476,33 @@ public:
             std::cout << "Coefficient of volume expansion: " << coeff_v_exp << std::endl;
         return coeff_v_exp;
     }
+    /**
+     * @brief A glass flask whose volume is 1000 cm3 at a temperature of 0.600
+     * ∘C is completely filled with mercury at the same temperature. When the
+     * flask and mercury are warmed together to a temperature of 52.0 ∘C ,
+     * a volume of 8.10 cm3 of mercury overflows the flask
+     * @param V_i  is the initial volume of the object
+     * @param V_f  is the final volume of the object
+     * @param Ti  is the initial temperature of the object
+     * @param Tf  is the final temperature of the object
+     * @param beta  is the coefficient of volume expansion of material in flask
+     * @param print  is a boolean to print the result
+     * @return  the coefficient of volume expansion
+     */
+    static ld coefficientVolumeExpansion(const ld V_i,
+                                         const ld V_f,
+                                         const ld Ti,
+                                         const ld Tf,
+                                         const ld beta,
+                                         bool print = false)
+    {
+        auto V_change = V_f - V_i;
+        auto T_change = Tf - Ti;
+        auto coeff_v_exp = beta - (V_change / (V_i * T_change));
+        if (print)
+            std::cout << "Coefficient of volume expansion: " << coeff_v_exp << std::endl;
+        return coeff_v_exp;
+    }
 
     /**
      * @brief coefficient of linear expansion
@@ -497,6 +524,19 @@ public:
         if (print)
             std::cout << "Coefficient of linear expansion: " << coeff_l_exp << std::endl;
         return coeff_l_exp;
+    }
+
+    static ld changeOfLengthFromLinearExpansion(const ld alpha,
+                                                const ld Li,
+                                                const ld Ti,
+                                                const ld Tf,
+                                                bool print = false)
+    {
+        auto T_change = Tf - Ti;
+        auto L_change = alpha * Li * T_change;
+        if (print)
+            std::cout << "Change of length: " << L_change << std::endl;
+        return L_change;
     }
 
     /**
@@ -593,6 +633,22 @@ public:
     }
 
     /**
+     *  @brief calculates the temperature of a gas using the ideal gas law
+     * @param n  is the number of moles in the gas
+     * @param P  is the absolute pressure of a gas
+     * @param V  is the volume of the gas
+     * @param print  is a boolean to print the result
+     * @return  the temperature of the gas
+     */
+    static ld temp_idelGasLaw(const ld n, const ld P, const ld V, bool print = false)
+    {
+        ld T = (P * V) / (n * constants::R.joules);
+        if(print)
+            std::cout << "The temperature of the gas is: " << T << " K\n";
+        return T;
+    }
+
+    /**
      * @brief calculates the KE of a cloud or gas of N molecules
      * @param T is the absolute temperature in kelvin
      * @returns Thermal energy, molecular interpretation of temperature
@@ -681,19 +737,18 @@ public:
      *
      * @returns the amount of ice needed to cool the water to t_f C
      */
-    static ld iceNeeded(const ld m_w, const ld t_i, const ld t_f, bool print =
-            false)
+    static ld iceNeeded(const ld m_w, const ld t_water, const ld t_ice,
+                        const ld t_final,  bool print = false)
     {
-        auto hf_ice = LF.water.kJ_kg;
-        auto shw = SHC.waterLiquid.J_kgC;
-        auto deltaT = temperatureChange(t_i, t_f);
-        // mass_ice = (m_w * specific_heat_water * (t_i - t_f)) / hf_ice;
-        auto mass_ice = (m_w * shw * deltaT) / hf_ice;
-        if (print)
-        {
-            std::cout << "mass_ice = " << mass_ice << " kg" << std::endl;
-        }
-        return mass_ice;
+        auto c_w = SHC.waterLiquid.J_kgC;
+        auto c_i = SHC.ice.J_kgC;
+        auto lf = LF.water.J_kg;
+        auto tfi = t_final - t_ice;
+        auto tfw = t_final - t_water;
+        auto ice = abs((m_w * c_w * tfw) / (c_i * tfi + lf));
+        if(print)
+            std::cout << "The amount of ice needed is: " << ice << " kg\n";
+        return ice;
     }
 
     /**

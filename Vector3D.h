@@ -40,10 +40,10 @@ public:
     void		setZ(long double);
     void		set_coordinates(long double, long double, long double);
     void		displayAllData(const std::string& label = "")const;
-    void		showRectCord(const std::string& label = "")const;
+    void		showRectCord(const std::string& label = "")const override;
     void		showSphericalCoordinates(const std::string& label = "")const;
     void		showAllAngles(const std::string& label = "")const;
-    void		display(const std::string& label = "")const;    //display value of vector
+    void		display(const std::string& label = "")const override;    //display value of vector
     static int	return_objectCount(){return vec3d_objectCount;}
     [[nodiscard]] long double	return_z()const; //return z
     [[nodiscard]] long double	return_xAngle()const; //return x angle
@@ -536,9 +536,9 @@ inline Vector3D Vector3D::projection(Vector3D& v) const
 {
     const Vector3D temp(this->x, this->y, this->z);
     const auto dotProd   = this->dot_product(v);
-    const auto dpdevisor = this->dot_product(temp);
+    const auto dpdevisor = v.dot_product(v);
     const auto scalar    = dotProd / dpdevisor;
-    Vector3D resultant   = temp * scalar;
+    Vector3D resultant   = v * scalar;
     return resultant;
     //const auto Θ = this->angle_between_vectors(v);
     //return this->magnitude * cos(Θ * RADIAN);

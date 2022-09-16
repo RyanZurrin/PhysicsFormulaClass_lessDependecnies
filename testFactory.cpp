@@ -14,12 +14,9 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //**************************************************************************
-   Thermodynamics::tempOfSystemAfterBeingInStateForTime(3600,
-                                                        2880,
-                                                        36.6,
-                                                        .250,
-                                                        2100,
-                                                        true);
+    Thermodynamics::iceNeeded(1.0, 11.0, -10, 0.0, true);
+
+
 
 
 

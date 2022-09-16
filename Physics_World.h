@@ -80,6 +80,7 @@ typedef Forces DAF;
 typedef RandomNumbers RN;
 typedef AtomicPhysics AP;
 typedef LinearMomentum LM;
+typedef LinearAlgebra LA;
 
 
 
@@ -414,6 +415,363 @@ static struct Conversions
         }
     }heat;
 
+    struct VolumeConverter
+    {
+        template<typename T>
+        static auto liters_to_cubicMeters(const T l = _val_)
+        {
+            return l * .001;
+        }
+        template<typename T>
+        static auto cubicMeters_to_liters(const T m3 = _val_)
+        {
+            return m3 * 1000;
+        }
+        template<typename T>
+        static auto cubicCentimeters_to_cubicMeters(const T cm3 = _val_)
+        {
+            return cm3 * .000001;
+        }
+        template<typename T>
+        static auto cubicMeters_to_cubicCentimeters(const T m3 = _val_)
+        {
+            return m3 * 1000000;
+        }
+        template<typename T>
+        static auto cubicCentimeters_to_liters(const T cm3 = _val_)
+        {
+            return cm3 * .001;
+        }
+        template<typename T>
+        static auto liters_to_cubicCentimeters(const T l = _val_)
+        {
+            return l * 1000;
+        }
+
+    }volume;
+
+    struct SpeedConverter
+    {
+        template<typename T>
+        static auto metersPerSecond_to_kilometersPerHour(const T mps = _val_)
+        {
+            return mps * 3.6;
+        }
+        template<typename T>
+        static auto kilometersPerHour_to_metersPerSecond(const T kph = _val_)
+        {
+            return kph * .27777777777778;
+        }
+        template<typename T>
+        static auto metersPerSecond_to_milesPerHour(const T mps = _val_)
+        {
+            return mps * 2.2369362920544;
+        }
+        template<typename T>
+        static auto milesPerHour_to_metersPerSecond(const T mph = _val_)
+        {
+            return mph * .44704;
+        }
+        template<typename T>
+        static auto kilometersPerHour_to_milesPerHour(const T kph = _val_)
+        {
+            return kph * .62137119223733;
+        }
+        template<typename T>
+        static auto milesPerHour_to_kilometersPerHour(const T mph = _val_)
+        {
+            return mph * 1.609344;
+        }
+        template<typename T>
+        static auto kilometersPerSecond_to_kilometersPerHour(
+                const T kms = _val_)
+        {
+            return kms * 3600.0;
+        }
+        template<typename T>
+        static auto kilometersPerHour_to_kilometersPerSecond(
+                const T kmh = _val_)
+        {
+            return kmh / 3600.0;
+        }
+        template<typename T>
+        static auto milesPerHour_to_milesPerSecond(const T mph = _val_)
+        {
+            return mph / 2.237;
+        }
+        template<typename T>
+        static auto milesPerSecond_to_milesPerHour(const T mps = _val_)
+        {
+            return mps * 2.237;
+        }
+    }speed;
+
+    struct TimeConverter {
+
+        template<typename T>
+        static auto millisecond_to_seconds(const T ms = _val_)
+        {
+            return ms / 1000;
+        }
+
+        template<typename T>
+        static auto seconds_to_millisecond(const T s = _val_)
+        {
+            return s * 1000;
+        }
+
+        template<typename T>
+        static auto seconds_to_minutes(const T s = _val_) {
+            return s / 60.0;
+        }
+
+        template<typename T>
+        static auto minutes_to_seconds(const T m = _val_) {
+            return m * 60.0;
+        }
+
+        template<typename T>
+        static auto seconds_to_hours(const T s = _val_) {
+            return s / 3600.0;
+        }
+
+        template<typename T>
+        static auto hours_to_seconds(const T h = _val_) {
+            return h * 3600.0;
+        }
+
+        template<typename T>
+        static auto minutes_to_hours(const T m = _val_) {
+            return m / 60.0;
+        }
+
+        template<typename T>
+        static auto hours_to_minutes(const T h = _val_) {
+            return h * 60.0;
+        }
+
+        template<typename T>
+        static auto seconds_to_days(const T s = _val_) {
+            return s / 86400.0;
+        }
+
+        template<typename T>
+        static auto days_to_seconds(const T d = _val_) {
+            return d * 86400.0;
+        }
+
+        template<typename T>
+        static auto minutes_to_days(const T m = _val_) {
+            return m / 1440.0;
+        }
+
+        template<typename T>
+        static auto days_to_minutes(const T d = _val_) {
+            return d * 1440.0;
+        }
+
+        template<typename T>
+        static auto hours_to_days(const T h = _val_) {
+            return h / 24.0;
+        }
+
+        template<typename T>
+        static auto days_to_hours(const T d = _val_) {
+            return d * 24.0;
+        }
+
+        template<typename T>
+        static auto seconds_to_weeks(const T s = _val_) {
+            return s / 604800.0;
+        }
+
+        template<typename T>
+        static auto weeks_to_seconds(const T w = _val_) {
+            return w * 604800.0;
+        }
+
+        template<typename T>
+        static auto minutes_to_weeks(const T m = _val_) {
+            return m / 10080.0;
+        }
+
+        template<typename T>
+        static auto weeks_to_minutes(const T w = _val_) {
+            return w * 10080.0;
+        }
+
+        template<typename T>
+        static auto hours_to_weeks(const T h = _val_) {
+            return h / 168.0;
+        }
+
+        template<typename T>
+        static auto weeks_to_hours(const T w = _val_) {
+            return w * 168.0;
+        }
+
+        template<typename T>
+        static auto days_to_weeks(const T d = _val_) {
+            return d / 7.0;
+        }
+
+        template<typename T>
+        static auto weeks_to_days(const T w = _val_) {
+            return w * 7.0;
+        }
+
+        template<typename T>
+        static auto seconds_to_months(const T s = _val_) {
+            return s / 2628000.0;
+        }
+
+        template<typename T>
+        static auto months_to_seconds(const T m = _val_) {
+            return m * 2628000.0;
+        }
+
+        template<typename T>
+        static auto minutes_to_months(const T m = _val_) {
+            return m / 43800.0;
+        }
+
+        template<typename T>
+        static auto months_to_minutes(const T m = _val_) {
+            return m * 43800.0;
+        }
+
+        template<typename T>
+        static auto hours_to_months(const T h = _val_) {
+            return h / 730.0;
+        }
+
+        template<typename T>
+        static auto months_to_hours(const T m = _val_) {
+            return m * 730.0;
+        }
+
+        template<typename T>
+        static auto days_to_months(const T d = _val_) {
+            return d / 30.0;
+        }
+
+        template<typename T>
+        static auto months_to_days(const T m = _val_) {
+            return m * 30.0;
+        }
+
+        template<typename T>
+        static auto weeks_to_months(const T w = _val_) {
+            return w / 4.0;
+        }
+
+        template<typename T>
+        static auto months_to_weeks(const T m = _val_) {
+            return m * 4.0;
+        }
+
+        template<typename T>
+        static auto seconds_to_years(const T s = _val_) {
+            return s / 31536000.0;
+        }
+
+        template<typename T>
+        static auto years_to_seconds(const T y = _val_) {
+            return y * 31536000.0;
+        }
+
+        template<typename T>
+        static auto minutes_to_years(const T m = _val_) {
+            return m / 525600.0;
+        }
+
+        template<typename T>
+        static auto years_to_minutes(const T y = _val_) {
+            return y * 525600.0;
+        }
+
+        template<typename T>
+        static auto hours_to_years(const T h = _val_) {
+            return h / 8760.0;
+        }
+
+        template<typename T>
+        static auto years_to_hours(const T y = _val_) {
+            return y * 8760.0;
+        }
+
+        template<typename T>
+        static auto days_to_years(const T d = _val_) {
+            return d / 365.0;
+        }
+
+        template<typename T>
+        static auto years_to_days(const T y = _val_) {
+            return y * 365.0;
+        }
+
+        template<typename T>
+        static auto weeks_to_years(const T w = _val_) {
+            return w / 52.0;
+        }
+
+        template<typename T>
+        static auto years_to_weeks(const T y = _val_) {
+            return y * 52.0;
+        }
+
+        template<typename T>
+        static auto months_to_years(const T m = _val_) {
+            return m / 12.0;
+        }
+
+        template<typename T>
+        static auto years_to_months(const T y = _val_) {
+            return y * 12.0;
+        }
+
+        template<typename T>
+        static auto seconds_to_decades(const T s = _val_) {
+            return s / 315360000.0;
+        }
+
+        template<typename T>
+        static auto decades_to_seconds(const T d = _val_) {
+            return d * 315360000.0;
+        }
+
+        template<typename T>
+        static auto minutes_to_decades(const T m = _val_) {
+            return m / 5256000.0;
+        }
+
+        template<typename T>
+        static auto decades_to_minutes(const T d = _val_) {
+            return d * 5256000.0;
+        }
+
+        template<typename T>
+        static auto hours_to_decades(const T h = _val_) {
+            return h / 87600.0;
+        }
+
+        template<typename T>
+        static auto decades_to_hours(const T d = _val_) {
+            return d * 87600.0;
+        }
+
+        template<typename T>
+        static auto days_to_decades(const T d = _val_) {
+            return d / 3650.0;
+        }
+
+        template<typename T>
+        static auto decades_to_days(const T d = _val_) {
+            return d * 3650.0;
+        }
+
+    }time;
+
     template<typename T>
     static auto atomicMass_to_kilograms(const T u = _val_)
     {
@@ -467,116 +825,6 @@ static struct Conversions
         return unit / constants::Ga;
     }
 
-
-    /**
-     * @brief Returns the conversion from meters per second to kilometers
-     * per hour
-     * @param mps is meters per second
-     * @returns kilometers per hour
-     */
-    template<typename T>
-    static auto mps_to_kmh(const T mps = _val_)
-    {
-        return mps * 3.6;
-    }
-    /**
-     * @brief Returns the conversion from kilometers per hour to meters per
-     * second
-     * @param kmh is kilometers per hour
-     * @returns meters per second
-     */
-    template<typename T>
-    static auto kmh_to_mps(const T kmh = _val_)
-    {
-        return (kmh*1000.0) / 3600.0;
-    }
-
-    /// <summary>
-    /// KMSs to KMH.
-    /// </summary>
-    /// <param name="kms">kilometers per second.</param>
-    /// <returns>kilometers per hour</returns>
-    template<typename T>
-    static auto kms_to_kmh(const T kms = _val_)
-    {
-        return kms * 3600.0;
-    }
-    /// <summary>
-    /// KMHs to KMS.
-    /// </summary>
-    /// <param name="kmh">kilometers per hour.</param>
-    /// <returns>kilometers per second</returns>
-    template<typename T>
-    static auto kmh_to_kms(const T kmh = _val_)
-    {
-        return kmh / 3600.0;
-    }
-    /**
-     * @brief Returns the conversion from miles per hour to meters per second
-     * @param mph is miles per hour
-     * @returns meters per second
-     */
-    template<typename T>
-    static auto mph_to_mps(const T mph = _val_)
-    {
-        return mph / 2.237;
-    }
-    /**
-     * @brief Returns the conversion from meters per second to miles per hour
-     * @param mps is meters per second
-     * @returns miles per hour
-     */
-    template<typename T>
-    static auto mps_to_mph(const T mps = _val_)
-    {
-        return mps * 2.237;
-    }
-    /**
-     * @brief Returns the conversion from milliseconds to seconds
-     * @param ms to be converted to seconds
-     * @returns seconds from milliseconds
-     */
-    template<typename T>
-    static auto millisecond_to_seconds(const T ms = _val_)
-    {
-        return ms / 1000;
-    }
-    template<typename T>
-    static auto minutes_to_seconds(const T min = _val_)
-    {
-        return min * 60;
-    }
-    template<typename T>
-    static auto hours_to_seconds(const T hours = _val_)
-    {
-        return hours * 3600;
-    }
-    /**
-     * @brief Returns the conversion from days to seconds for use in calculation
-     * @param days can be expressed as a decimal, four and a half days would
-     * be 4.5
-     * @returns total seconds converted from days
-     */
-    template<typename T>
-    static auto days_to_seconds(const T days = _val_)
-    {
-        return days * 86400.0;
-    }
-    /**
-     * @brief Returns the conversion from seconds to days
-     * @param seconds to be converted
-     * @returns days
-     */
-    template<typename T>
-    static auto seconds_to_days(const T seconds = _val_)
-    {
-        return seconds / 86400.0;
-    }
-    /**
-     * @brief Returns the conversion from miles to meters
-     * @param miles to be converted
-     * @returns meters from miles
-     */
     template<typename T>
     static auto miles_to_meters(const T miles = _val_)
     {
@@ -738,6 +986,10 @@ static struct Conversions
         return liters * density;
     }
 
+    template<typename T>
+    static auto cubicMetersToLiters(T m3 = _val_) {
+        return m3 * 1000;
+    }
 }converter;
 
 /// <summary>
@@ -818,6 +1070,7 @@ public:
     }
 
     unique_ptr<AtomicPhysics> atomic;
+    unique_ptr<LinearAlgebra> linear_algebra;
     unique_ptr<LinearRegression<TYPE>> linear_regression;
     unique_ptr<LogisticRegression<TYPE>> logistic_regression;
     unique_ptr<ETL<TYPE>> etl;
@@ -877,6 +1130,7 @@ public:
     Physics_World& operator=(const Physics_World&); //copy assignment operator
     Physics_World(Physics_World&& o) noexcept :
             atomic(std::move(o.atomic)),
+            linear_algebra(std::move(o.linear_algebra)),
             linear_regression(std::move(o.linear_regression)),
             logistic_regression(std::move(o.logistic_regression)),
             etl(std::move(o.etl)),
@@ -1013,6 +1267,7 @@ public:
 inline Physics_World::Physics_World()
 {
     atomic = std::make_unique<AtomicPhysics>();
+    linear_algebra = std::make_unique<LinearAlgebra>();
     linear_regression = std::make_unique<LinearRegression<TYPE>>();
     logistic_regression = std::make_unique<LogisticRegression<TYPE>>();
     etl = std::make_unique<ETL<TYPE>>();
@@ -1089,6 +1344,7 @@ inline Physics_World& Physics_World::operator=(const Physics_World& r)
 inline Physics_World::Physics_World(const TYPE t1, const TYPE t2, const TYPE t3)
 {
     atomic = std::make_unique<AtomicPhysics>();
+    linear_algebra = std::make_unique<LinearAlgebra>();
     linear_regression = std::make_unique<LinearRegression<TYPE>>();
     logistic_regression = std::make_unique<LogisticRegression<TYPE>>();
     etl = std::make_unique<ETL<TYPE>>();
@@ -1147,6 +1403,7 @@ inline Physics_World::Physics_World(const TYPE t1, const TYPE t2, const TYPE t3)
 inline Physics_World::Physics_World(const TYPE t1, const TYPE t2)
 {
     atomic  = std::make_unique<AtomicPhysics>();
+    linear_algebra = std::make_unique<LinearAlgebra>();
     linear_regression = std::make_unique<LinearRegression<TYPE>>();
     logistic_regression = std::make_unique<LogisticRegression<TYPE>>();
     etl = std::make_unique<ETL<TYPE>>();

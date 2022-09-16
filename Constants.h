@@ -141,6 +141,7 @@ namespace constants {
     constexpr auto METERS_1LY = 9460730472580800;
 
     constexpr auto ATOMIC_MASS_UNIT = 1.66053886e-27; //kg
+    constexpr auto AMU = ATOMIC_MASS_UNIT;
 
     constexpr auto MOLAR_MASS_UMIT = .999999999e-3; //kg/mol
 

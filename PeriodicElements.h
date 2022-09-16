@@ -20,14 +20,12 @@
 const int   screenSize_X = 640;
 const int   screenSize_Y = 480;
 
-static struct UnifiedAtomicMass
+static struct AtomicMass
 {
     const long double kg = 1.66053906660 * 50 * pow(10, -27);
     const long double Mu = 1.0;
     const long double Me = 1822.888486209 * 53;
-} u;
-
-
+} am;
 /// <summary>
 /// The periodic table, also known as the periodic table of elements, is a
 /// tabular display of the chemical elements, which are arranged by atomic

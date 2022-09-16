@@ -464,7 +464,7 @@ public:
           return Q;
       }
 
-    /*
+    /**
      * @brief adiabatic process, work done
      * @param lambda the ratio of molar specific heats
      * @param pi the initial pressure of the system
@@ -875,6 +875,102 @@ public:
             std::cout << "The thermodynamic power is: " << P << " W\n";
         return P;
     }
+
+    /**
+     * @brief Consider an ideal gas at 27.0 degrees Celsius and 1.00-atmosphere
+     * pressure.Imagine the molecules to be uniformly spaced, with each molecule
+     * at the center of a small cube. What is the length L of an edge if each
+     * small cube if adjacent cubes touch but don't overlap? Calculate the
+     * length L of an edge of each small cube if adjacent cubes touch but don't
+     * overlap.
+     * @param T is the temperature in celsius
+     * @param P is the pressure in atm
+     * @param print prints the result
+     * @return the length of an edge of each small cube
+     */
+    static ld idealGasEdgeLength(const ld T, const ld P, bool print = false)
+    {
+        const ld R = constants::R.joules;
+        const ld N = constants::AVOGADRO;
+        const ld Pa = PressureConversions::atm_to_Pa(P);
+        const ld Tkelvin = TemperatureConversions::celsius_to_kelvin(T);
+        const ld V = (R * Tkelvin) / (N * Pa);
+        const ld L = pow(V, 1.0/3.0);
+        if (print)
+            std::cout << "The length of an edge of each small cube is: "
+            << L << " m\n";
+        return L;
+    }
+
+    /**
+     * @brief calculates the latent heat of fusion
+     * @param m  is the mass of the substance in kg
+     * @param Q  is the heat transfered in joules
+     * @param print  prints the result
+     * @return  the latent heat of fusion in J/kg
+     */
+    static ld latentHeatOfFusion(const ld m, const ld Q, bool print = false)
+    {
+        const ld L = Q / m;
+        if (print)
+            std::cout << "The latent heat of fusion is: " << L << " J/kg\n";
+        return L;
+    }
+
+    /**
+     * @brief calculates the latent heat of vaporization
+     * @param m  is the mass of the substance in kg
+     * @param Q  is the heat transfered in joules
+     * @param print  prints the result
+     * @return  the latent heat of vaporization in J/kg
+     */
+    static ld latentHeatOfVaporization(const ld m, const ld Q, bool print = false)
+    {
+        const ld L = Q / m;
+        if (print)
+            std::cout << "The latent heat of vaporization is: " << L << " J/kg\n";
+        return L;
+    }
+
+    /**
+     * @brief determine what a substance is from its heat of vaporization
+     * @param Lv is the heat of vaporization in J/kg
+     * @param print prints the result
+     * @return the substance
+     */
+    static vector<string> substanceFromHeatOfFusion(const ld Lv,
+                                                    bool print = false,
+                                                    const ld threshold = 4.0)
+    {
+        vector<string> substances = {};
+        auto elems = LF.elems;
+        for (auto elem : elems)
+        {
+            if (abs(elem.second - Lv) < threshold)
+            {
+                substances.push_back(elem.first);
+            }
+        }
+        if (print)
+        {
+            if (substances.size() == 0)
+            {
+                std::cout << "No substances found within threshold\n";
+            }
+            else
+            {
+                std::cout << "The substances are: ";
+                for (auto s : substances)
+                {
+                    std::cout << s << ", ";
+                }
+                std::cout << "\n";
+            }
+        }
+        return substances;
+    }
+
+
 
 
     /**

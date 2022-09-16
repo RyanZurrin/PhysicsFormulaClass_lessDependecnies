@@ -83,7 +83,7 @@ LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/..
 COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_b8d84.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
 Linking C executable cmTC_b8d84
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b8d84.dir/link.txt --verbose=1
-/usr/bin/cc     -v CMakeFiles/cmTC_b8d84.dir/CMakeCCompilerABI.c.o  -o cmTC_b8d84 
+/usr/bin/cc     -v CMakeFiles/cmTC_b8d84.dir/CMakeCCompilerABI.c.o  -o cmTC_b8d84
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper
@@ -299,7 +299,7 @@ LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/9/:/usr/lib/gcc/x86_64-linux-gnu/9/..
 COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7cff4.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
 Linking CXX executable cmTC_7cff4
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7cff4.dir/link.txt --verbose=1
-/usr/bin/c++      -v CMakeFiles/cmTC_7cff4.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_7cff4 
+/usr/bin/c++      -v CMakeFiles/cmTC_7cff4.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_7cff4
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib/gcc/x86_64-linux-gnu/9/lto-wrapper

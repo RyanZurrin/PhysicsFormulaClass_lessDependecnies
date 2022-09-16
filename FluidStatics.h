@@ -85,13 +85,13 @@ static struct VolumeCalculator
         return ((1.0 / 3.0) * constants::PI * pow(h, 2.0)) * (3.0 * r - h);
     }
 
-}v;
+}volume_calculator;
 
 static struct PressureConversions
 {
     static ld atm_to_Pa(const ld atm)
     {
-        return atm * 1.013 * pow(10, 5);// Pa = N/m^2
+        return atm * 1.01325e5;// Pa = N/m^2
     }
 
     static ld dynePer_cmSquared_to_Pa(const ld d)
