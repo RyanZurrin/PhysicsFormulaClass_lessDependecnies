@@ -58,6 +58,7 @@
 #include "ElectricPotential.h"
 #include "Circle.h"
 #include "StaticEquilibrium.h"
+#include "Plots.h"
 
 typedef TriangleSolver TS;
 typedef QuantumPhysics QP;
@@ -81,6 +82,7 @@ typedef RandomNumbers RN;
 typedef AtomicPhysics AP;
 typedef LinearMomentum LM;
 typedef LinearAlgebra LA;
+typedef Plots PLT;
 
 
 

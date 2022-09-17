@@ -3,8 +3,6 @@
 #include "RunTimer.h"
 #include "BinarySearchTree.h"
 
-#define _USE_MATH_DEFINES
-
 int main(int argc, char* argv[])
 {
     //starting time do not edit code between solid comment lines
@@ -14,12 +12,11 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //**************************************************************************
-    Thermodynamics::iceNeeded(1.0, 11.0, -10, 0.0, true);
-
-
-
-
-
+    auto C = SHC.carbonDioxideGas.J_kgC;
+    auto molarMass = (elements.C.atomic_weight + 2*elements.O.atomic_weight)
+            /1000.0;
+    auto cv = Thermodynamics::molarSpecificHeatCapacity_Cv(C, molarMass, true);
+    Thermodynamics::changeInInternalEnergyAnyProcess(.25, cv, 100.0, true);
 
 
 

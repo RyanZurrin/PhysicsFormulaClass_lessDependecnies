@@ -487,6 +487,26 @@ public:
         return Q;
     }
 
+    /**
+     * @brief change in the internal energy of a gas undergoing an isobaric process
+     * @param n  the number of moles of gas
+     * @param Cv  the molar specific heat at constant pressure
+     * @param deltaT  the change in temperature
+     * @param print  print the result
+     * @return  the change in the internal energy of a gas undergoing an isobaric process
+     */
+    static ld changeInInternalEnergyAnyProcess(const ld n,
+                                                    const ld Cv,
+                                                    const ld deltaT,
+                                                    bool print = false)
+    {
+        auto deltaU = n * Cv * deltaT;
+        if (print)
+            cout << "the change in internal energy of the system is "
+                 << deltaU << " J" << std::endl;
+        return deltaU;
+    }
+
 
 
     /**
@@ -968,6 +988,136 @@ public:
             }
         }
         return substances;
+    }
+
+    /**
+     * @brief determine what process is occuring from the P-V diagram.
+     * Options are isothermal, isobaric, isochoric, adiabatic
+     * @param P1  is the initial pressure in Pa
+     * @param P2  is the final pressure in Pa
+     * @param V1  is the initial volume in m^3
+     * @param V2  is the final volume in m^3
+     * @param print  prints the result
+     * @return  the process
+     */
+    static string determineProcessFromPVdiagram(const ld P1,
+                                                const ld P2,
+                                                const ld V1,
+                                                const ld V2,
+                                                bool heatTransfered = false,
+                                                bool print = false)
+    {
+        string process;
+        if (P1 == P2)
+        {
+            process = "isobaric";
+        }
+        else if (V1 == V2)
+        {
+            process = "isochoric";
+        }
+        else if (!heatTransfered)
+        {
+            process = "adiabatic";
+        }
+        else
+        {
+            process = "isothermal";
+        }
+        if (print)
+            std::cout << "The process is: " << process << "\n";
+        return process;
+    }
+
+
+    static ld workFromPVdiagram(const ld P1,
+                                const ld P2,
+                                const ld V1,
+                                const ld V2,
+                                const ld n,
+                                const ld T,
+                                bool heatTransferred,
+                                bool isMonoatomic,
+                                bool print = false)
+    {
+        auto R = constants::R.joules;
+        const string process = determineProcessFromPVdiagram(P1, P2, V1, V2,
+                                                             heatTransferred);
+        ld W = 0.0;
+        if (process == "isothermal")
+        {
+            W = n * R * T * log(V2 / V1);
+        }
+        else if (process == "isobaric")
+        {
+            W = P1 * (V2 - V1);
+        }
+        else if (process == "isochoric")
+        {
+            W = 0.0;
+        }
+        else if (process == "adiabatic")
+        {
+            if (isMonoatomic)
+            {
+                W = -(3.0/2.0)*(P2*V2 - P1*V1);
+            }
+            else
+            {
+                W = -(5.0/2.0)*(P2*V2 - P1*V1);
+            }
+        }
+        if (print)
+            std::cout << "The work is: " << W << " J\n";
+        return W;
+    }
+    /**
+     * @brief calcuates the molar specific heat capacity of a substance at constant
+     * volume - Cv
+     * @param C  is the specific heat capacity at constant volume in J/(kg*K)
+     * @param molarMass  is the molar mass in kg/mol
+     * @param print  prints the result
+     * @return  the molar specific heat capacity at constant volume in J/(mol*K)
+     */
+    static ld molarSpecificHeatCapacity_Cv(const ld C,
+                                           const ld molarMass,
+                                           bool print = false)
+    {
+        const ld Cv = C * molarMass;
+        if (print)
+            std::cout << "The molar specific heat capacity is: "
+            << Cv << " J/(mol*K)\n";
+        return Cv;
+    }
+    /**
+     * @brief calcuates the molar specific heat capacity of a substance at constant
+     * pressure - Cp
+     * @param C  is the specific heat capacity at constant pressure in J/(kg*K)
+     * @param molarMass  is the molar mass in kg/mol
+     * @param print  prints the result
+     * @return  the molar specific heat capacity at constant pressure in J/(mol*K)
+     */
+    static ld molarSpecificHeatCapacity_Cp(const ld C,
+                                           const ld molarMass,
+                                           bool print = false)
+    {
+        const ld Cv = C * molarMass;
+        const ld Cp = Cv + constants::R.joules;
+    }
+    /**
+     * @brief calculates the ratio of the molar specific heat capacities,
+     * better known as the gamma value
+     * @param Cv  is the molar specific heat capacity at constant volume in J/(mol*K)
+     * @param Cp  is the molar specific heat capacity at constant pressure in J/(mol*K)
+     * @param print  prints the result
+     * @return  the ratio of the molar specific heat capacities
+     */
+    static ld heatCapacityRatio(const ld Cv, const ld Cp, bool print = false)
+    {
+        const ld gamma = Cp / Cv;
+        if (print)
+            std::cout << "The heat capacity ratio is: " << gamma << "\n";
+        return gamma;
     }
 
 

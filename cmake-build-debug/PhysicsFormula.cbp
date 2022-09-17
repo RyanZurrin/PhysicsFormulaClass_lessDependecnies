@@ -11,10 +11,10 @@
 				<Option working_dir="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="PhysicsFormula">
@@ -26,19 +26,19 @@
 				<Compiler>
 					<Add option="-DSFML_STATIC"/>
 					<Add directory="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/include"/>
-					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"/>
-					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"/>
-					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"/>
-					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include"/>
-					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include"/>
-					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"/>
-					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
+					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"/>
+					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"/>
+					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include"/>
+					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include"/>
+					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"/>
+					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 PhysicsFormula"/>
-					<CompileFile command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 PhysicsFormula"/>
+					<CompileFile command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="PhysicsFormula/fast">
@@ -50,39 +50,39 @@
 				<Compiler>
 					<Add option="-DSFML_STATIC"/>
 					<Add directory="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/include"/>
-					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"/>
-					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"/>
-					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"/>
-					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include"/>
-					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include"/>
-					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"/>
-					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
+					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"/>
+					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"/>
+					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"/>
+					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include"/>
+					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../include"/>
+					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed"/>
+					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/../../../../x86_64-w64-mingw32/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 PhysicsFormula/fast"/>
-					<CompileFile command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 PhysicsFormula/fast"/>
+					<CompileFile command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
 				<Option working_dir="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.3739.54/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/mingw32-make.exe -f &quot;D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
@@ -272,6 +272,9 @@
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Plane.h">
 			<Option target="PhysicsFormula"/>
 		</Unit>
+		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Plots.h">
+			<Option target="PhysicsFormula"/>
+		</Unit>
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Point.cpp">
 			<Option target="PhysicsFormula"/>
 		</Unit>
@@ -411,6 +414,18 @@
 			<Option target="PhysicsFormula"/>
 		</Unit>
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Waves.h">
+			<Option target="PhysicsFormula"/>
+		</Unit>
+		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/pbPlots.cpp">
+			<Option target="PhysicsFormula"/>
+		</Unit>
+		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/pbPlots.hpp">
+			<Option target="PhysicsFormula"/>
+		</Unit>
+		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/supportLib.cpp">
+			<Option target="PhysicsFormula"/>
+		</Unit>
+		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/supportLib.hpp">
 			<Option target="PhysicsFormula"/>
 		</Unit>
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/templateGraph.cpp">

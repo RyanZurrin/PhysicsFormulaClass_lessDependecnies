@@ -152,7 +152,7 @@ static struct SpecificHeatCapacity
         const ld kcal_kgC = .523;
     } ammoniaDryGas;
     const struct CARBON_DIOXIDE_GAS {
-        const ld J_kgC = 638.0;
+        const ld J_kgC = 658.0;
         const ld kcal_kgC = .152;
     } carbonDioxideGas;
     const struct CARBON_DIOXIDE_DRY_GAS {
@@ -934,6 +934,42 @@ public:
         if (print)
             std::cout << "phase change energy: " << energy << " J" << std::endl;
         return energy;
+    }
+
+    /**
+     * @brief finds the heat energy required to change the phase of a substance
+     * @param m1 is the mass of the substance
+     * @param c1 is the specific heat of the substance
+     * @param t1 is the temperature of the substance
+     * @param t2 is the temperature of the substance after phase change
+     * @param Lh is the latent heat of the substance
+     * @param print is whether to print the result
+     * @return the heat energy required to change the phase of a substance
+     */
+    static ld heatEnergyPhaseChangeOfSystem(const ld m1,
+                                            const ld c1,
+                                            const ld t1,
+                                            const ld t2,
+                                            const ld Lh,
+                                            bool print = false)
+    {
+        auto energy = (m1 * c1 * (t1 - t2)) + (m1 * Lh);
+        if (print)
+            std::cout << "heat energy phase change of system: " << energy
+            << " J" << std::endl;
+        return energy;
+    }
+
+    static ld massOfEvaporatedLiquidOfSystem(const ld Q1,
+                                             const ld Q2,
+                                             const ld Lv,
+                                             bool print = false)
+    {
+        auto mass = (Q1 - Q2) / Lv;
+        if (print)
+            std::cout << "mass of evaporated liquid of system: " << mass
+            << " kg" << std::endl;
+        return mass;
     }
 
     /**

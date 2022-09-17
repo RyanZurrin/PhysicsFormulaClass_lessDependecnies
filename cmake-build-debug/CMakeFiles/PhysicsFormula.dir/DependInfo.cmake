@@ -23,6 +23,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Triangulation.cpp" "CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.obj" "gcc" "CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.obj.d"
   "D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Vector.cpp" "CMakeFiles/PhysicsFormula.dir/Vector.cpp.obj" "gcc" "CMakeFiles/PhysicsFormula.dir/Vector.cpp.obj.d"
   "D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Voronoi.cpp" "CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.obj" "gcc" "CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.obj.d"
+  "D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/pbPlots.cpp" "CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.obj" "gcc" "CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.obj.d"
+  "D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/supportLib.cpp" "CMakeFiles/PhysicsFormula.dir/supportLib.cpp.obj" "gcc" "CMakeFiles/PhysicsFormula.dir/supportLib.cpp.obj.d"
   "D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/templateGraph.cpp" "CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.obj" "gcc" "CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.obj.d"
   "D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/testFactory.cpp" "CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj" "gcc" "CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj.d"
   )

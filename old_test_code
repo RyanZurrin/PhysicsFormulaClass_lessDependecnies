@@ -70,3 +70,16 @@
         cout << endl;
         cout << "q1 + q2: " << endl;
         (q1 + q2).print();
+
+            RGBABitmapImageReference *imageRef = CreateRGBABitmapImageReference();
+
+            vector<double> x{-2, -1, 0, 1, 2};
+            vector<double> y{2, -1, -2, -1, 2};
+            vector<wchar_t> *value = nullptr;
+            StringReference *stringRef = CreateStringReference(value);
+
+            DrawScatterPlot(imageRef, 600, 400, &x, &y, stringRef);
+
+            vector<double> *pngData = ConvertToPNG(imageRef->image);
+            WriteToFile(pngData, "testPlots.png");
+            DeleteImage(imageRef->image);

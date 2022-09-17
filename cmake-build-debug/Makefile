@@ -47,10 +47,10 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\bin\cmake.exe
+CMAKE_COMMAND = E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4167.35\bin\cmake\win\bin\cmake.exe
 
 # The command to remove a file.
-RM = E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\bin\cmake.exe -E rm -f
+RM = E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4167.35\bin\cmake\win\bin\cmake.exe -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -67,7 +67,7 @@ CMAKE_BINARY_DIR = D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cma
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\bin\cmake.exe -E echo "No interactive CMake dialog available."
+	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4167.35\bin\cmake\win\bin\cmake.exe -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -77,7 +77,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.3739.54\bin\cmake\win\bin\cmake.exe --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4167.35\bin\cmake\win\bin\cmake.exe --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -488,6 +488,54 @@ Voronoi.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\PhysicsFormula.dir\build.make CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.s
 .PHONY : Voronoi.cpp.s
 
+pbPlots.obj: pbPlots.cpp.obj
+.PHONY : pbPlots.obj
+
+# target to build an object file
+pbPlots.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PhysicsFormula.dir\build.make CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.obj
+.PHONY : pbPlots.cpp.obj
+
+pbPlots.i: pbPlots.cpp.i
+.PHONY : pbPlots.i
+
+# target to preprocess a source file
+pbPlots.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PhysicsFormula.dir\build.make CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.i
+.PHONY : pbPlots.cpp.i
+
+pbPlots.s: pbPlots.cpp.s
+.PHONY : pbPlots.s
+
+# target to generate assembly for a file
+pbPlots.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PhysicsFormula.dir\build.make CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.s
+.PHONY : pbPlots.cpp.s
+
+supportLib.obj: supportLib.cpp.obj
+.PHONY : supportLib.obj
+
+# target to build an object file
+supportLib.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PhysicsFormula.dir\build.make CMakeFiles/PhysicsFormula.dir/supportLib.cpp.obj
+.PHONY : supportLib.cpp.obj
+
+supportLib.i: supportLib.cpp.i
+.PHONY : supportLib.i
+
+# target to preprocess a source file
+supportLib.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PhysicsFormula.dir\build.make CMakeFiles/PhysicsFormula.dir/supportLib.cpp.i
+.PHONY : supportLib.cpp.i
+
+supportLib.s: supportLib.cpp.s
+.PHONY : supportLib.s
+
+# target to generate assembly for a file
+supportLib.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\PhysicsFormula.dir\build.make CMakeFiles/PhysicsFormula.dir/supportLib.cpp.s
+.PHONY : supportLib.cpp.s
+
 templateGraph.obj: templateGraph.cpp.obj
 .PHONY : templateGraph.obj
 
@@ -590,6 +638,12 @@ help:
 	@echo ... Voronoi.obj
 	@echo ... Voronoi.i
 	@echo ... Voronoi.s
+	@echo ... pbPlots.obj
+	@echo ... pbPlots.i
+	@echo ... pbPlots.s
+	@echo ... supportLib.obj
+	@echo ... supportLib.i
+	@echo ... supportLib.s
 	@echo ... templateGraph.obj
 	@echo ... templateGraph.i
 	@echo ... templateGraph.s
