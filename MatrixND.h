@@ -296,6 +296,9 @@ public:
     // Function to add a multiple of row j to row i (in place).
     void addMultiple(int i, int j, T multiple);
     bool isEqual(const MatrixND<T> &);
+    // method to get the cofactorAt matrix of a matrix
+    MatrixND<T> cofactorMatrix();
+
     // method to calculate the adjoint of a matrix
     MatrixND<T> adjoint();
     [[nodiscard]] MatrixND<T> concat(const MatrixND<T> &); // concatenate two matrices
@@ -338,8 +341,8 @@ public:
     MatrixND<T> bottomLeft(int r, int c);
     // method to return the bottom right number of specified r and columns of the matrix
     MatrixND<T> bottomRight(int r, int c);
-    // method to return the cofactor of the matrix at the specified row and column
-    T cofactor(int row, int col);
+    // method to return the cofactorAt of the matrix at the specified row and column
+    T cofactorAt(int row, int col);
     // method to return the colwise mean of the matrix
     double colwiseMean(int col);
     // method to return the rowwise mean of the matrix
@@ -1057,23 +1060,27 @@ bool MatrixND<T>::isEqual(const MatrixND<T> & rhs)
     }
     return true;
 }
+
+/**
+ * @brief MatrixND<T>::MatrixND
+ * @tparam T
+ * @return
+ */
 template<typename T>
-MatrixND<T> MatrixND<T>::adjoint() {
-    MatrixND<T> result(rows, cols);
+MatrixND<T> MatrixND<T>::cofactorMatrix() {
+    MatrixND<T> cofactor(rows, cols);
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
-            result.setAt(i, j, cofactor(i, j));
+            cofactor.setAt(i, j, cofactorAt(i, j));
         }
     }
-    // finding any -0 and replacing it with 0
-    for (int i = 0; i < result.rows; i++) {
-        for (int j = 0; j < result.cols; j++) {
-            if (result.get(i, j) == -0) {
-                result.setAt(i, j, 0);
-            }
-        }
-    }
-    return result.transpose();
+    return cofactor;
+}
+
+
+template<typename T>
+MatrixND<T> MatrixND<T>::adjoint() {
+    return cofactorMatrix().transpose();
 }
 /** add
 	elementwise addition of rhs to lhs
@@ -1935,7 +1942,7 @@ MatrixND<T> MatrixND<T>::bottomRight(int r, int c) {
     return m;
 }
 template<typename T>
-T MatrixND<T>::cofactor(int row, int col) {
+T MatrixND<T>::cofactorAt(int row, int col) {
     MatrixND<T> m(rows-1,cols-1);
     for(int i = 0; i < rows-1; i++) {
         for(int j = 0; j < cols-1; j++) {
@@ -2255,6 +2262,7 @@ MatrixND<T> MatrixND<T>::colwise() {
     }
     return m;
 }
+
 
 
 
