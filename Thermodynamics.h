@@ -403,14 +403,14 @@ public:
      * @param W the work done
      * @return the change in the system's internal energy
      */
-     static ld firstLaw(const ld Q, const ld W, bool print = false)
-     {
-         ld E = Q + W;
-         if (print)
-             cout << "the change in the system's internal energy is "
-                  << E << " J" << std::endl;
-         return E;
-     }
+    static ld firstLaw(const ld Q, const ld W, bool print = false)
+    {
+        ld E = Q + W;
+        if (print)
+            cout << "the change in the system's internal energy is "
+                 << E << " J" << std::endl;
+        return E;
+    }
 
 
     /**
@@ -432,37 +432,137 @@ public:
      * @param Vf the final volume of the system
      * @return the heat supplied to the system during an isothermal process
      */
-     static ld workByIsothermalProcess(const ld T,
+    static ld workByIsothermalProcess(const ld T,
                                  const ld n,
                                  const ld Vi,
                                  const ld Vf,
                                  bool print = false)
-     {
-         auto Q = (n * constants::R.L_atm * T * log10l(Vi / Vf));
-         if (print)
-             cout << "the heat supplied to the system during an isothermal process is "
-                  << Q << " J" << std::endl;
-         return Q;
-     }
+    {
+        auto Q = (n * constants::R.L_atm * T * log(Vi / Vf));
+        if (print)
+            cout << "the heat supplied to the system during an isothermal process is "
+                 << Q << " J" << std::endl;
+        return Q;
+    }
+    /**
+     * @brief work by isothermal process
+     * @param p  the pressure of the system
+     * @param Vi  the initial volume of the system
+     * @param Vf  the final volume of the system
+     * @param print  print the result
+     * @return  the work done by the system during an isothermal process
+     */
+    static ld workByIsothermalProcess(const ld p,
+                                      const ld Vi,
+                                      const ld Vf,
+                                      bool print = false)
+    {
+        auto Q = ((p * Vf) * log(Vf / Vi));
+        if (print) {
+            cout << "the heat supplied to the system during an isothermal process is "
+            << Q << " J" << std::endl;
+        }
+        return Q;
+    }
 
-     /**
-      * @brief isobaric process, work done
-      * @param p the pressure of the system
-      * @param Vi the initial volume of the system
-      * @param Vf the final volume of the system
-      * @return the heat supplied to the system during an isobaric process
-      */
-      static ld workByIsobaricProcess(const ld p,
-                                const ld Vi,
-                                const ld Vf,
-                                bool print = false)
-      {
-          auto Q = -p*(Vi - Vf);
-          if (print)
-              cout << "the heat supplied to the system during an isobaric process is "
-              << Q << " J" << std::endl;
-          return Q;
-      }
+    static ld temperatureIsothermalProcess(const ld n,
+                                           const ld W,
+                                           const ld Vi,
+                                           const ld Vf,
+                                           bool print = false)
+    {
+        auto T = (W / (n * constants::R.joules * log(Vi / Vf)));
+        if (print)
+            cout << "the temperature of the system during an isothermal process is "
+                 << T << " K" << std::endl;
+        return T;
+    }
+
+    static ld workByIsothermalAdiabaticProcess(const ld p,
+                                                const ld Vi,
+                                                const ld Vf,
+                                                const ld gamma,
+                                                bool print = false)
+    {
+        auto p2 = pressure2AdiabaticProcess(gamma, p, Vi, Vf);
+        auto Wad = workByAdiabaticProcess(gamma, p, p2, Vi, Vf);
+        auto Wiso = workByIsothermalProcess(p, Vf, Vi);
+        auto W = Wad - Wiso;
+        if (print) {
+            cout << "the work done by the system during an isothermal adiabatic process is "
+            << W << " J" << std::endl;
+        }
+        return W;
+    }
+    /**
+     * An ideal gas with γ=gamma occupies a volume of V m^3 at T K and p1 Pa
+     * pressure and is heated at constant volume until its pressure has
+     * reached a point of x times p1. It's then compressed adiabatically until
+     * its volume is 1/y V m^3, then cooled at constant volume back to its
+     * original temperature T K , and finally allowed to expand isothermally
+     * to its original state. This method calculates the work done by the
+     * system.
+     * @param p1 the initial pressure of the system
+     * @param p2 the final pressure of the system
+     * @param V1 the initial volume of the system
+     * @param V2 the final volume of the system
+     * @param T the temperature of the system
+     * @param gamma  the ratio of specific heats
+     * @param print print the result
+     * @return  the work done by the system
+     */
+    static ld workByIsothermalAdiabaticProcess(const ld p1,
+                                               const ld x,
+                                               const ld V,
+                                               const ld y,
+                                               const ld T,
+                                               const ld gamma,
+                                               bool print = false)
+    {
+        auto Wbc = (p1 * V * (x * pow(y, gamma-1.0) - x))/ (1.0 - gamma);
+        auto Wcd = (p1 * V * log (y));
+        auto Wnet = -(Wbc + Wcd);
+        if (print) {
+            cout << "the work done by the system during an isothermal adiabatic process is "
+            << Wnet << " J" << std::endl;
+        }
+        return Wnet;
+    }
+
+
+
+    /**
+     * @brief isobaric process, work done
+     * @param p the pressure of the system
+     * @param Vi the initial volume of the system
+     * @param Vf the final volume of the system
+     * @return the heat supplied to the system during an isobaric process
+     */
+    static ld workByIsobaricProcess(const ld p,
+                               const ld Vi,
+                               const ld Vf,
+                               bool print = false)
+    {
+        auto Q = -p*(Vi - Vf);
+         if (print)
+             cout << "the heat supplied to the system during an isobaric process is "
+             << Q << " J" << std::endl;
+         return Q;
+    }
+
+    static ld temperatureIsobaricProcess(const ld n,
+                                         const ld  Q,
+                                         const int degreesOfFreedom,
+                                         bool print = false)
+    {
+        auto Cv = (constants::R.joules * degreesOfFreedom) / 2.0;
+        auto Cp = Cv + constants::R.joules;
+        auto T = (Q / (n * Cp));
+        if (print)
+            cout << "the temperature of the system during an isobaric process is "
+                 << T << " K" << std::endl;
+        return T;
+    }
 
     /**
      * @brief adiabatic process, work done
@@ -814,7 +914,7 @@ public:
     /**
      * @brief monoatomic ideal gas internal energy change
      */
-    static ld monoatomicInternalEnergyChange(const ld Vi,
+    static ld monatomicInternalEnergyChange(const ld Vi,
                                              const ld Vf,
                                              const ld pressureConstant)
     {
@@ -1103,6 +1203,10 @@ public:
     {
         const ld Cv = C * molarMass;
         const ld Cp = Cv + constants::R.joules;
+        if (print)
+            std::cout << "The molar specific heat capacity is: "
+            << Cp << " J/(mol*K)\n";
+        return Cp;
     }
     /**
      * @brief calculates the ratio of the molar specific heat capacities,
@@ -1118,6 +1222,66 @@ public:
         if (print)
             std::cout << "The heat capacity ratio is: " << gamma << "\n";
         return gamma;
+    }
+
+    /**
+     * @brief calculates the final temperature of a monatomic gas from the
+     * number of moles (n), the initial temp (Ti), the energy transferred to
+     * the gas (Q_in), the work done by the gas (W_out).
+     * @param n  is the number of moles in mol
+     * @param Ti  is the initial temperature
+     * @param Q_in  is the energy transferred to the gas in J
+     * @param W_out  is the work done by the gas in J
+     * @param print  prints the result
+     * @return  the final temperature in K
+     */
+    static ld finalTemperatureOfMonatomicGas(const ld n,
+                                    const ld Ti,
+                                    const ld Q_in,
+                                    const ld W_out,
+                                    bool print = false)
+    {
+        auto deltaU = Q_in - W_out;
+        auto R = constants::R.joules;
+        const ld Tf = Ti + (deltaU / (n * (3.0/2.0) * R));
+        if (print)
+            std::cout << "The final temperature is: " << Tf << " K\n";
+        return Tf;
+    }
+
+    static ld pressure2AdiabaticProcess(const ld gamma,
+                                        const ld P1,
+                                        const ld V1,
+                                        const ld V2,
+                                        bool print = false)
+    {
+        const ld P2 = P1 * pow(V1 / V2, gamma);
+        if (print)
+            std::cout << "The final pressure is: " << P2 << " Pa\n";
+        return P2;
+    }
+
+    static ld volume2AdiabaticProcess(const ld gamma,
+                                      const ld P1,
+                                      const ld P2,
+                                      const ld V1,
+                                      bool print = false)
+    {
+        const ld V2 = V1 * pow(P1 / P2, 1.0 / gamma);
+        if (print)
+            std::cout << "The final volume is: " << V2 << " m^3\n";
+        return V2;
+    }
+
+    static ld temperature2AdiabaticProcess(const ld P1,
+                                           const ld P2,
+                                           const ld T1,
+                                           bool print = false)
+    {
+        const ld T2 = (T1 * P2) / P1;
+        if (print)
+            std::cout << "The final temperature is: " << T2 << " K\n";
+        return T2;
     }
 
 

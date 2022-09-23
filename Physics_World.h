@@ -449,6 +449,11 @@ static struct Conversions
         {
             return l * 1000;
         }
+        template<typename T>
+        static auto cubicMilliliters_to_cubicMeters(const T ml = _val_)
+        {
+            return ml * .000000001;
+        }
 
     }volume;
 
