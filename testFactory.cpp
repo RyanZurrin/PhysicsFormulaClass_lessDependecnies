@@ -13,12 +13,9 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    auto W_ad =Thermodynamics::workByAdiabaticProcess(1.4,
-                                                      52e3,
-                                                      494.95e3,
-                                                      .005,
-                                                      .001,
-                                                      true);
+    auto S1 = Thermodynamics::changeInEntropy(25.0e3, 400.0, false, true);
+    auto S2 = Thermodynamics::changeInEntropy(25.0e3, 500.0);
+    cout  << "S_tot = " << S1 + S2 << endl;
 
 
 

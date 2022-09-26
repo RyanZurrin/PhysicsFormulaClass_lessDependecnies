@@ -797,6 +797,16 @@ public:
         return (var * 1000.0 * (efficiency / 100.0)) / w;
     }
 
+    static ld workByIdeaHeatEngine(const ld Qh, const ld Qc, bool print = false)
+    {
+        const ld W = Qh - Qc;
+        if (print)
+        {
+            cout << "Work done by the engine is: " << W << " kJ" << endl;
+        }
+        return W;
+    }
+
     /**
      * @brief calculates the carnot efficiency of a process
      * @param Tc absolute temp of cold reservoirs
@@ -806,6 +816,83 @@ public:
     static ld carnotEfficiency(const ld Tc, const ld Th)
     {
         return 1.0 - (Tc / Th);
+    }
+
+    /**
+     * @brief calculates the work done during a carnot cycle
+     * @param Qh  heat transfer to hot reservoir
+     * @param Th  absolute temp of hot reservoir
+     * @param Tc  absolute temp of cold reservoir
+     * @param print  print the results
+     * @return work done
+     */
+    static ld workByCarnotCycle(const ld Qh,
+                                const ld Th,
+                                const ld Tc,
+                                bool print = false)
+    {
+        const ld W = Qh * (1.0 - (Tc / Th));
+        if (print)
+        {
+            cout << "Work done by Carnot Cycle: " << W << " kJ" << endl;
+        }
+        return W;
+    }
+
+    static ld efficiencyHeatEngine(const ld Qh, const ld Qc, bool print = false)
+    {
+        const ld efficiency = (Qh - Qc) / Qh;
+        if (print)
+        {
+            cout << "Efficiency: " << efficiency * 100 << "%" << endl;
+        }
+        return efficiency;
+    }
+
+    /**
+     * @brief calculates the heat Qh absorbed during the isothermal expansion
+     * between two points on a pV diagram Vi and Vf.
+     * @param n  number of moles
+     * @param T  absolute temperature
+     * @param Va  initial volume
+     * @param Vb  final volume
+     * @param print  print results
+     * @return  heat absorbed in kJ
+     */
+    static ld heatExtractedFromHotReservoir(const ld n,
+                                            const ld T,
+                                            const ld Va,
+                                            const ld Vb, bool print = false)
+    {
+        const ld Qh = n * constants::R.joules * T * log(Vb / Va);
+        if (print)
+        {
+            cout << "Heat extracted from hot reservoir: " << Qh << " J" << endl;
+        }
+        return Qh;
+    }
+
+    /**
+     * @ brief calculates the heat Qc rejected during the isothermal
+     * compression between two points on a pV diagram Vi and Vf.
+     * @param n number of moles
+     * @param T absolute temperature
+     * @param Vi initial volume
+     * @param Vf final volume
+     * @param print print results
+     * @return heat rejected in kJ
+     */
+    static ld heatRejectedToColdReservoir(const ld n,
+                                          const ld T,
+                                          const ld Vc,
+                                          const ld Vd, bool print = false)
+    {
+        const ld Qc = n * constants::R.joules * T * log(Vc / Vd);
+        if (print)
+        {
+            cout << "Heat rejected to cold reservoir: " << Qc << " J" << endl;
+        }
+        return Qc;
     }
 
     /**
@@ -824,17 +911,57 @@ public:
         return (Qc / t1) / (W / t2);
     }
 
+    static ld engineEfficiency(const ld Tc, const ld Th, const ld Va, const ld Vb, const ld Vc, const ld Vd, const ld n, bool print = false)
+    {
+        const ld Qh = heatExtractedFromHotReservoir(n, Th, Va, Vb);
+        const ld Qc = heatRejectedToColdReservoir(n, Tc, Vc, Vd);
+        const ld efficiency = efficiencyHeatEngine(Qh, Qc);
+        if (print)
+        {
+            cout << "Efficiency: " << efficiency * 100 << "%" << endl;
+        }
+        return efficiency;
+    }
+
     /**
      * @brief calculates the change in entropy for a reversible process {(S)rev}
      * (S)rev = COULOMB/T
      * @param Q is the heat transfer necessary to change forms of an object
-     * @param T is the temperature it takes in kelvin to change an objects forms
+     * @param Th is the temperature it takes in kelvin to change an objects
+     * forms
      * @returns entropy
      */
-    static ld entropy_ChangeIn(const ld Q, const ld T)
+    static ld changeInEntropy(const ld Q,
+                              const ld Th,
+                              bool print = false,
+                              bool isAbsorbed = false)
     {
-        return Q / T;
+        auto S = Q / Th;
+        if (!isAbsorbed)
+            S *= -1;
+        if (print)
+        {
+            cout << "Change in entropy: " << S << " J/K" << endl;
+        }
+        return S;
     }
+
+    static ld changeInEntropy(const ld n,
+                              const ld Va,
+                              const ld Vb,
+                              bool print = false,
+                              bool isAbsorbed = false)
+    {
+        auto S = n * constants::R.joules * log(Vb / Va);
+        if (!isAbsorbed)
+            S *= -1;
+        if (print)
+        {
+            cout << "Change in entropy: " << S << " J/K" << endl;
+        }
+        return S;
+    }
+
 
     /**
      * @brief  calculates the difference of internal pressure if it was at zero gauge pressure
@@ -880,9 +1007,14 @@ public:
     /**
      * @brief calculates the coefficient of performance
      */
-    static ld coefficientOfPerformance(const ld Tc, const ld Th)
+    static ld coefficientOfPerformance(const ld Q, const ld W, bool print = false)
     {
-        return TemperatureConversions::celsius_to_kelvin(1);
+        const ld COP = Q / W;
+        if (print)
+        {
+            cout << "COP: " << COP << endl;
+        }
+        return COP;
     }
 
     /**
