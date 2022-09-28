@@ -813,9 +813,14 @@ public:
      * @param Th absolute temp of hot reservoirs
      * @returns Carnot Efficiency
      */
-    static ld carnotEfficiency(const ld Tc, const ld Th)
+    static ld carnotEfficiency(const ld Tc, const ld Th, bool print = false)
     {
-        return 1.0 - (Tc / Th);
+        const ld efficiency = 1.0 - (Tc / Th);
+        if (print)
+        {
+            cout << "Carnot Efficiency is: " << efficiency * 100 << "%" << endl;
+        }
+        return efficiency;
     }
 
     /**
@@ -923,6 +928,8 @@ public:
         return efficiency;
     }
 
+
+
     /**
      * @brief calculates the change in entropy for a reversible process {(S)rev}
      * (S)rev = COULOMB/T
@@ -955,6 +962,20 @@ public:
         auto S = n * constants::R.joules * log(Vb / Va);
         if (!isAbsorbed)
             S *= -1;
+        if (print)
+        {
+            cout << "Change in entropy: " << S << " J/K" << endl;
+        }
+        return S;
+    }
+
+    static ld changeInEntropyOfSubstance(const ld m,
+                                         const ld Ti,
+                                         const ld Tf,
+                                         const ld cp,
+                                         bool print = false)
+    {
+        const ld S = m * cp * log(Tf / Ti);
         if (print)
         {
             cout << "Change in entropy: " << S << " J/K" << endl;
@@ -997,11 +1018,17 @@ public:
      * @returns the temp in celsius of the Hot Reservoir
      */
     static ld carnotEngineHotReservoir(const ld efficiency,
-                                       const ld coldResTempCelsius)
+                                       const ld coldResTempCelsius,
+                                       bool print = false)
     {
-        return TemperatureConversions::kelvin_to_celsius(
+        auto Tc = TemperatureConversions::kelvin_to_celsius(
                 TemperatureConversions::celsius_to_kelvin(coldResTempCelsius) /
                 (1.0 - (efficiency/100.0)));
+        if (print)
+        {
+            cout << "Hot Reservoir Temperature: " << Tc << " C" << endl;
+        }
+        return Tc;
     }
 
     /**
@@ -1017,6 +1044,16 @@ public:
         return COP;
     }
 
+    static ld cop(const ld Tc, const ld Th, bool print = false)
+    {
+        auto COP = Tc / (Th - Tc);
+        if (print)
+        {
+            cout << "COP: " << COP << endl;
+        }
+        return COP;
+    }
+
     /**
      * @brief calculates the cold reservoir of a carnot engine
      * @param efficiency efficiency %
@@ -1024,11 +1061,17 @@ public:
      * @returns the temp in celsius of the Hot Reservoir
      */
     static ld carnotEngineColdReservoir(const ld efficiency,
-                                        const ld hotResTempCelsius)
+                                        const ld hotResTempCelsius,
+                                        bool print = false)
     {
-        return TemperatureConversions::kelvin_to_celsius(
+        auto Tc = TemperatureConversions::kelvin_to_celsius(
                 (1.0 - (efficiency / 100.0)) *
                 TemperatureConversions::celsius_to_kelvin(hotResTempCelsius));
+        if (print)
+        {
+            cout << "Cold Reservoir Temperature: " << Tc << " C" << endl;
+        }
+        return Tc;
     }
 
     /**

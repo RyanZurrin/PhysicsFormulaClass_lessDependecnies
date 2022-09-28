@@ -102,6 +102,8 @@ static struct Elements
     {
         const int group = 1;
         const string type = "Reactive Nonmetal";
+        const string crystal_type = "Hexagonal";
+        const string electron_configuration = "1s1";
         const long double atomic_weight = 1.007825; // 1.007825 u (g/mol)
         const int atomic_number = 1; // Z_ = 1
         const vector<long double> energy_levels = {1};
@@ -131,6 +133,8 @@ static struct Elements
     {
         const int group = 18;
         const string type = "Noble Gas";
+        const string crystal_type = "Hexagonal";
+        const string electron_configuration = "1s2";
         const long double atomic_weight = 4.002602; // 4.002602 u (g/mol)
         const int atomic_number = 2; // Z_ = 2
         const vector<long double> energy_levels = {2};

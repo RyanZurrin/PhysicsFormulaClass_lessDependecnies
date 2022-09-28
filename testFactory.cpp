@@ -13,9 +13,8 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    auto S1 = Thermodynamics::changeInEntropy(25.0e3, 400.0, false, true);
-    auto S2 = Thermodynamics::changeInEntropy(25.0e3, 500.0);
-    cout  << "S_tot = " << S1 + S2 << endl;
+    Thermodynamics::changeInEntropyOfSubstance(.240, 283, 368,
+                                               SHC.waterLiquid.J_kgC, true);
 
 
 

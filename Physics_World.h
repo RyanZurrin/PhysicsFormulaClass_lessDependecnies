@@ -23,6 +23,7 @@
 #include "Cone.h"
 #include "Cylinder.h"
 #include "Cube.h"
+#include "Dimensions.h"
 #include "Drag.h"
 #include "Forces.h"
 #include "Elasticity.h"
