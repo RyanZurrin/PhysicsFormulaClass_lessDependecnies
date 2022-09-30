@@ -351,6 +351,7 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Cone.h \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Cylinder.h \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Cube.h \
+ D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Dimensions.h \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Drag.h \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Friction.h \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Vector2D.h \

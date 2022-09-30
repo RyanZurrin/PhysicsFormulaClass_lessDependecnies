@@ -13,9 +13,11 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    Thermodynamics::changeInEntropyOfSubstance(.240, 283, 368,
-                                               SHC.waterLiquid.J_kgC, true);
-
+    Thermodynamics::changeInEntropyIdealGasConstantVolume(6.96,
+                                            278.0,
+                                            552.0,
+                                            CP.diatomic,
+                                            true);
 
 
 

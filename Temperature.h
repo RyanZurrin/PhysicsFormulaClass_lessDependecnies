@@ -32,18 +32,18 @@ using namespace std;
 
 static struct TemperatureConversions
 {
-    static ld  celsius_to_fahrenheit(const ld c) { return (9.0 / 5.0) * c + 32.0; }
-    static ld  fahrenheit_to_celsius(const ld f) { return (5.0 / 9.0) * (f - 32.0); }
-    static ld  celsius_to_kelvin(const ld c) { return c + 273.15; }
-    static ld  kelvin_to_celsius(const ld k) { return k - 273.15; }
-    static ld  fahrenheit_to_kelvin(const ld f) { return (5.0 / 9.0) * (f - 32) + 273.15; }
-    static ld  kelvin_to_fahrenheit(const ld k) { return (9.0 / 5.0) * (k - 273.15) + 32.0; }
-    static ld  celsius_to_rankine(const ld c) { return c + 273.15; }
-    static ld  rankine_to_celsius(const ld r) { return r - 273.15; }
-    static ld  fahrenheit_to_rankine(const ld f) { return (5.0 / 9.0) * (f - 32) + 491.67; }
-    static ld  rankine_to_fahrenheit(const ld r) { return (9.0 / 5.0) * (r - 491.67) + 32.0; }
-    static ld  kelvin_to_rankine(const ld k) { return k * 1.8; }
-    static ld  rankine_to_kelvin(const ld r) { return r / 1.8; }
+    static ld  c2f(const ld c) { return (9.0 / 5.0) * c + 32.0; }
+    static ld  f2c(const ld f) { return (5.0 / 9.0) * (f - 32.0); }
+    static ld  c2k(const ld c) { return c + 273.15; }
+    static ld  k2c(const ld k) { return k - 273.15; }
+    static ld  f2k(const ld f) { return (5.0 / 9.0) * (f - 32) + 273.15; }
+    static ld  k2f(const ld k) { return (9.0 / 5.0) * (k - 273.15) + 32.0; }
+    static ld  c2r(const ld c) { return c + 273.15; }
+    static ld  r2c(const ld r) { return r - 273.15; }
+    static ld  f2r(const ld f) { return (5.0 / 9.0) * (f - 32) + 491.67; }
+    static ld  r2f(const ld r) { return (9.0 / 5.0) * (r - 491.67) + 32.0; }
+    static ld  k2r(const ld k) { return k * 1.8; }
+    static ld  r2k(const ld r) { return r / 1.8; }
 }tempConverter;
 
 /**
@@ -260,9 +260,9 @@ public:
         void set_fahrenheit(const ld f)
         {
             _fahrenheit = f;
-            _celsius = TemperatureConversions::fahrenheit_to_celsius(_fahrenheit);
-            _kelvin = TemperatureConversions::fahrenheit_to_kelvin(_fahrenheit);
-            _rankine = TemperatureConversions::fahrenheit_to_rankine(_fahrenheit);
+            _celsius = TemperatureConversions::f2c(_fahrenheit);
+            _kelvin = TemperatureConversions::f2k(_fahrenheit);
+            _rankine = TemperatureConversions::f2r(_fahrenheit);
         }
         /**
         * @brief method to set the celsius instance variable. will update other
@@ -272,9 +272,9 @@ public:
         void set_celsius(const ld c)
         {
             _celsius = c;
-            _fahrenheit = TemperatureConversions::celsius_to_fahrenheit(_celsius);
-            _kelvin = TemperatureConversions::celsius_to_kelvin(_celsius);
-            _rankine = TemperatureConversions::celsius_to_rankine(_celsius);
+            _fahrenheit = TemperatureConversions::c2f(_celsius);
+            _kelvin = TemperatureConversions::c2k(_celsius);
+            _rankine = TemperatureConversions::c2r(_celsius);
         }
         /**
         * @brief method to set the kelvin instance variable. will update other
@@ -284,9 +284,9 @@ public:
         void set_kelvin(const ld k)
         {
             _kelvin = k;
-            _celsius = TemperatureConversions::kelvin_to_celsius(_kelvin);
-            _fahrenheit = TemperatureConversions::kelvin_to_fahrenheit(_kelvin);
-            _rankine = TemperatureConversions::kelvin_to_rankine(_kelvin);
+            _celsius = TemperatureConversions::k2c(_kelvin);
+            _fahrenheit = TemperatureConversions::k2f(_kelvin);
+            _rankine = TemperatureConversions::k2r(_kelvin);
         }
 
         /**
@@ -297,9 +297,9 @@ public:
         void set_rankine(const ld r)
         {
             _rankine = r;
-            _celsius = TemperatureConversions::rankine_to_celsius(_rankine);
-            _fahrenheit = TemperatureConversions::rankine_to_fahrenheit(_rankine);
-            _kelvin = TemperatureConversions::rankine_to_kelvin(_rankine);
+            _celsius = TemperatureConversions::r2c(_rankine);
+            _fahrenheit = TemperatureConversions::r2f(_rankine);
+            _kelvin = TemperatureConversions::r2k(_rankine);
         }
     }T;
 

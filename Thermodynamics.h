@@ -23,6 +23,30 @@ static double Eff(const double W, const double Qh)
     return W / Qh;
 }
 
+static struct MolecularSpecificHeatCV {
+    const ld monoatomic = (3.0 / 2.0) * constants::R.joules;
+    const ld diatomic = (5.0 / 2.0) * constants::R.joules;
+    const ld triatomic = 3.0 * constants::R.joules;
+    const ld tetraatomic = (7.0 / 2.0) * constants::R.joules;
+    const ld pentaatomic = 4.0 * constants::R.joules;
+    const ld hexaatomic = (9.0 / 2.0) * constants::R.joules;
+    const ld heptaatomic = 5.0 * constants::R.joules;
+    const ld octaatomic = (11.0 / 2.0) * constants::R.joules;
+    const ld nonaatomic = 6.0 * constants::R.joules;
+}CV;
+
+static struct MolecularSpecificHeatCP {
+    const ld monoatomic = CV.monoatomic + constants::R.joules;
+    const ld diatomic = CV.diatomic + constants::R.joules;
+    const ld triatomic = CV.triatomic + constants::R.joules;
+    const ld tetraatomic = CV.tetraatomic + constants::R.joules;
+    const ld pentaatomic = CV.pentaatomic + constants::R.joules;
+    const ld hexaatomic = CV.hexaatomic + constants::R.joules;
+    const ld heptaatomic = CV.heptaatomic + constants::R.joules;
+    const ld octaatomic = CV.octaatomic + constants::R.joules;
+    const ld nonaatomic = CV.nonaatomic + constants::R.joules;
+}CP;
+
 static struct VanderWaalsConstants {
     VanderWaalsConstants() {}
 //    Acetic acid 	17.7098 L^2bar / mol^2 	0.1065 L/mol
@@ -953,6 +977,44 @@ public:
         return S;
     }
 
+    static ld changeInEntropyIdealGasConstantVolume(const ld n,
+                                                    const ld T1,
+                                                    const ld T2,
+                                                    const ld Cv,
+                                                    bool print = false)
+    {
+        const ld S = n * Cv * log(T2 / T1);
+        if (print)
+        {
+            cout << "Change in entropy: " << S << " J/K" << endl;
+        }
+        return S;
+    }
+    static ld changeInEntropyIdealGasConstantPressure(const ld n,
+                                                      const ld T1,
+                                                      const ld T2,
+                                                      const ld Cp,
+                                                      bool print = false)
+    {
+        const ld S = n * Cp * log(T2 / T1);
+        if (print)
+        {
+            cout << "Change in entropy: " << S << " J/K" << endl;
+        }
+        return S;
+    }
+
+    static ld changeInEntropyIdealGasAdiabatic(const ld V1,
+                                               const ld V2,
+                                               const ld Cp,
+                                               const ld Cv,
+                                               bool print = false)
+    {
+        if (print)
+            cout << "Change in entropy: " << 0 << " J/K" << endl;
+        return 0;
+    }
+
     static ld changeInEntropy(const ld n,
                               const ld Va,
                               const ld Vb,
@@ -969,13 +1031,39 @@ public:
         return S;
     }
 
+    /**
+     * @brief calculate the change in entropy of a system during a reversible
+     * process.
+     * @param m mass of the system
+     * @param Ti  initial temperature
+     * @param Tf  final temperature
+     * @param c  specific heat capacity
+     * @param print  print results
+     * @return  change in entropy
+     */
     static ld changeInEntropyOfSubstance(const ld m,
                                          const ld Ti,
                                          const ld Tf,
-                                         const ld cp,
+                                         const ld c,
                                          bool print = false)
     {
-        const ld S = m * cp * log(Tf / Ti);
+        const ld S = m * c * log(Tf / Ti);
+        if (print)
+        {
+            cout << "Change in entropy: " << S << " J/K" << endl;
+        }
+        return S;
+    }
+
+    static ld entropyIncreaseOfThawingPond(const ld m,
+                                           const ld Th,
+                                           bool print = false)
+    {
+        const ld Lf = LF.water.J_kg;
+        const ld S1 = changeInEntropy(m * Lf, Th, false, true);
+        auto c = SHC.waterLiquid.J_kgC;
+        const ld S2 = changeInEntropyOfSubstance(m, 273, Th, c);
+        const ld S = S1 + S2;
         if (print)
         {
             cout << "Change in entropy: " << S << " J/K" << endl;
@@ -1021,8 +1109,8 @@ public:
                                        const ld coldResTempCelsius,
                                        bool print = false)
     {
-        auto Tc = TemperatureConversions::kelvin_to_celsius(
-                TemperatureConversions::celsius_to_kelvin(coldResTempCelsius) /
+        auto Tc = TemperatureConversions::k2c(
+                TemperatureConversions::c2k(coldResTempCelsius) /
                 (1.0 - (efficiency/100.0)));
         if (print)
         {
@@ -1064,9 +1152,9 @@ public:
                                         const ld hotResTempCelsius,
                                         bool print = false)
     {
-        auto Tc = TemperatureConversions::kelvin_to_celsius(
+        auto Tc = TemperatureConversions::k2c(
                 (1.0 - (efficiency / 100.0)) *
-                TemperatureConversions::celsius_to_kelvin(hotResTempCelsius));
+                TemperatureConversions::c2k(hotResTempCelsius));
         if (print)
         {
             cout << "Cold Reservoir Temperature: " << Tc << " C" << endl;
@@ -1188,7 +1276,7 @@ public:
         const ld R = constants::R.joules;
         const ld N = constants::AVOGADRO;
         const ld Pa = PressureConversions::atm_to_Pa(P);
-        const ld Tkelvin = TemperatureConversions::celsius_to_kelvin(T);
+        const ld Tkelvin = TemperatureConversions::c2k(T);
         const ld V = (R * Tkelvin) / (N * Pa);
         const ld L = pow(V, 1.0/3.0);
         if (print)
@@ -1457,6 +1545,35 @@ public:
         if (print)
             std::cout << "The final temperature is: " << T2 << " K\n";
         return T2;
+    }
+
+    /**
+     * @brief how much water starting at 0 can a freezer freeze in t seconds
+     * if the freezer has an inner temp of Tc and discharges heat to the
+     * surrounding environment at Th. It consumes electrical power at a rate
+     * of P.
+     * @param t
+     * @param Tc
+     * @param Th
+     * @param P
+     * @param print
+     * @return
+     */
+    static ld howMuchWaterCanFreezerFreezeInTime(const ld t,
+                                                 const ld Tc,
+                                                 const ld Th,
+                                                 const ld P,
+                                                 bool print = false)
+    {
+        auto Lf = LF.water.J_kg;
+        auto cop = Thermodynamics::cop(Tc, Th);
+        auto W = P * t;
+        auto Qc = W * cop;
+        auto m = Qc / Lf;
+        if (print)
+            std::cout << "The amount of water that can be frozen is: "
+            << m << " kg\n";
+        return m;
     }
 
 

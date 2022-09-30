@@ -163,6 +163,8 @@ static struct Elements
     {
         const int group = 1;
         const string type = "Alkali Metal";
+        const string crystal_type = "Body-Centered Cubic";
+        const string electron_configuration = "[He]2s1";
         const long double atomic_weight = 6.941; // 6.94 u (g/mol)
         const int atomic_number = 3; // Z_ = 3
         const vector<long double> energy_levels = {2, 1};
@@ -193,6 +195,8 @@ static struct Elements
     {
         const int group = 2;
         const string type = "Alkaline Earth Metal";
+        const string crystal_type = "Hexagonal";
+        const string electron_configuration = "[He]2s2";
         const long double atomic_weight = 9.0121831; // 9.0121831 u (g/mol)
         const int atomic_number = 4; //4
         const vector<long double> energy_levels = {2, 2};
@@ -223,6 +227,8 @@ static struct Elements
     {
         const int group = 13;
         const string type = "Metalloid";
+        const string crystal_type = "Rhombohedral";
+        const string electron_configuration = "[He]2s2 2p1";
         const long double atomic_weight = 10.81; // 10.81 u (g/mol)
         const int atomic_number = 5; // 5
         const vector<long double> energy_levels = {2, 3}; //add u (g/mol)p to atomic number
@@ -252,6 +258,8 @@ static struct Elements
     {
         const int group = 14;
         const string type = "Reactive Nonmetal";
+        const string crystal_type = "Diamond";
+        const string electron_configuration = "[He]2s2 2p2";
         const long double atomic_weight = 12.011; // u (g/mol)
         const int atomic_number = 6;
         const vector<long double> energy_levels = {2, 4};
@@ -280,6 +288,8 @@ static struct Elements
     {
         const int group = 15;
         const string type = "Reactive Nonmetal";
+        const string crystal_type = "Hexagonal";
+        const string electron_configuration = "[He]2s2 2p3";
         const long double atomic_weight = 14.007; // u (g/mol)
         const int atomic_number = 7;
         const vector<long double> energy_levels = {2, 5};
@@ -309,6 +319,8 @@ static struct Elements
     {
         const int group = 16;
         const string type = "Reactive Nonmetal";
+        const string crystal_type = "Simple Cubic";
+        const string electron_configuration = "[He]2s2 2p4";
         const long double atomic_weight = 15.999; // u (g/mol)
         const int atomic_number = 8;
         const vector<long double> energy_levels = {2, 6};
@@ -339,6 +351,8 @@ static struct Elements
     {
         const int group = 17;
         const string type = "Reactive Nonmetal";
+        const string crystal_type = "Monoclinc";
+        const string electron_configuration = "[He]2s2 2p5";
         const long double atomic_weight = 18.998403163; // u (g/mol)
         const int atomic_number = 9;
         const vector<long double> energy_levels = {2, 7};
@@ -367,6 +381,8 @@ static struct Elements
     {
         const int group = 18;
         const string type = "Noble Gas";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[He]2s2 2p6";
         const long double atomic_weight = 20.1797; // u (g/mol)
         const int atomic_number = 10;
         const vector<long double> energy_levels = {2, 8};
@@ -397,6 +413,8 @@ static struct Elements
     {
         const int group = 1;
         const string type = "Alkali Metal";
+        const string crystal_type = "Body-Centered Cubic";
+        const string electron_configuration = "[Ne]3s1";
         const long double atomic_weight = 22.98976928; // u (g/mol)
         const int atomic_number = 11;
         const vector<long double> energy_levels = {2, 8, 1};
@@ -425,6 +443,8 @@ static struct Elements
     {
         const int group = 2;
         const string type = "Alkaline Earth Metal";
+        const string crystal_type = "Hexagonal";
+        const string electron_configuration = "[Ne]3s2";
         const long double atomic_weight = 24.305; // u (g/mol)
         const int atomic_number = 12;
         const vector<long double> energy_levels = {2, 8, 2};
@@ -455,6 +475,8 @@ static struct Elements
     {
         const int group = 13;
         const string type = "Post-Transition Metal";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Ne]3s2 3p1";
         const long double atomic_weight = 26.9815385; // 26.9815385 u (g/mol)
         const int atomic_number = 13; // 13
         const vector<long double> energy_levels = {2, 8, 3};
@@ -485,6 +507,8 @@ static struct Elements
     {
         const int group = 14;
         const string type = "Metalloid";
+        const string crystal_type = "Diamond";
+        const string electron_configuration = "[Ne]3s2 3p2";
         const long double atomic_weight = 28.085; // 28.085 u (g/mol)
         const int atomic_number = 14; //14
         const vector<long double> energy_levels = {2, 8, 4};
@@ -514,6 +538,8 @@ static struct Elements
     {
         const int group = 15;
         const string type = "Reactive Nonmetal";
+        const string crystal_type = "Orthorhombic";
+        const string electron_configuration = "[Ne]3s2 3p3";
         const long double atomic_weight = 30.973761998; // 30.973761998 u (g/mol)
         const int atomic_number = 15; //15
         const vector<long double> energy_levels = {2, 8, 5};
@@ -543,6 +569,8 @@ static struct Elements
     {
         const int group = 16;
         const string type = "Reactive Nonmetal";
+        const string crystal_type = "Orthorhombic";
+        const string electron_configuration = "[Ne]3s2 3p4";
         const long double atomic_weight = 32.06; // 32.06 u (g/mol)
         const int atomic_number = 16; // 16
         const vector<long double> energy_levels = {2, 8, 6};
@@ -572,6 +600,8 @@ static struct Elements
     {
         const int group = 17;
         const string type = "Reactive Nonmetal";
+        const string crystal_type = "Orthorhombic";
+        const string electron_configuration = "[Ne]3s2 3p5";
         const long double atomic_weight = 35.45; // 35.45 u (g/mol)
         const int atomic_number = 17; //17
         const vector<long double> energy_levels = {2, 8, 7};
@@ -600,6 +630,8 @@ static struct Elements
     {
         const int group = 18;
         const string type = "Noble Gas";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Ne]3s2 3p6";
         const long double atomic_weight = 39.948; // 39.948 u (g/mol)
         const int atomic_number = 18; //18
         const vector<long double> energy_levels = {2, 8, 8};
