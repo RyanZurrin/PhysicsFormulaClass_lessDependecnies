@@ -244,6 +244,19 @@ public:
     /// <returns></returns>
     static constexpr ld forceByElectricField(ld q, ld E);
 
+    /**
+     * A positive charge +NQ is located at the origin, and a negative charge
+     * -Q is at x = a In which region of the axis is there a point where the
+     * force on a test charge—and therefore the electric field—is zero?
+     * @param N: number of positive charges
+     * @param Q: charge of negative charge
+     * @param a: distance between charges
+     * @param x: test charge
+     * @return: the distance from the origin where the electric field is zero
+     */
+    static ld electricFieldZero(ld N, ld a, bool print =
+            false);
+
     /// <summary>
     ///  Calculates the  electrons needed to form a charge of baseNumber to the
     ///  su power.
@@ -311,6 +324,16 @@ public:
     /// <param name="q">The charge.</param>
     /// <param name="r">The r.</param>
     static constexpr ld electricFieldByPointCharge(ld q, ld r);
+
+    /**
+     * Two protons are d nm apart. Find the electric field at a point between
+     * them, r1 nm from one of the protons. Then find the force on an electron
+     * at this point.
+     * @param d the distance between the two protons
+     * @param r1 the distance from one of the protons
+     * @return the force on an electron at this point
+     */
+    static ld forceOnElectron(ld d, ld r1, bool print = false);
 
     /// <summary>
     /// Calculates the magnitude of a point charge that creates a electric field
@@ -632,6 +655,17 @@ constexpr ld ElectricCharge::forceByElectricField(
     return q * E;
 }
 
+ld ElectricCharge::electricFieldZero(ld N, ld a, bool print) {
+    auto k = constants::K;
+    auto Q = constants::ELECTRON_CHARGE;
+    auto qN = constants::PROTON_CHARGE * N;
+    auto E0 = (a*sqrt(2.0))/(sqrt(2)-1);
+    if (print)
+        std::cout << "E0 = " << E0 << " N/C" << std::endl;
+    return E0;
+}
+
+
 constexpr ld ElectricCharge::coulombs(
         const ld baseNumber, const ld su)
 {
@@ -676,6 +710,21 @@ ld ElectricCharge::electricFieldFromPointChargeDistribution(
 
 constexpr ld ElectricCharge::electricFieldByPointCharge(ld q, ld r) {
     return (constants::K * q) / (r * r);
+}
+
+ld ElectricCharge::forceOnElectron(ld d, ld r1, bool print) {
+    auto r2 = d - r1;
+    auto e = constants::PROTON_CHARGE;
+    auto k = constants::K;
+    auto E = k*e*((1.0/(r1*r1)) - (1.0/(r2*r2)));
+    cout << "E = " << E << " N/C" << endl;
+    auto F = -e*E;
+    if (print) {
+        std::cout << "F = " << F << " N" << std::endl;
+    }
+    return F;
+
+
 }
 
 constexpr ld ElectricCharge::magnitudePointCharge(
@@ -754,43 +803,6 @@ vector<ld> ElectricCharge::superpositionPrinciple(
     }
 
     return {total_force, final_direction};
-    // get the distance and direction of each force from the reference point
-    // to all the other points
-//    vector<ld> forces;
-//    for (auto i = 0; i < charges.size(); i++) {
-//        auto F = coulombsLaw(Qref, Qloc, charges[i], locations[i], 1, print);
-//        forces.push_back(F);
-//    }
-//    // get all the direction vectors
-//    vector<UnitVector> directionVectors;
-//    for (auto i = 0; i < forces.size(); i++) {
-//        directionVectors.emplace_back(UnitVector(locations[i], Qloc));
-//    }
-//    // get the total force
-//    ld totalForce = 0.0;
-//    for (auto i = 0; i < forces.size(); i++) {
-//        totalForce += forces[i];
-//    }
-//    // get the total direction vector
-//    UnitVector totalDirectionVector;
-//    for (auto i = 0; i < forces.size(); i++) {
-//        totalDirectionVector += directionVectors[i];
-//    }
-//    // get the total direction vector
-//    totalDirectionVector.normalize();
-//    // add the total force and direction vector to the return vector
-//    vector<ld> returnVector;
-//    returnVector.push_back(totalForce);
-//    returnVector.push_back(totalDirectionVector.getX());
-//    returnVector.push_back(totalDirectionVector.getY());
-//
-//    if (print) {
-//        std::cout << "Total force = " << totalForce << " N" << std::endl;
-//        std::cout << "Total direction vector = " << totalDirectionVector.toString() << std::endl;
-//        totalDirectionVector.print();
-//    }
-//
-//    return returnVector;
 
 }
 
@@ -945,3 +957,5 @@ ElectricCharge::electricFluxDisc(ld E, ld R, ld theta, bool print) {
     }
     return phi;
 }
+
+

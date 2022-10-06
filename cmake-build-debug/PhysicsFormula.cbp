@@ -5,7 +5,7 @@
 		<Option title="PhysicsFormula"/>
 		<Option makefile_is_custom="1"/>
 		<Option compiler="gcc"/>
-		<Option virtualFolders="CMake Files\;CMake Files\includes\;CMake Files\includes\SFML\;CMake Files\includes\SFML\lib\;CMake Files\includes\SFML\lib\cmake\;CMake Files\includes\SFML\lib\cmake\SFML\;"/>
+		<Option virtualFolders="CMake Files\;CMake Files\includes\;CMake Files\includes\SFML\;CMake Files\includes\SFML\lib\;CMake Files\includes\SFML\lib\cmake\;CMake Files\includes\SFML\lib\cmake\SFML\;CMake Files\includes\eigen-3.3.7\;CMake Files\includes\eigen-3.3.7\build\;"/>
 		<Build>
 			<Target title="all">
 				<Option working_dir="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug"/>
@@ -26,6 +26,7 @@
 				<Compiler>
 					<Add option="-DSFML_STATIC"/>
 					<Add directory="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/include"/>
+					<Add directory="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7"/>
 					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"/>
 					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"/>
 					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"/>
@@ -50,6 +51,7 @@
 				<Compiler>
 					<Add option="-DSFML_STATIC"/>
 					<Add directory="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/include"/>
+					<Add directory="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7"/>
 					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++"/>
 					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32"/>
 					<Add directory="E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/bin/../lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward"/>
@@ -162,6 +164,9 @@
 			<Option target="PhysicsFormula"/>
 		</Unit>
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/ElectricCurrent.h">
+			<Option target="PhysicsFormula"/>
+		</Unit>
+		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/ElectricField.h">
 			<Option target="PhysicsFormula"/>
 		</Unit>
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/ElectricPotential.h">
@@ -460,6 +465,15 @@
 		</Unit>
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/lib/cmake/SFML/SFMLStaticTargets.cmake">
 			<Option virtualFolder="CMake Files\includes\SFML\lib\cmake\SFML\"/>
+		</Unit>
+		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build/Eigen3Config.cmake">
+			<Option virtualFolder="CMake Files\includes\eigen-3.3.7\build\"/>
+		</Unit>
+		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build/Eigen3ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\includes\eigen-3.3.7\build\"/>
+		</Unit>
+		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build/Eigen3Targets.cmake">
+			<Option virtualFolder="CMake Files\includes\eigen-3.3.7\build\"/>
 		</Unit>
 	</Project>
 </CodeBlocks_project_file>
