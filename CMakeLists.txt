@@ -34,5 +34,12 @@ find_package(SFML COMPONENTS system window graphics audio network REQUIRED)
 include_directories(D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/include)
 target_link_libraries(PhysicsFormula sfml-system sfml-window sfml-graphics sfml-audio sfml-network)
 
+#Add the installation prefix of "Eigen3" to CMAKE_PREFIX_PATH or set
+#"Eigen3_DIR" to a directory containing one of the above files.  If "Eigen3"
+#provides a separate development package or SDK, be sure it has been
+#installed.
+#set the Eigen3_DIR to the directory where the Eigen3Config.cmake file is located
+set(Eigen3_DIR D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build/)
 find_package(Eigen3 CONFIG REQUIRED)
+
 target_link_libraries(PhysicsFormula Eigen3::Eigen)

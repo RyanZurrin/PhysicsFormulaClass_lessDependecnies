@@ -1029,6 +1029,10 @@ ld ElectricCharge::electricFieldAtPointFromChargedRing(ld r, ld z, ld Q,
                                                     bool print) {
     auto k = constants::K;
     auto E = (k * Q) / pow(((r * r) + (z * z)), 3.0/2.0);
+    if (print) {
+        std::cout << "Electric field = " << E << " V/m" << std::endl;
+    }
+    return E;
 }
 
 

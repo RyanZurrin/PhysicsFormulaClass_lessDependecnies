@@ -18,6 +18,9 @@ int main(int argc, char* argv[])
     vector<pair<ld, ld>> positions {{16, 0}, {-9, 0}};
     pair<ld, ld> refQ {0, 12};
     ElectricCharge::electricFieldForce(-2.0e-6, .075, true);
+    Eigen::Matrix<ld, 2, 1> force;
+    force << 0, 0;
+    cout << "force: " << force << endl;
 
 
 //    Vector2D q2 {-9, 0};
