@@ -1,0 +1,1558 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ResolveNugetPackages>false</ResolveNugetPackages>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{8EFC9987-AC7F-3381-A934-13099D09A32A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>ALL_BUILD</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/doc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"E:\Program Files\CMake\bin\cmake.exe" -SD:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7 -BD:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build --check-stamp-file D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build/doc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\Doxyfile.in;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\eigendoxy_footer.html.in;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\eigendoxy_header.html.in;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\eigendoxy_layout.xml.in;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\doc\eigendoxy_layout.xml.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/doc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"E:\Program Files\CMake\bin\cmake.exe" -SD:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7 -BD:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build --check-stamp-file D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build/doc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\Doxyfile.in;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\eigendoxy_footer.html.in;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\eigendoxy_header.html.in;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\eigendoxy_layout.xml.in;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\doc\eigendoxy_layout.xml.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/doc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"E:\Program Files\CMake\bin\cmake.exe" -SD:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7 -BD:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build --check-stamp-file D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build/doc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\Doxyfile.in;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\eigendoxy_footer.html.in;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\eigendoxy_header.html.in;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\eigendoxy_layout.xml.in;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\doc\eigendoxy_layout.xml.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/doc/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"E:\Program Files\CMake\bin\cmake.exe" -SD:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7 -BD:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build --check-stamp-file D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build/doc/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\Doxyfile.in;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\eigendoxy_footer.html.in;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\eigendoxy_header.html.in;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\eigendoxy_layout.xml.in;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\doc\eigendoxy_layout.xml.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\ZERO_CHECK.vcxproj">
+      <Project>{5D7F2DDE-AA2D-37FA-89C1-2287AD804B91}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\CustomizingEigen_Inheritance.vcxproj">
+      <Project>{05883CA4-F668-35F2-B919-C1A65F11B3FF}</Project>
+      <Name>CustomizingEigen_Inheritance</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Cwise_erf.vcxproj">
+      <Project>{260B510F-A32D-33DF-BB20-16C406F87FD2}</Project>
+      <Name>Cwise_erf</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Cwise_erfc.vcxproj">
+      <Project>{AE14C7B4-B369-322E-98E0-4A7A1AAEF461}</Project>
+      <Name>Cwise_erfc</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Cwise_lgamma.vcxproj">
+      <Project>{76EE5BE6-E448-3714-BF6C-6AF92FF94C23}</Project>
+      <Name>Cwise_lgamma</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\DenseBase_middleCols_int.vcxproj">
+      <Project>{398A0423-5F4D-32AB-8278-A893B32C61E9}</Project>
+      <Name>DenseBase_middleCols_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\DenseBase_middleRows_int.vcxproj">
+      <Project>{380635D5-A4F5-3B56-9DB9-7A99A16030D9}</Project>
+      <Name>DenseBase_middleRows_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\DenseBase_template_int_middleCols.vcxproj">
+      <Project>{3D1CAA6B-CF1A-3314-8E2F-D6B0937BC82F}</Project>
+      <Name>DenseBase_template_int_middleCols</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\DenseBase_template_int_middleRows.vcxproj">
+      <Project>{DBE21207-9790-338E-90A0-7F4E549637E7}</Project>
+      <Name>DenseBase_template_int_middleRows</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\QuickStart_example.vcxproj">
+      <Project>{B12A1E4D-DC72-3F96-B1D3-47E27B8423E8}</Project>
+      <Name>QuickStart_example</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\QuickStart_example2_dynamic.vcxproj">
+      <Project>{54289D9E-54DD-3ECC-83D0-9F26FB40E9EC}</Project>
+      <Name>QuickStart_example2_dynamic</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\QuickStart_example2_fixed.vcxproj">
+      <Project>{B60C523B-7227-36F1-AECF-E6EB08388CF1}</Project>
+      <Name>QuickStart_example2_fixed</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\TemplateKeyword_flexible.vcxproj">
+      <Project>{906CA824-7AD2-3377-AE08-EDB0CFAD6D12}</Project>
+      <Name>TemplateKeyword_flexible</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\TemplateKeyword_simple.vcxproj">
+      <Project>{67E58273-2D8C-3785-8FE4-E0AF4BAAC23B}</Project>
+      <Name>TemplateKeyword_simple</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\TutorialInplaceLU.vcxproj">
+      <Project>{636BFDB7-AFF0-3947-91A7-55FF4A59E0D4}</Project>
+      <Name>TutorialInplaceLU</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\TutorialLinAlgComputeTwice.vcxproj">
+      <Project>{84C859F1-744C-37F1-B9BB-6EFA450EF346}</Project>
+      <Name>TutorialLinAlgComputeTwice</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\TutorialLinAlgExComputeSolveError.vcxproj">
+      <Project>{56B0C9D2-D959-3AE9-9B46-76B5CFF15521}</Project>
+      <Name>TutorialLinAlgExComputeSolveError</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\TutorialLinAlgExSolveColPivHouseholderQR.vcxproj">
+      <Project>{7831F50C-09B0-3CA3-BD61-4EB3125F1515}</Project>
+      <Name>TutorialLinAlgExSolveColPivHouseholderQR</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\TutorialLinAlgExSolveLDLT.vcxproj">
+      <Project>{D81E5798-0217-30FC-AF7F-062347F4EE82}</Project>
+      <Name>TutorialLinAlgExSolveLDLT</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\TutorialLinAlgInverseDeterminant.vcxproj">
+      <Project>{3836059C-B85B-3533-B56D-BEA49635CBC3}</Project>
+      <Name>TutorialLinAlgInverseDeterminant</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\TutorialLinAlgRankRevealing.vcxproj">
+      <Project>{D6C27741-A36F-37C4-A52A-EBB267F213CA}</Project>
+      <Name>TutorialLinAlgRankRevealing</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\TutorialLinAlgSVDSolve.vcxproj">
+      <Project>{8349C729-3672-3E4F-9E7B-FF17329F4995}</Project>
+      <Name>TutorialLinAlgSVDSolve</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\TutorialLinAlgSelfAdjointEigenSolver.vcxproj">
+      <Project>{95952940-5BC7-3D72-B958-828DB0B73000}</Project>
+      <Name>TutorialLinAlgSelfAdjointEigenSolver</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\TutorialLinAlgSetThreshold.vcxproj">
+      <Project>{5422BBDC-2973-3BCA-93ED-265944694DE5}</Project>
+      <Name>TutorialLinAlgSetThreshold</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_ArrayClass_accessors.vcxproj">
+      <Project>{425EC5C2-5C31-32F0-814B-0A6E9E70B48C}</Project>
+      <Name>Tutorial_ArrayClass_accessors</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_ArrayClass_addition.vcxproj">
+      <Project>{56643F1C-B677-3977-8DF4-DE8008E74591}</Project>
+      <Name>Tutorial_ArrayClass_addition</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_ArrayClass_cwise_other.vcxproj">
+      <Project>{203B6F44-962C-3B6C-AD83-F1504BFE9B2F}</Project>
+      <Name>Tutorial_ArrayClass_cwise_other</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_ArrayClass_interop.vcxproj">
+      <Project>{0F927E66-4D29-3EE8-9939-AC2BC85285C5}</Project>
+      <Name>Tutorial_ArrayClass_interop</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_ArrayClass_interop_matrix.vcxproj">
+      <Project>{016625D4-B18B-311E-BCA0-7F9A1DC9FC7B}</Project>
+      <Name>Tutorial_ArrayClass_interop_matrix</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_ArrayClass_mult.vcxproj">
+      <Project>{3BD1533C-9F20-33A4-B7B2-637EE5251C47}</Project>
+      <Name>Tutorial_ArrayClass_mult</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_BlockOperations_block_assignment.vcxproj">
+      <Project>{F9BC6F38-FEF1-349A-935E-0462B9450105}</Project>
+      <Name>Tutorial_BlockOperations_block_assignment</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_BlockOperations_colrow.vcxproj">
+      <Project>{4837457C-8632-327F-B1CC-989D9841EB71}</Project>
+      <Name>Tutorial_BlockOperations_colrow</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_BlockOperations_corner.vcxproj">
+      <Project>{53E9C442-522C-3813-95BA-527444F66D5C}</Project>
+      <Name>Tutorial_BlockOperations_corner</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_BlockOperations_print_block.vcxproj">
+      <Project>{8CE4551E-E1A9-3175-AED0-48D0C9950DB8}</Project>
+      <Name>Tutorial_BlockOperations_print_block</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_BlockOperations_vector.vcxproj">
+      <Project>{95B830AF-42A8-38F1-A3A4-9803B06E36FC}</Project>
+      <Name>Tutorial_BlockOperations_vector</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_PartialLU_solve.vcxproj">
+      <Project>{A3CB7AB4-2394-393B-996F-998CFE967F23}</Project>
+      <Name>Tutorial_PartialLU_solve</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_broadcast_1nn.vcxproj">
+      <Project>{28843B82-5675-36FA-8A78-5438650989CB}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_broadcast_1nn</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_broadcast_simple.vcxproj">
+      <Project>{B001374E-6B29-362A-83AA-83B0D9BB66BA}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_broadcast_simple</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_broadcast_simple_rowwise.vcxproj">
+      <Project>{E3C6CBA2-3CF1-3CBD-8144-8B8BC2209291}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_broadcast_simple_rowwise</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_colwise.vcxproj">
+      <Project>{C2A520D6-5223-306D-8C98-4DDA20FD4F14}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_colwise</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_maxnorm.vcxproj">
+      <Project>{E1FD8A76-13E5-3398-BD38-8EFA902EFD9D}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_maxnorm</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_reductions_bool.vcxproj">
+      <Project>{17B81EAB-EFB5-3C8F-AFAA-2D87A49C5CAE}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_reductions_bool</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_reductions_norm.vcxproj">
+      <Project>{30335E40-6510-31B8-8665-10E592826829}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_reductions_norm</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_reductions_operatornorm.vcxproj">
+      <Project>{C38BB9E3-9618-359A-8F43-4BFB54EE8F6C}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_reductions_operatornorm</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_rowwise.vcxproj">
+      <Project>{6D094ECD-0566-3595-AE88-31F5A2FF5E37}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_rowwise</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_ReductionsVisitorsBroadcasting_visitors.vcxproj">
+      <Project>{7B64010E-6FEA-3968-99A4-A634CBD9A6F5}</Project>
+      <Name>Tutorial_ReductionsVisitorsBroadcasting_visitors</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_simple_example_dynamic_size.vcxproj">
+      <Project>{60BDFD25-CBFD-35B5-8521-8ABA90A78806}</Project>
+      <Name>Tutorial_simple_example_dynamic_size</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\Tutorial_simple_example_fixed_size.vcxproj">
+      <Project>{05FDB104-C6AB-3FDE-BBE6-4872E2FC9DD2}</Project>
+      <Name>Tutorial_simple_example_fixed_size</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\class_Block.vcxproj">
+      <Project>{6591FE7E-336E-3E0C-AB94-C3D2F71610CC}</Project>
+      <Name>class_Block</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\class_CwiseBinaryOp.vcxproj">
+      <Project>{15191909-3A69-3E38-856C-AB8A5C61A86B}</Project>
+      <Name>class_CwiseBinaryOp</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\class_CwiseUnaryOp.vcxproj">
+      <Project>{328E209C-E5C5-350C-8DFB-B6AE203BA81C}</Project>
+      <Name>class_CwiseUnaryOp</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\class_CwiseUnaryOp_ptrfun.vcxproj">
+      <Project>{35F24CCA-28D6-3AA2-B9EA-97707F2035D4}</Project>
+      <Name>class_CwiseUnaryOp_ptrfun</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\class_FixedBlock.vcxproj">
+      <Project>{B127F76F-EE4D-3B50-BE22-D9E28E4E395A}</Project>
+      <Name>class_FixedBlock</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\class_FixedVectorBlock.vcxproj">
+      <Project>{00C8973B-EE91-3F00-A081-9FC4F72051F6}</Project>
+      <Name>class_FixedVectorBlock</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\class_VectorBlock.vcxproj">
+      <Project>{18E98C8C-5263-380E-B55E-DD9A8D5F8B6D}</Project>
+      <Name>class_VectorBlock</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_AngleAxis_mimic_euler.vcxproj">
+      <Project>{E8C9B093-A8F8-368A-B690-6C96D8E7B47F}</Project>
+      <Name>compile_AngleAxis_mimic_euler</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_BiCGSTAB_simple.vcxproj">
+      <Project>{D4C70BAB-EE58-3DC2-88B7-3118B413D0C8}</Project>
+      <Name>compile_BiCGSTAB_simple</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_BiCGSTAB_step_by_step.vcxproj">
+      <Project>{28A0989A-DCE8-3197-94E7-A1D7FC0A29FD}</Project>
+      <Name>compile_BiCGSTAB_step_by_step</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_ColPivHouseholderQR_solve.vcxproj">
+      <Project>{F5DA5C66-736F-32F9-838D-E4AD5544AACF}</Project>
+      <Name>compile_ColPivHouseholderQR_solve</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_ComplexEigenSolver_compute.vcxproj">
+      <Project>{8DAF9E0E-11EE-3E30-82E9-A469616A1C29}</Project>
+      <Name>compile_ComplexEigenSolver_compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_ComplexEigenSolver_eigenvalues.vcxproj">
+      <Project>{242E1254-26E3-32DC-998C-2DF1AC1C9B03}</Project>
+      <Name>compile_ComplexEigenSolver_eigenvalues</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_ComplexEigenSolver_eigenvectors.vcxproj">
+      <Project>{8E917047-1D24-30FE-A4DD-022151424366}</Project>
+      <Name>compile_ComplexEigenSolver_eigenvectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_ComplexSchur_compute.vcxproj">
+      <Project>{99AF32D6-1CE2-380E-81BB-02D79B52AFB9}</Project>
+      <Name>compile_ComplexSchur_compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_ComplexSchur_matrixT.vcxproj">
+      <Project>{42A9018C-63FB-3A6F-B4AA-08E9275E0778}</Project>
+      <Name>compile_ComplexSchur_matrixT</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_ComplexSchur_matrixU.vcxproj">
+      <Project>{C42865CC-DC10-352F-B816-294C6D38D9AE}</Project>
+      <Name>compile_ComplexSchur_matrixU</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_abs.vcxproj">
+      <Project>{FA4901B2-2E45-362F-B4BB-6A7FC60BF98A}</Project>
+      <Name>compile_Cwise_abs</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_abs2.vcxproj">
+      <Project>{0F2A8F2A-9771-3322-B03A-897AA1625E69}</Project>
+      <Name>compile_Cwise_abs2</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_acos.vcxproj">
+      <Project>{3A08A565-DA61-3E82-A176-241899D7AD43}</Project>
+      <Name>compile_Cwise_acos</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_arg.vcxproj">
+      <Project>{7E5D4AF8-5CE1-3D13-81A4-DD0CE063286F}</Project>
+      <Name>compile_Cwise_arg</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_array_power_array.vcxproj">
+      <Project>{76593033-1D39-3768-9D04-276598EC6F5A}</Project>
+      <Name>compile_Cwise_array_power_array</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_asin.vcxproj">
+      <Project>{03FBA949-7ADB-33DF-B394-5391A3019785}</Project>
+      <Name>compile_Cwise_asin</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_atan.vcxproj">
+      <Project>{85864CC6-33A9-3E11-B4AB-DD56B9A41D4D}</Project>
+      <Name>compile_Cwise_atan</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_boolean_and.vcxproj">
+      <Project>{2DAEDA71-630B-3FCC-A1E7-3001EE9024B1}</Project>
+      <Name>compile_Cwise_boolean_and</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_boolean_not.vcxproj">
+      <Project>{B6F42BD6-7A7B-3C21-B5DA-C13532A1C2AA}</Project>
+      <Name>compile_Cwise_boolean_not</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_boolean_or.vcxproj">
+      <Project>{DEFB8820-66F9-391A-95FE-019C7CCD2458}</Project>
+      <Name>compile_Cwise_boolean_or</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_boolean_xor.vcxproj">
+      <Project>{0503BBBD-0ABF-3B8D-86B0-74C87A1AD521}</Project>
+      <Name>compile_Cwise_boolean_xor</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_ceil.vcxproj">
+      <Project>{5515E358-5E66-3B08-AAA1-11FFE0B0DC6E}</Project>
+      <Name>compile_Cwise_ceil</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_cos.vcxproj">
+      <Project>{DF626D48-C095-3C6D-BEF9-F355D6458239}</Project>
+      <Name>compile_Cwise_cos</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_cosh.vcxproj">
+      <Project>{3F13270C-44F6-3E60-8E20-F45116403652}</Project>
+      <Name>compile_Cwise_cosh</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_cube.vcxproj">
+      <Project>{14572F2A-76DF-38EB-A67E-66AA651AA830}</Project>
+      <Name>compile_Cwise_cube</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_equal_equal.vcxproj">
+      <Project>{DC440CB1-1D0F-333B-966B-94780441C323}</Project>
+      <Name>compile_Cwise_equal_equal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_exp.vcxproj">
+      <Project>{7C34184A-273B-353D-937E-B6B7F7CD5602}</Project>
+      <Name>compile_Cwise_exp</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_floor.vcxproj">
+      <Project>{82A937FB-617E-3546-8590-795F910B677E}</Project>
+      <Name>compile_Cwise_floor</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_greater.vcxproj">
+      <Project>{532C7630-A85D-3C39-BFD9-A1F32F16AC55}</Project>
+      <Name>compile_Cwise_greater</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_greater_equal.vcxproj">
+      <Project>{9C7CAB36-EE5B-3F31-AD6D-4AC64F7C5E58}</Project>
+      <Name>compile_Cwise_greater_equal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_inverse.vcxproj">
+      <Project>{BD619481-C524-3EB1-8E24-3153486C9CBE}</Project>
+      <Name>compile_Cwise_inverse</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_isFinite.vcxproj">
+      <Project>{9E3C0673-E81B-31C0-ADA9-E111730F22DA}</Project>
+      <Name>compile_Cwise_isFinite</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_isInf.vcxproj">
+      <Project>{EA91FA75-CBFF-39F8-8858-F45E8277FFD4}</Project>
+      <Name>compile_Cwise_isInf</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_isNaN.vcxproj">
+      <Project>{EC42FFE9-3EEC-33C7-B099-234461FCC2EC}</Project>
+      <Name>compile_Cwise_isNaN</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_less.vcxproj">
+      <Project>{3A237FEB-70E5-349C-BF63-5C8B7CAC0C4C}</Project>
+      <Name>compile_Cwise_less</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_less_equal.vcxproj">
+      <Project>{32395E3E-9D63-3347-9263-FD87C7E14F0D}</Project>
+      <Name>compile_Cwise_less_equal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_log.vcxproj">
+      <Project>{F1D26C70-3374-38BC-8400-9B0575DC1EA3}</Project>
+      <Name>compile_Cwise_log</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_log10.vcxproj">
+      <Project>{E3206DBF-1FE6-3665-95C6-9F7BB4741CD8}</Project>
+      <Name>compile_Cwise_log10</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_max.vcxproj">
+      <Project>{8DE8C742-4B0D-3E04-A979-CE2A0722996B}</Project>
+      <Name>compile_Cwise_max</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_min.vcxproj">
+      <Project>{8D87A893-A776-3940-915C-8574AB34A804}</Project>
+      <Name>compile_Cwise_min</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_minus.vcxproj">
+      <Project>{D911AB00-F75B-3A02-BE98-184A2C0E5330}</Project>
+      <Name>compile_Cwise_minus</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_minus_equal.vcxproj">
+      <Project>{7FE6547B-1D30-3E05-BAF0-043A289E20F3}</Project>
+      <Name>compile_Cwise_minus_equal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_not_equal.vcxproj">
+      <Project>{F7F31CCA-B7E6-3FEF-B1BA-97918C7E6481}</Project>
+      <Name>compile_Cwise_not_equal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_plus.vcxproj">
+      <Project>{376D0524-4D3B-3105-910D-95E4C003007D}</Project>
+      <Name>compile_Cwise_plus</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_plus_equal.vcxproj">
+      <Project>{62980022-8976-3E10-B2B9-171B51DE9059}</Project>
+      <Name>compile_Cwise_plus_equal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_pow.vcxproj">
+      <Project>{37701D07-604C-36BF-B797-D8A3DB330C3B}</Project>
+      <Name>compile_Cwise_pow</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_product.vcxproj">
+      <Project>{81F59E06-7C64-3735-92C2-98235487D0C7}</Project>
+      <Name>compile_Cwise_product</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_quotient.vcxproj">
+      <Project>{0AEC084F-0B3A-365C-A3CE-461CC69A6269}</Project>
+      <Name>compile_Cwise_quotient</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_round.vcxproj">
+      <Project>{A801CDDC-CE8C-346F-857B-6CCCF5E08F34}</Project>
+      <Name>compile_Cwise_round</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_scalar_power_array.vcxproj">
+      <Project>{CF6B19C9-9945-3FE5-B8B6-85D66064BAA0}</Project>
+      <Name>compile_Cwise_scalar_power_array</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_sign.vcxproj">
+      <Project>{4C563381-D3C5-3B3F-A189-AFC682C1A70F}</Project>
+      <Name>compile_Cwise_sign</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_sin.vcxproj">
+      <Project>{47EC69D5-FDFE-37A1-A2FB-A823A886D95D}</Project>
+      <Name>compile_Cwise_sin</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_sinh.vcxproj">
+      <Project>{5E6258DB-B2BC-3D22-A164-4A523B335D0E}</Project>
+      <Name>compile_Cwise_sinh</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_slash_equal.vcxproj">
+      <Project>{E722B105-69B7-3F4A-958D-C51AD5F88FE9}</Project>
+      <Name>compile_Cwise_slash_equal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_sqrt.vcxproj">
+      <Project>{1BC206BE-77E5-3006-A17F-8F89143D0504}</Project>
+      <Name>compile_Cwise_sqrt</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_square.vcxproj">
+      <Project>{CEA66AE8-3217-3092-A473-00C1A96D02FE}</Project>
+      <Name>compile_Cwise_square</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_tan.vcxproj">
+      <Project>{773EADDB-36FE-3674-8BBB-62820A22FEE5}</Project>
+      <Name>compile_Cwise_tan</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_tanh.vcxproj">
+      <Project>{39D142B1-EE4E-3908-A79A-ADBB1509E80A}</Project>
+      <Name>compile_Cwise_tanh</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Cwise_times_equal.vcxproj">
+      <Project>{E909E9B4-A61B-33FD-8E62-53947EA79716}</Project>
+      <Name>compile_Cwise_times_equal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_DenseBase_LinSpaced.vcxproj">
+      <Project>{DD2CA421-6874-39FC-AA97-8278CE2E873B}</Project>
+      <Name>compile_DenseBase_LinSpaced</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_DenseBase_LinSpacedInt.vcxproj">
+      <Project>{0D679AF7-4F26-33E8-9823-6D14FE37E2CE}</Project>
+      <Name>compile_DenseBase_LinSpacedInt</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_DenseBase_LinSpaced_seq.vcxproj">
+      <Project>{C8C616F3-9C86-303A-AD28-A64D0B3541C1}</Project>
+      <Name>compile_DenseBase_LinSpaced_seq</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_DenseBase_setLinSpaced.vcxproj">
+      <Project>{E60D725B-D2E1-3E18-8146-24B2F8582BBE}</Project>
+      <Name>compile_DenseBase_setLinSpaced</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_DirectionWise_hnormalized.vcxproj">
+      <Project>{F1B7DC95-D8E3-31AC-8DFC-336F3A22AED9}</Project>
+      <Name>compile_DirectionWise_hnormalized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_DirectionWise_replicate.vcxproj">
+      <Project>{BF804657-DEFC-3878-98D0-82D7C07249E9}</Project>
+      <Name>compile_DirectionWise_replicate</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_DirectionWise_replicate_int.vcxproj">
+      <Project>{F540CBD9-2676-3FD4-8B33-F1436DE1BDAB}</Project>
+      <Name>compile_DirectionWise_replicate_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_EigenSolver_EigenSolver_MatrixType.vcxproj">
+      <Project>{81A1E714-8D40-37ED-98FE-BE111699A593}</Project>
+      <Name>compile_EigenSolver_EigenSolver_MatrixType</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_EigenSolver_compute.vcxproj">
+      <Project>{465EC365-7268-3E2C-90F9-327E65135DE9}</Project>
+      <Name>compile_EigenSolver_compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_EigenSolver_eigenvalues.vcxproj">
+      <Project>{8704CD44-6F52-3BFA-BB53-D44B6BE57788}</Project>
+      <Name>compile_EigenSolver_eigenvalues</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_EigenSolver_eigenvectors.vcxproj">
+      <Project>{81D59161-6866-393E-817F-FCB70893108F}</Project>
+      <Name>compile_EigenSolver_eigenvectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_EigenSolver_pseudoEigenvectors.vcxproj">
+      <Project>{1F0C8364-AA77-3A4D-8B59-AA5DF4557594}</Project>
+      <Name>compile_EigenSolver_pseudoEigenvectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_FullPivHouseholderQR_solve.vcxproj">
+      <Project>{1D7B39D3-2336-336E-9F0C-5CF4DFF57DB3}</Project>
+      <Name>compile_FullPivHouseholderQR_solve</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_FullPivLU_image.vcxproj">
+      <Project>{E26FDFB2-5C70-3A26-A096-795421428D59}</Project>
+      <Name>compile_FullPivLU_image</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_FullPivLU_kernel.vcxproj">
+      <Project>{FB7C2976-E1AE-3C35-B7FD-4B949C1899F3}</Project>
+      <Name>compile_FullPivLU_kernel</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_FullPivLU_solve.vcxproj">
+      <Project>{C52EE128-52AC-31B1-BD17-9825AE7C8FC2}</Project>
+      <Name>compile_FullPivLU_solve</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_GeneralizedEigenSolver.vcxproj">
+      <Project>{DE02F136-A43D-3FA4-BD96-B1D19A49FD03}</Project>
+      <Name>compile_GeneralizedEigenSolver</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_HessenbergDecomposition_compute.vcxproj">
+      <Project>{2B308C25-1F31-3137-90C6-62C37F1CF4D4}</Project>
+      <Name>compile_HessenbergDecomposition_compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_HessenbergDecomposition_matrixH.vcxproj">
+      <Project>{CF6A9E61-AF18-3EB5-9337-C0A4FB261AC6}</Project>
+      <Name>compile_HessenbergDecomposition_matrixH</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_HessenbergDecomposition_packedMatrix.vcxproj">
+      <Project>{DC697301-7FF6-3A13-A5C7-B8C862412EDE}</Project>
+      <Name>compile_HessenbergDecomposition_packedMatrix</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_HouseholderQR_householderQ.vcxproj">
+      <Project>{814A2359-7AEA-3749-B034-7410FB4340AA}</Project>
+      <Name>compile_HouseholderQR_householderQ</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_HouseholderQR_solve.vcxproj">
+      <Project>{21B57576-AFF5-3C58-AFF7-238B377A0A4D}</Project>
+      <Name>compile_HouseholderQR_solve</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_HouseholderSequence_HouseholderSequence.vcxproj">
+      <Project>{6CC8810F-2446-34CD-918A-78C49E6CC194}</Project>
+      <Name>compile_HouseholderSequence_HouseholderSequence</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_IOFormat.vcxproj">
+      <Project>{9A2CA355-F07C-32FB-A976-0EAEAD01ED18}</Project>
+      <Name>compile_IOFormat</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_JacobiSVD_basic.vcxproj">
+      <Project>{E16EB1E9-A225-30B9-BE1A-FDD405937588}</Project>
+      <Name>compile_JacobiSVD_basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Jacobi_makeGivens.vcxproj">
+      <Project>{94D627E9-CEC4-34F9-AE4E-C8BDE0406F19}</Project>
+      <Name>compile_Jacobi_makeGivens</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Jacobi_makeJacobi.vcxproj">
+      <Project>{D4EBB259-9ABD-371C-90AF-9951539016E1}</Project>
+      <Name>compile_Jacobi_makeJacobi</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_LLT_example.vcxproj">
+      <Project>{190B18E6-6D0A-3C04-804B-F7D039B97C58}</Project>
+      <Name>compile_LLT_example</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_LLT_solve.vcxproj">
+      <Project>{494CFCCE-8E83-332B-A489-353373CC52B4}</Project>
+      <Name>compile_LLT_solve</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_LeastSquaresNormalEquations.vcxproj">
+      <Project>{53456BEC-A4D5-3205-AC3F-D155913333BD}</Project>
+      <Name>compile_LeastSquaresNormalEquations</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_LeastSquaresQR.vcxproj">
+      <Project>{A18BB342-8B2B-3FDE-B192-154F4519A373}</Project>
+      <Name>compile_LeastSquaresQR</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Map_general_stride.vcxproj">
+      <Project>{6E4118FA-2F30-35C5-B9A4-87B410C51B14}</Project>
+      <Name>compile_Map_general_stride</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Map_inner_stride.vcxproj">
+      <Project>{C8A91DB4-350E-38FD-B992-4FB2676620B8}</Project>
+      <Name>compile_Map_inner_stride</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Map_outer_stride.vcxproj">
+      <Project>{FBD65D5C-802A-3601-BFFF-7205837A37A7}</Project>
+      <Name>compile_Map_outer_stride</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Map_placement_new.vcxproj">
+      <Project>{B6104C58-CFF4-347F-9116-E54043138B17}</Project>
+      <Name>compile_Map_placement_new</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Map_simple.vcxproj">
+      <Project>{48B3505A-209B-357E-98E1-A66B0D1BDE58}</Project>
+      <Name>compile_Map_simple</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_adjoint.vcxproj">
+      <Project>{15FF064C-7210-3CED-B725-9A5E27DDAD68}</Project>
+      <Name>compile_MatrixBase_adjoint</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_all.vcxproj">
+      <Project>{C32E7FF2-FB13-30BA-9A78-72E81B9F9C50}</Project>
+      <Name>compile_MatrixBase_all</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_applyOnTheLeft.vcxproj">
+      <Project>{CDC8496B-24C5-363B-86F8-C02442A8F618}</Project>
+      <Name>compile_MatrixBase_applyOnTheLeft</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_applyOnTheRight.vcxproj">
+      <Project>{912A17B6-2B59-3610-B9BA-076CE498F311}</Project>
+      <Name>compile_MatrixBase_applyOnTheRight</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_array.vcxproj">
+      <Project>{DDAD4ABF-A1D4-36F7-BDDC-987254DFD156}</Project>
+      <Name>compile_MatrixBase_array</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_array_const.vcxproj">
+      <Project>{1136BFBD-1E5B-3D2F-9286-2C5522507DB6}</Project>
+      <Name>compile_MatrixBase_array_const</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_asDiagonal.vcxproj">
+      <Project>{E94C6DB2-8C9C-3619-8F9B-461F44C44CE5}</Project>
+      <Name>compile_MatrixBase_asDiagonal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_block_int_int.vcxproj">
+      <Project>{825071A6-3A1B-3ECD-BC25-076BF8EBB415}</Project>
+      <Name>compile_MatrixBase_block_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_block_int_int_int_int.vcxproj">
+      <Project>{0CC34392-37DB-356B-BF35-C9536B90834D}</Project>
+      <Name>compile_MatrixBase_block_int_int_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_bottomLeftCorner_int_int.vcxproj">
+      <Project>{1D43A162-E6F6-3BF8-8283-C7203B2EEDCE}</Project>
+      <Name>compile_MatrixBase_bottomLeftCorner_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_bottomRightCorner_int_int.vcxproj">
+      <Project>{DAB59346-266B-3286-A206-6162D3FC477A}</Project>
+      <Name>compile_MatrixBase_bottomRightCorner_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_bottomRows_int.vcxproj">
+      <Project>{46FE0C72-568C-3E28-930B-0687095B5E68}</Project>
+      <Name>compile_MatrixBase_bottomRows_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_cast.vcxproj">
+      <Project>{168C0285-D417-3562-8FCC-82BDFAC07DD6}</Project>
+      <Name>compile_MatrixBase_cast</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_col.vcxproj">
+      <Project>{1855A74D-A266-3353-9294-BEAF2BD72FAD}</Project>
+      <Name>compile_MatrixBase_col</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_colwise.vcxproj">
+      <Project>{9FB3BDE2-C050-3C84-8B66-17583727161B}</Project>
+      <Name>compile_MatrixBase_colwise</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_computeInverseAndDetWithCheck.vcxproj">
+      <Project>{BE50156F-C1C1-3D81-8BE1-7E6CFDFA83ED}</Project>
+      <Name>compile_MatrixBase_computeInverseAndDetWithCheck</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_computeInverseWithCheck.vcxproj">
+      <Project>{D739998A-023B-3D46-8047-EABD70FEB2EF}</Project>
+      <Name>compile_MatrixBase_computeInverseWithCheck</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_cwiseAbs.vcxproj">
+      <Project>{F25FCF01-8D98-3DBB-8CC5-A298D52EBE8B}</Project>
+      <Name>compile_MatrixBase_cwiseAbs</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_cwiseAbs2.vcxproj">
+      <Project>{5F393EEC-6435-3A64-883D-7665211C046E}</Project>
+      <Name>compile_MatrixBase_cwiseAbs2</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_cwiseEqual.vcxproj">
+      <Project>{F03DD285-D476-3F6E-BE84-BF4851E2142E}</Project>
+      <Name>compile_MatrixBase_cwiseEqual</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_cwiseInverse.vcxproj">
+      <Project>{613821A9-570E-39C3-B418-822EA70DE33C}</Project>
+      <Name>compile_MatrixBase_cwiseInverse</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_cwiseMax.vcxproj">
+      <Project>{AB5C9B28-47DD-3EED-9532-8A005D7B0E11}</Project>
+      <Name>compile_MatrixBase_cwiseMax</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_cwiseMin.vcxproj">
+      <Project>{690B7AE8-67D6-3D5D-9B4D-5ACE0F691083}</Project>
+      <Name>compile_MatrixBase_cwiseMin</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_cwiseNotEqual.vcxproj">
+      <Project>{A6A7D8D4-7F44-31C3-A93B-793E292D1720}</Project>
+      <Name>compile_MatrixBase_cwiseNotEqual</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_cwiseProduct.vcxproj">
+      <Project>{7ACADAB8-E8FA-39CC-A33E-9CBC4A78982E}</Project>
+      <Name>compile_MatrixBase_cwiseProduct</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_cwiseQuotient.vcxproj">
+      <Project>{F65D7153-7229-3E9C-AC21-E0E66CE33AFF}</Project>
+      <Name>compile_MatrixBase_cwiseQuotient</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_cwiseSign.vcxproj">
+      <Project>{39F4DA36-9949-3C8B-B224-101B10D35C29}</Project>
+      <Name>compile_MatrixBase_cwiseSign</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_cwiseSqrt.vcxproj">
+      <Project>{4CBBAC9B-15FE-3375-83C4-556B447F5C5F}</Project>
+      <Name>compile_MatrixBase_cwiseSqrt</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_diagonal.vcxproj">
+      <Project>{98956BAC-C504-3599-BAC6-50A994CB893A}</Project>
+      <Name>compile_MatrixBase_diagonal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_diagonal_int.vcxproj">
+      <Project>{4D3C5E83-BB52-3265-B09E-0D6B997C43C1}</Project>
+      <Name>compile_MatrixBase_diagonal_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_diagonal_template_int.vcxproj">
+      <Project>{6B464145-F0B6-3287-B0D8-8211DCAA8534}</Project>
+      <Name>compile_MatrixBase_diagonal_template_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_eigenvalues.vcxproj">
+      <Project>{740F58A5-3BD6-3EB9-B13C-661F3791525E}</Project>
+      <Name>compile_MatrixBase_eigenvalues</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_end_int.vcxproj">
+      <Project>{6CCC2C7D-9A45-3D9A-8A08-CED198452C91}</Project>
+      <Name>compile_MatrixBase_end_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_eval.vcxproj">
+      <Project>{E03A7FEB-2B76-33FC-B4D4-8FD37EE9836F}</Project>
+      <Name>compile_MatrixBase_eval</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_fixedBlock_int_int.vcxproj">
+      <Project>{EB3F128E-79C9-356D-93E5-0DD279E475F9}</Project>
+      <Name>compile_MatrixBase_fixedBlock_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_hnormalized.vcxproj">
+      <Project>{0718468A-A6F1-3E26-AA08-A0C1EA79D89A}</Project>
+      <Name>compile_MatrixBase_hnormalized</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_homogeneous.vcxproj">
+      <Project>{A7E66CB7-8C21-37D5-A665-3ABF2FDAAA60}</Project>
+      <Name>compile_MatrixBase_homogeneous</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_identity.vcxproj">
+      <Project>{FF520152-09E9-3354-B631-468C1EFBADEB}</Project>
+      <Name>compile_MatrixBase_identity</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_identity_int_int.vcxproj">
+      <Project>{19228779-E4FB-31B5-8B2B-FA0DF23F00A8}</Project>
+      <Name>compile_MatrixBase_identity_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_inverse.vcxproj">
+      <Project>{FA2DCBBF-E2E2-363B-BD82-900BC61F1623}</Project>
+      <Name>compile_MatrixBase_inverse</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_isDiagonal.vcxproj">
+      <Project>{D71AA831-8D04-358A-9064-BBBAEAD767B9}</Project>
+      <Name>compile_MatrixBase_isDiagonal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_isIdentity.vcxproj">
+      <Project>{A446CCCE-6C99-3AA3-8F22-DE0A87B243A5}</Project>
+      <Name>compile_MatrixBase_isIdentity</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_isOnes.vcxproj">
+      <Project>{F6EDA1E1-D8C0-3138-8EB1-D114D26E1373}</Project>
+      <Name>compile_MatrixBase_isOnes</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_isOrthogonal.vcxproj">
+      <Project>{825F7B2B-5431-30DE-AABF-C4FE4D2C7CF4}</Project>
+      <Name>compile_MatrixBase_isOrthogonal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_isUnitary.vcxproj">
+      <Project>{5569A195-1861-3D43-8ED9-9D89946D8D94}</Project>
+      <Name>compile_MatrixBase_isUnitary</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_isZero.vcxproj">
+      <Project>{81E600B9-C350-3A11-8CC9-CDC8F3B54BB1}</Project>
+      <Name>compile_MatrixBase_isZero</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_leftCols_int.vcxproj">
+      <Project>{001DD737-2E01-3455-962F-20AA7E17E5C4}</Project>
+      <Name>compile_MatrixBase_leftCols_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_noalias.vcxproj">
+      <Project>{57E81646-ACA5-3EB7-9960-C67340C097BA}</Project>
+      <Name>compile_MatrixBase_noalias</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_ones.vcxproj">
+      <Project>{79257595-045B-3979-9B79-BB7A07ED3456}</Project>
+      <Name>compile_MatrixBase_ones</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_ones_int.vcxproj">
+      <Project>{FC6AA161-37A5-367E-A571-621C5C5E5E32}</Project>
+      <Name>compile_MatrixBase_ones_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_ones_int_int.vcxproj">
+      <Project>{B7295196-2B5C-34E8-8561-DAACD49B73D8}</Project>
+      <Name>compile_MatrixBase_ones_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_operatorNorm.vcxproj">
+      <Project>{1CA84BDB-DDB2-3F77-830B-D185693A345D}</Project>
+      <Name>compile_MatrixBase_operatorNorm</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_prod.vcxproj">
+      <Project>{80AFC9D3-52CE-3068-9C99-B729544AA395}</Project>
+      <Name>compile_MatrixBase_prod</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_random.vcxproj">
+      <Project>{04208660-91C8-3196-8DD2-C88078C2E4C9}</Project>
+      <Name>compile_MatrixBase_random</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_random_int.vcxproj">
+      <Project>{54001F4B-5E7F-37C1-8F6F-71B8811C344F}</Project>
+      <Name>compile_MatrixBase_random_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_random_int_int.vcxproj">
+      <Project>{90F2641D-C802-343A-AB40-8378DEFC863E}</Project>
+      <Name>compile_MatrixBase_random_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_replicate.vcxproj">
+      <Project>{C6B76CD8-020B-3738-9FEF-5DDFFA3769A1}</Project>
+      <Name>compile_MatrixBase_replicate</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_replicate_int_int.vcxproj">
+      <Project>{6C0E8BE8-FE84-3872-B10F-C4BC1F49FDF1}</Project>
+      <Name>compile_MatrixBase_replicate_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_reverse.vcxproj">
+      <Project>{4110459C-60F1-3B10-9808-90D266CC5835}</Project>
+      <Name>compile_MatrixBase_reverse</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_rightCols_int.vcxproj">
+      <Project>{B00716BB-9342-3128-ABC7-0289C3A734ED}</Project>
+      <Name>compile_MatrixBase_rightCols_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_row.vcxproj">
+      <Project>{2F581023-F988-31B9-B34B-A0C853E291B4}</Project>
+      <Name>compile_MatrixBase_row</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_rowwise.vcxproj">
+      <Project>{76EB0855-9997-3579-A217-E6614FB42BE8}</Project>
+      <Name>compile_MatrixBase_rowwise</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_segment_int_int.vcxproj">
+      <Project>{3A266474-FF38-398A-B15B-D7B58A0BD0B9}</Project>
+      <Name>compile_MatrixBase_segment_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_select.vcxproj">
+      <Project>{2CCA5872-9F23-3C6A-B86A-1DA1F2207C21}</Project>
+      <Name>compile_MatrixBase_select</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_selfadjointView.vcxproj">
+      <Project>{EDFFAC28-FA5C-34EC-8CF3-FDFE0F823E91}</Project>
+      <Name>compile_MatrixBase_selfadjointView</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_set.vcxproj">
+      <Project>{C283F339-6064-36FD-9825-0F62840C8099}</Project>
+      <Name>compile_MatrixBase_set</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_setIdentity.vcxproj">
+      <Project>{25FBEA19-C316-3695-82D1-5ADC04342B18}</Project>
+      <Name>compile_MatrixBase_setIdentity</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_setOnes.vcxproj">
+      <Project>{3E019F12-E893-30CF-AA19-C35D39BCC7AA}</Project>
+      <Name>compile_MatrixBase_setOnes</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_setRandom.vcxproj">
+      <Project>{2DF2C3A1-187C-3FC0-914D-AEF7A676F973}</Project>
+      <Name>compile_MatrixBase_setRandom</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_setZero.vcxproj">
+      <Project>{2E42B073-D980-397D-AF89-9654DBDE17AE}</Project>
+      <Name>compile_MatrixBase_setZero</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_start_int.vcxproj">
+      <Project>{B289B52A-0EED-3F3D-8B57-0E1947300745}</Project>
+      <Name>compile_MatrixBase_start_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_template_int_bottomRows.vcxproj">
+      <Project>{D5802324-D7A2-3773-BC65-2C8DCFB9FA7F}</Project>
+      <Name>compile_MatrixBase_template_int_bottomRows</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_template_int_end.vcxproj">
+      <Project>{3730D03D-DFBA-3773-AA1F-FA907A6FED89}</Project>
+      <Name>compile_MatrixBase_template_int_end</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_template_int_int_block_int_int_int_int.vcxproj">
+      <Project>{03231EEF-CB07-3E74-BD48-425CAAD3B7B6}</Project>
+      <Name>compile_MatrixBase_template_int_int_block_int_int_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_template_int_int_bottomLeftCorner.vcxproj">
+      <Project>{1D80C64A-CCD3-373F-88C0-D18F45A59DF6}</Project>
+      <Name>compile_MatrixBase_template_int_int_bottomLeftCorner</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_template_int_int_bottomLeftCorner_int_int.vcxproj">
+      <Project>{03856936-5984-3320-B745-22C76F686F12}</Project>
+      <Name>compile_MatrixBase_template_int_int_bottomLeftCorner_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_template_int_int_bottomRightCorner.vcxproj">
+      <Project>{449586D8-35C0-382C-A8FE-89B84D691890}</Project>
+      <Name>compile_MatrixBase_template_int_int_bottomRightCorner</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_template_int_int_bottomRightCorner_int_int.vcxproj">
+      <Project>{73190E46-D78E-3ED2-848A-1153B1118D34}</Project>
+      <Name>compile_MatrixBase_template_int_int_bottomRightCorner_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_template_int_int_topLeftCorner.vcxproj">
+      <Project>{4876FEA4-B883-3B87-A660-A10EBE064BBB}</Project>
+      <Name>compile_MatrixBase_template_int_int_topLeftCorner</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_template_int_int_topLeftCorner_int_int.vcxproj">
+      <Project>{3A96F563-4A0F-3666-8A66-70F1E229FDA9}</Project>
+      <Name>compile_MatrixBase_template_int_int_topLeftCorner_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_template_int_int_topRightCorner.vcxproj">
+      <Project>{B499472E-9932-383F-9E92-3BC7348A47BB}</Project>
+      <Name>compile_MatrixBase_template_int_int_topRightCorner</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_template_int_int_topRightCorner_int_int.vcxproj">
+      <Project>{0214796A-B0F5-3486-8746-27348135AE04}</Project>
+      <Name>compile_MatrixBase_template_int_int_topRightCorner_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_template_int_leftCols.vcxproj">
+      <Project>{C2B9AF01-2643-3AA2-BFF1-D5194A998712}</Project>
+      <Name>compile_MatrixBase_template_int_leftCols</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_template_int_rightCols.vcxproj">
+      <Project>{399FA89A-F08E-3CA1-9F74-047F1EE9686B}</Project>
+      <Name>compile_MatrixBase_template_int_rightCols</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_template_int_segment.vcxproj">
+      <Project>{FDB57878-F7DD-37C8-B7A1-FADEBF661210}</Project>
+      <Name>compile_MatrixBase_template_int_segment</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_template_int_start.vcxproj">
+      <Project>{7D600AF3-575F-3559-8B40-0E48A95ED08F}</Project>
+      <Name>compile_MatrixBase_template_int_start</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_template_int_topRows.vcxproj">
+      <Project>{6A8574CD-234E-3AB9-8A1B-9F739A83179D}</Project>
+      <Name>compile_MatrixBase_template_int_topRows</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_topLeftCorner_int_int.vcxproj">
+      <Project>{BA5DADD5-3354-34DD-A2B7-438BC6851C94}</Project>
+      <Name>compile_MatrixBase_topLeftCorner_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_topRightCorner_int_int.vcxproj">
+      <Project>{5D9B7216-CE9E-370A-85C4-29F9032518AC}</Project>
+      <Name>compile_MatrixBase_topRightCorner_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_topRows_int.vcxproj">
+      <Project>{C4640192-DF45-3E74-B15C-82DC6DECBF05}</Project>
+      <Name>compile_MatrixBase_topRows_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_transpose.vcxproj">
+      <Project>{253A1A86-9B90-391D-BEEB-64B0DB71BC2F}</Project>
+      <Name>compile_MatrixBase_transpose</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_triangularView.vcxproj">
+      <Project>{5C3659DE-BA2D-3F6D-9E07-4D0D3FD3D7C3}</Project>
+      <Name>compile_MatrixBase_triangularView</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_zero.vcxproj">
+      <Project>{B28052D1-A15E-3BBC-BB9D-6E2CF85B2A31}</Project>
+      <Name>compile_MatrixBase_zero</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_zero_int.vcxproj">
+      <Project>{458FBBAF-05AB-3215-8614-52A267F33C6D}</Project>
+      <Name>compile_MatrixBase_zero_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_MatrixBase_zero_int_int.vcxproj">
+      <Project>{5C018763-46A5-330D-A9EB-3EAC11FEBA4A}</Project>
+      <Name>compile_MatrixBase_zero_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Matrix_Map_stride.vcxproj">
+      <Project>{97FF039C-5D70-3772-B464-2A85EDC89DCB}</Project>
+      <Name>compile_Matrix_Map_stride</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Matrix_resize_NoChange_int.vcxproj">
+      <Project>{0300940B-BCB6-3804-B0EE-BF7515D5C3C0}</Project>
+      <Name>compile_Matrix_resize_NoChange_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Matrix_resize_int.vcxproj">
+      <Project>{454DA732-6843-3AE4-B8A7-FBC07135991B}</Project>
+      <Name>compile_Matrix_resize_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Matrix_resize_int_NoChange.vcxproj">
+      <Project>{69843595-9980-36EE-9AF1-F55243FB3289}</Project>
+      <Name>compile_Matrix_resize_int_NoChange</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Matrix_resize_int_int.vcxproj">
+      <Project>{EF252AAD-C29D-330F-8E4E-FCE89A663751}</Project>
+      <Name>compile_Matrix_resize_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Matrix_setConstant_int.vcxproj">
+      <Project>{E8118105-AA56-33AD-8B23-01EB0245633A}</Project>
+      <Name>compile_Matrix_setConstant_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Matrix_setConstant_int_int.vcxproj">
+      <Project>{FE640F28-2125-316B-B8E0-50748D3245B6}</Project>
+      <Name>compile_Matrix_setConstant_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Matrix_setIdentity_int_int.vcxproj">
+      <Project>{1A709BB8-874B-3964-BC33-28ACE15337C5}</Project>
+      <Name>compile_Matrix_setIdentity_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Matrix_setOnes_int.vcxproj">
+      <Project>{4DFD95DF-AA38-31C4-B4F6-D7C40210B185}</Project>
+      <Name>compile_Matrix_setOnes_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Matrix_setOnes_int_int.vcxproj">
+      <Project>{92AEE740-62D4-3B56-A135-33DB9C47CA7E}</Project>
+      <Name>compile_Matrix_setOnes_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Matrix_setRandom_int.vcxproj">
+      <Project>{B69FE07E-BB6A-33BE-935B-6376518F446C}</Project>
+      <Name>compile_Matrix_setRandom_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Matrix_setRandom_int_int.vcxproj">
+      <Project>{CF5449D5-D258-3A2C-A67A-A60FDC3AADA6}</Project>
+      <Name>compile_Matrix_setRandom_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Matrix_setZero_int.vcxproj">
+      <Project>{AE13DDE0-3A09-37FB-BE11-570F730FE322}</Project>
+      <Name>compile_Matrix_setZero_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Matrix_setZero_int_int.vcxproj">
+      <Project>{D9D4D7F8-FA49-3EDC-8463-4265270A85A6}</Project>
+      <Name>compile_Matrix_setZero_int_int</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_PartialPivLU_solve.vcxproj">
+      <Project>{6800246C-6A7C-3C78-823B-19426D3A5934}</Project>
+      <Name>compile_PartialPivLU_solve</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_PartialRedux_count.vcxproj">
+      <Project>{07A35D54-FD25-3A12-AC23-ADE0B60A8842}</Project>
+      <Name>compile_PartialRedux_count</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_PartialRedux_maxCoeff.vcxproj">
+      <Project>{D0A33AF1-6745-340A-876E-58C3F17409DC}</Project>
+      <Name>compile_PartialRedux_maxCoeff</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_PartialRedux_minCoeff.vcxproj">
+      <Project>{27B3D919-9BAB-31B8-99A2-F5558E886F27}</Project>
+      <Name>compile_PartialRedux_minCoeff</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_PartialRedux_norm.vcxproj">
+      <Project>{4CE3CD69-9ECE-3888-B152-3770E436982D}</Project>
+      <Name>compile_PartialRedux_norm</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_PartialRedux_prod.vcxproj">
+      <Project>{95B47D0F-16C4-3BEE-AA46-38E508C116F2}</Project>
+      <Name>compile_PartialRedux_prod</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_PartialRedux_squaredNorm.vcxproj">
+      <Project>{B7F1D394-A9E6-3A9D-A34E-812540BED718}</Project>
+      <Name>compile_PartialRedux_squaredNorm</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_PartialRedux_sum.vcxproj">
+      <Project>{171A673F-90A6-3E13-AA4E-1B7B917093CD}</Project>
+      <Name>compile_PartialRedux_sum</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_RealQZ_compute.vcxproj">
+      <Project>{6BC8D346-5890-3040-91BB-133A6BA54662}</Project>
+      <Name>compile_RealQZ_compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_RealSchur_RealSchur_MatrixType.vcxproj">
+      <Project>{4B054929-F60D-307E-ABB3-45EE8E5F6E78}</Project>
+      <Name>compile_RealSchur_RealSchur_MatrixType</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_RealSchur_compute.vcxproj">
+      <Project>{14510BE0-1CB0-3C94-9E99-C722455E4ADB}</Project>
+      <Name>compile_RealSchur_compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_SelfAdjointEigenSolver_SelfAdjointEigenSolver.vcxproj">
+      <Project>{42BC6A85-BD65-3C07-9B2D-872D85FFE326}</Project>
+      <Name>compile_SelfAdjointEigenSolver_SelfAdjointEigenSolver</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_SelfAdjointEigenSolver_SelfAdjointEigenSolver_MatrixType.vcxproj">
+      <Project>{38A609A7-0FE4-3E21-A669-297834D4B29A}</Project>
+      <Name>compile_SelfAdjointEigenSolver_SelfAdjointEigenSolver_MatrixType</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_SelfAdjointEigenSolver_SelfAdjointEigenSolver_MatrixType2.vcxproj">
+      <Project>{B55BBCBB-7F7C-3E0B-8087-7586E2F9CD29}</Project>
+      <Name>compile_SelfAdjointEigenSolver_SelfAdjointEigenSolver_MatrixType2</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_SelfAdjointEigenSolver_compute_MatrixType.vcxproj">
+      <Project>{5FF05A21-8231-3870-9323-0B3B9396C216}</Project>
+      <Name>compile_SelfAdjointEigenSolver_compute_MatrixType</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_SelfAdjointEigenSolver_compute_MatrixType2.vcxproj">
+      <Project>{B63BCAD0-5EB3-3C98-9235-68D9320DADF9}</Project>
+      <Name>compile_SelfAdjointEigenSolver_compute_MatrixType2</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_SelfAdjointEigenSolver_eigenvalues.vcxproj">
+      <Project>{1DAAC0A9-4845-3BD1-9E09-C3CC3B3EC9AC}</Project>
+      <Name>compile_SelfAdjointEigenSolver_eigenvalues</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_SelfAdjointEigenSolver_eigenvectors.vcxproj">
+      <Project>{F4D17636-21BC-3769-8DD2-70D201C46877}</Project>
+      <Name>compile_SelfAdjointEigenSolver_eigenvectors</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_SelfAdjointEigenSolver_operatorInverseSqrt.vcxproj">
+      <Project>{13D058AE-C7EC-3BB8-9E7F-6C043F4DF552}</Project>
+      <Name>compile_SelfAdjointEigenSolver_operatorInverseSqrt</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_SelfAdjointEigenSolver_operatorSqrt.vcxproj">
+      <Project>{8616884B-726A-3B1B-9D9D-F3850666EE6E}</Project>
+      <Name>compile_SelfAdjointEigenSolver_operatorSqrt</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_SelfAdjointView_eigenvalues.vcxproj">
+      <Project>{500F7476-D449-3278-8B51-9B7DC110C30D}</Project>
+      <Name>compile_SelfAdjointView_eigenvalues</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_SelfAdjointView_operatorNorm.vcxproj">
+      <Project>{C9543287-48BD-3351-9966-0715DB3EFBBB}</Project>
+      <Name>compile_SelfAdjointView_operatorNorm</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_SparseMatrix_coeffs.vcxproj">
+      <Project>{554542B4-30B2-3294-8BC5-A37FE88FB91A}</Project>
+      <Name>compile_SparseMatrix_coeffs</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_TopicAliasing_block.vcxproj">
+      <Project>{34D1F451-91DB-357B-9D08-444E661D4CDF}</Project>
+      <Name>compile_TopicAliasing_block</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_TopicAliasing_block_correct.vcxproj">
+      <Project>{D1322E4D-F0DA-3E42-BAFB-56BCE835B3F5}</Project>
+      <Name>compile_TopicAliasing_block_correct</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_TopicAliasing_cwise.vcxproj">
+      <Project>{A4FAF629-4642-3221-B02D-F2CD0EDF8544}</Project>
+      <Name>compile_TopicAliasing_cwise</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_TopicAliasing_mult1.vcxproj">
+      <Project>{C0D9FA06-E6AB-33D5-8432-97230FF358AE}</Project>
+      <Name>compile_TopicAliasing_mult1</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_TopicAliasing_mult2.vcxproj">
+      <Project>{3A505EF8-F087-36FB-A249-719C53F2C581}</Project>
+      <Name>compile_TopicAliasing_mult2</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_TopicAliasing_mult3.vcxproj">
+      <Project>{B9003469-0DF6-349F-9D89-1C6A8A1C2F05}</Project>
+      <Name>compile_TopicAliasing_mult3</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_TopicAliasing_mult4.vcxproj">
+      <Project>{81C93405-E427-393F-A14A-56943F8F1E27}</Project>
+      <Name>compile_TopicAliasing_mult4</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_TopicAliasing_mult5.vcxproj">
+      <Project>{D47BE24A-13DD-3475-A4AB-F1496B3C645A}</Project>
+      <Name>compile_TopicAliasing_mult5</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_TopicStorageOrders_example.vcxproj">
+      <Project>{4FCB5729-E994-36F1-B7F5-88CB21C06507}</Project>
+      <Name>compile_TopicStorageOrders_example</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Triangular_solve.vcxproj">
+      <Project>{36281F38-0916-314C-AC1E-4985F37311AE}</Project>
+      <Name>compile_Triangular_solve</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tridiagonalization_Tridiagonalization_MatrixType.vcxproj">
+      <Project>{BDC08FC4-9FDA-3875-916A-78104DBD37C1}</Project>
+      <Name>compile_Tridiagonalization_Tridiagonalization_MatrixType</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tridiagonalization_compute.vcxproj">
+      <Project>{C8DC1320-FD03-334C-BCB0-C8F66B8B8DC2}</Project>
+      <Name>compile_Tridiagonalization_compute</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tridiagonalization_decomposeInPlace.vcxproj">
+      <Project>{78BAC6C3-DAEA-3BD1-A1A3-29E85EB61FE8}</Project>
+      <Name>compile_Tridiagonalization_decomposeInPlace</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tridiagonalization_diagonal.vcxproj">
+      <Project>{48D5FB6D-680D-3258-956B-02C52C208105}</Project>
+      <Name>compile_Tridiagonalization_diagonal</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tridiagonalization_householderCoefficients.vcxproj">
+      <Project>{C10130D9-E144-32FF-90CD-5B1306E8DA6F}</Project>
+      <Name>compile_Tridiagonalization_householderCoefficients</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tridiagonalization_packedMatrix.vcxproj">
+      <Project>{9EB2105D-4F2D-327D-9CC2-4620233AEB49}</Project>
+      <Name>compile_Tridiagonalization_packedMatrix</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_AdvancedInitialization_Block.vcxproj">
+      <Project>{79DABC4E-7334-3DE5-84D1-580524F63562}</Project>
+      <Name>compile_Tutorial_AdvancedInitialization_Block</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_AdvancedInitialization_CommaTemporary.vcxproj">
+      <Project>{DAD1F7A4-6A43-3F8E-8619-F2572CB4C2FC}</Project>
+      <Name>compile_Tutorial_AdvancedInitialization_CommaTemporary</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_AdvancedInitialization_Join.vcxproj">
+      <Project>{B352E2A1-0A66-3595-ACE0-935B7830D16A}</Project>
+      <Name>compile_Tutorial_AdvancedInitialization_Join</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_AdvancedInitialization_LinSpaced.vcxproj">
+      <Project>{F1FE024C-CCF2-3ACB-9AC3-A7C55A53798C}</Project>
+      <Name>compile_Tutorial_AdvancedInitialization_LinSpaced</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_AdvancedInitialization_ThreeWays.vcxproj">
+      <Project>{29B5CAB5-891C-34AC-9953-DED80F5A37BD}</Project>
+      <Name>compile_Tutorial_AdvancedInitialization_ThreeWays</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_AdvancedInitialization_Zero.vcxproj">
+      <Project>{53DA5B20-1280-3AF8-A930-4BB3948E5E92}</Project>
+      <Name>compile_Tutorial_AdvancedInitialization_Zero</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_Map_rowmajor.vcxproj">
+      <Project>{09B183D5-C8F8-330E-A849-4B402CB7986F}</Project>
+      <Name>compile_Tutorial_Map_rowmajor</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_Map_using.vcxproj">
+      <Project>{EE17701B-E922-3AFA-89D9-7B1AA56722B9}</Project>
+      <Name>compile_Tutorial_Map_using</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_ReshapeMat2Mat.vcxproj">
+      <Project>{DEE21A86-211C-3432-A42C-9E79A7E10901}</Project>
+      <Name>compile_Tutorial_ReshapeMat2Mat</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_ReshapeMat2Vec.vcxproj">
+      <Project>{7DB8C9C7-40F4-39BD-8031-A86157FF4FB3}</Project>
+      <Name>compile_Tutorial_ReshapeMat2Vec</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_SlicingCol.vcxproj">
+      <Project>{2F646D8E-4533-377F-AB37-97D81AE6702A}</Project>
+      <Name>compile_Tutorial_SlicingCol</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_SlicingVec.vcxproj">
+      <Project>{DEA4686F-C8FA-3C71-ACA0-0A8B5983741D}</Project>
+      <Name>compile_Tutorial_SlicingVec</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_commainit_01.vcxproj">
+      <Project>{93501F7F-6357-308C-9831-DEA1FB4E7E6E}</Project>
+      <Name>compile_Tutorial_commainit_01</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_commainit_01b.vcxproj">
+      <Project>{AACB5B51-1509-3E99-927B-49CA5B54F86F}</Project>
+      <Name>compile_Tutorial_commainit_01b</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_commainit_02.vcxproj">
+      <Project>{D14D0125-5B9F-3B98-A9C7-238E2FFF6633}</Project>
+      <Name>compile_Tutorial_commainit_02</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_solve_matrix_inverse.vcxproj">
+      <Project>{06E72A59-C247-3867-88F3-E3953718FA5C}</Project>
+      <Name>compile_Tutorial_solve_matrix_inverse</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_solve_multiple_rhs.vcxproj">
+      <Project>{9430D029-9D4B-327F-BA23-81FC7A1FF874}</Project>
+      <Name>compile_Tutorial_solve_multiple_rhs</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_solve_reuse_decomposition.vcxproj">
+      <Project>{6200F172-4D0A-3584-8CD1-93F83A9FE442}</Project>
+      <Name>compile_Tutorial_solve_reuse_decomposition</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_solve_singular.vcxproj">
+      <Project>{8DD31717-B3C8-3DF7-8E0B-C97E7B534C1A}</Project>
+      <Name>compile_Tutorial_solve_singular</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_solve_triangular.vcxproj">
+      <Project>{5ADCA175-0B66-3001-B6E9-EFDF9D0D4B15}</Project>
+      <Name>compile_Tutorial_solve_triangular</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tutorial_solve_triangular_inplace.vcxproj">
+      <Project>{A0C3D226-01EF-30EF-90D5-E45C511E4693}</Project>
+      <Name>compile_Tutorial_solve_triangular_inplace</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_VectorwiseOp_homogeneous.vcxproj">
+      <Project>{96E8FB9D-3DE3-38B9-B842-8321B4FD2165}</Project>
+      <Name>compile_VectorwiseOp_homogeneous</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Vectorwise_reverse.vcxproj">
+      <Project>{17CBA3D9-7D91-33AD-929F-FAAA89F87AD4}</Project>
+      <Name>compile_Vectorwise_reverse</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_class_FullPivLU.vcxproj">
+      <Project>{8D331B91-C9C1-3381-986E-615BA1773A54}</Project>
+      <Name>compile_class_FullPivLU</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_tut_arithmetic_redux_minmax.vcxproj">
+      <Project>{2447890C-7E80-381A-8C6F-12D98BD4601B}</Project>
+      <Name>compile_tut_arithmetic_redux_minmax</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_tut_arithmetic_transpose_aliasing.vcxproj">
+      <Project>{1105B49B-AB68-3410-AE28-288B6A49D98B}</Project>
+      <Name>compile_tut_arithmetic_transpose_aliasing</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_tut_arithmetic_transpose_conjugate.vcxproj">
+      <Project>{F3BB60A3-4F78-3A53-9364-7E27EB3331CA}</Project>
+      <Name>compile_tut_arithmetic_transpose_conjugate</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_tut_arithmetic_transpose_inplace.vcxproj">
+      <Project>{8A47DB0D-EE75-3481-B9CF-0EEC08A47135}</Project>
+      <Name>compile_tut_arithmetic_transpose_inplace</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_tut_matrix_assignment_resizing.vcxproj">
+      <Project>{BCE3DB47-65C2-38C0-9329-436FD0FC55BA}</Project>
+      <Name>compile_tut_matrix_assignment_resizing</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\doc.vcxproj">
+      <Project>{5912FF29-9D61-3033-ADA1-373BE0583BB7}</Project>
+      <Name>doc</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\doc-eigen-prerequisites.vcxproj">
+      <Project>{47AB678E-7801-3145-95EC-F4C32ABEB0A1}</Project>
+      <Name>doc-eigen-prerequisites</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\doc-unsupported-prerequisites.vcxproj">
+      <Project>{12191A1E-4A0B-3BD1-8294-D59B0E6941DF}</Project>
+      <Name>doc-unsupported-prerequisites</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\function_taking_eigenbase.vcxproj">
+      <Project>{F0C1C428-F72C-389A-96EC-B7ADF5E9912C}</Project>
+      <Name>function_taking_eigenbase</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\function_taking_ref.vcxproj">
+      <Project>{350FD538-128C-3D9C-8940-B7934D05FF7C}</Project>
+      <Name>function_taking_ref</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\make_circulant.vcxproj">
+      <Project>{4AB08869-B489-35E3-8D52-17FE6A5D5636}</Project>
+      <Name>make_circulant</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\make_circulant2.vcxproj">
+      <Project>{06F0E26D-D956-37C6-847E-F776E32A245A}</Project>
+      <Name>make_circulant2</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\matrixfree_cg.vcxproj">
+      <Project>{0F1A91FB-EEF3-307E-BBB5-FDAC5401407B}</Project>
+      <Name>matrixfree_cg</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\nullary_indexing.vcxproj">
+      <Project>{5B750EBA-817D-3809-8248-1F25F5F42D27}</Project>
+      <Name>nullary_indexing</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\tut_arithmetic_add_sub.vcxproj">
+      <Project>{2748B8D5-4A62-32B8-8F30-FDFBA11EA753}</Project>
+      <Name>tut_arithmetic_add_sub</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\tut_arithmetic_dot_cross.vcxproj">
+      <Project>{3059D680-6128-3F14-8BB6-6BC216350E0C}</Project>
+      <Name>tut_arithmetic_dot_cross</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\tut_arithmetic_matrix_mul.vcxproj">
+      <Project>{2093158D-B620-38C5-B1E3-F1CCA0B4C442}</Project>
+      <Name>tut_arithmetic_matrix_mul</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\tut_arithmetic_redux_basic.vcxproj">
+      <Project>{9EB86639-E769-33E5-BCAA-64E1B20D46AF}</Project>
+      <Name>tut_arithmetic_redux_basic</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\tut_arithmetic_scalar_mul_div.vcxproj">
+      <Project>{B3BED4C2-2392-34FE-B466-EA082D5FA09D}</Project>
+      <Name>tut_arithmetic_scalar_mul_div</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\tut_matrix_coefficient_accessors.vcxproj">
+      <Project>{92576842-7116-3068-9E67-94DF229A796E}</Project>
+      <Name>tut_matrix_coefficient_accessors</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\tut_matrix_resize.vcxproj">
+      <Project>{D5870310-1F3A-3210-B99D-3C8318B15AE7}</Project>
+      <Name>tut_matrix_resize</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\examples\tut_matrix_resize_fixed_size.vcxproj">
+      <Project>{2BDD6DCE-DD05-3024-8469-1E9308430AE0}</Project>
+      <Name>tut_matrix_resize_fixed_size</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

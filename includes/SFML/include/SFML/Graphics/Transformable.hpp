@@ -210,8 +210,8 @@ public:
     /// unlike setPosition which overwrites it.
     /// Thus, it is equivalent to the following code:
     /// \code
-    /// sf::Vector2f pos = object.getPosition();
-    /// object.setPosition(pos.x + offsetX, pos.y + offsetY);
+    /// sf::Vector2f positionBST = object.getPosition();
+    /// object.setPosition(positionBST.x + offsetX, positionBST.y + offsetY);
     /// \endcode
     ///
     /// \param offsetX X_ offset

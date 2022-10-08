@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\doc\snippets\compile_Tridiagonalization_householderCoefficients.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\doc\snippets\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{ED88F116-C7E3-3529-A20C-81FB526D4474}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

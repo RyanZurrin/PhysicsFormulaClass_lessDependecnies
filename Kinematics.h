@@ -170,7 +170,7 @@ public:
     /// <param name="velocityStart">The velocity start.</param>
     /// <param name="velocityFinal">The velocity final.</param>
     /// <param name="acceleration">The acceleration.</param>
-    /// <param name="pos">The starting position, default is 0.</param>
+    /// <param name="positionBST">The starting position, default is 0.</param>
     /// <returns>final displacement</returns>
     static ld distance(const ld velocityStart, const ld velocityFinal, const ld acceleration, const ld pos = 0.0)
     { return abs(((velocityFinal * velocityFinal) - (velocityStart * velocityStart)) / (2.0 * acceleration)) + pos; }

@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B07A4BFB-AB85-3FC2-8DEF-A56A9CCFBBF6}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>matrix_function</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test\..\..\test;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test\..\..\unsupported;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test\..\..\Eigen;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test\..\..\test;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test\..\..\test;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test\..\..\unsupported;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test\..\..\Eigen;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test\..\..\test;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test\..\..\test;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test\..\..\unsupported;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test\..\..\Eigen;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test\..\..\test;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test\..\..\test;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test\..\..\unsupported;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test\..\..\Eigen;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test\..\..\test;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\unsupported\test\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/unsupported/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+"E:\Program Files\CMake\bin\cmake.exe" -SD:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7 -BD:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build --check-stamp-file D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build/unsupported/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindAdolc.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindFFTW.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindGLEW.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindGMP.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindGoogleHash.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindMPFR.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\CheckCSourceCompiles.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\CheckIncludeFile.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\CheckLibraryExists.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindCUDA.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindCUDA\select_compute_arch.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindGLUT.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindOpenGL.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindPackageHandleStandardArgs.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindPackageMessage.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindPkgConfig.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindThreads.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\SelectLibraryConfigurations.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/unsupported/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+"E:\Program Files\CMake\bin\cmake.exe" -SD:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7 -BD:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build --check-stamp-file D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build/unsupported/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindAdolc.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindFFTW.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindGLEW.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindGMP.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindGoogleHash.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindMPFR.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\CheckCSourceCompiles.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\CheckIncludeFile.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\CheckLibraryExists.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindCUDA.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindCUDA\select_compute_arch.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindGLUT.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindOpenGL.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindPackageHandleStandardArgs.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindPackageMessage.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindPkgConfig.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindThreads.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\SelectLibraryConfigurations.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/unsupported/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+"E:\Program Files\CMake\bin\cmake.exe" -SD:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7 -BD:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build --check-stamp-file D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build/unsupported/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindAdolc.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindFFTW.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindGLEW.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindGMP.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindGoogleHash.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindMPFR.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\CheckCSourceCompiles.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\CheckIncludeFile.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\CheckLibraryExists.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindCUDA.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindCUDA\select_compute_arch.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindGLUT.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindOpenGL.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindPackageHandleStandardArgs.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindPackageMessage.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindPkgConfig.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindThreads.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\SelectLibraryConfigurations.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/unsupported/test/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+"E:\Program Files\CMake\bin\cmake.exe" -SD:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7 -BD:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build --check-stamp-file D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build/unsupported/test/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindAdolc.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindFFTW.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindGLEW.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindGMP.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindGoogleHash.cmake;D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\cmake\FindMPFR.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\CheckCSourceCompiles.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\CheckIncludeFile.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\CheckLibraryExists.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindCUDA.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindCUDA\select_compute_arch.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindGLUT.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindOpenGL.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindPackageHandleStandardArgs.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindPackageMessage.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindPkgConfig.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\FindThreads.cmake;E:\Program Files\CMake\share\cmake-3.23\Modules\SelectLibraryConfigurations.cmake;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\ZERO_CHECK.vcxproj">
+      <Project>{5D7F2DDE-AA2D-37FA-89C1-2287AD804B91}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test\matrix_function_1.vcxproj">
+      <Project>{B696B36C-97C6-351F-B054-0672E49A8054}</Project>
+      <Name>matrix_function_1</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test\matrix_function_2.vcxproj">
+      <Project>{7384165B-21B2-32FF-991C-2714678072DB}</Project>
+      <Name>matrix_function_2</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test\matrix_function_3.vcxproj">
+      <Project>{817469B6-492F-3F56-8EF1-ABEC2ED9317C}</Project>
+      <Name>matrix_function_3</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test\matrix_function_4.vcxproj">
+      <Project>{CD81DBAD-6BB8-3D79-BA17-36308B7C846B}</Project>
+      <Name>matrix_function_4</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test\matrix_function_5.vcxproj">
+      <Project>{5B43A40C-037A-3FD4-9E7C-4A99F4A0107A}</Project>
+      <Name>matrix_function_5</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test\matrix_function_6.vcxproj">
+      <Project>{8D882DB4-45BF-3487-95E7-3414C56E800E}</Project>
+      <Name>matrix_function_6</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\includes\eigen-3.3.7\build\unsupported\test\matrix_function_7.vcxproj">
+      <Project>{1551C562-A576-3CF0-BB0C-434EA12CBCAC}</Project>
+      <Name>matrix_function_7</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

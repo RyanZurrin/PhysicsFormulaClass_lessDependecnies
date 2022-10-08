@@ -3460,34 +3460,15 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: ../testFactory.cpp \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ostream.tcc \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/istream \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/istream.tcc \
-  ../Testing.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/any \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/utility \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_relops.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/chrono \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ratio \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/limits \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ctime \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/parse_numbers.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iomanip \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/locale \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_facets_nonio.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/time_members.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/messages_members.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/codecvt.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_facets_nonio.tcc \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_conv.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unique_ptr.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tuple \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/array \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/uses_allocator.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/invoke.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/quoted_string.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/sstream \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/sstream.tcc \
+  ../includes/eigen-3.3.7/Eigen/Dense \
+  ../includes/eigen-3.3.7/Eigen/Core \
+  ../includes/eigen-3.3.7/Eigen/src/Core/util/DisableStupidWarnings.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/util/Macros.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/complex \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cmath \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/math.h \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/specfun.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/limits \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/gamma.tcc \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/special_function_util.h \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/bessel_function.tcc \
@@ -3500,14 +3481,40 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: ../testFactory.cpp \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/poly_hermite.tcc \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/poly_laguerre.tcc \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/riemann_zeta.tcc \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/set \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_tree.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/sstream \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/sstream.tcc \
+  ../includes/eigen-3.3.7/Eigen/src/Core/util/MKL_support.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/mmintrin.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/emmintrin.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/xmmintrin.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstddef \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cassert \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/assert.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/functional \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tuple \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/utility \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_relops.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/array \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/uses_allocator.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/invoke.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/refwrap.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_function.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/unordered_map \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/aligned_buffer.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/hashtable.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/hashtable_policy.h \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/node_handle.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_set.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_multiset.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unordered_map.h \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/erase_if.h \
-  ../StringHelper.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/vector \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_uninitialized.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_vector.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_bvector.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/vector.tcc \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstring \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/string.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/sec_api/string_s.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/climits \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/algorithm \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ranges_algo.h \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ranges_algobase.h \
@@ -3515,19 +3522,198 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: ../testFactory.cpp \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stream_iterator.h \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ranges_util.h \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/glue_algorithm_defs.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/functional \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/refwrap.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_function.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/unordered_map \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/hashtable.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/hashtable_policy.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unordered_map.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/vector \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_uninitialized.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_vector.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_bvector.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/vector.tcc \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/execution_defs.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/util/Constants.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/util/Meta.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/util/ForwardDeclarations.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/util/StaticAssert.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/util/XprHelper.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/util/Memory.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/NumTraits.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/MathFunctions.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/GenericPacketMath.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/MathFunctionsImpl.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/arch/Default/ConjHelper.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/arch/SSE/PacketMath.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/arch/SSE/MathFunctions.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/arch/SSE/Complex.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/arch/SSE/TypeCasting.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/arch/CUDA/Half.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/arch/CUDA/PacketMathHalf.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/arch/CUDA/TypeCasting.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/arch/Default/Settings.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/functors/TernaryFunctors.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/functors/BinaryFunctors.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/functors/UnaryFunctors.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/functors/NullaryFunctors.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/functors/StlFunctors.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/functors/AssignmentFunctors.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/arch/CUDA/Complex.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/IO.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/DenseCoeffsBase.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/DenseBase.h \
+  ../includes/eigen-3.3.7/Eigen/src/plugins/BlockMethods.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/MatrixBase.h \
+  ../includes/eigen-3.3.7/Eigen/src/plugins/CommonCwiseUnaryOps.h \
+  ../includes/eigen-3.3.7/Eigen/src/plugins/CommonCwiseBinaryOps.h \
+  ../includes/eigen-3.3.7/Eigen/src/plugins/MatrixCwiseUnaryOps.h \
+  ../includes/eigen-3.3.7/Eigen/src/plugins/MatrixCwiseBinaryOps.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/EigenBase.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Product.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/CoreEvaluators.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/AssignEvaluator.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Assign.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/ArrayBase.h \
+  ../includes/eigen-3.3.7/Eigen/src/plugins/ArrayCwiseUnaryOps.h \
+  ../includes/eigen-3.3.7/Eigen/src/plugins/ArrayCwiseBinaryOps.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/util/BlasUtil.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/DenseStorage.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/NestByValue.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/ReturnByValue.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/NoAlias.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/PlainObjectBase.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Matrix.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Array.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/CwiseTernaryOp.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/CwiseBinaryOp.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/CwiseUnaryOp.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/CwiseNullaryOp.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/CwiseUnaryView.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/SelfCwiseBinaryOp.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Dot.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/StableNorm.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Stride.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/MapBase.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Map.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Ref.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Block.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/VectorBlock.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Transpose.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/DiagonalMatrix.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Diagonal.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/DiagonalProduct.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Redux.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Visitor.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Fuzzy.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Swap.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/CommaInitializer.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/GeneralProduct.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Solve.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Inverse.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/SolverBase.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/PermutationMatrix.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Transpositions.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/TriangularMatrix.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/SelfAdjointView.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/products/GeneralBlockPanelKernel.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/products/Parallelizer.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/ProductEvaluators.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/products/GeneralMatrixVector.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/products/GeneralMatrixMatrix.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/SolveTriangular.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/products/SelfadjointMatrixVector.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/products/SelfadjointMatrixMatrix.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/products/SelfadjointProduct.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/products/SelfadjointRank2Update.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/products/TriangularMatrixVector.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/products/TriangularMatrixMatrix.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/products/TriangularSolverMatrix.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/products/TriangularSolverVector.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/BandMatrix.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/CoreIterators.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/ConditionEstimator.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/BooleanRedux.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Select.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/VectorwiseOp.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Random.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Replicate.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/Reverse.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/ArrayWrapper.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/GlobalFunctions.h \
+  ../includes/eigen-3.3.7/Eigen/src/Core/util/ReenableStupidWarnings.h \
+  ../includes/eigen-3.3.7/Eigen/LU \
+  ../includes/eigen-3.3.7/Eigen/src/misc/Kernel.h \
+  ../includes/eigen-3.3.7/Eigen/src/misc/Image.h \
+  ../includes/eigen-3.3.7/Eigen/src/LU/FullPivLU.h \
+  ../includes/eigen-3.3.7/Eigen/src/LU/PartialPivLU.h \
+  ../includes/eigen-3.3.7/Eigen/src/LU/Determinant.h \
+  ../includes/eigen-3.3.7/Eigen/src/LU/InverseImpl.h \
+  ../includes/eigen-3.3.7/Eigen/src/LU/arch/Inverse_SSE.h \
+  ../includes/eigen-3.3.7/Eigen/Cholesky \
+  ../includes/eigen-3.3.7/Eigen/Jacobi \
+  ../includes/eigen-3.3.7/Eigen/src/Jacobi/Jacobi.h \
+  ../includes/eigen-3.3.7/Eigen/src/Cholesky/LLT.h \
+  ../includes/eigen-3.3.7/Eigen/src/Cholesky/LDLT.h \
+  ../includes/eigen-3.3.7/Eigen/QR \
+  ../includes/eigen-3.3.7/Eigen/Householder \
+  ../includes/eigen-3.3.7/Eigen/src/Householder/Householder.h \
+  ../includes/eigen-3.3.7/Eigen/src/Householder/HouseholderSequence.h \
+  ../includes/eigen-3.3.7/Eigen/src/Householder/BlockHouseholder.h \
+  ../includes/eigen-3.3.7/Eigen/src/QR/HouseholderQR.h \
+  ../includes/eigen-3.3.7/Eigen/src/QR/FullPivHouseholderQR.h \
+  ../includes/eigen-3.3.7/Eigen/src/QR/ColPivHouseholderQR.h \
+  ../includes/eigen-3.3.7/Eigen/src/QR/CompleteOrthogonalDecomposition.h \
+  ../includes/eigen-3.3.7/Eigen/SVD \
+  ../includes/eigen-3.3.7/Eigen/src/misc/RealSvd2x2.h \
+  ../includes/eigen-3.3.7/Eigen/src/SVD/UpperBidiagonalization.h \
+  ../includes/eigen-3.3.7/Eigen/src/SVD/SVDBase.h \
+  ../includes/eigen-3.3.7/Eigen/src/SVD/JacobiSVD.h \
+  ../includes/eigen-3.3.7/Eigen/src/SVD/BDCSVD.h \
+  ../includes/eigen-3.3.7/Eigen/Geometry \
+  ../includes/eigen-3.3.7/Eigen/src/Geometry/OrthoMethods.h \
+  ../includes/eigen-3.3.7/Eigen/src/Geometry/EulerAngles.h \
+  ../includes/eigen-3.3.7/Eigen/src/Geometry/Homogeneous.h \
+  ../includes/eigen-3.3.7/Eigen/src/Geometry/RotationBase.h \
+  ../includes/eigen-3.3.7/Eigen/src/Geometry/Rotation2D.h \
+  ../includes/eigen-3.3.7/Eigen/src/Geometry/Quaternion.h \
+  ../includes/eigen-3.3.7/Eigen/src/Geometry/AngleAxis.h \
+  ../includes/eigen-3.3.7/Eigen/src/Geometry/Transform.h \
+  ../includes/eigen-3.3.7/Eigen/src/Geometry/Translation.h \
+  ../includes/eigen-3.3.7/Eigen/src/Geometry/Scaling.h \
+  ../includes/eigen-3.3.7/Eigen/src/Geometry/Hyperplane.h \
+  ../includes/eigen-3.3.7/Eigen/src/Geometry/ParametrizedLine.h \
+  ../includes/eigen-3.3.7/Eigen/src/Geometry/AlignedBox.h \
+  ../includes/eigen-3.3.7/Eigen/src/Geometry/Umeyama.h \
+  ../includes/eigen-3.3.7/Eigen/src/Geometry/arch/Geometry_SSE.h \
+  ../includes/eigen-3.3.7/Eigen/Eigenvalues \
+  ../includes/eigen-3.3.7/Eigen/src/Eigenvalues/Tridiagonalization.h \
+  ../includes/eigen-3.3.7/Eigen/src/Eigenvalues/RealSchur.h \
+  ../includes/eigen-3.3.7/Eigen/src/Eigenvalues/HessenbergDecomposition.h \
+  ../includes/eigen-3.3.7/Eigen/src/Eigenvalues/EigenSolver.h \
+  ../includes/eigen-3.3.7/Eigen/src/Eigenvalues/RealSchur.h \
+  ../includes/eigen-3.3.7/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h \
+  ../includes/eigen-3.3.7/Eigen/src/Eigenvalues/Tridiagonalization.h \
+  ../includes/eigen-3.3.7/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h \
+  ../includes/eigen-3.3.7/Eigen/src/Eigenvalues/HessenbergDecomposition.h \
+  ../includes/eigen-3.3.7/Eigen/src/Eigenvalues/ComplexSchur.h \
+  ../includes/eigen-3.3.7/Eigen/src/Eigenvalues/ComplexEigenSolver.h \
+  ../includes/eigen-3.3.7/Eigen/src/Eigenvalues/ComplexSchur.h \
+  ../includes/eigen-3.3.7/Eigen/src/Eigenvalues/RealQZ.h \
+  ../includes/eigen-3.3.7/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
+  ../includes/eigen-3.3.7/Eigen/src/Eigenvalues/RealQZ.h \
+  ../includes/eigen-3.3.7/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
+  ../Testing.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/any \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/chrono \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ratio \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ctime \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/parse_numbers.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iomanip \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/locale \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_facets_nonio.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/time_members.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/messages_members.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/codecvt.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_facets_nonio.tcc \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_conv.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unique_ptr.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/quoted_string.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/set \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_tree.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_set.h \
+  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_multiset.h \
+  ../StringHelper.h \
   ../RegexHelper.h \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/regex \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bitset \
@@ -3556,9 +3742,6 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: ../testFactory.cpp \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/map \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_map.h \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_multimap.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstring \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/string.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/sec_api/string_s.h \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex_constants.h \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex_error.h \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex_automaton.h \
@@ -3667,9 +3850,6 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: ../testFactory.cpp \
   ../Drag.h \
   ../Friction.h \
   ../Vector2D.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/complex \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cassert \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/assert.h \
   ../Forces.h \
   ../Elasticity.h \
   ../ElectroMagneticWaves.h \
@@ -3691,7 +3871,6 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: ../testFactory.cpp \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/c++io.h \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/fstream.tcc \
   ../MatrixND.h \
-  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstddef \
   ../VectorND.h \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstdarg \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stdarg.h \
@@ -3752,21 +3931,25 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: ../testFactory.cpp \
   ../BinarySearchTree.h
 
 
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h:
+
 ../QuadTree.cpp:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/c++config.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h:
+
+../includes/eigen-3.3.7/Eigen/Householder:
 
 ../includes/SFML/include/SFML/Graphics/View.hpp:
 
 ../GeoUtils.h:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h:
 
 ../Drag.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/type_traits.h:
 
 ../Angle.cpp:
+
+../includes/eigen-3.3.7/Eigen/src/Core/CoreIterators.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/riemann_zeta.tcc:
 
@@ -3776,51 +3959,67 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_iterator.h:
 
+../includes/eigen-3.3.7/Eigen/src/QR/ColPivHouseholderQR.h:
+
+../includes/eigen-3.3.7/Eigen/src/misc/Image.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/cpp_type_traits.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_iterator_base_types.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex_scanner.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ratio:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_iterator_base_types.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/numeric_traits.h:
+
+../includes/eigen-3.3.7/Eigen/src/plugins/MatrixCwiseUnaryOps.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex_automaton.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/numeric_traits.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cmath:
 
 ../MonotonePartition.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cmath:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/stdexcept:
+../includes/eigen-3.3.7/Eigen/src/Core/CwiseUnaryOp.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/os_defines.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/pstl_config.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/stdexcept:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/basic_ios.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/pstl_config.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_pair.h:
 
+../includes/eigen-3.3.7/Eigen/src/Eigenvalues/RealQZ.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/basic_ios.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/math.h:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_construct.h:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/sys/timeb.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/_mingw_mac.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/crtdefs.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/sys/timeb.h:
 
-../testFactory.cpp:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_construct.h:
+
+../includes/eigen-3.3.7/Eigen/src/Geometry/Hyperplane.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/crtdefs.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/queue:
 
+../includes/eigen-3.3.7/Eigen/src/Householder/BlockHouseholder.h:
+
 ../Angle.h:
+
+../testFactory.cpp:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/modified_bessel_func.tcc:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/corecrt.h:
+
+../includes/eigen-3.3.7/Eigen/Core:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/exception_defines.h:
 
@@ -3842,25 +4041,27 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h:
 
+../includes/eigen-3.3.7/Eigen/src/Core/ArrayWrapper.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/stdlib.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/specfun.h:
-
-../Magnetism.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/corecrt_wstdlib.h:
 
 ../ETL.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/invoke.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_algobase.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed/limits.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_algobase.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/invoke.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/deque:
+../includes/eigen-3.3.7/Eigen/src/Core/products/GeneralBlockPanelKernel.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/poly_laguerre.tcc:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/deque:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include-fixed/syslimits.h:
 
@@ -3872,19 +4073,25 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/sec_api/stdlib_s.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/stdlib.h:
+../includes/eigen-3.3.7/Eigen/src/Core/util/XprHelper.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/sec_api/wchar_s.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/stdlib.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/malloc.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_iterator_base_funcs.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/sec_api/wchar_s.h:
 
-../VectorND.h:
+../includes/eigen-3.3.7/Eigen/src/Core/DenseBase.h:
+
+../includes/eigen-3.3.7/Eigen/SVD:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_iterator_base_funcs.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/errno.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/streambuf:
+
+../includes/eigen-3.3.7/Eigen/src/Core/BooleanRedux.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/mm_malloc.h:
 
@@ -3892,9 +4099,9 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/functexcept.h:
 
-../Polygon.h:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/exp_integral.tcc:
+
+../Polygon.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/ell_integral.tcc:
 
@@ -3908,15 +4115,19 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/compare:
 
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/concepts:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_tree.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/concepts:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/iterator_concepts.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/istream:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/range_access.h:
+../includes/eigen-3.3.7/Eigen/src/LU/InverseImpl.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/iterator_concepts.h:
+../includes/eigen-3.3.7/Eigen/src/SVD/UpperBidiagonalization.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/range_access.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/wctype.h:
 
@@ -3928,9 +4139,9 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ranges_cmp.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/pthread_signal.h:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/concept_check.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/pthread_signal.h:
 
 ../TemplateBST.h:
 
@@ -3940,25 +4151,31 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/new:
 
-../includes/SFML/include/SFML/System/ThreadLocalPtr.hpp:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex.tcc:
+
+../includes/SFML/include/SFML/System/ThreadLocalPtr.hpp:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/limits:
 
 ../LogisticRegression.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_deque.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/gamma.tcc:
 
 ../Vector.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/gamma.tcc:
+../includes/eigen-3.3.7/Eigen/src/Core/arch/CUDA/PacketMathHalf.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_deque.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/special_function_util.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/climits:
 
 ../includes/SFML/include/SFML/Graphics/Export.hpp:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ranges_algo.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/special_function_util.h:
+../includes/eigen-3.3.7/Eigen/src/SVD/SVDBase.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/hypergeometric.tcc:
 
@@ -3968,15 +4185,17 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/beta_function.tcc:
 
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/poly_hermite.tcc:
+
 ../includes/SFML/include/SFML/System/InputStream.hpp:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/shared_ptr_base.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tr1/poly_hermite.tcc:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/array:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/utility:
+
+../includes/eigen-3.3.7/Eigen/src/Eigenvalues/Tridiagonalization.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_relops.h:
 
@@ -3988,13 +4207,19 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ostream:
 
+../includes/eigen-3.3.7/Eigen/src/Core/functors/NullaryFunctors.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ios:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stringfwd.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/atomic_word.h:
+../includes/eigen-3.3.7/Eigen/src/Core/Map.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/DenseStorage.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/memoryfwd.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/atomic_word.h:
 
 ../includes/SFML/include/SFML/Window/Window.hpp:
 
@@ -4010,59 +4235,73 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/corecrt_stdio_config.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/erase_if.h:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/_mingw_off_t.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/parse_numbers.h:
+../includes/eigen-3.3.7/Eigen/src/Core/functors/UnaryFunctors.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/streambuf_iterator.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/erase_if.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/_mingw_stat64.h:
 
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/streambuf_iterator.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/parse_numbers.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/swprintf.inl:
+
+../includes/eigen-3.3.7/Eigen/src/misc/RealSvd2x2.h:
 
 ../Elasticity.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/exception:
 
+../includes/eigen-3.3.7/Eigen/src/Core/products/SelfadjointMatrixMatrix.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/exception_ptr.h:
 
-../includes/SFML/include/SFML/Window/Touch.hpp:
+../includes/eigen-3.3.7/Eigen/src/plugins/MatrixCwiseBinaryOps.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/string_view:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/cxxabi_init_exception.h:
+../includes/eigen-3.3.7/Eigen/LU:
 
-../RunTimer.h:
+../includes/SFML/include/SFML/Window/Touch.hpp:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/cxxabi_init_exception.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stddef.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/stddef.h:
 
+../includes/eigen-3.3.7/Eigen/src/Geometry/AlignedBox.h:
+
+../includes/eigen-3.3.7/Eigen/src/Geometry/AngleAxis.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/typeinfo:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/hash_bytes.h:
 
-../includes/SFML/include/SFML/Graphics/Sprite.hpp:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/nested_exception.h:
 
 ../Physics_World.h:
 
+../includes/eigen-3.3.7/Eigen/Eigenvalues:
+
+../includes/SFML/include/SFML/Graphics/Sprite.hpp:
+
 ../pbPlots.hpp:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/nested_exception.h:
-
-../includes/SFML/include/SFML/System/Export.hpp:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/hashtable.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/c++allocator.h:
 
+../includes/SFML/include/SFML/System/Export.hpp:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/char_traits.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_heap.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/hashtable.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/sec_api/stdio_s.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_heap.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstdint:
 
@@ -4070,31 +4309,41 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/stdint.h:
 
+../includes/eigen-3.3.7/Eigen/src/Core/BandMatrix.h:
+
 ../VisionOpticalInstruments.h:
 
 ../includes/SFML/include/SFML/Window/WindowHandle.hpp:
 
+../includes/eigen-3.3.7/Eigen/src/Cholesky/LLT.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/localefwd.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/MapBase.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/clocale:
 
-../includes/SFML/include/SFML/System/Utf.inl:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/locale.h:
+
+../includes/eigen-3.3.7/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/stdio.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cctype:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/allocator.h:
+../includes/eigen-3.3.7/Eigen/src/Core/CwiseNullaryOp.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/ctype.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_uninitialized.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/allocator.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ios_base.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/util/ForwardDeclarations.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_uninitialized.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/atomicity.h:
 
@@ -4102,13 +4351,17 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/gthr.h:
 
+../includes/eigen-3.3.7/Eigen/src/Core/arch/SSE/PacketMath.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/gthr-default.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/pthread.h:
 
-../includes/SFML/include/SFML/Graphics/VertexArray.hpp:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/sys/types.h:
+
+../includes/eigen-3.3.7/Eigen/src/Jacobi/Jacobi.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/EigenBase.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/process.h:
 
@@ -4118,17 +4371,25 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 ../RandomNumbers.h:
 
+../includes/eigen-3.3.7/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h:
+
 ../Cone.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/signal.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/time.h:
+
+../includes/eigen-3.3.7/Eigen/src/Geometry/Quaternion.h:
 
 ../includes/SFML/include/SFML/Window/Sensor.hpp:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_bvector.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/time.h:
+../includes/eigen-3.3.7/Eigen/src/Core/arch/SSE/Complex.h:
 
 ../Vector3D.h:
+
+../includes/eigen-3.3.7/Eigen/src/QR/HouseholderQR.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/opt_random.h:
 
@@ -4136,49 +4397,61 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/pthread_time.h:
 
+../includes/eigen-3.3.7/Eigen/src/Core/Diagonal.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/pthread_compat.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/pthread_unistd.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_facets_nonio.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/ctype_base.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/xmmintrin.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/any:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/ctype_base.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_facets_nonio.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_classes.h:
 
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/string:
+
+../includes/eigen-3.3.7/Eigen/src/Core/util/Macros.h:
+
 ../StringHelper.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/string:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/new_allocator.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/streambuf.tcc:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/new_allocator.h:
+../includes/eigen-3.3.7/Eigen/src/Core/GenericPacketMath.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/cxxabi_forced.h:
 
 ../includes/SFML/include/SFML/System.hpp:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/atomic_base.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/cxxabi_forced.h:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_function.h:
-
-../Constants.h:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/functional:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/algorithm:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/backward/binders.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_multiset.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/algorithm:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/functional:
+
+../includes/eigen-3.3.7/Eigen/src/Core/SolverBase.h:
+
+../Constants.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/node_handle.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_multiset.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_algo.h:
 
 ../includes/SFML/include/SFML/Graphics/RenderStates.hpp:
+
+../includes/eigen-3.3.7/Eigen/src/plugins/ArrayCwiseBinaryOps.h:
 
 ../includes/SFML/include/SFML/Config.hpp:
 
@@ -4190,13 +4463,11 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/uniform_int_dist.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iomanip:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/basic_string.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/alloc_traits.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/iomanip:
 
-../TriangleSolver.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/alloc_traits.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/numeric:
 
@@ -4208,21 +4479,23 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/numbers:
 
-../MathFx.h:
+../includes/eigen-3.3.7/Eigen/src/LU/FullPivLU.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/string_view.tcc:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/string_conversions.h:
 
-../includes/SFML/include/SFML/System/Sleep.hpp:
-
 ../PolygonDCEL.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/util/BlasUtil.h:
+
+../includes/SFML/include/SFML/System/Sleep.hpp:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstdio:
 
-../includes/SFML/include/SFML/System/FileInputStream.hpp:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cerrno:
+
+../includes/SFML/include/SFML/System/FileInputStream.hpp:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/charconv.h:
 
@@ -4234,85 +4507,103 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/system_error:
 
-../includes/SFML/include/SFML/System/Clock.hpp:
+../includes/eigen-3.3.7/Eigen/src/Core/GeneralProduct.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/error_constants.h:
 
+../includes/SFML/include/SFML/System/Clock.hpp:
+
+../includes/eigen-3.3.7/Eigen/src/Core/util/Memory.h:
+
+../includes/eigen-3.3.7/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_facets.h:
 
+../includes/eigen-3.3.7/Eigen/src/Core/util/DisableStupidWarnings.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cwctype:
+
+../includes/eigen-3.3.7/Eigen/src/Core/TriangularMatrix.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/ctype_inline.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_facets.tcc:
 
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/basic_ios.tcc:
+
 ../pbPlots.cpp:
 
 ../Voronoi.cpp:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/basic_ios.tcc:
-
-../Cylinder.h:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ostream.tcc:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Block.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/istream.tcc:
 
-../templateGraph.cpp:
-
 ../Core.h:
+
+../templateGraph.cpp:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/math.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/float.h:
 
-../ElectricPotential.h:
-
 ../MatrixND.h:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/shared_ptr.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/float.h:
 
-../Point.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/shared_ptr.h:
 
-../Distance.cpp:
+../includes/eigen-3.3.7/Eigen/src/Core/products/SelfadjointRank2Update.h:
+
+../Point.h:
 
 ../Plane.h:
 
+../includes/eigen-3.3.7/Eigen/src/Cholesky/LDLT.h:
+
+../Distance.cpp:
+
 ../Convexhull.cpp:
 
-../Forces.h:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/locale_conv.h:
+
+../Forces.h:
 
 ../Convexhull.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/vector:
 
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_vector.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/fstream:
 
 ../Triangulation.cpp:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_vector.h:
+../includes/eigen-3.3.7/Eigen/src/Core/Dot.h:
 
 ../Polyhedron.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/list.tcc:
-
 ../Intersection.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/DenseCoeffsBase.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/list.tcc:
 
 ../Segment.h:
 
-../GeoUtils.cpp:
-
 ../Distance.h:
 
-../Heat.h:
+../GeoUtils.cpp:
 
 ../Inclusion.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/ranges_algobase.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/CommaInitializer.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Replicate.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stream_iterator.h:
 
@@ -4322,15 +4613,19 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/tuple:
 
+../includes/eigen-3.3.7/Eigen/src/Core/NumTraits.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/SelfCwiseBinaryOp.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/refwrap.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_function.h:
 
-../includes/SFML/include/SFML/System/Vector3.hpp:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/unordered_map:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/aligned_buffer.h:
+
+../includes/eigen-3.3.7/Eigen/src/LU/PartialPivLU.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/hashtable_policy.h:
 
@@ -4342,6 +4637,8 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/list:
 
+../includes/eigen-3.3.7/Eigen/src/Core/util/Meta.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_list.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/allocated_ptr.h:
@@ -4352,37 +4649,35 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_set.h:
 
-../includes/SFML/include/SFML/System/Vector2.hpp:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/map:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_map.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/align.h:
+../includes/eigen-3.3.7/Eigen/src/Eigenvalues/ComplexEigenSolver.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_multimap.h:
 
-../UniformCircularMotion.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/align.h:
 
 ../Inclusion.cpp:
 
-../Testing.h:
-
 ../Intersection.cpp:
 
-../includes/SFML/include/SFML/Graphics/Texture.hpp:
+../includes/eigen-3.3.7/Eigen/src/Core/products/SelfadjointProduct.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex.h:
+../Testing.h:
 
 ../KDTree.cpp:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex.h:
 
 ../KDTree.h:
 
 ../Line.cpp:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/regex:
-
 ../Point.cpp:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/regex:
 
 ../Polygon.cpp:
 
@@ -4390,11 +4685,11 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 ../QuadTree.h:
 
+../includes/eigen-3.3.7/Eigen/src/Geometry/Scaling.h:
+
 ../Rectangle.h:
 
 ../Boundries.h:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/random:
 
 ../Triangulation.h:
 
@@ -4402,15 +4697,17 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/deque.tcc:
 
+../includes/eigen-3.3.7/Eigen/src/Core/DiagonalProduct.h:
+
 ../includes/SFML/include/SFML/Graphics/VertexBuffer.hpp:
 
 ../includes/SFML/include/SFML/System/Thread.hpp:
 
+../includes/eigen-3.3.7/Eigen/src/Eigenvalues/ComplexSchur.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_stack.h:
 
 ../Vector.cpp:
-
-../Friction.h:
 
 ../Voronoi.h:
 
@@ -4420,13 +4717,13 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_queue.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex_executor.tcc:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstring:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex_compiler.tcc:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex_executor.tcc:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/c++io.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstring:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex_compiler.tcc:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/string.h:
 
@@ -4436,15 +4733,261 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 ../supportLib.hpp:
 
+../includes/eigen-3.3.7/Eigen/src/LU/arch/Inverse_SSE.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/SelfAdjointView.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/codecvt.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h:
+../includes/eigen-3.3.7/Eigen/src/Core/Swap.h:
 
-../Sphere.h:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/fstream.tcc:
 
 ../templateGraph.h:
+
+../includes/eigen-3.3.7/Eigen/Dense:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/sstream:
+
+../includes/eigen-3.3.7/Eigen/src/Core/util/MKL_support.h:
+
+../includes/SFML/include/SFML/System/MemoryInputStream.hpp:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/mmintrin.h:
+
+../includes/eigen-3.3.7/Eigen/src/Geometry/Translation.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/emmintrin.h:
+
+../Dimensions.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstddef:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cassert:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/assert.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/arch/SSE/MathFunctions.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/ReturnByValue.h:
+
+../includes/eigen-3.3.7/Eigen/src/Householder/HouseholderSequence.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/util/Constants.h:
+
+../includes/SFML/include/SFML/System/Lock.hpp:
+
+../includes/eigen-3.3.7/Eigen/src/Core/util/StaticAssert.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/MathFunctions.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/MathFunctionsImpl.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/arch/Default/ConjHelper.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/arch/SSE/TypeCasting.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/arch/CUDA/Half.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bitset:
+
+../Cube.h:
+
+../includes/SFML/include/SFML/Window/Keyboard.hpp:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Transpositions.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/arch/CUDA/TypeCasting.h:
+
+../includes/eigen-3.3.7/Eigen/src/SVD/BDCSVD.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/arch/Default/Settings.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/functors/TernaryFunctors.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/functors/BinaryFunctors.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/functors/StlFunctors.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unique_ptr.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/functors/AssignmentFunctors.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/arch/CUDA/Complex.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/IO.h:
+
+../includes/eigen-3.3.7/Eigen/src/plugins/BlockMethods.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/products/SelfadjointMatrixVector.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/MatrixBase.h:
+
+../includes/eigen-3.3.7/Eigen/src/plugins/CommonCwiseUnaryOps.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/PlainObjectBase.h:
+
+../includes/eigen-3.3.7/Eigen/src/plugins/CommonCwiseBinaryOps.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Product.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/CoreEvaluators.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/AssignEvaluator.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Assign.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/ArrayBase.h:
+
+../Square.h:
+
+../Statics.h:
+
+../includes/eigen-3.3.7/Eigen/src/plugins/ArrayCwiseUnaryOps.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/NestByValue.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/NoAlias.h:
+
+../QuantumPhysics.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Matrix.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Array.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/CwiseTernaryOp.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/CwiseBinaryOp.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/CwiseUnaryView.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/StableNorm.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Stride.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Ref.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/VectorBlock.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Transpose.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/DiagonalMatrix.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Redux.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Visitor.h:
+
+../includes/SFML/include/SFML/Graphics/Rect.hpp:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Fuzzy.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Solve.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Inverse.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/quoted_string.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/PermutationMatrix.h:
+
+../PeriodicElements.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/products/Parallelizer.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/ProductEvaluators.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/products/GeneralMatrixVector.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/products/GeneralMatrixMatrix.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/SolveTriangular.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/products/GeneralMatrixMatrixTriangular.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/products/TriangularMatrixVector.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/products/TriangularSolverVector.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/products/TriangularMatrixMatrix.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/products/TriangularSolverMatrix.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/ConditionEstimator.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Select.h:
+
+../includes/eigen-3.3.7/Eigen/src/Geometry/Homogeneous.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/VectorwiseOp.h:
+
+../includes/SFML/include/SFML/Graphics/Text.hpp:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Random.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/Reverse.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/GlobalFunctions.h:
+
+../includes/eigen-3.3.7/Eigen/src/Core/util/ReenableStupidWarnings.h:
+
+../includes/eigen-3.3.7/Eigen/src/misc/Kernel.h:
+
+../includes/eigen-3.3.7/Eigen/src/LU/Determinant.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/_mingw_stdarg.h:
+
+../includes/eigen-3.3.7/Eigen/src/Geometry/ParametrizedLine.h:
+
+../includes/eigen-3.3.7/Eigen/Cholesky:
+
+../includes/eigen-3.3.7/Eigen/Jacobi:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_raw_storage_iter.h:
+
+../includes/eigen-3.3.7/Eigen/QR:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bit:
+
+../includes/eigen-3.3.7/Eigen/src/Householder/Householder.h:
+
+../includes/eigen-3.3.7/Eigen/src/QR/FullPivHouseholderQR.h:
+
+../includes/SFML/include/SFML/System/Err.hpp:
+
+../includes/eigen-3.3.7/Eigen/src/QR/CompleteOrthogonalDecomposition.h:
+
+../includes/eigen-3.3.7/Eigen/src/SVD/JacobiSVD.h:
+
+../includes/eigen-3.3.7/Eigen/Geometry:
+
+../includes/eigen-3.3.7/Eigen/src/Geometry/OrthoMethods.h:
+
+../includes/eigen-3.3.7/Eigen/src/Geometry/EulerAngles.h:
+
+../includes/eigen-3.3.7/Eigen/src/Geometry/RotationBase.h:
+
+../includes/eigen-3.3.7/Eigen/src/Geometry/Rotation2D.h:
+
+../includes/eigen-3.3.7/Eigen/src/Geometry/Transform.h:
+
+../includes/eigen-3.3.7/Eigen/src/Geometry/Umeyama.h:
+
+../includes/SFML/include/SFML/Graphics/Transformable.hpp:
+
+../includes/eigen-3.3.7/Eigen/src/Geometry/arch/Geometry_SSE.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex_automaton.tcc:
+
+../includes/eigen-3.3.7/Eigen/src/Eigenvalues/RealSchur.h:
+
+../includes/eigen-3.3.7/Eigen/src/Eigenvalues/HessenbergDecomposition.h:
+
+../includes/eigen-3.3.7/Eigen/src/Eigenvalues/EigenSolver.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/atomic_lockfree_defines.h:
+
+../includes/eigen-3.3.7/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/chrono:
 
@@ -4454,33 +4997,15 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/x86_64-w64-mingw32/bits/messages_members.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/unique_ptr.h:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/quoted_string.h:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/sstream:
-
 ../RegexHelper.h:
 
-../RectangularPrism.h:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bitset:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/memory:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_raw_storage_iter.h:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bit:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/ext/concurrence.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/shared_ptr_atomic.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/atomic_lockfree_defines.h:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/atomic_wait.h:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/random.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/std_mutex.h:
 
@@ -4498,10 +5023,6 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex_error.h:
 
-../includes/SFML/include/SFML/Graphics/Transformable.hpp:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex_automaton.tcc:
-
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex_scanner.tcc:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/regex_executor.h:
@@ -4510,27 +5031,19 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 ../AtomicPhysics.h:
 
-../PeriodicElements.h:
-
 ../includes/SFML/include/SFML/Window.hpp:
 
 ../includes/SFML/include/SFML/System/Time.hpp:
 
-../includes/SFML/include/SFML/System/Err.hpp:
-
-../FluidStatics.h:
-
 ../includes/SFML/include/SFML/System/NonCopyable.hpp:
-
-../includes/SFML/include/SFML/System/Lock.hpp:
-
-../includes/SFML/include/SFML/System/MemoryInputStream.hpp:
 
 ../includes/SFML/include/SFML/System/Mutex.hpp:
 
 ../includes/SFML/include/SFML/System/String.hpp:
 
 ../includes/SFML/include/SFML/System/Utf.hpp:
+
+../includes/SFML/include/SFML/System/Utf.inl:
 
 ../includes/SFML/include/SFML/System/String.inl:
 
@@ -4542,11 +5055,13 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 ../includes/SFML/include/SFML/System/ThreadLocalPtr.inl:
 
+../includes/SFML/include/SFML/System/Vector2.hpp:
+
 ../includes/SFML/include/SFML/System/Vector2.inl:
 
-../includes/SFML/include/SFML/System/Vector3.inl:
+../includes/SFML/include/SFML/System/Vector3.hpp:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/random.tcc:
+../includes/SFML/include/SFML/System/Vector3.inl:
 
 ../includes/SFML/include/SFML/Window/Export.hpp:
 
@@ -4557,12 +5072,6 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 ../includes/SFML/include/SFML/Window/Event.hpp:
 
 ../includes/SFML/include/SFML/Window/Joystick.hpp:
-
-../Cube.h:
-
-../includes/SFML/include/SFML/Window/Keyboard.hpp:
-
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cassert:
 
 ../includes/SFML/include/SFML/Window/Mouse.hpp:
 
@@ -4582,21 +5091,21 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 ../includes/SFML/include/SFML/Graphics/Transform.hpp:
 
-../includes/SFML/include/SFML/Graphics/Rect.hpp:
-
 ../includes/SFML/include/SFML/Graphics/Rect.inl:
+
+../includes/SFML/include/SFML/Graphics/VertexArray.hpp:
 
 ../includes/SFML/include/SFML/Graphics/Vertex.hpp:
 
 ../includes/SFML/include/SFML/Graphics/Color.hpp:
-
-../Circle.h:
 
 ../includes/SFML/include/SFML/Graphics/PrimitiveType.hpp:
 
 ../includes/SFML/include/SFML/Graphics/ConvexShape.hpp:
 
 ../includes/SFML/include/SFML/Graphics/Font.hpp:
+
+../includes/SFML/include/SFML/Graphics/Texture.hpp:
 
 ../includes/SFML/include/SFML/Graphics/Image.hpp:
 
@@ -4608,15 +5117,17 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 ../includes/SFML/include/SFML/Graphics/RenderWindow.hpp:
 
-../QuantumPhysics.h:
-
 ../includes/SFML/include/SFML/Graphics/Shader.hpp:
 
 ../includes/SFML/include/SFML/Graphics/Glsl.hpp:
 
 ../includes/SFML/include/SFML/Graphics/Glsl.inl:
 
-../includes/SFML/include/SFML/Graphics/Text.hpp:
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/random:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/random.h:
+
+E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/random.tcc:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_numeric.h:
 
@@ -4624,19 +5135,21 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 ../ElectricCurrent.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstddef:
+../Cylinder.h:
 
-../Dimensions.h:
+../Friction.h:
 
 ../Vector2D.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/assert.h:
-
 ../ElectroMagneticInduction.h:
+
+../Magnetism.h:
 
 ../ElectricCharge.h:
 
 ../UnitVector.h:
+
+../FluidStatics.h:
 
 ../Hearing.h:
 
@@ -4648,11 +5161,13 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 ../LinearRegression.h:
 
+../VectorND.h:
+
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/cstdarg:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/stdarg.h:
 
-E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/_mingw_stdarg.h:
+../MathFx.h:
 
 ../LinearMomentum.h:
 
@@ -4660,19 +5175,25 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 ../Pyramid.h:
 
+../RectangularPrism.h:
+
 ../RotationalMotion.h:
 
-../Square.h:
+../UniformCircularMotion.h:
 
-../Statics.h:
+../Sphere.h:
 
 ../Thermodynamics.h:
+
+../Heat.h:
 
 ../Temperature.h:
 
 ../Torque.h:
 
 ../TransitiveClosure.h:
+
+../TriangleSolver.h:
 
 ../WaveOptics.h:
 
@@ -4684,6 +5205,12 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/m
 
 ../Point2D.h:
 
+../ElectricPotential.h:
+
+../Circle.h:
+
 ../StaticEquilibrium.h:
+
+../RunTimer.h:
 
 ../BinarySearchTree.h:

@@ -13,24 +13,26 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //**************************************************************************
-    Physics_World world;
-    Eigen::Vector3d pos(2, 4, 6);
-    Eigen::Vector3d vel(1, 2, 3);
-    // add the two vetors and display the result
-    auto result = pos.dot(vel);
-    std::cout << result << std::endl;
+
+    vector<ld> charges {8.0e-9, 6e-9};
+    vector<pair<ld, ld>> positions {{16, 0}, {-9, 0}};
+    pair<ld, ld> refQ {0, 12};
+    ElectricCharge::electricFieldForce(-2.0e-6, .075, true);
 
 
-
-
-
-
-
-
+//    Vector2D q2 {-9, 0};
+//    Vector2D q1 {16, 0};
+//    Vector2D A {0, 12};
+//    Vector2D r1 =  q1 + A;
+//    r1.displayAllData();
+//    Vector2D r2 =  q2 + A;
+//    r2.displayAllData();
+//    Vector2D r = r1 + r2;
+//    r.displayAllData();
 
 
     //**************************************************************************
-    //Stopping timer and displaying the programs' execution time
+    //Stopping RunTimer and displaying the programs' execution time
     //_________________________________________________________________________
     timer.stop();
     timer.display();

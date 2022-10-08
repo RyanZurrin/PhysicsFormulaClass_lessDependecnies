@@ -1,1 +1,1 @@
--isystem D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/include
+-isystem D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/include -isystem "D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7"

@@ -14,6 +14,7 @@
 #define TYPE long double
 
 #include <iostream>
+#include <Eigen/Dense>
 #include "Testing.h"
 #include "StringHelper.h"
 #include "RegexHelper.h"

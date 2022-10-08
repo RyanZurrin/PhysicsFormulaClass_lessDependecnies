@@ -234,7 +234,7 @@ public:
     /// <param name="COULOMB">The q.</param>
     /// <param name="r">The r.</param>
     /// <returns></returns>
-    static constexpr ld electricFieldForce(ld Q, ld r);
+    static constexpr ld electricFieldForce(ld Q, ld r, bool print = false);
 
     /// <summary>
     /// calculates the force by an electric field and current
@@ -248,13 +248,12 @@ public:
      * A positive charge +NQ is located at the origin, and a negative charge
      * -Q is at x = a In which region of the axis is there a point where the
      * force on a test charge—and therefore the electric field—is zero?
-     * @param N: number of positive charges
-     * @param Q: charge of negative charge
+     * @param Qp: number of positive charges
+     * @param Qn: number of negative charges
      * @param a: distance between charges
-     * @param x: test charge
      * @return: the distance from the origin where the electric field is zero
      */
-    static ld electricFieldZero(ld N, ld a, bool print =
+    static ld electricFieldZero(ld Qp, ld Qn, ld a, bool print =
             false);
 
     /// <summary>
@@ -323,7 +322,7 @@ public:
     /// </summary>
     /// <param name="q">The charge.</param>
     /// <param name="r">The r.</param>
-    static constexpr ld electricFieldByPointCharge(ld q, ld r);
+    static constexpr ld electricFieldByPointCharge(ld q, ld r, bool print = false);
 
     /**
      * Two protons are d nm apart. Find the electric field at a point between
@@ -567,6 +566,45 @@ public:
     /// <returns></returns>
     static std::vector<ld> electricFieldAtCenterTriangle(ld qa, ld qb, ld qc, ld l);
 
+    /**
+     * @brief A very long straight wire has charge per unit length lambda. At
+     * what distance from the wire is the magnitude of the electric field
+     * equal to Ef?
+     * @param lambda the charge per unit length
+     * @param Ef the electric field strength
+     * @param print true to print the answer
+     * @return the distance
+     */
+    static constexpr ld distanceFromWireElectricFieldMagnitude(ld lambda,
+                                                               ld Ef,
+                                                               bool print = false);
+
+    /**
+     * @brief Find the magnitude of the electric field due to a charged ring of
+     * radius a and total charge Q, at a point on the ring axis a distance a
+     * from the ring's center.
+     * @param a  the radius of the ring
+     * @param Q  the total charge of the ring
+     * @param print  true to print the answer
+     * @return  the magnitude of the electric field
+     */
+    static ld electricFieldFromChargedRing(ld a, ld Q, bool print = false);
+
+    /**
+     * @brief Find the magnitude of the electric field at a point located at z
+     * meters from the center of a charged ring of radius r having a charge Q.
+     * @param r  the radius of the ring
+     * @param z  the distance from the center of the ring
+     * @param Q  the total charge of the ring
+     * @param print  true to print the answer
+     * @return  the magnitude of the electric field
+     */
+    static ld electricFieldAtPointFromChargedRing(ld r,
+                                                  ld z,
+                                                  ld Q,
+                                                  bool print = false);
+
+
     void setElectricChargeVal(ld val) { _electricChargeVal = val; }
 
 
@@ -644,9 +682,12 @@ inline ld ElectricCharge::chargeOfElectrostaticForce_equalPointCharges(
 }
 
 constexpr ld ElectricCharge::electricFieldForce(
-        const ld Q, const ld r)
+        const ld Q, const ld r, bool print)
 {
-    return (constants::K * Q) / (r * r);
+    auto E = (constants::K * Q) / (r * r);
+    if (print)
+        std::cout << "E = " << E << " N/C" << std::endl;
+    return E;
 }
 
 constexpr ld ElectricCharge::forceByElectricField(
@@ -655,10 +696,10 @@ constexpr ld ElectricCharge::forceByElectricField(
     return q * E;
 }
 
-ld ElectricCharge::electricFieldZero(ld N, ld a, bool print) {
+ld ElectricCharge::electricFieldZero(ld Qp, ld Qn, ld a, bool print) {
     auto k = constants::K;
     auto Q = constants::ELECTRON_CHARGE;
-    auto qN = constants::PROTON_CHARGE * N;
+    auto qN = constants::PROTON_CHARGE * Qp;
     auto E0 = (a*sqrt(2.0))/(sqrt(2)-1);
     if (print)
         std::cout << "E0 = " << E0 << " N/C" << std::endl;
@@ -708,8 +749,13 @@ ld ElectricCharge::electricFieldFromPointChargeDistribution(
 }
 
 
-constexpr ld ElectricCharge::electricFieldByPointCharge(ld q, ld r) {
-    return (constants::K * q) / (r * r);
+constexpr ld ElectricCharge::electricFieldByPointCharge(ld q,
+                                                        ld r,
+                                                        bool print) {
+    auto E = (constants::K * q) / (r * r);
+    if (print)
+        std::cout << "E = " << E << " N/C" << std::endl;
+    return E;
 }
 
 ld ElectricCharge::forceOnElectron(ld d, ld r1, bool print) {
@@ -956,6 +1002,33 @@ ElectricCharge::electricFluxDisc(ld E, ld R, ld theta, bool print) {
         std::cout << "Electric flux = " << phi << " Nm/C" << std::endl;
     }
     return phi;
+}
+
+constexpr ld
+ElectricCharge::distanceFromWireElectricFieldMagnitude(ld lambda, ld Ef,
+                                                       bool print) {
+    auto e0 = constants::e0;
+    auto r = lambda / (2.0 * constants::PI * e0 * Ef);
+    if (print) {
+        std::cout << "Distance from wire = " << r << " m" << std::endl;
+    }
+    return r;
+}
+
+ld ElectricCharge::electricFieldFromChargedRing(ld a, ld Q, bool print) {
+    auto k = constants::K;
+
+    auto E = (k * Q) / (2.0* sqrt(2.0) * a * a);
+    if (print) {
+        std::cout << "Electric field = " << E << " V/m" << std::endl;
+    }
+    return E;
+}
+
+ld ElectricCharge::electricFieldAtPointFromChargedRing(ld r, ld z, ld Q,
+                                                    bool print) {
+    auto k = constants::K;
+    auto E = (k * Q) / pow(((r * r) + (z * z)), 3.0/2.0);
 }
 
 

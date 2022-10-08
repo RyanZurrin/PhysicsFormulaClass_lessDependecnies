@@ -11,7 +11,7 @@
 #include <random>
 using namespace std;
 #define COUNT 10
-static int pos = 1;
+static int positionBST = 1;
 
 template<typename T>
 struct node
@@ -480,9 +480,9 @@ inline void TBST<T>::printTree(node<T>* tree)
     {
         printTree(tree->left);
         std::cout << std::setw(7) << std::left << tree->item
-                  << (pos % 10 == 0 ? '\n' : ' ');
+                  << (positionBST % 10 == 0 ? '\n' : ' ');
         std::cout << tree->item << " ";
-        pos++;
+        positionBST++;
         printTree(tree->right);
 
     }
