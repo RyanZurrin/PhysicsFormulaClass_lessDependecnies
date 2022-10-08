@@ -184,9 +184,9 @@ public:
     /// Calculates the magnitude of force between two electrostatic forces
     /// q1 and q2 using coulomb's law.
     /// </summary>
-    /// <param name="q1">The q1.</param>
-    /// <param name="q2">The q2.</param>
-    /// <param name="r">The r.</param>
+    /// <param name="q1">The charge of first particle.</param>
+    /// <param name="q2">The charge of second particle.</param>
+    /// <param name="r">The distance between the charges.</param>
     /// <returns></returns>
     static constexpr ld coulombsLaw(ld q1, ld q2, ld r,
                                     bool print = false);
@@ -201,7 +201,7 @@ public:
     /// <param name="q">The charge.</param>
     /// <param name="d">The separation.</param>
     /// <returns>the electric dipole moment</returns>
-    static constexpr ld dipoleMoment(ld q, ld d);
+    static constexpr ld dipoleMoment(ld q, ld d, bool print = false);
 
     /// <summary>
     /// dipole field for |y|  >> a, on perpendicular bisector.
@@ -242,7 +242,7 @@ public:
     /// <param name="q">The current.</param>
     /// <param name="E">The electric field strength.</param>
     /// <returns></returns>
-    static constexpr ld forceByElectricField(ld q, ld E);
+    static constexpr ld forceByElectricField(ld q, ld E, bool print = false);
 
     /**
      * A positive charge +NQ is located at the origin, and a negative charge
@@ -433,6 +433,12 @@ public:
     /// <returns>the minimum charge needed in C</returns>
     static ld minimumChargeToLiftCar(ld r, ld l, ld m);
 
+    static ld netForceOnChargeFromOtherCharges(ld q0, pair<ld, ld> q0Loc,
+                                               vector<ld> charges,
+                                               vector<pair<ld, ld>>
+                                               chargeLocs,
+                                               bool print = false);
+
     /// <summary>
     /// Superposition principle. Adding charges up.
     /// </summary>
@@ -580,6 +586,23 @@ public:
                                                                bool print = false);
 
     /**
+     * A (l) m length of power line carries a total charge of (q) C
+     * distributed uniformly over its length. Find the magnitude of the
+     * electric field at (r) m  from the axis of the power line, and not
+     * near either end (staying away from the ends means you can approximate
+     * the field as that of an infinitely long wire).
+     * @param l the length of the power line
+     * @param q the total charge
+     * @param r the distance from the axis
+     * @param print true to print the answer
+     * @return the magnitude of the electric field
+     */
+    static constexpr ld magnitudeOfElectricFieldAtByWire(ld l,
+                                                         ld q,
+                                                         ld r,
+                                                         bool print = false);
+
+    /**
      * @brief Find the magnitude of the electric field due to a charged ring of
      * radius a and total charge Q, at a point on the ring axis a distance a
      * from the ring's center.
@@ -604,6 +627,51 @@ public:
                                                   ld Q,
                                                   bool print = false);
 
+    /**
+     * A proton moving to the right at V m/s enters a region where a
+     * E N/C electric field points to the left. How far will the proton get
+     * before its speed reaches zero? Express your answer in meters.
+     * @param V the initial speed
+     * @param E the electric field
+     * @param print true to print the answer
+     * @return the distance
+     */
+    static ld distanceProtonGetsBeforeSpeedZero(ld V, ld E, bool print = false);
+
+    /**
+     * The charges are in a uniform electric field whose direction makes an
+     * angle theta with the line connecting the charges. What is the
+     * magnitude of this field if the torque exerted on the dipole has
+     * magnitude t N⋅m  ?
+     * @param t the torque
+     * @param theta the angle
+     * @param p dipole moment
+     * @param print true to print the answer
+     */
+    static ld magnitudeOfElectricField(ld t, ld theta, ld p, bool print = false);
+
+    /**
+     * Three identical charges q form an equilateral triangle of side a,
+     * with two charges on the x-axis and one on the positive y-axis.
+     * Find an expression for the electric field at points on the  y -axis above
+     * the uppermost charge.
+     * @param q the charge
+     * @param a the side length
+     * @param y the y coordinate
+     * @param print true to print the answer
+     * @return the electric field
+     */
+    static ld electricFieldAtPointOnYAxis(ld q, ld a, ld y, bool print = false);
+
+    /**
+     * Four equal charges  Q  are at the corners of a square of side  a .
+     * Find the magnitude of the force on each charge.
+     * @param Q the charge
+     * @param a the side length
+     * @param print true to print the answer
+     * @return the force
+     */
+    static ld forceOnEachChargeInSquare(ld Q, ld a, bool print = false);
 
     void setElectricChargeVal(ld val) { _electricChargeVal = val; }
 
@@ -691,9 +759,12 @@ constexpr ld ElectricCharge::electricFieldForce(
 }
 
 constexpr ld ElectricCharge::forceByElectricField(
-        const ld q, const ld E)
+        const ld q, const ld E, bool print)
 {
-    return q * E;
+    auto F = q * E;
+    if (print)
+        std::cout << "F = " << F << " N" << std::endl;
+    return F;
 }
 
 ld ElectricCharge::electricFieldZero(ld Qp, ld Qn, ld a, bool print) {
@@ -949,8 +1020,12 @@ inline ld ElectricCharge::netElectronCount(
     return protons + ((-abs(netCharge)) / constants::PROTON_CHARGE);
 }
 
-constexpr ld ElectricCharge::dipoleMoment(ld q, ld d) {
-    return q * d;
+constexpr ld ElectricCharge::dipoleMoment(ld q, ld d, bool print) {
+    auto mu = q * d;
+    if (print) {
+        std::cout << "Dipole moment = " << mu << " Cm" << std::endl;
+    }
+    return mu;
 }
 
 constexpr ld ElectricCharge::dipoleFieldPerpendicularBisector(ld p, ld y) {
@@ -1005,7 +1080,8 @@ ElectricCharge::electricFluxDisc(ld E, ld R, ld theta, bool print) {
 }
 
 constexpr ld
-ElectricCharge::distanceFromWireElectricFieldMagnitude(ld lambda, ld Ef,
+ElectricCharge::distanceFromWireElectricFieldMagnitude(ld lambda,
+                                                       ld Ef,
                                                        bool print) {
     auto e0 = constants::e0;
     auto r = lambda / (2.0 * constants::PI * e0 * Ef);
@@ -1033,6 +1109,74 @@ ld ElectricCharge::electricFieldAtPointFromChargedRing(ld r, ld z, ld Q,
         std::cout << "Electric field = " << E << " V/m" << std::endl;
     }
     return E;
+}
+
+ld ElectricCharge::netForceOnChargeFromOtherCharges(ld q0, pair<ld, ld> q0Loc,
+                                                    vector<ld> charges,
+                                                    vector<pair<ld, ld>> chargeLocs,
+                                                    bool print) {
+    auto k = constants::K;
+    vector<ld> forces;
+    for (int i = 0; i < charges.size(); i++) {
+        auto q = charges[i];
+        auto x = chargeLocs[i].first;
+        auto y = chargeLocs[i].second;
+        auto r = sqrt(pow((q0Loc.first - x), 2.0) + pow((q0Loc.second - y), 2.0));
+        auto F = (k * q0 * q) / (r * r);
+        forces.push_back(F);
+    }
+    auto netForce = accumulate(forces.begin(), forces.end(), 0.0);
+    if (print) {
+        std::cout << "Net force = " << netForce << " N" << std::endl;
+    }
+    return netForce;
+}
+
+ld ElectricCharge::distanceProtonGetsBeforeSpeedZero(ld V, ld E, bool print) {
+    auto m = constants::PROTON_MASS;
+    auto q = constants::PROTON_CHARGE;
+    auto r = (m * (V * V)) / (2.0 * q * E);
+    if (print) {
+        std::cout << "Distance = " << r << " m" << std::endl;
+    }
+    return r;
+}
+
+ld ElectricCharge::magnitudeOfElectricField(ld t, ld theta, ld p, bool print) {
+    auto E = t / (p * sin(theta*constants::RADIAN));
+    if (print) {
+        std::cout << "Electric field = " << E << " N/C" << std::endl;
+    }
+    return E;
+}
+
+constexpr ld
+ElectricCharge::magnitudeOfElectricFieldAtByWire(ld l, ld q, ld r, bool print) {
+    auto lamda = q / l;
+    auto k = constants::K;
+    auto E = (2.0 * k * lamda) / r;
+    if (print) {
+        std::cout << "Electric field = " << E << " N/C" << std::endl;
+    }
+    return E;
+}
+
+ld ElectricCharge::electricFieldAtPointOnYAxis(ld q, ld a, ld y, bool print) {
+    auto k = constants::K;
+    auto E = (4.0 * k * q) / (pow((2.0 * y - a * sqrt(3.0)), 2.0) + (4.0 * y) / pow((4.0 * y * y + a * a), 3.0/2.0));
+    if (print) {
+        std::cout << "Electric field = " << E << " N/C" << std::endl;
+    }
+    return E;
+}
+
+ld ElectricCharge::forceOnEachChargeInSquare(ld Q, ld a, bool print) {
+    auto k = constants::K;
+    auto F = ((k * Q * Q) / (2.0 * a * a))*(2.0*sqrt(2.0) + 1.0);
+    if (print) {
+        std::cout << "Force = " << F << " N" << std::endl;
+    }
+    return F;
 }
 
 

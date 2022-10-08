@@ -14,24 +14,10 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    vector<ld> charges {8.0e-9, 6e-9};
-    vector<pair<ld, ld>> positions {{16, 0}, {-9, 0}};
-    pair<ld, ld> refQ {0, 12};
-    ElectricCharge::electricFieldForce(-2.0e-6, .075, true);
-    Eigen::Matrix<ld, 2, 1> force;
-    force << 0, 0;
-    cout << "force: " << force << endl;
+    ElectricCharge::magnitudeOfElectricFieldAtByWire(1.0e3, 264e-3, 54.3e-2,
+                                                     true);
 
 
-//    Vector2D q2 {-9, 0};
-//    Vector2D q1 {16, 0};
-//    Vector2D A {0, 12};
-//    Vector2D r1 =  q1 + A;
-//    r1.displayAllData();
-//    Vector2D r2 =  q2 + A;
-//    r2.displayAllData();
-//    Vector2D r = r1 + r2;
-//    r.displayAllData();
 
 
     //**************************************************************************
