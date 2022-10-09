@@ -14,8 +14,7 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    ElectricCharge::magnitudeOfElectricFieldAtByWire(1.0e3, 264e-3, 54.3e-2,
-                                                     true);
+    // ElectricCharge::electricFlux()
 
 
 

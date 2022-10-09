@@ -14,7 +14,7 @@
 #include <iostream>
 #include <vector>
 #include "UnitVector.h"
-#include "Vector2D.h"
+#include "Vector3D.h"
 typedef long double ld;
 
 static int electricCharge_objectCount = 0;
@@ -366,6 +366,15 @@ public:
      */
     static constexpr ld electricFlux(ld E, ld A, ld theta, bool print = false);
 
+    /**
+     * Calculates the electric flux (number of field lines per unit area)
+     * @param E  the electric field strength Vector
+     * @param A  The Unit area Vector
+     * @param print  print the result
+     * @return  the electric flux
+     */
+    static ld electricFlux(Vector3D E, Vector3D A, bool print = false);
+
     static constexpr ld electricFluxDisc(ld E, ld R, ld theta, bool print = false);
 
     /**
@@ -377,6 +386,16 @@ public:
     static constexpr ld electricFluxSphere(ld q);
 
     /**
+     * @brief Calculates the elextric flux of a charged sphere of radius r,
+     * with and
+     * @param E the electric field strength
+     * @param r the radius of the sphere
+     * @param print whether or not to print the result
+     * @return the electric flux
+     */
+    static constexpr ld electricFluxSphere(ld E, ld r, bool print = false);
+
+    /**
      * Calculates the electric field strength caused by a distribution of
      * electric charges over a spherical surface.
      * @param Q the charge over an area
@@ -386,13 +405,45 @@ public:
     static constexpr ld fieldOutsideSphericalChargeDistribution(ld Q, ld r, bool print = false);
 
     /**
+     * @brief Calculates the filed inside a uniformly charged sphere.
+     * @param Qr the charge over an area
+     * @param R the radius of the sphere
+     * @param print whether or not to print the result
+     * @return the electric field strength
+     */
+    static constexpr ld fieldInsideSphericalChargeDistribution(ld Qr,
+                                                               ld R,
+                                                               bool print = false);
+
+    /**
      * Calculates the electric field of a distribution of electric charges over a
      * symmetric line of length infinity.
-     * @param lambda carrying charge density in coulombs per meter
+     * @param lambda line charge density
      * @param r  the radius of the line
      * @return  the electric field strength
      */
     static constexpr ld fieldOfALineCharge(ld lambda, ld r, bool print = false);
+
+    /**
+     * @brief Calculates the electric field of a distribution of electric charges
+     * over a symmetric line of length l having a radius of r and a charge of q.
+     * @param q the charge over an area
+     * @param l the length of the line
+     * @param r the radius of the line
+     * @param print whether or not to print the result
+     * @return the electric field strength
+     */
+    static constexpr ld fieldOfLineCharge(ld q, ld l, ld r, bool print = false);
+
+    /**
+     * @brief Calculates the line charge density (lambda) of a uniformly charged
+     * line of length infinity.
+     * @param q  the charge over an area
+     * @param L  the length of the line
+     * @param print  whether or not to print the result
+     * @return  the line charge density
+     */
+    static constexpr ld lineChargeDensity(ld q, ld L, bool print = false);
 
 
     /// <summary>
@@ -672,6 +723,34 @@ public:
      * @return the force
      */
     static ld forceOnEachChargeInSquare(ld Q, ld a, bool print = false);
+
+    /**
+     * @brief Calculate the surface charge density of a uniformly charged
+     * sheet of charge Q and area A.
+     * @param Q the charge
+     * @param A  the area
+     * @param print  true to print the answer
+     * @return  the surface charge density
+     */
+    static constexpr ld surfaceChargeDensity(ld Q, ld A, bool print = false);
+
+    /**
+     * @brief Calculate the field charge of a sheet with a surface charge density
+     * sigma
+     * @param sigma the surface charge density
+     * @param print true to print the answer
+     * @return the field charge
+     */
+    static constexpr ld fieldChargeOfSheet(ld sigma, bool print = false);
+
+    /**
+     * @brief Calculate the electric field at the surface of a conductor with
+     * surface charge density sigma.
+     * @param sigma  the surface charge density
+     * @param print  true to print the answer
+     * @return  the electric field
+     */
+    static constexpr ld fieldAtConductorSurface(ld sigma, bool print = false);
 
     void setElectricChargeVal(ld val) { _electricChargeVal = val; }
 
@@ -1178,5 +1257,75 @@ ld ElectricCharge::forceOnEachChargeInSquare(ld Q, ld a, bool print) {
     }
     return F;
 }
+
+ld ElectricCharge::electricFlux(Vector3D E, Vector3D A, bool print) {
+    auto phi = E.dot_product(A);
+    if (print) {
+        std::cout << "Electric flux = " << phi << " Nm/C" << std::endl;
+    }
+    return phi;
+}
+
+constexpr ld ElectricCharge::electricFluxSphere(ld E, ld r, bool print) {
+    auto phi = 4.0 * constants::PI * E * r * r;
+    if (print) {
+        std::cout << "Electric flux = " << phi << " Nm/C" << std::endl;
+    }
+    return phi;
+}
+
+constexpr ld ElectricCharge::fieldInsideSphericalChargeDistribution(ld Qr, ld R,
+                                                                    bool print) {
+    auto epsilon0 = constants::e0;
+    auto E = (Qr / (4.0 * constants::PI * epsilon0 * (R * R * R)));
+    if (print) {
+        std::cout << "Electric field = " << E << " N/C" << std::endl;
+    }
+    return E;
+}
+
+constexpr ld ElectricCharge::lineChargeDensity(ld q, ld L, bool print) {
+    auto lamda = q / L;
+    if (print) {
+        std::cout << "Line charge density = " << lamda << " C/m" << std::endl;
+    }
+    return lamda;
+}
+
+constexpr ld ElectricCharge::surfaceChargeDensity(ld Q, ld A, bool print) {
+    auto sigma = Q / A;
+    if (print) {
+        std::cout << "Surface charge density = " << sigma << " C/m^2" << std::endl;
+    }
+    return sigma;
+}
+
+constexpr ld ElectricCharge::fieldOfLineCharge(ld q, ld l, ld r, bool print) {
+    auto epsilon0 = constants::e0;
+    auto E = (q / (2.0 * constants::PI * epsilon0 * r * l));
+    if (print) {
+        std::cout << "Electric field = " << E << " N/C" << std::endl;
+    }
+    return E;
+}
+
+constexpr ld ElectricCharge::fieldChargeOfSheet(ld sigma, bool print) {
+    auto epsilon0 = constants::e0;
+    auto E = sigma / ( 2.0 * epsilon0);
+    if (print) {
+        std::cout << "Electric field = " << E << " N/C" << std::endl;
+    }
+    return E;
+}
+
+constexpr ld ElectricCharge::fieldAtConductorSurface(ld sigma, bool print) {
+    auto epsilon0 = constants::e0;
+    auto E = sigma / epsilon0;
+    if (print) {
+        std::cout << "Electric field = " << E << " N/C" << std::endl;
+    }
+    return E;
+}
+
 
 
