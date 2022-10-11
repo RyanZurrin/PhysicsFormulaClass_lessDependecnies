@@ -1,4 +1,4 @@
-E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4167.35\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S D:\src\ClionProjects\PhysicsFormulaClass_lessDependecnies -B D:\src\ClionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug
+C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4167.35\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies -B D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug
 -- Found SFML 2.5.1 in D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/lib/cmake/SFML
 -- Configuring done
 -- Generating done
