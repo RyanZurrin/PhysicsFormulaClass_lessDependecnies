@@ -3876,6 +3876,7 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Magnetism.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/ElectricCharge.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/UnitVector.h
+ D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Vector3D.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/FluidStatics.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Hearing.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Waves.h
@@ -3895,7 +3896,6 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj
  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/stdarg.h
  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/stdarg.h
  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/x86_64-w64-mingw32/include/_mingw_stdarg.h
- D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Vector3D.h
  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/list
  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/stl_list.h
  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/list.tcc

@@ -3,6 +3,9 @@ project(PhysicsFormula)
 
 set(CMAKE_CXX_STANDARD 20)
 
+set(DMAKE_TOOLCHAIN_FILE "E:/Program Files/vcpkg/scripts/buildsystems/vcpkg.cmake")
+# set(DMAKE_TOOLCHAIN_FILE "D:/src/vcpkg/scripts/buildsystems/vcpkg.cmake")
+
 add_executable(PhysicsFormula testFactory.cpp Angle.h AtomicPhysics.h
         BinarySearchTree.h BinarySpacePartition.h Boundries.h Bounds.h Circle.h
         Circuits.h Cone.h Convexhull.h Core.h Cube.h Cylinder.h Distance.h

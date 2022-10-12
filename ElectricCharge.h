@@ -396,16 +396,31 @@ public:
     static constexpr ld electricFluxSphere(ld E, ld r, bool print = false);
 
     /**
+     * @brief Calculates the flux through a half cylinder of radius r and and
+     * length l with an electric field strength of E.
+     * @param E  the electric field strength
+     * @param r  the radius of the cylinder
+     * @param l  the length of the cylinder
+     * @param print  whether or not to print the result
+     * @return  the electric flux
+     */
+    static constexpr ld fluxThroughHalfCylinder(ld E, ld r, ld l, bool print =
+            false);
+
+    /**
      * Calculates the electric field strength caused by a distribution of
-     * electric charges over a spherical surface.
+     * electric charges over a spherical surface using Gauss's law.
      * @param Q the charge over an area
      * @param r the radius of the sphere
      * @return  the electric field strength
      */
-    static constexpr ld fieldOutsideSphericalChargeDistribution(ld Q, ld r, bool print = false);
+    static constexpr ld fieldOutsideSphericalChargeDistribution(ld Q,
+                                                                ld r,
+                                                                bool print = false);
 
     /**
-     * @brief Calculates the filed inside a uniformly charged sphere.
+     * @brief Calculates the filed inside a uniformly charged sphere using
+     * Gauss's law.
      * @param Qr the charge over an area
      * @param R the radius of the sphere
      * @param print whether or not to print the result
@@ -414,6 +429,8 @@ public:
     static constexpr ld fieldInsideSphericalChargeDistribution(ld Qr,
                                                                ld R,
                                                                bool print = false);
+
+    static constexpr ld gaussSphericalSymmetry(ld Q, ld A, bool print = false);
 
     /**
      * Calculates the electric field of a distribution of electric charges over a
@@ -1325,6 +1342,25 @@ constexpr ld ElectricCharge::fieldAtConductorSurface(ld sigma, bool print) {
         std::cout << "Electric field = " << E << " N/C" << std::endl;
     }
     return E;
+}
+
+constexpr ld ElectricCharge::gaussSphericalSymmetry(ld Q, ld A, bool print) {
+    auto E = fieldInsideSphericalChargeDistribution(Q, A, false);
+    if (print) {
+        std::cout << "Electric field = " << E << " N/C" << std::endl;
+    }
+    return E;
+}
+
+constexpr ld
+ElectricCharge::fluxThroughHalfCylinder(ld E, ld r, ld l, bool print) {
+    auto A = 2.0 * r * l;
+    auto phi = E * A;
+    if (print) {
+        std::cout << "Electric flux = " << phi << " Nm^2/C" <<
+        std::endl;
+    }
+    return phi;
 }
 
 

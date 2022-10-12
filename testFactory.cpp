@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    // ElectricCharge::electricFlux()
+    ElectricCharge::fluxThroughHalfCylinder(6.8e3, .034, .15, true);
 
 
 
