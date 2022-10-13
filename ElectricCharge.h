@@ -39,16 +39,6 @@ constexpr int signOfForce(const ld q1, const ld q2)
 
 static struct ScientificNotationUnits
 {
-    typedef ScientificNotationUnits snu;
-    ScientificNotationUnits()
-    {
-        refVal = 0.0;
-    }
-    ScientificNotationUnits(ld v)
-    {
-        refVal = v;
-    }
-    ~ScientificNotationUnits() = default;
     ld refVal;
     const ld YOTTA = pow(10, 24);  //10^24
     const ld ZETTA = pow(10, 21);  //10^21
@@ -70,24 +60,9 @@ static struct ScientificNotationUnits
     const ld ATTO  = pow(10, -18); //10^-18
     const ld ZEPTO = pow(10, -21); //10^-21
     const ld YOCTO = pow(10, -24); //10^-24
-    friend snu operator+(const snu &r, const snu &l)
-    {	return  l.refVal + r.refVal;	}
-    snu operator+(ld rhs)const
-    {	return this->refVal + rhs;	}
-    friend snu operator-(const snu &r, const snu &l)
-    {	return  l.refVal - r.refVal;	}
-    snu operator-(ld rhs)const
-    {	return this->refVal - rhs;	}
-    friend snu operator*(const snu &r, const snu &l)
-    {	return  l.refVal * r.refVal;	}
-    snu operator*(ld rhs)const
-    {	return this->refVal * rhs;	}
-    friend snu operator/(const snu &r, const snu &l)
-    {	return  l.refVal / r.refVal;	}
-    snu operator/(ld rhs)const
-    {	return this->refVal / rhs;	}
 
 } SU;
+
 
 
 class ElectricCharge
@@ -341,7 +316,7 @@ public:
     /// <param name="E">The force of the electric field in N/C.</param>
     /// <param name="r">The distance it causes this force.</param>
     /// <returns>magnitude of the point charge (C)</returns>
-    static constexpr ld magnitudePointCharge(ld E, ld r);
+    static constexpr ld magnitudePointCharge(ld E, ld r, bool print = false);
 
     /// <summary>
     /// Calculates the charge of a point particle having a force of F acting on
@@ -414,9 +389,8 @@ public:
      * @param r the radius of the sphere
      * @return  the electric field strength
      */
-    static constexpr ld fieldOutsideSphericalChargeDistribution(ld Q,
-                                                                ld r,
-                                                                bool print = false);
+    static constexpr ld fieldOutsideSphericalChargeDistribution(
+            ld Q, ld r, bool print = false);
 
     /**
      * @brief Calculates the filed inside a uniformly charged sphere using
@@ -426,9 +400,8 @@ public:
      * @param print whether or not to print the result
      * @return the electric field strength
      */
-    static constexpr ld fieldInsideSphericalChargeDistribution(ld Qr,
-                                                               ld R,
-                                                               bool print = false);
+    static constexpr ld fieldInsideSphericalChargeDistribution(
+            ld Qr, ld R, bool print = false);
 
     static constexpr ld gaussSphericalSymmetry(ld Q, ld A, bool print = false);
 
@@ -638,7 +611,8 @@ public:
     /// <param name="qc">The qc.</param>
     /// <param name="l">The l.</param>
     /// <returns></returns>
-    static std::vector<ld> electricFieldAtCenterTriangle(ld qa, ld qb, ld qc, ld l);
+    static std::vector<ld> electricFieldAtCenterTriangle(
+            ld qa, ld qb, ld qc, ld l);
 
     /**
      * @brief A very long straight wire has charge per unit length lambda. At
@@ -649,9 +623,8 @@ public:
      * @param print true to print the answer
      * @return the distance
      */
-    static constexpr ld distanceFromWireElectricFieldMagnitude(ld lambda,
-                                                               ld Ef,
-                                                               bool print = false);
+    static constexpr ld distanceFromWireElectricFieldMagnitude(
+            ld lambda, ld Ef, bool print = false);
 
     /**
      * A (l) m length of power line carries a total charge of (q) C
@@ -665,10 +638,22 @@ public:
      * @param print true to print the answer
      * @return the magnitude of the electric field
      */
-    static constexpr ld magnitudeOfElectricFieldAtByWire(ld l,
-                                                         ld q,
-                                                         ld r,
-                                                         bool print = false);
+    static constexpr ld magnitudeOfElectricFieldByWire(
+            ld l, ld q, ld r, bool print = false);
+
+    /**
+     * @brief A rod l m long and r m in radius carries a Q C charge
+     * distributed uniformly over its length. What is the approximate magnitude
+     * of the electric field R m from the rod surface, not near either end?
+     * @param l the length of the rod     *
+     * @param Q the total charge
+     * @param r the radius of the rod
+     * @param R the distance from the rod surface
+     * @param print true to print the answer
+     * @return the magnitude of the electric field
+     */
+    static constexpr ld magnitudeOfElectricFieldByRod(
+            ld l, ld Q, ld r, ld R, bool print = false);
 
     /**
      * @brief Find the magnitude of the electric field due to a charged ring of
@@ -690,10 +675,8 @@ public:
      * @param print  true to print the answer
      * @return  the magnitude of the electric field
      */
-    static ld electricFieldAtPointFromChargedRing(ld r,
-                                                  ld z,
-                                                  ld Q,
-                                                  bool print = false);
+    static ld electricFieldAtPointFromChargedRing(
+            ld r, ld z, ld Q, bool print = false);
 
     /**
      * A proton moving to the right at V m/s enters a region where a
@@ -752,6 +735,24 @@ public:
     static constexpr ld surfaceChargeDensity(ld Q, ld A, bool print = false);
 
     /**
+     * An electron close to a large, flat sheet of charge is repelled from the
+     * sheet with a E force. Calculate the surface charge density of the sheet.
+     * @param E the force
+     * @param print true to print the answer
+     * @return the surface charge density
+     */
+    static constexpr ld surfaceChargeDensity(ld E, bool print = false);
+
+    /**
+     * brief What surface charge density on an infinite sheet will produce an
+     * electric field of E N/C?
+     * @param E the electric field
+     * @param print true to print the answer
+     * @return the surface charge density
+     */
+    static constexpr ld surfaceChargeDensityFromElectricField(ld E, bool print = false);
+
+    /**
      * @brief Calculate the field charge of a sheet with a surface charge density
      * sigma
      * @param sigma the surface charge density
@@ -759,6 +760,17 @@ public:
      * @return the field charge
      */
     static constexpr ld fieldChargeOfSheet(ld sigma, bool print = false);
+
+    /**
+     * A total charge of Q C is applied to a thin, square metal plate l m
+     * on a side. Calculate the electric field strength near the plates sruface.
+     * @param Q the total charge
+     * @param l the side length
+     * @param print true to print the answer
+     * @return the electric field strength
+     */
+    static constexpr ld electricFieldStrengthNearPlate(
+            ld Q, ld l, bool print = false);
 
     /**
      * @brief Calculate the electric field at the surface of a conductor with
@@ -941,9 +953,12 @@ ld ElectricCharge::forceOnElectron(ld d, ld r1, bool print) {
 }
 
 constexpr ld ElectricCharge::magnitudePointCharge(
-        const ld E, const ld r)
+        const ld E, const ld r, bool print)
 {
-    return ((r * r) * E) / constants::K;
+    auto Q = ((r * r) * E) / constants::K;
+    if (print)
+        std::cout << "Q = " << Q << " C" << std::endl;
+    return Q;
 }
 
 constexpr ld ElectricCharge::charge(const ld F, const ld E)
@@ -1151,9 +1166,10 @@ constexpr ld ElectricCharge::electricFluxSphere(ld q) {
 
 constexpr ld
 ElectricCharge::fieldOutsideSphericalChargeDistribution(ld Q, ld r, bool print) {
-    auto E = Q / (4.0 * constants::PI * r * r * constants::e0);
+    auto E = Q / (4.0 * constants::PI * (r * r) * constants::e0);
     if (print) {
-        std::cout << "Field outside spherical charge distribution = " << E << " V/m" << std::endl;
+        std::cout << "Field outside spherical charge distribution = "
+        << E << " N/C" << std::endl;
     }
     return E;
 }
@@ -1247,10 +1263,23 @@ ld ElectricCharge::magnitudeOfElectricField(ld t, ld theta, ld p, bool print) {
 }
 
 constexpr ld
-ElectricCharge::magnitudeOfElectricFieldAtByWire(ld l, ld q, ld r, bool print) {
+ElectricCharge::magnitudeOfElectricFieldByWire(ld l, ld q, ld r, bool print) {
     auto lamda = q / l;
     auto k = constants::K;
     auto E = (2.0 * k * lamda) / r;
+    if (print) {
+        std::cout << "Electric field = " << E << " N/C" << std::endl;
+    }
+    return E;
+}
+
+constexpr ld
+ElectricCharge::magnitudeOfElectricFieldByRod(
+        ld l, ld Q, ld r, ld R, bool print) {
+    auto lambda = Q / l;
+    auto d = R + r;
+    auto k = constants::K;
+    auto E = (2.0 * k * lambda) / d;
     if (print) {
         std::cout << "Electric field = " << E << " N/C" << std::endl;
     }
@@ -1317,6 +1346,24 @@ constexpr ld ElectricCharge::surfaceChargeDensity(ld Q, ld A, bool print) {
     return sigma;
 }
 
+constexpr ld ElectricCharge::surfaceChargeDensity(ld E, bool print) {
+    auto e = constants::ELECTRON_CHARGE;
+    auto sigma = (E * 2.0 * constants::e0) / e;
+    if (print) {
+        std::cout << "Surface charge density = " << sigma << " C/m^2" << std::endl;
+    }
+    return sigma;
+}
+
+constexpr ld
+ElectricCharge::surfaceChargeDensityFromElectricField(ld E, bool print) {
+    auto sigma = E * 2.0 * constants::e0;
+    if (print) {
+        std::cout << "Surface charge density = " << sigma << " C/m^2" << std::endl;
+    }
+    return sigma;
+}
+
 constexpr ld ElectricCharge::fieldOfLineCharge(ld q, ld l, ld r, bool print) {
     auto epsilon0 = constants::e0;
     auto E = (q / (2.0 * constants::PI * epsilon0 * r * l));
@@ -1361,6 +1408,17 @@ ElectricCharge::fluxThroughHalfCylinder(ld E, ld r, ld l, bool print) {
         std::endl;
     }
     return phi;
+}
+
+constexpr ld
+ElectricCharge::electricFieldStrengthNearPlate(ld Q, ld l, bool print) {
+    auto A = l * l;
+    auto sigma = Q / A;
+    auto E = fieldChargeOfSheet(sigma, false);
+    if (print) {
+        std::cout << "Electric field = " << E << " N/C" << std::endl;
+    }
+    return E;
 }
 
 

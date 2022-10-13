@@ -14,8 +14,7 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    ElectricCharge::fluxThroughHalfCylinder(6.8e3, .034, .15, true);
-
+    ElectricCharge::electricFieldStrengthNearPlate(21e-6, .81, true);
 
 
 
