@@ -735,6 +735,16 @@ public:
     static constexpr ld surfaceChargeDensity(ld Q, ld A, bool print = false);
 
     /**
+     * @brief Calculate the surface charge density of a uncharged spherical
+     * conducting shell of radius r with a charge Q placed at the center.
+     * @param Q  the charge
+     * @param r  the radius
+     * @param print  true to print the answer
+     * @return  the surface charge density
+     */
+    static constexpr ld surfaceChargeDensitySphere(ld Q, ld r, bool print = false);
+
+    /**
      * An electron close to a large, flat sheet of charge is repelled from the
      * sheet with a E force. Calculate the surface charge density of the sheet.
      * @param E the force
@@ -742,6 +752,28 @@ public:
      * @return the surface charge density
      */
     static constexpr ld surfaceChargeDensity(ld E, bool print = false);
+
+    /**
+     * @brief Calculate the Electric field strength inside a uniformly charged
+     * slab of charge with a volume charge density of rho and thickness d.
+     * @param rho  the volume charge density
+     * @param x  the distance from the center plane of the slab
+     * @param print  true to print the answer
+     * @return  the electric field strength
+     */
+    static constexpr ld fieldInsideSlabWithVolumeChargeDensity(
+            ld rho, ld x, bool print = false);
+
+    /**
+     * @brief Calculates the Electric field strength outside a slab at a
+     * distance x from the center plane of the slab.
+     * @param rho the volume charge density
+     * @param d  the thickness of the slab
+     * @param print true to print the answer
+     * @return the electric field strength
+     */
+    static constexpr ld fieldOutsideSlabWithVolumeChargeDensity(
+            ld rho, ld d, bool print = false);
 
     /**
      * brief What surface charge density on an infinite sheet will produce an
@@ -1177,7 +1209,7 @@ ElectricCharge::fieldOutsideSphericalChargeDistribution(ld Q, ld r, bool print) 
 constexpr ld ElectricCharge::fieldOfALineCharge(ld lambda, ld r, bool print) {
     auto E = lambda / (2.0 * constants::PI * r * constants::e0);
     if (print) {
-        std::cout << "Field of a line charge = " << E << " V/m" << std::endl;
+        std::cout << "Field of a line charge = " << E << " N/C" << std::endl;
     }
     return E;
 }
@@ -1419,6 +1451,38 @@ ElectricCharge::electricFieldStrengthNearPlate(ld Q, ld l, bool print) {
         std::cout << "Electric field = " << E << " N/C" << std::endl;
     }
     return E;
+}
+
+constexpr ld
+ElectricCharge::fieldInsideSlabWithVolumeChargeDensity(ld rho, ld x, bool print) {
+    auto e0 = constants::e0;
+    auto E = (rho * x) / (e0);
+    if (print) {
+        std::cout << "Electric field = " << E << " N/C" << std::endl;
+    }
+    return E;
+}
+
+constexpr ld
+ElectricCharge::fieldOutsideSlabWithVolumeChargeDensity(
+        ld rho, ld d, bool print) {
+    auto e0 = constants::e0;
+    auto E = (rho * d) / (2.0 * e0);
+    if (print) {
+        std::cout << "Electric field = " << E << " N/C" << std::endl;
+    }
+    return E;
+}
+
+constexpr ld
+ElectricCharge::surfaceChargeDensitySphere(ld Q, ld r, bool print) {
+    auto A = 4.0 * constants::PI * r * r;
+    auto sigma = Q / A;
+    if (print) {
+        std::cout << "Surface charge density = " << sigma << " C/m^2" <<
+        std::endl;
+    }
+    return sigma;
 }
 
 

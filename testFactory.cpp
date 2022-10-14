@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    ElectricCharge::electricFieldStrengthNearPlate(21e-6, .81, true);
+    ElectricCharge::surfaceChargeDensitySphere(300e-9, .32, true);
 
 
 

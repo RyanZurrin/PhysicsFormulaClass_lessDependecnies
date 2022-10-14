@@ -115,6 +115,7 @@ namespace constants {
      */
     constexpr auto BOLTZMANN = 1.38064852e-23;
 
+
     /**
      * @brief Global constant _R_ is the universal gas constant struct which has _R_
      * in different units for use in different kinds of problems all represented
@@ -143,11 +144,11 @@ namespace constants {
     constexpr auto ATOMIC_MASS_UNIT = 1.66053886e-27; //kg
     constexpr auto AMU = ATOMIC_MASS_UNIT;
 
-    constexpr auto MOLAR_MASS_UMIT = .999999999e-3; //kg/mol
+    constexpr auto MOLAR_MASS_UNIT = .999999999e-3; //kg/mol
 
     constexpr auto FARADAY = 96485.33212; //Coulombs/mol
 
-    constexpr auto MOLAR_PLANCK = 3.9903127128934314e-10; //Js/mol
+    constexpr auto MOLAR_PLANCK = 3.9903127128934314e-10; //J/Hz*mol
 
 
 
