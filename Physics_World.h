@@ -43,6 +43,7 @@
 #include "Rectangle.h"
 #include "RectangularPrism.h"
 #include "RotationalMotion.h"
+#include "Scale.h"
 #include "Sphere.h"
 #include "Statics.h"
 #include "TemplateBST.h"
@@ -1130,6 +1131,7 @@ public:
     unique_ptr<Parallelogram> parallelogram;
     unique_ptr<Point2D<TYPE>> point2d;
     unique_ptr<rez::Vector<TYPE>> vector;
+    unique_ptr<Scale> scale;
 
 
     Physics_World();
@@ -1189,7 +1191,8 @@ public:
             circle(std::move(o.circle)),
             parallelogram(std::move(o.parallelogram)),
             point2d(std::move(o.point2d)),
-            vector(std::move(o.vector)){} // move constructor
+            vector(std::move(o.vector)),
+            scale(std::move(o.scale)){} // move constructor
 
     /**========================================================================
      * overloaded operators
@@ -1263,7 +1266,7 @@ public:
     // destructor
     ~Physics_World();
 
-    void setGravity(double d);
+    static void setGravity(double d);
 };
 #endif //PHYSICSFORMULA_PHYSICS_WORLD_H
 
@@ -1327,6 +1330,7 @@ inline Physics_World::Physics_World()
     parallelogram = std::make_unique<Parallelogram>();
     point2d = std::make_unique<Point2D<TYPE>>();
     vector = std::make_unique <rez::Vector<TYPE>>();
+    scale = std::make_unique<Scale>();
     countIncrease();
     //countShow();
 }
@@ -1335,7 +1339,6 @@ inline Physics_World::Physics_World()
  */
 inline Physics_World::Physics_World(const Physics_World& p)
 {
-
     countIncrease();
 }
 /**
@@ -1404,6 +1407,7 @@ inline Physics_World::Physics_World(const TYPE t1, const TYPE t2, const TYPE t3)
     parallelogram = std::make_unique<Parallelogram>();
     point2d = std::make_unique<Point2D<TYPE>>();
     vector = std::make_unique <rez::Vector<TYPE>>();
+    scale = std::make_unique<Scale>();
     this->vector3d->set_coordinates(t1, t2, t3);
 
     countIncrease();
@@ -1463,6 +1467,7 @@ inline Physics_World::Physics_World(const TYPE t1, const TYPE t2)
     parallelogram = std::make_unique<Parallelogram>();
     point2d = std::make_unique<Point2D<TYPE>>();
     vector = std::make_unique <rez::Vector<TYPE>>();
+    scale = std::make_unique<Scale>();
     this->vector2d->set_coordinates(t1, t2);
 }
 

@@ -244,6 +244,9 @@ CMAKE_STRIP:FILEPATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/c
 // Studio IDE projects all commands are done without /nologo.
 CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
 
+//The directory containing a CMake configuration file for Eigen3.
+Eigen3_DIR:PATH=D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/build
+
 //Path to a library.
 FLAC_LIB:FILEPATH=D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/lib/libFLAC.a
 
@@ -251,10 +254,34 @@ FLAC_LIB:FILEPATH=D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/incl
 FreeType_LIB:FILEPATH=D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/lib/libfreetype.a
 
 //Path to a library.
+GSL_CBLAS_LIBRARY:FILEPATH=GSL_CBLAS_LIBRARY-NOTFOUND
+
+//Path to a library.
+GSL_CBLAS_LIBRARY_DEBUG:FILEPATH=GSL_CBLAS_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a program.
+GSL_CONFIG_EXECUTABLE:FILEPATH=GSL_CONFIG_EXECUTABLE-NOTFOUND
+
+//Path to a file.
+GSL_INCLUDE_DIR:PATH=GSL_INCLUDE_DIR-NOTFOUND
+
+//Path to a library.
+GSL_LIBRARY:FILEPATH=GSL_LIBRARY-NOTFOUND
+
+//Path to a library.
+GSL_LIBRARY_DEBUG:FILEPATH=GSL_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
 Ogg_LIB:FILEPATH=D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/lib/libogg.a
 
 //Path to a library.
 OpenAL_LIB:FILEPATH=D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/lib/libopenal32.a
+
+//Arguments to supply to pkg-config
+PKG_CONFIG_ARGN:STRING=
+
+//pkg-config executable
+PKG_CONFIG_EXECUTABLE:FILEPATH=E:/msys64/mingw64/bin/pkg-config.exe
 
 //Value Computed by CMake
 PhysicsFormula_BINARY_DIR:STATIC=D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug
@@ -444,18 +471,62 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 CMAKE_STRIP-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding GSL
+FIND_PACKAGE_MESSAGE_DETAILS_GSL:INTERNAL=[D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/GnuWin32/include][D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/GnuWin32/lib][D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/GnuWin32/lib][v1.8()]
+//Details about finding PkgConfig
+FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[E:/msys64/mingw64/bin/pkg-config.exe][v1.8.0()]
 //ADVANCED property for variable: FLAC_LIB
 FLAC_LIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: FreeType_LIB
 FreeType_LIB-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GSL_CBLAS_LIBRARY
+GSL_CBLAS_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GSL_CBLAS_LIBRARY_DEBUG
+GSL_CBLAS_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+GSL_CFLAGS:INTERNAL=
+GSL_CFLAGS_I:INTERNAL=
+GSL_CFLAGS_OTHER:INTERNAL=
+GSL_FOUND:INTERNAL=
+GSL_INCLUDEDIR:INTERNAL=
+//ADVANCED property for variable: GSL_INCLUDE_DIR
+GSL_INCLUDE_DIR-ADVANCED:INTERNAL=1
+GSL_LIBDIR:INTERNAL=
+//ADVANCED property for variable: GSL_LIBRARY
+GSL_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: GSL_LIBRARY_DEBUG
+GSL_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+GSL_LIBS:INTERNAL=
+GSL_LIBS_L:INTERNAL=
+GSL_LIBS_OTHER:INTERNAL=
+GSL_LIBS_PATHS:INTERNAL=
+GSL_MODULE_NAME:INTERNAL=
+GSL_PREFIX:INTERNAL=
+GSL_STATIC_CFLAGS:INTERNAL=
+GSL_STATIC_CFLAGS_I:INTERNAL=
+GSL_STATIC_CFLAGS_OTHER:INTERNAL=
+GSL_STATIC_LIBDIR:INTERNAL=
+GSL_STATIC_LIBS:INTERNAL=
+GSL_STATIC_LIBS_L:INTERNAL=
+GSL_STATIC_LIBS_OTHER:INTERNAL=
+GSL_STATIC_LIBS_PATHS:INTERNAL=
+GSL_VERSION:INTERNAL=
+GSL_gsl_INCLUDEDIR:INTERNAL=
+GSL_gsl_LIBDIR:INTERNAL=
+GSL_gsl_PREFIX:INTERNAL=
+GSL_gsl_VERSION:INTERNAL=
 //ADVANCED property for variable: Ogg_LIB
 Ogg_LIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OpenAL_LIB
 OpenAL_LIB-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_ARGN
+PKG_CONFIG_ARGN-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
+PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: VorbisEnc_LIB
 VorbisEnc_LIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: VorbisFile_LIB
 VorbisFile_LIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Vorbis_LIB
 Vorbis_LIB-ADVANCED:INTERNAL=1
+__pkg_config_checked_GSL:INTERNAL=1
 

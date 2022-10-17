@@ -3889,6 +3889,7 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: ../testFactory.cpp \
   ../RectangularPrism.h \
   ../RotationalMotion.h \
   ../UniformCircularMotion.h \
+  ../Scale.h \
   ../Sphere.h \
   ../Statics.h \
   ../templateGraph.h \
@@ -5180,6 +5181,8 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4345.21/bin/m
 ../RectangularPrism.h:
 
 ../UniformCircularMotion.h:
+
+../Scale.h:
 
 ../Sphere.h:
 

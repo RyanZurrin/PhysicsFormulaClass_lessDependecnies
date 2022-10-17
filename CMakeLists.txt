@@ -29,7 +29,7 @@ add_executable(PhysicsFormula testFactory.cpp Angle.h AtomicPhysics.h
         QuadTree.cpp Triangulation.cpp Vector.cpp Voronoi.cpp FluidStatics.h
         TemplateBST.h templateGraph.h templateGraph.cpp Calculus.h Derivation.h
         EuclideanGraph.h Constants.h StaticEquilibrium.h UnitVector.h
-        Kirschoff.h pbPlots.hpp pbPlots.cpp supportLib.hpp supportLib.cpp Plots.h Dimensions.h ElectricField.h)
+        Kirschoff.h pbPlots.hpp pbPlots.cpp supportLib.hpp supportLib.cpp Plots.h Dimensions.h ElectricField.h Scale.h)
 
 set(SFML_STATIC_LIBRARIES TRUE)
 set(SFML_DIR D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/lib/cmake/SFML)
@@ -46,3 +46,5 @@ set(Eigen3_DIR D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/include
 find_package(Eigen3 CONFIG REQUIRED)
 
 target_link_libraries(PhysicsFormula Eigen3::Eigen)
+
+

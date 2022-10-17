@@ -126,7 +126,30 @@ public:
     /// <param name="q">The charge.</param>
     /// <param name="volts">The voltage.</param>
     /// <returns>the potential difference (PE)</returns>
-    static ld potentialDifference_PE(ld q, ld volts);
+    static ld potentialDifference_PE(ld q, ld volts, bool print = true);
+
+    /**
+     * @brief It takes W J to move a q C charge from point A to point B.
+     * What's the potential difference ΔV_AB
+     * @param W The work done.
+     * @param q  The charge.
+     * @param print The print.
+     * @return ld
+     */
+    static ld potentialDifference_V(ld W, ld q, bool print = true);
+
+
+
+    /**
+     * @brief Calculates the potential difference between two points moving
+     * across an electric field strength of E at an angle theta to the field.
+     * @param E the electric field strength
+     * @param r the distance between the two points
+     * @param theta the angle between the electric field and the distance between
+     * @param print if true, prints the results to the console
+     * @return the potential difference
+     */
+    static ld potentialDifference(ld E, ld r, ld theta, bool print = true);
 
     /// <summary>
     /// calculates the total charge moved in Coulombs
@@ -273,9 +296,6 @@ public:
     /// <param name="q">The q.</param>
     /// <returns>voltage (V)</returns>
     static ld voltageIonsMoveThroughToReachSameTemperature(ld T, ld q);
-
-    //static ld massToRaisFromTemp1ToTemp2(const ld)
-
 
     /// <summary>
     /// Capacitance of a capacitor. units of C/volts or A^2s^2/kg*m^2
@@ -470,6 +490,82 @@ public:
     /// <returns>KE (J)</returns>
     static ld kineticEnergyFinalToMovePositiveCharge(ld q, ld Vab);
 
+    /**
+     * @brief What is the work done by the electric force to move a Q C
+     * charge from point A with an electric potential of EPA to point B with an
+     * electric potential of EPB?
+     * @param Q the charge (C)
+     * @param EPA the electric potential at point A (V)
+     * @param EPB the electric potential at point B (V)
+     * @param print true to print the answer
+     * @return the work done (J)
+     */
+    static ld workDoneByElectricForce(ld Q, ld EPA, ld EPB, bool print = true);
+
+    /**
+     * @brief Calculate the change in KE of a charge Q C as it moves from point A
+     * with a electric potential of Va to point B with an electric potential of Vb.
+     * @param Q the charge (C)
+     * @param Va the electric potential at point A (V)
+     * @param Vb the electric potential at point B (V)
+     * @param print true to print the answer
+     * @return the change in KE (J)
+     */
+    static ld changeInKEOfCharge(ld Q, ld Va, ld Vb, bool print = true);
+
+    /**
+     * @brief A particle with charge Q C is placed on the x axis in a region
+     * where the electric potential due to other charges increases in the +x
+     * direction but does not change in the y or z direction. The particle,
+     * initially at rest, is acted upon only by the electric force and moves
+     * from point a to point b along the x axis, increasing its kinetic energy
+     * by KE J . In what direction and through what potential difference Vb−Va
+     * does the particle move?
+     * NOTE:
+     * In general, if no forces other than the electric force act on a
+     * positively charged particle, the particle always moves toward a point at
+     * lower potential
+     * @param Q the charge (C)
+     * @param KE the change in KE (J)
+     * @param print true to print the answer
+     * @return the change in potential (V)
+     */
+    static ld changeInPotentialOfMovingCharge(ld Q, ld KE, bool print = true);
+
+    /**
+     * @brief the electric force of a particle of charge q in an electric field
+     * of strength E is given by F = qE.
+     * @param q the charge (C)
+     * @param E the electric field strength (V/m)
+     * @param print true to print the answer
+     * @return the electric force (N)
+     */
+    static ld electricForce(ld q, ld E, bool print = true);
+
+    /**
+     * @brief Calculate the work it take to move a q C charge against a U V
+     * potential difference.
+     * @param q the charge (C)
+     * @param U the potential difference (V)
+     * @param print true to print the answer
+     * @return the work done (J)
+     */
+    static ld workDoneToMoveCharge(ld q, ld U, bool print = true);
+
+    /**
+     * @brief Calculates the magnitude of the potential difference between two
+     * points located r m apart in a uniform Ef N/C electric field, if a
+     * line between the points is at angle theta to the electric field
+     * (default is parallel to the field).
+     * @param r the distance between the points (m)
+     * @param Ef the electric field strength (N/C)
+     * @param theta the angle between the line and the electric field (rad)
+     * @param print true to print the answer
+     * @return the potential difference (V)
+     */
+    static ld potentialDifferenceBetweenTwoPoints(
+            ld r, ld Ef, ld theta = 0, bool print = true);
+
 
 
     void setElectricPotentialVal(ld val)
@@ -497,9 +593,13 @@ inline ld ElectricPotential::electricalPotential_V(const ld PE, const ld q)
     return PE/q;
 }
 
-inline ld ElectricPotential::potentialDifference_PE(const ld q, const ld volts)
+inline ld ElectricPotential::potentialDifference_PE(
+        const ld q, const ld volts, bool print)
 {
-    return q * volts;
+    ld PE = q*volts;
+    if (print)
+        std::cout << "PE = " << PE << " J" << std::endl;
+    return PE;
 }
 
 inline ld ElectricPotential::chargeMoved_q(const ld PE, const ld volts)
@@ -712,9 +812,74 @@ inline ld ElectricPotential::temperatureChangeFromCapacitanceBurn(
 }
 
 inline ld ElectricPotential::kineticEnergyFinalToMovePositiveCharge(
-        const ld q,
-        const ld Vab)
+        const ld q, const ld Vab)
 {
     return -q * Vab;
+}
+
+ld ElectricPotential::potentialDifference(ld E, ld r, ld theta, bool print) {
+    ld V = E * r * cos(theta);
+    if (print) {
+        std::cout << "V = " << V << " V" << std::endl;
+    }
+    return V;
+}
+
+ld
+ElectricPotential::workDoneByElectricForce(ld Q, ld EPA, ld EPB, bool print) {
+    ld W = Q * (EPA - EPB);
+    if (print) {
+        std::cout << "W = " << W << " J" << std::endl;
+    }
+    return W;
+}
+
+ld ElectricPotential::changeInKEOfCharge(ld Q, ld Va, ld Vb, bool print) {
+    ld deltaKE = Q * abs(Vb - Va);
+    if (print) {
+        std::cout << "deltaKE = " << deltaKE << " J" << std::endl;
+    }
+    return deltaKE;
+}
+
+ld ElectricPotential::changeInPotentialOfMovingCharge(ld Q, ld KE, bool print) {
+    ld deltaV = - (KE / Q);
+    if (print) {
+        std::cout << "deltaV = " << deltaV << " V" << std::endl;
+    }
+    return deltaV;
+}
+
+ld ElectricPotential::electricForce(ld q, ld E, bool print) {
+    ld F = q * E;
+    if (print) {
+        std::cout << "F = " << F << " N" << std::endl;
+    }
+    return F;
+}
+
+ld ElectricPotential::workDoneToMoveCharge(ld q, ld U, bool print) {
+    ld W = q * U;
+    if (print) {
+        std::cout << "W = " << W << " J" << std::endl;
+    }
+    return W;
+}
+
+ld ElectricPotential::potentialDifference_V(ld W, ld q, bool print) {
+    ld V = W / q;
+    if (print) {
+        std::cout << "V = " << V << " V" << std::endl;
+    }
+    return V;
+}
+
+ld ElectricPotential::potentialDifferenceBetweenTwoPoints(
+        ld r, ld Ef, ld theta, bool print) {
+    ld V = Ef * r * cos(theta);
+    if (print) {
+        std::cout << "V = " << V << " V" << std::endl;
+    }
+    return V;
 }
 

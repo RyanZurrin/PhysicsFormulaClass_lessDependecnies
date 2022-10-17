@@ -2,7 +2,7 @@
 #include "GeoUtils.h"
 #include "RunTimer.h"
 #include "BinarySearchTree.h"
-
+#include "Constants.h"
 
 int main(int argc, char* argv[])
 {
@@ -13,8 +13,7 @@ int main(int argc, char* argv[])
     //_________________________________________________________________________
     //add test code between starred areas
     //**************************************************************************
-
-    ElectricCharge::surfaceChargeDensitySphere(300e-9, .32, true);
+    EP::potentialDifferenceBetweenTwoPoints(1.1, 640.0);
 
 
 
