@@ -19,8 +19,21 @@
 
 static int electricalPotential_objectCount = 0;
 
+struct POINT_CHARGE_2D
+{
+    double q;
+    Vector3D position;
+    POINT_CHARGE_2D(double q, const Vector3D& p) : q(q), position(p) {}
+};
 
-
+struct POINT_CHARGE_3D
+{
+    double q;
+    Vector3D position;
+    POINT_CHARGE_3D(double q, const Vector3D& p) : q(q), position(p) {}
+};
+typedef POINT_CHARGE_2D pc2d;
+typedef POINT_CHARGE_3D pc3d;
 //constexpr auto _LIGHTSPEED_ = 2.99792458e8;
 //multiply joules by this to convert to electron Volts
 
@@ -224,7 +237,7 @@ public:
     /// <param name="volts">The volts.</param>
     /// <param name="s">The distance the change in volts occurs.</param>
     /// <returns>electric field</returns>
-    static ld electricField(ld volts, ld s);
+    static ld electricField(ld volts, ld s, bool print = true);
 
     /// <summary>
     /// Calculates the volts from electric field.
@@ -566,6 +579,77 @@ public:
     static ld potentialDifferenceBetweenTwoPoints(
             ld r, ld Ef, ld theta = 0, bool print = true);
 
+    /**
+     * @brief Calculates the work done to assemble a configuration of charges
+     * @tparam POINTCHARGE  the type of point charge
+     * @param charges  the charges
+     * @param print  true to print the answer
+     * @return  the work done (J)
+     */
+    template<class POINTCHARGE>
+    static ld workToAssembleChargeConfiguration(vector<POINTCHARGE> charges, bool print = true);
+
+    /**
+     * @brief Dielectric breakdown of air occurs at fields of E_break V/m.
+     * Calculate the maximum potential (measured from infinity) for the sphere
+     * of radius r m before dielectric breakdown occurs at the sphere's
+     * surface.
+     * @param r the radius of the sphere (m)
+     * @param E_break the electric field strength at which dielectric breakdown
+     * occurs (V/m)
+     * @param print true to print the answer
+     * @return the maximum potential (V)
+     */
+    static ld dielectricBreakdown(ld r, ld E_break, bool print = true);
+
+    /**
+     * @brief Dielectric breakdown of air occurs at fields of E_break V/m.
+     * Calculate the charge on the sphere of radius r m before dielectric
+     * breakdown occurs at the sphere's
+     * surface.
+     * @param r the radius of the sphere (m)
+     * @param E_break the electric field strength at which dielectric breakdown
+     * occurs (V/m)
+     * @param print true to print the answer
+     * @return the maximum potential (V)
+     */
+    static ld dielectricBreakdownCharge(ld r, ld E_break, bool print = true);
+
+    /**
+     * @brief Three equal charges q form an equilateral triangle of side a.
+     * Find the potential, relative to infinity, at the center of the triangle.
+     * @param q the charge (C)
+     * @param a the side length (m)
+     * @param print true to print the answer
+     * @return the potential (V)
+     */
+    static ld potentialAtCenterOfEquilateralTriangle(ld q, ld a, bool print = true);
+
+    /**
+     * @brief Two identical charges q lie on the x axis at +/- a, at a height
+     * of y above the x axis. Calculate the potential at all points in the
+     * x-y plane.
+     * @param q the charge (C)
+     * @param a the distance from each side of the origin (m)
+     * @param y the height above the x axis (m)
+     * @param print true to print the answer
+     * @return the potential (V)
+     */
+    static ld potentialAtAllPointsInXYP(ld q, ld a, ld y, bool print = true);
+
+    /**
+     * @brief An infinitely long line of charge has a linear charge density of
+     * lambda C/m . A proton is at distance r m from the line has a mass of m kg
+     * and is moving directly toward the line with speed v m/s. Calculate how
+     * close the charge gets to the line of charge.
+     * @param lambda the linear charge density (C/m)
+     * @param r the distance from the line (m)
+     * @param v the speed of the charge (m/s)
+     * @param print true to print the answer
+     * @return the distance from the line (m)
+     */
+    static ld distanceFromLineOfCharge(
+            ld lambda, ld r, ld v, bool print = true);
 
 
     void setElectricPotentialVal(ld val)
@@ -642,9 +726,13 @@ inline ld ElectricPotential::electricFieldMagnitude(const ld volts, const ld d)
     return volts / d;
 }
 
-inline ld ElectricPotential::electricField(const ld volts, const ld s)
+inline ld ElectricPotential::electricField(
+        const ld volts, const ld s, bool print)
 {
-    return -(volts / s);
+    ld E = (volts / s);
+    if (print)
+        std::cout << "E = " << E << " V/m" << std::endl;
+    return E;
 }
 
 inline ld ElectricPotential::voltsFromElectricFieldGradient(const ld E, const ld s)
@@ -881,5 +969,100 @@ ld ElectricPotential::potentialDifferenceBetweenTwoPoints(
         std::cout << "V = " << V << " V" << std::endl;
     }
     return V;
+}
+
+template<class POINTCHARGE>
+ld ElectricPotential::workToAssembleChargeConfiguration(
+        vector<POINTCHARGE> charges, bool print) {
+    static_assert(std::is_same<POINTCHARGE, pc2d>::value ||
+                  std::is_same<POINTCHARGE, pc3d>::value,
+                  "POINTCHARGE must be either pc2d or pc3d");
+    // check if the charges are in 2d or 3d
+    bool is2d = true;
+    for (auto &charge : charges) {
+        if (charge.position.getZ() != 0) {
+            is2d = false;
+            break;
+        }
+    }
+    // calculate the work which is k*Q1*Q2/r
+    ld work = 0;
+    for (int i = 0; i < charges.size(); i++) {
+        for (int j = i + 1; j < charges.size(); j++) {
+            ld r = 0;
+            if (is2d) {
+                r = sqrt(pow(charges[i].position.getX() -
+                        charges[j].position.getX(), 2) +
+                         pow(charges[i].position.getY() -
+                         charges[j].position.getY(), 2));
+            } else {
+                r = sqrt(pow(charges[i].position.getX() -
+                        charges[j].position.getX(), 2) +
+                         pow(charges[i].position.getY() -
+                         charges[j].position.getY(), 2) +
+                         pow(charges[i].position.getZ() -
+                         charges[j].position.getZ(), 2));
+            }
+            work += constants::K * charges[i].q * charges[j].q / r;
+        }
+    }
+    if (print) {
+        std::cout << "W = " << work << " J" << std::endl;
+    }
+    return work;
+}
+
+ld ElectricPotential::dielectricBreakdown(ld r, ld E_break, bool print) {
+    ld V_break = E_break * r;
+    if (print) {
+        std::cout << "V_break = " << V_break << " V" << std::endl;
+    }
+    return V_break;
+}
+
+ld ElectricPotential::dielectricBreakdownCharge(ld r, ld E_break, bool print) {
+    auto k = constants::K;
+    ld charge = (E_break * r * r) / k;
+    if (print) {
+        std::cout << "Charge on sphere = " << charge << " C" << std::endl;
+    }
+    return charge;
+}
+
+ld ElectricPotential::potentialAtCenterOfEquilateralTriangle(
+        ld q, ld a, bool print) {
+    auto k = constants::K;
+    auto V = (k*3.0* sqrt(3) * q)/a;
+    if (print) {
+        std::cout << "V = " << V << " V" << std::endl;
+    }
+    return V;
+}
+
+ld ElectricPotential::potentialAtAllPointsInXYP(ld q, ld a, ld y, bool print) {
+    auto k = constants::K;
+    auto Va = (k * q) / (sqrt(pow(a, 2) + pow(y, 2)));
+    auto Vb = (k * q) / (sqrt(pow(a, 2) + pow(y - a, 2)));
+    auto Vtotal = Va + Vb;
+    if (print) {
+        std::cout << "Vtotal = " << Vtotal << " V" << std::endl;
+    }
+    return Vtotal;
+}
+
+ld
+ElectricPotential::distanceFromLineOfCharge(
+        ld lambda, ld r, ld v, bool print) {
+    auto m = constants::PROTON_MASS;
+    auto q = constants::PROTON_CHARGE;
+    auto KE = 0.5 * m * pow(v, 2);
+    auto e0 = constants::e0;
+    auto pi_ = constants::PI;
+    auto lnR2R1 = (KE * 2.0 * pi_ * e0) / (lambda * q);
+    auto r2 = r / exp(lnR2R1);
+    if (print) {
+        std::cout << "r2 = " << r2 << " m" << std::endl;
+    }
+    return r2;
 }
 

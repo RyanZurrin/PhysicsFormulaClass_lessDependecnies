@@ -38,6 +38,7 @@ public:
     void		setX(long double);
     void		setY(long double);
     void		setZ(long double);
+    long double	getZ()const;
     void		set_coordinates(long double, long double, long double);
     void		displayAllData(const std::string& label = "")const;
     void		showRectCord(const std::string& label = "")const override;
@@ -566,6 +567,10 @@ inline long double Vector3D::distance_to_plane(T a, T b, T c, T d)
     auto top = abs(((a * x) + (b * y) + (c * z) + d));
     auto bot = sqrt((a * a) + (b * b) + (c * c));
     return top/bot;
+}
+
+long double Vector3D::getZ() const {
+    return z;
 }
 
 #endif //PHYSICSFORMULA_VECTOR3D_H
