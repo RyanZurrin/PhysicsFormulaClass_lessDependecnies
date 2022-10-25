@@ -12,6 +12,7 @@
  * @lastEdit 12/31/2020
  */
 #include "Heat.h"
+#include "Vector3D.h"
 #include <iostream>
 
 
@@ -40,39 +41,61 @@ typedef POINT_CHARGE_3D pc3d;
 
 static struct DielectricConstants
 {
-    const ld vacuum = 1.00000; //1.00000
-    const ld Air = 1.00059; //1.00059
-    const ld Bakelite = 4.9; //4.9
-    const ld fused_quartz = 3.78; //3.78
-    const ld neoprene_rubber = 6.7; //6.7
-    const ld nylon = 3.4; //3.4
-    const ld paper = 3.7; //3.7
-    const ld polystyrene = 2.56; //2.56
-    const ld pyrex_glass = 55.6; //5.6
-    const ld silicon_oil = 2.5; //2.5
-    const ld strontium_titanate = 233; //233
-    const ld teflon = 2.1; //2.1
-    const ld water = 80; //80
+    DielectricConstants(){}
+    const struct VACUUM {
+        const ld constant = 1.00000;
+        const ld breakdown_field = 0.0;
+    }vacuum;
+    const struct AIR {
+        const ld constant = 1.00059;
+        const ld breakdown_field = 3.0e6; //3.0e6
+    }air;
+    const struct BAKELITE {
+        const ld constant = 4.9;
+        const ld breakdown_field = 24*pow(10,6); //24e6
+    }bakelite;
+    const struct FUSED_QUARTZ {
+        const ld constant = 3.78;
+        const ld breakdown_field = 8e6; //8e6
+    }fused_quartz;
+    const struct NEOPRENE_RUBBER {
+        const ld constant = 6.7;
+        const ld breakdown_field = 12*pow(10,6); //12e6
+    }neoprene_rubber;
+    const struct NYLON {
+        const ld constant = 3.4;
+        const ld breakdown_field = 14*pow(10,6); //14e6
+    }nylon;
+    const struct PAPER {
+        const ld constant = 3.7;
+        const ld breakdown_field = 16*pow(10,6); //16e6
+    }paper;
+    const struct POLYSTYRENE {
+        const ld constant = 2.56;
+        const ld breakdown_field = 24*pow(10,6); //24e6
+    }polystyrene;
+    const struct PYREX_GLASS {
+        const ld constant = 5.6;
+        const ld breakdown_field = 14*pow(10,6); //14e6
+    }pyrex_glass;
+    const struct SILICON_OIL {
+        const ld constant = 2.5;
+        const ld breakdown_field = 15*pow(10,6); //15e6
+    }silicon_oil;
+    const struct STRONTIUM_TITANATE {
+        const ld constant = 233;
+        const ld breakdown_field = 8*pow(10,6); //8e6
+    }strontium_titanate;
+    const struct TEFLON {
+        const ld constant = 2.1;
+        const ld breakdown_field = 60*pow(10,6); //60e6
+    }teflon;
+    const struct WATER {
+        const ld constant = 80;
+        const ld breakdown_field = 3.5*pow(10,6); //3.5e6
+    }water;
 
-}dielectric_constants;
-
-static struct DielectricStrength
-{
-    const ld Air = 3.0*pow(10,6); //3.0e6
-    const ld Bakelite =  24*pow(10,6); //24e6
-    const ld fused_quartz =  8*pow(10,6); //8e6
-    const ld neoprene_rubber =  12*pow(10,6); //12e6
-    const ld nylon =  14*pow(10,6); //14e6
-    const ld paper =  16*pow(10,6); //16e6
-    const ld polystyrene =  24*pow(10,6); //24e6
-    const ld pyrex_glass =  14*pow(10,6); //14e6
-    const ld silicon_oil =  15*pow(10,6); //15e6
-    const ld strontium_titanate =  8*pow(10,6); //8e6
-    const ld teflon =  60*pow(10,6); //60e6
-
-}dielectric_strength;
-
-
+}dielectrics;
 
 
 class ElectricPotential
@@ -341,7 +364,9 @@ public:
     /// <param name="A">the area.</param>
     /// <param name="d">The distance between plates.</param>
     /// <returns>the capacitance C in farads</returns>
-    static ld capacitanceParallelPlate(ld A, ld d);
+    static ld capacitanceParallelPlate(ld A, ld d, bool print = true);
+
+    static ld capacitanceRoundParallelPlate(ld R, ld d, bool print = true);
 
     /// <summary>
     /// Calculates the capacitance of a parallel plate capacitor with a
@@ -651,6 +676,39 @@ public:
     static ld distanceFromLineOfCharge(
             ld lambda, ld r, ld v, bool print = true);
 
+    /**
+     * @brief Calcualte the electric energy density of inside a capacitor
+     * with an electric field of E V/m.
+     * @param E the electric field strength (V/m)
+     * @param print true to print the answer
+     * @return the electric energy density (J/m^3)
+     */
+    static ld electricEnergyDensity(ld E, bool print = true);
+
+    /**
+     * @brief Typical electric fields in thunderstorms average around 10^5 V/m.
+     * Consider a cylindrical thundercloud with height h m and diameter d m,
+     * and assume a uniform electric field of E Find the electric energy
+     * contained in this cloud.
+     * @param h the height of the cloud (m)
+     * @param d the diameter of the cloud (m)
+     * @param E the electric field strength (V/m)
+     * @param print true to print the answer
+     */
+    static ld electricEnergyInThundercloud(ld h, ld d, ld E, bool print = true);
+
+    /**
+     * @brief A sphere of radius Ri carries charge Q distributed uniformly over
+     * its  surface. How much work does it take to compress the sphere to a smaller
+     * radius of Rf?
+     * @param Q the charge (C)
+     * @param Ri the initial radius (m)
+     * @param Rf the final radius (m)
+     * @param print true to print the answer
+     * @return the work done (J)
+     */
+    static ld workToCompressSphere(ld Q, ld Ri, ld Rf, bool print = true);
+
 
     void setElectricPotentialVal(ld val)
     {
@@ -799,15 +857,19 @@ inline ld ElectricPotential::capacitanceVolts(const ld Q, const ld C)
     return Q/C;
 }
 
-inline ld ElectricPotential::capacitanceParallelPlate(const ld A, const ld d)
+inline ld ElectricPotential::capacitanceParallelPlate(
+        const ld A, const ld d, bool print)
 {
-    return constants::e0 * (A / d);
+    auto C = constants::e0 * (A / d);
+    if (print)
+        std::cout << "C = " << C << " F" << std::endl;
+    return C;
 }
 
 
 inline ld ElectricPotential::capacitanceParallelPlateDielectric(const ld d_k, const ld A, const ld d)
 {
-    return d_k * constants::e0 * (A / d);
+    return d_k * (constants::e0 * A / d);
 }
 
 inline ld ElectricPotential::dielectricConstant(const ld E0, const ld E)
@@ -1064,5 +1126,48 @@ ElectricPotential::distanceFromLineOfCharge(
         std::cout << "r2 = " << r2 << " m" << std::endl;
     }
     return r2;
+}
+
+ld ElectricPotential::capacitanceRoundParallelPlate(ld R, ld d, bool print) {
+    auto e0 = constants::e0;
+    auto pi_ = constants::PI;
+    auto C = (2.0 * e0 * pi_ * R * R) / d;
+    if (print) {
+        std::cout << "C = " << C << " F" << std::endl;
+    }
+    return C;
+}
+
+ld ElectricPotential::electricEnergyDensity(ld E, bool print) {
+    auto e0 = constants::e0;
+    auto U = 0.5 * e0 * E * E;
+    if (print) {
+        std::cout << "U = " << U << " J/m^3" << std::endl;
+    }
+    return U;
+}
+
+ld
+ElectricPotential::electricEnergyInThundercloud(ld h, ld d, ld E, bool print) {
+    auto e0 = constants::e0;
+    auto pi = constants::PI;
+    auto U_e = electricEnergyDensity(E, false);
+    // a cylindric cloud has volume pi * r^2 * h
+    auto V = pi * pow(d/2.0, 2) * h;
+    // multiple energy density by volume to get total energy stored
+    auto U = U_e * V;
+    if (print) {
+        std::cout << "U = " << U << " J" << std::endl;
+    }
+    return U;
+}
+
+ld ElectricPotential::workToCompressSphere(ld Q, ld Ri, ld Rf, bool print) {
+    auto k = constants::K;
+    auto W = k * Q * Q * (1.0 / Rf - 1.0 / Ri);
+    if (print) {
+        std::cout << "W = " << W << " J" << std::endl;
+    }
+    return W;
 }
 

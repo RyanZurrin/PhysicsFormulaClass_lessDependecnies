@@ -58,7 +58,6 @@
 #include "QuantumPhysics.h"
 #include "EuclideanGraph.h"
 #include "FluidDynamics.h"
-#include "ElectricPotential.h"
 #include "Circle.h"
 #include "StaticEquilibrium.h"
 #include "Plots.h"

@@ -13,11 +13,12 @@
  */
 #include <iostream>
 #include "ElectricCurrent.h"
+#include "ElectricPotential.h"
 
 static int circuits_objectCount = 0;
 
 class Circuits:
-        public ElectricCurrent
+        public ElectricCurrent, public ElectricPotential
 {
 
 public:
@@ -37,7 +38,7 @@ public:
      * @brief copy constructor
      */
     Circuits(const Circuits& c)
-     : ElectricCurrent(c) {
+     : ElectricCurrent(c) , ElectricPotential(c) {
         _circuitVal = 0.0;
         countIncrease();
     }
@@ -92,22 +93,31 @@ public:
 
 
     /**
-     * @brief Calculates the total capacitor of a series of capacitors.
-     * @param C  The array of capacitors.
-     * @param print  Whether or not to print the results.
-     * @return  The total capacitance (F).
-     */
-    static long double seriesCapacitance(const vector<long double>& C,
-                                                   bool print);
-
-    /**
      * @brief Calculates the total capacitance of capacitors hooked up in parallel.
+     *    ┌───┴───┐
+     *    ┴       ┴      =>   ┴ c = c1 + c2 + ... + cn
+     * C1 ┬       ┬ C2        ┬
+     *    └───┬───┘
      * @param C  The array of capacitors.
      * @param print  Whether or not to print the results.
      * @return  The total capacitance (F).
      */
     static long double parallelCapacitance(const vector<long double>& C,
                                                      bool print);
+
+    /**
+     * @brief Calculates the total capacitor of a series of capacitors.
+     *    ┴
+     * C1 ┬
+     *    ┴    =>   ┴ c = 1 / (1/c1 + 1/c2 + ... + 1/cn)
+     * C2 ┬         ┬
+     *
+     * @param C  The array of capacitors.
+     * @param print  Whether or not to print the results.
+     * @return  The total capacitance (F).
+     */
+    static long double seriesCapacitance(const vector<long double>& C,
+                                         bool print);
 
     /// <summary>
     /// Calculates the terminal  voltage.

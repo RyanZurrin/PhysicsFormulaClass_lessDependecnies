@@ -14,7 +14,7 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    EP::distanceFromLineOfCharge(6.50e-12, .17, 1100.0);
+    Circuits::capacitanceParallelPlateDielectric()
 
     //**************************************************************************
     //Stopping RunTimer and displaying the programs' execution time

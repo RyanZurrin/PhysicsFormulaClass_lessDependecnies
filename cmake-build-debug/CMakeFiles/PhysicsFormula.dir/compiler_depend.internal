@@ -3862,13 +3862,17 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj
  E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4345.21/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/glue_numeric_defs.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Circuits.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/ElectricCurrent.h
+ D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/ElectricPotential.h
+ D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Heat.h
+ D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Temperature.h
+ D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Vector3D.h
+ D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Vector2D.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Cone.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Cylinder.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Cube.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Dimensions.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Drag.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Friction.h
- D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Vector2D.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Forces.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Elasticity.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/ElectroMagneticWaves.h
@@ -3876,7 +3880,6 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Magnetism.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/ElectricCharge.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/UnitVector.h
- D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Vector3D.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/FluidStatics.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Hearing.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Waves.h
@@ -3913,8 +3916,6 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Statics.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/templateGraph.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Thermodynamics.h
- D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Heat.h
- D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Temperature.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Torque.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/TransitiveClosure.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/TriangleSolver.h
@@ -3932,7 +3933,6 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/EuclideanGraph.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Point2D.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/FluidDynamics.h
- D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/ElectricPotential.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Circle.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/StaticEquilibrium.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Plots.h

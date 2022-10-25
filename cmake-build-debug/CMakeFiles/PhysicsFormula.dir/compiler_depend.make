@@ -3843,13 +3843,17 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: ../testFactory.cpp \
   E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4345.21/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/pstl/glue_numeric_defs.h \
   ../Circuits.h \
   ../ElectricCurrent.h \
+  ../ElectricPotential.h \
+  ../Heat.h \
+  ../Temperature.h \
+  ../Vector3D.h \
+  ../Vector2D.h \
   ../Cone.h \
   ../Cylinder.h \
   ../Cube.h \
   ../Dimensions.h \
   ../Drag.h \
   ../Friction.h \
-  ../Vector2D.h \
   ../Forces.h \
   ../Elasticity.h \
   ../ElectroMagneticWaves.h \
@@ -3857,7 +3861,6 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: ../testFactory.cpp \
   ../Magnetism.h \
   ../ElectricCharge.h \
   ../UnitVector.h \
-  ../Vector3D.h \
   ../FluidStatics.h \
   ../Hearing.h \
   ../Waves.h \
@@ -3894,8 +3897,6 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: ../testFactory.cpp \
   ../Statics.h \
   ../templateGraph.h \
   ../Thermodynamics.h \
-  ../Heat.h \
-  ../Temperature.h \
   ../Torque.h \
   ../TransitiveClosure.h \
   ../TriangleSolver.h \
@@ -3913,7 +3914,6 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: ../testFactory.cpp \
   ../EuclideanGraph.h \
   ../Point2D.h \
   ../FluidDynamics.h \
-  ../ElectricPotential.h \
   ../Circle.h \
   ../StaticEquilibrium.h \
   ../Plots.h \
@@ -5140,13 +5140,19 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4345.21/bin/m
 
 ../ElectricCurrent.h:
 
+../ElectricPotential.h:
+
+../Heat.h:
+
+../Temperature.h:
+
+../Vector2D.h:
+
 ../Cone.h:
 
 ../Cylinder.h:
 
 ../Friction.h:
-
-../Vector2D.h:
 
 ../Elasticity.h:
 
@@ -5188,10 +5194,6 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4345.21/bin/m
 
 ../Thermodynamics.h:
 
-../Heat.h:
-
-../Temperature.h:
-
 ../Torque.h:
 
 ../TransitiveClosure.h:
@@ -5207,8 +5209,6 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4345.21/bin/m
 ../EuclideanGraph.h:
 
 ../Point2D.h:
-
-../ElectricPotential.h:
 
 ../Circle.h:
 
