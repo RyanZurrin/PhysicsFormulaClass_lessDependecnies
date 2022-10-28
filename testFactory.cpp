@@ -14,7 +14,9 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    Circuits::capacitanceParallelPlateDielectric()
+    Circuits::sphericalCapacitor(12.2e-2, 14.9e-2, 120.0, 12.6e-2, 14.5e-2);
+
+
 
     //**************************************************************************
     //Stopping RunTimer and displaying the programs' execution time
