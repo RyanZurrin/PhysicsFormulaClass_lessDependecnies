@@ -14,7 +14,13 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    Circuits::sphericalCapacitor(12.2e-2, 14.9e-2, 120.0, 12.6e-2, 14.5e-2);
+    Circuits::unknownCapacitor(3.0e-6, 1.0e-6, 2.0e-6, 100.0, 5.8e-3);
+
+//    CapacitorNode c345({3.0, 5.0, 6.0}, 'p');
+//    CapacitorNode c26({11.0, 3.0}, 's');
+//    CapacitorNode c23456({c345.equivalentCapacitance, c26.equivalentCapacitance}, 'p');
+//    CapacitorNode ctot({c23456.equivalentCapacitance, 3.0}, 's');
+//    ctot.print();
 
 
 

@@ -17,6 +17,92 @@
 
 static int circuits_objectCount = 0;
 
+struct CapacitorNode {
+    vector<double> capacitances;
+    char type; // 'p' for parallel, 's' for series
+    double equivalentCapacitance;
+
+    CapacitorNode() {
+        capacitances = {};
+        type = 'p';
+        equivalentCapacitance = 0.0;
+    }
+    CapacitorNode(vector<double> c, char t) {
+        capacitances = c;
+        type = t;
+        equivalentCapacitance = calculateEquivalentCapacitance();
+    }
+    double calculateEquivalentCapacitance() {
+        double sum = 0.0;
+        if (type == 'p') {
+            for (double capacitance : capacitances) {
+                sum += capacitance;
+            }
+        } else if (type == 's') {
+            for (double capacitance : capacitances) {
+                sum += 1.0 / capacitance;
+            }
+            sum = 1.0 / sum;
+        }
+        return sum;
+    }
+
+    void print() {
+        cout << "CapacitorNode: " << endl;
+        cout << "capacitances: ";
+        for (double capacitance : capacitances) {
+            cout << capacitance << " ";
+        }
+        cout << endl;
+        cout << "type: " << type << endl;
+        cout << "equivalentCapacitance: " << equivalentCapacitance << endl;
+    }
+};
+
+struct ResistorNode {
+    vector<double> resistances;
+    char type; // 'p' for parallel, 's' for series
+    double equivalentResistance;
+
+    ResistorNode() {
+        resistances = {};
+        type = 'p';
+        equivalentResistance = 0.0;
+    }
+    ResistorNode(vector<double> r, char t) {
+        resistances = r;
+        type = t;
+        equivalentResistance = calculateEquivalentResistance();
+    }
+    double calculateEquivalentResistance() {
+        double sum = 0.0;
+        if (type == 'p') {
+            for (double resistance : resistances) {
+                sum += 1.0 / resistance;
+            }
+            sum = 1.0 / sum;
+        } else if (type == 's') {
+            for (double resistance : resistances) {
+                sum += resistance;
+            }
+
+        }
+        return sum;
+    }
+
+    void print() {
+        cout << "ResistorNode: " << endl;
+        cout << "resistances: ";
+        for (double resistance : resistances) {
+            cout << resistance << " ";
+        }
+        cout << endl;
+        cout << "type: " << type << endl;
+        cout << "equivalentResistance: " << equivalentResistance << endl;
+    }
+};
+
+
 class Circuits:
         public ElectricCurrent, public ElectricPotential
 {
@@ -539,6 +625,98 @@ public:
     static vector<ld> sphericalCapacitor(
             ld ra, ld rb, ld V, ld r1, ld r2, bool print = true);
 
+    /**
+     * @brief Calculate the voltage V (V) across a capacitor in series, when
+     * the battery has a voltage of Vb (V).
+     * @param Vb the battery voltage (V)
+     * @param Capacitors the capacitances (F)
+     * @param print true to print the answer
+     * @return the voltages (V)
+     */
+    static vector<ld> voltageAcrossEachCapacitorInSeries(
+            ld Vb, const vector<ld>& Capacitors, bool print = true);
+
+
+    /**
+     * @brief Calculate the Charge Q (C) on each capacitor in series, when
+     * the battery has a voltage of Vb (V).
+     * @param Vb the battery voltage (V)
+     * @param Capacitors the capacitances (F)
+     * @param print true to print the answer
+     * @return the charges (C)
+     */
+    static vector<ld> chargeOnEachCapacitorInSeries(
+            ld Vb, const vector<ld>& Capacitors, bool print = true);
+
+    /**
+     * @brief Calculate the equivalent capacitance Ceq (F) of a circuit of capacitors
+     * that can be in series and in parallel. Use the isSeries flag to indicate
+     * whether the final calulation is in series or in parallel.
+     * @param series the capacitances in series (F)
+     * @param parallel the capacitances in parallel (F)
+     * @param isSeries true if the final calculation is in series
+     * @param print true to print the answer
+     * @return the equivalent capacitance (F)
+     */
+    static ld equivalentCapacitance(
+            const vector<ld>& series, const vector<ld>& parallel,
+            bool isSeries = true, bool print = true);
+
+    /**
+     * @brief The energy density in a uniform electric field is U_e J/m^3
+     * Calculate the field strength.
+     * @param U_e the energy density (J/m^3)
+     * @param print true to print the answer
+     * @return the field strength (V/m)
+     */
+    static ld fieldStrengthFromEnergyDensity(ld U_e, bool print = true);
+
+    /**
+     * @brief A medical defibrillator stores U J of energy in a C F
+     * capacitor. Calculate the following:
+     * a) The voltage across the capacitor?
+     * b) If the capacitor discharges U_dis J of its stored energy in t s,
+     *    calculate the power delivered during this time.
+     *
+     * @param U the energy stored (J)
+     * @param C the capacitance (F)
+     * @param U_dis the energy discharged (J)
+     * @param t the time (s)
+     * @param print true to print the answer
+     * @return the voltage (V), power (W)
+     */
+    static vector<ld> medicalDefibrillator(
+            ld U, ld C, ld U_dis, ld t, bool print = true);
+
+    /**
+     * @brief A capacitor consists of two long concentric metal cylinders.
+     * Calculate its capacitance in terms of the dimensions shown in the figure
+     * and constant ε0. Express your answer in terms of variables
+     * L, a, b, and constant ϵ0.
+     * @param L the length (m)
+     * @param a the inner radius (m)
+     * @param b the outer radius (m)
+     * @param print true to print the answer
+     * @return the capacitance (F)
+     */
+    static ld concentricCylinders(ld L, ld a, ld b, bool print = true);
+
+    /**
+     * @brief An unknown capacitor C is connected in series with a C1s F
+     * capacitor, this pair is placed in parallel with a C1p F capacitor, and
+     * the entire combination is put in series with a Cfs F capacitor. When a
+     * potential difference of v V is applied across the open ends of this
+     * network, the total energy stored in all the capacitors is U J . Find C.
+     * @param C1s the capacitance of the first parallel capacitor (F)
+     * @param C1p the capacitance of the second series capacitor (F)
+     * @param Cfs the capacitance of the final series capacitor (F)
+     * @param v the potential difference (V)
+     * @param U the total energy stored (J)
+     * @param print true to print the answer
+     */
+    static ld unknownCapacitor(
+            ld C1p, ld C2s, ld Cfs, ld v, ld U, bool print = true);
+
 
     ~Circuits()
     {
@@ -936,6 +1114,125 @@ Circuits::sphericalCapacitor(ld ra, ld rb, ld V, ld r1, ld r2, bool print) {
         std::cout << "E2 = " << E2 << " V/m" << std::endl;
     }
     return {C, Q, E1, E2};
+}
+
+vector<ld> Circuits::voltageAcrossEachCapacitorInSeries(
+        ld Vb, const vector<ld>& Capacitors, bool print) {
+    // get the total capacitance which is found using 1/C = 1/C1 + 1/C2 + ...
+    auto C = ld(0.0);
+    for (auto C_i : Capacitors) {
+        C += 1.0 / C_i;
+    }
+    C = 1.0 / C;
+    // get the total charge
+    auto Q = C * Vb;
+    // get the voltage across each capacitor
+    auto V = vector<ld>();
+    for (auto C_i : Capacitors) {
+        V.push_back(Q / C_i);
+    }
+    // print out the voltage across each capacitor, specifying the
+    // capacitance to which it corresponds
+    if (print) {
+        for (int i = 0; i < Capacitors.size(); i++) {
+            std::cout << "C" << i << " = " << Capacitors[i] << " F, ";
+            std::cout << "V" << i + 1 << " = " << V[i] << " V" << std::endl;
+        }
+    }
+    return V;
+}
+
+vector<ld>
+Circuits::chargeOnEachCapacitorInSeries(ld Vb, const vector<ld> &Capacitors,
+                                        bool print) {
+
+    // get the total charges on each capacitor
+    auto Q = vector<ld>();
+    for (auto C_i : Capacitors) {
+        Q.push_back(C_i * Vb);
+    }
+    // print out the charge on each capacitor, specifying the
+    // capacitance to which it corresponds
+    if (print) {
+        for (int i = 0; i < Capacitors.size(); i++) {
+            std::cout << "C" << i << " = " << Capacitors[i] << " F, ";
+            std::cout << "Q" << i + 1 << " = " << Q[i] << " C" << std::endl;
+        }
+    }
+    return Q;
+}
+
+ld Circuits::equivalentCapacitance(
+        const vector<ld> &series, const vector<ld> &parallel,
+        bool isSeries, bool print) {
+    // variable for the total capacitance
+    auto C_tot = ld(0.0);
+    // get the total capacitance in series which is found using 1/C = 1/C1 + 1/C2 + ...
+    auto C_series = ld(0.0);
+    for (auto C_i : series) {
+        C_series += 1.0 / C_i;
+        C_tot += C_i;
+    }
+    C_series = 1.0 / C_series;
+    // get the total capacitance in parallel which is found using C = C1 + C2 + ...
+    auto C_parallel = ld(0.0);
+    for (auto C_i : parallel) {
+        C_parallel += C_i;
+        C_tot += C_i;
+    }
+    // get the equivalent capacitance
+    auto C = ld(0.0);
+    if (isSeries) {
+        C = 1.0 / (1.0 / C_series + 1.0 / C_parallel);
+    } else {
+        C = C_series + C_parallel;
+    }
+    if (print) {
+        std::cout << "C = " << C << " F" << std::endl;
+    }
+    return C;
+}
+
+ld Circuits::fieldStrengthFromEnergyDensity(ld U_e, bool print) {
+    auto E = sqrt((2.0 * U_e) / constants::e0);
+    if (print) {
+        std::cout << "E = " << E << " V/m" << std::endl;
+    }
+    return E;
+}
+
+vector<ld> Circuits::medicalDefibrillator(ld U, ld C, ld U_dis, ld t, bool print) {
+    // get the charge across the capacitor, U = 1/2 C V^2 =? V = sqrt(2 U / C)
+    auto V = sqrt(2.0 * U / C);
+    // calculate the power of the defibrillator, P = k / t
+    auto P =  U_dis / t;
+    if (print) {
+        std::cout << "V = " << V << " V" << std::endl;
+        std::cout << "P = " << P << " W" << std::endl;
+    }
+    return {V, P};
+}
+
+ld Circuits::concentricCylinders(ld L, ld a, ld b, bool print) {
+    auto e0 = constants::e0;
+    auto pi = constants::PI;
+    auto C = (2.0 * pi
+            * e0 * L) / (log(b / a));
+    if (print) {
+        std::cout << "C = " << C << " F" << std::endl;
+    }
+    return C;
+}
+
+ld Circuits::unknownCapacitor(ld C1s, ld C1p, ld Cfs, ld v, ld U, bool print) {
+    auto C_eq = 2.0 * U / (v * v);
+    auto C_p = 1.0 / ((1.0/C_eq) - (1.0/Cfs));
+    auto C_s = C_p - C1p;
+    auto Cf = 1.0 / ((1.0/C_s) - (1.0/C1s));
+    if (print) {
+        std::cout << "Cf = " << Cf << " F" << std::endl;
+    }
+    return Cf;
 }
 
 
