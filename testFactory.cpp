@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 
 
 
-    Circuits::resistanceUsingResistivity()
+    Circuits::resistivity_dIE(.01, 45.0, 1.6);
 
 
 

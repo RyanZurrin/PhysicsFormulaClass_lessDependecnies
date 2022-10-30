@@ -60,6 +60,7 @@ static struct Resistivities
         const long double POLYPROPYLENE = 1e16; //OHm*m
         const long double RUBBER = 1e15; //OHm*m
         const long double WOOD = 1e11; //OHm*m
+        const long double QUARTZ = 7.5e17; //OHm*m
     }insulators;
 
 
@@ -509,6 +510,19 @@ public:
                                    long double R, bool print = true);
 
     /**
+     * @brief A d m-diameter rod carries a I A current when the electric
+     * field in the rod is E V/m. Calculate the resistivity of the rod.
+     * @param d  The diameter
+     * @param I  The current
+     * @param E  The electric field
+     * @param print  print to console
+     * @return  Ohm m
+     */
+    static long double resistivity_dIE(long double d,
+                                   long double I,
+                                   long double E, bool print = true);
+
+    /**
      * @brief calculates the voltages drop across a resistor.
      * @param I  The current (Amperes)
      * @param R  The resistance
@@ -890,16 +904,30 @@ public:
      * @param print  print to console
      * @return  current density
      */
-    static long double currentDensity(long double n, long double q, long double v, bool print = true);
+    static long double currentDensity_nqv(long double n, long double q, long double v, bool print = true);
 
     /**
      * @brief Calculates the current density.
-     * @param I  The current.
-     * @param A  The area.
+     * @param p  The current.
+     * @param E  The area.
      * @param print  print to console
      * @return  current density
      */
-    static long double currentDensity(long double I, long double A, bool print = true);
+    static long double currentDensity_IA(long double I, long double A, bool
+    print = true);
+
+    /**
+     * @brief Calculates the current density of a wire with a resistivity of
+     * ρ and and electric field of E mV/m.
+     * @param I the resistivity of the wire
+     * @param A the electric field of the wire
+     * @param print print to console
+     * @return current density
+     */
+    static long double currentDensity_pE(long double p, long double E, bool print = true);
+
+
+
 
     /**
      * A d m-diameter wire with a resistivity of p, carries I A to a household
@@ -926,6 +954,16 @@ public:
      */
     static long double electronDensity(
             long double I, long double V_d, long double d, bool print = true);
+
+    /**
+     * A wire carries a current of I A. Calculate how many electrons pass
+     * through the wire in t seconds.
+     * @param I The current.
+     * @param t The time.
+     * @param print If true, print the result.
+     * @return The number of electrons.
+     */
+    static long double electronsPassed(long double I, long double t, bool print = true);
 
 
 
@@ -1503,8 +1541,8 @@ ElectricCurrent::instantaneousCurrent(long double I_max, long double w,
 }
 
 long double
-ElectricCurrent::currentDensity(long double n, long double q, long double v,
-                                bool print) {
+ElectricCurrent::currentDensity_nqv(long double n, long double q, long double v,
+                                    bool print) {
     long double J = n * q * v;
     if (print) {
         std::cout << "J = " << J << " A" << std::endl;
@@ -1513,10 +1551,19 @@ ElectricCurrent::currentDensity(long double n, long double q, long double v,
 }
 
 long double
-ElectricCurrent::currentDensity(long double I, long double A, bool print) {
+ElectricCurrent::currentDensity_IA(long double I, long double A, bool print) {
     long double J = I / A;
     if (print) {
-        std::cout << "J = " << J << " m^-3" << std::endl;
+        std::cout << "J = " << J << " A" << std::endl;
+    }
+    return J;
+}
+
+long double
+ElectricCurrent::currentDensity_pE(long double p, long double E, bool print) {
+    long double J = E / p;
+    if (print) {
+        std::cout << "J = " << J << " A" << std::endl;
     }
     return J;
 }
@@ -1569,5 +1616,28 @@ ElectricCurrent::resistanceUsingConductivity(long double sigma, long double L,
     }
     return R;
 }
+
+long double
+ElectricCurrent::electronsPassed(long double I, long double t, bool print) {
+    auto e = -constants::ELECTRON_CHARGE;
+    auto q = I * t;
+    auto n = q / e;
+    if (print) {
+        std::cout << "n = " << n << " electrons" << std::endl;
+    }
+    return n;
+}
+
+long double
+ElectricCurrent::resistivity_dIE(long double d, long double I, long double E,
+                                 bool print) {
+    auto A = area_d(d, false);
+    auto R = (E * A) / I;
+    if (print) {
+        std::cout << "R = " << R << " Ohms" << std::endl;
+    }
+    return R;
+}
+
 
 #endif //PHYSICSFORMULA_ELECTRICCURRENT_H
