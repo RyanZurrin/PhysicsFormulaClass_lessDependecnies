@@ -4,6 +4,7 @@
 #include "BinarySearchTree.h"
 #include "Constants.h"
 
+
 int main(int argc, char* argv[])
 {
     //starting time do not edit code between solid comment lines
@@ -14,7 +15,11 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    Circuits::unknownCapacitor(3.0e-6, 1.0e-6, 2.0e-6, 100.0, 5.8e-3);
+
+
+    Circuits::resistanceUsingResistivity()
+
+
 
 //    CapacitorNode c345({3.0, 5.0, 6.0}, 'p');
 //    CapacitorNode c26({11.0, 3.0}, 's');

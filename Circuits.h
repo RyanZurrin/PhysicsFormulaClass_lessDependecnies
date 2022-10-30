@@ -102,6 +102,96 @@ struct ResistorNode {
     }
 };
 
+struct InductorNode {
+    vector<double> inductances;
+    char type; // 'p' for parallel, 's' for series
+    double equivalentInductance;
+
+    InductorNode() {
+        inductances = {};
+        type = 'p';
+        equivalentInductance = 0.0;
+    }
+    InductorNode(vector<double> i, char t) {
+        inductances = i;
+        type = t;
+        equivalentInductance = calculateEquivalentInductance();
+    }
+    double calculateEquivalentInductance() {
+        double sum = 0.0;
+        if (type == 'p') {
+            for (double inductance : inductances) {
+                sum += 1.0 / inductance;
+            }
+            sum = 1.0 / sum;
+        } else if (type == 's') {
+            for (double inductance : inductances) {
+                sum += inductance;
+            }
+
+        }
+        return sum;
+    }
+
+    void print() {
+        cout << "InductorNode: " << endl;
+        cout << "inductances: ";
+        for (double inductance : inductances) {
+            cout << inductance << " ";
+        }
+        cout << endl;
+        cout << "type: " << type << endl;
+        cout << "equivalentInductance: " << equivalentInductance << endl;
+    }
+};
+
+struct PowerNode {
+    vector<double> powers;
+};
+
+
+struct CircuitNode {
+    vector<CapacitorNode> capacitorNodes;
+    vector<ResistorNode> resistorNodes;
+    vector<InductorNode> inductorNodes;
+    vector<PowerNode> powerNodes;
+
+    CircuitNode() {
+        capacitorNodes = {};
+        resistorNodes = {};
+        inductorNodes = {};
+        powerNodes = {};
+    }
+    CircuitNode(vector<CapacitorNode> c, vector<ResistorNode> r, vector<InductorNode> i, vector<PowerNode> p) {
+        capacitorNodes = c;
+        resistorNodes = r;
+        inductorNodes = i;
+        powerNodes = p;
+    }
+
+    void print() {
+        cout << "CircuitNode: " << endl;
+        cout << "capacitorNodes: " << endl;
+        for (CapacitorNode capacitorNode : capacitorNodes) {
+            capacitorNode.print();
+        }
+        cout << "resistorNodes: " << endl;
+        for (ResistorNode resistorNode : resistorNodes) {
+            resistorNode.print();
+        }
+        cout << "inductorNodes: " << endl;
+        for (InductorNode inductorNode : inductorNodes) {
+            inductorNode.print();
+        }
+        cout << "powerNodes: " << endl;
+        for (PowerNode powerNode : powerNodes) {
+            //powerNode.print();
+        }
+    }
+};
+
+
+
 
 class Circuits:
         public ElectricCurrent, public ElectricPotential
