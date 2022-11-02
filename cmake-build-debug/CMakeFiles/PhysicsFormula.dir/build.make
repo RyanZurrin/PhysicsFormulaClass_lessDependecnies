@@ -403,8 +403,6 @@ PhysicsFormula.exe: ../includes/SFML/lib/libsfml-window-s-d.a
 PhysicsFormula.exe: ../includes/SFML/lib/libsfml-graphics-s-d.a
 PhysicsFormula.exe: ../includes/SFML/lib/libsfml-audio-s-d.a
 PhysicsFormula.exe: ../includes/SFML/lib/libsfml-network-s-d.a
-PhysicsFormula.exe: D:/MingGW/MinGW/lib/libboost_system.a
-PhysicsFormula.exe: D:/MingGW/MinGW/lib/libboost_filesystem.a
 PhysicsFormula.exe: ../includes/SFML/lib/libsfml-window-s-d.a
 PhysicsFormula.exe: ../includes/SFML/lib/libfreetype.a
 PhysicsFormula.exe: ../includes/SFML/lib/libopenal32.a

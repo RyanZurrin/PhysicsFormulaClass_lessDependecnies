@@ -7,6 +7,12 @@ if(EXISTS "E:/Program Files/vcpkg/scripts/buildsystems/vcpkg.cmake")
     set(DMAKE_TOOLCHAIN_FILE "E:/Program Files/vcpkg/scripts/buildsystems/vcpkg.cmake")
 else()
     set(DMAKE_TOOLCHAIN_FILE "D:/src/vcpkg/scripts/buildsystems/vcpkg.cmake")
+    # add boost
+    set(Boost_USE_STATIC_LIBS ON)
+    set(Boost_USE_MULTITHREADED ON)
+    set(Boost_USE_STATIC_RUNTIME OFF)
+    find_package(Boost REQUIRED COMPONENTS system filesystem)
+    target_link_libraries(PhysicsFormula Boost::system Boost::filesystem)
 endif()
 
 
@@ -53,11 +59,6 @@ find_package(Eigen3 CONFIG REQUIRED)
 
 target_link_libraries(PhysicsFormula Eigen3::Eigen)
 
-# add boost
-set(Boost_USE_STATIC_LIBS ON)
-set(Boost_USE_MULTITHREADED ON)
-set(Boost_USE_STATIC_RUNTIME OFF)
-find_package(Boost REQUIRED COMPONENTS system filesystem)
-target_link_libraries(PhysicsFormula Boost::system Boost::filesystem)
+
 
 
