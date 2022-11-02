@@ -3,8 +3,14 @@ project(PhysicsFormula)
 
 set(CMAKE_CXX_STANDARD 20)
 
-set(DMAKE_TOOLCHAIN_FILE "E:/Program Files/vcpkg/scripts/buildsystems/vcpkg.cmake")
-# set(DMAKE_TOOLCHAIN_FILE "D:/src/vcpkg/scripts/buildsystems/vcpkg.cmake")
+if(EXISTS "E:/Program Files/vcpkg/scripts/buildsystems/vcpkg.cmake")
+    set(DMAKE_TOOLCHAIN_FILE "E:/Program Files/vcpkg/scripts/buildsystems/vcpkg.cmake")
+else()
+    set(DMAKE_TOOLCHAIN_FILE "D:/src/vcpkg/scripts/buildsystems/vcpkg.cmake")
+endif()
+
+
+
 
 add_executable(PhysicsFormula testFactory.cpp Angle.h AtomicPhysics.h
         BinarySearchTree.h BinarySpacePartition.h Boundries.h Bounds.h Circle.h
@@ -46,5 +52,4 @@ set(Eigen3_DIR D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/include
 find_package(Eigen3 CONFIG REQUIRED)
 
 target_link_libraries(PhysicsFormula Eigen3::Eigen)
-
 
