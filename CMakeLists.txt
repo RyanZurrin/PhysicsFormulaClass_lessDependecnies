@@ -53,3 +53,11 @@ find_package(Eigen3 CONFIG REQUIRED)
 
 target_link_libraries(PhysicsFormula Eigen3::Eigen)
 
+# add boost
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
+find_package(Boost REQUIRED COMPONENTS system filesystem)
+target_link_libraries(PhysicsFormula Boost::system Boost::filesystem)
+
+
