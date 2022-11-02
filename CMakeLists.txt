@@ -2,17 +2,15 @@ cmake_minimum_required(VERSION 3.16)
 project(PhysicsFormula)
 
 set(CMAKE_CXX_STANDARD 20)
+# create a flag to enable/disable the use of the boost library
+option(USE_BOOST "Use Boost" OFF)
 
 if(EXISTS "E:/Program Files/vcpkg/scripts/buildsystems/vcpkg.cmake")
     set(DMAKE_TOOLCHAIN_FILE "E:/Program Files/vcpkg/scripts/buildsystems/vcpkg.cmake")
 else()
     set(DMAKE_TOOLCHAIN_FILE "D:/src/vcpkg/scripts/buildsystems/vcpkg.cmake")
-    # add boost
-    set(Boost_USE_STATIC_LIBS ON)
-    set(Boost_USE_MULTITHREADED ON)
-    set(Boost_USE_STATIC_RUNTIME OFF)
-    find_package(Boost REQUIRED COMPONENTS system filesystem)
-    target_link_libraries(PhysicsFormula Boost::system Boost::filesystem)
+    # turn on the use of the boost library
+    set(USE_BOOST ON)
 endif()
 
 
@@ -59,6 +57,16 @@ find_package(Eigen3 CONFIG REQUIRED)
 
 target_link_libraries(PhysicsFormula Eigen3::Eigen)
 
+# check if the boost library is to be used
+if(USE_BOOST)
+    # add boost and print a message
+    set(Boost_USE_STATIC_LIBS ON)
+    set(Boost_USE_MULTITHREADED ON)
+    set(Boost_USE_STATIC_RUNTIME OFF)
+    find_package(Boost REQUIRED COMPONENTS system filesystem)
+    target_link_libraries(PhysicsFormula Boost::system Boost::filesystem)
+    message("Boost library is used")
+endif()
 
 
 
