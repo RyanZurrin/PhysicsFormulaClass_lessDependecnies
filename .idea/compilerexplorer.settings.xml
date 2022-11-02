@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerExplorerSettingsProvider">
+<<<<<<< HEAD
+    <option name="enabled" value="false" />
+=======
+>>>>>>> 0887360648f30a72163a1af8ff18963d44575f19
     <option name="localCompilerSettings">
       <map>
         <entry>
           <key>
             <LocalCompilerPath>
+<<<<<<< HEAD
+              <option name="path" value="C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe" />
+=======
               <option name="path" value="E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe" />
+>>>>>>> 0887360648f30a72163a1af8ff18963d44575f19
             </LocalCompilerPath>
           </key>
           <value>

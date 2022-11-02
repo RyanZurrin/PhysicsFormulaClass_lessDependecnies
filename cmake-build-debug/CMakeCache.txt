@@ -14,6 +14,36 @@
 # EXTERNAL cache entries
 ########################
 
+//The directory containing a CMake configuration file for Boost.
+Boost_DIR:PATH=Boost_DIR-NOTFOUND
+
+//Boost filesystem library (debug)
+Boost_FILESYSTEM_LIBRARY_DEBUG:FILEPATH=D:/MingGW/MinGW/lib/libboost_filesystem.a
+
+//Boost filesystem library (release)
+Boost_FILESYSTEM_LIBRARY_RELEASE:FILEPATH=D:/MingGW/MinGW/lib/libboost_filesystem.a
+
+//Path to a file.
+Boost_INCLUDE_DIR:PATH=D:/MingGW/MinGW/include
+
+//Boost library directory DEBUG
+Boost_LIBRARY_DIR_DEBUG:PATH=D:/MingGW/MinGW/lib
+
+//Boost library directory RELEASE
+Boost_LIBRARY_DIR_RELEASE:PATH=D:/MingGW/MinGW/lib
+
+//Boost system library (debug)
+Boost_SYSTEM_LIBRARY_DEBUG:FILEPATH=D:/MingGW/MinGW/lib/libboost_system.a
+
+//Boost system library (release)
+Boost_SYSTEM_LIBRARY_RELEASE:FILEPATH=D:/MingGW/MinGW/lib/libboost_system.a
+
+//Boost [COMPONENTS;<libs>...] library (debug)
+Boost_[COMPONENTS;<LIBS>...]_LIBRARY_DEBUG:FILEPATH=Boost_[COMPONENTS;<LIBS>...]_LIBRARY_DEBUG-NOTFOUND
+
+//Boost [COMPONENTS;<libs>...] library (release)
+Boost_[COMPONENTS;<LIBS>...]_LIBRARY_RELEASE:FILEPATH=Boost_[COMPONENTS;<LIBS>...]_LIBRARY_RELEASE-NOTFOUND
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4345.21/bin/mingw/bin/addr2line.exe
 
@@ -282,6 +312,22 @@ Vorbis_LIB:FILEPATH=D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/in
 # INTERNAL cache entries
 ########################
 
+//ADVANCED property for variable: Boost_DIR
+Boost_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_FILESYSTEM_LIBRARY_DEBUG
+Boost_FILESYSTEM_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_FILESYSTEM_LIBRARY_RELEASE
+Boost_FILESYSTEM_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_INCLUDE_DIR
+Boost_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_LIBRARY_DIR_DEBUG
+Boost_LIBRARY_DIR_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_LIBRARY_DIR_RELEASE
+Boost_LIBRARY_DIR_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_SYSTEM_LIBRARY_DEBUG
+Boost_SYSTEM_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: Boost_SYSTEM_LIBRARY_RELEASE
+Boost_SYSTEM_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_ADDR2LINE
 CMAKE_ADDR2LINE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_AR
@@ -444,6 +490,8 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 CMAKE_STRIP-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding Boost
+FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[D:/MingGW/MinGW/include][cfound components: system filesystem ][v1.77.0()]
 //ADVANCED property for variable: FLAC_LIB
 FLAC_LIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: FreeType_LIB
@@ -458,4 +506,20 @@ VorbisEnc_LIB-ADVANCED:INTERNAL=1
 VorbisFile_LIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Vorbis_LIB
 Vorbis_LIB-ADVANCED:INTERNAL=1
+//Components requested for this build tree.
+_Boost_COMPONENTS_SEARCHED:INTERNAL=filesystem;system
+//Last used Boost_INCLUDE_DIR value.
+_Boost_INCLUDE_DIR_LAST:INTERNAL=D:/MingGW/MinGW/include
+//Last used Boost_LIBRARY_DIR_DEBUG value.
+_Boost_LIBRARY_DIR_DEBUG_LAST:INTERNAL=D:/MingGW/MinGW/lib
+//Last used Boost_LIBRARY_DIR_RELEASE value.
+_Boost_LIBRARY_DIR_RELEASE_LAST:INTERNAL=D:/MingGW/MinGW/lib
+//Last used Boost_NAMESPACE value.
+_Boost_NAMESPACE_LAST:INTERNAL=boost
+//Last used Boost_USE_MULTITHREADED value.
+_Boost_USE_MULTITHREADED_LAST:INTERNAL=ON
+//Last used Boost_USE_STATIC_LIBS value.
+_Boost_USE_STATIC_LIBS_LAST:INTERNAL=ON
+//Last used Boost_USE_STATIC_RUNTIME value.
+_Boost_USE_STATIC_RUNTIME_LAST:INTERNAL=OFF
 

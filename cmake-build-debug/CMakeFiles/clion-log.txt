@@ -12,6 +12,7 @@ E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\c
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
 -- Found SFML 2.5.1 in D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/lib/cmake/SFML
+-- Found Boost: D:/MingGW/MinGW/include (found version "1.77.0") found components: system filesystem 
 -- Configuring done
 -- Generating done
 -- Build files have been written to: D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug
