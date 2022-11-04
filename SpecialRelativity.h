@@ -15,6 +15,7 @@
 //Ω=234,δ=235,∞=236,φ=237,ε=238,∩=239,≡=240,gamma=226,gamma, σ, ϑ, Å, Ώ, lambda, gamma
 
 #include <iostream>
+#include "Constants.h"
 
 //#include "VisionOpticalInstruments.h"
 static int specialRelativity_objectCount = 0;

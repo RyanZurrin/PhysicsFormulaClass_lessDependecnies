@@ -37,7 +37,7 @@ public:
      * @brief copy constructor
      */
     QuantumPhysics(const QuantumPhysics& t)
-    {
+     : SpecialRelativity(t) {
         _quantumPtr = t._quantumPtr;
         quantumVar = t.quantumVar;
         countIncrease();

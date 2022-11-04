@@ -21,7 +21,7 @@ namespace rez {
         //Segment2d(Point2d _p1, Point2d _p2) : p1(_p1), p2(_p2) {}
         Segment2d(Point2d& _p1, Point2d& _p2) : p1(_p1), p2(_p2) {}
 
-        double get_x(double y) const
+        [[nodiscard]] double get_x(double y) const
         {
             double x1 = p1[X_];
             double y1 = p1[Y_];

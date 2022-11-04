@@ -4,8 +4,11 @@
 
 #ifndef PHYSICSFORMULA_CONSTANTS_H
 #define PHYSICSFORMULA_CONSTANTS_H
+
 using namespace std;
+
 namespace constants {
+
     constexpr auto EARTH_RADIUS = 6.371e6;
     constexpr auto EARTH_MASS = 5.972e24;
     constexpr auto MOON_RADIUS = 1737.1e3;

@@ -159,36 +159,106 @@ static struct TemperatureCoefficientsOfResistivity
 
 static struct AWGWireSizesByGauge
 {
-    const long double AWG0000 = 11.6840*pow(10, -3);// 11.6840mm diameter
-    const long double AWG000 = 10.4038*pow(10, -3);// 10.4038mm diameter
-    const long double AWG00 = 9.2659*pow(10, -3);// 9.2659mm diameter
-    const long double AWG0 = 8.2525*pow(10, -3);// 8.2525mm diameter
-    const long double AWG1 = 7.3482*pow(10, -3);// 7.3482mm diameter
-    const long double AWG2 = 6.5430*pow(10, -3);// 6.5430mm diameter
-    const long double AWG3 = 5.8268*pow(10, -3);// 5.8268mm diameter
-    const long double AWG4 = 5.1892*pow(10, -3);// 5.1892mm diameter
-    const long double AWG5 = 4.6203*pow(10, -3);// 4.6203mm diameter
-    const long double AWG6 = 4.1148*pow(10, -3);// 4.1148mm diameter
-    const long double AWG7 = 3.6652*pow(10, -3);// 3.6652mm diameter
-    const long double AWG8 = 3.2639*pow(10, -3);// 3.2639mm diameter
-    const long double AWG9 = 2.9058*pow(10, -3);// 2.9058mm diameter
-    const long double AWG10 = 2.5883*pow(10, -3);// 2.5883mm diameter
-    const long double AWG11 = 2.3038*pow(10, -3);// 2.3038mm diameter
-    const long double AWG12 = 2.0523*pow(10, -3);// 2.0523mm diameter
-    const long double AWG13 = 1.8288*pow(10, -3);// 1.8288mm diameter
-    const long double AWG14 = 1.6281*pow(10, -3);// 1.6281mm diameter
-    const long double AWG15 = 1.4503*pow(10, -3);// 1.4503mm diameter
-    const long double AWG16 = 1.2903*pow(10, -3);// 1.2903mm diameter
-    const long double AWG17 = 1.1506*pow(10, -3);// 1.1506mm diameter
-    const long double AWG18 = 1.0236*pow(10, -3);// 1.0236mm diameter
-    const long double AWG19 = 0.9119*pow(10, -3);// 0.9119mm diameter
-    const long double AWG20 = 0.8128*pow(10, -3);// 0.8128mm diameter
-    const long double AWG21 = 0.7239*pow(10, -3);// 0.7239mm diameter
-    const long double AWG22 = 0.6452*pow(10, -3);// 0.6452mm diameter
-    const long double AWG23 = 0.5740*pow(10, -3);// 0.5740mm diameter
-    const long double AWG24 = 0.5105*pow(10, -3);// 0.5105mm diameter
-    const long double AWG25 = 0.4547*pow(10, -3);// 0.4547mm diameter
+    const long double AWG0000 = 11.6840e-3;// 11.6840mm diameter
+//    const struct AWG0000 {
+//        const long double d_inches = 0.460;
+//        const long double d_mm = 11.6840;
+//        const long double d_m = 0.0116840;
+//        const long double cross_section_mm = 107;
+//        const long double cross_section_m = 0.000107;
+//        const long double ohms_per_km = 0.16072;
+//        const long double max_amps_chassis = 380;
+//    }awg0000;
+    const long double AWG000 = 10.4038e-3;// 10.4038mm diameter
+    const long double AWG00 = 9.2659e-3;// 9.2659mm diameter
+    const long double AWG0 = 8.2525e-3;// 8.2525mm diameter
+    const long double AWG1 = 7.3482e-3;// 7.3482mm diameter
+    const long double AWG2 = 6.5430e-3;// 6.5430mm diameter
+    const long double AWG3 = 5.8268e-3;// 5.8268mm diameter
+    const long double AWG4 = 5.1892e-3;// 5.1892mm diameter
+    const long double AWG5 = 4.6203e-3;// 4.6203mm diameter
+    const long double AWG6 = 4.1148e-3;// 4.1148mm diameter
+    const long double AWG7 = 3.6652e-3;// 3.6652mm diameter
+    const long double AWG8 = 3.2639e-3;// 3.2639mm diameter
+    const long double AWG9 = 2.9058e-3;// 2.9058mm diameter
+    const long double AWG10 = 2.5883e-3;// 2.5883mm diameter
+    const long double AWG11 = 2.3038e-3;// 2.3038mm diameter
+    const long double AWG12 = 2.0523e-3;// 2.0523mm diameter
+    const long double AWG13 = 1.8288e-3;// 1.8288mm diameter
+    const long double AWG14 = 1.6281e-3;// 1.6281mm diameter
+    const long double AWG15 = 1.4503e-3;// 1.4503mm diameter
+    const long double AWG16 = 1.2903e-3;// 1.2903mm diameter
+    const long double AWG17 = 1.1506e-3;// 1.1506mm diameter
+    const long double AWG18 = 1.0236e-3;// 1.0236mm diameter
+    const long double AWG19 = 0.9119e-3;// 0.9119mm diameter
+    const long double AWG20 = 0.8128e-3;// 0.8128mm diameter
+    const long double AWG21 = 0.7239e-3;// 0.7239mm diameter
+    const long double AWG22 = 0.6400e-3;// 0.6452mm diameter
+    const long double AWG23 = 0.5740e-3;// 0.5740mm diameter
+    const long double AWG24 = 0.5105e-3;// 0.5105mm diameter
+    const long double AWG25 = 0.4547e-3;// 0.4547mm diameter
+    const long double AWG26 = 0.4039e-3;// 0.4050mm diameter
+    const long double AWG27 = 0.3607e-3;// 0.3580mm diameter
+    const long double AWG28 = 0.3200e-3;// 0.3200mm diameter
+    const long double AWG29 = 0.2870e-3;// 0.2860mm diameter
+    const long double AWG30 = 0.2540e-3;// 0.2550mm diameter
+    const long double AWG31 = 0.2261e-3;// 0.2270mm diameter
+    const long double AWG32 = 0.2032e-3;// 0.2020mm diameter
+
+    /**
+     * @brief Returns the diameter of the wire in meters for the given gauge.
+     * @warning For the 0000, 000, and 00 gauges, use a 1 in front of the zero's,
+     * e.g. 0000 = 10000, \n
+     * 000 = 1000, \n
+     * 00 = 100.
+     * @param gauge  The gauge of the wire.
+     * @return The diameter of the wire in meters.
+     */
+    [[nodiscard]] long double convertGauge2Diameter(int gauge) const
+    {
+        switch (gauge)
+        {
+            case 10000: return AWG0000;
+            case 1000: return AWG000;
+            case 100: return AWG00;
+            case 0: return AWG0;
+            case 1: return AWG1;
+            case 2: return AWG2;
+            case 3: return AWG3;
+            case 4: return AWG4;
+            case 5: return AWG5;
+            case 6: return AWG6;
+            case 7: return AWG7;
+            case 8: return AWG8;
+            case 9: return AWG9;
+            case 10: return AWG10;
+            case 11: return AWG11;
+            case 12: return AWG12;
+            case 13: return AWG13;
+            case 14: return AWG14;
+            case 15: return AWG15;
+            case 16: return AWG16;
+            case 17: return AWG17;
+            case 18: return AWG18;
+            case 19: return AWG19;
+            case 20: return AWG20;
+            case 21: return AWG21;
+            case 22: return AWG22;
+            case 23: return AWG23;
+            case 24: return AWG24;
+            case 25: return AWG25;
+            case 26: return AWG26;
+            case 27: return AWG27;
+            case 28: return AWG28;
+            case 29: return AWG29;
+            case 30: return AWG30;
+            case 31: return AWG31;
+            case 32: return AWG32;
+            default: return 0;
+        }
+    }
 }AWG;
+
 
 //static object counter for ElectricCurrent class
 static int electricCurrent_objectCount = 0;
@@ -355,12 +425,6 @@ public:
      */
     static long double current_PR(long double P, long double R, bool print = true);
 
-    /// <summary>
-    /// Calculates the currents from power and volts.
-    /// </summary>
-    /// <param name="P">The power in watts.</param>
-    /// <param name="V">The volts.</param>
-    /// <returns></returns>
     /**
      * @brief calculates the current from power and volts
      * @param P  the power in watts
@@ -369,6 +433,19 @@ public:
      * @return
      */
     static long double current_PV(long double P, long double V, bool print = true);
+
+    /**
+     * @brief calculates the current from the voltage, diameter, resistivity
+     * and length of a wire.
+     * @param V  the voltage
+     * @param d the diameter
+     * @param rho  the resistivity
+     * @param L  the length of the wire
+     * @param print  print to console
+     * @return  the current in amperes
+     */
+    static long double current_VdRhoL(
+            long double V, long double d, long double rho, long double L, bool print = true);
 
     /**
      * @brief calculates the resistances of an ohmic conducting material
@@ -549,7 +626,8 @@ public:
 
     /**
      * @brief Drifts the velocity common wire n.
-     * @param n  The number of electrons per cubic meter
+     * @param n  The number of electrons per cubic meter (density of
+     *           conduction electrons)
      * @param q  The charge
      * @param diameter  The diameter
      * @param I  The current
@@ -965,7 +1043,35 @@ public:
      */
     static long double electronsPassed(long double I, long double t, bool print = true);
 
+    /**
+     * @brief A piece of wire made from metal A joins a piece of wire metal B
+     * whose diameter is x times that of the wire A. The same current flows in
+     * both wires. The density of conduction electrons for wire A is nA and the
+     * density of conduction electrons for wire B is nB. Calculate the ratio of
+     * the drift velocities of the electrons in the two wires and compare the
+     * current densities in the two wires.
+     * @param nA  The electron density of wire A.
+     * @param nB  The electron density of wire B.
+     * @param x  The ratio of the diameters of wire B to wire A.
+     * @param print  print to console
+     * @return  drift velocity ratio and current density ratio
+     */
+    static long double electronDriftVelocityRatio(
+            long double nA, long double nB, long double x, bool print = true);
 
+    /**
+     * @brief A potential difference of V (V) is imposed across a l m length
+     * of g gauge wire. As a result, a I A current flows in the wire.
+     * Calculate the resistivity of the wire.
+     * @param V  The potential difference.
+     * @param I  The current.
+     * @param l  The length.
+     * @param g  The gauge.
+     * @param print  print to console
+     * @return  resistivity
+     */
+    static long double resistivity(long double V, long double I, long double l,
+                                   int g, bool print = true);
 
 
     void setElectricCurrentVal(long double val) { _electricCurrentVal = val; }
@@ -1637,6 +1743,43 @@ ElectricCurrent::resistivity_dIE(long double d, long double I, long double E,
         std::cout << "R = " << R << " Ohms" << std::endl;
     }
     return R;
+}
+
+long double
+ElectricCurrent::electronDriftVelocityRatio(long double nA, long double nB,
+                                            long double x, bool print) {
+    auto ratio = (nB * x * x) / (nA);
+    auto pi = constants::PI;
+    auto J_J = pow((x * pi)/2, 2) / pow((pi/2.0), 2);
+    if (print) {
+        std::cout << "ratio = " << ratio << std::endl;
+        std::cout << "J/J = " << J_J << std::endl;
+    }
+    return ratio;
+}
+
+long double
+ElectricCurrent::resistivity(
+        long double V, long double I, long double l, int g, bool print) {
+    auto R = V / I;
+    auto d = AWG.convertGauge2Diameter(g);
+    auto A = area_d(d, false);
+    auto rho = R * (A / l);
+    if (print) {
+        std::cout << "rho = " << rho << " Ohm-m" << std::endl;
+    }
+    return rho;
+}
+
+long double
+ElectricCurrent::current_VdRhoL(long double V, long double d, long double rho,
+                                long double L, bool print) {
+    auto A = area_d(d, false);
+    auto I = (V * A) / (rho * L);
+    if (print) {
+        std::cout << "I = " << I << " A" << std::endl;
+    }
+    return I;
 }
 
 

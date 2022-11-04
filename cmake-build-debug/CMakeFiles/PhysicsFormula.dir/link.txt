@@ -1,3 +1,3 @@
-C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\PhysicsFormula.dir/objects.a
-C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\ar.exe qc CMakeFiles\PhysicsFormula.dir/objects.a @CMakeFiles\PhysicsFormula.dir\objects1.rsp
-C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\PhysicsFormula.dir/objects.a -Wl,--no-whole-archive -o PhysicsFormula.exe -Wl,--out-implib,libPhysicsFormula.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\PhysicsFormula.dir\linklibs.rsp
+E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\cmake\win\bin\cmake.exe -E rm -f CMakeFiles\PhysicsFormula.dir/objects.a
+E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\ar.exe qc CMakeFiles\PhysicsFormula.dir/objects.a @CMakeFiles\PhysicsFormula.dir\objects1.rsp
+E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe -g -Wl,--whole-archive CMakeFiles\PhysicsFormula.dir/objects.a -Wl,--no-whole-archive -o PhysicsFormula.exe -Wl,--out-implib,libPhysicsFormula.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\PhysicsFormula.dir\linklibs.rsp

@@ -4,5 +4,5 @@
 #include <fstream>
 
 unsigned char *DoubleArrayToByteArray(std::vector<double> *data);
-void WriteToFile(std::vector<double> *data, std::string filename);
+void WriteToFile(std::vector<double> *data, const std::string& filename);
 std::vector<double> *ByteArrayToDoubleArray(std::vector<unsigned char> *data);

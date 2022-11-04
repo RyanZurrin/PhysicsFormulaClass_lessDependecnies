@@ -313,7 +313,7 @@ public:
      * @param print  Whether or not to print the results.
      * @return  The current (A).
      */
-    static constexpr long double current_OhmsLaw(
+    static constexpr long double current_emfRloadr(
             long double emf, long double RLoad, long double r, bool print = true);
 
     /**
@@ -807,6 +807,20 @@ public:
     static ld unknownCapacitor(
             ld C1p, ld C2s, ld Cfs, ld v, ld U, bool print = true);
 
+    /**
+     * @brief An ion channel in a cell membrane carries I A when it's open,
+     * but it's open only y % of the time. Calculate what the average current
+     * is in the channel and if the channel opens for t s, calculate how many
+     * singly ionized atoms are transported through the channel.
+     * @param I the current (A)
+     * @param y the percentage open
+     * @param t the time (s)
+     * @param print true to print the answer
+     * @return the average current (A), the number of ions transported
+     */
+    static vector<ld> ionChannel(ld I, ld y, ld t, bool print = true);
+
+
 
     ~Circuits()
     {
@@ -874,7 +888,7 @@ constexpr long double Circuits::terminalVoltage(
     return V;
 }
 
-constexpr long double Circuits::current_OhmsLaw(
+constexpr long double Circuits::current_emfRloadr(
         const long double emf, const long double RLoad, const long double r, bool print)
 {
     auto I = emf/(RLoad+r);//amperes (I)
@@ -1323,6 +1337,21 @@ ld Circuits::unknownCapacitor(ld C1s, ld C1p, ld Cfs, ld v, ld U, bool print) {
         std::cout << "Cf = " << Cf << " F" << std::endl;
     }
     return Cf;
+}
+
+vector<ld> Circuits::ionChannel(ld I, ld y, ld t, bool print) {
+    // check if y is a percent or a fraction
+    if (y > 1.0) {
+        y /= 100.0;
+    }
+    auto C = y * I;
+    auto q = I * t;
+    auto ions = q / -constants::ELECTRON_CHARGE;
+    if (print) {
+        std::cout << "C = " << C << " F" << std::endl;
+        std::cout << "ions = " << ions << std::endl;
+    }
+    return {C, ions};
 }
 
 

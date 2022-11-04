@@ -589,6 +589,16 @@ public:
      * @return the work done (J)
      */
     static ld workDoneToMoveCharge(ld q, ld U, bool print = true);
+    /**
+     * @brief Calculate the work done to move a charge q C from a one point
+     * with a potential of U1 V to a point with a potential of U2 V.
+     * @param q  the charge (C)
+     * @param U1  the potential at point 1 (V)
+     * @param U2 the potential at point 2 (V)
+     * @param print  true to print the answer
+     * @return  the work done (J)
+     */
+    static ld workDoneMovingCharge(ld q, ld U1, ld U2, bool print = true);
 
     /**
      * @brief Calculates the magnitude of the potential difference between two
@@ -708,6 +718,79 @@ public:
      * @return the work done (J)
      */
     static ld workToCompressSphere(ld Q, ld Ri, ld Rf, bool print = true);
+
+    /**
+     * @brief Calculate the potential difference at point p from a distribution
+     * of point charges.
+     * @tparam POINTCHARGE
+     * @param charges  the charges
+     * @param p  the point
+     * @param print  true to print the answer
+     * @return  the potential difference (V)
+     */
+    template<typename POINTCHARGE>
+    static ld potentialDueToChargeDistribution(
+            vector<POINTCHARGE> charges,  const Vector2D& p, bool print = true);
+
+    /**
+     * @brief You measure an electrostatic energy density of uE J/m3 at a
+     * distance of d m from a point charge. At dx m from the charge, calculate
+     * the energy density.
+     * @param uE the energy density (J/m^3)
+     * @param d the distance from the charge (m)
+     * @param dx the distance from the charge (m)
+     * @param print true to print the answer
+     * @return the energy density (J/m^3)
+     */
+    static ld energyDensityAtDistanceFromCharge(
+            ld uE, ld d, ld dx, bool print = true);
+
+    /**
+     * @brief A cubical region of side L has one corner at the origin and the
+     * opposite corner at x = y = z = L. It contains an electric field whose
+     * magnitude increases with y: E(y) = E0 y/L. Calculate the
+     * electrostatic energy contained in this region.
+     * @param L the side length (m)
+     * @param E0 the electric field strength at y = 0 (V/m)
+     * @param print true to print the answer
+     * @return the electrostatic energy (J)
+     */
+    static ld electrostaticEnergyInCubicalRegion(ld L, ld E0, bool print = true);
+
+    /**
+     * @brief Calculate the total electrostatic energy of a system consisting
+     * of four point charges located at the corners of a square of side a.
+     * Three of them carry charge +Q, while the fourth carries –Q/2.
+     * @param a the side length (m)
+     * @param Q the charge (C)
+     * @param print true to print the answer
+     * @return the electrostatic energy (J)
+     */
+    static ld electrostaticEnergyOfSquare(ld a, ld Q, bool print = true);
+
+    /**
+     * @brief Calculate the voltages compare across two wires both of length
+     * L and diameter d, carrying the same current I. One wire has a
+     * resistivity of rho1 and the other has a resistivity of rho2.
+     * @param rho1 the resistivity of wire 1 (ohm-m)
+     * @param rho2 the resistivity of wire 2 (ohm-m)
+     * @param print true to print the answer
+     * @return the voltage difference (V)
+     */
+    static ld voltageCompareAcross2Wires(ld rho1, ld rho2, bool print = true);
+
+    /**
+     * @brief Calculate the relationship between the diameters of two wires
+     * that have the same resistance and length. One wire has a resistivity
+     * of rho1 and the other has a resistivity of rho2.
+     * @param rho1 the resistivity of wire 1 (ohm-m)
+     * @param rho2 the resistivity of wire 2 (ohm-m)
+     * @param print true to print the answer
+     * @return the relationship between the diameters
+     */
+     static ld relationshipBetweenDiametersOf2Wires(
+             ld rho1, ld rho2, bool print = true);
+
 
 
     void setElectricPotentialVal(ld val)
@@ -1016,6 +1099,23 @@ ld ElectricPotential::workDoneToMoveCharge(ld q, ld U, bool print) {
     return W;
 }
 
+ld ElectricPotential::workDoneMovingCharge(ld q, ld U1, ld U2, bool print) {
+    // check if any of the points are at infinity and if they are, set them to 0
+    if (U1 == std::numeric_limits<ld>::infinity() || U1 == INFINITY) {
+        U1 = 0;
+        cout << "U1 is at infinity, setting to 0" << endl;
+    }
+    if (U2 == std::numeric_limits<ld>::infinity() || U2 == INFINITY) {
+        U2 = 0;
+        cout << "U2 is at infinity, setting to 0" << endl;
+    }
+    auto W = q * (U1 - U2);
+    if (print) {
+        std::cout << "W = " << W << " J" << std::endl;
+    }
+    return W;
+}
+
 ld ElectricPotential::potentialDifference_V(ld W, ld q, bool print) {
     ld V = W / q;
     if (print) {
@@ -1170,6 +1270,71 @@ ld ElectricPotential::workToCompressSphere(ld Q, ld Ri, ld Rf, bool print) {
     }
     return W;
 }
+
+template<typename POINTCHARGE>
+ld ElectricPotential::potentialDueToChargeDistribution(
+        vector<POINTCHARGE> charges, const Vector2D& p, bool print) {
+    auto k = constants::K;
+    ld V = 0;
+    for (auto charge : charges) {
+        ld r = sqrt(pow(charge.position.getX() - p.getX(), 2) +
+                    pow(charge.position.getY() - p.getY(), 2));
+        V += k * charge.q / r;
+    }
+    if (print) {
+        std::cout << "V = " << V << " V" << std::endl;
+    }
+    return V;
+}
+
+ld ElectricPotential::energyDensityAtDistanceFromCharge(
+        ld uE, ld d, ld dx, bool print) {
+    auto pi = constants::PI;
+    auto e0 = constants::e0;
+    auto U = (uE*uE)/(32.0*(pi*pi)*e0*pow(dx, 4));
+    if (print) {
+        std::cout << "U = " << U << " J/m^3" << std::endl;
+    }
+    return U;
+}
+
+ld
+ElectricPotential::electrostaticEnergyInCubicalRegion(ld L, ld E0, bool print) {
+    auto e0 = constants::e0;
+    auto U = (e0 * E0 * E0 * L * L * L) / 6.0;
+    if (print) {
+        std::cout << "U = " << U << " J" << std::endl;
+    }
+    return U;
+}
+
+ld ElectricPotential::electrostaticEnergyOfSquare(ld a, ld Q, bool print) {
+    auto k = constants::K;
+    auto U = ((k * Q * Q) / a) *(1.0 + (sqrt(2.0) / 4.0));
+    if (print) {
+        std::cout << "U = " << U << " J" << std::endl;
+    }
+    return U;
+}
+
+ld ElectricPotential::voltageCompareAcross2Wires(ld rho1, ld rho2, bool print) {
+    auto V = rho2 / rho1;
+    if (print) {
+        std::cout << "V = " << V << " V" << std::endl;
+    }
+    return V;
+}
+
+ld ElectricPotential::relationshipBetweenDiametersOf2Wires(ld rho1, ld rho2,
+                                                           bool print) {
+    auto d2 = sqrt(rho2 / rho1);
+    if (print) {
+        std::cout << "d2 = " << d2 << " m" << std::endl;
+    }
+    return d2;
+}
+
+
 
 
 

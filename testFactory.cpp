@@ -15,9 +15,13 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
+    POINT_CHARGE_2D q1(1.0e-6, {0.0, 0.0, 0.0});
+    POINT_CHARGE_2D q2(1.0e-6, {2.0e-3, 0.0, 0.0});
+    Vector2D p1(1.0e-3, 0.0);
+    vector<POINT_CHARGE_2D> charges = {q1, q2};
 
 
-    Circuits::resistivity_dIE(.01, 45.0, 1.6);
+    Circuits::current_VdRhoL(222e-3, .640e-3, 2.24e-8, 2.25);
 
 
 

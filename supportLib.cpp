@@ -15,7 +15,7 @@ unsigned char *DoubleArrayToByteArray(vector<double> *data){
 	return out;
 }
 
-void WriteToFile(vector<double> *data, string filename){
+void WriteToFile(vector<double> *data, const string& filename){
 	unsigned char *bytes;
 
 	bytes = DoubleArrayToByteArray(data);
