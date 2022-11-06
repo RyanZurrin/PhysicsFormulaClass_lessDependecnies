@@ -193,7 +193,21 @@ public:
     /// <param name="PE">The Potential difference.</param>
     /// <param name="volts">The electrical potential.</param>
     /// <returns>the charge(q) in Coulombs(C) moved</returns>
-    static ld chargeMoved_q(ld PE, ld volts);
+    static ld chargeMoved(ld PE, ld volts);
+
+    /**
+     * @brief Calculate much charge must be transferred between the initially
+     * uncharged plates of the capacitor with side lengths of s m and a
+     * distance apart of d m, in order to store Eu J of energy, as well
+     * calculate the resulting potential difference between the plates.
+     * @param Eu the energy stored in the capacitor
+     * @param s the side length of the capacitor
+     * @param d the distance between the plates
+     * @param print if true, prints the results to the console
+     * @return the charge moved
+     */
+    static vector<ld> chargeMoved(ld Eu, ld s, ld d, bool print = true);
+
 
     /// <summary>
     /// Calculates the numbers of electrons that pass through a charge per
@@ -589,6 +603,7 @@ public:
      * @return the work done (J)
      */
     static ld workDoneToMoveCharge(ld q, ld U, bool print = true);
+
     /**
      * @brief Calculate the work done to move a charge q C from a one point
      * with a potential of U1 V to a point with a potential of U2 V.
@@ -599,6 +614,20 @@ public:
      * @return  the work done (J)
      */
     static ld workDoneMovingCharge(ld q, ld U1, ld U2, bool print = true);
+
+    /**
+     * @brief An uncharged capacitor has parallel plates s m on a side, spaced
+     * d m apart. Calculate how much work is required to transfer Qa C from one
+     * plate to the other and How much work is required to transfer an
+     * additional Qb C.
+     * @param s the side length of the capacitor (m)
+     * @param d the distance between the plates (m)
+     * @param Qa the charge on the capacitor (C)
+     * @param Qb the additional charge to be added (C)
+     * @param print true to print the answer
+     * @return the work done (J)
+     */
+     static vector<ld> workToTransferCharge(ld s, ld d, ld Qa, ld Qb, bool print = true);
 
     /**
      * @brief Calculates the magnitude of the potential difference between two
@@ -827,7 +856,7 @@ inline ld ElectricPotential::potentialDifference_PE(
     return PE;
 }
 
-inline ld ElectricPotential::chargeMoved_q(const ld PE, const ld volts)
+inline ld ElectricPotential::chargeMoved(const ld PE, const ld volts)
 {
     return PE / volts;
 }
@@ -1332,6 +1361,28 @@ ld ElectricPotential::relationshipBetweenDiametersOf2Wires(ld rho1, ld rho2,
         std::cout << "d2 = " << d2 << " m" << std::endl;
     }
     return d2;
+}
+
+vector<ld>
+ElectricPotential::workToTransferCharge(ld s, ld d, ld Qa, ld Qb, bool print) {
+    auto e0 = constants::e0;
+    auto w_a = (Qa * Qa * d) / (2.0 * e0 * s*s);
+    auto w_b = (((Qb+Qa) * (Qb+Qa) * d) / (2.0 * e0 * s*s)) - w_a;
+    if (print) {
+        std::cout << "w_a = " << w_a << " J" << std::endl;
+        std::cout << "w_b = " << w_b << " J" << std::endl;
+    }
+    return {w_a, w_b};
+}
+
+vector<ld> ElectricPotential::chargeMoved(ld Eu, ld s, ld d, bool print) {
+    auto e0 = constants::e0;
+    auto Q = sqrt((2.0 * e0 * s * s * Eu) / d);
+    auto V = (2.0 * Eu) / Q;
+    if (print) {
+        std::cout << "Q = " << Q << " C" << std::endl;
+    }
+    return {Q, V};
 }
 
 

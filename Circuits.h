@@ -641,7 +641,8 @@ public:
      * @param print true to print the answer
      * @return the potential difference (V)
      */
-    static ld potentialDifferenceBetweenPlates(ld C, ld Q, bool print = true);
+    static ld potentialDifferenceBetweenPlates_CQ(
+            ld C, ld Q, bool print = true);
 
     /**
      * @brief Calculate the potential difference between two plates of a capacitor
@@ -651,7 +652,7 @@ public:
      * @param print true to print the answer
      * @return the potential difference (V)
      */
-     static ld potentialDiffBetweenPlatesFromEField(
+     static ld potentialDifferenceBetweenPlates_Ed(
              ld E, ld d, bool print = true);
 
     /**
@@ -662,7 +663,25 @@ public:
      * @param V the voltage (V)
      * @param print true to print the answer
      */
-    static ld energyStoredInCapacitor(ld C, ld V, bool print = true);
+    static ld energyStoredInCapacitor_CV(ld C, ld V, bool print = true);
+
+    /**
+     * @brief calculate the energy stored in a capacitor with with a voltage
+     * of V and a charge of Q.
+     * @param V the voltage (V)
+     * @param Q the charge (C)
+     * @param print true to print the answer
+     */
+    static ld energyStoredInCapacitor_VQ(ld V, ld Q, bool print = true);
+
+    /**
+     * @brief Calculate the energy stored in a capacitor with a capacitance
+     * of C and a charge of Q.
+     * @param C the capacitance (F)
+     * @param Q the charge (C)
+     * @param print true to print the answer
+     */
+    static ld energyStoredInCapacitor_CQ(ld C, ld Q, bool print = true);
 
     /**
      * @brief Calculate the magnitude of the electric field E (V/m) between
@@ -672,6 +691,16 @@ public:
      * @return the electric field (V/m)
      */
     static ld electricFieldBetweenPlates(ld sigma, bool print = true);
+
+    /**
+     * @brief Calculate the magnitude of the electric field E (V/m) between
+     * the plates of a capacitor with a charge of Q C, and an area of A m^2.
+     * @param Q the charge (C)
+     * @param A the area (m^2)
+     * @param print true to print the answer
+     * @return the electric field (V/m)
+     */
+    static ld electricFieldBetweenPlates_QA(ld Q, ld A, bool print = true);
 
     /**
      * @brief Calculate the magnitude of the force on a N ion with between the
@@ -1152,7 +1181,8 @@ std::vector<ld> Circuits::chargeToStoreEnergy(
     return {Cap, Q};
 }
 
-ld Circuits::potentialDifferenceBetweenPlates(ld C, ld Q, bool print) {
+ld Circuits::
+potentialDifferenceBetweenPlates_CQ(ld C, ld Q, bool print) {
     auto V = Q / C;
     if (print) {
         std::cout << "V = " << V << std::endl;
@@ -1160,8 +1190,25 @@ ld Circuits::potentialDifferenceBetweenPlates(ld C, ld Q, bool print) {
     return V;
 }
 
-ld Circuits::energyStoredInCapacitor(ld C, ld V, bool print) {
+ld Circuits::
+potentialDifferenceBetweenPlates_Ed(ld E, ld d, bool print) {
+    auto V = E * d;
+    if (print) {
+        std::cout << "V = " << V << " V" << std::endl;
+    }
+    return V;
+}
+
+ld Circuits::energyStoredInCapacitor_CV(ld C, ld V, bool print) {
     auto U = (C * V * V) / 2.0;
+    if (print) {
+        std::cout << "U = " << U << " J" << std::endl;
+    }
+    return U;
+}
+
+ld Circuits::energyStoredInCapacitor_VQ(ld V, ld Q, bool print) {
+    auto U = (Q * V) / 2.0;
     if (print) {
         std::cout << "U = " << U << " J" << std::endl;
     }
@@ -1176,6 +1223,14 @@ ld Circuits::electricFieldBetweenPlates(ld sigma, bool print) {
     }
     return E;
 }
+ld Circuits::electricFieldBetweenPlates_QA(ld Q, ld A, bool print) {
+    auto e0 = constants::e0;
+    auto E = Q / (e0 * A);
+    if (print) {
+        std::cout << "E = " << E << " V/m" << std::endl;
+    }
+    return E;
+}
 
 ld Circuits::forceOnIon(ld E, ld N, bool print) {
     // F = qE where q is the charge of the ion N
@@ -1184,14 +1239,6 @@ ld Circuits::forceOnIon(ld E, ld N, bool print) {
         std::cout << "F = " << F << " N" << std::endl;
     }
     return F;
-}
-
-ld Circuits::potentialDiffBetweenPlatesFromEField(ld E, ld d, bool print) {
-    auto V = E * d;
-    if (print) {
-        std::cout << "V = " << V << " V" << std::endl;
-    }
-    return V;
 }
 
 ld Circuits::kineticEnergyOfChargeBetweenPlates(ld Q, ld V, bool print) {
@@ -1353,6 +1400,15 @@ vector<ld> Circuits::ionChannel(ld I, ld y, ld t, bool print) {
     }
     return {C, ions};
 }
+
+ld Circuits::energyStoredInCapacitor_CQ(ld C, ld Q, bool print) {
+    auto U = (Q * Q) / (2.0 * C);
+    if (print) {
+        std::cout << "U = " << U << " J" << std::endl;
+    }
+    return U;
+}
+
 
 
 

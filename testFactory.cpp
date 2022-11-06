@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
     vector<POINT_CHARGE_2D> charges = {q1, q2};
 
 
-    Circuits::current_VdRhoL(222e-3, .640e-3, 2.24e-8, 2.25);
+
 
 
 
