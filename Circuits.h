@@ -268,14 +268,14 @@ public:
 
 
     /**
-     * @brief Calculates the total capacitance of capacitors hooked up in parallel.
+     * @brief Calculates the total capacitance_Qv of capacitors hooked up in parallel.
      *    ┌───┴───┐
      *    ┴       ┴      =>   ┴ c = c1 + c2 + ... + cn
      * C1 ┬       ┬ C2        ┬
      *    └───┬───┘
      * @param C  The array of capacitors.
      * @param print  Whether or not to print the results.
-     * @return  The total capacitance (F).
+     * @return  The total capacitance_Qv (F).
      */
     static long double parallelCapacitance(
             const vector<long double>& C, bool print);
@@ -289,7 +289,7 @@ public:
      *
      * @param C  The array of capacitors.
      * @param print  Whether or not to print the results.
-     * @return  The total capacitance (F).
+     * @return  The total capacitance_Qv (F).
      */
     static long double seriesCapacitance(
             const vector<long double>& C, bool print);
@@ -361,7 +361,7 @@ public:
      * @brief Calculates the RC time constant of a circuit containing a resistor
      * and a capacitor.
      * @param R  The resistance.
-     * @param C  The capacitance.
+     * @param C  The capacitance_Qv.
      * @param print  Whether or not to print the results.
      * @return  tau (Greek letter)
      */
@@ -369,9 +369,9 @@ public:
             long double R, long double C, bool print = true);
 
     /**
-     * @brief Calculates the resistance from the time constant and capacitance.
+     * @brief Calculates the resistance from the time constant and capacitance_Qv.
      * @param tau  The time constant.
-     * @param C  The capacitance.
+     * @param C  The capacitance_Qv.
      * @param print  Whether or not to print the results.
      * @return  The resistance (Ohms).
      */
@@ -379,11 +379,11 @@ public:
             long double tau, long double C, bool print = true);
 
     /**
-     * @brief Calculates the capacitance from time constant and resistance.
+     * @brief Calculates the capacitance_Qv from time constant and resistance.
      * @param tau  The time constant.
      * @param R  The resistance.
      * @param print  Whether or not to print the results.
-     * @return  The capacitance (F).
+     * @return  The capacitance_Qv (F).
      */
     static constexpr long double capacitance_fromTimeConstant(
             long double tau, long double R, bool print = true);
@@ -393,7 +393,7 @@ public:
      * @param emf  The electromotive force.
      * @param t  The time.
      * @param R  The resistance.
-     * @param C  The capacitance.
+     * @param C  The capacitance_Qv.
      * @param print  Whether or not to print the results.
      * @return  The voltage (V).
      */
@@ -430,7 +430,7 @@ public:
      * @brief Calculates the resistance from DC equations.
      * @param t  The time.
      * @param VoverE  The V/E .
-     * @param C  The capacitance.
+     * @param C  The capacitance_Qv.
      * @param print  Whether or not to print the results.
      * @return  The resistance (Ohms).
      */
@@ -441,7 +441,7 @@ public:
      * @brief calculates using the exact exponential treatment, how much time is
      * required to discharge a C F capacitor through a R Ω resistor down to pOv%
      * of its original voltage.
-     * @param C  The capacitance.
+     * @param C  The capacitance_Qv.
      * @param R  The resistance.
      * @param pOv  The percent of original voltage.
      * @param print  Whether or not to print the results.
@@ -457,7 +457,7 @@ public:
      * is acceptable, and given that the flash is driven by a C F capacitor,
      * what is the resistance in the flash tube?
      * @param d  The distance in meters.
-     * @param C  The capacitance.
+     * @param C  The capacitance_Qv.
      * @param v  The velocity.
      * @param print  Whether or not to print the results.
      * @return  resistance in Ohms
@@ -496,7 +496,7 @@ public:
      * Calculate the temperature increase of the resistor, given that its of a mass
      * in kg and its specific heat is c kJ/kg⋅C∘, noting that most of the thermal
      * energy is retained in the short time of the discharge.
-     * @param C  The capacitance.
+     * @param C  The capacitance_Qv.
      * @param V  The volts.
      * @param mass  The mass.
      * @param c  The specific heat.
@@ -546,7 +546,7 @@ public:
      * with the plates vertical. The horizontal capacitor is filled  halfway
      * with a material that has an arbitrary dielectric constant K.
      * What fraction f of the area of the vertical capacitor should be filled
-     * with the same dielectric so that the two capacitors have equal capacitance?
+     * with the same dielectric so that the two capacitors have equal capacitance_Qv?
      * Express your answer in terms of K.
      * @param A area of the horizontal capacitor
      * @param d thickness of the dielectric
@@ -558,9 +558,9 @@ public:
             long double A, long double d, long double k, bool print = true);
 
     /**
-     * @brief Calculate the dielectric constant of a capacitor with a capacitance
+     * @brief Calculate the dielectric constant of a capacitor with a capacitance_Qv
      * of C F and a surface area of A m^2, and distance between plates of d m.
-     * @param C the capacitance (F)
+     * @param C the capacitance_Qv (F)
      * @param A the surface area (m^2)
      * @param d the distance between the plates (m)
      * @param print true to print the answer
@@ -570,8 +570,8 @@ public:
 
     /**
      * @brief Calculate the charge stored on the positive plate of a capacitor
-     * with a capacitance of C F and a voltage of V volts.
-     * @param C the capacitance (F)
+     * with a capacitance_Qv of C F and a voltage of V volts.
+     * @param C the capacitance_Qv (F)
      * @param V the voltage (V)
      * @param print true to print the answer
      * @return the charge (C)
@@ -627,7 +627,7 @@ public:
      * @param d the distance (m)
      * @param U the energy (J)
      * @param print true to print the answer
-     * @return the capacitance (F) and charge (C)
+     * @return the capacitance_Qv (F) and charge (C)
      */
     static vector<ld> chargeToStoreEnergy(
             ld l, ld d, ld U, bool print = true);
@@ -635,8 +635,8 @@ public:
     /**
      *
      * @brief Calculate the potential difference between the plates of a capacitor
-     * with a capacitance of C F and a charge of Q C.
-     * @param C the capacitance (F)
+     * with a capacitance_Qv of C F and a charge of Q C.
+     * @param C the capacitance_Qv (F)
      * @param Q the charge (C)
      * @param print true to print the answer
      * @return the potential difference (V)
@@ -659,7 +659,7 @@ public:
      * @brief A capacitor of C F is hooked to a source with a voltage of V
      * volts. Calculate how much energy is stored whehn the capacitor is
      * is fully charged.
-     * @param C the capacitance (F)
+     * @param C the capacitance_Qv (F)
      * @param V the voltage (V)
      * @param print true to print the answer
      */
@@ -675,9 +675,9 @@ public:
     static ld energyStoredInCapacitor_VQ(ld V, ld Q, bool print = true);
 
     /**
-     * @brief Calculate the energy stored in a capacitor with a capacitance
+     * @brief Calculate the energy stored in a capacitor with a capacitance_Qv
      * of C and a charge of Q.
-     * @param C the capacitance (F)
+     * @param C the capacitance_Qv (F)
      * @param Q the charge (C)
      * @param print true to print the answer
      */
@@ -728,7 +728,7 @@ public:
      * of ra m , and the outer sphere has a radius of rb m . A potential
      * difference of V Volts is applied to the capacitor.
      * Calculate the following:
-     * a) the capacitance of the capacitor.
+     * a) the capacitance_Qv of the capacitor.
      * b) the magnitude E1 of the electric field E⃗  at
      *    radius r1 m , just outside the inner sphere.
      *    (Note: E⃗  is the electric field vector.)
@@ -739,7 +739,7 @@ public:
      * @param r1 the radius outside the inner sphere (m)
      * @param r2 the radius just inside the outer sphere(m)
      * @param print true to print the answer
-     * @return the capacitance (F), electric field (V/m) and electric field (V/m)
+     * @return the capacitance_Qv (F), electric field (V/m) and electric field (V/m)
      */
     static vector<ld> sphericalCapacitor(
             ld ra, ld rb, ld V, ld r1, ld r2, bool print = true);
@@ -768,14 +768,14 @@ public:
             ld Vb, const vector<ld>& Capacitors, bool print = true);
 
     /**
-     * @brief Calculate the equivalent capacitance Ceq (F) of a circuit of capacitors
+     * @brief Calculate the equivalent capacitance_Qv Ceq (F) of a circuit of capacitors
      * that can be in series and in parallel. Use the isSeries flag to indicate
      * whether the final calulation is in series or in parallel.
      * @param series the capacitances in series (F)
      * @param parallel the capacitances in parallel (F)
      * @param isSeries true if the final calculation is in series
      * @param print true to print the answer
-     * @return the equivalent capacitance (F)
+     * @return the equivalent capacitance_Qv (F)
      */
     static ld equivalentCapacitance(
             const vector<ld>& series, const vector<ld>& parallel,
@@ -798,7 +798,7 @@ public:
      *    calculate the power delivered during this time.
      *
      * @param U the energy stored (J)
-     * @param C the capacitance (F)
+     * @param C the capacitance_Qv (F)
      * @param U_dis the energy discharged (J)
      * @param t the time (s)
      * @param print true to print the answer
@@ -809,14 +809,14 @@ public:
 
     /**
      * @brief A capacitor consists of two long concentric metal cylinders.
-     * Calculate its capacitance in terms of the dimensions shown in the figure
+     * Calculate its capacitance_Qv in terms of the dimensions shown in the figure
      * and constant ε0. Express your answer in terms of variables
      * L, a, b, and constant ϵ0.
      * @param L the length (m)
      * @param a the inner radius (m)
      * @param b the outer radius (m)
      * @param print true to print the answer
-     * @return the capacitance (F)
+     * @return the capacitance_Qv (F)
      */
     static ld concentricCylinders(ld L, ld a, ld b, bool print = true);
 
@@ -826,9 +826,9 @@ public:
      * the entire combination is put in series with a Cfs F capacitor. When a
      * potential difference of v V is applied across the open ends of this
      * network, the total energy stored in all the capacitors is U J . Find C.
-     * @param C1s the capacitance of the first parallel capacitor (F)
-     * @param C1p the capacitance of the second series capacitor (F)
-     * @param Cfs the capacitance of the final series capacitor (F)
+     * @param C1s the capacitance_Qv of the first parallel capacitor (F)
+     * @param C1p the capacitance_Qv of the second series capacitor (F)
+     * @param Cfs the capacitance_Qv of the final series capacitor (F)
      * @param v the potential difference (V)
      * @param U the total energy stored (J)
      * @param print true to print the answer
@@ -893,7 +893,7 @@ Circuits::seriesCapacitance(const vector<long double> &C, bool print) {
         total += 1.0 / c;
     }
     if (print)
-        cout << "The sum of the capacitance's is " << 1.0/total << " Farads." << endl;
+        cout << "The sum of the capacitance_Qv's is " << 1.0/total << " Farads." << endl;
     return 1.0/total;
 }
 
@@ -904,7 +904,7 @@ Circuits::parallelCapacitance(const vector<long double> &C, bool print) {
         total += c;
     }
     if (print)
-        cout << "The sum of the capacitance's is " << total << " Farads." << endl;
+        cout << "The sum of the capacitance_Qv's is " << total << " Farads." << endl;
     return total;
 }
 
@@ -991,7 +991,7 @@ constexpr long double Circuits::capacitance_fromTimeConstant(
 {
     auto C = tau/R;//Farads
     if (print)
-        cout << "The capacitance is " << C << " Farads." << endl;
+        cout << "The capacitance_Qv is " << C << " Farads." << endl;
     return C;
 }
 
@@ -1269,7 +1269,7 @@ Circuits::sphericalCapacitor(ld ra, ld rb, ld V, ld r1, ld r2, bool print) {
 
 vector<ld> Circuits::voltageAcrossEachCapacitorInSeries(
         ld Vb, const vector<ld>& Capacitors, bool print) {
-    // get the total capacitance which is found using 1/C = 1/C1 + 1/C2 + ...
+    // get the total capacitance_Qv which is found using 1/C = 1/C1 + 1/C2 + ...
     auto C = ld(0.0);
     for (auto C_i : Capacitors) {
         C += 1.0 / C_i;
@@ -1283,7 +1283,7 @@ vector<ld> Circuits::voltageAcrossEachCapacitorInSeries(
         V.push_back(Q / C_i);
     }
     // print out the voltage across each capacitor, specifying the
-    // capacitance to which it corresponds
+    // capacitance_Qv to which it corresponds
     if (print) {
         for (int i = 0; i < Capacitors.size(); i++) {
             std::cout << "C" << i << " = " << Capacitors[i] << " F, ";
@@ -1303,7 +1303,7 @@ Circuits::chargeOnEachCapacitorInSeries(ld Vb, const vector<ld> &Capacitors,
         Q.push_back(C_i * Vb);
     }
     // print out the charge on each capacitor, specifying the
-    // capacitance to which it corresponds
+    // capacitance_Qv to which it corresponds
     if (print) {
         for (int i = 0; i < Capacitors.size(); i++) {
             std::cout << "C" << i << " = " << Capacitors[i] << " F, ";
@@ -1316,22 +1316,22 @@ Circuits::chargeOnEachCapacitorInSeries(ld Vb, const vector<ld> &Capacitors,
 ld Circuits::equivalentCapacitance(
         const vector<ld> &series, const vector<ld> &parallel,
         bool isSeries, bool print) {
-    // variable for the total capacitance
+    // variable for the total capacitance_Qv
     auto C_tot = ld(0.0);
-    // get the total capacitance in series which is found using 1/C = 1/C1 + 1/C2 + ...
+    // get the total capacitance_Qv in series which is found using 1/C = 1/C1 + 1/C2 + ...
     auto C_series = ld(0.0);
     for (auto C_i : series) {
         C_series += 1.0 / C_i;
         C_tot += C_i;
     }
     C_series = 1.0 / C_series;
-    // get the total capacitance in parallel which is found using C = C1 + C2 + ...
+    // get the total capacitance_Qv in parallel which is found using C = C1 + C2 + ...
     auto C_parallel = ld(0.0);
     for (auto C_i : parallel) {
         C_parallel += C_i;
         C_tot += C_i;
     }
-    // get the equivalent capacitance
+    // get the equivalent capacitance_Qv
     auto C = ld(0.0);
     if (isSeries) {
         C = 1.0 / (1.0 / C_series + 1.0 / C_parallel);

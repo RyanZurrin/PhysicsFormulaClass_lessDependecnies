@@ -502,12 +502,12 @@ public:
     /// calculates the Capacitive reactance (XC).
     /// </summary>
     /// <param name="f">The frequency.</param>
-    /// <param name="C">The capacitance.</param>
+    /// <param name="C">The capacitance_Qv.</param>
     /// <returns>capacitive reactance (ohms)</returns>
     static ld capacitive_reactance_XC(ld f, ld C);
 
     /// <summary>
-    /// Calculates the capacitance from reactance and frequency
+    /// Calculates the capacitance_Qv from reactance and frequency
     /// </summary>
     /// <param name="f">The frequency in Hz.</param>
     /// <param name="_xc">The capacitive reactance.</param>
@@ -585,7 +585,7 @@ public:
     /// <param name="Vrms">The root mean square voltage or Vrms.</param>
     /// <param name="R">The resistance.</param>
     /// <param name="L">The inductance.</param>
-    /// <param name="C">The capacitance.</param>
+    /// <param name="C">The capacitance_Qv.</param>
     /// <param name="f">The frequency.</param>
     /// <returns>Irms or root mean square current, average current(A)</returns>
     static ld rmsCurrent_AC(ld Vrms, ld R, ld L, ld C, ld f);
@@ -606,7 +606,7 @@ public:
     /// </summary>
     /// <param name="R">The resistance.</param>
     /// <param name="L">The inductance.</param>
-    /// <param name="C">The capacitance.</param>
+    /// <param name="C">The capacitance_Qv.</param>
     /// <param name="f">The frequency.</param>
     /// <returns>the impedance on an AC circuit (Ohms)</returns>
     static ld impedance(ld R, ld L, ld C, ld f);
@@ -615,7 +615,7 @@ public:
     /// Calculates the resonant frequency in an RLC series AC circuit
     /// </summary>
     /// <param name="L">The inductance.</param>
-    /// <param name="C">The capacitance.</param>
+    /// <param name="C">The capacitance_Qv.</param>
     /// <returns>resonant frequency (Hz)</returns>
     static ld resonantFrequency(ld L, ld C);
 

@@ -168,12 +168,12 @@ public:
     static ld inductanceOfCircuitFromWavelength(ld theta, ld C);
 
     /// <summary>
-    /// Calculates the capacitance of a LC circuit containing a L-H inductor
+    /// Calculates the capacitance_Qv of a LC circuit containing a L-H inductor
     /// oscillates at such a frequency that it radiates at a theta-m wavelength.
     /// </summary>
     /// <param name="theta">The theta.</param>
     /// <param name="L">The l.</param>
-    /// <returns>capacitance</returns>
+    /// <returns>capacitance_Qv</returns>
     static ld capacitanceOfCircuitFromWavelength(ld theta, ld L);
 
     ~ElectromagneticWaves()

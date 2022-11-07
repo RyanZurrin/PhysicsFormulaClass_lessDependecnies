@@ -15,15 +15,7 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    POINT_CHARGE_2D q1(1.0e-6, {0.0, 0.0, 0.0});
-    POINT_CHARGE_2D q2(1.0e-6, {2.0e-3, 0.0, 0.0});
-    Vector2D p1(1.0e-3, 0.0);
-    vector<POINT_CHARGE_2D> charges = {q1, q2};
-
-
-
-
-
+    Circuits::volumeOfUniformElectricField(4.0e6, 30.0e3);
 
 //    CapacitorNode c345({3.0, 5.0, 6.0}, 'p');
 //    CapacitorNode c26({11.0, 3.0}, 's');

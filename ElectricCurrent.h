@@ -315,20 +315,78 @@ public:
     static int get_objectCount() { return electricCurrent_objectCount; }
 
     /**
-     * @brief calculates the area using the radius.
+     * @brief calculates the area of circle using the radius.
      * @param r  radius
      * @param print  print to console
      * @return  area(m^2)
      */
-    static long double area_r(long double r, bool print = true);
+    static long double circle_area_r(long double r, bool print = false);
 
     /**
-     * @brief calculates the area from the diameter
+     * @brief calculates the area of a sphere using the radius.
+     * @param r  radius
+     * @param print  print to console
+     * @return  area(m^2)
+     */
+    static long double sphere_area_r(long double r, bool print = false);
+
+    /**
+     * @brief calculates the area of a circle from the diameter
      * @param d  diameter
      * @param print  print to console
      * @return  area(m^2)
      */
-    static long double area_d(long double d, bool print = true);
+    static long double circle_area_d(long double d, bool print = false);
+
+    /**
+     * @brief calculates the area of a sphere from the diameter
+     * @param d  diameter
+     * @param print  print to console
+     * @return  area(m^2)
+     */
+    static long double sphere_area_d(long double d, bool print = false);
+
+    /**
+     * @brief calculates the area of a circle from the circumference
+     * @param c  circumference
+     * @param print  print to console
+     * @return  area(m^2)
+     */
+    static long double circle_area_c(long double c, bool print = false);
+
+    /**
+     * @brief calculates the area of a sphere from the circumference
+     * @param c  circumference
+     * @param print  print to console
+     * @return  area(m^2)
+     */
+    static long double sphere_area_c(long double c, bool print = false);
+
+    /**
+     * @brief calculates the area of a circle from the gauge
+     * @param gauge  gauge
+     * @param print  print to console
+     * @return  area(m^2)
+     */
+    static long double circle_area_gauge(int gauge, bool print = false);
+
+    /**
+     * @brief calculates the area of a square from the length of one side
+     * @param side  length of one side
+     * @param print  print to console
+     * @return  area(m^2)
+     */
+    static long double square_area(long double side, bool print = false);
+
+    /**
+     * @brief calculates the area of a rectangle from the length of one side
+     * and the width of the other side
+     * @param l  length of one side
+     * @param w  width of the other side
+     * @param print  print to console
+     * @return  area(m^2)
+     */
+    static long double rectangle_area(long double l, long double w, bool print = false);
 
     /**
      * @brief calculates the electric current (I) defined as the rate at which charge
@@ -1088,7 +1146,7 @@ private:
 
 };
 
-inline long double ElectricCurrent::area_r(const long double r, bool print)
+inline long double ElectricCurrent::circle_area_r(const long double r, bool print)
 {
     auto val =  constants::PI * (r*r);//m^2
     if (print)
@@ -1098,7 +1156,7 @@ inline long double ElectricCurrent::area_r(const long double r, bool print)
     return val;
 }
 
-inline long double ElectricCurrent::area_d(const long double d, bool print)
+inline long double ElectricCurrent::circle_area_d(const long double d, bool print)
 {
     auto val =  constants::PI*((d*d)/4);//m^2
     if (print)
@@ -1219,7 +1277,7 @@ inline long double ElectricCurrent::resistanceUsingResistivity(
 inline long double ElectricCurrent::resistanceUsingResistivityWire(
         const long double p, const long double l, const long double d, bool print)
 {
-    auto A = area_d(d);
+    auto A = circle_area_d(d);
     auto r =  (p * l) / A;//Ohms
     if (print)
     {
@@ -1704,7 +1762,7 @@ ElectricCurrent::resistance_ohms(long double I, long double V, bool print) {
 long double
 ElectricCurrent::electronDensity(long double I, long double V_d, long double d,
                                  bool print) {
-    auto A = area_d(d, false);
+    auto A = circle_area_d(d, false);
     auto e = -constants::ELECTRON_CHARGE;
     auto n = I / (e * V_d * A);
     if (print) {
@@ -1737,7 +1795,7 @@ ElectricCurrent::electronsPassed(long double I, long double t, bool print) {
 long double
 ElectricCurrent::resistivity_dIE(long double d, long double I, long double E,
                                  bool print) {
-    auto A = area_d(d, false);
+    auto A = circle_area_d(d, false);
     auto R = (E * A) / I;
     if (print) {
         std::cout << "R = " << R << " Ohms" << std::endl;
@@ -1763,7 +1821,7 @@ ElectricCurrent::resistivity(
         long double V, long double I, long double l, int g, bool print) {
     auto R = V / I;
     auto d = AWG.convertGauge2Diameter(g);
-    auto A = area_d(d, false);
+    auto A = circle_area_d(d, false);
     auto rho = R * (A / l);
     if (print) {
         std::cout << "rho = " << rho << " Ohm-m" << std::endl;
@@ -1774,12 +1832,71 @@ ElectricCurrent::resistivity(
 long double
 ElectricCurrent::current_VdRhoL(long double V, long double d, long double rho,
                                 long double L, bool print) {
-    auto A = area_d(d, false);
+    auto A = circle_area_d(d, false);
     auto I = (V * A) / (rho * L);
     if (print) {
         std::cout << "I = " << I << " A" << std::endl;
     }
     return I;
+}
+
+long double ElectricCurrent::sphere_area_r(long double r, bool print) {
+    auto A = 4 * constants::PI * r * r;
+    if (print) {
+        std::cout << "A = " << A << " m^2" << std::endl;
+    }
+    return A;
+}
+
+long double ElectricCurrent::sphere_area_d(long double d, bool print) {
+    auto r = d / 2.0;
+    auto A = 4 * constants::PI * r * r;
+    if (print) {
+        std::cout << "A = " << A << " m^2" << std::endl;
+    }
+    return A;
+}
+
+long double ElectricCurrent::circle_area_c(long double c, bool print) {
+    auto A = constants::PI * c * c;
+    if (print) {
+        std::cout << "A = " << A << " m^2" << std::endl;
+    }
+    return A;
+}
+
+long double ElectricCurrent::sphere_area_c(long double c, bool print) {
+    auto A = 4 * constants::PI * c * c;
+    if (print) {
+        std::cout << "A = " << A << " m^2" << std::endl;
+    }
+    return A;
+}
+
+long double ElectricCurrent::circle_area_gauge(int gauge, bool print) {
+    auto d = AWG.convertGauge2Diameter(gauge);
+    auto A = circle_area_d(d, false);
+    if (print) {
+        std::cout << "A = " << A << " m^2" << std::endl;
+    }
+    return A;
+}
+
+long double ElectricCurrent::square_area(long double side, bool print) {
+    auto A = side * side;
+    if (print) {
+        std::cout << "A = " << A << " m^2" << std::endl;
+    }
+    return A;
+}
+
+long double
+ElectricCurrent::rectangle_area(long double l, long double w, bool print) {
+    auto A = l * w;
+    if (print) {
+        std::cout << "A = " << A << " m^2" << std::endl;
+    }
+    return A;
 }
 
 
