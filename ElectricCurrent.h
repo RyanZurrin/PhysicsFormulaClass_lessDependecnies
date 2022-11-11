@@ -1063,8 +1063,6 @@ public:
     static long double currentDensity_pE(long double p, long double E, bool print = true);
 
 
-
-
     /**
      * A d m-diameter wire with a resistivity of p, carries I A to a household
      * appliance.

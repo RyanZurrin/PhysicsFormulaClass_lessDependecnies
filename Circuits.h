@@ -20,17 +20,17 @@ static int circuits_objectCount = 0;
 struct CapacitorNode {
     vector<double> capacitances;
     char type; // 'p' for parallel, 's' for series
-    double equivalentCapacitance;
+    double eC;
 
     CapacitorNode() {
         capacitances = {};
         type = 'p';
-        equivalentCapacitance = 0.0;
+        eC = 0.0;
     }
     CapacitorNode(vector<double> c, char t) {
         capacitances = c;
         type = t;
-        equivalentCapacitance = calculateEquivalentCapacitance();
+        eC = calculateEquivalentCapacitance();
     }
     double calculateEquivalentCapacitance() {
         double sum = 0.0;
@@ -54,25 +54,25 @@ struct CapacitorNode {
             cout << capacitance << " ";
         }
         cout << endl;
-        cout << "type: " << type << endl;
-        cout << "equivalentCapacitance: " << equivalentCapacitance << endl;
+        cout << "type: " << (type == 'p' ? "parallel" : "series") << endl;
+        cout << "eC: " << eC << endl;
     }
 };
 
 struct ResistorNode {
     vector<double> resistances;
     char type; // 'p' for parallel, 's' for series
-    double equivalentResistance;
+    double eR;
 
     ResistorNode() {
         resistances = {};
         type = 'p';
-        equivalentResistance = 0.0;
+        eR = 0.0;
     }
     ResistorNode(vector<double> r, char t) {
         resistances = r;
         type = t;
-        equivalentResistance = calculateEquivalentResistance();
+        eR = calculateEquivalentResistance();
     }
     double calculateEquivalentResistance() {
         double sum = 0.0;
@@ -97,25 +97,25 @@ struct ResistorNode {
             cout << resistance << " ";
         }
         cout << endl;
-        cout << "type: " << type << endl;
-        cout << "equivalentResistance: " << equivalentResistance << endl;
+        cout << "type: " << (type == 'p' ? "parallel" : "series") << endl;
+        cout << "eR: " << eR << endl;
     }
 };
 
 struct InductorNode {
     vector<double> inductances;
     char type; // 'p' for parallel, 's' for series
-    double equivalentInductance;
+    double eI;
 
     InductorNode() {
         inductances = {};
         type = 'p';
-        equivalentInductance = 0.0;
+        eI = 0.0;
     }
     InductorNode(vector<double> i, char t) {
         inductances = i;
         type = t;
-        equivalentInductance = calculateEquivalentInductance();
+        eI = calculateEquivalentInductance();
     }
     double calculateEquivalentInductance() {
         double sum = 0.0;
@@ -140,13 +140,37 @@ struct InductorNode {
             cout << inductance << " ";
         }
         cout << endl;
-        cout << "type: " << type << endl;
-        cout << "equivalentInductance: " << equivalentInductance << endl;
+        cout << "type: " << (type == 'p' ? "parallel" : "series") << endl;
+        cout << "eI: " << eI << endl;
     }
 };
 
-struct PowerNode {
-    vector<double> powers;
+struct Battery {
+    double voltage;
+    double current;
+    double resistance;
+    double power;
+
+    Battery() {
+        voltage = 0.0;
+        current = 0.0;
+        resistance = 0.0;
+        power = 0.0;
+    }
+    Battery(double v, double c, double r, double p) {
+        voltage = v;
+        current = c;
+        resistance = r;
+        power = p;
+    }
+
+    void print() const {
+        cout << "Battery: " << endl;
+        cout << "voltage: " << voltage << endl;
+        cout << "current: " << current << endl;
+        cout << "resistance: " << resistance << endl;
+        cout << "power: " << power << endl;
+    }
 };
 
 
@@ -154,7 +178,7 @@ struct CircuitNode {
     vector<CapacitorNode> capacitorNodes;
     vector<ResistorNode> resistorNodes;
     vector<InductorNode> inductorNodes;
-    vector<PowerNode> powerNodes;
+    vector<Battery> powerNodes;
 
     CircuitNode() {
         capacitorNodes = {};
@@ -162,7 +186,7 @@ struct CircuitNode {
         inductorNodes = {};
         powerNodes = {};
     }
-    CircuitNode(vector<CapacitorNode> c, vector<ResistorNode> r, vector<InductorNode> i, vector<PowerNode> p) {
+    CircuitNode(vector<CapacitorNode> c, vector<ResistorNode> r, vector<InductorNode> i, vector<Battery> p) {
         capacitorNodes = c;
         resistorNodes = r;
         inductorNodes = i;
@@ -184,7 +208,7 @@ struct CircuitNode {
             inductorNode.print();
         }
         cout << "powerNodes: " << endl;
-        for (PowerNode powerNode : powerNodes) {
+        for (Battery powerNode : powerNodes) {
             //powerNode.print();
         }
     }
@@ -393,12 +417,61 @@ public:
      * @param emf  The electromotive force.
      * @param t  The time.
      * @param R  The resistance.
-     * @param C  The capacitance_Qv.
+     * @param C  The capacitance.
      * @param print  Whether or not to print the results.
      * @return  The voltage (V).
      */
-    static long double voltageVsTimeChargingCapacitor(
+    static long double voltageRCCircuitCharging(
             long double emf, long double t, long double R, long double C, bool print = true);
+
+    /**
+     * @brief Calculates the voltage across a capacitor as it discharges.
+     * @param V_0  The initial voltage.
+     * @param t  The time.
+     * @param R  The resistance.
+     * @param C The capacitance.
+     */
+    static long double voltageRCCircuitDischarging(
+            long double V_0, long double t, long double R, long double C, bool print = true);
+
+    /**
+     * @brief Calculate the current in an RC circuit as it charges.
+     * @param emf  The electromotive force.
+     * @param t  The time.
+     * @param R  The resistance.
+     * @param C The capacitance.
+     * @param print  Whether or not to print the results.
+     * @return  The current (A).
+     */
+    static long double currentRCCircuitCharging(
+            long double emf, long double t, long double R, long double C, bool print = true);
+
+    /**
+     * @brief Calculate the current in an RC circuit as it discharges.
+     * @param V_0 The initial voltage.
+     * @param t  The time.
+     * @param R  The resistance.
+     * @param C The capacitance.
+     * @param print  Whether or not to print the results.
+     * @return  The current (A).
+     */
+    static long double currentRCCircuitDischarging(
+            long double V_0, long double t, long double R, long double C, bool print = true);
+
+    /**
+     * @brief Calculate the current (I_0) that flows through a resistor with R Ohms
+     * resistance immediately after a switch is throw, when there is a capacitor in
+     * series with the resistor and has a capacitance of C F and has an
+     * initial charge of q.
+     * @param R  The resistance.
+     * @param C The capacitance.
+     * @param q The initial charge.
+     * @param print  Whether or not to print the results.
+     * @return  The current (A).
+     */
+    static long double current_RCq(
+            long double R, long double C, long double q, bool print = true);
+
 
     /**
      * @brief Calculates the frequency from cycles and seconds.
@@ -449,6 +522,21 @@ public:
      */
     static long double time_fromDischargeEquation(
             long double C, long double R, long double pOv, bool print = true);
+
+    /**
+     * @brief A camera flash gets its energy from a C F capacitor and requires
+     * V volts to fire. If the capacitor is charged by a emf-V source through
+     * an resistor of R ohms, calculate how long the photographer must wait
+     * between flashes. Assume the capacitor is fully discharged with each flash.
+     * @param C  The capacitance.
+     * @param V  The voltage.
+     * @param emf  The electromotive force.
+     * @param R  The resistance.
+     * @param print  Whether or not to print the results.
+     * @return  The time (s).
+     */
+    static long double time_fromCameraFlash(
+            long double C, long double V, long double emf, long double R, bool print = true);
 
     /**
      * @brief If you wish to take a picture of a bullet traveling at v m/s, then
@@ -848,6 +936,57 @@ public:
      * @return the average current (A), the number of ions transported
      */
     static vector<ld> ionChannel(ld I, ld y, ld t, bool print = true);
+    /**
+     * @brief A lightbulb with resistance  Rl is designed to operate at a
+     * current of I A. To operate this lamp from a V-V battery, calculate the
+     * resistance you need to put in series with it.
+     * @param Rl the resistance of the lightbulb (Ω)
+     * @param I the current (A)
+     * @param V the voltage (V)
+     * @param print true to print the answer
+     * @return the resistance (Ω)
+     */
+    static ld seriesResistance(ld Rl, ld I, ld V, bool print = true);
+
+    /**
+     * @brief Your car has a V-V battery with internal resistance Rint ohms.
+     * When the starter motor is cranking, it draws I A. Calculate the voltage
+     * across the battery terminals while starting.
+     * @param Rint the internal resistance (Ω)
+     * @param I the current (A)
+     * @param V the voltage (V)
+     * @param print true to print the answer
+     * @return the voltage (V)
+     */
+    static ld voltageAcrossBattery(ld Rint, ld I, ld V, bool print = true);
+
+    /**
+     * @brief When a switch is open, a voltmeter of the battery reads Vo volts.
+     * When the switch is closed, the voltmeter reading drops to Vc
+     * volts, and the ammeter A reads I A . Assume that the two meters are
+     * ideal, so they do not affect the circuit. Calculate the resistance of
+     * the battery and the resistance of R.
+     * @param Vo the open voltage (V) (emf) (voltage across the battery)
+     * @param Vc the closed voltage (V) (Vt) (terminal voltage)
+     * @param I the current (A)
+     * @param print true to print the answer
+     * @return the emf (V)
+     */
+    static vector<long double> internalExternalResistances(
+            ld Vopen, ld Vclosed, ld I, bool print = true);
+
+    /**
+     * @brief A V volts batter stores energy U J. Calculate how long it can
+     * light a flashlight buld that draws I A.
+     * @param V the voltage (V)
+     * @param U the energy stored (J)
+     * @param I the current (A)
+     * @param units the units to use:
+     *        "s" for seconds, "m" for minutes, "h" for hours, "d" for days
+     * @param print true to print the answer
+     * @return the time (s)
+     */
+    static ld batteryLife(ld V, ld U, ld I, char units, bool print = true);
 
 
 
@@ -995,11 +1134,11 @@ constexpr long double Circuits::capacitance_fromTimeConstant(
     return C;
 }
 
-inline long double Circuits::voltageVsTimeChargingCapacitor(
+inline long double Circuits::voltageRCCircuitCharging(
         const long double emf, const long double t, const long double R, const long double C, bool print)
 {
-    const double tau = R * C;
-    const double toRaise = -t / tau;
+    auto tau = R * C;
+    auto toRaise = -t / tau;
     auto VtC = emf*(1.0 - exp(toRaise));
     if (print)
         cout << "The voltage is " << VtC << " Volts." << endl;
@@ -1409,6 +1548,107 @@ ld Circuits::energyStoredInCapacitor_CQ(ld C, ld Q, bool print) {
     return U;
 }
 
+ld Circuits::seriesResistance(ld Rl, ld I, ld V, bool print) {
+    auto R = (V - (I * Rl)) / I;
+    if (print) {
+        std::cout << "R = " << R << " ohms" << std::endl;
+    }
+    return R;
+}
 
+ld Circuits::voltageAcrossBattery(ld Rint, ld I, ld V, bool print) {
+    auto Vb = V - (I * Rint);
+    if (print) {
+        std::cout << "Vb = " << Vb << " V" << std::endl;
+    }
+    return Vb;
+}
 
+long double Circuits::currentRCCircuitCharging(long double emf, long double t,
+                                               long double R, long double C,
+                                               bool print) {
+    auto I = (emf / R) * exp(-t / (R * C));
+    if (print) {
+        std::cout << "I = " << I << " A" << std::endl;
+    }
+    return I;
+}
 
+long double
+Circuits::voltageRCCircuitDischarging(long double V_0, long double t,
+                                      long double R, long double C,
+                                      bool print) {
+    auto V = V_0 * exp(-t / (R * C));
+    if (print) {
+        std::cout << "V = " << V << " V" << std::endl;
+    }
+    return V;
+}
+
+long double
+Circuits::currentRCCircuitDischarging(long double V_0, long double t,
+                                      long double R, long double C,
+                                      bool print) {
+    auto I = (V_0 / R) * exp(-t / (R * C));
+    if (print) {
+        std::cout << "I = " << I << " A" << std::endl;
+    }
+    return I;
+}
+long double
+Circuits::time_fromCameraFlash(long double C, long double V, long double emf,
+                               long double R, bool print) {
+    auto t = -R * C * log(1.0 - (V / emf));
+    if (print) {
+        std::cout << "t = " << t << " s" << std::endl;
+    }
+    return t;
+}
+
+long double
+Circuits::current_RCq(long double R, long double C, long double q, bool print) {
+    auto I = q / (R * C);
+    if (print) {
+        std::cout << "I = " << I << " A" << std::endl;
+    }
+    return I;
+}
+
+vector<long double> Circuits::internalExternalResistances(
+        ld Vopen, ld Vclosed, ld I, bool print) {
+    auto r = (Vopen - Vclosed) / I;
+    auto R = (Vopen / I) - r;
+    if (print) {
+        std::cout << "r = " << r << " ohms" << std::endl;
+        std::cout << "R = " << R << " ohms" << std::endl;
+    }
+    return {r, R};
+}
+
+ld Circuits::batteryLife(ld V, ld U, ld I, char units, bool print) {
+    auto W = V * I;
+    auto t = U / W;
+    switch (units) {
+        case 's':
+            break;
+        case 'm':
+            t /= 60.0;
+            break;
+        case 'h':
+            t /= 3600.0;
+            break;
+        case 'd':
+            t /= 86400.0;
+            break;
+        case 'y':
+            t /= 31536000.0;
+            break;
+        default:
+            std::cout << "Invalid units" << std::endl;
+            break;
+    }
+    if (print) {
+        std::cout << "t = " << t << " s" << std::endl;
+    }
+    return t;
+}

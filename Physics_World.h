@@ -21,6 +21,7 @@
 #include "AtomicPhysics.h"
 #include "TemplateBST.h"
 #include "Circuits.h"
+#include "CircuitBoard.h"
 #include "Cone.h"
 #include "Cylinder.h"
 #include "Cube.h"

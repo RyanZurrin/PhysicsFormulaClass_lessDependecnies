@@ -13,7 +13,9 @@ namespace CB {
     class Component {
     public:
         // pure virtual function
-        virtual void print() = 0;
+        virtual void print() const = 0;
+
+        char type{};
     };
 
 
@@ -34,20 +36,26 @@ namespace CB {
 
         // default constructor
         Capacitor() : capacitance(0.0), voltage(0.0), tolerance(0.0),
-        leakageCurrent(0.0), temperature(0.0), polarization('p') {}
+        leakageCurrent(0.0), temperature(0.0), polarization('p') {
+            type = 'c';
+        }
         // constructor with parameters
         explicit Capacitor(double c=0.0, double v=0.0, double t=0.0, double l=0.0,
                   double temp=0.0, char p='p')
         : capacitance(c), voltage(v), tolerance(t), leakageCurrent(l),
-        temperature(temp), polarization(p) {}
+        temperature(temp), polarization(p) {
+            type = 'c';
+        }
         // copy constructor
         Capacitor(const Capacitor& c)
         : capacitance(c.capacitance), voltage(c.voltage), tolerance(c.tolerance),
         leakageCurrent(c.leakageCurrent), temperature(c.temperature),
-        polarization(c.polarization) {}
+        polarization(c.polarization) {
+            type = 'c';
+        }
 
         // print function
-        void print() override {
+        void print() const override {
             std::cout << "Capacitance: " << capacitance << " Farads" << std::endl;
             std::cout << "Voltage: " << voltage << " Volts" << std::endl;
             std::cout << "Tolerance: " << tolerance << " percent" << std::endl;
@@ -90,7 +98,7 @@ namespace CB {
         }
 
         // print function to print each capacitor in the node and the equivalent capacitance
-        void print() override {
+        void print() const override {
             std::cout << "Capacitor Node: " << std::endl;
             for (Capacitor c : capacitances) {
                 c.print();
@@ -123,21 +131,27 @@ namespace CB {
         // default constructor
         Resistor() : resistance(0.0), accuracy(0.0), stability(0.0), reliability(0.0),
         tolerance(0.0), voltageCoefficient(0.0), noise(0.0), temperatureRating(0.0),
-        thermalResistance(0.0) {}
+        thermalResistance(0.0) {
+            type = 'r';
+        }
         // constructor with parameters
         explicit Resistor(double r=0.0, double a=0.0, double s=0.0, double re=0.0,
                   double t=0.0, double v=0.0, double n=0.0, double temp=0.0,
                   double th=0.0)
         : resistance(r), accuracy(a), stability(s), reliability(re), tolerance(t),
-        voltageCoefficient(v), noise(n), temperatureRating(temp), thermalResistance(th) {}
+        voltageCoefficient(v), noise(n), temperatureRating(temp), thermalResistance(th) {
+            type = 'r';
+        }
         // copy constructor
         Resistor(const Resistor& r)
         : resistance(r.resistance), accuracy(r.accuracy), stability(r.stability),
         reliability(r.reliability), tolerance(r.tolerance), voltageCoefficient(r.voltageCoefficient),
-        noise(r.noise), temperatureRating(r.temperatureRating), thermalResistance(r.thermalResistance) {}
+        noise(r.noise), temperatureRating(r.temperatureRating), thermalResistance(r.thermalResistance) {
+            type = 'r';
+        }
 
         // print function
-        void print() override {
+        void print() const override {
             std::cout << "Resistance: " << resistance << " Ohms" << std::endl;
             std::cout << "Accuracy: " << accuracy << std::endl;
             std::cout << "Stability: " << stability << std::endl;
@@ -181,7 +195,7 @@ namespace CB {
             return sum;
         }
 
-        void print() override {
+        void print() const override {
             std::cout << "Resistor Node: " << std::endl;
             for (Resistor r : resistors) {
                 r.print();
@@ -200,16 +214,22 @@ namespace CB {
         double temperature{};
 
         // default constructor
-        Inductor() : inductance(0.0), tolerance(0.0), temperature(0.0) {}
+        Inductor() : inductance(0.0), tolerance(0.0), temperature(0.0) {
+            type = 'i';
+        }
         // constructor with parameters
         explicit Inductor(double i=0.0, double t=0.0, double temp=0.0)
-        : inductance(i), tolerance(t), temperature(temp) {}
+        : inductance(i), tolerance(t), temperature(temp) {
+            type = 'i';
+        }
         // copy constructor
         Inductor(const Inductor& i)
-        : inductance(i.inductance), tolerance(i.tolerance), temperature(i.temperature) {}
+        : inductance(i.inductance), tolerance(i.tolerance), temperature(i.temperature) {
+            type = 'i';
+        }
 
         // print function
-        void print() override {
+        void print() const override {
             std::cout << "Inductance: " << inductance << " Henrys" << std::endl;
             std::cout << "Tolerance: " << tolerance << std::endl;
             std::cout << "Temperature: " << temperature << std::endl;
@@ -221,12 +241,12 @@ namespace CB {
 
     class InductorNode : public Component {
     public:
-        std::vector<double> inductances;
+        std::vector<Inductor> inductances;
         char type; // 'p' for parallel, 's' for series
         double equivalentInductance;
 
         InductorNode() : inductances(), type('p'), equivalentInductance(0.0) {}
-        InductorNode(std::vector<double> i, char t) {
+        InductorNode(std::vector<Inductor> i, char t) {
             inductances = i;
             type = t;
             equivalentInductance = calculateEquivalentInductance();
@@ -234,24 +254,23 @@ namespace CB {
         double calculateEquivalentInductance() {
             double sum = 0.0;
             if (type == 'p') {
-                for (double inductance : inductances) {
-                    sum += inductance;
+                for (const Inductor& inductor : inductances) {
+                    sum += inductor.inductance;
                 }
             } else if (type == 's') {
-                for (double inductance : inductances) {
-                    sum += 1.0 / inductance;
+                for (const Inductor& inductor : inductances) {
+                    sum += 1.0 / inductor.inductance;
                 }
                 sum = 1.0 / sum;
             }
             return sum;
         }
 
-        void print() override {
+        void print() const override {
             std::cout << "Inductor Node: " << std::endl;
-            for (double i : inductances) {
-                std::cout << i << std::endl;
+            for (Inductor i : inductances) {
+                i.print();
             }
-            std::cout << "Equivalent Inductance: " << equivalentInductance << " Henrys" << std::endl;
         }
     };
 
@@ -265,16 +284,22 @@ namespace CB {
         double temperature{};
 
         // default constructor
-        VoltageSource() : voltage(0.0), tolerance(0.0), temperature(0.0) {}
+        VoltageSource() : voltage(0.0), tolerance(0.0), temperature(0.0) {
+            type = 'v';
+        }
         // constructor with parameters
         explicit VoltageSource(double v=0.0, double t=0.0, double temp=0.0)
-        : voltage(v), tolerance(t), temperature(temp) {}
+        : voltage(v), tolerance(t), temperature(temp) {
+            type = 'v';
+        }
         // copy constructor
         VoltageSource(const VoltageSource& v)
-        : voltage(v.voltage), tolerance(v.tolerance), temperature(v.temperature) {}
+        : voltage(v.voltage), tolerance(v.tolerance), temperature(v.temperature) {
+            type = 'v';
+        }
 
         // print function
-        void print() override {
+        void print() const override {
             std::cout << "Voltage: " << voltage << " Volts" << std::endl;
             std::cout << "Tolerance: " << tolerance << std::endl;
             std::cout << "Temperature: " << temperature << std::endl;
@@ -283,9 +308,8 @@ namespace CB {
 
     class CircuitNode {
     public:
-        std::vector<Component*> components;
-        std::vector<CircuitNode*> children;
-        CircuitNode* parent;
+        std::vector<Component> components;
+        std::vector<CircuitNode> children;
         double voltage;
         double current;
         double resistance;
@@ -296,65 +320,150 @@ namespace CB {
         double power;
         double energy;
 
-        CircuitNode() : components(), children(), parent(nullptr), voltage(0.0),
+        CircuitNode() : components(), children(), voltage(0.0),
         current(0.0), resistance(0.0), inductance(0.0), capacitance(0.0),
         impedance(0.0), admittance(0.0), power(0.0), energy(0.0) {}
-        CircuitNode(std::vector<Component*> c,
-                    std::vector<CircuitNode*> ch, CircuitNode* p)
-                    : components(std::move(c)), children(std::move(ch)),
-                    parent(p), voltage(0.0), current(0.0), resistance(0.0),
-                    inductance(0.0), capacitance(0.0), impedance(0.0),
-                    admittance(0.0), power(0.0), energy(0.0) {}
-        CircuitNode(std::vector<Component*> c,
-                    std::vector<CircuitNode*> ch, CircuitNode* p,
-                    double v, double i, double r, double l, double cap, double z,
-                    double adm, double pow, double e)
-                    : components(std::move(c)), children(std::move(ch)),
-                    parent(p), voltage(v), current(i), resistance(r),
-                    inductance(l), capacitance(cap), impedance(z),
-                    admittance(adm), power(pow), energy(e) {}
 
-        void print() {
-            std::cout << "Circuit Node: " << std::endl;
-            for (Component* c : components) {
-                c->print();
+        CircuitNode(std::vector<Component> c, std::vector<CircuitNode> ch) {
+            components = std::move(c);
+            children = std::move(ch);
+            voltage = calculateVoltage();
+            current = calculateCurrent();
+            resistance = calculateResistance();
+            inductance = calculateInductance();
+            capacitance = calculateCapacitance();
+            impedance = calculateImpedance();
+            admittance = calculateAdmittance();
+            power = calculatePower();
+            energy = calculateEnergy();
+        }
+
+//        void addComponent(Component c) {
+//            components.push_back(c);
+//        }
+
+
+        double calculateVoltage() {
+            double sum = 0.0;
+            for (const Component& component : components) {
+                if (component.type == 'v') {
+                    sum += dynamic_cast<VoltageSource&>(const_cast<Component&>(component)).voltage;
+                }
             }
-            std::cout << "Voltage: " << voltage << " Volts" << std::endl;
-            std::cout << "Current: " << current << " Amps" << std::endl;
-            std::cout << "Resistance: " << resistance << " Ohms" << std::endl;
-            std::cout << "Inductance: " << inductance << " Henrys" << std::endl;
-            std::cout << "Capacitance: " << capacitance << " Farads" << std::endl;
-            std::cout << "Impedance: " << impedance << " Ohms" << std::endl;
-            std::cout << "Admittance: " << admittance << " Siemens" << std::endl;
-            std::cout << "Power: " << power << " Watts" << std::endl;
-            std::cout << "Energy: " << energy << " Joules" << std::endl;
+            return sum;
         }
 
-        // conect two components in series
-        void connectSeries(Component* c1, Component* c2) {
-            // create a new circuit node
-            auto* newNode = new CircuitNode();
-            // add the two components to the new node
-            newNode->components.push_back(c1);
-            newNode->components.push_back(c2);
-            // add the new node to the children of the current node
-            children.push_back(newNode);
-            // set the parent of the new node to the current node
-            newNode->parent = this;
+        double calculateCurrent() {
+            double sum = 0.0;
+            for (const Component& component : components) {
+                if (component.type == 'r') {
+                    sum += dynamic_cast<Resistor&>(const_cast<Component&>(component)).resistance;
+                }
+            }
+            return voltage / sum;
         }
 
-        // connect two components in parallel
-        void connectParallel(Component* c1, Component* c2) {
-            // create a new circuit node
-            auto* newNode = new CircuitNode();
-            // add the two components to the new node
-            newNode->components.push_back(c1);
-            newNode->components.push_back(c2);
-            // add the new node to the children of the current node
-            children.push_back(newNode);
-            // set the parent of the new node to the current node
-            newNode->parent = this;
+        double calculateResistance() {
+            double sum = 0.0;
+            for (const Component& component : components) {
+                if (component.type == 'r') {
+                    sum += dynamic_cast<Resistor&>(const_cast<Component&>(component)).resistance;
+                }
+            }
+            return sum;
         }
+
+        double calculateInductance() {
+            double sum = 0.0;
+            for (const Component& component : components) {
+                if (component.type == 'i') {
+                    sum += dynamic_cast<Inductor&>(const_cast<Component&>(component)).inductance;
+                }
+            }
+            return sum;
+        }
+
+        double calculateCapacitance() {
+            double sum = 0.0;
+            for (const Component& component : components) {
+                if (component.type == 'c') {
+                    sum += dynamic_cast<Capacitor&>(const_cast<Component&>(component)).capacitance;
+                }
+            }
+            return sum;
+        }
+
+        double calculateImpedance() {
+            double sum = 0.0;
+            for (const Component& component : components) {
+                if (component.type == 'r') {
+                    sum += dynamic_cast<Resistor&>(const_cast<Component&>(component)).resistance;
+                }
+            }
+            return sum;
+        }
+
+        double calculateAdmittance() {
+            double sum = 0.0;
+            for (const Component& component : components) {
+                if (component.type == 'c') {
+                    sum += 1.0 / dynamic_cast<Capacitor&>(const_cast<Component&>(component)).capacitance;
+                }
+            }
+            return sum;
+        }
+
+        double calculatePower() const {
+            return voltage * current;
+        }
+
+        double calculateEnergy() const {
+            return 0.5 * voltage * current;
+        }
+
+
+
+        void print() const {
+            std::cout << "Circuit Node: " << std::endl;
+            // print components which hve the print implemeted in the derived classes
+            for (const Component& component : components) {
+                component.print();
+            }
+            // print children
+            for (const CircuitNode& child : children) {
+                child.print();
+            }
+            std::cout << "Voltage: " << voltage << std::endl;
+            std::cout << "Current: " << current << std::endl;
+            std::cout << "Resistance: " << resistance << std::endl;
+            std::cout << "Inductance: " << inductance << std::endl;
+            std::cout << "Capacitance: " << capacitance << std::endl;
+            std::cout << "Impedance: " << impedance << std::endl;
+            std::cout << "Admittance: " << admittance << std::endl;
+            std::cout << "Power: " << power << std::endl;
+            std::cout << "Energy: " << energy << std::endl;
+
+        }
+//
+//        // conect two components in series
+//        void connectSeries(Component& c1, Component& c2) {
+//            std::vector<Component> components;
+//            components.push_back(c1);
+//            components.push_back(c2);
+//            CircuitNode node(components, std::vector<CircuitNode>());
+//            children.push_back(node);
+//        }
+//
+//        // connect two components in parallel
+//        void connectParallel(Component& c1, Component& c2) {
+//            // create a new circuit node
+//            CircuitNode node;
+//            // add the components to the node
+//            node.components.push_back(*c1);
+//            node.components.push_back(*c2);
+//            // add the node to the children
+//            children.push_back(node);
+//        }
 
     };
 
@@ -370,31 +479,30 @@ namespace CB {
             // for each node
             for (CircuitNode* node : nodes) {
                 // for each component in the node
-                for (Component* component : node->components) {
+                for (Component& component : node->components) {
                     // if the component is a resistor
-                    if (dynamic_cast<Resistor*>(component)) {
+                    if (component.type == 'r') {
                         // add the resistance to the node's resistance
-                        node->resistance += dynamic_cast<Resistor*>(component)->resistance;
+                        node->resistance += dynamic_cast<Resistor&>(component).resistance;
                     }
                     // if the component is a capacitor
-                    if (dynamic_cast<Capacitor*>(component)) {
+                    if (component.type == 'c') {
                         // add the capacitance to the node's capacitance
-                        node->capacitance += dynamic_cast<Capacitor*>(component)->capacitance;
+                        node->capacitance += dynamic_cast<Capacitor&>(component).capacitance;
                     }
                     // if the component is an inductor
-                    if (dynamic_cast<Inductor*>(component)) {
+                    if (component.type == 'i') {
                         // add the inductance to the node's inductance
-                        node->inductance += dynamic_cast<Inductor*>(component)->inductance;
+                        node->inductance += dynamic_cast<Inductor&>(component).inductance;
                     }
                     // if the component is a voltage source
-                    if (dynamic_cast<VoltageSource*>(component)) {
+                    if (component.type == 'v') {
                         // add the voltage to the node's voltage
-                        node->voltage += dynamic_cast<VoltageSource*>(component)->voltage;
+                        node->voltage += dynamic_cast<VoltageSource&>(component).voltage;
                     }
                 }
                 // calculate the node's impedance
-                node->impedance = static_cast<double>(node->resistance +
-                                                      node->inductance * 1i);
+                node->impedance = node->resistance + (node->inductance * node->capacitance);
                 // calculate the node's admittance
                 node->admittance = 1.0 / node->impedance;
                 // calculate the node's current
@@ -442,3 +550,15 @@ namespace CB {
 
 #endif //PHYSICSFORMULA_CIRCUITBOARD_H
 }
+//
+//Circuits::voltageAcrossBattery(.020, 125.0, 12.0);
+//CB::Capacitor c1(1.0, 1.0);
+//CB::Capacitor c2(1.0, 1.0);
+//CB::Resistor r1(1.0, 1.0);
+//CB::Resistor r2(1.0, 1.0);
+//CB::Inductor i1(1.0, 1.0);
+//CB::Inductor i2(1.0, 1.0);
+//CB::ResistorNode rn1({r1, r2}, 's');
+//CB::InductorNode ln1({i1, i2}, 's');
+//CB::VoltageSource vs12(12.0, 1.0);
+//CB::CircuitNode cn1({c1, c2}, 's');

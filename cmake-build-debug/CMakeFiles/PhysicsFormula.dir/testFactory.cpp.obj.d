@@ -536,6 +536,7 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Temperature.h \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Vector3D.h \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Vector2D.h \
+ D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\CircuitBoard.h \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Cone.h \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Cylinder.h \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Cube.h \
