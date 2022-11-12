@@ -38,20 +38,38 @@ public:
         type = t;
         VCC = v;
         eR = calculateEquivalentResistance();
-        I = calculateTotalCurrent();
-        voltages = calculateVoltages();
-        currents = calculateCurrents();
-        powers = calculatePowers();
-        P = calculateTotalPower();
+        if (type == 'p') {
+            currents = calculateCurrents();
+            I = calculateTotalCurrent();
+            voltages = calculateVoltages();
+            powers = calculatePowers();
+            P = calculateTotalPower();
+        } else {
+            I = calculateTotalCurrent();
+            voltages = calculateVoltages();
+            currents = calculateCurrents();
+            powers = calculatePowers();
+            P = calculateTotalPower();
+        }
+
+
     }
 
     void setVoltage(double v) {
         VCC = v;
-        I = calculateTotalCurrent();
-        voltages = calculateVoltages();
-        currents = calculateCurrents();
-        powers = calculatePowers();
-        P = calculateTotalPower();
+        if (type == 'p') {
+            currents = calculateCurrents();
+            I = calculateTotalCurrent();
+            voltages = calculateVoltages();
+            powers = calculatePowers();
+            P = calculateTotalPower();
+        } else {
+            I = calculateTotalCurrent();
+            voltages = calculateVoltages();
+            currents = calculateCurrents();
+            powers = calculatePowers();
+            P = calculateTotalPower();
+        }
     }
 
     void setResistance(std::vector<double> r) {
@@ -59,11 +77,19 @@ public:
         assert(VCC != 0.0);
         resistances = r;
         eR = calculateEquivalentResistance();
-        I = calculateTotalCurrent();
-        voltages = calculateVoltages();
-        currents = calculateCurrents();
-        powers = calculatePowers();
-        P = calculateTotalPower();
+        if (type == 'p') {
+            currents = calculateCurrents();
+            I = calculateTotalCurrent();
+            voltages = calculateVoltages();
+            powers = calculatePowers();
+            P = calculateTotalPower();
+        } else {
+            I = calculateTotalCurrent();
+            voltages = calculateVoltages();
+            currents = calculateCurrents();
+            powers = calculatePowers();
+            P = calculateTotalPower();
+        }
     }
 
     double calculateEquivalentResistance() {

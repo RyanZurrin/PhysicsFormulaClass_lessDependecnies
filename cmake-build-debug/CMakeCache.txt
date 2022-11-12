@@ -310,6 +310,9 @@ PhysicsFormula_SOURCE_DIR:STATIC=D:/src/CLionProjects/PhysicsFormulaClass_lessDe
 //Path to a file.
 SFML_DOC_DIR:PATH=SFML_DOC_DIR-NOTFOUND
 
+//Skip finding dependencies
+SYMENGINE_SKIP_DEPENDENCIES:BOOL=no
+
 //Use Boost
 USE_BOOST:BOOL=OFF
 
@@ -321,6 +324,9 @@ VorbisFile_LIB:FILEPATH=D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnie
 
 //Path to a library.
 Vorbis_LIB:FILEPATH=D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/lib/libvorbis.a
+
+//The directory containing a CMake configuration file for symengine.
+symengine_DIR:PATH=symengine_DIR-NOTFOUND
 
 
 ########################
@@ -501,6 +507,8 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding PkgConfig
 FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[E:/msys64/mingw64/bin/pkg-config.exe][v1.8.0()]
+//Details about finding Python3
+FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[E:/Program Files/Python310/python.exe][E:/Program Files/Python310/libs/python310.lib][E:/Program Files/Python310/include][cfound components: Interpreter Development Development.Module Development.Embed ][v3.10.5()]
 //ADVANCED property for variable: FLAC_LIB
 FLAC_LIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: FreeType_LIB
@@ -544,5 +552,20 @@ VorbisEnc_LIB-ADVANCED:INTERNAL=1
 VorbisFile_LIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Vorbis_LIB
 Vorbis_LIB-ADVANCED:INTERNAL=1
+_Python3_DEVELOPMENT_EMBED_SIGNATURE:INTERNAL=c8fe05fcbb853e69c6ef214c2dd554d1
+_Python3_DEVELOPMENT_MODULE_SIGNATURE:INTERNAL=c8fe05fcbb853e69c6ef214c2dd554d1
+//Path to a program.
+_Python3_EXECUTABLE:INTERNAL=E:/Program Files/Python310/python.exe
+//Path to a file.
+_Python3_INCLUDE_DIR:INTERNAL=E:/Program Files/Python310/include
+//Python3 Properties
+_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;10;5;64;;cp310-win_amd64;E:\Program Files\Python310\Lib;E:\Program Files\Python310\Lib;E:\Program Files\Python310\Lib\site-packages;E:\Program Files\Python310\Lib\site-packages
+_Python3_INTERPRETER_SIGNATURE:INTERNAL=089d16183857256eb3d9ea0e20a8774a
+//Path to a library.
+_Python3_LIBRARY_DEBUG:INTERNAL=_Python3_LIBRARY_DEBUG-NOTFOUND
+//Path to a library.
+_Python3_LIBRARY_RELEASE:INTERNAL=E:/Program Files/Python310/libs/python310.lib
+//Path to a library.
+_Python3_RUNTIME_LIBRARY_RELEASE:INTERNAL=E:/Program Files/Python310/python310.dll
 __pkg_config_checked_GSL:INTERNAL=1
 

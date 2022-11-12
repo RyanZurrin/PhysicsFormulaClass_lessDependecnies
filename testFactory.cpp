@@ -12,7 +12,10 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    Circuits::currentDensityFromWireJunction(2.6, 4.3, 1.7, 2.8, 1.5);
+    ResistorNode R1({2.0, 1.0}, 60.0, 'p');
+    R1.print();
+    ResistorNode R2({4.0, 1.0}, 10.0, 'p');
+    R2.print();
 
 
     //**************************************************************************
