@@ -12,10 +12,11 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    ResistorNode R1({2.0, 1.0}, 60.0, 'p');
-    R1.print();
-    ResistorNode R2({4.0, 1.0}, 10.0, 'p');
-    R2.print();
+    ResistorNode r1({ 180.0, 68.0 }, 7.0, 'p');
+    r1.print();
+    ResistorNode r2({ 240.0, r1.eR }, 7.0, 's');
+    r2.print();
+
 
 
     //**************************************************************************

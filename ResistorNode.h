@@ -51,8 +51,29 @@ public:
             powers = calculatePowers();
             P = calculateTotalPower();
         }
+    }
 
-
+    ResistorNode(std::vector<ResistorNode> r, double v, char t) {
+        resistances = {};
+        type = t;
+        VCC = v;
+        for (ResistorNode resistor : r) {
+            resistances.push_back(resistor.eR);
+        }
+        eR = calculateEquivalentResistance();
+        if (type == 'p') {
+            currents = calculateCurrents();
+            I = calculateTotalCurrent();
+            voltages = calculateVoltages();
+            powers = calculatePowers();
+            P = calculateTotalPower();
+        } else {
+            I = calculateTotalCurrent();
+            voltages = calculateVoltages();
+            currents = calculateCurrents();
+            powers = calculatePowers();
+            P = calculateTotalPower();
+        }
     }
 
     void setVoltage(double v) {
@@ -72,7 +93,7 @@ public:
         }
     }
 
-    void setResistance(std::vector<double> r) {
+    void setResistances(std::vector<double> r) {
         // assert that VCC is not 0
         assert(VCC != 0.0);
         resistances = r;

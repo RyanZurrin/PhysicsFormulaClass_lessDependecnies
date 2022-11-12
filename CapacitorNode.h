@@ -106,7 +106,7 @@ public:
         Q = calculateTotalCharge();
     }
 
-    void setCapacitance(std::vector<double> c) {
+    void setCapacitances(std::vector<double> c) {
         // assert that VCC is not 0
         assert(VCC != 0.0);
         capacitances = std::move(c);
