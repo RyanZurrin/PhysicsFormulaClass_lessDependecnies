@@ -99,7 +99,7 @@ namespace CB {
 
         // print function to print each capacitor in the node and the equivalent capacitance
         void print() const override {
-            std::cout << "Capacitor Node: " << std::endl;
+            std::cout << "CapacitorNode Node: " << std::endl;
             for (Capacitor c : capacitances) {
                 c.print();
             }
@@ -525,9 +525,9 @@ namespace CB {
 //                        node->resistance += dynamic_cast<Resistor*>(component)->resistance;
 //                    }
 //                    // if the component is a capacitor
-//                    if (dynamic_cast<Capacitor*>(component)) {
+//                    if (dynamic_cast<CapacitorNode*>(component)) {
 //                        // add the capacitance to the node's capacitance
-//                        node->capacitance += dynamic_cast<Capacitor*>(component)->capacitance;
+//                        node->capacitance += dynamic_cast<CapacitorNode*>(component)->capacitance;
 //                    }
 //                    // if the component is an inductor
 //                    if (dynamic_cast<Inductor*>(component)) {
@@ -552,8 +552,8 @@ namespace CB {
 }
 //
 //Circuits::voltageAcrossBattery(.020, 125.0, 12.0);
-//CB::Capacitor c1(1.0, 1.0);
-//CB::Capacitor c2(1.0, 1.0);
+//CB::CapacitorNode c1(1.0, 1.0);
+//CB::CapacitorNode c2(1.0, 1.0);
 //CB::Resistor r1(1.0, 1.0);
 //CB::Resistor r2(1.0, 1.0);
 //CB::Inductor i1(1.0, 1.0);

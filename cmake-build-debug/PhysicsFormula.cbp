@@ -112,6 +112,9 @@
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Calculus.h">
 			<Option target="PhysicsFormula"/>
 		</Unit>
+		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/CapacitorNode.h">
+			<Option target="PhysicsFormula"/>
+		</Unit>
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Circle.h">
 			<Option target="PhysicsFormula"/>
 		</Unit>
@@ -332,6 +335,9 @@
 			<Option target="PhysicsFormula"/>
 		</Unit>
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/RegexHelper.h">
+			<Option target="PhysicsFormula"/>
+		</Unit>
+		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/ResistorNode.h">
 			<Option target="PhysicsFormula"/>
 		</Unit>
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/RotationalMotion.h">

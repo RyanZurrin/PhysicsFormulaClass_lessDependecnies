@@ -12,95 +12,13 @@
  * @lastEdit 3/3/2021
  */
 #include <iostream>
+#include <utility>
 #include "ElectricCurrent.h"
 #include "ElectricPotential.h"
+#include "ResistorNode.h"
+#include "CapacitorNode.h"
 
 static int circuits_objectCount = 0;
-
-struct CapacitorNode {
-    vector<double> capacitances;
-    char type; // 'p' for parallel, 's' for series
-    double eC;
-
-    CapacitorNode() {
-        capacitances = {};
-        type = 'p';
-        eC = 0.0;
-    }
-    CapacitorNode(vector<double> c, char t) {
-        capacitances = c;
-        type = t;
-        eC = calculateEquivalentCapacitance();
-    }
-    double calculateEquivalentCapacitance() {
-        double sum = 0.0;
-        if (type == 'p') {
-            for (double capacitance : capacitances) {
-                sum += capacitance;
-            }
-        } else if (type == 's') {
-            for (double capacitance : capacitances) {
-                sum += 1.0 / capacitance;
-            }
-            sum = 1.0 / sum;
-        }
-        return sum;
-    }
-
-    void print() {
-        cout << "CapacitorNode: " << endl;
-        cout << "capacitances: ";
-        for (double capacitance : capacitances) {
-            cout << capacitance << " ";
-        }
-        cout << endl;
-        cout << "type: " << (type == 'p' ? "parallel" : "series") << endl;
-        cout << "eC: " << eC << endl;
-    }
-};
-
-struct ResistorNode {
-    vector<double> resistances;
-    char type; // 'p' for parallel, 's' for series
-    double eR;
-
-    ResistorNode() {
-        resistances = {};
-        type = 'p';
-        eR = 0.0;
-    }
-    ResistorNode(vector<double> r, char t) {
-        resistances = r;
-        type = t;
-        eR = calculateEquivalentResistance();
-    }
-    double calculateEquivalentResistance() {
-        double sum = 0.0;
-        if (type == 'p') {
-            for (double resistance : resistances) {
-                sum += 1.0 / resistance;
-            }
-            sum = 1.0 / sum;
-        } else if (type == 's') {
-            for (double resistance : resistances) {
-                sum += resistance;
-            }
-
-        }
-        return sum;
-    }
-
-    void print() {
-        cout << "ResistorNode: " << endl;
-        cout << "resistances: ";
-        for (double resistance : resistances) {
-            cout << resistance << " ";
-        }
-        cout << endl;
-        cout << "type: " << (type == 'p' ? "parallel" : "series") << endl;
-        cout << "eR: " << eR << endl;
-    }
-};
 
 struct InductorNode {
     vector<double> inductances;
@@ -988,6 +906,29 @@ public:
      */
     static ld batteryLife(ld V, ld U, ld I, char units, bool print = true);
 
+    /**
+     * @brief Consider the juncion of three wires as shown:
+     *  W1  \   / W2
+     *       \/
+     *       |
+     *       | W3
+     *  The magnitudes of the current density for wire 1 and 2 are J1 A/m2
+     *  and J2 A/m2, respectively, and the diameter of wires 1 and 2 are d1 m
+     *  and d2 m, respectively. The current is flowing down W1 and up W2, and
+     *  the direction of the current in W3 is unknown. Calculate the current
+     *  I3 in W3 as well as calculate the magnitude of the current density in
+     *  W3 given that it has a diameter of d3 m.
+     *  @param J1 the current density of W1 (A/m2)
+     *  @param J2 the current density of W2 (A/m2)
+     *  @param d1 the diameter of W1 (m)
+     *  @param d2 the diameter of W2 (m)
+     *  @param d3 the diameter of W3 (m)
+     *  @param print true to print the answer
+     *  @return the current in W3 (A), the current density in W3 (A/m2)
+     */
+    static vector<ld> currentDensityFromWireJunction(
+            ld J1, ld J2, ld d1, ld d2, ld d3, bool print = true);
+
 
 
     ~Circuits()
@@ -1651,4 +1592,17 @@ ld Circuits::batteryLife(ld V, ld U, ld I, char units, bool print) {
         std::cout << "t = " << t << " s" << std::endl;
     }
     return t;
+}
+
+vector<ld> Circuits::currentDensityFromWireJunction(
+        ld J1, ld J2, ld d1, ld d2, ld d3, bool print) {
+    auto I1 = J1 * circle_area_d(d1);
+    auto I2 = J2 * circle_area_d(d2);
+    auto I3 = I1 - I2;
+    auto J3 = abs(I3 / circle_area_d(d3));
+    if (print) {
+        std::cout << "I3 = " << I3 << " A" << std::endl;
+        std::cout << "J3 = " << J3 << " A/m^2" << std::endl;
+    }
+    return {I3, J3};
 }

@@ -1479,4 +1479,3 @@ inline Physics_World::~Physics_World()
 void Physics_World::setGravity(double d) {
     constants::set_Ga(d);
 }
-

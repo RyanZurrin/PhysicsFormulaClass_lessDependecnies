@@ -536,6 +536,8 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Temperature.h \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Vector3D.h \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Vector2D.h \
+ D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\ResistorNode.h \
+ D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\CapacitorNode.h \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\CircuitBoard.h \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Cone.h \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Cylinder.h \
@@ -608,14 +610,4 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Plots.h \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\pbPlots.hpp \
  D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\supportLib.hpp \
- D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\GeoUtils.h \
- D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Intersection.h \
- D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Point.h \
- D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Line.h \
- D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Plane.h \
- D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Segment.h \
- D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Polygon.h \
- D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Polyhedron.h \
- D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\PolygonDCEL.h \
- D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\RunTimer.h \
- D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\BinarySearchTree.h
+ D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\RunTimer.h
