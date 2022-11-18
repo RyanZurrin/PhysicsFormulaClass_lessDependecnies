@@ -57,10 +57,20 @@ public:
         resistances = {};
         type = t;
         VCC = v;
-        for (ResistorNode resistor : r) {
+        for (const ResistorNode& resistor : r) {
             resistances.push_back(resistor.eR);
         }
         eR = calculateEquivalentResistance();
+        // remove all the resistances from the vector that were just added
+        for (const ResistorNode& resistor : r) {
+            removeResistance(resistor.eR);
+        }
+        // add all the resistors from each node to the vector
+        for (const ResistorNode& resistor : r) {
+            for (double resistance : resistor.resistances) {
+                resistances.push_back(resistance);
+            }
+        }
         if (type == 'p') {
             currents = calculateCurrents();
             I = calculateTotalCurrent();
@@ -73,6 +83,15 @@ public:
             currents = calculateCurrents();
             powers = calculatePowers();
             P = calculateTotalPower();
+        }
+    }
+
+    void removeResistance(double r) {
+        for (int i = 0; i < resistances.size(); i++) {
+            if (resistances[i] == r) {
+                resistances.erase(resistances.begin() + i);
+                break;
+            }
         }
     }
 
