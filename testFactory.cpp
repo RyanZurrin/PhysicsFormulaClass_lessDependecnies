@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    Circuits::currentDensityFromWireJunction(2.6, 4.3, 1.7, 2.8, 1.5);
+    Magnetism::findDirectionOfForce(dir::W, dir::N);
 
     //**************************************************************************
     //Stopping RunTimer and displaying the programs' execution time

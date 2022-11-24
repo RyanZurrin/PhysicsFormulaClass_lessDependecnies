@@ -9,7 +9,7 @@
  * @details driver class for solving complex physics problems
  * @author Ryan Zurrin
  * @dateBuilt  3/3/2021
- * @lastEdit 3/3/2021
+ * @lastEdit 11/12/2022
  */
 #include <iostream>
 #include <utility>
@@ -19,6 +19,40 @@
 #include "CapacitorNode.h"
 
 static int circuits_objectCount = 0;
+
+//struct RCNode {
+//    ResistorNode resistorNode;
+//    CapacitorNode capacitorNode;
+//
+//    RCNode() {
+//        resistorNode = ResistorNode();
+//        capacitorNode = CapacitorNode();
+//    }
+//
+//    RCNode(ResistorNode r, CapacitorNode c) {
+//        resistorNode = r;
+//        capacitorNode = c;
+//    }
+//
+//    RCNode(std::vector<double> r, std::vector<double> c, double v, char t) {
+//        resistorNode = ResistorNode(r, v, t);
+//        capacitorNode = CapacitorNode(c, v, t);
+//    }
+//
+//    void setVoltage(double v) {
+//        resistorNode.setVoltage(v);
+//        capacitorNode.setVoltage(v);
+//    }
+//
+//    void setResistances(std::vector<double> r) {
+//        resistorNode.setResistances(r);
+//    }
+//
+//    void setCapacitances(std::vector<double> c) {
+//        capacitorNode.setCapacitances(c);
+//    }
+//};
+
 
 struct InductorNode {
     vector<double> inductances;
@@ -265,8 +299,42 @@ public:
      * @param print  Whether or not to print the results.
      * @return  The power output in watts (W).
      */
-    static constexpr long double powerDissipation(
+    static constexpr long double powerDissipation_IR(
             long double I, long double R, bool print = true);
+
+    /**
+     * @breif Calculates the power dissipated in a resistor, when the current
+     * is I and the voltage is V.
+     * @param I  The current.
+     * @param V  The voltage.
+     * @param print  Whether or not to print the results.
+     * @return  The power output in watts (W).
+     */
+    static constexpr long double powerDissipation_IV(
+            long double I, long double V, bool print = true);
+
+    /**
+     * @brief Calculates the power dissipated in a resistor, when the battery
+     * has an emf of E and the internal resistance is r and is connected to a
+     * resistor with resistance R.
+     * @param E  The electromotive force.
+     * @param R  The resistance.
+     * @param r  The internal resistance.
+     */
+    static long double powerDissipation_ErR(
+            long double E, long double R, long double r, bool print = true);
+
+    /**
+     * @brief Calculates the total power dissipated by a series of resistors,
+     * given a battery with an emf of E and an internal resistance of r.
+     * @param E  The electromotive force.
+     * @param R  The array of resistors.
+     * @param r  The internal resistance.
+     * @param print  Whether or not to print the results.
+     * @return  The total power output in watts (W).
+     */
+    static long double powerDissipation_series(
+            long double E, const vector<long double>& R, long double r, bool print = true);
 
     /**
      * @brief adds the total emfs for a series connection. where emf is the
@@ -929,6 +997,107 @@ public:
     static vector<ld> currentDensityFromWireJunction(
             ld J1, ld J2, ld d1, ld d2, ld d3, bool print = true);
 
+    /**
+     * @brief Calculate the current on am ammeter when a battery with a
+     * voltage of emf V, having an internal resistance of r Ω, is connected
+     * to a resistor with a resistance of R Ω.
+     * @param emf the emf (V)
+     * @param r the internal resistance (Ω)
+     * @param R the resistance (Ω)
+     * @param print true to print the answer
+     * @return the current (A)
+     */
+    static ld ammeterCurrent(ld emf, ld r, ld R, bool print = true);
+
+    /**
+     * @brief Calculate the voltage across a voltmeter when a battery with a
+     * voltage of emf V, having an internal resistance of r Ω, is connected
+     * to a resistor with a resistance of R Ω.
+     * @param emf the emf (V)
+     * @param r the internal resistance (Ω)
+     * @param R the resistance (Ω)
+     * @param print true to print the answer
+     */
+    static ld voltmeterVoltage(ld emf, ld r, ld R, bool print = true);
+
+    /**
+     * @brief Calculate how much work is done by a voltage source to charge a
+     * capacitor with a capacitance of C F using a voltage of V V.
+     * @param C the capacitance (F)
+     * @param V the voltage (V)
+     * @param print true to print the answer
+     * @return the work done (J)
+     */
+    static ld workDoneByVoltageSource(ld C, ld V, bool print = true);
+
+    /**
+     * @brief Calculate q(t) for a capacitor with a capacitance of C F and a
+     * resistance of R Ω when a voltage source of V V is applied for a time
+     * of t s.
+     * @param C the capacitance (F)
+     * @param R the resistance (Ω)
+     * @param V the voltage (V)
+     * @param t the time (s)
+     * @param print true to print the answer
+     */
+    static ld chargeOnCapacitor_RCVt(ld C, ld R, ld V, ld t, bool print = true);
+
+    /**
+     * @brief Calculate I(t) for a capacitor with a capacitance of C F and a
+     * resistance of R Ω when a voltage source of V V is applied for a time
+     * of t s.
+     * @param C the capacitance (F)
+     * @param R the resistance (Ω)
+     * @param V the voltage (V)
+     * @param t the time (s)
+     * @param print true to print the answer
+     */
+    static ld currentOnCapacitor_RCVt(ld C, ld R, ld V, ld t, bool print = true);
+
+    /**
+     * @brief Find the time t2 that it would take the charge of the capacitor
+     * to reach N% of its maximum value given a resistance of  R Ω and
+     * a capacitor of C F.
+     * @param C the capacitance (F)
+     * @param R the resistance (Ω)
+     * @param N the percentage of the maximum charge
+     * @param print true to print the answer
+     * @return the time (s)
+     */
+    static ld timeToNPercentOfMaxCharge(
+            ld C, ld R, double N, bool print = true);
+
+    /**
+     * @brief Let us now consider a different R-C circuit. This time, the
+     * capacitor is initially charged (q(0)=q0), and there is no source of EMF
+     * in the circuit. We will assume that the top plate of the capacitor
+     * initially holds positive charge. For this circuit, Kirchhoff's loop rule
+     * gives IR+q/C=0, or equivalently, IR=−q/C.
+     * Calculate the current I(t) as a function of time for this circuit.
+     * @param C the capacitance (F)
+     * @param R the resistance (Ω)
+     * @param q0 the initial charge (C)
+     * @param t the time (s)
+     * @param print true to print the answer
+     * @return the current (A)
+     */
+    static ld currentOnCapacitor_RCq0t(
+            ld C, ld R, ld q0, ld t, bool print = true);
+
+    /**
+     * @brief A piece of wire1 joins a piece of wire2 whose diameters
+     * are d1 and d2. The same current flows in both wires.
+     * The density of conduction electrons for wire1 is nd1 m^−3 and for
+     * wire2 is is nd2 m^−3. Compare the drift speeds in each wire.
+     * @param nd1 the density of conduction electrons for wire1 (m^-3)
+     * @param nd2 the density of conduction electrons for wire2 (m^-3)
+     * @param d1 the diameter of wire1 (m)
+     * @param d2 the diameter of wire2 (m)
+     * @param print true to print the answer
+     * @return the ratio of the drift speeds
+     */
+    static ld driftSpeedRatio(ld nd1, ld nd2, ld d1, ld d2, bool print = true);
+
 
 
     ~Circuits()
@@ -1006,10 +1175,10 @@ constexpr long double Circuits::current_emfRloadr(
     return I;
 }
 
-constexpr long double Circuits::powerDissipation(
-        const long double I, const long double Rload, bool print)
+constexpr long double Circuits::powerDissipation_IR(
+        const long double I, const long double R, bool print)
 {
-    auto pow_dis = (I*I)*Rload;//Watts
+    auto pow_dis = (I*I)*R;//Watts
     if (print)
         cout << "The power dissipation is " << pow_dis << " Watts." << endl;
     return pow_dis;
@@ -1139,6 +1308,7 @@ constexpr long double Circuits::resistance_fromDistanceVelocity(
         cout << "The resistance is " << R << " Ohms." << endl;
     return R;
 }
+
 
 constexpr long double Circuits::energyUsed(
         const long double P, const long double t, bool print)
@@ -1605,4 +1775,103 @@ vector<ld> Circuits::currentDensityFromWireJunction(
         std::cout << "J3 = " << J3 << " A/m^2" << std::endl;
     }
     return {I3, J3};
+}
+
+ld Circuits::ammeterCurrent(ld emf, ld r, ld R, bool print) {
+    auto I = emf / (r + R);
+    if (print) {
+        std::cout << "I = " << I << " A" << std::endl;
+    }
+    return I;
+}
+
+ld Circuits::voltmeterVoltage(ld emf, ld r, ld R, bool print) {
+    auto V = (R * emf) / (r + R) ;
+    if (print) {
+        std::cout << "V = " << V << " V" << std::endl;
+    }
+    return V;
+}
+
+constexpr long double
+Circuits::powerDissipation_IV(long double I, long double V, bool print) {
+    auto P = I * V;
+    if (print) {
+        std::cout << "P = " << P << " W" << std::endl;
+    }
+    return P;
+}
+
+long double
+Circuits::powerDissipation_ErR(long double E, long double R, long double r,
+                               bool print) {
+    auto P = (E * E * R) / pow(r + R, 2);
+    if (print) {
+        std::cout << "P = " << P << " W" << std::endl;
+    }
+    return P;
+}
+
+long double
+Circuits::powerDissipation_series(long double E, const vector<long double> &R,
+                                  long double r, bool print) {
+    auto P = (E * E * R.at(0)) / pow(r + R.at(0), 2);
+    for (auto i = 1; i < R.size(); i++) {
+        P += (E * E * R.at(i)) / pow(r + R.at(i), 2);
+    }
+    if (print) {
+        std::cout << "P = " << P << " W" << std::endl;
+    }
+    return P;
+}
+
+ld Circuits::workDoneByVoltageSource(ld C, ld V, bool print) {
+    auto W = C * V*V;
+    if (print) {
+        std::cout << "W = " << W << " J" << std::endl;
+    }
+    return W;
+}
+
+ld Circuits::chargeOnCapacitor_RCVt(ld C, ld R, ld V, ld t, bool print) {
+    auto q = C * V * (1 - exp(-t / (R * C)));
+    if (print) {
+        std::cout << "q = " << q << " C" << std::endl;
+    }
+    return q;
+}
+
+ld Circuits::currentOnCapacitor_RCVt(ld C, ld R, ld V, ld t, bool print) {
+    auto I = V / R * (exp(-t / (R * C)));
+    if (print) {
+        std::cout << "I = " << I << " A" << std::endl;
+    }
+    return I;
+}
+
+ld Circuits::timeToNPercentOfMaxCharge(
+        ld C, ld R, double N, bool print) {
+    auto t = abs(R * C * log(1.0 - (N / 100.0)));
+    if (print) {
+        std::cout << "t = " << t << " s" << std::endl;
+    }
+    return t;
+}
+
+ld Circuits::currentOnCapacitor_RCq0t(ld C, ld R, ld q0, ld t, bool print) {
+    auto I = q0 / (R * C) * exp(-t / (R * C));
+    if (print) {
+        std::cout << "I = " << I << " A" << std::endl;
+    }
+    return I;
+}
+
+ld Circuits::driftSpeedRatio(ld nd1, ld nd2, ld d1, ld d2, bool print) {
+    auto A1 = circle_area_d(d1);
+    auto A2 = circle_area_d(d2);
+    auto r = (nd2 * A2) / (nd1 * A1);
+    if (print) {
+        std::cout << "r = " << r << std::endl;
+    }
+    return r;
 }
