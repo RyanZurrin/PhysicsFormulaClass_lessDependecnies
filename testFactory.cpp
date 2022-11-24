@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    Magnetism::amperesLaw
+    Magnetism::findDirectionOfForce(dir::W, dir::N);
 
 
     //**************************************************************************
