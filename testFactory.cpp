@@ -1,6 +1,9 @@
 #include "Physics_World.h"
 #include "RunTimer.h"
 
+#include <symengine/expression.h>
+
+
 
 int main(int argc, char* argv[])
 {
@@ -13,7 +16,6 @@ int main(int argc, char* argv[])
     //**************************************************************************
 
     Circuits::currentDensityFromWireJunction(2.6, 4.3, 1.7, 2.8, 1.5);
-
 
     //**************************************************************************
     //Stopping RunTimer and displaying the programs' execution time
