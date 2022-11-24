@@ -18,7 +18,7 @@
 				</MakeCommands>
 			</Target>
 			<Target title="PhysicsFormula">
-				<Option output="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/PhysicsFormula.exe" prefix_auto="0" extension_auto="0"/>
+				<Option output="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/======PhysicsFormula.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
@@ -44,7 +44,7 @@
 				</MakeCommands>
 			</Target>
 			<Target title="PhysicsFormula/fast">
-				<Option output="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/PhysicsFormula.exe" prefix_auto="0" extension_auto="0"/>
+				<Option output="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug/======PhysicsFormula.exe" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>

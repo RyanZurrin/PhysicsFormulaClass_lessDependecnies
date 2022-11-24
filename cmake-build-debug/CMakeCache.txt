@@ -14,6 +14,8 @@
 # EXTERNAL cache entries
 ########################
 
+:UNINITIALIZED=======
+
 //The directory containing a CMake configuration file for Boost.
 Boost_DIR:PATH=Boost_DIR-NOTFOUND
 
@@ -515,17 +517,16 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_STRIP
 CMAKE_STRIP-ADVANCED:INTERNAL=1
+//No dev warnings
+CMAKE_SUPPRESS_DEVELOPER_WARNINGS:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-<<<<<<< HEAD
 //Details about finding Boost
 FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[D:/MingGW/MinGW/include][cfound components: system filesystem ][v1.77.0()]
-=======
 //Details about finding PkgConfig
 FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[E:/msys64/mingw64/bin/pkg-config.exe][v1.8.0()]
 //Details about finding Python3
-FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[E:/Program Files/Python310/python.exe][E:/Program Files/Python310/libs/python310.lib][E:/Program Files/Python310/include][cfound components: Interpreter Development Development.Module Development.Embed ][v3.10.5()]
->>>>>>> 01166838453272ce993bc0c1f63821425b16bd96
+FIND_PACKAGE_MESSAGE_DETAILS_Python3:INTERNAL=[D:/anaconda3/python.exe][D:/anaconda3/libs/python39.lib][D:/anaconda3/include][cfound components: Interpreter Development Development.Module Development.Embed ][v3.9.12()]
 //ADVANCED property for variable: FLAC_LIB
 FLAC_LIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: FreeType_LIB
@@ -565,7 +566,6 @@ VorbisEnc_LIB-ADVANCED:INTERNAL=1
 VorbisFile_LIB-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Vorbis_LIB
 Vorbis_LIB-ADVANCED:INTERNAL=1
-<<<<<<< HEAD
 //Components requested for this build tree.
 _Boost_COMPONENTS_SEARCHED:INTERNAL=filesystem;system
 //Last used Boost_INCLUDE_DIR value.
@@ -582,22 +582,20 @@ _Boost_USE_MULTITHREADED_LAST:INTERNAL=ON
 _Boost_USE_STATIC_LIBS_LAST:INTERNAL=ON
 //Last used Boost_USE_STATIC_RUNTIME value.
 _Boost_USE_STATIC_RUNTIME_LAST:INTERNAL=OFF
-=======
-_Python3_DEVELOPMENT_EMBED_SIGNATURE:INTERNAL=c8fe05fcbb853e69c6ef214c2dd554d1
-_Python3_DEVELOPMENT_MODULE_SIGNATURE:INTERNAL=c8fe05fcbb853e69c6ef214c2dd554d1
+_Python3_DEVELOPMENT_EMBED_SIGNATURE:INTERNAL=92730258759be7105b3cd735a533ec6c
+_Python3_DEVELOPMENT_MODULE_SIGNATURE:INTERNAL=92730258759be7105b3cd735a533ec6c
 //Path to a program.
-_Python3_EXECUTABLE:INTERNAL=E:/Program Files/Python310/python.exe
+_Python3_EXECUTABLE:INTERNAL=D:/anaconda3/python.exe
 //Path to a file.
-_Python3_INCLUDE_DIR:INTERNAL=E:/Program Files/Python310/include
+_Python3_INCLUDE_DIR:INTERNAL=D:/anaconda3/include
 //Python3 Properties
-_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;10;5;64;;cp310-win_amd64;E:\Program Files\Python310\Lib;E:\Program Files\Python310\Lib;E:\Program Files\Python310\Lib\site-packages;E:\Program Files\Python310\Lib\site-packages
-_Python3_INTERPRETER_SIGNATURE:INTERNAL=089d16183857256eb3d9ea0e20a8774a
+_Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;9;12;64;;cp39-win_amd64;D:\anaconda3\Lib;D:\anaconda3\Lib;D:\anaconda3\Lib\site-packages;D:\anaconda3\Lib\site-packages
+_Python3_INTERPRETER_SIGNATURE:INTERNAL=89787ee0526aa5e586d82c58a942ef2a
 //Path to a library.
 _Python3_LIBRARY_DEBUG:INTERNAL=_Python3_LIBRARY_DEBUG-NOTFOUND
 //Path to a library.
-_Python3_LIBRARY_RELEASE:INTERNAL=E:/Program Files/Python310/libs/python310.lib
+_Python3_LIBRARY_RELEASE:INTERNAL=D:/anaconda3/libs/python39.lib
 //Path to a library.
 _Python3_RUNTIME_LIBRARY_RELEASE:INTERNAL=E:/Program Files/Python310/python310.dll
->>>>>>> 01166838453272ce993bc0c1f63821425b16bd96
 __pkg_config_checked_GSL:INTERNAL=1
 

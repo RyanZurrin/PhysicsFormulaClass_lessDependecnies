@@ -378,50 +378,50 @@ PhysicsFormula_OBJECTS = \
 # External object files for target PhysicsFormula
 PhysicsFormula_EXTERNAL_OBJECTS =
 
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Angle.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Convexhull.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Distance.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/GeoUtils.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Inclusion.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Intersection.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/KDTree.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Line.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/MonotonePartition.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Point.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Polygon.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/QuadTree.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Vector.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/supportLib.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/build.make
-PhysicsFormula.exe: ../includes/SFML/lib/libsfml-system-s-d.a
-PhysicsFormula.exe: ../includes/SFML/lib/libsfml-window-s-d.a
-PhysicsFormula.exe: ../includes/SFML/lib/libsfml-graphics-s-d.a
-PhysicsFormula.exe: ../includes/SFML/lib/libsfml-audio-s-d.a
-PhysicsFormula.exe: ../includes/SFML/lib/libsfml-network-s-d.a
-PhysicsFormula.exe: D:/MingGW/MinGW/lib/libboost_system.a
-PhysicsFormula.exe: D:/MingGW/MinGW/lib/libboost_filesystem.a
-PhysicsFormula.exe: ../includes/SFML/lib/libsfml-window-s-d.a
-PhysicsFormula.exe: ../includes/SFML/lib/libfreetype.a
-PhysicsFormula.exe: ../includes/SFML/lib/libopenal32.a
-PhysicsFormula.exe: ../includes/SFML/lib/libvorbisfile.a
-PhysicsFormula.exe: ../includes/SFML/lib/libvorbisenc.a
-PhysicsFormula.exe: ../includes/SFML/lib/libvorbis.a
-PhysicsFormula.exe: ../includes/SFML/lib/libogg.a
-PhysicsFormula.exe: ../includes/SFML/lib/libFLAC.a
-PhysicsFormula.exe: ../includes/SFML/lib/libsfml-system-s-d.a
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/linklibs.rsp
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/objects1.rsp
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable PhysicsFormula.exe"
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Angle.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Convexhull.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Distance.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/GeoUtils.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Inclusion.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Intersection.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/KDTree.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Line.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/MonotonePartition.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Point.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Polygon.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/QuadTree.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Vector.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/supportLib.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/build.make
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libsfml-system-s-d.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libsfml-window-s-d.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libsfml-graphics-s-d.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libsfml-audio-s-d.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libsfml-network-s-d.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: D:/MingGW/MinGW/lib/libboost_system.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: D:/MingGW/MinGW/lib/libboost_filesystem.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libsfml-window-s-d.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libfreetype.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libopenal32.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libvorbisfile.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libvorbisenc.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libvorbis.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libogg.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libFLAC.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libsfml-system-s-d.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/linklibs.rsp
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/objects1.rsp
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable ======PhysicsFormula.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\PhysicsFormula.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/PhysicsFormula.dir/build: PhysicsFormula.exe
+CMakeFiles/PhysicsFormula.dir/build: $(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe
 .PHONY : CMakeFiles/PhysicsFormula.dir/build
 
 CMakeFiles/PhysicsFormula.dir/clean:

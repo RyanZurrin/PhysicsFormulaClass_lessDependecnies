@@ -1,9 +1,6 @@
 #include "Physics_World.h"
 #include "RunTimer.h"
 
-#include <symengine/expression.h>
-
-
 
 int main(int argc, char* argv[])
 {
