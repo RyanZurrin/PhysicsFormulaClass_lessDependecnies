@@ -1084,6 +1084,20 @@ public:
     static ld currentOnCapacitor_RCq0t(
             ld C, ld R, ld q0, ld t, bool print = true);
 
+    /**
+     * @brief A piece of wire1 joins a piece of wire2 whose diameters
+     * are d1 and d2. The same current flows in both wires.
+     * The density of conduction electrons for wire1 is nd1 m^−3 and for
+     * wire2 is is nd2 m^−3. Compare the drift speeds in each wire.
+     * @param nd1 the density of conduction electrons for wire1 (m^-3)
+     * @param nd2 the density of conduction electrons for wire2 (m^-3)
+     * @param d1 the diameter of wire1 (m)
+     * @param d2 the diameter of wire2 (m)
+     * @param print true to print the answer
+     * @return the ratio of the drift speeds
+     */
+    static ld driftSpeedRatio(ld nd1, ld nd2, ld d1, ld d2, bool print = true);
+
 
 
     ~Circuits()
@@ -1294,6 +1308,7 @@ constexpr long double Circuits::resistance_fromDistanceVelocity(
         cout << "The resistance is " << R << " Ohms." << endl;
     return R;
 }
+
 
 constexpr long double Circuits::energyUsed(
         const long double P, const long double t, bool print)
@@ -1849,4 +1864,14 @@ ld Circuits::currentOnCapacitor_RCq0t(ld C, ld R, ld q0, ld t, bool print) {
         std::cout << "I = " << I << " A" << std::endl;
     }
     return I;
+}
+
+ld Circuits::driftSpeedRatio(ld nd1, ld nd2, ld d1, ld d2, bool print) {
+    auto A1 = circle_area_d(d1);
+    auto A2 = circle_area_d(d2);
+    auto r = (nd2 * A2) / (nd1 * A1);
+    if (print) {
+        std::cout << "r = " << r << std::endl;
+    }
+    return r;
 }
