@@ -14,7 +14,6 @@ int main(int argc, char* argv[])
 
     Magnetism::findDirectionOfForce(dir::W, dir::N);
 
-
     //**************************************************************************
     //Stopping RunTimer and displaying the programs' execution time
     //__________________________________________________________________________

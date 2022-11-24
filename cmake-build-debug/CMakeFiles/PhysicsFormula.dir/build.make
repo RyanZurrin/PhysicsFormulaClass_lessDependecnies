@@ -43,10 +43,10 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\cmake\win\bin\cmake.exe
+CMAKE_COMMAND = C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\cmake\win\bin\cmake.exe
 
 # The command to remove a file.
-RM = E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\cmake\win\bin\cmake.exe -E rm -f
+RM = C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\cmake\win\bin\cmake.exe -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -73,285 +73,285 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: CMakeFiles/PhysicsFormula.dir
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: ../testFactory.cpp
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\testFactory.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\testFactory.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\testFactory.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\testFactory.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\testFactory.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\testFactory.cpp
 
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/testFactory.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\testFactory.cpp > CMakeFiles\PhysicsFormula.dir\testFactory.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\testFactory.cpp > CMakeFiles\PhysicsFormula.dir\testFactory.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/testFactory.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/testFactory.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\testFactory.cpp -o CMakeFiles\PhysicsFormula.dir\testFactory.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\testFactory.cpp -o CMakeFiles\PhysicsFormula.dir\testFactory.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/Angle.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/Angle.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/Angle.cpp.obj: ../Angle.cpp
 CMakeFiles/PhysicsFormula.dir/Angle.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/PhysicsFormula.dir/Angle.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Angle.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Angle.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Angle.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Angle.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Angle.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Angle.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Angle.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Angle.cpp
 
 CMakeFiles/PhysicsFormula.dir/Angle.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/Angle.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Angle.cpp > CMakeFiles\PhysicsFormula.dir\Angle.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Angle.cpp > CMakeFiles\PhysicsFormula.dir\Angle.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/Angle.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/Angle.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Angle.cpp -o CMakeFiles\PhysicsFormula.dir\Angle.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Angle.cpp -o CMakeFiles\PhysicsFormula.dir\Angle.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/Convexhull.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/Convexhull.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/Convexhull.cpp.obj: ../Convexhull.cpp
 CMakeFiles/PhysicsFormula.dir/Convexhull.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/PhysicsFormula.dir/Convexhull.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Convexhull.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Convexhull.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Convexhull.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Convexhull.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Convexhull.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Convexhull.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Convexhull.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Convexhull.cpp
 
 CMakeFiles/PhysicsFormula.dir/Convexhull.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/Convexhull.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Convexhull.cpp > CMakeFiles\PhysicsFormula.dir\Convexhull.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Convexhull.cpp > CMakeFiles\PhysicsFormula.dir\Convexhull.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/Convexhull.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/Convexhull.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Convexhull.cpp -o CMakeFiles\PhysicsFormula.dir\Convexhull.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Convexhull.cpp -o CMakeFiles\PhysicsFormula.dir\Convexhull.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/Distance.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/Distance.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/Distance.cpp.obj: ../Distance.cpp
 CMakeFiles/PhysicsFormula.dir/Distance.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/PhysicsFormula.dir/Distance.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Distance.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Distance.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Distance.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Distance.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Distance.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Distance.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Distance.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Distance.cpp
 
 CMakeFiles/PhysicsFormula.dir/Distance.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/Distance.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Distance.cpp > CMakeFiles\PhysicsFormula.dir\Distance.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Distance.cpp > CMakeFiles\PhysicsFormula.dir\Distance.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/Distance.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/Distance.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Distance.cpp -o CMakeFiles\PhysicsFormula.dir\Distance.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Distance.cpp -o CMakeFiles\PhysicsFormula.dir\Distance.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/GeoUtils.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/GeoUtils.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/GeoUtils.cpp.obj: ../GeoUtils.cpp
 CMakeFiles/PhysicsFormula.dir/GeoUtils.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/PhysicsFormula.dir/GeoUtils.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/GeoUtils.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\GeoUtils.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\GeoUtils.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\GeoUtils.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/GeoUtils.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\GeoUtils.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\GeoUtils.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\GeoUtils.cpp
 
 CMakeFiles/PhysicsFormula.dir/GeoUtils.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/GeoUtils.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\GeoUtils.cpp > CMakeFiles\PhysicsFormula.dir\GeoUtils.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\GeoUtils.cpp > CMakeFiles\PhysicsFormula.dir\GeoUtils.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/GeoUtils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/GeoUtils.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\GeoUtils.cpp -o CMakeFiles\PhysicsFormula.dir\GeoUtils.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\GeoUtils.cpp -o CMakeFiles\PhysicsFormula.dir\GeoUtils.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/Inclusion.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/Inclusion.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/Inclusion.cpp.obj: ../Inclusion.cpp
 CMakeFiles/PhysicsFormula.dir/Inclusion.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/PhysicsFormula.dir/Inclusion.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Inclusion.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Inclusion.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Inclusion.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Inclusion.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Inclusion.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Inclusion.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Inclusion.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Inclusion.cpp
 
 CMakeFiles/PhysicsFormula.dir/Inclusion.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/Inclusion.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Inclusion.cpp > CMakeFiles\PhysicsFormula.dir\Inclusion.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Inclusion.cpp > CMakeFiles\PhysicsFormula.dir\Inclusion.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/Inclusion.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/Inclusion.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Inclusion.cpp -o CMakeFiles\PhysicsFormula.dir\Inclusion.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Inclusion.cpp -o CMakeFiles\PhysicsFormula.dir\Inclusion.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/Intersection.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/Intersection.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/Intersection.cpp.obj: ../Intersection.cpp
 CMakeFiles/PhysicsFormula.dir/Intersection.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/PhysicsFormula.dir/Intersection.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Intersection.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Intersection.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Intersection.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Intersection.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Intersection.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Intersection.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Intersection.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Intersection.cpp
 
 CMakeFiles/PhysicsFormula.dir/Intersection.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/Intersection.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Intersection.cpp > CMakeFiles\PhysicsFormula.dir\Intersection.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Intersection.cpp > CMakeFiles\PhysicsFormula.dir\Intersection.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/Intersection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/Intersection.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Intersection.cpp -o CMakeFiles\PhysicsFormula.dir\Intersection.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Intersection.cpp -o CMakeFiles\PhysicsFormula.dir\Intersection.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/KDTree.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/KDTree.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/KDTree.cpp.obj: ../KDTree.cpp
 CMakeFiles/PhysicsFormula.dir/KDTree.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/PhysicsFormula.dir/KDTree.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/KDTree.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\KDTree.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\KDTree.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\KDTree.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/KDTree.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\KDTree.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\KDTree.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\KDTree.cpp
 
 CMakeFiles/PhysicsFormula.dir/KDTree.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/KDTree.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\KDTree.cpp > CMakeFiles\PhysicsFormula.dir\KDTree.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\KDTree.cpp > CMakeFiles\PhysicsFormula.dir\KDTree.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/KDTree.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/KDTree.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\KDTree.cpp -o CMakeFiles\PhysicsFormula.dir\KDTree.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\KDTree.cpp -o CMakeFiles\PhysicsFormula.dir\KDTree.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/Line.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/Line.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/Line.cpp.obj: ../Line.cpp
 CMakeFiles/PhysicsFormula.dir/Line.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/PhysicsFormula.dir/Line.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Line.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Line.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Line.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Line.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Line.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Line.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Line.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Line.cpp
 
 CMakeFiles/PhysicsFormula.dir/Line.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/Line.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Line.cpp > CMakeFiles\PhysicsFormula.dir\Line.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Line.cpp > CMakeFiles\PhysicsFormula.dir\Line.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/Line.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/Line.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Line.cpp -o CMakeFiles\PhysicsFormula.dir\Line.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Line.cpp -o CMakeFiles\PhysicsFormula.dir\Line.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/MonotonePartition.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/MonotonePartition.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/MonotonePartition.cpp.obj: ../MonotonePartition.cpp
 CMakeFiles/PhysicsFormula.dir/MonotonePartition.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/PhysicsFormula.dir/MonotonePartition.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/MonotonePartition.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\MonotonePartition.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\MonotonePartition.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\MonotonePartition.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/MonotonePartition.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\MonotonePartition.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\MonotonePartition.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\MonotonePartition.cpp
 
 CMakeFiles/PhysicsFormula.dir/MonotonePartition.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/MonotonePartition.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\MonotonePartition.cpp > CMakeFiles\PhysicsFormula.dir\MonotonePartition.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\MonotonePartition.cpp > CMakeFiles\PhysicsFormula.dir\MonotonePartition.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/MonotonePartition.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/MonotonePartition.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\MonotonePartition.cpp -o CMakeFiles\PhysicsFormula.dir\MonotonePartition.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\MonotonePartition.cpp -o CMakeFiles\PhysicsFormula.dir\MonotonePartition.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/Point.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/Point.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/Point.cpp.obj: ../Point.cpp
 CMakeFiles/PhysicsFormula.dir/Point.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/PhysicsFormula.dir/Point.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Point.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Point.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Point.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Point.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Point.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Point.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Point.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Point.cpp
 
 CMakeFiles/PhysicsFormula.dir/Point.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/Point.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Point.cpp > CMakeFiles\PhysicsFormula.dir\Point.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Point.cpp > CMakeFiles\PhysicsFormula.dir\Point.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/Point.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/Point.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Point.cpp -o CMakeFiles\PhysicsFormula.dir\Point.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Point.cpp -o CMakeFiles\PhysicsFormula.dir\Point.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/Polygon.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/Polygon.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/Polygon.cpp.obj: ../Polygon.cpp
 CMakeFiles/PhysicsFormula.dir/Polygon.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/PhysicsFormula.dir/Polygon.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Polygon.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Polygon.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Polygon.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Polygon.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Polygon.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Polygon.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Polygon.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Polygon.cpp
 
 CMakeFiles/PhysicsFormula.dir/Polygon.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/Polygon.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Polygon.cpp > CMakeFiles\PhysicsFormula.dir\Polygon.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Polygon.cpp > CMakeFiles\PhysicsFormula.dir\Polygon.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/Polygon.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/Polygon.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Polygon.cpp -o CMakeFiles\PhysicsFormula.dir\Polygon.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Polygon.cpp -o CMakeFiles\PhysicsFormula.dir\Polygon.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/QuadTree.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/QuadTree.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/QuadTree.cpp.obj: ../QuadTree.cpp
 CMakeFiles/PhysicsFormula.dir/QuadTree.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/PhysicsFormula.dir/QuadTree.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/QuadTree.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\QuadTree.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\QuadTree.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\QuadTree.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/QuadTree.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\QuadTree.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\QuadTree.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\QuadTree.cpp
 
 CMakeFiles/PhysicsFormula.dir/QuadTree.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/QuadTree.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\QuadTree.cpp > CMakeFiles\PhysicsFormula.dir\QuadTree.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\QuadTree.cpp > CMakeFiles\PhysicsFormula.dir\QuadTree.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/QuadTree.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/QuadTree.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\QuadTree.cpp -o CMakeFiles\PhysicsFormula.dir\QuadTree.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\QuadTree.cpp -o CMakeFiles\PhysicsFormula.dir\QuadTree.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.obj: ../Triangulation.cpp
 CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Triangulation.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Triangulation.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Triangulation.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Triangulation.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Triangulation.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Triangulation.cpp
 
 CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Triangulation.cpp > CMakeFiles\PhysicsFormula.dir\Triangulation.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Triangulation.cpp > CMakeFiles\PhysicsFormula.dir\Triangulation.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Triangulation.cpp -o CMakeFiles\PhysicsFormula.dir\Triangulation.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Triangulation.cpp -o CMakeFiles\PhysicsFormula.dir\Triangulation.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/Vector.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/Vector.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/Vector.cpp.obj: ../Vector.cpp
 CMakeFiles/PhysicsFormula.dir/Vector.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/PhysicsFormula.dir/Vector.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Vector.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Vector.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Vector.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Vector.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Vector.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Vector.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Vector.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Vector.cpp
 
 CMakeFiles/PhysicsFormula.dir/Vector.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/Vector.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Vector.cpp > CMakeFiles\PhysicsFormula.dir\Vector.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Vector.cpp > CMakeFiles\PhysicsFormula.dir\Vector.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/Vector.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/Vector.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Vector.cpp -o CMakeFiles\PhysicsFormula.dir\Vector.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Vector.cpp -o CMakeFiles\PhysicsFormula.dir\Vector.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.obj: ../Voronoi.cpp
 CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Voronoi.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Voronoi.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Voronoi.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\Voronoi.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\Voronoi.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Voronoi.cpp
 
 CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Voronoi.cpp > CMakeFiles\PhysicsFormula.dir\Voronoi.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Voronoi.cpp > CMakeFiles\PhysicsFormula.dir\Voronoi.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Voronoi.cpp -o CMakeFiles\PhysicsFormula.dir\Voronoi.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\Voronoi.cpp -o CMakeFiles\PhysicsFormula.dir\Voronoi.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.obj: ../templateGraph.cpp
 CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\templateGraph.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\templateGraph.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\templateGraph.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\templateGraph.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\templateGraph.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\templateGraph.cpp
 
 CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\templateGraph.cpp > CMakeFiles\PhysicsFormula.dir\templateGraph.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\templateGraph.cpp > CMakeFiles\PhysicsFormula.dir\templateGraph.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\templateGraph.cpp -o CMakeFiles\PhysicsFormula.dir\templateGraph.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\templateGraph.cpp -o CMakeFiles\PhysicsFormula.dir\templateGraph.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.obj: ../pbPlots.cpp
 CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\pbPlots.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\pbPlots.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\pbPlots.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\pbPlots.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\pbPlots.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\pbPlots.cpp
 
 CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\pbPlots.cpp > CMakeFiles\PhysicsFormula.dir\pbPlots.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\pbPlots.cpp > CMakeFiles\PhysicsFormula.dir\pbPlots.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\pbPlots.cpp -o CMakeFiles\PhysicsFormula.dir\pbPlots.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\pbPlots.cpp -o CMakeFiles\PhysicsFormula.dir\pbPlots.cpp.s
 
 CMakeFiles/PhysicsFormula.dir/supportLib.cpp.obj: CMakeFiles/PhysicsFormula.dir/flags.make
 CMakeFiles/PhysicsFormula.dir/supportLib.cpp.obj: CMakeFiles/PhysicsFormula.dir/includes_CXX.rsp
 CMakeFiles/PhysicsFormula.dir/supportLib.cpp.obj: ../supportLib.cpp
 CMakeFiles/PhysicsFormula.dir/supportLib.cpp.obj: CMakeFiles/PhysicsFormula.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/PhysicsFormula.dir/supportLib.cpp.obj"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/supportLib.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\supportLib.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\supportLib.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\supportLib.cpp
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/PhysicsFormula.dir/supportLib.cpp.obj -MF CMakeFiles\PhysicsFormula.dir\supportLib.cpp.obj.d -o CMakeFiles\PhysicsFormula.dir\supportLib.cpp.obj -c D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\supportLib.cpp
 
 CMakeFiles/PhysicsFormula.dir/supportLib.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PhysicsFormula.dir/supportLib.cpp.i"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\supportLib.cpp > CMakeFiles\PhysicsFormula.dir\supportLib.cpp.i
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\supportLib.cpp > CMakeFiles\PhysicsFormula.dir\supportLib.cpp.i
 
 CMakeFiles/PhysicsFormula.dir/supportLib.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PhysicsFormula.dir/supportLib.cpp.s"
-	E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\supportLib.cpp -o CMakeFiles\PhysicsFormula.dir\supportLib.cpp.s
+	C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4345.21\bin\mingw\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\supportLib.cpp -o CMakeFiles\PhysicsFormula.dir\supportLib.cpp.s
 
 # Object files for target PhysicsFormula
 PhysicsFormula_OBJECTS = \
@@ -378,48 +378,50 @@ PhysicsFormula_OBJECTS = \
 # External object files for target PhysicsFormula
 PhysicsFormula_EXTERNAL_OBJECTS =
 
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Angle.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Convexhull.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Distance.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/GeoUtils.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Inclusion.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Intersection.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/KDTree.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Line.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/MonotonePartition.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Point.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Polygon.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/QuadTree.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Vector.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/supportLib.cpp.obj
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/build.make
-PhysicsFormula.exe: ../includes/SFML/lib/libsfml-system-s-d.a
-PhysicsFormula.exe: ../includes/SFML/lib/libsfml-window-s-d.a
-PhysicsFormula.exe: ../includes/SFML/lib/libsfml-graphics-s-d.a
-PhysicsFormula.exe: ../includes/SFML/lib/libsfml-audio-s-d.a
-PhysicsFormula.exe: ../includes/SFML/lib/libsfml-network-s-d.a
-PhysicsFormula.exe: ../includes/SFML/lib/libsfml-window-s-d.a
-PhysicsFormula.exe: ../includes/SFML/lib/libfreetype.a
-PhysicsFormula.exe: ../includes/SFML/lib/libopenal32.a
-PhysicsFormula.exe: ../includes/SFML/lib/libvorbisfile.a
-PhysicsFormula.exe: ../includes/SFML/lib/libvorbisenc.a
-PhysicsFormula.exe: ../includes/SFML/lib/libvorbis.a
-PhysicsFormula.exe: ../includes/SFML/lib/libogg.a
-PhysicsFormula.exe: ../includes/SFML/lib/libFLAC.a
-PhysicsFormula.exe: ../includes/SFML/lib/libsfml-system-s-d.a
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/linklibs.rsp
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/objects1.rsp
-PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable PhysicsFormula.exe"
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Angle.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Convexhull.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Distance.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/GeoUtils.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Inclusion.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Intersection.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/KDTree.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Line.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/MonotonePartition.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Point.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Polygon.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/QuadTree.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Triangulation.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Vector.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/Voronoi.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/pbPlots.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/supportLib.cpp.obj
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/build.make
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libsfml-system-s-d.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libsfml-window-s-d.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libsfml-graphics-s-d.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libsfml-audio-s-d.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libsfml-network-s-d.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: D:/MingGW/MinGW/lib/libboost_system.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: D:/MingGW/MinGW/lib/libboost_filesystem.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libsfml-window-s-d.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libfreetype.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libopenal32.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libvorbisfile.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libvorbisenc.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libvorbis.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libogg.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libFLAC.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: ../includes/SFML/lib/libsfml-system-s-d.a
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/linklibs.rsp
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/objects1.rsp
+$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe: CMakeFiles/PhysicsFormula.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable ======PhysicsFormula.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\PhysicsFormula.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/PhysicsFormula.dir/build: PhysicsFormula.exe
+CMakeFiles/PhysicsFormula.dir/build: $(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)$(EQUALS)PhysicsFormula.exe
 .PHONY : CMakeFiles/PhysicsFormula.dir/build
 
 CMakeFiles/PhysicsFormula.dir/clean:
