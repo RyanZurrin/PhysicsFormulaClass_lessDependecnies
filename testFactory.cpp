@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    Magnetism::findDirectionOfForce(dir::W, dir::N);
+    Magnetism::fieldStrengthOnLoopAxisAtX(6.51, 44.8e-6, 10e-2);
 
     //**************************************************************************
     //Stopping RunTimer and displaying the programs' execution time
