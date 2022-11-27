@@ -13,10 +13,7 @@ int main(int argc, char* argv[])
     //**************************************************************************
 
 
-    Magnetism::heightToReachEquilibrium_Iml(
-            76.0,
-            Conversions::gram_to_kilogram(22.0),
-            95.0e-2);
+    Thermodynamics::flaskInBoilingWaterData(3.8e-3, 1.0, 20.0);
 
     //**************************************************************************
     //Stopping RunTimer and displaying the programs' execution time

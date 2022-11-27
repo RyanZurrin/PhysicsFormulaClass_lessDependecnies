@@ -132,7 +132,7 @@ static struct SpecificHeatCapacity
         const ld kcal_kgC = 1.0;
     } waterLiquid;
     const struct ICE {
-        const ld J_kgC = 2050.0;
+        const ld J_kgC = 2100.0;
         const ld kcal_kgC = .49;
     } ice;
     const struct AIR_GAS {
@@ -780,7 +780,7 @@ public:
      * @param specificHeat
      * @return  heat capacity
      */
-    static ld heatCapacity(ld mass, ld specificHeat, bool print = false)
+    static ld heatCapacity(ld mass, ld specificHeat, bool print = true)
     {
         auto heat_capacity = mass * specificHeat;
         if (print)
@@ -794,7 +794,7 @@ public:
      * @param latentHeat is the heat of transformation (fusion or vaporization)
      * @return heat of transformation
      */
-    static ld heatOfTransformation(ld mass, ld latentHeat, bool print = false)
+    static ld heatOfTransformation(ld mass, ld latentHeat, bool print = true)
     {
         auto heatOfTransformation = mass * latentHeat;
         if (print)
@@ -813,7 +813,7 @@ public:
     static ld heatEnergy(const ld mass,
                          const ld c,
                          const ld deltaTemp,
-                         bool print = false)
+                         bool print = true)
     {
         auto heat = mass * c * deltaTemp;
         if (print)
@@ -831,7 +831,7 @@ public:
     static ld tempFromHeatEnergy(const ld Q,
                                    const ld mass,
                                    const ld c,
-                                   bool print = false)
+                                   bool print = true)
     {
         auto temp = Q / (mass * c);
         if (print)
@@ -850,7 +850,7 @@ public:
     static ld massFromHeatEnergy(const ld Q,
                                    const ld temp,
                                    const ld c,
-                                   bool print = false)
+                                   bool print = true)
     {
         auto mass = Q / (c * temp);
         if (print)
@@ -869,7 +869,7 @@ public:
     static ld specificHeatFromHeatEnergy(const ld Q,
                                            const ld mass,
                                            const ld temp,
-                                           bool print = false)
+                                           bool print = true)
     {
         auto sh = Q / (mass * temp);
         if (print)
@@ -896,7 +896,7 @@ public:
                                      const ld m2,
                                      const ld c2,
                                      const ld t2,
-                                     bool print = false)
+                                     bool print = true)
     {
         auto temp = ((m1 * c1 * t1) + (m2 * c2 * t2)) / ((m1 * c1) + (m2 * c2));
         if (print)
@@ -912,7 +912,7 @@ public:
      */
     static ld phaseChangeEnergy_Lf(const ld mass,
                                    const ld Lf,
-                                   bool print = false)
+                                   bool print = true)
     {
         auto energy = mass * Lf;
         if (print)
@@ -928,7 +928,7 @@ public:
      */
     static ld phaseChangeEnergy_Lv(const ld mass,
                                    const ld Lv,
-                                   bool print = false)
+                                   bool print = true)
     {
         auto energy = mass * Lv;
         if (print)
@@ -951,7 +951,7 @@ public:
                                             const ld t1,
                                             const ld t2,
                                             const ld Lh,
-                                            bool print = false)
+                                            bool print = true)
     {
         auto energy = (m1 * c1 * (t1 - t2)) + (m1 * Lh);
         if (print)
@@ -963,7 +963,7 @@ public:
     static ld massOfEvaporatedLiquidOfSystem(const ld Q1,
                                              const ld Q2,
                                              const ld Lv,
-                                             bool print = false)
+                                             bool print = true)
     {
         auto mass = (Q1 - Q2) / Lv;
         if (print)
@@ -986,7 +986,7 @@ public:
                                        const ld phaseChangeTotal,
                                        const ld totalMass,
                                        const ld c,
-                                       bool print = false)
+                                       bool print = true)
     {
         auto temp = (heatTransferTotal - phaseChangeTotal) / (totalMass * c);
         if (print)
@@ -1007,7 +1007,7 @@ public:
                              const ld A,
                              const ld deltaTemp,
                              const ld d,
-                             bool print = false)
+                             bool print = true)
     {
         auto heat_trans = ((k * A * deltaTemp) / d);
         if (print)
@@ -1030,7 +1030,7 @@ public:
                           const ld k,
                           const ld A,
                           const ld deltaTemp,
-                          bool print = false) {
+                          bool print = true) {
         auto length = (k * A * deltaTemp) / H;
         if (print)
             std::cout << "length of rod: " << length << std::endl;
@@ -1045,7 +1045,7 @@ public:
                              const ld R1,
                              const ld T3,
                              const ld R2,
-                             bool print = false) {
+                             bool print = true) {
         auto H = (T1 - T3) / (R1 + R2);
         if (print)
             std::cout << "heat transfer from conduction: " << H << std::endl;
@@ -1061,7 +1061,7 @@ public:
      */
     static ld massFromHeatTransferThroughConduction(const ld htcQ,
                                                     const ld Lf,
-                                                    bool print = false)
+                                                    bool print = true)
     {
         auto mass = htcQ / Lf;
         if (print)
@@ -1085,7 +1085,7 @@ public:
                                                             const ld d,
                                                             const ld k,
                                                             const ld A,
-                                                            bool print = false)
+                                                            bool print = true)
     {
         auto temp_diff =  QmLv * (d / (k * A));
         if (print)
@@ -1112,7 +1112,7 @@ public:
     static ld stefanBoltzmannLawOfRadiation(const ld e,
                                             const ld A,
                                             const ld T,
-                                            bool print = false)
+                                            bool print = true)
     {
         auto P = constants::STEFAN_BOLTZMANN * e * A * pow(T, 4);
         if (print)
@@ -1132,7 +1132,7 @@ public:
     static ld temperatureOfSphericalObject(const ld e,
                                            const ld R,
                                            const ld P,
-                                           bool print = false)
+                                           bool print = true)
     {
         auto T = pow(P / (4.0*constants::PI*(R*R) * e * constants::STEFAN_BOLTZMANN), 0.25);
         if (print)
@@ -1152,7 +1152,7 @@ public:
     static ld temperatureOfObject(const ld e,
                                   const ld A,
                                   const ld P,
-                                  bool print = false)
+                                  bool print = true)
     {
         auto T = pow(P / (e * constants::STEFAN_BOLTZMANN * A), 0.25);
         if (print)
@@ -1172,7 +1172,7 @@ public:
                                            const ld R,
                                            const ld P,
                                            const ld T,
-                                           bool print = false)
+                                           bool print = true)
     {
         auto A = 4.0 * constants::PI * (R*R) * e * P / (constants::STEFAN_BOLTZMANN * T);
         if (print)
@@ -1192,7 +1192,7 @@ public:
     static ld surfaceAreaOfObject(const ld e,
                                   const ld P,
                                   const ld T,
-                                  bool print = false)
+                                  bool print = true)
     {
         auto A = P / (constants::STEFAN_BOLTZMANN * e * pow(T , 4));
         if (print)
@@ -1210,7 +1210,7 @@ public:
     static ld emissivityOfSphericalObject(const ld P,
                                           const ld T,
                                           const ld R,
-                                          bool print = false)
+                                          bool print = true)
     {
         auto e = P / (4.0 * constants::PI * (R*R) * constants::STEFAN_BOLTZMANN * pow(T, 4));
         if (print)
@@ -1228,7 +1228,7 @@ public:
     static ld emissivityOfObject(const ld P,
                                  const ld T,
                                  const ld A,
-                                 bool print = false)
+                                 bool print = true)
     {
         auto e = P / (constants::STEFAN_BOLTZMANN * A * pow(T, 4));
         if (print)
@@ -1246,7 +1246,7 @@ public:
     static ld thermalResistance(const ld k,
                                 const ld d,
                                 const ld A,
-                                bool print = false)
+                                bool print = true)
     {
         auto res = d / (k * A);
         if (print)
@@ -1467,7 +1467,7 @@ public:
                                const ld c_,
                                const ld deltaTemp,
                                const ld P,
-                               bool print = false)
+                               bool print = true)
     {
         auto time = (m * c_ * deltaTemp) / P;
         if(print)
@@ -1480,13 +1480,15 @@ public:
      * @param L  latent heat of fusion
      * @param ti  initial temp
      * @param c  specific heat
-     * @param deltaT  change in temp
+     * @param tf final temp
      * @param print  print results
      * @return  time to reach phase change
      */
     static ld timeToReachPhaseChange(const ld L, const ld ti, const ld c,
-                                    const ld deltaT, bool print = false)
+                                    const ld tf, bool print = true)
     {
+        auto deltaT = abs(tf - ti);
+        cout << "deltaT: " << deltaT << endl;
         auto time = (L * ti) / (c * deltaT);
         if(print)
             cout << "time to reach phase change: " << time << endl;
@@ -1494,7 +1496,7 @@ public:
     }
 
 
-    static ld rFactor(const ld x, const ld k, bool print = false)
+    static ld rFactor(const ld x, const ld k, bool print = true)
     {
         auto r = x / k;
         if(print)
@@ -1515,7 +1517,7 @@ public:
      * @param print  print results
      * @return surface area of house
      */
-    static vector<ld> calculateSurfaceAreaOfHouse(bool print = false,
+    static vector<ld> calculateSurfaceAreaOfHouse(bool print = true,
                                                   ld length=0.0,
                                                   ld width=0.0,
                                                   ld heightToBaseOfRoof=0.0,
@@ -1591,7 +1593,7 @@ public:
             ld rValueOfWalls,
             ld rValueOfRoof,
             ld rValueOfWindows,
-            bool print = false,
+            bool print = true,
             ld surfaceAreaOfHouse=0.0,
             ld surfaceAreaOfWalls=0.0,
             ld surfaceAreaOfRoof=0.0,
@@ -1641,7 +1643,7 @@ public:
                                                    const ld P,
                                                    const ld m,
                                                    const ld c,
-                                                   bool print = false)
+                                                   bool print = true)
     {
         ld temp = 0.0;
         temp = -(t - tb) * P / (m*c);
@@ -1650,6 +1652,47 @@ public:
                       << " seconds is: " << temp << " degrees C" << std::endl;
         }
         return temp;
+    }
+
+    /**
+     * brief An open container holds substance of mass m kg at a temperature
+     * of Ti ∘C. The mass of the container can be ignored. Heat is supplied to the
+     * container at the constant rate of Q J/second. The specific heat of
+     * substance to is c_s J/kg⋅K and the heat of fusion for substance is
+     * Lfs J/kg.
+     * Calculate how much time passes before the substance reaches
+     * Tf.
+     * Calculate from the time when the heating begins, how much time does it
+     * take a before the temp begins to rise above Tf.
+     * @param m mass of substance in kg
+     * @param Ti initial temperature of substance in degrees C
+     * @param Q heat supplied to the container at the constant rate of Q J/second
+     * @param c_s specific heat of substance to is c_s J/kg⋅K
+     * @param Lfs heat of fusion for substance is Lfs J/kg
+     * @param tf final temperature of substance in degrees C
+     * @param print whether or not to print the results
+     * @return the time it takes for the substance to reach the final temperature
+     */
+    static vector<ld> timeBeforeSubstanceReachesTemps(
+            const ld m, const ld Ti, const ld Q, const ld c_s,
+            const ld Lfs, ld Tf, bool print = true)
+    {
+        // convert Ti to Kelvin
+        ld TiK = TemperatureConversions::c2k(Ti);
+        ld deltaT =  Tf - Ti;
+        ld Qs = m * c_s * deltaT;
+        ld time1 = Qs/Q;
+        ld Qf = m * Lfs + Qs;
+        ld time2 = Qf/Q;
+        // print the results
+        if (print) {
+            std::cout << "The time it takes for the substance to reach the final temperature is: "
+                      << time1 << " time units" << std::endl;
+            std::cout << "The time it takes for the substance to reach the final temperature is: "
+                      << time2 << " time units" << std::endl;
+        }
+        return {time1, time2};
+
     }
 
 

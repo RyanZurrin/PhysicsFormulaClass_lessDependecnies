@@ -610,9 +610,9 @@ public:
     static ld numberMoles_idealGasLaw(const ld P,
                                       const ld V,
                                       const ld T,
-                                      const ld _R = constants::R.joules)
+                                      const ld R = constants::R.joules)
     {
-        return (P * V) / (_R * T);
+        return (P * V) / (R * T);
     }
 
     /**

@@ -427,7 +427,7 @@ public:
      * @param W the work done
      * @return the change in the system's internal energy
      */
-    static ld firstLaw(const ld Q, const ld W, bool print = false)
+    static ld firstLaw(const ld Q, const ld W, bool print = true)
     {
         ld E = Q + W;
         if (print)
@@ -460,7 +460,7 @@ public:
                                  const ld n,
                                  const ld Vi,
                                  const ld Vf,
-                                 bool print = false)
+                                 bool print = true)
     {
         auto Q = (n * constants::R.L_atm * T * log(Vi / Vf));
         if (print)
@@ -479,7 +479,7 @@ public:
     static ld workByIsothermalProcess(const ld p,
                                       const ld Vi,
                                       const ld Vf,
-                                      bool print = false)
+                                      bool print = true)
     {
         auto Q = ((p * Vf) * log(Vf / Vi));
         if (print) {
@@ -493,7 +493,7 @@ public:
                                            const ld W,
                                            const ld Vi,
                                            const ld Vf,
-                                           bool print = false)
+                                           bool print = true)
     {
         auto T = (W / (n * constants::R.joules * log(Vi / Vf)));
         if (print)
@@ -506,7 +506,7 @@ public:
                                                 const ld Vi,
                                                 const ld Vf,
                                                 const ld gamma,
-                                                bool print = false)
+                                                bool print = true)
     {
         auto p2 = pressure2AdiabaticProcess(gamma, p, Vi, Vf);
         auto Wad = workByAdiabaticProcess(gamma, p, p2, Vi, Vf);
@@ -541,7 +541,7 @@ public:
                                                const ld y,
                                                const ld T,
                                                const ld gamma,
-                                               bool print = false)
+                                               bool print = true)
     {
         auto Wbc = (p1 * V * (x * pow(y, gamma-1.0) - x))/ (1.0 - gamma);
         auto Wcd = (p1 * V * log (y));
@@ -565,7 +565,7 @@ public:
     static ld workByIsobaricProcess(const ld p,
                                const ld Vi,
                                const ld Vf,
-                               bool print = false)
+                               bool print = true)
     {
         auto Q = -p*(Vi - Vf);
          if (print)
@@ -577,7 +577,7 @@ public:
     static ld temperatureIsobaricProcess(const ld n,
                                          const ld  Q,
                                          const int degreesOfFreedom,
-                                         bool print = false)
+                                         bool print = true)
     {
         auto Cv = (constants::R.joules * degreesOfFreedom) / 2.0;
         auto Cp = Cv + constants::R.joules;
@@ -602,7 +602,7 @@ public:
                                 const ld pf,
                                 const ld Vi,
                                 const ld Vf,
-                                bool print = false)
+                                bool print = true)
     {
         auto Q = (pf * Vf - pi * Vi) / (lambda - 1);
         if (print)
@@ -622,7 +622,7 @@ public:
     static ld changeInInternalEnergyAnyProcess(const ld n,
                                                     const ld Cv,
                                                     const ld deltaT,
-                                                    bool print = false)
+                                                    bool print = true)
     {
         auto deltaU = n * Cv * deltaT;
         if (print)
@@ -821,7 +821,7 @@ public:
         return (var * 1000.0 * (efficiency / 100.0)) / w;
     }
 
-    static ld workByIdeaHeatEngine(const ld Qh, const ld Qc, bool print = false)
+    static ld workByIdeaHeatEngine(const ld Qh, const ld Qc, bool print = true)
     {
         const ld W = Qh - Qc;
         if (print)
@@ -837,7 +837,7 @@ public:
      * @param Th absolute temp of hot reservoirs
      * @returns Carnot Efficiency
      */
-    static ld carnotEfficiency(const ld Tc, const ld Th, bool print = false)
+    static ld carnotEfficiency(const ld Tc, const ld Th, bool print = true)
     {
         const ld efficiency = 1.0 - (Tc / Th);
         if (print)
@@ -858,7 +858,7 @@ public:
     static ld workByCarnotCycle(const ld Qh,
                                 const ld Th,
                                 const ld Tc,
-                                bool print = false)
+                                bool print = true)
     {
         const ld W = Qh * (1.0 - (Tc / Th));
         if (print)
@@ -868,7 +868,7 @@ public:
         return W;
     }
 
-    static ld efficiencyHeatEngine(const ld Qh, const ld Qc, bool print = false)
+    static ld efficiencyHeatEngine(const ld Qh, const ld Qc, bool print = true)
     {
         const ld efficiency = (Qh - Qc) / Qh;
         if (print)
@@ -891,7 +891,7 @@ public:
     static ld heatExtractedFromHotReservoir(const ld n,
                                             const ld T,
                                             const ld Va,
-                                            const ld Vb, bool print = false)
+                                            const ld Vb, bool print = true)
     {
         const ld Qh = n * constants::R.joules * T * log(Vb / Va);
         if (print)
@@ -914,7 +914,7 @@ public:
     static ld heatRejectedToColdReservoir(const ld n,
                                           const ld T,
                                           const ld Vc,
-                                          const ld Vd, bool print = false)
+                                          const ld Vd, bool print = true)
     {
         const ld Qc = n * constants::R.joules * T * log(Vc / Vd);
         if (print)
@@ -940,7 +940,7 @@ public:
         return (Qc / t1) / (W / t2);
     }
 
-    static ld engineEfficiency(const ld Tc, const ld Th, const ld Va, const ld Vb, const ld Vc, const ld Vd, const ld n, bool print = false)
+    static ld engineEfficiency(const ld Tc, const ld Th, const ld Va, const ld Vb, const ld Vc, const ld Vd, const ld n, bool print = true)
     {
         const ld Qh = heatExtractedFromHotReservoir(n, Th, Va, Vb);
         const ld Qc = heatRejectedToColdReservoir(n, Tc, Vc, Vd);
@@ -964,7 +964,7 @@ public:
      */
     static ld changeInEntropy(const ld Q,
                               const ld Th,
-                              bool print = false,
+                              bool print = true,
                               bool isAbsorbed = false)
     {
         auto S = Q / Th;
@@ -981,7 +981,7 @@ public:
                                                     const ld T1,
                                                     const ld T2,
                                                     const ld Cv,
-                                                    bool print = false)
+                                                    bool print = true)
     {
         const ld S = n * Cv * log(T2 / T1);
         if (print)
@@ -994,7 +994,7 @@ public:
                                                       const ld T1,
                                                       const ld T2,
                                                       const ld Cp,
-                                                      bool print = false)
+                                                      bool print = true)
     {
         const ld S = n * Cp * log(T2 / T1);
         if (print)
@@ -1008,7 +1008,7 @@ public:
                                                const ld V2,
                                                const ld Cp,
                                                const ld Cv,
-                                               bool print = false)
+                                               bool print = true)
     {
         if (print)
             cout << "Change in entropy: " << 0 << " J/K" << endl;
@@ -1018,7 +1018,7 @@ public:
     static ld changeInEntropy(const ld n,
                               const ld Va,
                               const ld Vb,
-                              bool print = false,
+                              bool print = true,
                               bool isAbsorbed = false)
     {
         auto S = n * constants::R.joules * log(Vb / Va);
@@ -1045,7 +1045,7 @@ public:
                                          const ld Ti,
                                          const ld Tf,
                                          const ld c,
-                                         bool print = false)
+                                         bool print = true)
     {
         const ld S = m * c * log(Tf / Ti);
         if (print)
@@ -1057,7 +1057,7 @@ public:
 
     static ld entropyIncreaseOfThawingPond(const ld m,
                                            const ld Th,
-                                           bool print = false)
+                                           bool print = true)
     {
         const ld Lf = LF.water.J_kg;
         const ld S1 = changeInEntropy(m * Lf, Th, false, true);
@@ -1107,7 +1107,7 @@ public:
      */
     static ld carnotEngineHotReservoir(const ld efficiency,
                                        const ld coldResTempCelsius,
-                                       bool print = false)
+                                       bool print = true)
     {
         auto Tc = TemperatureConversions::k2c(
                 TemperatureConversions::c2k(coldResTempCelsius) /
@@ -1122,7 +1122,7 @@ public:
     /**
      * @brief calculates the coefficient of performance
      */
-    static ld coefficientOfPerformance(const ld Q, const ld W, bool print = false)
+    static ld coefficientOfPerformance(const ld Q, const ld W, bool print = true)
     {
         const ld COP = Q / W;
         if (print)
@@ -1132,7 +1132,7 @@ public:
         return COP;
     }
 
-    static ld cop(const ld Tc, const ld Th, bool print = false)
+    static ld cop(const ld Tc, const ld Th, bool print = true)
     {
         auto COP = Tc / (Th - Tc);
         if (print)
@@ -1150,7 +1150,7 @@ public:
      */
     static ld carnotEngineColdReservoir(const ld efficiency,
                                         const ld hotResTempCelsius,
-                                        bool print = false)
+                                        bool print = true)
     {
         auto Tc = TemperatureConversions::k2c(
                 (1.0 - (efficiency / 100.0)) *
@@ -1197,7 +1197,7 @@ public:
         return gP * A * d;
     }
 
-    static ld criticalPressure(const ld a, const ld b, bool print = false)
+    static ld criticalPressure(const ld a, const ld b, bool print = true)
     {
         auto cp = a/(27.0*(b*b));
         if (print)
@@ -1220,7 +1220,7 @@ public:
                                   const ld V,
                                   const ld b,
                                   const ld a,
-                                  bool print = false)
+                                  bool print = true)
     {
         const ld R = constants::R.joules;
         auto P = ((n * R * T) / (V - (n * b))) - ((n * n * a) / (V * V));
@@ -1235,7 +1235,7 @@ public:
                                         const ld n,
                                         const ld a,
                                         const ld V,
-                                        bool print = false)
+                                        bool print = true)
     {
         auto U = (1.0/2.0) * f * n * (T * constants::R.joules) -
                 ((n*n) * a) / V;
@@ -1251,7 +1251,7 @@ public:
          * @param print  prints the result
          * @return  the power in watts
          */
-    static ld thermodynamicPower(const ld Q, const ld t, bool print = false)
+    static ld thermodynamicPower(const ld Q, const ld t, bool print = true)
     {
         auto P = Q / t;
         if (print)
@@ -1271,7 +1271,7 @@ public:
      * @param print prints the result
      * @return the length of an edge of each small cube
      */
-    static ld idealGasEdgeLength(const ld T, const ld P, bool print = false)
+    static ld idealGasEdgeLength(const ld T, const ld P, bool print = true)
     {
         const ld R = constants::R.joules;
         const ld N = constants::AVOGADRO;
@@ -1292,7 +1292,7 @@ public:
      * @param print  prints the result
      * @return  the latent heat of fusion in J/kg
      */
-    static ld latentHeatOfFusion(const ld m, const ld Q, bool print = false)
+    static ld latentHeatOfFusion(const ld m, const ld Q, bool print = true)
     {
         const ld L = Q / m;
         if (print)
@@ -1307,7 +1307,7 @@ public:
      * @param print  prints the result
      * @return  the latent heat of vaporization in J/kg
      */
-    static ld latentHeatOfVaporization(const ld m, const ld Q, bool print = false)
+    static ld latentHeatOfVaporization(const ld m, const ld Q, bool print = true)
     {
         const ld L = Q / m;
         if (print)
@@ -1322,7 +1322,7 @@ public:
      * @return the substance
      */
     static vector<string> substanceFromHeatOfFusion(const ld Lv,
-                                                    bool print = false,
+                                                    bool print = true,
                                                     const ld threshold = 4.0)
     {
         vector<string> substances = {};
@@ -1368,7 +1368,7 @@ public:
                                                 const ld V1,
                                                 const ld V2,
                                                 bool heatTransfered = false,
-                                                bool print = false)
+                                                bool print = true)
     {
         string process;
         if (P1 == P2)
@@ -1401,7 +1401,7 @@ public:
                                 const ld T,
                                 bool heatTransferred,
                                 bool isMonoatomic,
-                                bool print = false)
+                                bool print = true)
     {
         auto R = constants::R.joules;
         const string process = determineProcessFromPVdiagram(P1, P2, V1, V2,
@@ -1444,7 +1444,7 @@ public:
      */
     static ld molarSpecificHeatCapacity_Cv(const ld C,
                                            const ld molarMass,
-                                           bool print = false)
+                                           bool print = true)
     {
         const ld Cv = C * molarMass;
         if (print)
@@ -1462,7 +1462,7 @@ public:
      */
     static ld molarSpecificHeatCapacity_Cp(const ld C,
                                            const ld molarMass,
-                                           bool print = false)
+                                           bool print = true)
     {
         const ld Cv = C * molarMass;
         const ld Cp = Cv + constants::R.joules;
@@ -1479,7 +1479,7 @@ public:
      * @param print  prints the result
      * @return  the ratio of the molar specific heat capacities
      */
-    static ld heatCapacityRatio(const ld Cv, const ld Cp, bool print = false)
+    static ld heatCapacityRatio(const ld Cv, const ld Cp, bool print = true)
     {
         const ld gamma = Cp / Cv;
         if (print)
@@ -1502,7 +1502,7 @@ public:
                                     const ld Ti,
                                     const ld Q_in,
                                     const ld W_out,
-                                    bool print = false)
+                                    bool print = true)
     {
         auto deltaU = Q_in - W_out;
         auto R = constants::R.joules;
@@ -1516,7 +1516,7 @@ public:
                                         const ld P1,
                                         const ld V1,
                                         const ld V2,
-                                        bool print = false)
+                                        bool print = true)
     {
         const ld P2 = P1 * pow(V1 / V2, gamma);
         if (print)
@@ -1528,7 +1528,7 @@ public:
                                       const ld P1,
                                       const ld P2,
                                       const ld V1,
-                                      bool print = false)
+                                      bool print = true)
     {
         const ld V2 = V1 * pow(P1 / P2, 1.0 / gamma);
         if (print)
@@ -1539,7 +1539,7 @@ public:
     static ld temperature2AdiabaticProcess(const ld P1,
                                            const ld P2,
                                            const ld T1,
-                                           bool print = false)
+                                           bool print = true)
     {
         const ld T2 = (T1 * P2) / P1;
         if (print)
@@ -1563,7 +1563,7 @@ public:
                                                  const ld Tc,
                                                  const ld Th,
                                                  const ld P,
-                                                 bool print = false)
+                                                 bool print = true)
     {
         auto Lf = LF.water.J_kg;
         auto cop = Thermodynamics::cop(Tc, Th);
@@ -1576,6 +1576,118 @@ public:
         return m;
     }
 
+    /**
+     * brief An oven loses energy at the rate of pLoss W per ∘C temperature
+     * difference between its interior and the Tk ∘C temperature of the kitchen.
+     * Calculate what the average power must be supplied to maintain the oven
+     * at a temperature of Tc ∘C.
+     * @param Tc is the temperature of the oven in K
+     * @param Tk is the temperature of the kitchen in K
+     * @param pLoss is the power loss in W
+     * @param print prints the result
+     * @return  the power in W
+     */
+    static ld powerToMaintainOvenTemperature(const ld Tc,
+                                             const ld Tk,
+                                             const ld pLoss,
+                                             bool print = true) {
+        auto deltaT = Tc - Tk;
+        auto P = pLoss * deltaT;
+        if (print)
+            std::cout << "The power is: " << P << " W\n";
+        return P;
+    }
+
+    static ld idealGasVolume(const ld n, const ld pb, const ld tb){
+        return n * constants::R.joules * tb / pb;
+    }
+
+/**
+     * @brief A diver observes a bubble of air rising from the bottom of a lake
+     * (where the absolute pressure is pb atm) to the surface (where the
+     * pressure is ps atm). The temperature at the bottom is Tb ∘C, and the
+     * temperature at the surface is Ts ∘C. Calculate the ratio of the
+     * volume of the bubble as it reaches the surface ( Vs ) to its volume at
+     * the bottom ( Vb ).
+     * @param pb is the pressure at the bottom in atm
+     * @param ps is the pressure at the surface in atm
+     * @param Tb is the temperature at the bottom in K
+     * @param Ts is the temperature at the surface in K
+     * @param print prints the result
+     * @return  the ratio of the volume of the bubble as it reaches the surface
+     */
+    static ld ratioOfBubbleVolumeAtSurface(const ld pb,
+                                           const ld ps,
+                                           const ld Tb,
+                                           const ld Ts,
+                                           bool print = true)
+    {
+        // convert the temperatures to kelvin
+        auto TbK = Tb + 273.15;
+        auto TsK = Ts + 273.15;
+        auto Vb = Thermodynamics::idealGasVolume(1, pb, TbK);
+        auto Vs = Thermodynamics::idealGasVolume(1, ps, TsK);
+        auto ratio = Vs / Vb;
+        if (print) {
+            std::cout << "The ratio of the volume of the bubble as it reaches "
+                      << "the surface is: " << ratio << "\n";
+        }
+        return ratio;
+    }
+
+    /**
+     * @brief A vol L flask is initially open in a room containing air at Pi atm
+     * and Ti ∘C. The flask is then closed and immersed in boiling water. When
+     * the air in the flask has reached thermodynamic equilibrium, the flask is
+     * opened and air is allowed to escape. The flask is then closed and cooled
+     * back to Ti ∘C.
+     * Calculate the maximum pressure reached in the flask.
+     * Calculate the number of moles tht escape from the flask when it is opened.
+     * Calculate the final pressure in the flask.
+     * @param vol is the volume of the flask in L
+     * @param Pi is the initial pressure in atm
+     * @param Ti is the initial temperature in K
+     * @param print prints the result
+     * @return  the maximum pressure reached in the flask, the number of
+     * moles, and the final pressure in the flask
+     */
+     static vector<ld> flaskInBoilingWaterData(const ld vol,
+                                               const ld Pi,
+                                               const ld Ti,
+                                               bool print = true)
+     {
+         // convert pressure to pascals
+         auto PiPa = Pi * 101325;
+         // convert temperature to kelvin
+         auto TiK = Ti + 273.15;
+         // temp of boiling water
+         auto TbK = 373.15;
+         // get the number of moles
+         auto n = numberMoles_idealGasLaw(PiPa, vol, TiK);
+         // get the maximum pressure (nRT/V = P)
+         auto Pmax = (n * constants::R.joules * TbK) / vol;
+         // convert to atm
+         Pmax /= 101325;
+         // get the moles that escapes when the flask is opened
+         auto n2 = numberMoles_idealGasLaw(PiPa, vol, TbK);
+         auto n2f = n - n2;
+         // get the final pressure
+         auto Pf = (n2 * constants::R.joules * TiK) / vol;
+         cout << "The final pressure reached in the flask is: " << Pf
+              << " Pascals\n";
+         // convert to atm
+         Pf /= 101325;
+         if (print) {
+             std::cout << "The maximum pressure reached in the flask is: "
+                       << Pmax << " atm\n";
+             std::cout << "The number of moles that escape from the flask "
+                       << "when it is opened is: " << n2f << " moles\n";
+             std::cout << "The final pressure in the flask is: " << Pf
+                       << " atm\n";
+         }
+         return {Pmax, n2, Pf};
+     }
+
 
 
 
@@ -1586,4 +1698,5 @@ public:
         countDecrease();
     }
 };
+
 #endif //PHYSICSFORMULA_THERMODYNAMICS_H
