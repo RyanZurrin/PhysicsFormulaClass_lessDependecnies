@@ -12,7 +12,11 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    Magnetism::fieldStrengthOnLoopAxisAtX(6.51, 44.8e-6, 10e-2);
+
+    Magnetism::heightToReachEquilibrium_Iml(
+            76.0,
+            Conversions::gram_to_kilogram(22.0),
+            95.0e-2);
 
     //**************************************************************************
     //Stopping RunTimer and displaying the programs' execution time

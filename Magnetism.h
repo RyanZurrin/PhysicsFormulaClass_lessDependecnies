@@ -314,7 +314,8 @@ public:
      * @param print bool to print or not (default true)
      * @return Tesla(T)
      */
-    static ld mFieldStrength(ld F, ld q, ld v, ld theta, bool print = true);
+    static ld mFieldStrength(
+            ld F, ld q, ld v, ld theta = 90.0, bool print =  true);
 
     /**
      * @brief Calculates the m field strength from the centripetal motion of a
@@ -918,6 +919,179 @@ public:
     static ld fieldStrengthOnLoopAxisAtX_Irx(
             ld I, ld r, ld x, bool print = true);
 
+    /**
+     * @brief A wire carrying I A makes a theta degrees angle with a uniform
+     * magnetic field. The magnetic force per unit length (F/l) of wire is
+     * fl N/m. Calculate the magnetic field strength.
+     * @param I The current.
+     * @param theta The angle.
+     * @param fl The magnetic force per unit length.
+     * @param print bool to print or not (default true)
+     * @return field strength (T)
+     */
+    static ld mFieldStrength_Ithetafl(
+            ld I, ld theta, ld fl, bool print = true);
+
+    /**
+     * @brief A coil with magnetic moment mu A⋅m2 is oriented initially with
+     * its magnetic moment at theta_i to a uniform magnetic field of
+     * magnitude B T. Calculate the change in potential energy of the coil
+     * when it is rotated theta_f degrees.
+     * @param mu The magnetic moment.
+     * @param B The magnetic field.
+     * @param theta_i The initial angle.
+     * @param theta_f The final angle.
+     * @param print bool to print or not (default true)
+     * @return change in potential energy (J)
+     */
+    static ld changeInPotentialEnergy_Mtheta_i_f(
+            ld mu, ld B, ld theta_i, ld theta_f, bool print = true);
+
+    /**
+     * @brief Consider a current  I  that flows in a plane rectangular current
+     * loop with height  a m  and horizontal sides  b m. The loop is placed into
+     * a uniform magnetic field B in such a way that the sides of length  a
+     * are perpendicular to B , and there is an angle theta between the sides
+     * of length  b  and B. Assume that the loop is initially positioned at
+     * theta_i degrees and the current flowing into the loop is I A. If the
+     * magnitude of the magnetic field is B, calculate what τ, the net torque
+     * about the vertical axis of the current loop due to the interaction of
+     * the current with the magnetic field.
+     * @param I The current.
+     * @param a The height of the loop.
+     * @param b The horizontal sides of the loop.
+     * @param B The magnetic field.
+     * @param theta_i The angle.
+     * @param theta_f The initial angle.
+     * @param print bool to print or not (default true)
+     */
+    static ld netTorque_IabBtheta_theta_i(
+            ld I, ld B, ld a, ld b, ld theta_i, ld theta_f, bool print = true);
+
+    /**
+     * @brief a coaxial cable, widely used in electronics to minimize interference
+     * either with or from signals carried on the cable. The cable consists of
+     * an inner solid conductor of radius a and a hollow outer conductor of inner
+     * radius b and thickness c. The two conductors carry equal but opposite
+     * currents I, distributed uniformly over their cross-sectional areas.
+     * Calculate the magnetic field strength as a function of radial position
+     * r within the inner conductor.
+     * @warning B(0 ≤ r ≤ a)
+     * @param I The current.
+     * @param a The radius of the inner conductor.
+     * @param r The radial position.
+     * @param print bool to print or not (default true)
+     * @return field strength (T)
+     */
+    static ld mFieldStrengthCoaxialCable_Iar(ld I, ld a, ld r, bool print =
+            true);
+
+    /**
+     * @brief a coaxial cable, widely used in electronics to minimize interference
+     * either with or from signals carried on the cable. The cable consists of
+     * an inner solid conductor of radius a and a hollow outer conductor of inner
+     * radius b and thickness c. The two conductors carry equal but opposite
+     * currents I, distributed uniformly over their cross-sectional areas.
+     * Calculate the magnetic field strength as a function of radial position
+     * r between the inner and outer conductors.
+     * @warning B(a ≤ r ≤ b)
+     * @param I The current.
+     * @param r The radial position.
+     * @param print bool to print or not (default true)
+     * @return field strength (T)
+     */
+    static ld mFieldStrengthCoaxialCable_Ir(ld I, ld r, bool print = true);
+
+    /**
+     * a coaxial cable, widely used in electronics to minimize interference
+     * either with or from signals carried on the cable. The cable consists of
+     * an inner solid conductor of radius a and a hollow outer conductor of inner
+     * radius b and thickness c. The two conductors carry equal but opposite
+     * currents I, distributed uniformly over their cross-sectional areas.
+     * Calculate the magnetic field strength as a function of radial position
+     * r within the outer conductor.
+     * @warning B(b ≤ r ≤ b+c)
+     * @param I The current.
+     * @param r The radial position.
+     * @param b The inner radius.
+     * @param c The thickness.
+     * @param print bool to print or not (default true)
+     * @return field strength (T)
+     */
+    static ld mFieldStrengthCoaxialCable_Irbc(
+            ld I, ld r, ld b, ld c, bool print = true);
+
+    /**
+     * @brief A rectangular copper strip measures d m in the direction of a
+     * uniform B T magnetic field. When the strip carries a I A current
+     * perpendicular to the field, a V_h V Hall potential develops across
+     * the strip. Calculate the number density of free electrons in the copper.
+     * @param I The current.
+     * @param B The magnetic field.
+     * @param t The thickness of the strip. (Conductor thickness)
+     * @param V_h The Hall potential.
+     * @param print bool to print or not (default true)
+     * @return number density of free electrons (m^-3)
+     */
+    static ld numberDensityOfFreeElectrons_IddV_h(
+            ld I, ld B, ld t, ld V_h, bool print = true);
+
+    /**
+     * @brief Nuclear magnetic resonance (NMR) is a technique for analyzing
+     * chemical structures and also the basis of magnetic resonance imaging
+     * used for medical diagnosis. NMR relies on sensitive measurements of
+     * the energy needed to flip atomic nuclei by 180∘ in a given magnetic field.
+     * In an apparatus with a B T  magnetic field, Calculate the energy that is
+     * needed to flip a proton with a magnetic moment of mu A⋅m2 from parallel
+     * to anti-parallel to the field? Express your answer in electronvolt.
+     * @param mu The magnetic moment.
+     * @param B The magnetic field.
+     * @param print bool to print or not (default true)
+     * @return energy (eV)
+     */
+    static ld energyToFlipProton_muB(ld mu, ld B, bool print = true);
+
+    /**
+     * @brief A long, straight wire carries current I1 A. A l m by w m
+     * rectangular wire loop carrying current I2 A is d m from the wire as shown.
+     *   I1 -> ==================
+     *                             } d
+     *   I2 -> ==================   _
+     *         ||              ||   ^
+     *         ||              ||   |
+     *         ||              ||   w
+     *         ||              ||   |
+     *         ||              ||   v
+     *         ==================   -
+     *         |<----  l ------>|
+     *
+     * Calculate the magnitude of the net magnetic force on the loop.
+     * @param I1 The current of the wire.
+     * @param I2 The current of the loop.
+     * @param l The length of the loop.
+     * @param w The width of the loop.
+     * @param d The distance between the loop and the wire.
+     * @param print bool to print or not (default true)
+     * @return net magnetic force (N)
+     */
+    static ld netMagneticForce_I1I2lwd(
+            ld I1, ld I2, ld l, ld w, ld d, bool print = true);
+
+    /**
+     * @brief A structure is made from conducting rods. The upper horizontal rod
+     * (mass m g, length l m) is free to slide vertically on the uprights
+     * while maintaining electrical contact with them. A battery connected across
+     * the insulating gap at the bottom of the left-hand upright drives I Amps
+     * through the structure.
+     * Calculate At what height h that the upper wire will be in equilibrium?
+     * @param I The current.
+     * @param m The mass of the upper rod.
+     * @param l The length of the upper rod.
+     * @param print bool to print or not (default true)
+     * @return height upper wire will be in equilibrium.
+     */
+     static ld heightToReachEquilibrium_Iml(
+             ld I, ld m, ld l, bool print = true);
 
 
 
@@ -1444,3 +1618,103 @@ ld Magnetism::fieldStrengthOnLoopAxisAtX_Irx(ld I, ld r, ld x, bool print) {
         std::cout << "Field strength on loop axis at x: " << Bf << " T" << std::endl;
     return Bf;
 }
+
+ld Magnetism::mFieldStrength_Ithetafl(ld I, ld theta, ld fl, bool print) {
+    auto Bf = fl / (I * sin(theta*constants::RADIAN));//T
+    if (print)
+        std::cout << "m field strength Ithetafl: " << Bf << " T" << std::endl;
+    return Bf;
+}
+
+ld Magnetism::changeInPotentialEnergy_Mtheta_i_f(
+        ld mu, ld B, ld theta_i, ld theta_f, bool print) {
+    auto U1 = mu * B * cos(theta_i*constants::RADIAN);//J
+    auto U2 = mu * B * cos(theta_f*constants::RADIAN);//J
+    auto dU = U2 - U1;//J
+    if (print)
+        std::cout << "Change in potential energy Mtheta_i_f: " << dU << " J" << std::endl;
+    return dU;
+}
+
+ld Magnetism::netTorque_IabBtheta_theta_i(
+        ld I, ld B, ld a, ld b, ld theta_i, ld theta_f, bool print) {
+    auto theta = (theta_f - theta_i);//rad
+    auto A = a * b;//m^2
+    auto T = I * B * A * sin(theta*constants::RADIAN);//N*m
+    if (print)
+        std::cout << "Net torque IabBtheta_theta_i: " << T << " N*m" << std::endl;
+    return T;
+}
+
+ld Magnetism::mFieldStrengthCoaxialCable_Iar(ld I, ld a, ld r, bool print) {
+    auto mu0 = constants::mu0;//T*m/A
+    auto pi = constants::PI;//rad
+    auto B = (mu0 * I * r) / (2.0 * pi * a * a);//T
+    if (print)
+        std::cout << "Field strength coaxial cable Iar: " << B << " T" << std::endl;
+    return B;
+}
+
+ld Magnetism::mFieldStrengthCoaxialCable_Ir(ld I, ld r, bool print) {
+    auto mu0 = constants::mu0;//T*m/A
+    auto pi = constants::PI;//rad
+    auto B = (mu0 * I) / (2.0 * pi * r);//T
+    if (print)
+        std::cout << "Field strength coaxial cable Ir: " << B << " T" << std::endl;
+    return B;
+}
+
+ld
+Magnetism::mFieldStrengthCoaxialCable_Irbc(ld I, ld r, ld b, ld c, bool print) {
+    auto mu0 = constants::mu0;//T*m/A
+    auto pi = constants::PI;//rad
+    auto B = (mu0 * I * r * (pow(b+c, 2) - (r * r))) /
+            (2.0 * pi * r * (pow(b + c, 2) - (b * b)));//T
+    if (print)
+        std::cout << "Field strength coaxial cable Irbc: " << B << " T" << std::endl;
+    return B;
+}
+
+ld Magnetism::numberDensityOfFreeElectrons_IddV_h(
+        ld I, ld B, ld t, ld V_h, bool print) {
+    auto n = (I * B) / (constants::PROTON_CHARGE * V_h * t);//m^-3
+    if (print)
+        std::cout << "Number density of free electrons IddV_h: " << n << " m^-3" << std::endl;
+    return n;
+}
+
+ld Magnetism::energyToFlipProton_muB(ld mu, ld B, bool print) {
+    auto E = (2.0 * mu * B) / constants::PROTON_CHARGE;//J
+    if (print)
+        std::cout << "Energy to flip proton muB: " << E << " eV" << std::endl;
+    return E;
+}
+
+ld Magnetism::netMagneticForce_I1I2lwd(
+        ld I1, ld I2, ld l, ld w, ld d, bool print) {
+    auto mu0 = constants::mu0;//T*m/A
+    auto pi = constants::PI;//rad
+    // side near the wire
+    auto F1 = (mu0 * I1 * I2 * l) / (2.0 * pi * d);//N
+    // side away from the wire
+    auto F2 = (mu0 * I1 * I2 * l) / (2.0 * pi * (d + w));//N
+    auto F = F1 - F2;//N
+    if (print) {
+        std::cout << "F1 = " << F1 << " N" << std::endl;
+        std::cout << "F2 = " << F2 << " N" << std::endl;
+        std::cout << "Net magnetic force I1I2lwd: " << F << " N" << std::endl;
+    }
+    return F;
+
+}
+
+ld Magnetism::heightToReachEquilibrium_Iml(ld I, ld m, ld l, bool print) {
+    auto mu0 = constants::mu0;
+    auto pi = constants::PI;
+    auto g = constants::Ga;
+    auto h = (mu0 * I * I * l) / (2.0 * pi * m * g);
+    if (print)
+        std::cout << "Height to reach equilibrium is " << h << " m." << endl;
+    return h;
+}
+
