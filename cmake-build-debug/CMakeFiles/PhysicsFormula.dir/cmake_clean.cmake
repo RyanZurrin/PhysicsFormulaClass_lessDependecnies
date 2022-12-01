@@ -1,7 +1,4 @@
 file(REMOVE_RECURSE
-  "======PhysicsFormula.exe"
-  "======PhysicsFormula.exe.manifest"
-  "======PhysicsFormula.pdb"
   "CMakeFiles/PhysicsFormula.dir/Angle.cpp.obj"
   "CMakeFiles/PhysicsFormula.dir/Angle.cpp.obj.d"
   "CMakeFiles/PhysicsFormula.dir/Convexhull.cpp.obj"
@@ -40,6 +37,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/PhysicsFormula.dir/templateGraph.cpp.obj.d"
   "CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj"
   "CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj.d"
+  "PhysicsFormula.exe"
+  "PhysicsFormula.exe.manifest"
+  "PhysicsFormula.pdb"
   "libPhysicsFormula.dll.a"
 )
 
