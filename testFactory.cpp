@@ -12,7 +12,8 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    Magnetism::findDirectionOfForce(dir::W, dir::N);
+
+    Thermodynamics::flaskInBoilingWaterData(3.8e-3, 1.0, 20.0);
 
     //**************************************************************************
     //Stopping RunTimer and displaying the programs' execution time
