@@ -17,85 +17,9 @@
 #include "ElectricPotential.h"
 #include "ResistorNode.h"
 #include "CapacitorNode.h"
+#include "InductorNode.h"
 
 static int circuits_objectCount = 0;
-
-//struct RCNode {
-//    ResistorNode resistorNode;
-//    CapacitorNode capacitorNode;
-//
-//    RCNode() {
-//        resistorNode = ResistorNode();
-//        capacitorNode = CapacitorNode();
-//    }
-//
-//    RCNode(ResistorNode r, CapacitorNode c) {
-//        resistorNode = r;
-//        capacitorNode = c;
-//    }
-//
-//    RCNode(std::vector<double> r, std::vector<double> c, double v, char t) {
-//        resistorNode = ResistorNode(r, v, t);
-//        capacitorNode = CapacitorNode(c, v, t);
-//    }
-//
-//    void setVoltage(double v) {
-//        resistorNode.setVoltage(v);
-//        capacitorNode.setVoltage(v);
-//    }
-//
-//    void setResistances(std::vector<double> r) {
-//        resistorNode.setResistances(r);
-//    }
-//
-//    void setCapacitances(std::vector<double> c) {
-//        capacitorNode.setCapacitances(c);
-//    }
-//};
-
-
-struct InductorNode {
-    vector<double> inductances;
-    char type; // 'p' for parallel, 's' for series
-    double eI;
-
-    InductorNode() {
-        inductances = {};
-        type = 'p';
-        eI = 0.0;
-    }
-    InductorNode(vector<double> i, char t) {
-        inductances = i;
-        type = t;
-        eI = calculateEquivalentInductance();
-    }
-    double calculateEquivalentInductance() {
-        double sum = 0.0;
-        if (type == 'p') {
-            for (double inductance : inductances) {
-                sum += 1.0 / inductance;
-            }
-            sum = 1.0 / sum;
-        } else if (type == 's') {
-            for (double inductance : inductances) {
-                sum += inductance;
-            }
-
-        }
-        return sum;
-    }
-
-    void print() {
-        cout << "InductorNode: " << endl;
-        cout << "inductances: ";
-        for (double inductance : inductances) {
-            cout << inductance << " ";
-        }
-        cout << endl;
-        cout << "type: " << (type == 'p' ? "parallel" : "series") << endl;
-        cout << "eI: " << eI << endl;
-    }
-};
 
 struct Battery {
     double voltage;
@@ -138,7 +62,10 @@ struct CircuitNode {
         inductorNodes = {};
         powerNodes = {};
     }
-    CircuitNode(vector<CapacitorNode> c, vector<ResistorNode> r, vector<InductorNode> i, vector<Battery> p) {
+    CircuitNode(vector<CapacitorNode> c,
+                vector<ResistorNode> r,
+                vector<InductorNode> i,
+                vector<Battery> p) {
         capacitorNodes = c;
         resistorNodes = r;
         inductorNodes = i;

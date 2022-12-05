@@ -69,600 +69,978 @@ public:
                                                << emi_objectCount << std::endl; }
     static int get_objectCount() { return emi_objectCount; }
 
+    /**
+     * @brief Calculates the magnetic flux where B is the magnetic field strength(T)
+     * over an area of A (m^2), at an angle theta with the perpendicular to
+     * the area. Any change in the magnetic flux induces an emf. This process
+     * is defined to be electromagnetic induction.
+     * @param B The magnetic field strength(T).
+     * @param A The area(m^2).
+     * @param theta The angle theta default is at 0 degrees which
+     * is equal to 1 making the equation flux = B*A.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the magnetic flux (T*m^2)
+     */
+    static ld magneticFlux( ld B, ld A, ld theta = 0.0, bool print = true);
 
-    /// <summary>
-    /// Calculates the magnetic flux where B is the magnetic field strength(T)
-    /// over an area of A (m^2), at an angle theta with the perpendicular to
-    /// the area. Any change in the magnetic flux induces an emf. This process
-    /// is defined to be electromagnetic induction.
-    /// </summary>
-    /// <param name="B">The magnetic field strength(T).</param>
-    /// <param name="A">The area(m^2).</param>
-    /// <param name="theta">The angle theta default is at 0 degrees which
-    /// is equal to 1 making the equation flux = B*A.</param>
-    /// <returns>the magnetic flux (T*m^2)</returns>
-    static ld magneticFlux( ld B, ld A, ld theta);
+    /**
+     * @brief A generator coil is rotated through a revolution from 0 to theta degrees,
+     * in t seconds. Having N turns the coil has a radius of r (m) and is in a
+     * uniform magnetic field of B. Calculate the average emf induced.
+     * @param N The number of turns in coil.
+     * @param r The radius of coil.
+     * @param B The magnetic uniform field.
+     * @param t The time it takes to rotate theta degrees.
+     * @param thetaS The starting angle of rotation.
+     * @param thetaF The finishing angle of rotation.
+     * @param print (default is true) if true prints the equation and result.
+     * @return emf average (V)
+     */
+    static ld emfFaradayFullEquation(
+            ld N, ld r, ld B, ld t, ld thetaS, ld thetaF, bool print = true);
 
-    /// <summary>
-    /// A generator coil is rotated through a revolution from 0 to theta degrees,
-    /// in t seconds. Having N turns the coil has a radius of r (m) and is in a
-    /// uniform magnetic field of B. Calculate the average emf induced.
-    /// </summary>
-    /// <param name="N">The number of turns in coil.</param>
-    /// <param name="r">The radius of coil.</param>
-    /// <param name="B">The magnetic uniform field.</param>
-    /// <param name="t">The time it takes to rotate theta degrees.</param>
-    /// <param name="thetaS">The starting angle of rotation.</param>
-    /// <param name="thetaF">The finishing angle of rotation.</param>
-    /// <returns>emf average (V)</returns>
-    static ld emfFaradyFullEquation(ld N, ld r, ld B, ld t, ld thetaS, ld thetaF);
+    /**
+     * @brief Calculates the magnitude of an induced emf when a bar magnet  is thrust
+     * into a coil with N loops having a radius of r (m) and the average value of
+     * B cos(theta) that is given due to complexity as increasing from B1 to B2
+     * over a period of t seconds.
+     * @param N The number of loops.
+     * @param r The radius.
+     * @param B1 The starting magnetic field.
+     * @param B2 The ending magnetic field.
+     * @param t The time over which the increase of the
+     * magnetic field takes place.
+     * @param theta The angle theta.
+     * @param print (default is true) if true prints the equation and result.
+     * @return magnitude of emf (V)
+     */
+    static ld emfMagnitude_FaradayNoMinus(
+            ld N, ld r, ld B1, ld B2, ld t, ld theta, bool print = true);
 
-    /// <summary>
-    /// Calculates the magnitude of an induced emf when a bar magnet  is thrust
-    /// into a coil with N loops having a radius of r (m) and the average value of
-    /// B cos(theta) that is given due to complexity as increasing from B1 to B2
-    /// over a period of t seconds.
-    /// </summary>
-    /// <param name="N">The number of loops.</param>
-    /// <param name="r">The radius.</param>
-    /// <param name="B1">The starting magnetic field.</param>
-    /// <param name="B2">The ending magnetic field.</param>
-    /// <param name="t">The time over which the increase of the
-    /// magnetic field takes place.</param>
-    /// <returns>magnitude of emf (V)</returns>
-    static ld emfMagnitude_FaradayNoMinus(ld N, ld r, ld B1, ld B2, ld t, ld theta);
+    /**
+     * @brief Calculates the change in flux.
+     * @param A the area = pi*r^2.
+     * @param deltaB The delta b = B2 - B1.
+     * @param theta The angle theta.
+     * @return the change in flux (T*m^2)
+     */
+    static ld deltaFlux(ld A, ld deltaB, bool print = true);
 
-    /// <summary>
-    /// Calculates the change in flux.
-    /// </summary>
-    /// <param name="A">the area = pi*r^2.</param>
-    /// <param name="deltaB">The delta b = .</param>
-    /// <returns></returns>
-    static ld deltaFlux(ld A, ld deltaB);
+    /**
+     * @brief EMFs the induced in generator coil.
+     * @param N The number of loop in coil.
+     * @param l The length of the loop.
+     * @param w The width of coil loop.
+     * @param aW a angular velocity.
+     * @param B The magnetic field strength.
+     * @param t The time for a rotation.
+     * @param print (default is true) if true prints the equation and result.
+     * @return emf total from generator coil (V)
+     */
+    static ld emf_inducedInGeneratorCoil(
+            ld N, ld l, ld w, ld aW, ld B, ld t, bool print = true);
 
-    /// <summary>
-    /// EMFs the induced in generator coil.
-    /// </summary>
-    /// <param name="N">The number of loop in coil.</param>
-    /// <param name="l">The length of the loop.</param>
-    /// <param name="w">The width of coil loop.</param>
-    /// <param name="aW">a angular velocity.</param>
-    /// <param name="B">The magnetic field strength.</param>
-    /// <param name="t">The time for a rotation.</param>
-    /// <returns>emf total from generator coil (V)</returns>
-    static ld emf_inducedInGeneratorCoil(ld N, ld l, ld w, ld aW, ld B, ld t);
+    /**
+     * @brief Calculates the peek emf.
+     * @param N The number of turns in a coil.
+     * @param A The area.
+     * @param B The magnetic field strength.
+     * @param aW The angular velocity.
+     * @param print (default is true) if true prints the equation and result.
+     * @return peek emf (V)
+     */
+    static ld emf_peek(ld N, ld A, ld B, ld aW, bool print = true);
 
-    /// <summary>
-    /// Calculates the peek emf.
-    /// </summary>
-    /// <param name="N">The number of turns in a coil.</param>
-    /// <param name="A">The area.</param>
-    /// <param name="B">The magnetic field strength.</param>
-    /// <param name="aW">The angular velocity.</param>
-    /// <returns>peek emf (V)</returns>
-    static ld emf_peek(ld N, ld A, ld B, ld aW);
+    /**
+     * @brief Calculates the peek emf.
+     * @param N The number of turns in a coil.
+     * @param r The radius of coil.
+     * @param B The magnetic field strength.
+     * @param rad The angle of rotation in radians.
+     * @param t The time for a rotation.
+     * @param print (default is true) if true prints the equation and result.
+     * @return peek emf (V)
+     */
+    static ld emf_peek(ld N, ld r, ld B, ld rad, ld t, bool print = true);
 
-    /// <summary>
-    /// Calculates the peek emf.
-    /// </summary>
-    /// <param name="N">The number of turns in a coil.</param>
-    /// <param name="r">The radius of coil.</param>
-    /// <param name="B">The magnetic field strength.</param>
-    /// <param name="rad">The angle of rotation in radians.</param>
-    /// <param name="t">The time for a rotation.</param>
-    /// <returns>peek emf (V)</returns>
-    static ld emf_peek(ld N, ld r, ld B, ld rad, ld t);
+    /**
+     * @brief A N turn, r(m) radius coil rotates at an angular velocity of
+     * aW rad/s in a B(T) field, starting with the normal of the plane
+     * of the coil perpendicular to the field. Assume that the positive max
+     * emf is reached first.
+     * @param N The number of turns in coil.
+     * @param r The radius or half of the diameter.
+     * @param B The magnetic field strength.
+     * @param aW a angular velocity.
+     * @param print (default is true) if true prints the equation and result.
+     * @return peek emf
+     */
+    static ld emfPeek_r(ld N, ld r, ld B, ld aW, bool print = true);
 
-    /// <summary>
-    /// A N turn, r(m) radius coil rotates at an angular velocity of
-    /// aW rad/s in a B(T) field, starting with the normal of the plane
-    /// of the coil perpendicular to the field. Assume that the positive max
-    /// emf is reached first.
-    /// </summary>
-    /// <param name="N">The number of turns in coil.</param>
-    /// <param name="r">The radius or half of the diameter.</param>
-    /// <param name="B">The magnetic field strength.</param>
-    /// <param name="aW">a angular velocity.</param>
-    /// <returns>peek emf</returns>
-    static ld emfPeek_r(ld N, ld r, ld B, ld aW);
+    /**
+     * @brief Calculate the peak voltage of a generator that rotates its N-turn,
+     * d m diameter coil rotating at rpm rpms in a B T field.
+     * @param N The number of loops in coil.
+     * @param d The diameter of coil.
+     * @param B The magnetic filed strength.
+     * @param rpm The RPMs.
+     * @param print (default is true) if true prints the equation and result.
+     * @return peek emf voltage
+     */
+    static ld emf_peekFromDiameterAndRPMs(
+            ld N, ld d, ld B, ld rpm, bool print = true);
 
-    /// <summary>
-    /// Calculate the peak voltage of a generator that rotates its N-turn,
-    /// d m diameter coil rotating at rpm rpms in a B T field.
-    /// </summary>
-    /// <param name="N">The number of loops in coil.</param>
-    /// <param name="d">The diameter of coil.</param>
-    /// <param name="B">The magnetic filed strength.</param>
-    /// <param name="rpm">The RPMs.</param>
-    /// <returns>peek emf voltage</returns>
-    static ld emf_peekFromDiameterAndRPMs(ld N, ld d, ld B, ld rpm);
+    /**
+     * @brief Calculates the EMF induced by magnetic flux over t time having N turns
+     * is considered Faraday's law of induction: Lenz's Law->(why there is a
+     * minus sign.
+     * @param N The amount of turns in coil.
+     * @param f The flux.
+     * @param t The time.
+     * @param print (default is true) if true prints the equation and result.
+     * @return emf = volts(V)
+     */
+    static ld emf_inducedByMagneticFlux(ld N, ld f, ld t, bool print = true);
 
-    /// <summary>
-    /// Calculates the EMF induced by magnetic flux over t time having N turns
-    /// is considered Faraday's law of induction: Lenz's Law->(why there is a
-    /// minus sign.
-    /// </summary>
-    /// <param name="N">The amount of turns in coil.</param>
-    /// <param name="f">The flux.</param>
-    /// <param name="t">The time.</param>
-    /// <returns>emf = volts(V)</returns>
-    static ld emf_inducedByMagneticFlux(ld N, ld f, ld t);
+    /**
+     * @brief An MRI technician moves his hand from a region of very low magnetic field
+     * strength into an MRI scanner’s magnetic field of B(T) with his fingers
+     * pointing in the direction of the field. Calculate the average emf induced in
+     * his wedding ring, given its diameter is d(m) and assuming it takes time
+     * t(s) to move it into the field.
+     * @param B The magnetic filed.
+     * @param d The diameter.
+     * @param t The time in seconds.
+     * @param print (default is true) if true prints the equation and result.
+     * @return average emf (V)
+     */
+    static ld emf_avgOnCoil(ld B, ld d, ld t, bool print = true);
 
-    /// <summary>
-    /// An MRI technician moves his hand from a region of very low magnetic field
-    /// strength into an MRI scanner’s magnetic field of B(T) with his fingers
-    /// pointing in the direction of the field. Calculate the average emf induced in
-    /// his wedding ring, given its diameter is d(m) and assuming it takes time
-    /// t(s) to move it into the field.
-    /// </summary>
-    /// <param name="B">The magnetic filed.</param>
-    /// <param name="d">The diameter.</param>
-    /// <param name="t">The time in seconds.</param>
-    /// <returns>average emf (V)</returns>
-    static ld emf_avgOnCoil(ld B, ld d, ld t);
+    /**
+     * @brief number of turns in a coil from EMF and time t over the flux;
+     * @param t The time.
+     * @param emf The EMF.
+     * @param f The flux.
+     * @param print (default is true) if true prints the equation and result.
+     * @return turns in a coil
+     */
+    static ld n_turnsInCoilFromEMFEquation(ld t, ld emf, ld f, bool print = true);
 
-    /// <summary>
-    /// number of turns in a coil from EMF and time t over the flux;
-    /// </summary>
-    /// <param name="t">The time.</param>
-    /// <param name="emf">The EMF.</param>
-    /// <param name="f">The flux.</param>
-    /// <returns>turns in a coil</returns>
-    static ld n_turnsInCoilFromEMFEquation(ld t, ld emf, ld f);
+    /**
+     * @brief calculates the fluxes from EMF equation, with a time of t and N turns in
+     * a coil
+     * @param emf The EMF.
+     * @param t The time.
+     * @param N The number of turns in a coil.
+     * @param print (default is true) if true prints the equation and result.
+     * @return magnetic flux(T*m^2)
+     */
+    static ld flux_fromEMFEquation(ld emf, ld t, ld N, bool print = true);
 
-    /// <summary>
-    /// calculates the fluxes from EMF equation, with a time of t and N turns in
-    /// a coil
-    /// </summary>
-    /// <param name="emf">The EMF.</param>
-    /// <param name="t">The time.</param>
-    /// <param name="N">The number of turns in a coil.</param>
-    /// <returns>magnetic flux(T*m^2)</returns>
-    static ld flux_fromEMFEquation(ld emf, ld t, ld N);
+    /**
+     * @brief calculates the times from EMF equation with a flux and emf with N turns
+     * of a coil.
+     * @param N The number of turns of a coil
+     * @param f The flux.
+     * @param emf The EMF.
+     * @param print (default is true) if true prints the equation and result.
+     * @return time in seconds
+     */
+    static ld time_fromEMFEquation(ld N, ld f, ld emf, bool print = true);
 
-    /// <summary>
-    /// calculates the times from EMF equation with a flux and emf with N turns
-    /// of a coil.
-    /// </summary>
-    /// <param name="N">The number of turns of a coil</param>
-    /// <param name="f">The flux.</param>
-    /// <param name="emf">The EMF.</param>
-    /// <returns>time in seconds</returns>
-    static ld time_fromEMFEquation(ld N, ld f, ld emf);
+    /**
+     * @brief Calculates the motional  EMF.
+     * @param B The magnetic field.
+     * @param l The length of rod.
+     * @param x The distance the rod moves.
+     * @param t The time it moves over.
+     * @param print (default is true) if true prints the equation and result.
+     * @return emf from motion (V)
+     */
+    static ld motionalEMF(ld B, ld l, ld x, ld t, bool print = true);
 
-    /// <summary>
-    /// Calculates the motional  EMF.
-    /// </summary>
-    /// <param name="B">The magnetic field.</param>
-    /// <param name="l">The length of rod.</param>
-    /// <param name="x">The distance the rod moves.</param>
-    /// <param name="t">The time it moves over.</param>
-    /// <returns>emf from motion (V)</returns>
-    static ld motionalEMF(ld B, ld l, ld x, ld t);
+    /**
+     * @brief Calculates the motional EMF.
+     * @param B The magnetic field.
+     * @param l The length of rod.
+     * @param v The velocity -> x/t .
+     * @param print (default is true) if true prints the equation and result.
+     * @return emf from motion(V)
+     */
+    static ld motionalEMF(ld B, ld l, ld v, bool print = true);
 
-    /// <summary>
-    /// Calculates the motional EMF.
-    /// </summary>
-    /// <param name="B">The magnetic field.</param>
-    /// <param name="l">The length of rod.</param>
-    /// <param name="v">The velocity -> x/t .</param>
-    /// <returns>emf from motion(V)</returns>
-    static ld motionalEMF(ld B, ld l, ld v);
+    /**
+     * @brief calculates the length a magnetic rod must be when producing an emf of V.
+     * @param V The EMF voltage (V).
+     * @param B The magnetic field (B).
+     * @param v The velocity (v).
+     * @param print (default is true) if true prints the equation and result.
+     * @return length of magnetic rod
+     */
+    static ld lengthOfRod_emfEq(ld V, ld B, ld v, bool print = true);
 
-    /// <summary>
-    /// calculates the length a magnetic rod must be when producing an emf of V.
-    /// </summary>
-    /// <param name="V">The EMF voltage (V).</param>
-    /// <param name="B">The magnetic field (B).</param>
-    /// <param name="v">The velocity (v).</param>
-    /// <returns>length of magnetic rod</returns>
-    static ld lengthOfRod_emfEq(ld V, ld B, ld v);
+    /**
+     * @brief Calculates the velocity of the motion of magnetic rod when a emf of V is
+     * created with a magnetic field of B and having a rod of length l (m).
+     * @param V The emf voltage (V).
+     * @param B The magnetic field (T).
+     * @param l The length of rod (m).
+     * @param print (default is true) if true prints the equation and result.
+     * @return velocity (m/s)
+     */
+    static ld velocityOfMotion_emfEq(ld V, ld B, ld l, bool print = true);
 
-    /// <summary>
-    /// Calculates the velocity of the motion of magnetic rod when a emf of V is
-    /// created with a magnetic field of B and having a rod of length l (m).
-    /// </summary>
-    /// <param name="V">The emf voltage (V).</param>
-    /// <param name="B">The magnetic field (T).</param>
-    /// <param name="l">The length of rod (m).</param>
-    /// <returns>velocity (m/s)</returns>
-    static ld velocityOfMotion_emfEq(ld V, ld B, ld l);
+    /**
+     * @brief Calculates the magnetic field from when a rod of length l moves at a
+     * velocity of v causing a magnetic field strength of B.
+     * @param V The emf voltage.
+     * @param l The length of rod.
+     * @param v The velocity.
+     * @param print (default is true) if true prints the equation and result.
+     * @return magnetic field strength (T)
+     */
+    static ld magneticFieldFrom_emfEq(ld V, ld l, ld v, bool print = true);
 
-    /// <summary>
-    /// Calculates the magnetic field from when a rod of length l moves at a
-    /// velocity of v causing a magnetic field strength of B.
-    /// </summary>
-    /// <param name="V">The emf voltage.</param>
-    /// <param name="l">The length of rod.</param>
-    /// <param name="v">The velocity.</param>
-    /// <returns>magnetic field strength (T)</returns>
-    static ld magneticFieldFrom_emfEq(ld V, ld l, ld v);
+    /**
+     * @brief Magnetics the field magnitude.
+     * @param flux The flux.
+     * @param Ard The Area, radius or diameter.
+     * @param theta The theta, is at default value of 0.
+     * @param mode The mode is used as a switch between what
+     * information you use for the Ard argument: use 'r' for radius or 'd'
+     * for diameter and if you are using the already calculated cross sectional
+     * then leave out..
+     * @param print (default is true) if true prints the equation and result.
+     * @return magnetic field (T)
+     */
+    static ld magneticFieldMagnitude(ld flux, ld Ard, ld theta, ld mode, bool print = true);
 
-    /// <summary>
-    /// Magnetics the field magnitude.
-    /// </summary>
-    /// <param name="flux">The flux.</param>
-    /// <param name="Ard">The Area, radius or diameter.</param>
-    /// <param name="theta">The theta, is at default value of 0.</param>
-    /// <param name="mode">The mode is used as a switch between what
-    /// information you use for the Ard argument: use 'r' for radius or 'd'
-    /// for diameter and if you are using the already calculated cross sectional
-    /// then leave out..</param>
-    /// <returns>magnetic field (T)</returns>
-    static ld magneticFieldMagnitude(ld flux, ld Ard, ld theta, ld mode);
+    /**
+     * @brief Calculates the voltage or number of loops in a transformer. Use a 0 as
+     * placeholder in the unknowns method argument.
+     * @param Vs The volts secondary(output).
+     * @param Vp The volts primary(input).
+     * @param Ns The number of loops secondary(output).
+     * @param Np The number of loops primary(input).
+     * @param mode The mode used to specify what you want to solve for,
+     * "Vs" = volts secondary,
+     * "vp" = volts primary,
+     * "Ns" = number of loops secondary,
+     * "Np" = number of loops primary.
+     * example: transformerEquation(2.5,3.4,5,10,"Ns");
+     * this would solve for the number of loops in the secondary transformer
+     * @param print (default is true) if true prints the equation and result.
+     * @return volts or loops depending on mode used
+     */
+    static ld transformerEquations_VN(ld Vs, ld Vp, ld Ns, ld Np, const std::string& mode, bool print = true);
 
-    /// <summary>
-    /// Calculates the voltage or number of loops in a transformer. Use a 0 as
-    /// placeholder in the unknowns method argument.
-    /// </summary>
-    /// <param name="Vs">The volts secondary(output).</param>
-    /// <param name="Vp">The volts primary(input).</param>
-    /// <param name="Ns">The number of loops secondary(output).</param>
-    /// <param name="Np">The number of loops primary(input).</param>
-    /// <param name="mode">The mode used to specify what you want to solve for,\n
-    /// "Vs" = volts secondary,\n
-    /// "vp" = volts primary,\n
-    /// "Ns" = number of loops secondary,\n
-    /// "Np" = number of loops primary.\n
-    /// example: transformerEquation(2.5,3.4,5,10,"Ns");\n
-    /// this would solve for the number of loops in the secondary transformer</param>
-    /// <returns>volts or loops depending on mode used</returns>
-    static ld transformerEquations_VN(ld Vs, ld Vp, ld Ns, ld Np, std::string mode);
+    /**
+     * @brief Calculates the voltage or current in a transformer. use a 0 as a place
+     * holder in the unknown variables method argument.
+     * @param Vs The volts secondary(output).
+     * @param Vp The volts primary(input).
+     * @param Is The current secondary(output).
+     * @param Ip The current primary(input).
+     * @param mode The mode used to specify what you want to solve for,
+     * "Vs" = volts secondary,
+     * "vp" = volts primary,
+     * "Is" = current secondary,
+     * "Ip" = current primary.
+     * example: transformerEquation(2.5,3.4,5,10,"Is");
+     * this would solve for the current in the secondary transformer
+     * @param print (default is true) if true prints the equation and result.
+     * @return volts or current depending on the mode picked
+     */
+    static ld transformerEquations_VI(ld Vs, ld Vp, ld Is, ld Ip, const std::string& mode, bool print = true);
 
-    /// <summary>
-    /// Calculates the voltage or current in a transformer. use a 0 as a place
-    /// holder in the unknown variables method argument.
-    /// </summary>
-    /// <param name="Vs">The volts secondary(output).</param>
-    /// <param name="Vp">The volts primary(input).</param>
-    /// <param name="Is">The current secondary(output).</param>
-    /// <param name="Ip">The current primary(input).</param>
-    /// <param name="mode">The mode used to specify what you want to solve for,\n
-    /// "Vs" = volts secondary,\n
-    /// "vp" = volts primary,\n
-    /// "Is" = current secondary,\n
-    /// "Ip" = current primary.\n
-    /// example: transformerEquation(2.5,3.4,5,10,"Is");\n
-    /// this would solve for the current in the secondary transformer</param>
-    /// <returns>volts or current depending on the mode picked</returns>
-    static ld transformerEquations_VI(ld Vs, ld Vp, ld Is, ld Ip, std::string mode);
+    /**
+     * @brief Calculates the current or number of loops in a transformer. use a 0 as a place
+     * holder in the unknown variables method argument.
+     * @param Is The current secondary(output).
+     * @param Ip The current primary(input).
+     * @param Ns The number of loops secondary(output).
+     * @param Np The number of loops primary(input).
+     * @param mode The mode used to specify what you want to solve for,
+     * "Is" = current secondary,
+     * "Ip" = current primary,
+     * "Ns" = number of loops secondary,
+     * "Np" = number of loops primary.
+     * example: transformerEquation(2.5,3.4,5,10,"Is");
+     * this would solve for the current in the secondary transformer
+     * @param print (default is true) if true prints the equation and result.
+     * @return current or number of loops depending on the mode picked
+     */
+    static ld transformerEquations_IN(ld Is, ld Ip, ld Ns, ld Np, const std::string& mode, bool print = true);
 
-    /// <summary>
-    /// Calculates the current or number of loops in a transformer. use a 0 as a place
-    /// holder in the unknown variables method argument.
-    /// </summary>
-    /// <param name="Is">The current secondary(output).</param>
-    /// <param name="Ip">The current primary(input).</param>
-    /// <param name="Ns">The number of loops secondary(output).</param>
-    /// <param name="Np">The number of loops primary(input).</param>
-    /// <param name="mode">The mode used to specify what you want to solve for,\n
-    /// "Is" = current secondary,\n
-    /// "Ip" = current primary,\n
-    /// "Ns" = number of loops secondary,\n
-    /// "Np" = number of loops primary.\n
-    /// example: transformerEquation(2.5,3.4,5,10,"Is");\n
-    /// this would solve for the current in the secondary transformer</param>
-    /// <returns>current or number of loops depending on the mode picked</returns>
-    static ld transformerEquations_IN(ld Is, ld Ip, ld Ns, ld Np, std::string mode);
+    /**
+     * @brief Calculates the frequencies from a know angular velocity of aW.
+     * @param aW a angular velocity.
+     * @param print (default is true) if true prints the equation and result.
+     * @return frequency (Hz
+     */
+    static ld frequency(ld aW, bool print = true);
 
-    /// <summary>
-    /// Calculates the frequencies from a know angular velocity of aW.
-    /// </summary>
-    /// <param name="aW">a angular velocity.</param>
-    /// <returns>frequency (Hz</returns>
-    static ld frequency(ld aW);
+    /**
+     * @brief Calculates the period from the known frequency of f.
+     * @param f The frequency.
+     * @param print (default is true) if true prints the equation and result.
+     * @return period (s)
+     */
+    static ld period(ld f, bool print = true);
 
-    /// <summary>
-    /// Calculates the period from the known frequency of f.
-    /// </summary>
-    /// <param name="f">The frequency.</param>
-    /// <returns></returns>
-    static ld period(ld f);
+    /**
+     * @brief Calculates the current in the coil.
+     * @param emf The EMF.
+     * @param R The resistance.
+     * @param print (default is true) if true prints the equation and result.
+     * @return current (A)
+     */
+    static ld currentInCoil(ld emf, ld R, bool print = true);
 
-    /// <summary>
-    /// Calculates the current in the coil.
-    /// </summary>
-    /// <param name="emf">The EMF.</param>
-    /// <param name="R">The resistance.</param>
-    /// <returns>current (A)</returns>
-    static ld currentInCoil(ld emf, ld R);
+    /**
+     * @brief Calculates the emf2 from the mutual inductance of M between two devices
+     * where the current from device one is I and the time t over which the
+     * current changes.
+     * @param M The Mutual inductance.
+     * @param I The current.
+     * @param t The time.
+     * @param print (default is true) if true prints the equation and result.
+     * @return emf voltage
+     */
+    static ld emf_byMutualInductance(ld M, ld I, ld t, bool print = true);
 
-    /// <summary>
-    /// Calculates the emf2 from the mutual inductance of M between two devices
-    /// where the current from device one is I and the time t over which the
-    /// current changes.
-    /// </summary>
-    /// <param name="M">The Mutual inductance.</param>
-    /// <param name="I">The current.</param>
-    /// <param name="t">The time.</param>
-    /// <returns>emf voltage</returns>
-    static ld emf_byMutualInductance(ld M, ld I, ld t);
+    /**
+     * @brief Calculates the mutual inductance.
+     * @param emf The EMF.
+     * @param I The current.
+     * @param t The time.
+     * @param print (default is true) if true prints the equation and result.
+     * @return henry(H)
+     */
+    static ld mutualInductance(ld emf, ld I, ld t, bool print = true);
+
+    /**
+     * @brief calculates the EMF by self inductance. also the back emf calculated with
+     * this methods equation
+     * @param L The self inductance of the device.
+     * @param I The current.
+     * @param t The time.
+     * @param print (default is true) if true prints the equation and result.
+     * @return emf voltage
+     */
+    static ld inductorEMF(ld L, ld I, ld t, bool print = true);
+
+    /**
+     * @brief calculates the self inductance.
+     * @param emf The EMF.
+     * @param I The current.
+     * @param t The time.
+     * @param print (default is true) if true prints the equation and result.
+     * @return inductance of inductor(H)
+     */
+    static ld selfInductance(ld emf, ld I, ld t, bool print = true);
+
+    /**
+     * @brief calculates the self inductance.
+     * @param N The number of loops.
+     * @param phi The flux.
+     * @param I The current.
+     * @param print (default is true) if true prints the equation and result.
+     * @return inductance(H)
+     */
+    static ld selfInductance_NBI(ld N, ld phi, ld I, bool print = true);
+
+    /**
+     * @brief calculates the self inductance.
+     * @param phi The flux.
+     * @param I The current.
+     * @param print (default is true) if true prints the equation and result.
+     * @return inductance(H)
+     */
+    static ld selfInductance_phiI(ld phi, ld I, bool print = true);
 
 
-    /// <summary>
-    /// Calculates the mutual inductance.
-    /// </summary>
-    /// <param name="emf">The EMF.</param>
-    /// <param name="I">The current.</param>
-    /// <param name="t">The time.</param>
-    /// <returns>henry(H)</returns>
-    static ld mutualInductance(ld emf, ld I, ld t);
+    /**
+     *
+     * @brief Calculates the self the inductance using the time constant and resistance
+     * @param toa The time constant.
+     * @param R The resistance.
+     * @param print (default is true) if true prints the equation and result.
+     * @return self inductance
+     */
+    static ld selfInductance_timeConstant(ld toa, ld R, bool print = true);
 
-    /// <summary>
-    /// calculates the EMF by self inductance. also the back emf calculated with
-    /// this methods equation
-    /// </summary>
-    /// <param name="L">The self inductance of the device.</param>
-    /// <param name="I">The current.</param>
-    /// <param name="t">The time.</param>
-    /// <returns>emf voltage</returns>
-    static ld emf_bySelfInductance(ld L, ld I, ld t);
+    /**
+     * @brief Calculates the inductance of a solenoid.
+     * @param N The number of turns in coil.
+     * @param Ard the area, radius or diameter.
+     * @param l The length of solenoid.
+     * @param mode put a 'r' if use a radius or a 'd' if using the
+     * diameter in the Ard argument.
+     * @param print (default is true) if true prints the equation and result.
+     * @return inductance(H)
+     */
+    static ld inductanceSolenoid_L(ld N, ld A, ld l, char mode, bool print = true);
 
-    /// <summary>
-    /// calculates the self inductance.
-    /// </summary>
-    /// <param name="emf">The EMF.</param>
-    /// <param name="I">The current.</param>
-    /// <param name="t">The time.</param>
-    /// <returns>inductance of inductor(H)</returns>
-    static ld selfInductance(ld emf, ld I, ld t);
+    /**
+     * @brief Calculates the inductance from total energy of E stored in inductor
+     * having a current of I.
+     * @param E The energy of inductor.
+     * @param I The current.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the inductance (H)
+     */
+    static ld inductanceFromEnergyStored(ld E, ld I, bool print = true);
 
-    /// <summary>
-    /// calculates the self inductance.
-    /// </summary>
-    /// <param name="N">The number of loops.</param>
-    /// <param name="B">The flux.</param>
-    /// <param name="I">The current.</param>s
-    /// <returns>inductance(H)</returns>
-    static ld selfInductance_N(ld N, ld B, ld I);
+    /**
+     * @brief Calculates the energy stored in an inductor.
+     * @param L The inductance.
+     * @param I The current.
+     * @param print (default is true) if true prints the equation and result.
+     * @return energy (J)
+     */
+    static ld energyStoredInInductor(ld L, ld I, bool print = true);
 
-    /// <summary>
-    /// Calculates the self the inductance using the time constant and resistance
-    /// </summary>
-    /// <param name="toa">The time constant.</param>
-    /// <param name="R">The resistance.</param>
-    /// <returns>self inductance</returns>
-    static ld selfInductance_timeConstant(ld toa, ld R);
+    /**
+     * @brief Camera flashes charge a capacitor to high voltage by switching the
+     * current through an inductor on and off rapidly. Calculate what time must
+     * the a current of I through a inductance of L be switched on or off to
+     * induce a emf.
+     * @param I The current.
+     * @param L The inductance.
+     * @param emf The EMF.
+     * @param print (default is true) if true prints the equation and result.
+     * @return time to switch on off current through an inductor
+     */
+    static ld timeOnOffToInduceCurrent(const ld I, const ld L, const ld emf, bool print = true);
 
-    /// <summary>
-    /// Calculates the inductance of a solenoid.
-    /// </summary>
-    /// <param name="N">The number of turns in coil.</param>
-    /// <param name="Ard">the area, radius or diameter.</param>
-    /// <param name="l">The length of solenoid.</param>
-    /// <param name="mode">put a 'r' if use a radius or a 'd' if using the
-    /// diameter in the Ard argument.</param>
-    /// <returns>inductance(H)</returns>
-    static ld inductanceSolenoid_L(ld N, ld A, ld l, char mode);
+    /**
+     * @brief Calculate  the current of a system with duel rails,
+     * under the following conditions. The resistance between the rails is R,
+     * the rails and the moving rod are identical in cross section A and have
+     * the same resistivity ρ . The distance between the rails is l, and the
+     * rod moves at constant speed v perpendicular to the uniform field B.
+     * At time zero, the moving rod is next to the resistance R.
+     * @param B The magnetic field.
+     * @param l The length.
+     * @param v The velocity.
+     * @param A The area.
+     * @param p The resistivity.
+     * @param R The radius.
+     * @param t The time.
+     * @param print (default is true) if true prints the equation and result.
+     * @return current
+     */
+    static ld currentSystemOnRails(
+            ld B, ld l, ld v, ld A, ld p, ld R, ld t, bool print = true);
 
-    /// <summary>
-    /// Calculates the inductance from total energy of E stored in inductor
-    /// having a current of I.
-    /// </summary>
-    /// <param name="E">The energy of inductor.</param>
-    /// <param name="I">The current.</param>
-    /// <returns>the inductance (H)</returns>
-    static ld inductanceFromEnergyStored(ld E, ld I);
+    /**
+     * @brief Calculates the Characteristic time constant. (cTc)
+     * @param L The inductance.
+     * @param R The resistance.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the time constant
+     */
+    static ld inductiveTimeConstant(ld L, ld R, bool print = true);
 
-    /// <summary>
-    /// Calculates the energy stored in an inductor.
-    /// </summary>
-    /// <param name="L">The inductance.</param>
-    /// <param name="I">The current.</param>
-    /// <returns>energy (J)</returns>
-    static ld energyStoredInInductor(ld L, ld I);
+    /**
+     * @brief Inductances the reactance (XL)
+     * @param f The frequency.
+     * @param L The inductance.
+     * @param print (default is true) if true prints the equation and result.
+     * @return inductive reactance (H)
+     */
+    static ld inductanceReactance_fL(ld f, ld L, bool print = true);
 
-    /// <summary>
-    /// Camera flashes charge a capacitor to high voltage by switching the
-    /// current through an inductor on and off rapidly. Calculate what time must
-    /// the a current of I through a inductance of L be switched on or off to
-    /// induce a emf.
-    /// </summary>
-    /// <param name="I">The current.</param>
-    /// <param name="L">The inductance.</param>
-    /// <param name="emf">The EMF.</param>
-    /// <returns>time to switch on off current through an inductor</returns>
-    static ld timeOnOffToinduceCurrent(ld I, ld L, ld emf);
+    /**
+     * @brief calculates the Capacitive reactance (XC).
+     * @param f The frequency.
+     * @param C The capacitance_Qv.
+     * @param print (default is true) if true prints the equation and result.
+     * @return capacitive reactance (ohms)
+     */
+    static ld capacitiveReactance_fC(ld f, ld C, bool print = true);
 
-    /// <summary>
-    /// Calculate  the current of a system with duel rails,
-    /// under the following conditions. The resistance between the rails is R,
-    /// the rails and the moving rod are identical in cross section A and have
-    /// the same resistivity ρ . The distance between the rails is l, and the
-    /// rod moves at constant speed v perpendicular to the uniform field B.
-    /// At time zero, the moving rod is next to the resistance R.
-    /// </summary>
-    /// <param name="B">The magnetic field.</param>
-    /// <param name="l">The length.</param>
-    /// <param name="v">The velocity.</param>
-    /// <param name="A">The area.</param>
-    /// <param name="p">The resistivity.</param>
-    /// <param name="R">The radius.</param>
-    /// <param name="t">The time.</param>
-    /// <returns>current</returns>
-    static ld currentSystemOnRails(ld B, ld l, ld v, ld A, ld p, ld R, ld t);
+    /**
+     * @brief Calculates the capacitance_Qv from reactance and frequency
+     * @param f The frequency in Hz.
+     * @param _xc The capacitive reactance.
+     * @param print (default is true) if true prints the equation and result.
+     * @return farads
+     */
+    static ld capacitanceFromReactance(ld f, ld _xc, bool print = true);
 
-    /// <summary>
-    /// Calculates the Characteristic time constant. (cTc)
-    /// </summary>
-    /// <param name="L">The inductance.</param>
-    /// <param name="R">The resistance.</param>
-    /// <returns>the time constant</returns>
-    static ld characteristicTimeConstant(ld L, ld R);
+    /**
+     * @brief Calculates the current in an inductor of an RC circuit at specific
+     * moments of time t with an initial current of Io and a characteristic time
+     * constant of tao.
+     * @param Io The initial current in inductor.
+     * @param t The time in seconds.
+     * @param tao The characteristic time constant.
+     * @param print (default is true) if true prints the equation and result.
+     * @return current at specified time when switched on (A)
+     */
+    static ld current_RLCircuit_switchON(ld Io, ld t, ld tao, bool print = true);
 
-    /// <summary>
-    /// Inductances the reactance (XL)
-    /// </summary>
-    /// <param name="f">The frequency.</param>
-    /// <param name="L">The inductance.</param>
-    /// <returns>inductive reactance (H)</returns>
-    static ld inductance_reactance_XL(ld f, ld L);
+    /**
+     * @brief Calculates the current of an inductor of an RC circuit switch off.
+     * @param Io The current initially.
+     * @param t The time in seconds.
+     * @param tao The characteristic time  constant.
+     * @param print (default is true) if true prints the equation and result.
+     * @return current at specified time when switched off
+     */
+    static ld current_RICircuit_switchOFF(ld Io, ld t, ld tao, bool print = true);
 
-    /// <summary>
-    /// calculates the Capacitive reactance (XC).
-    /// </summary>
-    /// <param name="f">The frequency.</param>
-    /// <param name="C">The capacitance_Qv.</param>
-    /// <returns>capacitive reactance (ohms)</returns>
-    static ld capacitive_reactance_XC(ld f, ld C);
+    /**
+     * @brief Calculate current in RL circuit.
+     * @param emf The emf.
+     * @param R The resistance.
+     * @param L The inductance.
+     * @param t The time.
+     * @param print (default is true) if true prints the equation and result.
+     * @return current in RL circuit
+     */
+    static ld current_RLCircuit(ld emf, ld R, ld L, ld t, bool print = true);
 
-    /// <summary>
-    /// Calculates the capacitance_Qv from reactance and frequency
-    /// </summary>
-    /// <param name="f">The frequency in Hz.</param>
-    /// <param name="_xc">The capacitive reactance.</param>
-    /// <returns>farads</returns>
-    static ld capacitanceFromReactance(ld f, ld _xc);
+    /**
+     * @brief Calculates I(t) in an RL circuit with decreasing current so
+     * di/dt < 0.
+     * @param emf The emf.
+     * @param R The resistance.
+     * @param L The inductance.
+     * @param t The time.
+     * @param print (default is true) if true prints the equation and result.
+     * @return current in RL circuit
+     */
+    static ld current_RLCircuitDecreasingI(
+            ld emf, ld R, ld L, ld t, bool print = true);
 
-    /// <summary>
-    /// Calculates the current in an inductor of an RC circuit at specific moments
-    /// of time t with an initial current of Io and a characteristic time constant of cTc.
-    /// </summary>
-    /// <param name="Io">The initial current in inductor.</param>
-    /// <param name="t">The time in seconds.</param>
-    /// <param name="cTc">The characteristic time constant.</param>
-    /// <returns>current at specified time when switched on (A)</returns>
-    static ld current_RLCircuit_switchON(ld Io, ld t, ld cTc);
+    /**
+     * @brief Calculates the current through inductor.
+     * @param Vrms The rms Voltage.
+     * @param _xl The inductance reactance.
+     * @param print (default is true) if true prints the equation and result.
+     * @return current
+     */
+    static ld currentRMS_throughInductor(ld Vrms, ld _xl, bool print = true);
 
-    /// <summary>
-    /// Calculates the current of an inductor of an RC circuit switch off.
-    /// </summary>
-    /// <param name="Io">The current initially.</param>
-    /// <param name="t">The time in seconds.</param>
-    /// <param name="cTc">The characteristic time  constant.</param>
-    /// <returns>current at specified time when switched off </returns>
-    static ld current_RICircuit_switchOFF(ld Io, ld t, ld cTc);
+    /**
+     * @brief Calculates the current through capacitor.
+     * @param Vrms The Voltage RMS.
+     * @param _xc The conductive reactance.
+     * @param print (default is true) if true prints the equation and result.
+     * @return current
+     */
+    static ld currentRMS_throughCapacitor(ld Vrms, ld _xc, bool print = true);
 
-    /// <summary>
-    /// Calculates the current through inductor.
-    /// </summary>
-    /// <param name="Vrms">The rms Voltage.</param>
-    /// <param name="_xl">The inductance reactance.</param>
-    /// <returns>current</returns>
-    static ld currentRMS_throughInductor(ld Vrms, ld _xl);
+    /**
+     * @brief Calculates the peeks the current in an AC circuit using the peek voltage
+     * of Vo and its impedance of Z_.
+     * @param Vo The peek voltage in circuit.
+     * @param Z_ The impedance.
+     * @param print (default is true) if true prints the equation and result.
+     * @return The peek current -> Io = peek Amps
+     */
+    static ld peekCurrent_AC(ld Vo, ld Z, bool print = true);
 
-    /// <summary>
-    /// Calculates the current through capacitor.
-    /// </summary>
-    /// <param name="Vrms">The Voltage RMS.</param>
-    /// <param name="_xc">The conductive reactance.</param>
-    /// <returns>current</returns>
-    static ld currentRMS_throughCapacitor(ld Vrms, ld _xc);
+    /**
+     * @brief Calculates the RMS(root mean square) or average current in an AC circuit
+     * using the rms Voltage and the circuits impedance of Z_.
+     * @param Vrms The rms Voltage, average voltage.
+     * @param Z_ The impedance in circuit.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the average or rms current Irms -> (A)
+     */
+    static ld rmsCurrent_AC(ld Vrms, ld Z, bool print = true);
 
-    /// <summary>
-    /// Calculates the peeks the current in an AC circuit using the peek voltage
-    /// of Vo and its impedance of Z_.
-    /// </summary>
-    /// <param name="Vo">The peek voltage in circuit.</param>
-    /// <param name="Z_">The impedance.</param>
-    /// <returns>The peek current -> Io = peek Amps</returns>
-    static ld peekCurrent_AC(ld Vo, ld Z);
+    /**
+     * @brief Calculates the RMS(root mean square current or average current in a AC
+     * series circuit.
+     * @param Vrms The root mean square voltage or Vrms.
+     * @param R The resistance.
+     * @param _xl The inductive reactance.
+     * @param _xc The conductive reactance.
+     * @param print (default is true) if true prints the equation and result.
+     * @return Irms or root mean square current, average current(A)
+     */
+    static ld rmsCurrent_AC(ld Vrms, ld R, ld _xl, ld _xc, bool print = true);
 
-    /// <summary>
-    /// Calculates the RMS(root mean square) or average current in an AC circuit
-    /// using the rms Voltage and the circuits impedance of Z_.
-    /// </summary>
-    /// <param name="Vrms">The rms Voltage, average voltage.</param>
-    /// <param name="Z_">The impedance in circuit.</param>
-    /// <returns>the average or rms current Irms -> (A)</returns>
-    static ld rmsCurrent_AC(ld Vrms, ld Z);
+    /**
+     * @brief Calculates the RMS(root mean square current or average current in a AC
+     * series circuit.
+     * @param Vrms The root mean square voltage or Vrms.
+     * @param R The resistance.
+     * @param L The inductance.
+     * @param C The capacitance_Qv.
+     * @param f The frequency.
+     * @param print (default is true) if true prints the equation and result.
+     * @return Irms or root mean square current, average current(A)
+     */
+    static ld rmsCurrent_AC(ld Vrms, ld R, ld L, ld C, ld f, bool print = true);
 
-    /// <summary>
-    /// Calculates the RMS(root mean square current or average current in a AC
-    /// series circuit.
-    /// </summary>
-    /// <param name="Vrms">The root mean square voltage or Vrms.</param>
-    /// <param name="R">The resistance.</param>
-    /// <param name="_xl">The inductive reactance.</param>
-    /// <param name="_xc">The conductive reactance.</param>
-    /// <returns>Irms or root mean square current, average current(A)</returns>
-    static ld rmsCurrent_AC(ld Vrms, ld R, ld _xl, ld _xc);
+    /**
+     * @brief Calculates the Impedance in a RLC series AC circuit. For circuits without
+     * a resistor take R=0, for those without and inductor take _xl = 0, for
+     * those without a capacitor take _xc = 0.
+     * @param R The resistance.
+     * @param _xl The inductive reactance.
+     * @param _xc The capacitive reactance.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the impedance on an AC circuit (Ohms)
+     */
+    static ld impedance(ld R, ld _xl, ld _xc, bool print = true);
 
-    /// <summary>
-    /// Calculates the RMS(root mean square current or average current in a AC
-    /// series circuit.
-    /// </summary>
-    /// <param name="Vrms">The root mean square voltage or Vrms.</param>
-    /// <param name="R">The resistance.</param>
-    /// <param name="L">The inductance.</param>
-    /// <param name="C">The capacitance_Qv.</param>
-    /// <param name="f">The frequency.</param>
-    /// <returns>Irms or root mean square current, average current(A)</returns>
-    static ld rmsCurrent_AC(ld Vrms, ld R, ld L, ld C, ld f);
+    /**
+     * @brief Calculates the impedance in a RLC series AS circuit.
+     * @param R The resistance.
+     * @param L The inductance.
+     * @param C The capacitance_Qv.
+     * @param f The frequency.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the impedance on an AC circuit (Ohms)
+     */
+    static ld impedance(ld R, ld L, ld C, ld f, bool print = true);
 
-    /// <summary>
-    /// Calculates the Impedance in a RLC series AC circuit. For circuits without
-    /// a resistor take R=0, for those without and inductor take _xl = 0, for
-    /// those without a capacitor take _xc = 0.
-    /// </summary>
-    /// <param name="R">The resistance.</param>
-    /// <param name="_xl">The inductive reactance.</param>
-    /// <param name="_xc">The capacitive reactance.</param>
-    /// <returns>the impedance on an AC circuit (Ohms)</returns>
-    static ld impedance(ld R, ld _xl, ld _xc);
+    /**
+     * @brief Calculates the resonant frequency in an RLC series AC circuit
+     * @param L The inductance.
+     * @param C The capacitance_Qv.
+     * @param print (default is true) if true prints the equation and result.
+     * @return resonant frequency (Hz)
+     */
+    static ld resonantFrequency(ld L, ld C, bool print = true);
 
-    /// <summary>
-    /// Calculates the impedance in a RLC series AS circuit.
-    /// </summary>
-    /// <param name="R">The resistance.</param>
-    /// <param name="L">The inductance.</param>
-    /// <param name="C">The capacitance_Qv.</param>
-    /// <param name="f">The frequency.</param>
-    /// <returns>the impedance on an AC circuit (Ohms)</returns>
-    static ld impedance(ld R, ld L, ld C, ld f);
+    /**
+     * @brief Calculates the power factor. cos(phi) = R/Z_.
+     * @param R The resistance.
+     * @param Z_ The impedance.
+     * @param print (default is true) if true prints the equation and result.
+     * @return power factor(unit-less)
+     */
+    static ld powerFactor(ld R, ld Z, bool print = true);
 
-    /// <summary>
-    /// Calculates the resonant frequency in an RLC series AC circuit
-    /// </summary>
-    /// <param name="L">The inductance.</param>
-    /// <param name="C">The capacitance_Qv.</param>
-    /// <returns>resonant frequency (Hz)</returns>
-    static ld resonantFrequency(ld L, ld C);
+    /**
+     * @brief Phases the angle.
+     * @param pf The pf.
+     * @param print (default is true) if true prints the equation and result.
+     * @return phase angle
+     */
+    static ld phaseAngle(ld pf, bool print = true);
 
-    /// <summary>
-    /// Calculates the power factor. cos(phi) = R/Z_.
-    /// </summary>
-    /// <param name="R">The resistance.</param>
-    /// <param name="Z_">The impedance.</param>
-    /// <returns>power factor(unit-less)</returns>
-    static ld powerFactor(ld R, ld Z);
+    /**
+     * @brief Phases the angle.
+     * @param R The resistance.
+     * @param Z_ The impedance.
+     * @param print (default is true) if true prints the equation and result.
+     * @return phase angle
+     */
+    static ld phaseAngle(ld R, ld Z, bool print = true);
 
-    /// <summary>
-    /// Phases the angle.
-    /// </summary>
-    /// <param name="pf">The pf.</param>
-    /// <returns>phase angle</returns>
-    static ld phaseAngle(ld pf);
+    /**
+     * @brief Powers the average RLC.
+     * @param Irms The average current .
+     * @param Vrms The average voltage.
+     * @param pf The power factor.
+     * @param print (default is true) if true prints the equation and result.
+     * @return power in an RLC series AC circuit
+     */
+    static ld powerAvgRLC(ld Irms, ld Vrms, ld pf, bool print = true);
 
-    /// <summary>
-    /// Phases the angle.
-    /// </summary>
-    /// <param name="R">The resistance.</param>
-    /// <param name="Z_">The impedance.</param>
-    /// <returns>phase angle</returns>
-    static ld phaseAngle(ld R, ld Z);
+    /**
+     * @brief Calculates the peak emf  generated by a r(m) radius, N-turn
+     * coil that is rotated one-fourth of a revolution in t(s), originally
+     * having its plane perpendicular to a uniform B(T) magnetic field?
+     * (This is 58 rev/s.)
+     * @param r The radius.
+     * @param N The number of turns in coil.
+     * @param t The time in seconds.
+     * @param B The magnetic field strength.
+     * @param print (default is true) if true prints the equation and result.
+     * @return peek emf
+     */
+    static ld emfPeek(ld r, ld N, ld t, ld B, bool print = true);
 
-    /// <summary>
-    /// Powers the average RLC.
-    /// </summary>
-    /// <param name="Irms">The average current .</param>
-    /// <param name="Vrms">The average voltage.</param>
-    /// <param name="pf">The power factor.</param>
-    /// <returns>power in an RLC series AC circuit</returns>
-    static ld powerAvgRLC(ld Irms, ld Vrms, ld pf);
+    /**
+     * @brief A solenoid of circular cross section has radius R consists of
+     * n turns per unit length, and carries current I. Find the magnetic flux
+     * through each turn of the solenoid.
+     * @param R The radius.
+     * @param n The number of turns per unit length.
+     * @param I The current.
+     * @param print (default is true) if true prints the equation and result.
+     * @return magnetic flux through each turn of the solenoid
+     * @note The magnetic flux through a solenoid is given by the formula: \n
+     * phi = BA = μ0*n*I*π*R^2
+     */
+    static ld magneticFluxSolenoidLoop(ld R, ld n, ld I, bool print = true);
 
-    /// <summary>
-    /// Calculates the peak emf  generated by a r(m) radius, N-turn
-    /// coil that is rotated one-fourth of a revolution in t(s), originally
-    /// having its plane perpendicular to a uniform B(T) magnetic field?
-    /// (This is 58 rev/s.)
-    /// </summary>
-    /// <param name="r">The radius.</param>
-    /// <param name="N">The number of turns in coil.</param>
-    /// <param name="t">The time in seconds.</param>
-    /// <param name="B">The magnetic field strength.</param>
-    /// <returns>peek emf</returns>
-    static ld emfPeek(ld r, ld N, ld t, ld B);
+    /**
+     * @brief A long, straight wire carries current I. A rectangular wire loop
+     * of dimensions l by w lies in a plane containing the wire, with its
+     * closest edge a distance a from the wire and its dimension l parallel to
+     * the wire. Find the magnetic flux through the loop.
+     * @param I The current.
+     * @param a The distance from the wire.
+     * @param l The length of the loop.
+     * @param w The width of the loop.
+     * @param print (default is true) if true prints the equation and result.
+     * @return magnetic flux through the loop
+     * @note The magnetic flux through a rectangular loop in mField is given by
+     * the formula: \n phi = BdA = (μ0*I*l/2π)*ln((a + w)/a)
+     */
+    static ld magneticFluxRectangularLoop(
+            ld I, ld a, ld l, ld w, bool print = true);
+
+    /**
+     * @brief A wire loop of radius r m has resistance R. The plane of the
+     * loop is perpendicular to a uniform magnetic field that’s increasing
+     * at dB_dt T/s. Find the magnitude of the induced current in the loop.
+     * @param r The radius.
+     * @param R The resistance.
+     * @param dB_dt The time.
+     * @param print (default is true) if true prints the equation and result.
+     * @return magnitude of the induced current in the loop
+     */
+    static ld inducedCurrentLoop(ld r, ld R, ld dB_dt, bool print = true);
+
+    /**
+     * @brief Two parallel conducting rails a distance l apart are connected
+     * at one end by a resistance R. A conducting bar completes the circuit,
+     * joining the two rails electrically but free to slide along them. The
+     * whole circuit is perpendicular to a uniform magnetic field B. Find the
+     * current when the bar is pulled to the right with constant speed v.
+     * @param l The distance.
+     * @param R The resistance.
+     * @param v The speed.
+     * @param B The magnetic field.
+     * @param print (default is true) if true prints the equation and result.
+     * @return current when the bar is pulled to the right with constant speed
+     */
+    static ld currentSlidingBar(ld l, ld R, ld v, ld B, bool print = true);
+
+    /**
+     * @brief Calculate the electric power dissipated in a square loop of
+     * resistance R, with sides of length l, when the loop is placed in a
+     * magnetic field B that is perpendicular to the plane of the loop and
+     * is moving at a constant speed v.
+     * @param l The length of the loop.
+     * @param R The resistance.
+     * @param v The speed.
+     * @param B The magnetic field.
+     * @param print (default is true) if true prints the equation and result.
+     * @return electric power dissipated in a square loop
+     * @note The electric power dissipated in a square loop given R, l, v, B
+     * is: \n P = IE = (B^2*l^2*v^2) / R
+     */
+    static ld powerDissipatedSquareLoop(
+              ld l, ld R, ld v, ld B, bool print = true);
+
+    /**
+     * @brief An electric generator consists of a n-turn circular coil with
+     * a diameter of d m. It’s rotated at a frequency of f rev/s. Find the
+     * magnetic field strength needed for a peak output voltage of V volts.
+     * @param n The number of turns.
+     * @param d The diameter.
+     * @param f The frequency.
+     * @param V The voltage.
+     * @param print (default is true) if true prints the equation and result.
+     * @return magnetic field strength needed for a peak output voltage
+     */
+    static ld magneticFieldStrengthGenerator(
+                ld n, ld d, ld f, ld V, bool print = true);
+
+    /**
+     * @brief A large electromagnet used for lifting scrap iron has
+     * self-inductance of L H. It’s connected to a constant V-volt power source;
+     * the total resistance of the circuit is R. Calculate the time it takes
+     * for the current to reach x% of its final value.
+     * @param L The self-inductance.
+     * @param R The resistance.
+     * @param x The percentage.
+     * @param print (default is true) if true prints the equation and result.
+     * @return time it takes for the current to reach x% of its final value
+     */
+    static ld timeCurrentToReachXPercent(ld L, ld R, ld x, bool print = true);
+
+    /**
+     * @brief Calculate the rate at which an inductor stores energy when it
+     * has a current of I A applied to the inductor of L H in time t s.
+     * @param I The current.
+     * @param L The self-inductance.
+     * @param t The time.
+     * @param print (default is true) if true prints the equation and result.
+     * @return rate at which an inductor stores energy
+     */
+    static ld rateInductorStoresEnergy(ld I, ld L, ld t, bool print = true);
+
+    /**
+     * @brief Superconducting electromagnets like the solenoids in MRI scanners
+     * store a lot of magnetic energy. Loss of coolant can be dangerous because
+     * the current is suddenly left without its zero-resistance path and quickly
+     * decays. The result is an explosive release of magnetic energy. A
+     * particular MRI solenoid carries I A and has a L H inductance. When
+     * it loses superconductivity, its resistance goes abruptly to R.
+     * Calculate:
+     * (a) the stored magnetic energy
+     * (b) the rate of energy release at the instant superconductivity is lost.
+     * @param I The current.
+     * @param L The self-inductance.
+     * @param R The resistance.
+     * @param print (default is true) if true prints the equation and result.
+     * @return stored magnetic energy and rate of energy release
+     */
+    static vector<ld> energyReleaseMRI(ld I, ld L, ld R, bool print = true);
+
+    /**
+     * @brief Calculate the magnetic energy stored in a solenoid of with a
+     * length of l and a cross-sectional area of A m^2 with n turns and a
+     * current of I A.
+     * @param l The length.
+     * @param A The cross-sectional area.
+     * @param n The number of turns.
+     * @param I The current.
+     * @param print (default is true) if true prints the equation and result.
+     * @return magnetic energy stored in a solenoid
+     */
+    static ld energyStoredSolenoid(ld l, ld A, ld n, ld I, bool print = true);
+
+    /**
+     * @brief Calculate the magnetic energy stored in a solenoid of with a
+     * length of l and a cross-sectional area of A m^2 with a B T magnetic
+     * field.
+     * @param l The length.
+     * @param A The cross-sectional area.
+     * @param B The magnetic field.
+     * @param print (default is true) if true prints the equation and result.
+     * @return magnetic energy stored in a solenoid
+     */
+    static ld energyStoredSolenoid(ld l, ld A, ld B, bool print = true);
+
+    /**
+     * @brief Calculate the magnetic energy density per unit volume in a
+     * magnetic field of B T.
+     * @param B The magnetic field.
+     * @param print (default is true) if true prints the equation and result.
+     * @return magnetic energy density per unit volume
+     */
+    static ld energyDensityMagneticField(ld B, bool print = true);
+
+    /**
+     * @brief A long solenoid has circular cross section of radius R. The
+     * solenoid current is increasing, and as a result so is the magnetic
+     * field in the solenoid. The field strength as a function of time t is
+     * given by B=bt where b is a constant. Find the induced electric field
+     * outside the solenoid, a distance r from the axis.
+     * @param R The radius.
+     * @param b The constant.
+     * @param r The distance.
+     * @param print (default is true) if true prints the equation and result.
+     * @return induced electric field outside the solenoid
+     */
+    static ld inducedElectricFieldSolenoid(
+                ld R, ld b, ld r, bool print = true);
+
+    /**
+     * @breif In a physics laboratory experiment, a coil with n turns
+     * enclosing an area of A m2 is rotated during the time interval of
+     * t s from a position in which its plane is angle theta_i to Earth's
+     * magnetic field to one in which its plane is angle theta_f to the field.
+     * The magnitude of Earth's magnetic field at the lab location is B T.
+     * Calculate the following:
+     * (a) the magnitude of the magnetic flux (Φinitial) through the coil before
+     *     it is rotated
+     * (b) the magnitude of the magnetic flux (Φfinal) through the coil after
+     *    it is rotated
+     * (c) the magnitude of the average emf induced in the coil.
+     * @param n The number of turns.
+     * @param A The area.
+     * @param t The time.
+     * @param B The magnetic field.
+     * @param theta_i The initial angle.
+     * @param theta_f The final angle.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the magnitude of the magnetic flux, the magnitude of the average
+     */
+    static vector<ld> magneticFluxAndAverageEmf(
+                int n, ld A, ld t, ld B, ld theta_i = 0,
+                ld theta_f = 90, bool print = true);
+
+    /**
+     * @brief What fraction of the maximum value will be reached by the current
+     * t seconds after a switch is closed. Assume that resistance is R ohms
+     * and induction is L henries.
+     * @param L The self-inductance.
+     * @param R The resistance.
+     * @param t The time.
+     * @param print (default is true) if true prints the equation and result.
+     * @return fraction of the maximum value will be reached by the current
+     */
+    static ld fractionOfMaxValueReached(ld L, ld R, ld t, bool print = true);
+
+    /**
+     * @brief Shrinking Loop. A circular loop of flexible iron wire has an
+     * initial circumference of C m , but its circumference is decreasing at a
+     * constant rate of deltaC m/s due to a tangential pull on the wire. The
+     * loop is in a constant uniform magnetic field of magnitude B T, which
+     * is oriented perpendicular to the plane of the loop. Assume that you are
+     * facing the loop and that the magnetic field points into the loop.
+     * Calculate the magnitude of the emf E induced in the loop after exactly
+     * time t s has passed since the circumference of the loop started to
+     * decrease, and find the direction of the induced current in the loop
+     * as viewed looking along the direction of the magnetic field.
+     * @param C The circumference.
+     * @param deltaC The change in circumference.
+     * @param B The magnetic field.
+     * @param t The time.
+     * @param d is the direction of the B field.
+     * @param print (default is true) if true prints the equation and result.
+     * @return magnitude of the emf and direction of the induced current
+     * in the loop
+     */
+    static vector<ld> emfAndInducedCurrent(
+                ld C, ld deltaC, ld B, ld t, Direction d, bool print = true);
+
+    /**
+     * @brief Calculate the magnitude of the potential difference between the
+     * ends of a rod of length l m in a uniform magnetic field of magnitude B
+     * T, moving with a velocity v m/s.
+     * @param l The length.
+     * @param B The magnetic field.
+     * @param v The velocity.
+     * @param print (default is true) if true prints the equation and result.
+     * @return magnitude of the potential difference
+     */
+    static ld potentialDifferenceAcrossRod(ld l, ld B, ld v, bool print = true);
+
+    /**
+     * @brief Calculate the magnitude of the potential difference between the
+     * ends of a rod of length l m in a electric field of magnitude E V/m,
+     * @param l The length.
+     * @param E The electric field.
+     * @param print (default is true) if true prints the equation and result.
+     * @return magnitude of the potential difference
+     */
+    static ld potentialDifferenceAcrossRod(ld l, ld E, bool print = true);
+
+    /**
+     * @brief A circular wire loop d m in diameter has resistance R Ω and
+     * lies in a horizontal plane. A uniform magnetic field points vertically
+     * downward, and in t s it increases linearly from Bi T to Bf mT.
+     * Calculate the following:
+     * (a) the magnetic flux through the loop at the beginning.
+     * (b) the magnetic flux through the loop at the end of the time interval.
+     * (c) the loop current during this time.
+     * @param d The diameter.
+     * @param R The resistance.
+     * @param Bi The initial magnetic field.
+     * @param Bf The final magnetic field.
+     * @param t The time.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the magnetic flux through the loop at the beginning, the
+     */
+    static vector<ld> magneticFluxAndCurrent(
+                ld d, ld R, ld Bi, ld Bf, ld t, bool print = true);
 
 
     ~ElectroMagneticInduction()
@@ -681,390 +1059,890 @@ private:
 //=============================================================================
 //in-line class Implementation
 
-inline ld ElectroMagneticInduction::magneticFlux(const ld B, const ld A, const ld theta = 0)
+inline ld ElectroMagneticInduction::magneticFlux(
+        const ld B, const ld A, const ld theta, bool print)
 {
-    return B * A * cos(theta * constants::RADIAN);//T*m^2 = Tesla meters squared
+    auto phi = B * A * cos(theta * constants::RADIAN);//T*m^2 = Wb
+    if (print)
+        std::cout << "Magnetic Flux = " << phi << " Wb" << std::endl;
+    return phi;
 }
 
-inline ld ElectroMagneticInduction::emfFaradyFullEquation(const ld N, const ld r, const ld B, const ld t, const ld thetaS, const ld thetaF)
+inline ld ElectroMagneticInduction::emfFaradayFullEquation(
+        const ld N, const ld r, const ld B, const ld t, const ld thetaS,
+        const ld thetaF, bool print)
 {
     const ld area = constants::PI * (r * r);
-    const ld deltaTheta = cos(thetaF * constants::RADIAN) - cos(thetaS * constants::RADIAN);
+    const ld deltaTheta = cos(thetaF * constants::RADIAN) -
+            cos(thetaS * constants::RADIAN);
     const ld flux = area * B * deltaTheta;
-    return  -N * (flux / t);
+    auto var =  -N * (flux / t);
+    if (print)
+        std::cout << "EMF = " << var << " Volts" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::emfMagnitude_FaradayNoMinus(const ld N, const ld r, const ld B1, const ld B2, const ld t, const ld theta)
+inline ld ElectroMagneticInduction::emfMagnitude_FaradayNoMinus(
+        const ld N, const ld r, const ld B1, const ld B2, const ld t,
+        const ld theta, bool print)
 {
     const ld area = constants::PI * (r * r);
     const ld deltaB = abs(B2 - B1);
     const ld deltaFlux = area * deltaB * cos(theta*constants::RADIAN);
 
-    return N * (deltaFlux / t);//V
+    auto var = N * (deltaFlux / t);//V
+    if (print)
+        std::cout << "EMF = " << var << " Volts" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::deltaFlux(const ld A, const ld deltaB)
+inline ld ElectroMagneticInduction::deltaFlux(
+        const ld A, const ld deltaB, bool print)
 {
-
-    return A * deltaB;
+    auto var = A * deltaB;
+    if (print)
+        std::cout << "Delta Flux = " << var << " Wb" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::emf_inducedInGeneratorCoil(const ld N, const ld l, const ld w, const ld aW, const ld B, const ld t)
+inline ld ElectroMagneticInduction::emf_inducedInGeneratorCoil(
+        const ld N, const ld l, const ld w, const ld aW, const ld B,
+        const ld t, bool print)
 {
     const ld area = l * w;
-
-    return N * area * B * aW * sin((aW * t) * constants::RADIAN);//V
+    auto var = N * area * B * aW * sin((aW * t) * constants::RADIAN);//V
+    if (print)
+        std::cout << "EMF = " << var << " Volts" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::emf_peek(const ld N, const ld A, const ld B, const ld aW)
+inline ld ElectroMagneticInduction::emf_peek(
+        const ld N, const ld A, const ld B, const ld aW, bool print)
 {
-    return N * A * B * aW;//V
+    auto var = N * A * B * aW;//V
+    if (print)
+        std::cout << "EMF = " << var << " Volts" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::emf_peek(const ld N, const ld r, const ld B, const ld rad, const ld t)
+inline ld ElectroMagneticInduction::emf_peek(
+        const ld N, const ld r, const ld B, const ld rad, const ld t,
+        bool print)
 {
     const ld area = constants::PI * (r * r);
     const ld aW = rad / t;
-    return N * area * B * aW;//V
+    auto var = N * area * B * aW;//V
+    if (print)
+        std::cout << "EMF = " << var << " Volts" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::emfPeek_r(const ld N, const ld r, const ld B, const ld aW)
+inline ld ElectroMagneticInduction::emfPeek_r(
+        const ld N, const ld r, const ld B, const ld aW, bool print)
 {
-    return N * constants::PI * (r * r) * B * aW;
+    auto var = N * constants::PI * (r * r) * B * aW;
+    if (print)
+        std::cout << "EMF = " << var << " Volts" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::emf_peekFromDiameterAndRPMs(const ld N, const ld d, const ld B, const ld rpm)
+inline ld ElectroMagneticInduction::emf_peekFromDiameterAndRPMs(
+        const ld N, const ld d, const ld B, const ld rpm, bool print)
 {
     const ld aW = (rpm * 2.0 * constants::PI) / 60.0;//angular velocity
     const ld A = (constants::PI * (d * d)) / 4;//cross-sectional
-    return N * A * B * aW;//V
+    auto var = N * A * B * aW;//V
+    if (print)
+        std::cout << "EMF = " << var << " Volts" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::emf_inducedByMagneticFlux(const ld N, const ld f, const ld t)
+inline ld ElectroMagneticInduction::emf_inducedByMagneticFlux(
+        const ld N, const ld f, const ld t, bool print)
 {
-    return -N * (f / t);//V
+    auto var = -N * (f / t);//V
+    if (print)
+        std::cout << "EMF = " << var << " Volts" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::emf_avgOnCoil(const ld B, const ld d, const ld t)
+inline ld ElectroMagneticInduction::emf_avgOnCoil(
+        const ld B, const ld d, const ld t, bool print)
 {
-    return (constants::PI * B * (d * d)) / (4.0 * t);//V
+    auto var = (constants::PI * B * (d * d)) / (4.0 * t);//V
+    if (print)
+        std::cout << "EMF = " << var << " Volts" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::n_turnsInCoilFromEMFEquation(const ld t, const ld emf, const ld f)
+inline ld ElectroMagneticInduction::n_turnsInCoilFromEMFEquation(
+        const ld t, const ld emf, const ld f, bool print)
 {
-    return (t / f) * emf;//turns in coil
+    auto var = (t / f) * emf;//turns in coil
+    if (print)
+        std::cout << "N = " << var << " turns" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::flux_fromEMFEquation(const ld emf, const ld t, const ld N)
+inline ld ElectroMagneticInduction::flux_fromEMFEquation(
+        const ld emf, const ld t, const ld N, bool print)
 {
-    return -(t * emf) / N;//T*m^2
+    auto var = -(t * emf) / N;//T*m^2
+    if (print)
+        std::cout << "Flux = " << var << " Wb" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::time_fromEMFEquation(const ld N, const ld f, const ld emf)
+inline ld ElectroMagneticInduction::time_fromEMFEquation(
+        const ld N, const ld f, const ld emf, bool print)
 {
-    return N * (f / emf);//seconds
+    auto var = N * (f / emf);//seconds
+    if (print)
+        std::cout << "Time = " << var << " seconds" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::motionalEMF(const ld B, const ld l, const ld x, const ld t)
+inline ld ElectroMagneticInduction::motionalEMF(
+        const ld B, const ld l, const ld x, const ld t, bool print)
 {
-    return B * ((l * x) / t);//V
+    auto var = B * ((l * x) / t);//V
+    if (print)
+        std::cout << "EMF = " << var << " Volts" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::motionalEMF(const ld B, const ld l, const ld v)
+inline ld ElectroMagneticInduction::motionalEMF(
+        const ld B, const ld l, const ld v, bool print)
 {
-    return B * l * v;//V
+    auto var = B * l * v;//V
+    if (print)
+        std::cout << "EMF = " << var << " Volts" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::lengthOfRod_emfEq(const ld V, const ld B, const ld v)
+inline ld ElectroMagneticInduction::lengthOfRod_emfEq(
+        const ld V, const ld B, const ld v, bool print)
 {
-    return V / (B * v);//m
+    auto var = V / (B * v);//m
+    if (print)
+        std::cout << "Length = " << var << " meters" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::velocityOfMotion_emfEq(const ld V, const ld B, const ld l)
+inline ld ElectroMagneticInduction::velocityOfMotion_emfEq(
+        const ld V, const ld B, const ld l, bool print)
 {
-    return V / (B * l);// m/s
+    auto var = V / (B * l);// m/s
+    if (print)
+        std::cout << "Velocity = " << var << " meters per second" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::magneticFieldFrom_emfEq(const ld V, const ld l, const ld v)
+inline ld ElectroMagneticInduction::magneticFieldFrom_emfEq(
+        const ld V, const ld l, const ld v, bool print)
 {
-    return V / (l * v);//T
+    auto var = V / (l * v);//T
+    if (print)
+        std::cout << "Magnetic Field = " << var << " Tesla" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::magneticFieldMagnitude(const ld flux, const ld Ard, const ld theta = 0, const ld mode = 'A')
+inline ld ElectroMagneticInduction::magneticFieldMagnitude(
+        const ld flux, const ld Ard, const ld theta = 0, const ld mode = 'A',
+        bool print)
 {
     ld area;
+    ld var;
     if (mode == 'a' || mode == 'A')
     {
-        return flux/(Ard*cos(theta*constants::RADIAN));//(T)
+        var = flux/(Ard*cos(theta*constants::RADIAN));//(T)
     }
     else if (mode == 'r' || mode == 'R')
     {
         area = constants::PI * (Ard * Ard);
-        return flux/(area*cos(theta*constants::RADIAN));//(T)
+        var = flux/(area*cos(theta*constants::RADIAN));//(T)
     }
     else
     {
         area = constants::PI * ((Ard * Ard) / 4.0);
-        return flux/(area*cos(theta*constants::RADIAN));//(T)
+        var = flux/(area*cos(theta*constants::RADIAN));//(T)
     }
+    if (print)
+        std::cout << "Magnetic Field = " << var << " Tesla" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::transformerEquations_VN(const ld Vs, const ld Vp, const ld Ns, const ld Np, std::string mode)
+inline ld ElectroMagneticInduction::transformerEquations_VN(
+        const ld Vs, const ld Vp, const ld Ns, const ld Np,
+        const std::string& mode, bool print)
 {
+    ld var;
     if (mode == "Vs" || mode == "vs" || mode == "VS" || mode == "vS")
     {
-        return (Ns / Np) * Vp;//voltage secondary
+        var = (Ns / Np) * Vp;//voltage secondary
     }
     else if (mode == "Vp" || mode == "vp" || mode == "VP" || mode == "vP")
     {
-        return (Np / Ns) * Vs;//voltage primary
+        var = (Np / Ns) * Vs;//voltage primary
     }
     else if (mode == "Ns" || mode == "ns" || mode == "NS" || mode == "nS")
     {
-        return (Vs / Vp) * Np;//number of loops secondary
+        var = (Vs / Vp) * Np;//number of loops secondary
     }
     else if (mode == "Np" || mode == "np" || mode == "NP" || mode == "nP")
     {
-        return (Vp / Vs) * Ns;//number of loops primary
+        var = (Vp / Vs) * Ns;//number of loops primary
     }
     else
-        return -111111111111;//error
-
+        var = -111111111111;//error
+    if (print) {
+        if (var == -111111111111)
+            std::cout << "Error: Invalid mode" << std::endl;
+        else
+            std::cout << "Value = " << var << std::endl;
+    }
+    return var;
 }
 
-inline ld ElectroMagneticInduction::transformerEquations_VI(const ld Vs, const ld Vp, const ld Is, const ld Ip, std::string mode)
+inline ld ElectroMagneticInduction::transformerEquations_VI(
+        const ld Vs, const ld Vp, const ld Is, const ld Ip,
+        const std::string& mode, bool print)
 {
+    ld var;
     if (mode == "Vs" || mode == "vs" || mode == "VS" || mode == "vS")
     {
-        return (Ip / Is) * Vp;//voltage secondary
+        var = (Ip / Is) * Vp;//voltage secondary
     }
     else if (mode == "Vp" || mode == "vp" || mode == "VP" || mode == "vP")
     {
-        return (Is / Ip) * Vs;//voltage primary
+        var = (Is / Ip) * Vs;//voltage primary
     }
     else if (mode == "Is" || mode == "is" || mode == "IS" || mode == "iS")
     {
-        return (Vp / Vs) * Ip;//current secondary
+        var = (Vp / Vs) * Ip;//current secondary
     }
     else if (mode == "Ip" || mode == "ip" || mode == "IP" || mode == "iP")
     {
-        return (Vs / Vp) * Is;//current primary
+        var = (Vs / Vp) * Is;//current primary
     }
     else
-        return -111111111111;//error
+        var = -111111111111;//error
+    if (print) {
+        if (var == -111111111111)
+            std::cout << "Error: Invalid mode" << std::endl;
+        else
+            std::cout << "Value = " << var << std::endl;
+    }
+    return var;
 }
 
-inline ld ElectroMagneticInduction::transformerEquations_IN(const ld Is, const ld Ip, const ld Ns, const ld Np, std::string mode)
+inline ld ElectroMagneticInduction::transformerEquations_IN(
+        const ld Is, const ld Ip, const ld Ns, const ld Np,
+        const std::string& mode, bool print)
 {
+    ld var;
     if (mode == "Is" || mode == "is" || mode == "IS" || mode == "iS")
     {
-        return (Np / Ns) * Ip;//current secondary
+        var = (Np / Ns) * Ip;//current secondary
     }
     else if (mode == "Ip" || mode == "ip" || mode == "IP" || mode == "iP")
     {
-        return (Ns / Np) * Is;//current primary
+        var = (Ns / Np) * Is;//current primary
     }
     else if (mode == "Ns" || mode == "ns" || mode == "NS" || mode == "nS")
     {
-        return (Ip / Is) * Np;//number of loops secondary
+        var = (Ip / Is) * Np;//number of loops secondary
     }
     else if (mode == "Np" || mode == "np" || mode == "NP" || mode == "nP")
     {
-        return (Ns / Np) * Is;//number of loops primary
+        var = (Is / Ip) * Ns;//number of loops primary
     }
     else
-        return -111111111111;//error
+        var = -111111111111;//error
+    if (print) {
+        if (var == -111111111111)
+            std::cout << "Error: Invalid mode" << std::endl;
+        else
+            std::cout << "Value = " << var << std::endl;
+    }
+    return var;
 }
 
-inline ld ElectroMagneticInduction::frequency(const ld aW)
+inline ld ElectroMagneticInduction::frequency(const ld aW, bool print)
 {
-    return aW/(2.0 * constants::PI);//Hz
+    auto var = aW/(2.0 * constants::PI);//Hz
+    if (print)
+        std::cout << "Frequency = " << var << " Hertz" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::period(const ld f)
+inline ld ElectroMagneticInduction::period(const ld f, bool print)
 {
-    return 1 / f;//s
+    auto var = 1 / f;//s
+    if (print)
+        std::cout << "Period = " << var << " seconds" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::currentInCoil(const ld emf, const ld R)
+inline ld ElectroMagneticInduction::currentInCoil(
+        const ld emf, const ld R, bool print)
 {
-    return emf/R;//A
+    auto var = emf/R;//A
+    if (print)
+        std::cout << "Current in coil = " << var << " Ampere" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::emf_byMutualInductance(const ld M, const ld I, const ld t)
+inline ld ElectroMagneticInduction::emf_byMutualInductance(
+        const ld M, const ld I, const ld t, bool print)
 {
-    return -M * (I / t);//V
+    auto var = -M * (I / t);//V
+    if (print)
+        std::cout << "EMF = " << var << " Volt" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::mutualInductance(const ld emf, const ld I, const ld t)
+inline ld ElectroMagneticInduction::mutualInductance(
+        const ld emf, const ld I, const ld t, bool print)
 {
-    return -emf * (t / I);//henry(H) = (V*s)/A = Ohm*s
+    auto var = -emf * (t / I);//henry(H) = (V*s)/A = Ohm*s
+    if (print)
+        std::cout << "Mutual Inductance = " << var << " Henry" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::emf_bySelfInductance(const ld L, const ld I, const ld t)
+inline ld ElectroMagneticInduction::inductorEMF(
+        const ld L, const ld I, const ld t, bool print)
 {
-    return -L * (I / t);//V
+    auto var = -L * (I / t);//V
+    if (print)
+        std::cout << "EMF = " << var << " Volt" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::selfInductance(const ld emf, const ld I, const ld t)
+inline ld ElectroMagneticInduction::selfInductance(
+        const ld emf, const ld I, const ld t, bool print)
 {
-    return -emf * (t / I);//henry(H)= (V*s)/A = Ohm*s
+    auto L = -emf * (t / I);//henry(H)= (V*s)/A = Ohm*s
+    if (print)
+        std::cout << "Self Inductance = " << L << " Henry" << std::endl;
+    return L;
 }
 
-inline ld ElectroMagneticInduction::selfInductance_N(const ld N, const ld B, const ld I)
+inline ld ElectroMagneticInduction::selfInductance_NBI(
+        const ld N, const ld phi, const ld I, bool print)
 {
-    return N * (B / I);//(H)
+    auto L = N * (phi / I);//(H)
+    if (print)
+        std::cout << "Self Inductance = " << L << " Henry" << std::endl;
+    return L;
 }
 
-inline ld ElectroMagneticInduction::selfInductance_timeConstant(const ld toa, const ld R)
+
+inline ld ElectroMagneticInduction::selfInductance_phiI(
+        ld phi, ld I, bool print)
 {
-    return toa * R;//H
+    auto L = phi / I;//(H)
+    if (print)
+        std::cout << "Self Inductance = " << L << " Henry" << std::endl;
+    return L;
 }
 
-inline ld ElectroMagneticInduction::inductanceSolenoid_L(const ld N, const ld Ard, const ld l, char mode = 'a')
+inline ld ElectroMagneticInduction::selfInductance_timeConstant(
+        const ld toa, const ld R, bool print)
+{
+    auto var = toa * R;//H
+    if (print)
+        std::cout << "Self Inductance = " << var << " Henry" << std::endl;
+    return var;
+}
+
+inline ld ElectroMagneticInduction::inductanceSolenoid_L(
+        const ld N, const ld Ard, const ld l, char mode = 'a', bool print)
 {
     ld area;
+    ld var;
     if (mode == 'a' || mode == 'A')
     {
-        return (constants::mu0 * (N * N) * Ard) / l;//(H)
+        var = (constants::mu0 * (N * N) * Ard) / l;//(H)
     }
     else if	(mode == 'r' || mode == 'R')
     {
         area = constants::PI * (Ard * Ard);
-        return (constants::mu0 * (N * N) * area) / l;//(H)
+        var = (constants::mu0 * (N * N) * area) / l;//(H)
     }
     else
     {
         area = constants::PI * ((Ard * Ard) / 4.0);
-        return (constants::mu0 * (N * N) * area) / l;//(H)
+        var = (constants::mu0 * (N * N) * area) / l;//(H)
     }
+    if (print)
+        std::cout << "Inductance = " << var << " Henry" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::inductanceFromEnergyStored(const ld E, const ld I)
+inline ld ElectroMagneticInduction::inductanceFromEnergyStored(
+        const ld E, const ld I, bool print)
 {
-    return (2.0 * E) / (I * I);//H = Ohm *s
+    auto var = (2.0 * E) / (I * I);//H = Ohm *s
+    if (print)
+        std::cout << "Inductance = " << var << " Henry" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::energyStoredInInductor(const ld L, const ld I)
+inline ld ElectroMagneticInduction::energyStoredInInductor(
+        const ld L, const ld I, bool print)
 {
-    return (1.0 / 2.0) * L * (I * I);//J
+    auto var = (1.0 / 2.0) * L * (I * I);//J
+    if (print)
+        std::cout << "Energy = " << var << " Joule" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::timeOnOffToinduceCurrent(const ld I, const ld L, const ld emf)
+inline ld ElectroMagneticInduction::timeOnOffToInduceCurrent(
+        const ld I, const ld L, const ld emf, bool print)
 {
-    return L * (I / emf);//seconds
+    auto var = L * (I / emf);//seconds
+    if (print)
+        std::cout << "Time = " << var << " seconds" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::currentSystemOnRails(const ld B, const ld l, const ld v, const ld A, const ld p, const ld R, const ld t)
+inline ld ElectroMagneticInduction::currentSystemOnRails(
+        const ld B, const ld l, const ld v, const ld A, const ld p, const ld R,
+        const ld t, bool print)
 {
-    return (B * l * v * A) / (p * (2.0 * v * t + l) + R*A);//A
+    auto var = (B * l * v * A) / (p * (2.0 * v * t + l) + R*A);//A
+    if (print)
+        std::cout << "Current = " << var << " Ampere" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::characteristicTimeConstant(const ld L, const ld R)
+inline ld ElectroMagneticInduction::inductiveTimeConstant(
+        ld L, ld R, bool print)
 {
-    return L/R;//s
+    auto var = L/R;//s
+    if (print)
+        std::cout << "Time Constant = " << var << " seconds" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::inductance_reactance_XL(const ld f, const ld L)
+inline ld ElectroMagneticInduction::inductanceReactance_fL(
+        ld f, ld L, bool print)
 {
-    return 2.0 * constants::PI * f * L;
+    auto var = 2.0 * constants::PI * f * L;
+    if (print)
+        std::cout << "Reactance = " << var << " Ohm" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::capacitive_reactance_XC(const ld f, const ld C)
+inline ld ElectroMagneticInduction::capacitiveReactance_fC(
+        ld f, ld C, bool print)
 {
-    return 1.0 / (2.0 * constants::PI * f * C);//ohms
+    auto var = 1.0 / (2.0 * constants::PI * f * C);//ohms
+    if (print)
+        std::cout << "Reactance = " << var << " Ohm" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::capacitanceFromReactance(const ld f, const ld _xc)
+inline ld ElectroMagneticInduction::capacitanceFromReactance(
+        const ld f, const ld _xc, bool print)
 {
-    return 1.0 / (2.0 * constants::PI * f * _xc);//F
+    auto var = 1.0 / (2.0 * constants::PI * f * _xc);//F
+    if (print)
+        std::cout << "Capacitance = " << var << " Farad" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::current_RLCircuit_switchON(const ld Io, const ld t, const ld cTc)
+inline ld ElectroMagneticInduction::current_RLCircuit_switchON(
+        const ld Io, const ld t, const ld tao, bool print)
 {
-    return Io * (1.0 - exp(-t / cTc));//A
+    auto var = Io * (1.0 - exp(-t / tao));//A
+    if (print)
+        std::cout << "Current = " << var << " Ampere" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::current_RICircuit_switchOFF(const ld Io, const ld t, const ld cTc)
+inline ld ElectroMagneticInduction::current_RICircuit_switchOFF(
+        const ld Io, const ld t, const ld tao, bool print)
 {
-    return Io * exp(-t / cTc);//A
+    auto var = Io * exp(-t / tao);//A
+    if (print)
+        std::cout << "Current = " << var << " Ampere" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::currentRMS_throughInductor(const ld Vrms, const ld _xl)
+inline ld ElectroMagneticInduction::currentRMS_throughInductor(
+        const ld Vrms, const ld _xl, bool print)
 {
-    return Vrms / _xl;//A
+    auto var = Vrms / _xl;//A
+    if (print)
+        std::cout << "Current = " << var << " Ampere" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::currentRMS_throughCapacitor(const ld Vrms, const ld _xc)
+inline ld ElectroMagneticInduction::currentRMS_throughCapacitor(
+        const ld Vrms, const ld _xc, bool print)
 {
-    return Vrms / _xc;//A
+    auto var = Vrms / _xc;//A
+    if (print)
+        std::cout << "Current = " << var << " Ampere" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::peekCurrent_AC(const ld Vo, const ld Z)
+inline ld ElectroMagneticInduction::peekCurrent_AC(
+        const ld Vo, const ld Z, bool print)
 {
-    return Vo / Z;//A
+    auto var = Vo / Z;//A
+    if (print)
+        std::cout << "Current = " << var << " Ampere" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::rmsCurrent_AC(const ld Vrms, const ld Z)
+inline ld ElectroMagneticInduction::rmsCurrent_AC(
+        const ld Vrms, const ld Z, bool print)
 {
-    return Vrms / Z;//A
+    auto var = Vrms / Z;//A
+    if (print)
+        std::cout << "Current = " << var << " Ampere" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::rmsCurrent_AC(const ld Vrms, const ld R, const ld _xl, const ld _xc)
+inline ld ElectroMagneticInduction::rmsCurrent_AC(
+        const ld Vrms, const ld R, const ld _xl, const ld _xc, bool print)
 {
     const ld imp = impedance(R, _xl, _xc);
-    return Vrms/imp;
+    auto var = Vrms/imp;
+    if (print)
+        std::cout << "Current = " << var << " Ampere" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::rmsCurrent_AC(const ld Vrms, const ld R, const ld L, const ld C, const ld f)
+inline ld ElectroMagneticInduction::rmsCurrent_AC(
+        const ld Vrms, const ld R, const ld L, const ld C, const ld f,
+        bool print)
 {
-    const ld XL = inductance_reactance_XL(f, L);
-    const ld XC = capacitive_reactance_XC(f, C);
+    const ld XL = inductanceReactance_fL(f, L);
+    const ld XC = capacitiveReactance_fC(f, C);
     const ld Z = sqrt((R * R) + pow((XL - XC), 2));
-    return Vrms / Z;
+    auto var = Vrms / Z;
+    if (print)
+        std::cout << "Current = " << var << " Ampere" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::impedance(const ld R, const ld _xl, const ld _xc)
+inline ld ElectroMagneticInduction::impedance(
+        const ld R, const ld _xl, const ld _xc, bool print)
 {
-    return sqrt((R * R) + pow((_xl - _xc), 2));//Ohms
+    auto var = sqrt((R * R) + pow((_xl - _xc), 2));//Ohms
+    if (print)
+        std::cout << "Impedance = " << var << " Ohm" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::impedance(const ld R, const ld L, const ld C, const ld f)
+inline ld ElectroMagneticInduction::impedance(
+        const ld R, const ld L, const ld C, const ld f, bool print)
 {
-    const ld XL = inductance_reactance_XL(f, L);
-    const ld XC = capacitive_reactance_XC(f, C);
-    return sqrt((R * R) + pow((XL - XC), 2));
+    const ld XL = inductanceReactance_fL(f, L);
+    const ld XC = capacitiveReactance_fC(f, C);
+    auto var = sqrt((R * R) + pow((XL - XC), 2));
+    if (print)
+        std::cout << "Impedance = " << var << " Ohm" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::resonantFrequency(const ld L, const ld C)
+inline ld ElectroMagneticInduction::resonantFrequency(
+        const ld L, const ld C, bool print)
 {
-    return 1.0 / (20 * constants::PI * sqrt(L * C));//Hz
+    auto var = 1.0 / (20 * constants::PI * sqrt(L * C));//Hz
+    if (print)
+        std::cout << "Resonant Frequency = " << var << " Hz" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::powerFactor(const ld R, const ld Z)
+inline ld ElectroMagneticInduction::powerFactor(
+        const ld R, const ld Z, bool print)
 {
-    return R / Z;
+    auto var = R / Z;
+    if (print)
+        std::cout << "Power Factor = " << var << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::phaseAngle(const ld pf)
+inline ld ElectroMagneticInduction::phaseAngle(
+        const ld pf, bool print)
 {
-    return acos(pf);
+    auto var = acos(pf);
+    if (print)
+        std::cout << "Phase Angle = " << var << " Radians" << std::endl;
+    return var;
+
 }
 
-inline ld ElectroMagneticInduction::phaseAngle(const ld R, const ld Z)
+inline ld ElectroMagneticInduction::phaseAngle(
+        const ld R, const ld Z, bool print)
 {
     const ld pf = powerFactor(R, Z);
-    return acos(pf);
+    auto var = acos(pf);
+    if (print)
+        std::cout << "Phase Angle = " << var << " Radians" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::powerAvgRLC(const ld Irms, const ld Vrms, const ld pf)
+inline ld ElectroMagneticInduction::powerAvgRLC(
+        const ld Irms, const ld Vrms, const ld pf, bool print)
 {
-    return Irms * Vrms * pf;//Watts
+    auto var = Irms * Vrms * pf;//Watts
+    if (print)
+        std::cout << "Power = " << var << " Watts" << std::endl;
+    return var;
 }
 
-inline ld ElectroMagneticInduction::emfPeek(const ld r, const ld N, const ld t, const ld B)
+inline ld ElectroMagneticInduction::emfPeek(
+        const ld r, const ld N, const ld t, const ld B, bool print)
 {
-    return ((constants::PI * constants::PI) * N * (r * r) * B) / (2.0 * t);//peek emf (Vo)
+    //peek emf (Vo)
+    auto var = ((constants::PI * constants::PI) * N * (r * r) * B) / (2.0 * t);
+    if (print)
+        std::cout << "EMF = " << var << " Volts" << std::endl;
+    return var;
 }
 
+inline ld ElectroMagneticInduction::magneticFluxSolenoidLoop(
+        ld R, ld n, ld I, bool print)
+{
+    auto mu0 = constants::mu0;
+    auto pi = constants::PI;
+    auto phi = mu0*n*I*pi*(R*R);
+    if (print)
+        std::cout << "Magnetic Flux = " << phi << " Webers" << std::endl;
+    return phi;
+}
 
+inline ld ElectroMagneticInduction::magneticFluxRectangularLoop(
+        ld I, ld a, ld l, ld w, bool print)
+{
+    auto mu0 = constants::mu0;
+    auto pi = constants::PI;
+    auto phi = ((mu0*I*l)/(2.0*pi)) * std::log((a+w)/a);
+    if (print)
+        std::cout << "Magnetic Flux = " << phi << " Webers" << std::endl;
+    return phi;
+}
+
+inline ld ElectroMagneticInduction::inducedCurrentLoop(
+        ld r, ld R, ld dB_dt, bool print)
+{
+    auto mu0 = constants::mu0;
+    auto pi = constants::PI;
+    auto emf = pi * (r * r) * dB_dt;
+    auto I = emf / R;
+    if (print)
+        std::cout << "Induced Current = " << I << " Ampere" << std::endl;
+    return I;
+}
+
+inline ld ElectroMagneticInduction::currentSlidingBar(
+        ld l, ld R, ld v, ld B, bool print)
+{
+    auto I = (B*l*v) / R;
+    if (print)
+        std::cout << "Current = " << I << " Ampere" << std::endl;
+    return I;
+}
+
+inline ld ElectroMagneticInduction::powerDissipatedSquareLoop(
+        ld l, ld R, ld v, ld B, bool print)
+{
+    auto P = (B*B*l*l*v*v) / R;
+    if (print)
+        std::cout << "Power = " << P << " Watts" << std::endl;
+    return P;
+}
+
+inline ld ElectroMagneticInduction::magneticFieldStrengthGenerator(
+        ld n, ld d, ld f, ld V,  bool print)
+{
+    auto pi = constants::PI;
+    auto r = d/2.0;
+    auto B = V / (2.0*(pi*pi)*(r*r)*n*f);
+    if (print)
+        std::cout << "Magnetic Field Strength = " << B << " Tesla" << std::endl;
+    return B;
+}
+
+inline ld ElectroMagneticInduction::current_RLCircuit(
+        ld emf, ld R, ld L, ld t,  bool print)
+{
+    auto I = (emf / R) * (1 - exp(-R * t / L));
+    if (print)
+        std::cout << "Current = " << I << " Ampere" << std::endl;
+    return I;
+}
+
+inline ld ElectroMagneticInduction::timeCurrentToReachXPercent(
+        ld L, ld R, ld x, bool print)
+{
+    auto t = -(L / R)*log(1.0 - (x / 100.0));
+    if (print)
+        std::cout << "Time = " << t << " Seconds" << std::endl;
+    return t;
+}
+
+inline ld ElectroMagneticInduction::rateInductorStoresEnergy(
+        ld I, ld L, ld t, bool print)
+{
+    auto P = (L*I) * (I / t);
+    if (print)
+        std::cout << "Power = " << P << " Watts" << std::endl;
+    return P;
+}
+
+inline vector<ld> ElectroMagneticInduction::energyReleaseMRI(
+        ld I, ld L, ld R, bool print)
+{
+    auto U = energyStoredInInductor(I, L, false);
+    auto P = Magnetism::electricalPower_IR(I, R, false);
+    if (print) {
+        std::cout << "Energy Stored = " << U << " Joules" << std::endl;
+        std::cout << "Power = " << P << " Watts" << std::endl;
+    }
+    return {U, P};
+}
+
+inline ld ElectroMagneticInduction::energyStoredSolenoid(
+        ld l, ld A, ld n, ld I, bool print)
+{
+    auto mu0 = constants::mu0;
+    auto U = (1.0 / 2.0 * mu0)*pow(mu0 * n * I, 2.0) * l * A;
+    if (print)
+        std::cout << "Energy Stored = " << U << " Joules" << std::endl;
+    return U;
+}
+
+inline ld ElectroMagneticInduction::energyStoredSolenoid(
+        ld l, ld A, ld B, bool print)
+{
+    auto mu0 = constants::mu0;
+    auto U = ((B*B)/(2.0*mu0)) * l * A;
+    if (print)
+        std::cout << "Energy Stored = " << U << " Joules" << std::endl;
+    return U;
+}
+
+inline ld ElectroMagneticInduction::energyDensityMagneticField(
+        ld B, bool print)
+{
+    auto mu0 = constants::mu0;
+    auto U = (B*B) / (2.0*mu0);
+    if (print)
+        std::cout << "Energy Density = " << U << " Joules/m^3" << std::endl;
+    return U;
+}
+
+inline ld ElectroMagneticInduction::inducedElectricFieldSolenoid(
+        ld R, ld b, ld r, bool print)
+{
+    auto E = (R*R*b) / (2.0*r);
+    if (print)
+        std::cout << "Induced Electric Field = " << E << " Volts/m" << std::endl;
+    return E;
+}
+
+inline vector<ld> ElectroMagneticInduction::magneticFluxAndAverageEmf(
+        int n, ld A, ld t, ld B, ld theta_i, ld theta_f, bool print)
+{
+    // threshold to check if results can be considered 0, because cos(90) = 0
+    // but in c++ ends up never being 0 and need it to be 0
+    double threshold = .000000001;
+    // calculate the initial magnetic flux
+    auto phi0 = A * B * cos(theta_i * constants::RADIAN);
+    // calculate the final magnetic flux after rotating the coil in time t
+    auto phi = A * B * cos(theta_f * constants::RADIAN);
+    // check the threshold to see if the results can be considered 0
+    if (abs(phi0) < threshold)
+        phi0 = 0;
+    if (abs(phi) < threshold)
+        phi = 0;
+    // calculate the average emf
+    auto emf = -n * ((phi - phi0) / t);
+    if (print) {
+        std::cout << "Initial Magnetic Flux = " << phi0 << " Webers" << std::endl;
+        std::cout << "Final Magnetic Flux = " << phi << " Webers" << std::endl;
+        std::cout << "Average EMF = " << emf << " Volts" << std::endl;
+    }
+    return {phi0, phi, emf};
+}
+
+inline ld ElectroMagneticInduction::fractionOfMaxValueReached(
+        ld L, ld R, ld t, bool print)
+{
+    auto x = 100.0 * (1.0 - exp(-R * t / L));
+    if (print)
+        std::cout << "Fraction of Max Value Reached = " << x << "%" << std::endl;
+    return x;
+}
+
+inline ld ElectroMagneticInduction::current_RLCircuitDecreasingI(
+        ld emf, ld R, ld L, ld t, bool print)
+{
+    auto I = (emf / R) * (exp(-R * t / L));
+    if (print)
+        std::cout << "Current = " << I << " Ampere" << std::endl;
+    return I;
+}
+
+inline vector<ld> ElectroMagneticInduction::emfAndInducedCurrent(
+        ld C, ld deltaC, ld B, ld t, Direction d, bool print)
+{
+    string dir;
+    auto C_f = C - t*deltaC;
+    auto emf = (B * (C_f/(2.0 * constants::PI)))*deltaC;
+    auto I_dir = (d == Direction::U) ? -1 : 1;
+    auto I = I_dir * (emf / C_f);
+    if (I_dir == -1)
+        dir = "clockwise";
+    else
+        dir = "counter-clockwise";
+    if (print) {
+        std::cout << "EMF = " << emf << " Volts" << std::endl;
+        std::cout << "Induced Current = " << dir << " direction" << std::endl;
+        std::cout << "Induced Current = " << I << " Ampere" << std::endl;
+    }
+    return {emf, I};
+}
+
+inline ld ElectroMagneticInduction::potentialDifferenceAcrossRod(
+        ld l, ld B, ld v, bool print)
+{
+    auto V = v * B * l;
+    if (print)
+        std::cout << "Potential Difference = " << V << " Volts" << std::endl;
+    return V;
+}
+
+inline ld ElectroMagneticInduction::potentialDifferenceAcrossRod(
+        ld l, ld E, bool print)
+{
+    auto V = E * l;
+    if (print)
+        std::cout << "Potential Difference = " << V << " Volts" << std::endl;
+    return V;
+}
+
+inline vector<ld> ElectroMagneticInduction::magneticFluxAndCurrent(
+        ld d, ld R, ld Bi, ld Bf, ld t, bool print)
+{
+    auto pi = constants::PI;
+    auto phi_i = Bi * circle_area_d(d) * cos(0.0);
+    auto phi_f = Bf * circle_area_d(d) * cos(0.0);
+    auto emf = (phi_f - phi_i) / t;
+    auto I = emf / R;
+    if (print) {
+        std::cout << "Initial Magnetic Flux = " << phi_i << " Webers" << std::endl;
+        std::cout << "Final Magnetic Flux = " << phi_f << " Webers" << std::endl;
+        std::cout << "EMF = " << emf << " Volts" << std::endl;
+        std::cout << "Current = " << I << " Ampere" << std::endl;
+    }
+    return {phi_i, phi_f, emf, I};
+}

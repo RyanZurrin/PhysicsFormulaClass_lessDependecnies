@@ -591,20 +591,20 @@ public:
     /**
      * @brief adiabatic process, work done
      * @param lambda the ratio of molar specific heats
-     * @param pi the initial pressure of the system
-     * @param pf the final pressure of the system
+     * @param p_i the initial pressure of the system
+     * @param p_f the final pressure of the system
      * @param Vi the initial volume of the system
      * @param Vf the final volume of the system
      * @return the heat supplied to the system during an adiabatic process
      */
     static ld workByAdiabaticProcess(const ld lambda,
-                                const ld pi,
-                                const ld pf,
+                                const ld p_i,
+                                const ld p_f,
                                 const ld Vi,
                                 const ld Vf,
                                 bool print = true)
     {
-        auto Q = (pf * Vf - pi * Vi) / (lambda - 1);
+        auto Q = (p_f * Vf - p_i * Vi) / (lambda - 1);
         if (print)
             cout << "the heat supplied to the system during an adiabatic process is "
                  << Q << " J" << std::endl;
@@ -1367,7 +1367,7 @@ public:
                                                 const ld P2,
                                                 const ld V1,
                                                 const ld V2,
-                                                bool heatTransfered = false,
+                                                bool heatTransferred = false,
                                                 bool print = true)
     {
         string process;
@@ -1379,7 +1379,7 @@ public:
         {
             process = "isochoric";
         }
-        else if (!heatTransfered)
+        else if (!heatTransferred)
         {
             process = "adiabatic";
         }

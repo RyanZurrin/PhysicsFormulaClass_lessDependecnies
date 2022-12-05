@@ -380,13 +380,23 @@ static auto circleCircumference = []<class T>(const T rd, const char mode = 'r')
 /// radius. Do not add anything here if it is the radius you are using
 /// as it is defaulted to radius</param>
 /// <returns>area of a circle (m^2)</returns>
-static auto circleArea = []<class T>(const T rd, const char mode = 'r')
+static auto circleArea = []<class T>(const T rcd, const char mode = 'r')
 {
     if (mode == 'r')
     {
-        return constants::PI * (rd * rd);
+        // calculate from radius
+        return constants::PI * (rcd * rcd);
     }
-    return (constants::PI * (rd * rd)) / 4.0;
+    else if (mode == 'c')
+    {
+        // calculate from circumference
+        return (rcd*rcd) / (4.0 * constants::PI);
+    }
+    else
+    {
+        // calculate from diameter
+        return (constants::PI * (rcd * rcd)) / 4.0;
+    }
 };
 
 /// <summary>

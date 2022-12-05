@@ -1,12 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-#Policy CMP0054 is not set: Only interpret if() arguments as variables or
-#keywords when unquoted.  Run "cmake --help-policy CMP0054" for policy
-#details.  Use the cmake_policy command to set the policy and suppress this
-#warning.
-# set the policy to OLD
 cmake_policy(SET CMP0054 NEW)
-#This warning is for project developers.  Use -Wno-dev to suppress it.
-# supress the warning
 set(CMAKE_SUPPRESS_DEVELOPER_WARNINGS 1 CACHE INTERNAL "No dev warnings")
 
 project(PhysicsFormula)
@@ -50,7 +43,7 @@ add_executable(PhysicsFormula testFactory.cpp Angle.h AtomicPhysics.h
         TemplateBST.h templateGraph.h templateGraph.cpp Calculus.h Derivation.h
         EuclideanGraph.h Constants.h StaticEquilibrium.h UnitVector.h
         Kirschoff.h pbPlots.hpp pbPlots.cpp supportLib.hpp supportLib.cpp
-        Plots.h Dimensions.h ElectricField.h Scale.h CircuitBoard.h CapacitorNode.h ResistorNode.h)
+        Plots.h Dimensions.h ElectricField.h Scale.h CircuitBoard.h CapacitorNode.h ResistorNode.h InductorNode.h)
 
 
 set(SFML_STATIC_LIBRARIES TRUE)

@@ -223,6 +223,9 @@
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Inclusion.h">
 			<Option target="PhysicsFormula"/>
 		</Unit>
+		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/InductorNode.h">
+			<Option target="PhysicsFormula"/>
+		</Unit>
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Intersection.cpp">
 			<Option target="PhysicsFormula"/>
 		</Unit>
