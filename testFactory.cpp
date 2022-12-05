@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
     //**************************************************************************
 
 
-    EMI::magneticFluxAndCurrent(47.0e-2, 120.0, 5.0e-3, 55.0e-3, 25.0e-3);
+    EMI::magneticEnergy(1210, .292, .0158, .165);
 
     //**************************************************************************
     //Stopping RunTimer and displaying the programs' execution time

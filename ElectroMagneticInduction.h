@@ -441,6 +441,16 @@ public:
     static ld selfInductance(ld emf, ld I, ld t, bool print = true);
 
     /**
+     * @brief The current in an inductor is changing at deltaI A/s and the
+     * inductor emf is emf V. Calculate the self inductance of the inductor.
+     * @param emf The emf.
+     * @param deltaI The change in current.
+     * @param print (default is true) if true prints the equation and result.
+     * @return inductance of inductor(H)
+     */
+    static ld selfInductance(ld emf, ld deltaI, bool print = true);
+
+    /**
      * @brief calculates the self inductance.
      * @param N The number of loops.
      * @param phi The flux.
@@ -468,19 +478,20 @@ public:
      * @param print (default is true) if true prints the equation and result.
      * @return self inductance
      */
-    static ld selfInductance_timeConstant(ld toa, ld R, bool print = true);
+    static ld selfInductance_taoR(const ld toa, const ld R, bool print = true);
 
     /**
      * @brief Calculates the inductance of a solenoid.
      * @param N The number of turns in coil.
-     * @param Ard the area, radius or diameter.
+     * @param A the area, radius or diameter.
      * @param l The length of solenoid.
      * @param mode put a 'r' if use a radius or a 'd' if using the
-     * diameter in the Ard argument.
+     * diameter or a 'c' if using the circumference to calculate the area.
      * @param print (default is true) if true prints the equation and result.
-     * @return inductance(H)
+     * @return self inductance of solenoid
      */
-    static ld inductanceSolenoid_L(ld N, ld A, ld l, char mode, bool print = true);
+    static ld inductanceSolenoid_NAL(int N, ld A, ld l, char mode, bool print
+    = true);
 
     /**
      * @brief Calculates the inductance from total energy of E stored in inductor
@@ -1042,6 +1053,70 @@ public:
     static vector<ld> magneticFluxAndCurrent(
                 ld d, ld R, ld Bi, ld Bf, ld t, bool print = true);
 
+    /**
+     * @brief A conducting loop of area A-m^2 and resistance R Ω lies at right
+     * angles to a spatially uniform magnetic field. The loop carries an induced
+     * current of I A. Calculate at what rate the magnetic field is changing.
+     * @param A The area.
+     * @param R The resistance.
+     * @param I The current.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the rate the magnetic field is changing
+     */
+    static ld rateOfChangeOfMagneticField(ld A, ld R, ld I, bool print = true);
+
+    /**
+     * @brief Calculate the magnetic field of a conducting loop of area A-m^2
+     * and resistance R Ω, carrying an induced current of I A.
+     * @param A The area.
+     * @param R The resistance.
+     * @param I The current.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the rate the magnetic field is changing
+     */
+    static ld magneticField_IRA(ld I, ld R, ld A, bool print = true);
+
+    /**
+     * @brief The magnetic field inside a d-m diameter solenoid is increasing at
+     * detlaB T/s. Calculate how many turns should a coil be wrapped around the
+     * outside of the solenoid have so that the emf induced in the coil is
+     * emf volts?
+     * @param d The diameter.
+     * @param deltaB The change in magnetic field.
+     * @param emf The emf.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the number of turns
+     */
+    static ld numberOfTurns(ld d, ld deltaB, ld emf, bool print = true);
+
+    /**
+     * brief A long solenoid with cross-sectional area A and length l is wound
+     * with N1 turns of wire. A time-varying current I1 flows through this wire.
+     * A shorter coil with N2 turns of wire surrounds it. Use μ0 for the
+     * permeability of free space. Find the value M of the mutual inductance.
+     * @param A The cross-sectional area.
+     * @param l The length.
+     * @param N1 The number of turns of wire in the solenoid.
+     * @param I1 The current flowing through the solenoid.
+     * @param N2 The number of turns of wire in the coil.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the value of the mutual inductance
+     */
+    static ld mutualInductance(
+                ld A, ld l, ld N1, ld I1, ld N2, bool print = true);
+
+    /**
+     * @brief A N-turn solenoid l m long and d m in diameter carries
+     * I A. Calculate how much magnetic energy it contains (U).
+     * @param N The number of turns.
+     * @param l The length.
+     * @param d The diameter.
+     * @param I The current.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the magnetic energy
+     */
+    static ld magneticEnergy(ld N, ld l, ld d, ld I, bool print = true);
+
 
     ~ElectroMagneticInduction()
     {
@@ -1396,10 +1471,10 @@ inline ld ElectroMagneticInduction::currentInCoil(
 inline ld ElectroMagneticInduction::emf_byMutualInductance(
         const ld M, const ld I, const ld t, bool print)
 {
-    auto var = -M * (I / t);//V
+    auto emf = -M * (I / t);//V
     if (print)
-        std::cout << "EMF = " << var << " Volt" << std::endl;
-    return var;
+        std::cout << "EMF = " << emf << " Volt" << std::endl;
+    return emf;
 }
 
 inline ld ElectroMagneticInduction::mutualInductance(
@@ -1448,7 +1523,7 @@ inline ld ElectroMagneticInduction::selfInductance_phiI(
     return L;
 }
 
-inline ld ElectroMagneticInduction::selfInductance_timeConstant(
+inline ld ElectroMagneticInduction::selfInductance_taoR(
         const ld toa, const ld R, bool print)
 {
     auto var = toa * R;//H
@@ -1457,23 +1532,28 @@ inline ld ElectroMagneticInduction::selfInductance_timeConstant(
     return var;
 }
 
-inline ld ElectroMagneticInduction::inductanceSolenoid_L(
-        const ld N, const ld Ard, const ld l, char mode = 'a', bool print)
+inline ld ElectroMagneticInduction::inductanceSolenoid_NAL(
+        int N, ld A, ld l, char mode = 'a', bool print)
 {
     ld area;
     ld var;
     if (mode == 'a' || mode == 'A')
     {
-        var = (constants::mu0 * (N * N) * Ard) / l;//(H)
+        var = (constants::mu0 * (N * N) * A) / l;//(H)
     }
     else if	(mode == 'r' || mode == 'R')
     {
-        area = constants::PI * (Ard * Ard);
+        area = circle_area_r(A);
         var = (constants::mu0 * (N * N) * area) / l;//(H)
+    }
+    else if (mode == 'c' || mode == 'C')
+    {
+        area = circle_area_c(A);
+        var = (constants::mu0 * (N * N) * area) / (2.0 * l);//(H)
     }
     else
     {
-        area = constants::PI * ((Ard * Ard) / 4.0);
+        area = circle_area_d(A);
         var = (constants::mu0 * (N * N) * area) / l;//(H)
     }
     if (print)
@@ -1945,4 +2025,62 @@ inline vector<ld> ElectroMagneticInduction::magneticFluxAndCurrent(
         std::cout << "Current = " << I << " Ampere" << std::endl;
     }
     return {phi_i, phi_f, emf, I};
+}
+
+inline ld ElectroMagneticInduction::rateOfChangeOfMagneticField(
+        ld A, ld R, ld I, bool print)
+{
+    auto dB = (R * I) / A;
+    if (print)
+        std::cout << "Rate of Change of Magnetic Field = " << dB << " Tesla/s" << std::endl;
+    return dB;
+}
+
+inline ld ElectroMagneticInduction::magneticField_IRA(
+        ld I, ld R, ld A, bool print)
+{
+    auto B = (I * R) / A;
+    if (print)
+        std::cout << "Magnetic Field = " << B << " Tesla" << std::endl;
+    return B;
+}
+
+inline ld ElectroMagneticInduction::numberOfTurns(
+        ld d, ld deltaB, ld emf, bool print)
+{
+    auto A = circle_area_d(d);
+    auto n = round((ld)emf / (A * deltaB));
+    if (print)
+        std::cout << "Number of Turns = " << n << std::endl;
+    return (ld)n;
+}
+
+inline ld ElectroMagneticInduction::selfInductance(
+        ld emf, ld deltaI, bool print)
+{
+    auto L = (emf / deltaI);
+    if (print)
+        std::cout << "Self Inductance = " << L << " Henry" << std::endl;
+    return L;
+}
+
+inline ld ElectroMagneticInduction::mutualInductance(
+        ld A, ld l, ld N1, ld I1, ld N2, bool print)
+{
+    auto mu0 = constants::mu0;
+    auto M = (mu0 * N1 * N2 * A) / l;
+    if (print)
+        std::cout << "Mutual Inductance = " << M << " Henry" << std::endl;
+    return M;
+}
+
+inline ld ElectroMagneticInduction::magneticEnergy(
+        ld N, ld l, ld d, ld I, bool print)
+{
+    auto mu0 = constants::mu0;
+    auto A = circle_area_d(d);
+    auto U = (1.0/2.0) * ((mu0 * (N * N) * A) / l) * (I * I);
+    if (print)
+    std::cout << "Magnetic Energy = " << U << " Joules" << std::endl;
+    return U;
 }
