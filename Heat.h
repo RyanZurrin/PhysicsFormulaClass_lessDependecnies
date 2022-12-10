@@ -247,8 +247,8 @@ static struct LatentHeatFusion
     } sulfur;
     const struct LEAD {
         const ld melting_point = 327.0;
-        const ld kJ_kg = 23.00;
-        const ld J_kg = 23000.0;
+        const ld kJ_kg = 24.70;
+        const ld J_kg = 24700.0;
         const ld kcal_kg = 5.49;
     } lead;
     const struct ANTIMONY {
@@ -308,7 +308,7 @@ static struct LatentHeatFusion
 
     // create a way to iterate through all the elements and the kJ_kg value
     // for each element
-    const std::map<std::string, ld> elems = {
+    const std::map<std::string, ld> elems_kj = {
         {"helium", helium.kJ_kg},
         {"hydrogen", hydrogen.kJ_kg},
         {"nitrogen", nitrogen.kJ_kg},
@@ -328,6 +328,29 @@ static struct LatentHeatFusion
         {"uraniumDioxide", uraniumDioxide.kJ_kg},
         {"platinum", platinum.kJ_kg},
         {"tungsten", tungsten.kJ_kg}
+    };
+
+// create a way to iterate through all the elements and the J_kg value
+    const std::map<std::string, ld> elems_j = {
+        {"helium", helium.J_kg},
+        {"hydrogen", hydrogen.J_kg},
+        {"nitrogen", nitrogen.J_kg},
+        {"oxygen", oxygen.J_kg},
+        {"ethanol", ethanol.J_kg},
+        {"ammonia", ammonia.J_kg},
+        {"mercury", mercury.J_kg},
+        {"water", water.J_kg},
+        {"sulfur", sulfur.J_kg},
+        {"lead", lead.J_kg},
+        {"antimony", antimony.J_kg},
+        {"aluminum", aluminum.J_kg},
+        {"silver", silver.J_kg},
+        {"gold", gold.J_kg},
+        {"copper", copper.J_kg},
+        {"uranium", uranium.J_kg},
+        {"uraniumDioxide", uraniumDioxide.J_kg},
+        {"platinum", platinum.J_kg},
+        {"tungsten", tungsten.J_kg}
     };
 
 } LF;
@@ -455,7 +478,7 @@ static struct LatentHeatVaporization
 
     // create a way to iterate through all the elements and the kJ_kg value
     // for each element
-    const std::map<std::string, ld> elems = {
+    const std::map<std::string, ld> elems_kj = {
         {"helium", helium.kJ_kg},
         {"hydrogen", hydrogen.kJ_kg},
         {"nitrogen", nitrogen.kJ_kg},
@@ -476,6 +499,30 @@ static struct LatentHeatVaporization
         {"platinum", platinum.kJ_kg},
         {"tungsten", tungsten.kJ_kg}
     };
+
+    // create a way to iterate through all the elements and the J_kg value
+    const std::map<std::string, ld> elems_j = {
+        {"helium", helium.J_kg},
+        {"hydrogen", hydrogen.J_kg},
+        {"nitrogen", nitrogen.J_kg},
+        {"oxygen", oxygen.J_kg},
+        {"ethanol", ethanol.J_kg},
+        {"ammonia", ammonia.J_kg},
+        {"mercury", mercury.J_kg},
+        {"water", water.J_kg},
+        {"sulfur", sulfur.J_kg},
+        {"lead", lead.J_kg},
+        {"antimony", antimony.J_kg},
+        {"aluminum", aluminum.J_kg},
+        {"silver", silver.J_kg},
+        {"gold", gold.J_kg},
+        {"copper", copper.J_kg},
+        {"uranium", uranium.J_kg},
+        {"uraniumDioxide", uraniumDioxide.J_kg},
+        {"platinum", platinum.J_kg},
+        {"tungsten", tungsten.J_kg}
+    };
+
 }LV;
 
 /**

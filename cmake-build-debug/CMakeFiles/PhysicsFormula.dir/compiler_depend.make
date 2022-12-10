@@ -3923,6 +3923,7 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: D:/src/CLionProjects/PhysicsF
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Plots.h \
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/pbPlots.hpp \
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/supportLib.hpp \
+  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Element.h \
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/RunTimer.h
 
 
@@ -5215,5 +5216,7 @@ D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/FluidDynamics.h:
 D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Circle.h:
 
 D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Plots.h:
+
+D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Element.h:
 
 D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/RunTimer.h:

@@ -12,6 +12,7 @@
  */
 #include "Heat.h"
 #include "Energy.h"
+#include "PeriodicElements.h"
 static int thermodynamics_objectCount = 0;
 
 ld static kiloJoulesToCalories(const ld kJ)
@@ -1406,7 +1407,7 @@ public:
                                                     const ld threshold = 4.0)
     {
         vector<string> substances = {};
-        auto elems = LF.elems;
+        auto elems = LF.elems_kj;
         for (auto elem : elems)
         {
             if (abs(elem.second - Lv) < threshold)
@@ -1662,7 +1663,8 @@ public:
      * @return  the power in W
      */
     static ld powerToMaintainOvenTemperature(
-            const ld Tc, const ld Tk, const ld pLoss, bool print = true) {
+            const ld Tc, const ld Tk, const ld pLoss, bool print = true)
+    {
         auto deltaT = Tc - Tk;
         auto P = pLoss * deltaT;
         if (print)
@@ -1721,9 +1723,9 @@ public:
      * @return  the maximum pressure reached in the flask, the number of
      * moles, and the final pressure in the flask
      */
-     static vector<ld> flaskInBoilingWaterData(
-             const ld vol, const ld Pi, const ld Ti, bool print = true)
-     {
+    static vector<ld> flaskInBoilingWaterData(
+            const ld vol, const ld Pi, const ld Ti, bool print = true)
+    {
          // convert pressure to pascals
          auto PiPa = Pi * 101325;
          // convert temperature to kelvin
@@ -1754,6 +1756,52 @@ public:
                        << " atm\n";
          }
          return {Pmax, n2, Pf};
+    }
+
+    /**
+     * @brief A thin partition divides a thermally insulated vessel into a lower
+     * compartment of volume V m^3 and an upper compartment of volume x*V m^3.
+     * The lower compartment contains some number of moles of an ideal gas;
+     * the upper part is evacuated. When the partition is removed, the gas
+     * expands and fills both compartments. How many moles n of gas were
+     * initially contained in the lower compartment if the entropy change of
+     * the gas in this free-expansion process is S J/K?
+     * @param V is the volume of the lower compartment in m^3
+     * @param x is the ratio of the upper compartment to the lower compartment
+     * @param S is the entropy change in J/K
+     * @param print prints the result
+     * @return  the number of moles of gas initially contained in the lower
+     */
+    static ld molesOfGasInLowerCompartment(
+            const ld V, const ld x, const ld S, bool print = true)
+    {
+        auto vf = (V * x) + V;
+        auto n = S / (constants::R.joules * log(vf / V));
+        if (print) {
+            std::cout << "The number of moles of gas initially contained in "
+                      << "the lower compartment is: " << n << " moles\n";
+        }
+        return n;
+    }
+
+    /**
+      * @brief Melting a block of substance already at its melting point results
+      * in an entropy increase of S J/K . Calculate the mass of the block.
+      * @param S is the entropy change in J/K
+      * @param substance is the substance
+      * @param print prints the result
+      * @return  the mass of the block
+      */
+     static ld massOfBlock(
+             const ld S, const string& substance, bool print = true)
+     {
+         auto boilingPoint = round(getMeltingPoint(substance));
+         auto Lf = LF.elems_j.at(substance);
+         auto mass = (S * boilingPoint) / (Lf);
+         if (print) {
+             std::cout << "The mass of the block is: " << mass << " kg\n";
+         }
+         return mass;
      }
 
 

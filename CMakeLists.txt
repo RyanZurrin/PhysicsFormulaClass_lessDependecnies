@@ -43,7 +43,7 @@ add_executable(PhysicsFormula testFactory.cpp Angle.h AtomicPhysics.h
         TemplateBST.h templateGraph.h templateGraph.cpp Calculus.h Derivation.h
         EuclideanGraph.h Constants.h StaticEquilibrium.h UnitVector.h
         Kirschoff.h pbPlots.hpp pbPlots.cpp supportLib.hpp supportLib.cpp
-        Plots.h Dimensions.h ElectricField.h Scale.h CircuitBoard.h CapacitorNode.h ResistorNode.h InductorNode.h)
+        Plots.h Dimensions.h ElectricField.h Scale.h CircuitBoard.h CapacitorNode.h ResistorNode.h InductorNode.h Element.h Element.h)
 
 
 set(SFML_STATIC_LIBRARIES TRUE)

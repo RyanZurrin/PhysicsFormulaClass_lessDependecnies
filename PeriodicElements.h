@@ -443,7 +443,7 @@ static struct Elements
     {
         const int group = 2;
         const string type = "Alkaline Earth Metal";
-        const string crystal_type = "Hexagonal";
+        const string crystal_type = "Hexagonal Close Packed";
         const string electron_configuration = "[Ne]3s2";
         const long double atomic_weight = 24.305; // u (g/mol)
         const int atomic_number = 12;
@@ -507,7 +507,7 @@ static struct Elements
     {
         const int group = 14;
         const string type = "Metalloid";
-        const string crystal_type = "Diamond";
+        const string crystal_type = "Diamond Cubic";
         const string electron_configuration = "[Ne]3s2 3p2";
         const long double atomic_weight = 28.085; // 28.085 u (g/mol)
         const int atomic_number = 14; //14
@@ -661,6 +661,8 @@ static struct Elements
     {
         const int group = 1;
         const string type = "Alkali Metal";
+        const string crystal_type = "Body-Centered Cubic";
+        const string electron_configuration = "[Ar]4s1";
         const long double atomic_weight = 39.0983; // 39.0983 u (g/mol)
         const int atomic_number = 19; // 19
         const vector<long double> energy_levels = {2, 8, 8, 1};
@@ -691,6 +693,8 @@ static struct Elements
     {
         const int group = 2;
         const string type = "Alkaline Earth Metal";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Ar]4s2";
         const long double atomic_weight = 40.078; // 40.078 u (g/mol)
         const int atomic_number = 20; // 20
         const vector<long double> energy_levels = {2, 8, 8, 2};
@@ -720,6 +724,8 @@ static struct Elements
     {
         const int group = 3;
         const string type = "Transition Metal";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Ar]3d1 4s2";
         const long double atomic_weight = 44.955908; // 44.955908 u (g/mol)
         const int atomic_number = 21; // 21
         const vector<long double> energy_levels = {2, 8, 9, 2};
@@ -749,6 +755,8 @@ static struct Elements
     {
         const int group = 4;
         const string type = "Transition Metal";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Ar]3d2 4s2";
         const long double atomic_weight = 47.867; // 47.867 u (g/mol)
         const int atomic_number = 22; //22
         // energy_levels must add u (g/mol)p to atomic_number
@@ -780,6 +788,8 @@ static struct Elements
     {
         const int group = 5;
         const string type = "Transition Metal";
+        const string crystal_type = "Body-Centered Cubic";
+        const string electron_configuration = "[Ar]3d3 4s2";
         const long double atomic_weight = 50.9415; // 50.9415 u (g/mol)
         const int atomic_number = 23; // 23
         const vector<long double> energy_levels = {2, 8, 11, 2};
@@ -809,6 +819,8 @@ static struct Elements
     {
         const int group = 6;
         const string type = "Transition Metal";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Ar]3d5 4s1";
         const long double atomic_weight = 51.996; // u (g/mol)
         const int atomic_number = 24; // 24
         const vector<long double> energy_levels = {2, 8, 13, 1};
@@ -839,6 +851,8 @@ static struct Elements
     {
         const int group = 7;
         const string type = "Transition Metal";
+        const string crystal_type = "Body-Centered Cubic";
+        const string electron_configuration = "[Ar]3d5 4s2";
         const long double atomic_weight = 54.938; // u (g/mol)
         const int atomic_number = 25;
         const vector<long double> energy_levels = {2, 8, 13, 2};
@@ -869,6 +883,8 @@ static struct Elements
     {
         const int group = 8;
         const string type = "Transition Metal";
+        const string crystal_type = "Body-Centered Cubic";
+        const string electron_configuration = "[Ar]3d6 4s2";
         const long double atomic_weight = 55.845; // u (g/mol)
         const int atomic_number = 26;
         const vector<long double> energy_levels = {2, 8, 14, 2};
@@ -899,6 +915,8 @@ static struct Elements
     {
         const int group = 9;
         const string type = "Transition Metal";
+        const string crystal_type = "Hexagonal close-packed";
+        const string electron_configuration = "[Ar]3d7 4s2";
         const long double atomic_weight = 58.933; // u (g/mol)
         const int atomic_number = 27;
         const vector<long double> energy_levels = {2, 8, 15, 2};
@@ -927,6 +945,8 @@ static struct Elements
     {
         const int group = 10;
         const string type = "Transition Metal";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Ar]3d8 4s2";
         const long double atomic_weight = 58.693; // u (g/mol)
         const int atomic_number = 28;
         const vector<long double> energy_levels = {2, 8, 16, 2};
@@ -956,6 +976,8 @@ static struct Elements
     {
         const int group = 11;
         const string type = "Transition Metal";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Ar]3d10 4s1";
         const long double atomic_weight = 63.546; // u (g/mol)
         const int atomic_number = 29;
         const vector<long double> energy_levels = {2, 8, 18, 1};
@@ -985,6 +1007,8 @@ static struct Elements
     {
         const int group = 12;
         const string type = "Transition Metal";
+        const string crystal_type = "hexagonal close-packed";
+        const string electron_configuration = "[Ar]3d10 4s2";
         const long double atomic_weight = 65.38; // u (g/mol)
         const int atomic_number = 30;
         const vector<long double> energy_levels = {2, 8, 18, 2};
@@ -1014,6 +1038,8 @@ static struct Elements
     {
         const int group = 13;
         const string type = "Post-Transition Metal";
+        const string crystal_type = "Orthorhombic";
+        const string electron_configuration = "[Ar]3d10 4s2 4p1";
         const long double atomic_weight = 69.723; // u (g/mol)
         const int atomic_number = 31;
         const vector<long double> energy_levels = {2, 8, 18, 3};
@@ -1044,6 +1070,8 @@ static struct Elements
     {
         const int group = 14;
         const string type = "Metalloid";
+        const string crystal_type = "Diamond Cubic";
+        const string electron_configuration = "[Ar]3d10 4s2 4p2";
         const long double atomic_weight = 72.630; // u (g/mol)
         const int atomic_number = 32;
         const vector<long double> energy_levels = {2, 8, 18, 4};
@@ -1072,6 +1100,8 @@ static struct Elements
     {
         const int group = 15;
         const string type = "Metalloid";
+        const string crystal_type = "Rhombohedral";
+        const string electron_configuration = "[Ar]3d10 4s2 4p3";
         const long double atomic_weight = 74.922; // u (g/mol)
         const int atomic_number = 33;
         const vector<long double> energy_levels = {2, 8, 18, 5};
@@ -1101,6 +1131,8 @@ static struct Elements
     {
         const int group = 16;
         const string type = "Reactive Nonmetal";
+        const string crystal_type = "Hexagonal";
+        const string electron_configuration = "[Ar]3d10 4s2 4p4";
         const long double atomic_weight = 78.971; // u (g/mol)
         const int atomic_number = 34;
         const vector<long double> energy_levels = {2, 8, 18, 6};
@@ -1131,6 +1163,8 @@ static struct Elements
     {
         const int group = 17;
         const string type = "Reactive Nonmetal";
+        const string crystal_type = "Orthorhombic";
+        const string electron_configuration = "[Ar]3d10 4s2 4p5";
         const long double atomic_weight = 79.904; // u (g/mol)
         const int atomic_number = 35;
         const vector<long double> energy_levels = {2, 8, 18, 7};
@@ -1160,6 +1194,8 @@ static struct Elements
     {
         const int group = 18;
         const string type = "Noble Gas";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Ar]3d10 4s2 4p6";
         const long double atomic_weight = 83.798; // u (g/mol)
         const int atomic_number = 36;
         const vector<long double> energy_levels = {2, 8, 18, 8};
@@ -1189,6 +1225,8 @@ static struct Elements
     {
         const int group = 1;
         const string type = "Alkali Metal";
+        const string crystal_type = "Body-Centered Cubic";
+        const string electron_configuration = "[Kr]5s1";
         const long double atomic_weight = 85.468; // u (g/mol)
         const int atomic_number = 37;
         const vector<long double> energy_levels = {2, 8, 18, 8, 1};
@@ -1218,6 +1256,8 @@ static struct Elements
     {
         const int group = 2;
         const string type = "Alkaline Earth Metal";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Kr]5s2";
         const long double atomic_weight = 87.62; // u (g/mol)
         const int atomic_number = 38;
         const vector<long double> energy_levels = {2, 8, 18, 8, 2};
@@ -1246,6 +1286,8 @@ static struct Elements
     {
         const int group = 3;
         const string type = "Transition Metal";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Kr]4d1 5s2";
         const long double atomic_weight = 88.906; // u (g/mol)
         const int atomic_number = 39;
         const vector<long double> energy_levels = {2, 8, 18, 9, 2};
@@ -1276,6 +1318,8 @@ static struct Elements
     {
         const int group = 4;
         const string type = "Transition Metal";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Kr]4d2 5s2";
         const long double atomic_weight = 91.224; // u (g/mol)
         const int atomic_number = 40;
         const vector<long double> energy_levels = {2, 8, 18, 10, 2};
@@ -1306,6 +1350,8 @@ static struct Elements
     {
         const int group = 5;
         const string type = "Transition Metal";
+        const string crystal_type = "Body-Centered Cubic";
+        const string electron_configuration = "[Kr]4d4 5s1";
         const long double atomic_weight = 92.906; // u (g/mol)
         const int atomic_number = 41;
         const vector<long double> energy_levels = {2, 8, 18, 12, 1};
@@ -1334,6 +1380,8 @@ static struct Elements
     {
         const int group = 6;
         const string type = "Transition Metal";
+        const string crystal_type = "Body-Centered Cubic";
+        const string electron_configuration = "[Kr]4d5 5s1";
         const long double atomic_weight = 95.95; // u (g/mol)
         const int atomic_number = 42;
         const vector<long double> energy_levels = {2, 8, 18, 13, 1};
@@ -1363,6 +1411,8 @@ static struct Elements
     {
         const int group = 7;
         const string type = "Transition Metal";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Kr]4d5 5s2";
         const long double atomic_weight = (98); // u (g/mol)
         const int atomic_number = 43;
         const vector<long double> energy_levels = {2, 8, 18, 13, 2};
@@ -1392,6 +1442,8 @@ static struct Elements
     {
         const int group = 8;
         const string type = "Transition Metal";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Kr]4d7 5s1";
         const long double atomic_weight = 101.07; // u (g/mol)
         const int atomic_number = 44;
         const vector<long double> energy_levels = {2, 8, 18, 15, 1};
@@ -1421,6 +1473,8 @@ static struct Elements
     {
         const int group = 9;
         const string type = "Transition Metal";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Kr]4d8 5s1";
         const long double atomic_weight = 102.91; // u (g/mol)
         const int atomic_number = 45;
         const vector<long double> energy_levels = {2, 8, 18, 16, 1};
@@ -1449,6 +1503,8 @@ static struct Elements
     {
         const int group = 10;
         const string type = "Transition Metal";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Kr]4d10";
         const long double atomic_weight = 106.42; // u (g/mol)
         const int atomic_number = 46;
         const vector<long double> energy_levels = {2, 8, 18, 18};
@@ -1478,6 +1534,8 @@ static struct Elements
     {
         const int group = 11;
         const string type = "Transition Metal";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Kr]4d10 5s1";
         const long double atomic_weight = 107.87; // u (g/mol)
         const int atomic_number = 47;
         const vector<long double> energy_levels = {2, 8, 18, 18, 1};
@@ -1506,6 +1564,8 @@ static struct Elements
     {
         const int group = 12;
         const string type = "Transition Metal";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Kr]4d10 5s2";
         const long double atomic_weight = 112.41; // u (g/mol)
         const int atomic_number = 48;
         // energy_levels must add u (g/mol)p to the atomic number
@@ -1537,6 +1597,8 @@ static struct Elements
     {
         const int group = 13;
         const string type = "Post-Transition Metal";
+        const string crystal_type = "Tetragonal";
+        const string electron_configuration = "[Kr]4d10 5s2 5p1";
         const long double atomic_weight = 114.82; // u (g/mol)
         const int atomic_number = 49;
         const vector<long double> energy_levels = {2, 8, 18, 18, 3};
@@ -1565,6 +1627,8 @@ static struct Elements
     {
         const int group = 14;
         const string type = "Post-Transition Metal";
+        const string crystal_type = "Tetragonal";
+        const string electron_configuration = "[Kr]4d10 5s2 5p2";
         const long double atomic_weight = 118.71; // u (g/mol)
         const int atomic_number = 50;
         const vector<long double> energy_levels = {2, 8, 18, 18, 4};
@@ -1595,6 +1659,8 @@ static struct Elements
     {
         const int group = 15;
         const string type = "Metalloid";
+        const string crystal_type = "Rhombohedral";
+        const string electron_configuration = "[Kr]4d10 5s2 5p3";
         const long double atomic_weight = 121.76; // u (g/mol)
         const int atomic_number = 51;
         const vector<long double> energy_levels = {2, 8, 18, 18, 5};
@@ -1624,6 +1690,8 @@ static struct Elements
     {
         const int group = 16;
         const string type = "Metalloid";
+        const string crystal_type = "Hexagonal";
+        const string electron_configuration = "[Kr]4d10 5s2 5p4";
         const long double atomic_weight = 127.60; // u (g/mol)
         const int atomic_number = 52;
         const vector<long double> energy_levels = {2, 8, 18, 18, 6};
@@ -1654,6 +1722,8 @@ static struct Elements
     {
         const int group = 17;
         const string type = "Halogen";
+        const string crystal_type = "Orthorhombic";
+        const string electron_configuration = "[Kr]4d10 5s2 5p5";
         const long double atomic_weight = 126.90; // u (g/mol)
         const int atomic_number = 53;
         const vector<long double> energy_levels = {2, 8, 18, 18, 7};
@@ -1682,6 +1752,8 @@ static struct Elements
     {
         const int group = 18;
         const string type = "Noble Gas";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Kr]4d10 5s2 5p6";
         const long double atomic_weight = 131.29; // u (g/mol)
         const int atomic_number = 54;
         const vector<long double> energy_levels = {2, 8, 18, 18, 8};
@@ -1699,7 +1771,7 @@ static struct Elements
         {
             displayElementImg(getFileName(54));
         }
-    } XE;
+    } Xe;
 
     /// <summary>
     /// Caesium is a chemical element with the symbol Cs and atomic number 55.
@@ -1711,6 +1783,8 @@ static struct Elements
     {
         const int group = 1;
         const string type = "Alkali Metal";
+        const string crystal_type = "Body-Centered Cubic";
+        const string electron_configuration = "[Xe]6s1";
         const long double atomic_weight = 132.91; // u (g/mol)
         const int atomic_number = 55;
         const vector<long double> energy_levels = {2, 8, 18, 18, 8, 1};
@@ -1740,6 +1814,8 @@ static struct Elements
     {
         const int group = 2;
         const string type = "Alkaline Earth Metal";
+        const string crystal_type = "Body-Centered Cubic";
+        const string electron_configuration = "[Xe]6s2";
         const long double atomic_weight = 137.33; // u (g/mol)
         const int atomic_number = 56;
         const vector<long double> energy_levels = {2, 8, 18, 18, 8, 2};
@@ -1767,8 +1843,10 @@ static struct Elements
     /// </summary>
     const struct LANTHANUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Lanthanoid";
+        const string crystal_type = "Double Hexagonal Close Packed";
+        const string electron_configuration = "[Xe]5d1 6s2";
         const long double atomic_weight = 138.91; // u (g/mol)
         const int atomic_number = 57;
         const vector<long double> energy_levels = {2, 8, 18, 18, 9, 2};
@@ -1795,8 +1873,10 @@ static struct Elements
     /// </summary>
     const struct CERIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Lanthanoid";
+        const string crystal_type = "Double Hexagonal Close Packed / Face-Centered Cubic";
+        const string electron_configuration = "[Xe]4f1 5d1 6s2";
         const long double atomic_weight = 140.12; // u (g/mol)
         const int atomic_number = 58;
         const vector<long double> energy_levels = {2, 8, 18, 19, 9, 2};
@@ -1823,8 +1903,10 @@ static struct Elements
     /// </summary>
     const struct PRASEODYMIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Lanthanoid";
+        const string crystal_type = "Double Hexagonal Close Packed";
+        const string electron_configuration = "[Xe]4f3 6s2";
         const long double atomic_weight = 140.91; // u (g/mol)
         const int atomic_number = 59;
         const vector<long double> energy_levels = {2, 8, 18, 21, 8, 2};
@@ -1852,8 +1934,10 @@ static struct Elements
     /// </summary>
     const struct NEODYMIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Lanthanoid";
+        const string crystal_type = "Double Hexagonal Close Packed";
+        const string electron_configuration = "[Xe]4f4 6s2";
         const long double atomic_weight = 144.24; // u (g/mol)
         const int atomic_number = 60;
         const vector<long double> energy_levels = {2, 8, 18, 22, 8, 2};
@@ -1881,8 +1965,10 @@ static struct Elements
     /// </summary>
     const struct PROMETHIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Lanthanoid";
+        const string crystal_type = "Double Hexagonal Close Packed";
+        const string electron_configuration = "[Xe]4f5 6s2";
         const long double atomic_weight = (145); // u (g/mol)
         const int atomic_number = 61;
         const vector<long double> energy_levels = {2, 8, 18, 23, 8, 2};
@@ -1910,8 +1996,10 @@ static struct Elements
     /// </summary>
     const struct SAMARIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Lanthanoid";
+        const string crystal_type = "Rhombohedral";
+        const string electron_configuration = "[Xe]4f6 6s2";
         const long double atomic_weight = 150.36; // u (g/mol)
         const int atomic_number = 62;
         const vector<long double> energy_levels = {2, 8, 18, 24, 8, 2};
@@ -1938,8 +2026,10 @@ static struct Elements
     /// </summary>
     const struct EUROPIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Lanthanoid";
+        const string crystal_type = "Body-Centered Cubic";
+        const string electron_configuration = "[Xe]4f7 6s2";
         const long double atomic_weight = 151.96; // u (g/mol)
         const int atomic_number = 63;
         const vector<long double> energy_levels = {2, 8, 18, 25, 8, 2};
@@ -1967,8 +2057,10 @@ static struct Elements
     /// </summary>
     const struct GADOLINIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Lanthanoid";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Xe]4f7 5d1 6s2";
         const long double atomic_weight = 157.25; // u (g/mol)
         const int atomic_number = 64;
         const vector<long double> energy_levels = {2, 8, 18, 25, 9, 2};
@@ -1997,8 +2089,10 @@ static struct Elements
     /// </summary>
     const struct TERBIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Lanthanoid";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Xe]4f9 6s2";
         const long double atomic_weight = 158.93; // u (g/mol)
         const int atomic_number = 65;
         const vector<long double> energy_levels = {2, 8, 18, 27, 8, 2};
@@ -2026,8 +2120,10 @@ static struct Elements
     /// </summary>
     const struct DYSPROSIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Lanthanoid";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Xe]4f10 6s2";
         const long double atomic_weight = 162.50; // u (g/mol)
         const int atomic_number = 66;
         const vector<long double> energy_levels = {2, 8, 18, 28, 8, 2};
@@ -2056,8 +2152,10 @@ static struct Elements
     /// </summary>
     const struct HOLMIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Lanthanoid";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Xe]4f11 6s2";
         const long double atomic_weight = 164.93; // u (g/mol)
         const int atomic_number = 67;
         const vector<long double> energy_levels = {2, 8, 18, 29, 8, 2};
@@ -2084,8 +2182,10 @@ static struct Elements
     /// </summary>
     const struct ERBIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Lanthanoid";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Xe]4f12 6s2";
         const long double atomic_weight = 167.26; // u (g/mol)
         const int atomic_number = 68;
         const vector<long double> energy_levels = {2, 8, 18, 30, 8, 2};
@@ -2111,8 +2211,10 @@ static struct Elements
     /// </summary>
     const struct THULIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Lanthanoid";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Xe]4f13 6s2";
         const long double atomic_weight = 168.93; // u (g/mol)
         const int atomic_number = 69;
         const vector<long double> energy_levels = {2, 8, 18, 31, 8, 2};
@@ -2139,8 +2241,10 @@ static struct Elements
     /// </summary>
     const struct YTTERBIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Lanthanoid";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Xe]4f14 6s2";
         const long double atomic_weight = 173.05; // u (g/mol)
         const int atomic_number = 70;
         const vector<long double> energy_levels = {2, 8, 18, 32, 8, 2};
@@ -2170,6 +2274,8 @@ static struct Elements
     {
         const int group = 3;
         const string type = "Lanthanoid";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Xe]4f14 5d1 6s2";
         const long double atomic_weight = 174.97; // u (g/mol)
         const int atomic_number = 71;
         const vector<long double> energy_levels = {2, 8, 18, 32, 9, 2};
@@ -2199,6 +2305,8 @@ static struct Elements
     {
         const int group = 4;
         const string type = "Transition Metal";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Xe]4f14 5d2 6s2";
         const long double atomic_weight = 178.49; // u (g/mol)
         const int atomic_number = 72;
         const vector<long double> energy_levels = {2, 8, 18, 32, 10, 2};
@@ -2229,6 +2337,8 @@ static struct Elements
     {
         const int group = 5;
         const string type = "Transition Metal";
+        const string crystal_type = "Body-Centered Cubic / Tetragonal";
+        const string electron_configuration = "[Xe]4f14 5d3 6s2";
         const long double atomic_weight = 180.95; // u (g/mol)
         const int atomic_number = 73;
         const vector<long double> energy_levels = {2, 8, 18, 32, 11, 2};
@@ -2257,6 +2367,8 @@ static struct Elements
     {
         const int group = 6;
         const string type = "Transition Metal";
+        const string crystal_type = "Body-Centered Cubic";
+        const string electron_configuration = "[Xe]4f14 5d4 6s2";
         const long double atomic_weight = 183.84; // u (g/mol)
         const int atomic_number = 74;
         const vector<long double> energy_levels = {2, 8, 18, 32, 12, 2};
@@ -2286,6 +2398,8 @@ static struct Elements
     {
         const int group = 7;
         const string type = "Transition Metal";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Xe]4f14 5d5 6s2";
         const long double atomic_weight = 186.21; // u (g/mol)
         const int atomic_number = 75;
         const vector<long double> energy_levels = {2, 8, 18, 32, 13, 2};
@@ -2314,6 +2428,8 @@ static struct Elements
     {
         const int group = 8;
         const string type = "Transition Metal";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Xe]4f14 5d6 6s2";
         const long double atomic_weight = 190.23; // u (g/mol)
         const int atomic_number = 76;
         const vector<long double> energy_levels = {2, 8, 18, 32, 14, 2};
@@ -2343,6 +2459,8 @@ static struct Elements
     {
         const int group = 9;
         const string type = "Transition Metal";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Xe]4f14 5d7 6s2";
         const long double atomic_weight = 192.22; // u (g/mol)
         const int atomic_number = 77;
         const vector<long double> energy_levels = {2, 8, 18, 32, 15, 2};
@@ -2372,6 +2490,8 @@ static struct Elements
     {
         const int group = 10;
         const string type = "Transition Metal";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Xe]4f14 5d9 6s1";
         const long double atomic_weight = 195.08; // u (g/mol)
         const int atomic_number = 78;
         const vector<long double> energy_levels = {2, 8, 18, 32, 17, 1};
@@ -2402,6 +2522,8 @@ static struct Elements
     {
         const int group = 11;
         const string type = "Transition Metal";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Xe]4f14 5d10 6s1";
         const long double atomic_weight = 196.97; // u (g/mol)
         const int atomic_number = 79;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 1};
@@ -2429,6 +2551,8 @@ static struct Elements
     {
         const int group = 12;
         const string type = "Transition Metal";
+        const string crystal_type = "Rhombohedral";
+        const string electron_configuration = "[Xe]4f14 5d10 6s2";
         const long double atomic_weight = 200.59; // u (g/mol)
         const int atomic_number = 80;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 2};
@@ -2457,6 +2581,8 @@ static struct Elements
     {
         const int group = 13;
         const string type = "Post-Transition Metal";
+        const string crystal_type = "Hexagonal Close Packed";
+        const string electron_configuration = "[Xe]4f14 5d10 6s2 6p1";
         const long double atomic_weight = 204.38; // u (g/mol)
         const int atomic_number = 81;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 3};
@@ -2487,6 +2613,8 @@ static struct Elements
     {
         const int group = 14;
         const string type = "Post-Transition Metal";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Xe]4f14 5d10 6s2 6p2";
         const long double atomic_weight = 207.2; // u (g/mol)
         const int atomic_number = 82;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 4};
@@ -2516,6 +2644,8 @@ static struct Elements
     {
         const int group = 15;
         const string type = "Post-Transition Metal";
+        const string crystal_type = "Rhombohedral";
+        const string electron_configuration = "[Xe]4f14 5d10 6s2 6p3";
         const long double atomic_weight = 208.98; // u (g/mol)
         const int atomic_number = 83;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 5};
@@ -2546,6 +2676,8 @@ static struct Elements
     {
         const int group = 16;
         const string type = "Post-Transition Metal";
+        const string crystal_type = "Simple Cubic / Rhombohedral";
+        const string electron_configuration = "[Xe]4f14 5d10 6s2 6p4";
         const long double atomic_weight = (209); // u (g/mol)
         const int atomic_number = 84;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 6};
@@ -2576,6 +2708,8 @@ static struct Elements
     {
         const int group = 17;
         const string type = "Metalloid";
+        const string crystal_type = "Face-Centered Cubic:?";
+        const string electron_configuration = "[Xe]4f14 5d10 6s2 6p5";
         const long double atomic_weight = (210); // u (g/mol)
         const int atomic_number = 85;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 7};
@@ -2603,6 +2737,8 @@ static struct Elements
     {
         const int group = 18;
         const string type = "Noble Gas";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Xe]4f14 5d10 6s2 6p6";
         const long double atomic_weight = (222); // u (g/mol)
         const int atomic_number = 86;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 8};
@@ -2632,6 +2768,8 @@ static struct Elements
     {
         const int group = 1;
         const string type = "Alkali Metal";
+        const string crystal_type = "Body-Centered Cubic:?";
+        const string electron_configuration = "[Rn]7s1";
         const long double atomic_weight = (223); // u (g/mol)
         const int atomic_number = 87;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 8, 1};
@@ -2662,6 +2800,8 @@ static struct Elements
     {
         const int group = 2;
         const string type = "Alkaline Earth Metal";
+        const string crystal_type = "Body-Centered Cubic";
+        const string electron_configuration = "[Rn]7s2";
         const long double atomic_weight = (226); // u (g/mol)
         const int atomic_number = 88;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 8, 2};
@@ -2690,8 +2830,10 @@ static struct Elements
     /// </summary>
     const struct ACTINIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Actinoid";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Rn]6d1 7s2";
         const long double atomic_weight = (227); // u (g/mol)
         const int atomic_number = 89;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 9, 2};
@@ -2718,8 +2860,10 @@ static struct Elements
     /// </summary>
     const struct THORIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Actinoid";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Rn]6d2 7s2";
         const long double atomic_weight = 232.04; // u (g/mol)
         const int atomic_number = 90;
         const vector<long double> energy_levels = {2, 8, 18, 32, 18, 10, 2};
@@ -2746,8 +2890,10 @@ static struct Elements
     /// </summary>
     const struct PROTACTINIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Actinoid";
+        const string crystal_type = "Tetragonal";
+        const string electron_configuration = "[Rn]5f2 6d1 7s2";
         const long double atomic_weight = 231.04; // u (g/mol)
         const int atomic_number = 91;
         const vector<long double> energy_levels = {2, 8, 18, 32, 20, 9, 2};
@@ -2775,8 +2921,10 @@ static struct Elements
     /// </summary>
     const struct URANIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Actinoid";
+        const string crystal_type = "Orthorhombic";
+        const string electron_configuration = "[Rn]5f3 6d1 7s2";
         const long double atomic_weight = 238.03; // u (g/mol)
         const int atomic_number = 92;
         const vector<long double> energy_levels = {2, 8, 18, 32, 21, 9, 2};
@@ -2805,8 +2953,10 @@ static struct Elements
     /// </summary>
     const struct NEPTUNIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Actinoid";
+        const string crystal_type = "Orthorhombic";
+        const string electron_configuration = "[Rn]5f4 6d1 7s2";
         const long double atomic_weight = (237); // u (g/mol)
         const int atomic_number = 93;
         const vector<long double> energy_levels = {2, 8, 18, 32, 22, 9, 2};
@@ -2834,8 +2984,10 @@ static struct Elements
     /// </summary>
     const struct PLUTONIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Actinoid";
+        const string crystal_type = "Monoclinic";
+        const string electron_configuration = "[Rn]5f6 7s2";
         const long double atomic_weight = (244); // u (g/mol)
         const int atomic_number = 94;
         const vector<long double> energy_levels = {2, 8, 18, 32, 24, 8, 2};
@@ -2862,8 +3014,10 @@ static struct Elements
     /// </summary>
     const struct AMERICIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Actinoid";
+        const string crystal_type = "Double Hexagonal Close Packed";
+        const string electron_configuration = "[Rn]5f7 7s2";
         const long double atomic_weight = (243); // u (g/mol)
         const int atomic_number = 95;
         const vector<long double> energy_levels = {2, 8, 18, 32, 25, 8, 2};
@@ -2890,8 +3044,10 @@ static struct Elements
     /// </summary>
     const struct CURIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Actinoid";
+        const string crystal_type = "Double Hexagonal Close Packed";
+        const string electron_configuration = "[Rn]5f7 6d1 7s2";
         const long double atomic_weight = (247); // u (g/mol)
         const int atomic_number = 96;
         const vector<long double> energy_levels = {2, 8, 18, 32, 25, 9, 2};
@@ -2919,8 +3075,10 @@ static struct Elements
     /// </summary>
     const struct BERKELIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Actinoid";
+        const string crystal_type = "Double Hexagonal Close Packed";
+        const string electron_configuration = "[Rn]5f9 7s2";
         const long double atomic_weight = (247); // u (g/mol)
         const int atomic_number = 97;
         const vector<long double> energy_levels = {2, 8, 18, 32, 27, 8, 2};
@@ -2947,8 +3105,10 @@ static struct Elements
     /// </summary>
     const struct CALIFORNIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Actinoid";
+        const string crystal_type = "Double Hexagonal Close Packed";
+        const string electron_configuration = "[Rn]5f10 7s2";
         const long double atomic_weight = (251); // u (g/mol)
         const int atomic_number = 98;
         const vector<long double> energy_levels = {2, 8, 18, 32, 28, 8, 2};
@@ -2976,8 +3136,10 @@ static struct Elements
     /// </summary>
     const struct EINSTEINIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Actinoid";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Rn]5f11 7s2";
         const long double atomic_weight = (252); // u (g/mol)
         const int atomic_number = 99;
         const vector<long double> energy_levels = {2, 8, 18, 32, 29, 8, 2};
@@ -3006,8 +3168,10 @@ static struct Elements
     /// </summary>
     const struct FERMIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Actinoid";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Rn]5f12 7s2";
         const long double atomic_weight = (257); // u (g/mol)
         const int atomic_number = 100;
         const vector<long double> energy_levels = {2, 8, 18, 32, 30, 8, 2};
@@ -3035,8 +3199,10 @@ static struct Elements
     /// </summary>
     const struct MANDELEVIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Actinoid";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Rn]5f13 7s2";
         const long double atomic_weight = (258); // u (g/mol)
         const int atomic_number = 101;
         const vector<long double> energy_levels = {2, 8, 18, 32, 31, 8, 2};
@@ -3064,8 +3230,10 @@ static struct Elements
     /// </summary>
     const struct NOBELIUM
     {
-        const int group = 0;
+        const int group = 3;
         const string type = "Actinoid";
+        const string crystal_type = "Face-Centered Cubic";
+        const string electron_configuration = "[Rn]5f14 7s2";
         const long double atomic_weight = (259); // u (g/mol)
         const int atomic_number = 102;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 8, 2};
@@ -3094,6 +3262,8 @@ static struct Elements
     {
         const int group = 3;
         const string type = "Actinoid";
+        const string crystal_type = "Hexagonal Close Packed:?";
+        const string electron_configuration = "[Rn]5f14 7s2 7p1";
         const long double atomic_weight = (266); // u (g/mol)
         const int atomic_number = 103;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 8, 3};
@@ -3122,6 +3292,8 @@ static struct Elements
     {
         const int group = 4;
         const string type = "Transition Metal";
+        const string crystal_type = "Hexagonal Close Packed:?";
+        const string electron_configuration = "[Rn]5f14 6d2 7s2";
         const long double atomic_weight = (267); // u (g/mol)
         const int atomic_number = 104;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 10, 2};
@@ -3152,6 +3324,8 @@ static struct Elements
     {
         const int group = 5;
         const string type = "Transition Metal";
+        const string crystal_type = "Body-Centered Cubic:?";
+        const string electron_configuration = "[Rn]5f14 6d3 7s2";
         const long double atomic_weight = (268); // u (g/mol)
         const int atomic_number = 105;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 11, 2};
@@ -3180,6 +3354,8 @@ static struct Elements
     {
         const int group = 6;
         const string type = "Transition Metal";
+        const string crystal_type = "Body-Centered Cubic:?";
+        const string electron_configuration = "[Rn]5f14 6d4 7s2";
         const long double atomic_weight = (269); // u (g/mol)
         const int atomic_number = 106;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 12, 2};
@@ -3208,6 +3384,8 @@ static struct Elements
     {
         const int group = 7;
         const string type = "Transition Metal";
+        const string crystal_type = "Hexagonal Close Packed:?";
+        const string electron_configuration = "[Rn]5f14 6d5 7s2";
         const long double atomic_weight = (270); // u (g/mol)
         const int atomic_number = 107;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 13, 2};
@@ -3236,6 +3414,8 @@ static struct Elements
     {
         const int group = 8;
         const string type = "Transition Metal";
+        const string crystal_type = "Hexagonal Close Packed:?";
+        const string electron_configuration = "[Rn]5f14 6d6 7s2";
         const long double atomic_weight = 277; // u (g/mol)
         const int atomic_number = 108;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 14, 2};
@@ -3265,6 +3445,8 @@ static struct Elements
     {
         const int group = 9;
         const string type = "N/A";
+        const string crystal_type = "Face-Centered Cubic:?";
+        const string electron_configuration = "([Rn]5f14 6d7 7s2):?";
         const long double atomic_weight = 278; // u (g/mol)
         const int atomic_number = 109;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 15, 2};
@@ -3293,6 +3475,8 @@ static struct Elements
     {
         const int group = 10;
         const string type = "N/A";
+        const string crystal_type = "Body-Centered Cubic:?";
+        const string electron_configuration = "([Rn]5f14 6d9 7s1):?";
         const long double atomic_weight = 281; // u (g/mol)
         const int atomic_number = 110;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 17, 1};
@@ -3322,6 +3506,8 @@ static struct Elements
     {
         const int group = 11;
         const string type = "N/A";
+        const string crystal_type = "Body-Centered Cubic:?";
+        const string electron_configuration = "([Rn]5f14 6d10 7s1):?";
         const long double atomic_weight = 282; // u (g/mol)
         const int atomic_number = 111;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 17, 2};
@@ -3350,6 +3536,8 @@ static struct Elements
     {
         const int group = 12;
         const string type = "N/A";
+        const string crystal_type = "Hexagonal Close Packed:?";
+        const string electron_configuration = "([Rn]5f14 6d10 7s2):?";
         const long double atomic_weight = 285; // u (g/mol)
         const int atomic_number = 112;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 2};
@@ -3380,6 +3568,8 @@ static struct Elements
     {
         const int group = 13;
         const string type = "N/A";
+        const string crystal_type = "Hexagonal Close Packed:?";
+        const string electron_configuration = "([Rn]5f14 6d10 7s2 7p1):?";
         const long double atomic_weight = 286; // u (g/mol)
         const int atomic_number = 113;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 3};
@@ -3409,6 +3599,8 @@ static struct Elements
     {
         const int group = 14;
         const string type = "N/A";
+        const string crystal_type = "N/A";
+        const string electron_configuration = "([Rn]5f14 6d10 7s2 7p2):?";
         const long double atomic_weight = 289; // u (g/mol)
         const int atomic_number = 114;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 4};
@@ -3437,6 +3629,8 @@ static struct Elements
     {
         const int group = 15;
         const string type = "N/A";
+        const string crystal_type = "N/A";
+        const string electron_configuration = "([Rn]5f14 6d10 7s2 7p3):?";
         const long double atomic_weight = 290; // u (g/mol)
         const int atomic_number = 115;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 5};
@@ -3465,6 +3659,8 @@ static struct Elements
     {
         const int group = 16;
         const string type = "N/A";
+        const string crystal_type = "N/A";
+        const string electron_configuration = "([Rn]5f14 6d10 7s2 7p4):?";
         const long double atomic_weight = 293; // u (g/mol)
         const int atomic_number = 116;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 6};
@@ -3493,6 +3689,8 @@ static struct Elements
     {
         const int group = 17;
         const string type = "N/A";
+        const string crystal_type = "N/A";
+        const string electron_configuration = "([Rn]5f14 6d10 7s2 7p5):?";
         const long double atomic_weight = 294; // u (g/mol)
         const int atomic_number = 117;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 7};
@@ -3521,6 +3719,8 @@ static struct Elements
     {
         const int group = 18;
         const string type = "N/A";
+        const string crystal_type = "Face-centered cubic:?";
+        const string electron_configuration = "([Rn]5f14 6d10 7s2 7p6):?";
         const long double atomic_weight = 294; // u (g/mol)
         const int atomic_number = 118;
         const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 8};
@@ -3539,6 +3739,8 @@ static struct Elements
             displayElementImg(getFileName(118));
         }
     } Og;
+
+
 private:
     static void loadImage(const char* pathname, sf::Texture& texture, sf::Sprite& sprite)
     {
@@ -3582,9 +3784,8 @@ private:
             window.draw(sprite);        // just draw it to the back buffer
             window.display();           // and display it so the back buffer moves to the front
         }
-
-
     }
+
 private:
     static const char* getFileName(int atomicNumber)
     {
@@ -3746,4 +3947,248 @@ static void printElementData(ELEM el)
 }
 
 
+static long double getBoilingPoint(string element)
+{
+    if(element == "hydrogen") return 20.28;
+    if(element == "helium") return 4.22;
+    if(element == "lithium") return 1603;
+    if(element == "beryllium") return 2742;
+    if(element == "boron") return 4200;
+    if(element == "carbon") return 4300;
+    if(element == "nitrogen") return 77.36;
+    if(element == "oxygen") return 90.20;
+    if(element == "fluorine") return 85.03;
+    if(element == "neon") return 27.07;
+    if(element == "sodium") return 1156;
+    if(element == "magnesium") return 1363;
+    if(element == "aluminum") return 2743;
+    if(element == "silicon") return 3538;
+    if(element == "phosphorus") return 280.5;
+    if(element == "sulfur") return 444.7;
+    if(element == "chlorine") return 239.11;
+    if(element == "argon") return 87.30;
+    if(element == "potassium") return 1032;
+    if(element == "calcium") return 1757;
+    if(element == "scandium") return 3109;
+    if(element == "titanium") return 3560;
+    if(element == "vanadium") return 3680;
+    if(element == "chromium") return 2944;
+    if(element == "manganese") return 2334;
+    if(element == "iron") return 3134;
+    if(element == "cobalt") return 3200;
+    if(element == "nickel") return 3186;
+    if(element == "copper") return 2835;
+    if(element == "zinc") return 1180;
+    if(element == "gallium") return 2673;
+    if(element == "germanium") return 3106;
+    if(element == "arsenic") return 887;
+    if(element == "selenium") return 958;
+    if(element == "bromine") return 332.0;
+    if(element == "krypton") return 119.93;
+    if(element == "rubidium") return 961;
+    if(element == "strontium") return 1655;
+    if(element == "yttrium") return 3618;
+    if(element == "zirconium") return 4682;
+    if(element == "niobium") return 5017;
+    if(element == "molybdenum") return 4912;
+    if(element == "technetium") return 4538;
+    if(element == "ruthenium") return 4423;
+    if(element == "rhodium") return 3968;
+    if(element == "palladium") return 3236;
+    if(element == "silver") return 2435;
+    if(element == "cadmium") return 1040;
+    if(element == "indium") return 2345;
+    if(element == "tin") return 2875;
+    if(element == "antimony") return 1860;
+    if(element == "tellurium") return 1261;
+    if(element == "iodine") return 457.4;
+    if(element == "xenon") return 165.03;
+    if(element == "cesium") return 944;
+    if(element == "barium") return 2118;
+    if(element == "lanthanum") return 3737;
+    if(element == "cerium") return 3716;
+    if(element == "praseodymium") return 3403;
+    if(element == "neodymium") return 3347;
+    if(element == "promethium") return 3273;
+    if(element == "samarium") return 2067;
+    if(element == "europium") return 1802;
+    if(element == "gadolinium") return 3546;
+    if(element == "terbium") return 3503;
+    if(element == "dysprosium") return 2840;
+    if(element == "holmium") return 2873;
+    if(element == "erbium") return 3141;
+    if(element == "thulium") return 2223;
+    if(element == "ytterbium") return 1469;
+    if(element == "lutetium") return 3675;
+    if(element == "hafnium") return 4876;
+    if(element == "tantalum") return 5731;
+    if(element == "tungsten") return 5828;
+    if(element == "rhenium") return 5869;
+    if(element == "osmium") return 5285;
+    if(element == "iridium") return 4701;
+    if(element == "platinum") return 4098;
+    if(element == "gold") return 3129;
+    if(element == "mercury") return 629.88;
+    if(element == "thallium") return 1746;
+    if(element == "lead") return 2022;
+    if(element == "bismuth") return 1837;
+    if(element == "polonium") return 1235;
+    if(element == "astatine") return 610;
+    if(element == "radon") return 211.3;
+    if(element == "francium") return 950;
+    if(element == "radium") return 2010;
+    if(element == "actinium") return 3503;
+    if(element == "thorium") return 5061;
+    if(element == "protactinium") return 4300;
+    if(element == "uranium") return 4404;
+    if(element == "neptunium") return 4447;
+    if(element == "plutonium") return 3505;
+    if(element == "americium") return 2880;
+    if(element == "curium") return 3383;
+    if(element == "berkelium") return 2900;
+    if(element == "californium") return 1743;
+    if(element == "einsteinium") return 1269;
+    if(element == "fermium") return 1173;
+    if(element == "mendelevium") return 1100;
+    if(element == "nobelium") return 1100;
+    if(element == "lawrencium") return 1900;
+    if(element == "rutherfordium") return 5800;
+    if(element == "dubnium") return 5800;
+    if(element == "seaborgium") return 5800;
+    if(element == "bohrium") return 5800;
+    if(element == "hassium") return 5800;
+    if(element == "meitnerium") return 5800;
+    if(element == "darmstadtium") return 5800;
+    if(element == "roentgenium") return 5800;
+    if(element == "copernicium") return 3570;
+    if(element == "nihonium") return 5800;
+    if(element == "flerovium") return 5800;
+    if(element == "moscovium") return 5800;
+    if(element == "livermorium") return 5800;
+    if(element == "tennessine") return 5800;
+    if(element == "oganesson") return 5800;
+    return 0;
+}
 
+static long double getMeltingPoint(string element)
+{
+    if(element == "hydrogen") return 14.01;
+    if(element == "helium") return 0.95;
+    if(element == "lithium") return 453.69;
+    if(element == "beryllium") return 1560;
+    if(element == "boron") return 2348;
+    if(element == "carbon") return 3823;
+    if(element == "nitrogen") return 63.15;
+    if(element == "oxygen") return 54.36;
+    if(element == "fluorine") return 53.53;
+    if(element == "neon") return 24.56;
+    if(element == "sodium") return 370.87;
+    if(element == "magnesium") return 923;
+    if(element == "aluminum") return 933.47;
+    if(element == "silicon") return 1687;
+    if(element == "phosphorus") return 317.30;
+    if(element == "sulfur") return 388.36;
+    if(element == "chlorine") return 171.6;
+    if(element == "argon") return 83.80;
+    if(element == "potassium") return 336.53;
+    if(element == "calcium") return 1115;
+    if(element == "scandium") return 1814;
+    if(element == "titanium") return 1941;
+    if(element == "vanadium") return 2183;
+    if(element == "chromium") return 2180;
+    if(element == "manganese") return 1519;
+    if(element == "iron") return 1811;
+    if(element == "cobalt") return 1768;
+    if(element == "nickel") return 1728;
+    if(element == "copper") return 1357.77;
+    if(element == "zinc") return 692.68;
+    if(element == "gallium") return 302.91;
+    if(element == "germanium") return 1211.40;
+    if(element == "arsenic") return 1090;
+    if(element == "selenium") return 494;
+    if(element == "bromine") return 266.9;
+    if(element == "krypton") return 115.79;
+    if(element == "rubidium") return 312.46;
+    if(element == "strontium") return 1050;
+    if(element == "yttrium") return 1799;
+    if(element == "zirconium") return 2128;
+    if(element == "niobium") return 2750;
+    if(element == "molybdenum") return 2896;
+    if(element == "technetium") return 2430;
+    if(element == "ruthenium") return 2607;
+    if(element == "rhodium") return 2237;
+    if(element == "palladium") return 1828.05;
+    if(element == "silver") return 1234.93;
+    if(element == "cadmium") return 594.22;
+    if(element == "indium") return 429.75;
+    if(element == "tin") return 505.08;
+    if(element == "antimony") return 903.78;
+    if(element == "tellurium") return 722.66;
+    if(element == "iodine") return 386.85;
+    if(element == "xenon") return 161.4;
+    if(element == "cesium") return 301.59;
+    if(element == "barium") return 1000;
+    if(element == "lanthanum") return 1193;
+    if(element == "cerium") return 1068;
+    if(element == "praseodymium") return 1208;
+    if(element == "neodymium") return 1297;
+    if(element == "promethium") return 1315;
+    if(element == "samarium") return 1345;
+    if(element == "europium") return 1095;
+    if(element == "gadolinium") return 1585;
+    if(element == "terbium") return 1629;
+    if(element == "dysprosium") return 1680;
+    if(element == "holmium") return 1734;
+    if(element == "erbium") return 1802;
+    if(element == "thulium") return 1818;
+    if(element == "ytterbium") return 1097;
+    if(element == "lutetium") return 1936;
+    if(element == "hafnium") return 2506;
+    if(element == "tantalum") return 3290;
+    if(element == "tungsten") return 3695;
+    if(element == "rhenium") return 3459;
+    if(element == "osmium") return 3306;
+    if(element == "iridium") return 2719;
+    if(element == "platinum") return 2041.4;
+    if(element == "gold") return 1337.33;
+    if(element == "mercury") return 234.43;
+    if(element == "thallium") return 577;
+    if(element == "lead") return 600.61;
+    if(element == "bismuth") return 544.7;
+    if(element == "polonium") return 527;
+    if(element == "astatine") return 575;
+    if(element == "radon") return 202;
+    if(element == "francium") return 300;
+    if(element == "radium") return 973;
+    if(element == "actinium") return 1323;
+    if(element == "thorium") return 2023;
+    if(element == "protactinium") return 1841;
+    if(element == "uranium") return 1405.3;
+    if(element == "neptunium") return 917;
+    if(element == "plutonium") return 913.4;
+    if(element == "americium") return 1449;
+    if(element == "curium") return 1613;
+    if(element == "berkelium") return 1259;
+    if(element == "californium") return 1173;
+    if(element == "einsteinium") return 1133;
+    if(element == "fermium") return 1800;
+    if(element == "mendelevium") return 1100;
+    if(element == "nobelium") return 1100;
+    if(element == "lawrencium") return 1900;
+    if(element == "rutherfordium") return 2400;
+    if(element == "dubnium") return 2900;
+    if(element == "seaborgium") return 3500;
+    if(element == "bohrium") return 4100;
+    if(element == "hassium") return 4700;
+    if(element == "meitnerium") return 5200;
+    if(element == "darmstadtium") return 5800;
+    if(element == "roentgenium") return 6400;
+    if(element == "copernicium") return 7000;
+    if(element == "nihonium") return 7000;
+    if(element == "flerovium") return 7000;
+    if(element == "moscovium") return 7000;
+    if(element == "livermorium") return 7000;
+    if(element == "tennessine") return 7000;
+    if(element == "oganesson") return 7000;
+    return 0;
+}

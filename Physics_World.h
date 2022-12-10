@@ -38,7 +38,6 @@
 #include "MathFx.h"
 #include "LinearMomentum.h"
 #include "Parallelogram.h"
-#include "PeriodicElements.h"
 #include "Pyramid.h"
 #include "RandomNumbers.h"
 #include "Rectangle.h"
@@ -62,6 +61,7 @@
 #include "Circle.h"
 #include "StaticEquilibrium.h"
 #include "Plots.h"
+#include "Element.h"
 
 typedef TriangleSolver TS;
 typedef QuantumPhysics QP;
