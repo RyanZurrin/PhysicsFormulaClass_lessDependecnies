@@ -41,8 +41,8 @@ public:
         {
             throw std::invalid_argument("Coordinates must be finite");
         }
-        points.set_x(x_val);
-        points.set_y(y_val);
+        points.setX(x_val);
+        points.setY(y_val);
         countIncrease();
     }
 
@@ -53,8 +53,8 @@ public:
     /// <param name="p">The p.</param>
     Point2D(const Point2D& p)
     {
-        points.set_x(p.getX());
-        points.set_y(p.getY());
+        points.setX(p.getX());
+        points.setY(p.getY());
         countIncrease();
     }
 
@@ -65,8 +65,8 @@ public:
     /// <param name="p">The p.</param>
     Point2D(Point2D&& p) noexcept
     {
-        points.set_x(p.getX());
-        points.set_y(p.getY());
+        points.setX(p.getX());
+        points.setY(p.getY());
         countIncrease();
     }
 
@@ -80,8 +80,8 @@ public:
     {
         if (this != &p)
         {
-            points.set_x(p.getX());
-            points.set_y(p.getY());
+            points.setX(p.getX());
+            points.setY(p.getY());
             countIncrease();
         }
         return *this;
@@ -94,8 +94,8 @@ public:
     /// <returns></returns>
     Point2D& operator=(Point2D other)
     {
-        points.set_x(other.getX());
-        points.set_y(other.getY());
+        points.setX(other.getX());
+        points.setY(other.getY());
         return *this;
     }
 
@@ -121,14 +121,14 @@ public:
     /// </summary>
     /// <param name="xVar">The x variable.</param>
     /// <returns>void</returns>
-    auto setX(NumericType xVar) { points.set_x(xVar); }
+    auto setX(NumericType xVar) { points.setX(xVar); }
 
     /// <summary>
     /// Sets the y.
     /// </summary>
     /// <param name="yVar">The y variable.</param>
     /// <returns>void</returns>
-    auto setY(NumericType yVar) { points.set_y(yVar); }
+    auto setY(NumericType yVar) { points.setY(yVar); }
 
     /// <summary>
     /// returns the x instance.
@@ -325,4 +325,3 @@ inline istream& operator>>(istream& is, Point2D<T> p)
     is >> p.x_ >> p.y_;
     return is;
 }
-

@@ -631,8 +631,6 @@ public:
         return deltaU;
     }
 
-
-
     /**
      * @brief first law of thermodynamics  delta_U = COULOMB - W
      * @param Q_in is the sum of all heat transfer into a system
@@ -940,7 +938,23 @@ public:
         return (Qc / t1) / (W / t2);
     }
 
-    static ld engineEfficiency(const ld Tc, const ld Th, const ld Va, const ld Vb, const ld Vc, const ld Vd, const ld n, bool print = true)
+    /**
+     * @brief calculates the energy efficiency of a engine cycle of n moles of
+     * gas with a cold reservoir at Tc and a hot reservoir at Th and a volume
+     * starting at Va and moving through Vb and Vc and ending at Vd
+     * @param Tc absolute temp of cold reservoir
+     * @param Th  absolute temp of hot reservoir
+     * @param Va initial volume
+     * @param Vb second state volume
+     * @param Vc  third state volume
+     * @param Vd  final volume
+     * @param n  number of moles
+     * @param print  print results
+     * @return  energy efficiency of the engine cycle
+     */
+    static ld engineEfficiency(
+            const ld Tc, const ld Th, const ld Va, const ld Vb, const ld Vc,
+            const ld Vd, const ld n, bool print = true)
     {
         const ld Qh = heatExtractedFromHotReservoir(n, Th, Va, Vb);
         const ld Qc = heatRejectedToColdReservoir(n, Tc, Vc, Vd);
@@ -951,8 +965,38 @@ public:
         }
         return efficiency;
     }
-
-
+    /**
+     * @brief Imagine an ideal (Carnot) refrigerator that keeps soda bottles
+     * chilled to a temperature of about Tc K. The refrigerator is located in
+     * a hot room with a temperature of about Th K. Because of the imperfect
+     * insulation, W J of heat is absorbed by the refrigerator in t s. How
+     * much electrical energy E must be used by the refrigerator to maintain the
+     * temperature of Tc K inside for tf s?
+     * @param Tc  temperature of the cold reservoir
+     * @param Th  temperature of the hot reservoir
+     * @param W  heat absorbed by the refrigerator
+     * @param t  time in seconds that the refrigerator is running and
+     * absorbing heat of W J
+     * @param tf  time in seconds for the refrigerator to maintain the temperature
+     * @param print  print results
+     * @return  energy in Joules
+     */
+    static ld energyUsedByRefrigerator(
+            const ld Tc, const ld Th, const ld W, const ld t, const ld tf,
+            bool print = true)
+    {
+        auto dT = Th - Tc;
+        auto COP_r = Tc / dT;
+        auto P = W / t;
+        auto P_r = P / COP_r;
+        auto E = P_r * tf;
+        if (print)
+        {
+            cout << "Energy used by refrigerator: " << E << " J" << " to maintain "
+                 << Tc << " K for " << tf << " s" << endl;
+        }
+        return E;
+    }
 
     /**
      * @brief calculates the change in entropy for a reversible process {(S)rev}
@@ -1055,6 +1099,13 @@ public:
         return S;
     }
 
+    /**
+     * @brief calculates the change in entropy of a thawing pond
+     * @param m mass of the pond
+     * @param Th  initial temperature
+     * @param print  print results
+     * @return  change in entropy
+     */
     static ld entropyIncreaseOfThawingPond(const ld m,
                                            const ld Th,
                                            bool print = true)
@@ -1071,6 +1122,35 @@ public:
         return S;
     }
 
+    /**
+     * @brief In a well-insulated calorimeter, m_w kg of water at T_w ∘C is
+     * mixed with m_i of ice at 0 ∘C. Calculate the net change in entropy of
+     * the system from the time of mixing until the ice melts.
+     * @param m_w mass of water
+     * @param T_w temperature of water in kelvin
+     * @param m_i mass of ice
+     * @param print print results
+     * @return change in entropy
+     */
+    static ld entropyIncreaseOfMeltingIce(const ld m_w,
+                                          const ld T_w,
+                                          const ld m_i,
+                                          bool print = true)
+    {
+        auto Lf = LF.water.J_kg;
+        auto Q = Heat::heatOfTransformation(m_i, Lf, false);
+        cout << "Heat of transformation: " << Q << " J" << endl;
+        auto Sice = changeInEntropy(Q, 273.0, false, true);
+        cout << "Sice: " << Sice << endl;
+        auto Swater = changeInEntropy(Q, T_w, false, false);
+        cout << "Swater: " << Swater << endl;
+        auto S = Sice + Swater;
+        if (print)
+        {
+            cout << "Change in entropy: " << S << " J/K" << endl;
+        }
+        return S;
+    }
 
     /**
      * @brief  calculates the difference of internal pressure if it was at zero gauge pressure
@@ -1288,7 +1368,7 @@ public:
     /**
      * @brief calculates the latent heat of fusion
      * @param m  is the mass of the substance in kg
-     * @param Q  is the heat transfered in joules
+     * @param Q  is the heat transferred in joules
      * @param print  prints the result
      * @return  the latent heat of fusion in J/kg
      */
@@ -1303,7 +1383,7 @@ public:
     /**
      * @brief calculates the latent heat of vaporization
      * @param m  is the mass of the substance in kg
-     * @param Q  is the heat transfered in joules
+     * @param Q  is the heat transferred in joules
      * @param print  prints the result
      * @return  the latent heat of vaporization in J/kg
      */
@@ -1393,19 +1473,14 @@ public:
     }
 
 
-    static ld workFromPVdiagram(const ld P1,
-                                const ld P2,
-                                const ld V1,
-                                const ld V2,
-                                const ld n,
-                                const ld T,
-                                bool heatTransferred,
-                                bool isMonoatomic,
-                                bool print = true)
+    static ld workFromPVdiagram(
+            const ld P1, const ld P2, const ld V1, const ld V2, const ld n,
+            const ld T, bool heatTransferred, bool isMonoatomic,
+            bool print = true)
     {
         auto R = constants::R.joules;
-        const string process = determineProcessFromPVdiagram(P1, P2, V1, V2,
-                                                             heatTransferred);
+        const string process = determineProcessFromPVdiagram(
+                P1, P2, V1, V2, heatTransferred, false);
         ld W = 0.0;
         if (process == "isothermal")
         {
@@ -1498,11 +1573,9 @@ public:
      * @param print  prints the result
      * @return  the final temperature in K
      */
-    static ld finalTemperatureOfMonatomicGas(const ld n,
-                                    const ld Ti,
-                                    const ld Q_in,
-                                    const ld W_out,
-                                    bool print = true)
+    static ld finalTemperatureOfMonatomicGas(
+            const ld n, const ld Ti, const ld Q_in, const ld W_out,
+            bool print = true)
     {
         auto deltaU = Q_in - W_out;
         auto R = constants::R.joules;
@@ -1512,11 +1585,9 @@ public:
         return Tf;
     }
 
-    static ld pressure2AdiabaticProcess(const ld gamma,
-                                        const ld P1,
-                                        const ld V1,
-                                        const ld V2,
-                                        bool print = true)
+    static ld pressure2AdiabaticProcess(
+            const ld gamma, const ld P1, const ld V1, const ld V2,
+            bool print = true)
     {
         const ld P2 = P1 * pow(V1 / V2, gamma);
         if (print)
@@ -1524,11 +1595,9 @@ public:
         return P2;
     }
 
-    static ld volume2AdiabaticProcess(const ld gamma,
-                                      const ld P1,
-                                      const ld P2,
-                                      const ld V1,
-                                      bool print = true)
+    static ld volume2AdiabaticProcess(
+            const ld gamma, const ld P1, const ld P2, const ld V1,
+            bool print = true)
     {
         const ld V2 = V1 * pow(P1 / P2, 1.0 / gamma);
         if (print)
@@ -1536,10 +1605,18 @@ public:
         return V2;
     }
 
-    static ld temperature2AdiabaticProcess(const ld P1,
-                                           const ld P2,
-                                           const ld T1,
-                                           bool print = true)
+    /**
+     * @brief calculates the missing temperature of an adiabatic process when
+     * you know pressure P1 and its temp T1 and you know the final pressure
+     * P2 and need to find the final temp T2
+     * @param P1  is the initial pressure in Pa
+     * @param P2  is the final pressure in Pa
+     * @param T1  is the initial temperature in K
+     * @param print  prints the result
+     * @return  the final temperature in K
+     */
+    static ld temperature2AdiabaticProcess(
+            const ld P1, const ld P2, const ld T1, bool print = true)
     {
         const ld T2 = (T1 * P2) / P1;
         if (print)
@@ -1559,11 +1636,8 @@ public:
      * @param print
      * @return
      */
-    static ld howMuchWaterCanFreezerFreezeInTime(const ld t,
-                                                 const ld Tc,
-                                                 const ld Th,
-                                                 const ld P,
-                                                 bool print = true)
+    static ld howMuchWaterCanFreezerFreezeInTime(
+            const ld t, const ld Tc, const ld Th, const ld P, bool print = true)
     {
         auto Lf = LF.water.J_kg;
         auto cop = Thermodynamics::cop(Tc, Th);
@@ -1587,10 +1661,8 @@ public:
      * @param print prints the result
      * @return  the power in W
      */
-    static ld powerToMaintainOvenTemperature(const ld Tc,
-                                             const ld Tk,
-                                             const ld pLoss,
-                                             bool print = true) {
+    static ld powerToMaintainOvenTemperature(
+            const ld Tc, const ld Tk, const ld pLoss, bool print = true) {
         auto deltaT = Tc - Tk;
         auto P = pLoss * deltaT;
         if (print)
@@ -1602,7 +1674,7 @@ public:
         return n * constants::R.joules * tb / pb;
     }
 
-/**
+    /**
      * @brief A diver observes a bubble of air rising from the bottom of a lake
      * (where the absolute pressure is pb atm) to the surface (where the
      * pressure is ps atm). The temperature at the bottom is Tb ∘C, and the
@@ -1616,11 +1688,9 @@ public:
      * @param print prints the result
      * @return  the ratio of the volume of the bubble as it reaches the surface
      */
-    static ld ratioOfBubbleVolumeAtSurface(const ld pb,
-                                           const ld ps,
-                                           const ld Tb,
-                                           const ld Ts,
-                                           bool print = true)
+    static ld ratioOfBubbleVolumeAtSurface(
+            const ld pb, const ld ps, const ld Tb, const ld Ts,
+            bool print = true)
     {
         // convert the temperatures to kelvin
         auto TbK = Tb + 273.15;
@@ -1651,10 +1721,8 @@ public:
      * @return  the maximum pressure reached in the flask, the number of
      * moles, and the final pressure in the flask
      */
-     static vector<ld> flaskInBoilingWaterData(const ld vol,
-                                               const ld Pi,
-                                               const ld Ti,
-                                               bool print = true)
+     static vector<ld> flaskInBoilingWaterData(
+             const ld vol, const ld Pi, const ld Ti, bool print = true)
      {
          // convert pressure to pascals
          auto PiPa = Pi * 101325;

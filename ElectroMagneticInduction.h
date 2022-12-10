@@ -389,13 +389,14 @@ public:
     static ld period(ld f, bool print = true);
 
     /**
-     * @brief Calculates the current in the coil.
+     * @brief Calculates the maximum current in a circuit with a resistance
+     * of R and emf of V.
      * @param emf The EMF.
      * @param R The resistance.
      * @param print (default is true) if true prints the equation and result.
      * @return current (A)
      */
-    static ld currentInCoil(ld emf, ld R, bool print = true);
+    static ld maxCurrent(ld emf, ld R, bool print = true);
 
     /**
      * @brief Calculates the emf2 from the mutual inductance of M between two devices
@@ -1117,6 +1118,127 @@ public:
      */
     static ld magneticEnergy(ld N, ld l, ld d, ld I, bool print = true);
 
+    /**
+     * @brief Calculate the EMF that is produced if a waffle iron that draws
+     * I amperes and has an inductance of L Henries is and is suddenly
+     * unplugged, so the current drops to essentially to zero in 0.015 seconds
+     * @param I The current.
+     * @param L The inductance.
+     * @param t The time.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the emf
+     */
+    static ld emf(ld I, ld L, ld t, bool print = true);
+
+    /**
+     * @brief A cylindrical iron rod of infinite length with cross-sectional
+     * area A is oriented with its axis of symmetry coincident with the z axis
+     * of a cylindrical coordinate system as shown in the figure. It has a
+     * magnetic field inside that varies according to Bz(t)=B0+B1t.
+     * Calculate the theta component Eθ(R,t) of the electric field at
+     * distance R from the z axis, where R is larger than the radius of the rod.
+     * @param A The cross-sectional area.
+     * @param dB The change in magnetic field.
+     * @param R The distance.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the theta component of the electric field
+     */
+    static ld electricFieldTheta(ld A, ld dB, ld R, bool print = true);
+
+    /**
+     * @brief A N-turn solenoid is l m long and d m in diameter. The
+     * solenoid current is increasing at dI A/s.
+     * Calculate the following:
+     * (a) the current in a d1-diameter wire loop with resistance R Ω lying
+     * inside the solenoid and perpendicular to the solenoid axis.
+     * (b) Repeat for a similarly oriented with a loop lying entirely outside
+     * the solenoid,  with the same resistance R.
+     * @param N The number of turns.
+     * @param l The length.
+     * @param d The diameter.
+     * @param d1 The diameter of the first loop.
+     * @param R The resistance of the first loop.
+     * @param dI The change in current.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the current in the first loop and the current in the second loop
+     * respectively
+     */
+    static vector<ld> currentInLoops(
+                ld N, ld l, ld d, ld d1, ld R, ld dI, bool print = true);
+
+    /**
+     * @brief two horizontal rails in a uniform magnetic field B T are
+     * connected by a wire with resistance R Ω at one end and a vertical
+     * sliding rod moving with a velocity of v m/s, separated by a
+     * length of l m between the horizontal rails.
+     * Calculate the following:
+     * (a) the current in the resistor
+     * (b) the magnetic force on the rod
+     * (c) the power dissipated in the resistor
+     * (d) the rate of mechanical work done by the agent pulling the rod
+     * @param B The magnetic field.
+     * @param R The resistance.
+     * @param v The velocity.
+     * @param l The length.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the current in the resistor, the magnetic force on the rod,
+     * the power dissipated in the resistor, and the rate of mechanical work
+     * done by the agent pulling the rod respectively
+     */
+    static vector<ld> slidingRod(
+                ld B, ld R, ld v, ld l, bool print = true);
+    /**
+     * @brief Calculate the force on a sliding bar in a uniform magnetic field
+     * B T, with a current I A flowing through it, and a length of l m.
+     * @param I  The current.
+     * @param l  The length.
+     * @param B  The magnetic field.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the force
+     */
+    static ld magneticForceSlidingBar(ld I, ld l, ld B, bool print = true);
+
+    /**
+     * @brief Calculate the work done on a sliding bar being pulled by a
+     * force of F N at a constant velocity of v m/s.
+     * @param f The force.
+     * @param v The velocity.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the work done
+     */
+    static ld workDoneSlidingBar(ld f, ld v, bool print = true);
+
+    /**
+     * @brief Given a RL circuit with a resistor of R Ω and ε0 = emf V and a
+     * switch S. When the switch is closed, the current through the inductor
+     * rises to I A in t s.
+     * Calculate the following:
+     * (a) the inductance of the inductor
+     * (b) the time constant of the circuit
+     * (c) the current in the circuit after many time constants have passed
+     * @param R The resistance.
+     * @param V The emf.
+     * @param I The current.
+     * @param t The time.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the inductance, the time constant, and the current respectively
+     * after many time constants have passed
+     */
+    static vector<ld> inductorRLCircuit(
+                ld R, ld V, ld I, ld t, bool print = true);
+
+    /**
+     * @brief Calculate the time constant of a circuit at time t when the
+     * current is I A, and the maximum current is I0 A.
+     * @param t  The time.
+     * @param I The current.
+     * @param I0  The maximum current.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the time constant
+     */
+    static ld timeConstant(ld t, ld I, ld I0, bool print = true);
+
+
 
     ~ElectroMagneticInduction()
     {
@@ -1127,6 +1249,8 @@ private:
     static void countIncrease() { emi_objectCount += 1; }
     static void countDecrease() { emi_objectCount -= 1; }
     ld _electroMagVar;
+
+
 
 };
 #endif //PHYSICSFORMULA_ELECTROMAGNETICINDUCTION_H
@@ -1459,8 +1583,8 @@ inline ld ElectroMagneticInduction::period(const ld f, bool print)
     return var;
 }
 
-inline ld ElectroMagneticInduction::currentInCoil(
-        const ld emf, const ld R, bool print)
+inline ld ElectroMagneticInduction::maxCurrent(
+        ld emf, ld R, bool print)
 {
     auto var = emf/R;//A
     if (print)
@@ -2083,4 +2207,109 @@ inline ld ElectroMagneticInduction::magneticEnergy(
     if (print)
     std::cout << "Magnetic Energy = " << U << " Joules" << std::endl;
     return U;
+}
+
+inline ld ElectroMagneticInduction::emf(
+        ld I, ld L, ld t, bool print)
+{
+    auto emf = I * L * (1.0 / t);
+    if (print)
+        std::cout << "EMF = " << emf << " Volts" << std::endl;
+    return emf;
+}
+
+inline ld ElectroMagneticInduction::electricFieldTheta(
+        ld A, ld dB, ld R, bool print)
+{
+    auto E = (A * dB) / (R * 2.0 * constants::PI);
+    if (print)
+        std::cout << "Electric Field = " << E << " Newton/Coulomb" << std::endl;
+    return E;
+}
+
+inline vector<ld> ElectroMagneticInduction::currentInLoops(
+        ld N, ld l, ld d, ld d1, ld R, ld dI, bool print)
+{
+    auto mu0 = constants::mu0;
+    auto pi = constants::PI;
+    auto A1 = circle_area_d(d1);
+    auto E_ind1 = mu0 * (N / l) * A1 * dI;
+    auto I1 = E_ind1 / R;
+    auto A2 = circle_area_d(d);
+    auto E_ind2 = mu0 * (N / l) * A2 * dI;
+    auto I2 = E_ind2 / R;
+    if (print) {
+        std::cout << "EMF Induced in Loop 1 = " << E_ind1 << " Newton/Coulomb" << std::endl;
+        std::cout << "Current in Loop 1 = " << I1 << " Ampere" << std::endl;
+        std::cout << "EMF Induced in Loop 2 = " << E_ind2 << " Newton/Coulomb" << std::endl;
+        std::cout << "Current in Loop 2 = " << I2 << " Ampere" << std::endl;
+    }
+    return {I1, I2};
+}
+
+inline vector<ld> ElectroMagneticInduction::slidingRod(
+        ld B, ld R, ld v, ld l, bool print)
+{
+    // part a find current in resistor
+    auto I = currentSlidingBar(l, R, v, B, false);
+    // part b find the magnetic force on the bar
+    auto F = magneticForceSlidingBar(I, l, B, false);
+    // part c find the power dissipated in the resistor
+    auto P = electricalPower_IR(I, R, false);
+    // part d find the work done by the agent pulling the bar
+    auto W = workDoneSlidingBar(F, v, false);
+    if (print) {
+        std::cout << "Current in Resistor = " << I << " Ampere" << std::endl;
+        std::cout << "Magnetic Force on Bar = " << F << " Newton" << std::endl;
+        std::cout << "Power Dissipated in Resistor = " << P << " Watts" << std::endl;
+        std::cout << "Work Done by Agent = " << W << " Watts" << std::endl;
+    }
+    return {I, F, P, W};
+}
+
+inline ld ElectroMagneticInduction::magneticForceSlidingBar(
+        ld I, ld l, ld B, bool print)
+{
+    auto F = I * l * B;
+    if (print)
+        std::cout << "Magnetic Force = " << F << " Newton" << std::endl;
+    return F;
+}
+
+inline ld ElectroMagneticInduction::workDoneSlidingBar(
+        ld f, ld v, bool print)
+{
+    auto W = f * v;
+    if (print)
+        std::cout << "Work Done = " << W << " Joules" << std::endl;
+    return W;
+}
+
+inline vector<ld> ElectroMagneticInduction::inductorRLCircuit(
+        ld R, ld V, ld I, ld t, bool print)
+{
+    // part a find the inductance of the inductor
+    auto I0 = maxCurrent(V, R, false);
+    auto t1 = timeConstant(t, I, I0, false);
+    auto L = selfInductance_taoR(t1, R, false);
+    // part b find the time constant of the circuit
+    auto t2 = inductiveTimeConstant(L, R, false);
+    // part c find the current in the circuit at many time constants
+    auto I1 = I0;
+    if (print) {
+        std::cout << "Inductance = " << L << " Henry" << std::endl;
+        std::cout << "Time Constant = " << t2 << " Seconds" << std::endl;
+        std::cout << "Current at (t = infinity) = " << I1 << " Ampere" <<
+        std::endl;
+    }
+    return {L, t2, I1};
+}
+
+inline ld ElectroMagneticInduction::timeConstant(
+        ld t, ld I, ld I0, bool print)
+{
+    auto tao = - t / log((I0 - I) / I0);
+    if (print)
+        std::cout << "Time Constant = " << tao << " Seconds" << std::endl;
+    return tao;
 }

@@ -1337,7 +1337,7 @@ ld ElectricCharge::forceOnEachChargeInSquare(ld Q, ld a, bool print) {
 }
 
 ld ElectricCharge::electricFlux(Vector3D E, Vector3D A, bool print) {
-    auto phi = E.dot_product(A);
+    auto phi = E.dot(A);
     if (print) {
         std::cout << "Electric flux = " << phi << " Nm/C" << std::endl;
     }
@@ -1484,6 +1484,3 @@ ElectricCharge::surfaceChargeDensitySphere(ld Q, ld r, bool print) {
     }
     return sigma;
 }
-
-
-

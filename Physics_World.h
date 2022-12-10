@@ -1212,12 +1212,12 @@ public:
         long double x, y, z;
         x = vector3d->getX() + r.vector3d->getX();
         y = vector3d->getY() + r.vector3d->getY();
-        z = vector3d->return_z() + r.vector3d->return_z();
+        z = vector3d->getZ() + r.vector3d->getZ();
         std::unique_ptr<Physics_World> sum = std::make_unique<Physics_World>();
         sum->vector3d->set_coordinates(x, y, z);
         x = vector2d->getX() + r.vector2d->getX();
         y = vector2d->getY() + r.vector2d->getY();
-        sum->vector2d->set_coordinates(x, y);
+        sum->vector2d->setCoordinates(x, y);
         sum->vector3d->mode = r.vector3d->mode;
         sum->vector2d->mode = this->vector2d->mode;
         return *sum;
@@ -1227,12 +1227,12 @@ public:
         long double x, y, z;
         x = vector3d->getX() + n;
         y = vector3d->getY() + n;
-        z = vector3d->return_z() + n;
+        z = vector3d->getZ() + n;
         std::unique_ptr<Physics_World> sum = std::make_unique<Physics_World>();
         sum->vector3d->set_coordinates(x, y, z);
         x = vector2d->getX() + n;
         y = vector2d->getY() + n;
-        sum->vector2d->set_coordinates(x, y);
+        sum->vector2d->setCoordinates(x, y);
         sum->vector3d->mode = this->vector3d->mode;
         sum->vector2d->mode = this->vector2d->mode;
         _val_ = +n;
@@ -1244,12 +1244,12 @@ public:
         long double x, y, z;
         x = vector3d->getX() + r.vector3d->getX();
         y = vector3d->getY() + r.vector3d->getY();
-        z = vector3d->return_z() + r.vector3d->return_z();
+        z = vector3d->getZ() + r.vector3d->getZ();
         std::unique_ptr<Physics_World> sum = std::make_unique<Physics_World>();
         sum->vector3d->set_coordinates(x, y, z);
         x = vector2d->getX() + r.vector2d->getX();
         y = vector2d->getY() + r.vector2d->getY();
-        sum->vector2d->set_coordinates(x, y);
+        sum->vector2d->setCoordinates(x, y);
         sum->vector3d->mode = r.vector3d->mode;
         sum->vector2d->mode = this->vector2d->mode;
         return *sum;
@@ -1260,12 +1260,12 @@ public:
         long double x, y, z;
         x = vector3d->getX() + 1.0;
         y = vector3d->getY() + 1.0;
-        z = vector3d->return_z() + 1.0;
+        z = vector3d->getZ() + 1.0;
         Physics_World sum;
         sum.vector3d->set_coordinates(x, y, z);
         x = vector2d->getX() + 1.0;
         y = vector2d->getY() + 1.0;
-        vector2d->set_coordinates(x, y);
+        vector2d->setCoordinates(x, y);
         vector3d->mode = this->vector3d->mode;
         vector2d->mode = this->vector2d->mode;
         _val_ += 1;
@@ -1478,7 +1478,7 @@ inline Physics_World::Physics_World(const TYPE t1, const TYPE t2)
     point2d = std::make_unique<Point2D<TYPE>>();
     vector = std::make_unique <rez::Vector<TYPE>>();
     scale = std::make_unique<Scale>();
-    this->vector2d->set_coordinates(t1, t2);
+    this->vector2d->setCoordinates(t1, t2);
 }
 
 inline Physics_World::~Physics_World()

@@ -92,9 +92,9 @@ public:
     template<typename... Args>
     void addValuesToVector(const T& first, const Args&... args);
 
-    void display_vector(std::string label = "")const;
-    void display_eigen(std::string label = "")const;
-    void show_magnitude(std::string label = "")const;
+    void showVector(std::string label = "")const;
+    void showEigen(std::string label = "")const;
+    void showMagnitude(std::string label = "")const;
 
     // Function that return the size of vector
     ull size() const;
@@ -147,9 +147,9 @@ public:
     // End iterator
     iterator end() const;
 
-    static void show_objectCount() { std::cout << "\nvectorND object count: "
-                                               << vecNd_objCounter << std::endl; }
-    static int get_objectCount() { return vecNd_objCounter; }
+    static void showObjectCount() { std::cout << "\nvectorND object count: "
+                                              << vecNd_objCounter << std::endl; }
+    static int getObjectCount() { return vecNd_objCounter; }
 
     //VectorNd<T>(VectorNd<T>&& temp)noexcept;
     bool operator==(const VectorND& v);
@@ -190,10 +190,10 @@ public:
         return temp;
     }
 
-    [[nodiscard]] double dot_product(const VectorND& v)const;
-    [[nodiscard]] VectorND<T> cross_product(const VectorND& v)const;
+    [[nodiscard]] double dot(const VectorND& v)const;
+    [[nodiscard]] VectorND<T> cross(const VectorND& v)const;
     [[nodiscard]] double distance(const VectorND& v)const;
-    [[nodiscard]] double angle_between_vectors(VectorND& v)const;
+    [[nodiscard]] double angleBetweenVectors(VectorND& v)const;
     int getSize() const;
     bool isOrthogonalWith(VectorND& v)const;
     void typeOfAngleBetween(const VectorND& v)const;
@@ -230,6 +230,21 @@ public:
     void set(int i, VectorND<float> nd);
 
     int get(int i);
+
+    // override the << operator to print the vector
+    friend std::ostream& operator<<(std::ostream& os, const VectorND& v)
+    {
+        os << v.ID << ":<X1, X2, ..., Xn> = <";
+        for (int i = 0; i < v.length; i++)
+        {
+            os << v.arr[i];
+            if (i != v.length - 1)
+                os << ", ";
+        }
+        os << ">";
+        return os;
+    }
+
 };
 #endif
 
@@ -316,19 +331,19 @@ T VectorND<T>::pop_back()
 }
 
 template<class T>
-inline void VectorND<T>::display_vector(std::string label)const
+inline void VectorND<T>::showVector(std::string label)const
 {
     std::cout << ((label == "") ? ID : label)<<": ";
     for (typename VectorND::iterator ptr = this->begin(); ptr != this->end(); ++ptr) {
         cout << *ptr << ' ';
     }
-    show_magnitude(label);
+    showMagnitude(label);
     cout << '\n';
 
 }
 
 template <typename T>
-void VectorND<T>::show_magnitude(std::string label) const
+void VectorND<T>::showMagnitude(std::string label) const
 {
     std::cout<< "\n" << ((label.empty()) ? ID : label)<<":";
     std::cout << " Magnitude: " << magnitude << endl;
@@ -604,7 +619,7 @@ VectorND<T> VectorND<T>::operator*(T s)
 }
 
 template<typename T>
-inline double VectorND<T>::dot_product(const VectorND& v) const
+inline double VectorND<T>::dot(const VectorND& v) const
 {
     auto total = 0;
     for (int i = 0; i < length; i++)
@@ -615,7 +630,7 @@ inline double VectorND<T>::dot_product(const VectorND& v) const
 }
 
 template<typename T>
-inline VectorND<T> VectorND<T>::cross_product(const VectorND& v) const
+inline VectorND<T> VectorND<T>::cross(const VectorND& v) const
 {
     if (length != 3)
     {
@@ -639,9 +654,9 @@ inline double VectorND<T>::distance(const VectorND& v) const
 }
 
 template<typename T>
-inline double VectorND<T>::angle_between_vectors(VectorND& v) const
+inline double VectorND<T>::angleBetweenVectors(VectorND& v) const
 {
-    auto dotProd = dot_product(v);
+    auto dotProd = dot(v);
     auto divisor = magnitude * v.magnitude;
     auto temp = dotProd / divisor;
     return acos(temp)*constants::DEGREE;
@@ -650,21 +665,21 @@ inline double VectorND<T>::angle_between_vectors(VectorND& v) const
 template<typename T>
 inline bool VectorND<T>::isOrthogonalWith(VectorND& v) const
 {
-    return dot_product(v) == 0.0;
+    return dot(v) == 0.0;
 }
 
 template<typename T>
 inline void VectorND<T>::typeOfAngleBetween(const VectorND& v) const
 {
-    if (dot_product(v) < 0)
+    if (dot(v) < 0)
     {
         std::cout << "vectors are obtuse\n";
     }
-    else if (dot_product(v) > 0)
+    else if (dot(v) > 0)
     {
         std::cout << "vectors are acute\n";
     }
-    else if (dot_product(v) == 0)
+    else if (dot(v) == 0)
     {
         std::cout << "vectors are right\n";
     }

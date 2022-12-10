@@ -26,8 +26,8 @@ class Vector3D : public Vector2D
     void		setInclination();
     void		setAzimuth();
     void		calculate_spherical();
-    void		set_allAngles();
-    void		set_magnitude();
+    void		setAllAngles();
+    void		setMagnitude();
     void		updateVector();
     static void countIncrease() { vec3d_objectCount += 1; }
     static void countDecrease() { vec3d_objectCount -= 1; }
@@ -45,15 +45,14 @@ public:
     void		showSphericalCoordinates(const std::string& label = "")const;
     void		showAllAngles(const std::string& label = "")const;
     void		display(const std::string& label = "")const override;    //display value of vector
-    static int	return_objectCount(){return vec3d_objectCount;}
-    [[nodiscard]] long double	return_z()const; //return z
-    [[nodiscard]] long double	return_xAngle()const; //return x angle
-    [[nodiscard]] long double	return_yAngle()const; //return y angle
-    [[nodiscard]] long double	return_zAngle()const; //return z angle
-    [[nodiscard]] long double	return_mag()const override;
-    [[nodiscard]] long double	return_angle()const override;
-    [[nodiscard]] long double	return_arcLength()const override;
-    [[nodiscard]] char			return_mode()const override;
+    static int	returnObjectCount(){return vec3d_objectCount;}
+    [[nodiscard]] long double	getXAngle()const; //return x angle
+    [[nodiscard]] long double	getYAngle()const; //return y angle
+    [[nodiscard]] long double	getZAngle()const; //return z angle
+    [[nodiscard]] long double	getMag()const override;
+    [[nodiscard]] long double	getAngle()const override;
+    [[nodiscard]] long double	getArcLength()const override;
+    [[nodiscard]] char			getMode()const override;
 
     /// <summary>
     /// gives the projection of v onto this
@@ -62,7 +61,7 @@ public:
     /// <returns>3D vector of v onto this</returns>
     Vector3D	projection(Vector3D& v)const;
 
-    long double	angle_between_vectors(Vector3D& v)const;
+    long double	angleBetweenVectors(Vector3D& v)const;
     /// <summary>
     /// The distance from a point(vector head) to a plane is equal to length of the perpendicular
     /// lowered from a point on a plane. If Ax + By + Cz + D = 0 is a plane equation,
@@ -76,20 +75,20 @@ public:
     /// <returns>distance from the vector head to plane with given equations
     /// coefficients</returns>
     template<typename T>
-    long double distance_to_plane(T a, T b, T c, T d);
+    long double distanceToPlane(T a, T b, T c, T d);
     [[nodiscard]] long double	square() const override; //gives square of the vector
-    [[nodiscard]] long double	dot_product(const Vector3D &vec) const; //scalar dot_product
-    [[nodiscard]] static long double dot_product(const long double uMag, const long double vMag, const long double angleBetween);
+    [[nodiscard]] long double	dot(const Vector3D &vec) const; //scalar dot
+    [[nodiscard]] static long double dot(const long double uMag, const long double vMag, const long double angleBetween);
     [[nodiscard]] long double	distance(const Vector3D &vec)const;    //gives distance between two vectors
-    [[nodiscard]] long double	find_magnitude()const override;  //magnitude of the vector
-    [[nodiscard]] Vector3D		cross_product(const Vector3D &vec)const;    //cross_product
-    [[nodiscard]] long double	scaler_triple_product(Vector3D& b, Vector3D& c) const;
-    Vector3D	normalize_vector();   //normalized vector
+    [[nodiscard]] long double	findMagnitude()const override;  //magnitude of the vector
+    [[nodiscard]] Vector3D		cross(const Vector3D &vec)const;    //cross
+    [[nodiscard]] long double	scalerTripleProduct(Vector3D& b, Vector3D& c) const;
+    Vector3D	normalize3D();   //normalized vector
     bool isOrthogonalWith(Vector3D& v)const;
     void typeOfAngleBetween(const Vector3D& v)const;
-    static void show_objectCount() { std::cout << "\n vector3D object count: "
-                                               << vec3d_objectCount << std::endl; }
-    static int	get_objectCount() { return vec3d_objectCount; }
+    static void showObjectCount() { std::cout << "\n vector3D object count: "
+                                              << vec3d_objectCount << std::endl; }
+    static int	getObjectCount() { return vec3d_objectCount; }
     bool operator==(const Vector3D& v)const;
     bool operator!=(const Vector3D& v)const;
     bool operator>(const Vector3D& v)const;
@@ -212,14 +211,14 @@ inline void Vector3D::showRectCord(const std::string& label) const
 {
     cout << setprecision(6);
 
-    cout<< "\n" <<((label.empty()) ? ID : label) << ":(x,y,z) = ";
+    cout<< "\n" <<((label.empty()) ? ID : label) << ":<x,y,z> = ";
     if (x < 0 && x > -1) {
         cout << setiosflags(ios::fixed);
-        cout << fixed << "(" << x << ","
+        cout << fixed << "<" << x << ","
              << resetiosflags(ios::fixed);
     }
     else {
-        cout << "(" << x << ",";
+        cout << "<" << x << ",";
     }
     if (y<0 && y>-1) {
         cout << setiosflags(ios::fixed);
@@ -231,11 +230,11 @@ inline void Vector3D::showRectCord(const std::string& label) const
     }
     if (z<0 && z>-1) {
         cout << setiosflags(ios::fixed);
-        cout << z << ")" << endl;
+        cout << z << ">" << endl;
         cout << resetiosflags(ios::fixed);
     }
     else {
-        cout << z << ")";
+        cout << z << ">";
     }
     std::cout << std::endl;
 }
@@ -269,23 +268,23 @@ inline void Vector3D::calculate_spherical()
     setInclination();
     setAzimuth();
 }
-inline void Vector3D::set_allAngles()
+inline void Vector3D::setAllAngles()
 {
-    xAngle = return_xAngle();
-    yAngle = return_yAngle();
-    zAngle = return_zAngle();
+    xAngle = getXAngle();
+    yAngle = getYAngle();
+    zAngle = getZAngle();
     //angle =
 }
 
-inline void Vector3D::set_magnitude()
+inline void Vector3D::setMagnitude()
 {
-    magnitude = find_magnitude();
+    magnitude = findMagnitude();
 }
 
 inline void Vector3D::updateVector()
 {
-    set_magnitude();
-    set_allAngles();
+    setMagnitude();
+    setAllAngles();
     calculate_spherical();
 }
 
@@ -348,7 +347,7 @@ inline Vector3D &Vector3D::operator*=(long double value)
     x*=value;
     y*=value;
     z*=value;
-    set_allAngles();
+    setAllAngles();
     return *this;
 }
 
@@ -358,7 +357,7 @@ inline Vector3D& Vector3D::operator=(const Vector3D& vec)
     x = vec.x;
     y = vec.y;
     z = vec.z;
-    set_allAngles();
+    setAllAngles();
 
     return *this;
 }
@@ -386,27 +385,27 @@ inline istream& operator>>(istream& is, Vector3D& v)
 
 
 //Dot product
-inline long double Vector3D::dot_product(const Vector3D &vec) const
+inline long double Vector3D::dot(const Vector3D &vec) const
 {
     return x * vec.x + vec.y * y + vec.z * z;
 }
-inline long double Vector3D::dot_product(const long double uMag, const long double vMag, const long double angleBetween)
+inline long double Vector3D::dot(const long double uMag, const long double vMag, const long double angleBetween)
 {
     return uMag * vMag * cos(angleBetween*constants::RADIAN);
 }
 //cross product
-inline Vector3D Vector3D::cross_product(const Vector3D &vec)const
+inline Vector3D Vector3D::cross(const Vector3D &vec)const
 {
     long double ni=y*vec.z-z*vec.y;
     long double nj=z*vec.x-x*vec.z;
     long double nk=x*vec.y-y*vec.x;
     return {ni,nj,nk};
 }
-inline long double Vector3D::scaler_triple_product(Vector3D& b, Vector3D& c) const
+inline long double Vector3D::scalerTripleProduct(Vector3D& b, Vector3D& c) const
 {
-    return this->dot_product(b.cross_product(c));
+    return this->dot(b.cross(c));
 }
-inline long double Vector3D::find_magnitude()const
+inline long double Vector3D::findMagnitude()const
 {
     return static_cast<long double>( sqrt(square()));
 }
@@ -415,34 +414,34 @@ inline long double Vector3D::square()const
     return static_cast<long double>( x*x+y*y+z*z);
 }
 
-inline Vector3D Vector3D::normalize_vector()
+inline Vector3D Vector3D::normalize3D()
 {
-    //assert(find_magnitude()!=0);
+    //assert(findMagnitude()!=0);
     const auto length = sqrt((this->x * this->x) + (this->y * this->y) + (this->z * this->z));
     this->x /= length;
     this->y /= length;
     this->z /= length;
     calculate_spherical();
-    set_allAngles();
+    setAllAngles();
     return *this;
 }
 
 inline bool Vector3D::isOrthogonalWith(Vector3D& v)const
 {
-    return this->dot_product(v) == 0.0;
+    return this->dot(v) == 0.0;
 }
 
 inline void Vector3D::typeOfAngleBetween(const Vector3D& v) const
 {
-    if (dot_product(v) < 0)
+    if (dot(v) < 0)
     {
         std::cout << "vectors are obtuse\n";
     }
-    else if (dot_product(v) > 0)
+    else if (dot(v) > 0)
     {
         std::cout << "vectors are acute\n";
     }
-    else if (dot_product(v) == 0)
+    else if (dot(v) == 0)
     {
         std::cout << "vectors are right";
     }
@@ -498,37 +497,37 @@ inline long double Vector3D::distance(const Vector3D &vec)const
     return sqrt((pow(x2 - x1, 2) + pow(y2 - y1, 2) + pow(z2 - z1, 2)));
 }
 
-inline long double Vector3D::return_z()const
+inline long double Vector3D::getZ()const
 {
     return z;
 }
-inline long double Vector3D::return_xAngle()const
+inline long double Vector3D::getXAngle()const
 {
     return atan2(sqrt(y * y + z * z), x) * constants::DEGREE;
 }
-inline long double Vector3D::return_yAngle()const
+inline long double Vector3D::getYAngle()const
 {
     return atan2(sqrt(x * x + z * z), y) * constants::DEGREE;
 }
-inline long double Vector3D::return_zAngle()const
+inline long double Vector3D::getZAngle()const
 {
     return atan2(sqrt(x * x  + y * y), z) * constants::DEGREE;
 }
-inline long double Vector3D::return_mag() const
+inline long double Vector3D::getMag() const
 {
     return static_cast<long double>(sqrt(x * x + y * y + z * z));
 }
-inline long double Vector3D::return_angle() const
+inline long double Vector3D::getAngle() const
 {
     std::cout << "there is no one angle in a 3d vector class so this"
               << " returns the sum of the three angles instead\n";
-    return return_xAngle()+return_yAngle()+ return_zAngle();
+    return getXAngle() + getYAngle() + getZAngle();
 }
-inline long double Vector3D::return_arcLength() const
+inline long double Vector3D::getArcLength() const
 {
-    return return_mag()*return_angle()*constants::RADIAN;
+    return getMag() * getAngle() * constants::RADIAN;
 }
-inline char Vector3D::return_mode() const
+inline char Vector3D::getMode() const
 {
     return 0;
 }
@@ -536,15 +535,15 @@ inline char Vector3D::return_mode() const
 inline Vector3D Vector3D::projection(Vector3D& v) const
 {
     const Vector3D temp(this->x, this->y, this->z);
-    const auto dotProd   = this->dot_product(v);
-    const auto dpdevisor = v.dot_product(v);
+    const auto dotProd   = this->dot(v);
+    const auto dpdevisor = v.dot(v);
     const auto scalar    = dotProd / dpdevisor;
     Vector3D resultant   = v * scalar;
     return resultant;
-    //const auto Θ = this->angle_between_vectors(v);
+    //const auto Θ = this->angleBetweenVectors(v);
     //return this->magnitude * cos(Θ * RADIAN);
 }
-inline long double Vector3D::angle_between_vectors(Vector3D& v)const
+inline long double Vector3D::angleBetweenVectors(Vector3D& v)const
 {
     return acos((x*v.x+y*v.y+z*v.z) / (sqrt(x*x+y*y+z*z) *
                                        sqrt(v.x*v.x+v.y*v.y+v.z*v.z))) *
@@ -562,15 +561,11 @@ inline Vector3D::~Vector3D()
 }
 
 template<typename T>
-inline long double Vector3D::distance_to_plane(T a, T b, T c, T d)
+inline long double Vector3D::distanceToPlane(T a, T b, T c, T d)
 {
     auto top = abs(((a * x) + (b * y) + (c * z) + d));
     auto bot = sqrt((a * a) + (b * b) + (c * c));
     return top/bot;
-}
-
-long double Vector3D::getZ() const {
-    return z;
 }
 
 #endif //PHYSICSFORMULA_VECTOR3D_H

@@ -16,14 +16,6 @@
 #include "Constants.h"
 using namespace std;
 
-///**
-// * @brief Global Constant _K_ is the Boltzmann constant
-// * .0000000000000000000000138 J/K
-// */
-//constexpr auto BOLTZMANN_K_ = 1.38e-23;//1.38e-23
-
-//[[maybe_unused]] constexpr auto ATOMIC_MASS_UNIT_ = 1.66e-27; //1.6605e-27 (u)
-
 /**
  * @brief Global Constant _Na_ is  Avogadro's number and is used to express
  * units in moles, abb(mol) and is equal to 6.02e23 mol^-1
@@ -399,22 +391,31 @@ public:
      * @param N is the number of molecules
      * @returns the   mole^-1
      */
-    ld static convert_to_mol(const ld N)
+    ld static convert_to_mol(const ld N, bool print = true)
     {
-        return N / constants::AVOGADRO;
+        auto mols = N / constants::AVOGADRO;
+        if (print)
+            std::cout << "Moles: " << mols << std::endl;
+        return mols;
     }
 
     /**
-     * @brief calculates the linear thermal expansion of a object made of certain materials which, distance
+     * @brief calculates the linear thermal expansion of a object made of
+     * certain materials which, distance
      * we use the expansion coefficients with
      * @param a is the coefficient of 'linear expansion'
-     * @param L is the length and the change of the thermal expansion is proportional to its length
+     * @param L is the length and the change of the thermal expansion is
+     * proportional to its length
      * @param tempChange is the change in temperature
      * @returns the total expansion in meters
      */
-    static ld thermalExpansionLinear1D(const ld a, const ld L, const ld tempChange)
+    static ld thermalExpansionLinear1D(
+            const ld a, const ld L, const ld tempChange, bool print = true)
     {
-        return a * L * tempChange;
+        auto l_expansion = a * L * tempChange;
+        if (print)
+            std::cout << "Linear Thermal Expansion: " << l_expansion << std::endl;
+        return l_expansion;
     }
 
     /**
@@ -424,9 +425,13 @@ public:
      * @param tempChange is the change in temperature
      * @returns the total thermal expansion of in area
      */
-    static ld thermalExpansionArea2D(const ld a, const ld areaChange, const ld tempChange)
+    static ld thermalExpansionArea2D(
+            const ld a, const ld areaChange, const ld tempChange, bool print = true)
     {
-        return a * areaChange * tempChange;
+        auto a_expansion = a * areaChange * tempChange;
+        if (print)
+            std::cout << "Area Thermal Expansion: " << a_expansion << std::endl;
+        return a_expansion;
     }
 
     /**
@@ -436,23 +441,32 @@ public:
      * @param tempChange is the change in temperature
      * @returns the total thermal expansion of a volume
      */
-    static ld thermalExpansionVolume3D(const ld av, const ld vChange, const ld tempChange)
+    static ld thermalExpansionVolume3D(
+            const ld av, const ld vChange, const ld tempChange, bool print = true)
     {
-        return av * vChange * tempChange;
+        auto v_expansion = av * vChange * tempChange;
+        if (print)
+            std::cout << "Volume Thermal Expansion: " << v_expansion << std::endl;
+        return v_expansion;
     }
 
     /**
-     * @brief calculates the final temperature needed for an object to reach a certain expansion as
-     * described by the reworked linear thermal equation Tf = ((lRf -lRi)/(a * lRi)) + Ti.
+     * @brief calculates the final temperature needed for an object to reach a
+     * certain expansion as described by the reworked linear thermal equation
+     * Tf = ((lRf -lRi)/(a * lRi)) + Ti.
      * @param a is the coefficient of 'linear expansion'
      * @param lRi is the initial length or radius of object at an initial temp
      * @param lRf is the final length or radius caused from thermal expansion
      * @param Ti is the initial temperature
      * @returns final temperature needed for a object to expand a certain amount
      */
-    static ld tempFinalFromThermalExpansionLinear1D(const ld a, const ld lRi, const ld lRf, const ld Ti)
+    static ld tempFinalFromThermalExpansionLinear1D(
+            const ld a, const ld lRi, const ld lRf, const ld Ti, bool print = true)
     {
-        return ((lRf-lRi)/(a*lRi))+Ti;
+        auto T = ((lRf-lRi)/(a*lRi))+Ti;
+        if (print)
+            std::cout << "Final Temperature: " << T << std::endl;
+        return T;
     }
 
     /**
@@ -463,11 +477,8 @@ public:
      * @param Tf is the final temperature of the object
      * @returns the coefficient of volume expansion
      */
-    static ld coefficientVolumeExpansion(const ld V_i,
-                                         const ld V_f,
-                                         const ld Ti,
-                                         const ld Tf,
-                                         bool print = false)
+    static ld coefficientVolumeExpansion(
+            const ld V_i, const ld V_f, const ld Ti, const ld Tf, bool print = false)
     {
         auto V_change = V_f - V_i;
         auto T_change = Tf - Ti;
@@ -489,12 +500,9 @@ public:
      * @param print  is a boolean to print the result
      * @return  the coefficient of volume expansion
      */
-    static ld coefficientVolumeExpansion(const ld V_i,
-                                         const ld V_f,
-                                         const ld Ti,
-                                         const ld Tf,
-                                         const ld beta,
-                                         bool print = false)
+    static ld coefficientVolumeExpansion(
+            const ld V_i, const ld V_f, const ld Ti, const ld Tf, const ld beta,
+            bool print = false)
     {
         auto V_change = V_f - V_i;
         auto T_change = Tf - Ti;
@@ -512,25 +520,22 @@ public:
      * @param Tf is the final temperature of the object
      * @returns the coefficient of linear expansion
      */
-    static ld coefficientLinearExpansion(const ld L_i,
-                                         const ld L_f,
-                                         const ld Ti,
-                                         const ld Tf,
-                                         bool print = false)
+    static ld coefficientLinearExpansion(
+            const ld L_i, const ld L_f, const ld Ti, const ld Tf,
+            bool print = false)
     {
         auto L_change = L_f - L_i;
         auto T_change = Tf - Ti;
         auto coeff_l_exp = (L_change / L_i) / (T_change);
         if (print)
-            std::cout << "Coefficient of linear expansion: " << coeff_l_exp << std::endl;
+            std::cout << "Coefficient of linear expansion: "
+            << coeff_l_exp << std::endl;
         return coeff_l_exp;
     }
 
-    static ld changeOfLengthFromLinearExpansion(const ld alpha,
-                                                const ld Li,
-                                                const ld Ti,
-                                                const ld Tf,
-                                                bool print = false)
+    static ld changeOfLengthFromLinearExpansion(
+            const ld alpha, const ld Li, const ld Ti, const ld Tf,
+            bool print = false)
     {
         auto T_change = Tf - Ti;
         auto L_change = alpha * Li * T_change;
@@ -546,13 +551,12 @@ public:
      * @param B is the bulk modulus
      * @returns the gas pressure in Pa
      */
-    static ld gasPressure(const ld F, const ld A, const ld B, bool print = false)
+    static ld gasPressure(
+            const ld F, const ld A, const ld B, bool print = false)
     {
         ld P = ((F / A)-1) * B;
         if(print)
-        {
             std::cout << "The gas pressure is: " << P << " Pa\n";
-        }
         return P;
     }
 
@@ -566,9 +570,13 @@ public:
      * @param Tf is the final temp in kelvins
      * @returns the change in pressure due to temp
      */
-    static ld pressureChangeFromTemperatureChange(const ld Pi, const ld Tf, const ld Ti)
+    static ld pressureChangeFromTemperatureChange(
+            const ld Pi, const ld Tf, const ld Ti, bool print = true)
     {
-        return Pi * (Tf / Ti);
+        auto p = Pi * (Tf / Ti);
+        if (print)
+            std::cout << "Pressure change from temperature change: " << p << std::endl;
+        return p;
     }
 
     /**
@@ -579,9 +587,13 @@ public:
      * @param T is the absolute Temperature
      * @returns the absolute pressure
      */
-    static ld absolutePressure_idealGasLaw(const ld V, const ld N, const ld T)
+    static ld absolutePressure_idealGasLaw(
+            const ld V, const ld N, const ld T, bool print = true)
     {
-        return (N * constants::STEFAN_BOLTZMANN * T) / V;
+        auto absP =  (N * constants::STEFAN_BOLTZMANN * T) / V;
+        if (print)
+            std::cout << "Absolute Pressure: " << absP << std::endl;
+        return absP;
     }
     /**
      * @brief ideal gas law PV = NkT where reworked to solve for N
@@ -592,9 +604,13 @@ public:
      * @param T is the absolute Temperature in kelvins
      * @returns the absolute pressure
      */
-    static ld numberMolecules_idealGasLaw(const ld P, const ld V, const ld T)
+    static ld numberMolecules_idealGasLaw(
+            const ld P, const ld V, const ld T, bool print = true)
     {
-        return (P * V)/(constants::STEFAN_BOLTZMANN * T);
+        auto N = (P * V)/(constants::STEFAN_BOLTZMANN * T);
+        if (print)
+            std::cout << "Number of molecules: " << N << std::endl;
+        return N;
     }
 
     /**
@@ -607,12 +623,14 @@ public:
      * @param _R is the universal gas law constant default in J
      * @returns the absolute pressure
      */
-    static ld numberMoles_idealGasLaw(const ld P,
-                                      const ld V,
-                                      const ld T,
-                                      const ld R = constants::R.joules)
+    static ld numberMoles_idealGasLaw(
+            const ld P, const ld V, const ld T, const ld R = constants::R.joules,
+            bool print = true)
     {
-        return (P * V) / (R * T);
+        auto N = (P * V) / (R * T);
+        if (print)
+            std::cout << "Number of moles: " << N << std::endl;
+        return N;
     }
 
     /**
@@ -624,7 +642,8 @@ public:
      * @param T is the absolute Temperature in kelvins
      * @returns the volume of a gas
      */
-    static ld volume_idealGasLaw(const ld n, const ld P, const ld T, bool print = false)
+    static ld volume_idealGasLaw(
+            const ld n, const ld P, const ld T, bool print = false)
     {
         ld V = (n * constants::R.joules * T) / P;
         if(print)
@@ -640,7 +659,8 @@ public:
      * @param print  is a boolean to print the result
      * @return  the temperature of the gas
      */
-    static ld temp_idelGasLaw(const ld n, const ld P, const ld V, bool print = false)
+    static ld tempIdealGasLaw(
+            const ld n, const ld P, const ld V, bool print = false)
     {
         ld T = (P * V) / (n * constants::R.joules);
         if(print)
@@ -653,9 +673,12 @@ public:
      * @param T is the absolute temperature in kelvin
      * @returns Thermal energy, molecular interpretation of temperature
      */
-    static ld averageMolecularKineticEnergy(const ld T)
+    static ld averageMolecularKineticEnergy(const ld T, bool print = true)
     {
-        return (3.0 / 2.0) * constants::BOLTZMANN * T;
+        auto KE = (3.0 / 2.0) * constants::BOLTZMANN * T;
+        if (print)
+            std::cout << "Average molecular kinetic energy: " << KE << std::endl;
+        return KE;
     }
 
     /**
@@ -663,9 +686,12 @@ public:
      * @param m is the mass of a single molecule
      * @param T Temp K
      */
-    static ld thermalSpeed(const ld m, const ld T)
+    static ld thermalSpeed(const ld m, const ld T, bool print = true)
     {
-        return sqrt((3.0 * constants::BOLTZMANN * T) / m);
+        auto speed = sqrt((3.0 * constants::BOLTZMANN * T) / m);
+        if (print)
+            std::cout << "Thermal speed: " << speed << std::endl;
+        return speed;
     }
 
     /**
@@ -675,10 +701,8 @@ public:
      * @param k is the molecular kinetic energy
      * @returns the speed of the molecule
      */
-    static ld moleculeSpeed(const ld m,
-                            const ld n,
-                            const ld k,
-                            bool print = false)
+    static ld moleculeSpeed(
+            const ld m, const ld n, const ld k, bool print = false)
     {
         auto total_mass = m * n * constants::ATOMIC_MASS_UNIT;
         auto speed = sqrt((k * 2) / total_mass);
@@ -693,20 +717,26 @@ public:
      * @param v is the velocity in question
      * @returns the temp in kelvin needed for a molecule to reach a velocity
      */
-    static ld temperatureOfMoleculeAtVelocity(const ld m, const ld v)
+    static ld temperatureOfMoleculeAtVelocity(
+            const ld m, const ld v, bool print = true)
     {
-        return (m * (v * v)) / (3.0 * constants::STEFAN_BOLTZMANN);
+        auto T = (m * (v * v)) / (3.0 * constants::STEFAN_BOLTZMANN);
+        if (print)
+            std::cout << "Temperature of molecule at velocity: " << T << std::endl;
+        return T;
     }
 
     /**
      * @brief calculates the density of vapor
      */
-    static ld vaporDensity(const ld p,
-                           const ld m,
-                           const ld T,
-                           const ld R = constants::R.joules)
+    static ld vaporDensity(
+            const ld p, const ld m, const ld T, const ld R = constants::R.joules,
+            bool print = true)
     {
-        return (p * m) / (R * T);
+        auto density = (m * p) / (R * T);
+        if (print)
+            std::cout << "Vapor density: " << density << std::endl;
+        return density;
     }
 
     /**
@@ -715,17 +745,24 @@ public:
      * @param svD is the saturation vapor density level
      * @returns humidity level as %
      */
-    static ld humidityLevel(const ld vD, const ld svD)
+    static ld humidityLevel(const ld vD, const ld svD, bool print = true)
     {
-        return (vD / svD) * 100.0;
+        auto humidity = (vD / svD) * 100;
+        if (print)
+            std::cout << "Humidity level: " << humidity << std::endl;
+        return humidity;
     }
 
     /**
      * @brief calculates the change in temperature
      */
-    static ld temperatureChange(const ld startTemp, const ld finishTemp)
+    static ld temperatureChange(
+            const ld startTemp, const ld finishTemp, bool print = true)
     {
-        return abs(finishTemp - startTemp);
+        auto deltaT = finishTemp - startTemp;
+        if (print)
+            std::cout << "Temperature change: " << deltaT << std::endl;
+        return deltaT;
     }
 
     /**
@@ -763,21 +800,14 @@ public:
      * @param print  is a boolean to print the result
      * @return  the amount of ice in kg needed to cool the water
      */
-    static ld iceNeeded(const ld m_w,
-                        const ld c_w,
-                        const ld t_i,
-                        const ld t_f,
-                        const ld c_i,
-                        const ld t_i_i,
-                        const ld hf_water,
-                        bool print = false)
+    static ld iceNeeded(
+            const ld m_w, const ld c_w, const ld t_i, const ld t_f, const ld c_i,
+            const ld t_i_i, const ld hf_water, bool print = false)
     {
         auto mass_ice = (m_w * c_w * (t_i - t_f)) / (c_i * abs(t_i_i) +
                 hf_water + c_w * t_f);
         if (print)
-        {
             std::cout << "mass_ice = " << mass_ice << " kg" << std::endl;
-        }
         return mass_ice;
     }
 
@@ -787,18 +817,15 @@ public:
      * @param T  is the temperature of the gas in K
      * @return  the root mean square speed of the gas
      */
-    static ld rootMeanSquareSpeed(const ld m,
-                                  const ld T,
-                                  bool print = false)
+    static ld rootMeanSquareSpeed(
+            const ld m, const ld T, bool print = false)
     {
         // convert the mass to kg
         auto mass =  m / 1000.0;
         auto r = constants::R.joules;
         auto rms = sqrt((3.0 * r * T) / mass);
         if (print)
-        {
             std::cout << "rms = " << rms << " m/s" << std::endl;
-        }
         return rms;
     }
 

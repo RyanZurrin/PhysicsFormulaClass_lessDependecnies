@@ -9,7 +9,7 @@
 //{
 //	auto mag_l1 = l1.direction().magnitude();
 //	auto mag_l2 = l2.direction().magnitude();
-//	auto dot = dotProduct(l1.direction(), l2.direction());
+//	auto dot = dot(l1.direction(), l2.direction());
 //
 //	auto theta = acos( fabs(dot) / (mag_l1 * mag_l2));
 //	return RadianceToDegrees(theta);
@@ -19,7 +19,7 @@
 //{
 //	auto mag_l1 = l1.direction().magnitude();
 //	auto mag_l2 = l2.direction().magnitude();
-//	auto dot = dotProduct(l1.direction(), l2.direction());
+//	auto dot = dot(l1.direction(), l2.direction());
 //
 //	auto theta = acos(fabs(dot) / (mag_l1 * mag_l2));
 //	return RadianceToDegrees(theta);
@@ -27,7 +27,7 @@
 
 //float rez::AngleLinePlane(const Line& l, const Planef p)
 //{
-//	auto dot = dotProduct(l.direction(), p.getNormal());
+//	auto dot = dot(l.direction(), p.getNormal());
 //	auto theta = acos(fabs(dot));
 //	theta = RadianceToDegrees(theta);
 //	return 90- theta;
