@@ -29,13 +29,18 @@ namespace constants {
     /// or "epsilon zero") is the value of the absolute dielectric permittivity
     /// of classical vacuum.
     /// </summary>
-    constexpr auto e0 = 8.854187819013e-12; // 8.8542e-12
+    constexpr auto _e0 = 8.854187819013e-12; // 8.8542e-12
     /**
      * Vacuum permeability, commonly denoted μ0 (pronounced as "mu nought" or
      * "mu zero") is the value of the absolute permeability of classical vacuum.
      */
-    constexpr auto mu0 = 4.0 * PI * 1.0e-7;//permeability of free space
+    constexpr auto _mu0 = 4.0 * PI * 1.0e-7;//permeability of free space
 
+    /**
+     * The elementary charge (symbol: e) is the electric charge carried by a
+     * single proton or a single electron. It is denoted by the symbol e.
+     */
+    constexpr auto _e = 1.602176634e-19; // 1.6022e-19
 
     /// <summary>
     /// the Rydberg constant is expressed for either hydrogen as R_H or at the limit
@@ -79,7 +84,7 @@ namespace constants {
     /// <summary>
     /// The proportionality constant.
     /// </summary>
-    constexpr auto K = 1.0 / (4.0 * PI * e0);
+    constexpr auto K = 1.0 / (4.0 * PI * _e0);
 
     constexpr auto PLANKS_J = 6.62607004e-34;
     constexpr auto PLANKS_EM = 4.14e-15;

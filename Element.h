@@ -9,6 +9,8 @@
 #include <vector>
 #include <map>
 #include <cmath>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 
 class Element {
 public:
@@ -57,6 +59,14 @@ public:
         std::cout << "Heat Fusion: " << getHeatFusion() << " kJ/mol" << std::endl;
         std::cout << "Ionization 1st: " << getIonization1st() << " eV" << std::endl;
     }
+
+    void display() const {
+        displayElementImg(getFileName(this->atomicNumber));
+    }
+
+
+
+
     virtual ~Element() = default;
 protected:
     int group{};
@@ -77,6 +87,177 @@ protected:
     long double heatVaporization{};
     long double heatFusion{};
     long double ionization1st{};
+
+private:
+    static void loadImage(const char* pathname, sf::Texture& texture, sf::Sprite& sprite)
+    {
+        texture.loadFromFile(pathname);     // load it from the file
+        sprite.setTexture(texture);         // put that texture in our sprite
+        // the rectangle of the texture to use for this
+        sprite.setTextureRect( sf::IntRect(0,0,screenSize_X,screenSize_Y) );
+    }
+
+    static void displayElementImg(const char elementName[])
+    {
+
+        // Create our window
+        sf::RenderWindow window(
+                sf::VideoMode(screenSize_X,screenSize_Y),       // size of the client area we want
+                "Display an Image"                              // The text to appear on the window title
+        );
+
+        // load our image
+        sf::Texture     texture;        // the texture which will contain our pixel data
+        sf::Sprite      sprite;         // the sprite which will actually draw it
+        loadImage(elementName,texture,sprite);
+
+        // Set FPS so this draws at 60 FPS (note:  I didn't do this for the WinAPI version because it'd be too hard for such
+        //  a small example)
+        window.setFramerateLimit( 60 );
+
+        bool program_running = true;        // true until the user wants to quit
+        while(program_running)
+        {
+            // Do the event pump -- same idea as with Windows... look for events and process them
+            sf::Event evt{};
+            while( window.pollEvent(evt) )      // while there are any events to process...
+            {
+                // process them. But we're only interested in the closed event
+                if(evt.type == sf::Event::EventType::Closed)        // is this a close event?
+                    program_running = false;                        // indicate that we want the window to close
+            }
+
+            // now that events are processed... draw our image
+            window.draw(sprite);        // just draw it to the back buffer
+            window.display();           // and display it so the back buffer moves to the front
+        }
+    }
+
+    static const char* getFileName(int atomicNumber)
+    {
+        switch (atomicNumber)
+        {
+            case 1:		return "img\\hydrogen.bmp";
+            case 2:		return "img\\helium.bmp";
+            case 3:		return "img\\lithium.bmp";
+            case 4:		return "img\\beryllium.bmp";
+            case 5:		return "img\\boron.bmp";
+            case 6:		return "img\\carbon.bmp";
+            case 7:		return "img\\nitrogen.bmp";
+            case 8:		return "img\\oxygen.bmp";
+            case 9:		return "img\\fluorine.bmp";
+            case 10:	return "img\\neon.bmp";
+            case 11:	return "img\\sodium.bmp";
+            case 12:	return "img\\magnesium.bmp";
+            case 13:	return "img\\aluminium.bmp";
+            case 14:	return "img\\silicon.bmp";
+            case 15:	return "img\\phosphorus.bmp";
+            case 16:	return "img\\sulfur.bmp";
+            case 17:	return "img\\chlorine.bmp";
+            case 18:	return "img\\argon.bmp";
+            case 19:	return "img\\potassium.bmp";
+            case 20:	return "img\\calcium.bmp";
+            case 21:	return "img\\scandium.bmp";
+            case 22:	return "img\\titanium.bmp";
+            case 23:	return "img\\vanadium.bmp";
+            case 24:	return "img\\chromium.bmp";
+            case 25:	return "img\\manganese.bmp";
+            case 26:	return "img\\iron.bmp";
+            case 27:	return "img\\cobalt.bmp";
+            case 28:	return "img\\nickel.bmp";
+            case 29:	return "img\\copper.bmp";
+            case 30:	return "img\\zinc.bmp";
+            case 31:	return "img\\gallium.bmp";
+            case 32:	return "img\\germanium.bmp";
+            case 33:	return "img\\arsenic.bmp";
+            case 34:	return "img\\selenium.bmp";
+            case 35:	return "img\\bromine.bmp";
+            case 36:	return "img\\krypton.bmp";
+            case 37:	return "img\\rubidium.bmp";
+            case 38:	return "img\\strontium.bmp";
+            case 39:	return "img\\yttrium.bmp";
+            case 40:	return "img\\zirconium.bmp";
+            case 41:	return "img\\niobium.bmp";
+            case 42:	return "img\\molybdenum.bmp";
+            case 43:	return "img\\technetium.bmp";
+            case 44:	return "img\\ruthenium.bmp";
+            case 45:	return "img\\rhodium.bmp";
+            case 46:	return "img\\palladium.bmp";
+            case 47:	return "img\\silver.bmp";
+            case 48:	return "img\\cadmium.bmp";
+            case 49:	return "img\\indium.bmp";
+            case 50:	return "img\\tin.bmp";
+            case 51:	return "img\\antimony.bmp";
+            case 52:	return "img\\tellurium.bmp";
+            case 53:	return "img\\iodine.bmp";
+            case 54:	return "img\\xenon.bmp";
+            case 55:	return "img\\cerium.bmp";
+            case 56:	return "img\\barium.bmp";
+            case 57:	return "img\\lanthanum.bmp";
+            case 58:	return "img\\cerium.bmp";
+            case 59:	return "img\\praseodymium.bmp";
+            case 60:	return "img\\neodymium.bmp";
+            case 61:	return "img\\promethium.bmp";
+            case 62:	return "img\\samarium.bmp";
+            case 63:	return "img\\europium.bmp";
+            case 64:	return "img\\gadolinium.bmp";
+            case 65:	return "img\\terbium.bmp";
+            case 66:	return "img\\dysprosium.bmp";
+            case 67:	return "img\\holmium.bmp";
+            case 68:	return "img\\erbium.bmp";
+            case 69:	return "img\\thulium.bmp";
+            case 70:	return "img\\ytterbium.bmp";
+            case 71:	return "img\\lutetium.bmp";
+            case 72:	return "img\\hafnium.bmp";
+            case 73:	return "img\\tantalum.bmp";
+            case 74:	return "img\\tungsten.bmp";
+            case 75:	return "img\\rhenium.bmp";
+            case 76:	return "img\\osmium.bmp";
+            case 77:	return "img\\iridium.bmp";
+            case 78:	return "img\\platinum.bmp";
+            case 79:	return "img\\gold.bmp";
+            case 80:	return "img\\mercury.bmp";
+            case 81:	return "img\\thallium.bmp";
+            case 82:	return "img\\lead.bmp";
+            case 83:	return "img\\bismuth.bmp";
+            case 84:	return "img\\polonium.bmp";
+            case 85:	return "img\\astatine.bmp";
+            case 86:	return "img\\radon.bmp";
+            case 87:	return "img\\francium.bmp";
+            case 88:	return "img\\radium.bmp";
+            case 89:	return "img\\actinium.bmp";
+            case 90:	return "img\\thorium.bmp";
+            case 91:	return "img\\protactinium.bmp";
+            case 92:	return "img\\uranium.bmp";
+            case 93:	return "img\\neptunium.bmp";
+            case 94:	return "img\\plutonium.bmp";
+            case 95:	return "img\\americium.bmp";
+            case 96:	return "img\\curium.bmp";
+            case 97:	return "img\\berkelium.bmp";
+            case 98:	return "img\\califomium.bmp";
+            case 99:	return "img\\einsteinium.bmp";
+            case 100:	return "img\\fermium.bmp";
+            case 101:	return "img\\mendelevium.bmp";
+            case 102:	return "img\\nobelium.bmp";
+            case 103:	return "img\\lawrencium.bmp";
+            case 104:	return "img\\rutherfordium.bmp";
+            case 105:	return "img\\dubnium.bmp";
+            case 106:	return "img\\seaborgium.bmp";
+            case 107:	return "img\\bohrium.bmp";
+            case 108:	return "img\\hassium.bmp";
+            case 109:	return "img\\meitnerium.bmp";
+            case 110:	return "img\\darmstadtium.bmp";
+            case 111:	return "img\\roentgenium.bmp";
+            case 112:	return "img\\copernicium.bmp";
+            case 113:	return "img\\nihonium.bmp";
+            case 114:	return "img\\flerovium.bmp";
+            case 115:	return "img\\moscovium.bmp";
+            case 116:	return "img\\livermorium.bmp";
+            case 117:	return "img\\tennessine.bmp";
+            case 118:	return "img\\oganesson.bmp";
+            default:	return "no image";
+        }
+    }
 };
 
 #endif //PHYSICSFORMULA_ELEMENT_H
@@ -3608,3 +3789,426 @@ public:
         ionization1st = FP_NAN; // eV
     }
 };
+
+
+static long double getLatentHeatFusion(string element) {
+    // turn element into lowercase
+    transform(element.begin(), element.end(), element.begin(), ::tolower);
+    // get the latent heat converted from kJ/mol to J/kg
+    if (element == "h" || element == "hydrogen") {
+        Hydrogen h;
+        return h.getHeatFusion() * 1000.0 / (h.getAtomicWeight()/1000.0);
+    }
+    else if (element == "he" || element == "helium") {
+        Helium he;
+        return he.getHeatFusion() * 1000.0 / (he.getAtomicWeight()/1000.0);
+    }
+    else if (element == "li" || element == "lithium") {
+        Lithium li;
+        return li.getHeatFusion() * 1000.0 / (li.getAtomicWeight()/1000.0);
+    }
+    else if (element == "be" || element == "beryllium") {
+        Beryllium be;
+        return be.getHeatFusion() * 1000.0 / (be.getAtomicWeight()/1000.0);
+    }
+    else if (element == "b" || element == "boron") {
+        Boron b;
+        return b.getHeatFusion() * 1000.0 / (b.getAtomicWeight()/1000.0);
+    }
+    else if (element == "c" || element == "carbon") {
+        Carbon c;
+        return c.getHeatFusion() * 1000.0 / (c.getAtomicWeight()/1000.0);
+    }
+    else if (element == "n" || element == "nitrogen") {
+        Nitrogen n;
+        return n.getHeatFusion() * 1000.0 / (n.getAtomicWeight()/1000.0);
+    }
+    else if (element == "o" || element == "oxygen") {
+        Oxygen o;
+        return o.getHeatFusion() * 1000.0 / (o.getAtomicWeight()/1000.0);
+    }
+    else if (element == "f" || element == "fluorine") {
+        Fluorine f;
+        return f.getHeatFusion() * 1000.0 / (f.getAtomicWeight()/1000.0);
+    }
+    else if (element == "ne" || element == "neon") {
+        Neon ne;
+        return ne.getHeatFusion() * 1000.0 / (ne.getAtomicWeight()/1000.0);
+    }
+    else if (element == "na" || element == "sodium") {
+        Sodium na;
+        return na.getHeatFusion() * 1000.0 / (na.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "mg" || element == "magnesium") {
+        Magnesium mg;
+        return mg.getHeatFusion() * 1000.0 / (mg.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "al" || element == "aluminium") {
+        Aluminium al;
+        return al.getHeatFusion() * 1000.0 / (al.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "si" || element == "silicon") {
+        Silicon si;
+        return si.getHeatFusion() * 1000.0 / (si.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "p" || element == "phosphorus") {
+        Phosphorus p;
+        return p.getHeatFusion() * 1000.0 / (p.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "s" || element == "sulfur") {
+        Sulfur s;
+        return s.getHeatFusion() * 1000.0 / (s.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "cl" || element == "chlorine") {
+        Chlorine cl;
+        return cl.getHeatFusion() * 1000.0 / (cl.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "ar" || element == "argon") {
+        Argon ar;
+        return ar.getHeatFusion() * 1000.0 / (ar.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "k" || element == "potassium") {
+        Potassium k;
+        return k.getHeatFusion() * 1000.0 / (k.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "ca" || element == "calcium") {
+        Calcium ca;
+        return ca.getHeatFusion() * 1000.0 / (ca.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "sc" || element == "scandium") {
+        Scandium sc;
+        return sc.getHeatFusion() * 1000.0 / (sc.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "ti" || element == "titanium") {
+        Titanium ti;
+        return ti.getHeatFusion() * 1000.0 / (ti.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "v" || element == "vanadium") {
+        Vanadium v;
+        return v.getHeatFusion() * 1000.0 / (v.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "cr" || element == "chromium") {
+        Chromium cr;
+        return cr.getHeatFusion() * 1000.0 / (cr.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "mn" || element == "manganese") {
+        Manganese mn;
+        return mn.getHeatFusion() * 1000.0 / (mn.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "fe" || element == "iron") {
+        Iron fe;
+        return fe.getHeatFusion() * 1000.0 / (fe.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "co" || element == "cobalt") {
+        Cobalt co;
+        return co.getHeatFusion() * 1000.0 / (co.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "ni" || element == "nickel") {
+        Nickel ni;
+        return ni.getHeatFusion() * 1000.0 / (ni.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "cu" || element == "copper") {
+        Copper cu;
+        return cu.getHeatFusion() * 1000.0 / (cu.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "zn" || element == "zinc") {
+        Zinc zn;
+        return zn.getHeatFusion() * 1000.0 / (zn.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "ga" || element == "gallium") {
+        Gallium ga;
+        return ga.getHeatFusion() * 1000.0 / (ga.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "ge" || element == "germanium") {
+        Germanium ge;
+        return ge.getHeatFusion() * 1000.0 / (ge.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "as" || element == "arsenic") {
+        Arsenic as;
+        return as.getHeatFusion() * 1000.0 / (as.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "se" || element == "selenium") {
+        Selenium se;
+        return se.getHeatFusion() * 1000.0 / (se.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "br" || element == "bromine") {
+        Bromine br;
+        return br.getHeatFusion() * 1000.0 / (br.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "kr" || element == "krypton") {
+        Krypton kr;
+        return kr.getHeatFusion() * 1000.0 / (kr.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "rb" || element == "rubidium") {
+        Rubidium rb;
+        return rb.getHeatFusion() * 1000.0 / (rb.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "sr" || element == "strontium") {
+        Strontium sr;
+        return sr.getHeatFusion() * 1000.0 / (sr.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "y" || element == "yttrium") {
+        Yttrium y;
+        return y.getHeatFusion() * 1000.0 / (y.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "zr" || element == "zirconium") {
+        Zirconium zr;
+        return zr.getHeatFusion() * 1000.0 / (zr.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "nb" || element == "niobium") {
+        Niobium nb;
+        return nb.getHeatFusion() * 1000.0 / (nb.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "mo" || element == "molybdenum") {
+        Molybdenum mo;
+        return mo.getHeatFusion() * 1000.0 / (mo.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "tc" || element == "technetium") {
+        Technetium tc;
+        return tc.getHeatFusion() * 1000.0 / (tc.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "ru" || element == "ruthenium") {
+        Ruthenium ru;
+        return ru.getHeatFusion() * 1000.0 / (ru.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "rh" || element == "rhodium") {
+        Rhodium rh;
+        return rh.getHeatFusion() * 1000.0 / (rh.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "pd" || element == "palladium") {
+        Palladium pd;
+        return pd.getHeatFusion() * 1000.0 / (pd.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "ag" || element == "silver") {
+        Silver ag;
+        return ag.getHeatFusion() * 1000.0 / (ag.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "cd" || element == "cadmium") {
+        Cadmium cd;
+        return cd.getHeatFusion() * 1000.0 / (cd.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "in" || element == "indium") {
+        Indium in;
+        return in.getHeatFusion() * 1000.0 / (in.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "sn" || element == "tin") {
+        Tin sn;
+        return sn.getHeatFusion() * 1000.0 / (sn.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "sb" || element == "antimony") {
+        Antimony sb;
+        return sb.getHeatFusion() * 1000.0 / (sb.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "te" || element == "tellurium") {
+        Tellurium te;
+        return te.getHeatFusion() * 1000.0 / (te.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "i" || element == "iodine") {
+        Iodine i;
+        return i.getHeatFusion() * 1000.0 / (i.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "xe" || element == "xenon") {
+        Xenon xe;
+        return xe.getHeatFusion() * 1000.0 / (xe.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "cs" || element == "caesium") {
+        Cerium cs;
+        return cs.getHeatFusion() * 1000.0 / (cs.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "ba" || element == "barium") {
+        Barium ba;
+        return ba.getHeatFusion() * 1000.0 / (ba.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "la" || element == "lanthanum") {
+        Lanthanum la;
+        return la.getHeatFusion() * 1000.0 / (la.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "ce" || element == "cerium") {
+        Cerium ce;
+        return ce.getHeatFusion() * 1000.0 / (ce.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "pr" || element == "praseodymium") {
+        Praseodymium pr;
+        return pr.getHeatFusion() * 1000.0 / (pr.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "nd" || element == "neodymium") {
+        Neodymium nd;
+        return nd.getHeatFusion() * 1000.0 / (nd.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "pm" || element == "promethium") {
+        Promethium pm;
+        return pm.getHeatFusion() * 1000.0 / (pm.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "sm" || element == "samarium") {
+        Samarium sm;
+        return sm.getHeatFusion() * 1000.0 / (sm.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "eu" || element == "europium") {
+        Europium eu;
+        return eu.getHeatFusion() * 1000.0 / (eu.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "gd" || element == "gadolinium") {
+        Gadolinium gd;
+        return gd.getHeatFusion() * 1000.0 / (gd.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "tb" || element == "terbium") {
+        Terbium tb;
+        return tb.getHeatFusion() * 1000.0 / (tb.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "dy" || element == "dysprosium") {
+        Dysprosium dy;
+        return dy.getHeatFusion() * 1000.0 / (dy.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "ho" || element == "holmium") {
+        Holmium ho;
+        return ho.getHeatFusion() * 1000.0 / (ho.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "er" || element == "erbium") {
+        Erbium er;
+        return er.getHeatFusion() * 1000.0 / (er.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "tm" || element == "thulium") {
+        Thulium tm;
+        return tm.getHeatFusion() * 1000.0 / (tm.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "yb" || element == "ytterbium") {
+        Ytterbium yb;
+        return yb.getHeatFusion() * 1000.0 / (yb.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "lu" || element == "lutetium") {
+        Lutetium lu;
+        return lu.getHeatFusion() * 1000.0 / (lu.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "hf" || element == "hafnium") {
+        Hafnium hf;
+        return hf.getHeatFusion() * 1000.0 / (hf.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "ta" || element == "tantalum") {
+        Tantalum ta;
+        return ta.getHeatFusion() * 1000.0 / (ta.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "w" || element == "tungsten") {
+        Tungsten w;
+        return w.getHeatFusion() * 1000.0 / (w.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "re" || element == "rhenium") {
+        Rhenium re;
+        return re.getHeatFusion() * 1000.0 / (re.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "os" || element == "osmium") {
+        Osmium os;
+        return os.getHeatFusion() * 1000.0 / (os.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "ir" || element == "iridium") {
+        Iridium ir;
+        return ir.getHeatFusion() * 1000.0 / (ir.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "pt" || element == "platinum") {
+        Platinum pt;
+        return pt.getHeatFusion() * 1000.0 / (pt.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "au" || element == "gold") {
+        Gold au;
+        return au.getHeatFusion() * 1000.0 / (au.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "hg" || element == "mercury") {
+        Mercury hg;
+        return hg.getHeatFusion() * 1000.0 / (hg.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "tl" || element == "thallium") {
+        Thallium tl;
+        return tl.getHeatFusion() * 1000.0 / (tl.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "pb" || element == "lead") {
+        Lead pb;
+        return pb.getHeatFusion() * 1000.0 / (pb.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "bi" || element == "bismuth") {
+        Bismuth bi;
+        return bi.getHeatFusion() * 1000.0 / (bi.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "po" || element == "polonium") {
+        Polonium po;
+        return po.getHeatFusion() * 1000.0 / (po.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "at" || element == "astatine") {
+        Astatine at;
+        return at.getHeatFusion() * 1000.0 / (at.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "rn" || element == "radon") {
+        Radon rn;
+        return rn.getHeatFusion() * 1000.0 / (rn.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "fr" || element == "francium") {
+        Francium fr;
+        return fr.getHeatFusion() * 1000.0 / (fr.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "ra" || element == "radium") {
+        Radium ra;
+        return ra.getHeatFusion() * 1000.0 / (ra.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "rf" || element == "rutherfordium") {
+        Rutherfordium rf;
+        return rf.getHeatFusion() * 1000.0 / (rf.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "db" || element == "dubnium") {
+        Dubnium db;
+        return db.getHeatFusion() * 1000.0 / (db.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "sg" || element == "seaborgium") {
+        Seaborgium sg;
+        return sg.getHeatFusion() * 1000.0 / (sg.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "bh" || element == "bohrium") {
+        Bohrium bh;
+        return bh.getHeatFusion() * 1000.0 / (bh.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "hs" || element == "hassium") {
+        Hassium hs;
+        return hs.getHeatFusion() * 1000.0 / (hs.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "mt" || element == "meitnerium") {
+        Meitnerium mt;
+        return mt.getHeatFusion() * 1000.0 / (mt.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "ds" || element == "darmstadtium") {
+        Darmstadtium ds;
+        return ds.getHeatFusion() * 1000.0 / (ds.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "rg" || element == "roentgenium") {
+        Roentgenium rg;
+        return rg.getHeatFusion() * 1000.0 / (rg.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "cn" || element == "copernicium") {
+        Copernicium cn;
+        return cn.getHeatFusion() * 1000.0 / (cn.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "nh" || element == "nihonium") {
+        Nihonium nh;
+        return nh.getHeatFusion() * 1000.0 / (nh.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "fl" || element == "flerovium") {
+        Flerovium fl;
+        return fl.getHeatFusion() * 1000.0 / (fl.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "mc" || element == "moscovium") {
+        Moscovium mc;
+        return mc.getHeatFusion() * 1000.0 / (mc.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "lv" || element == "livermorium") {
+        Livermorium lv;
+        return lv.getHeatFusion() * 1000.0 / (lv.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "ts" || element == "tennessine") {
+        Tennessine ts;
+        return ts.getHeatFusion() * 1000.0 / (ts.getAtomicWeight() / 1000.0);
+    }
+    else if (element == "og" || element == "oganesson") {
+        Oganesson og;
+        return og.getHeatFusion() * 1000.0 / (og.getAtomicWeight() / 1000.0);
+    }
+    else {
+        return 0.0;
+    }
+
+}

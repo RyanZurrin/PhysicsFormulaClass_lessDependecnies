@@ -286,6 +286,9 @@
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/PeriodicElements.h">
 			<Option target="PhysicsFormula"/>
 		</Unit>
+		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/PeriodicTable.h">
+			<Option target="PhysicsFormula"/>
+		</Unit>
 		<Unit filename="D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Physics_World.h">
 			<Option target="PhysicsFormula"/>
 		</Unit>

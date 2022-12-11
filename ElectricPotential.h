@@ -1102,7 +1102,7 @@ inline ld ElectricPotential::voltageAcrossCapacitor(ld Q, ld C, bool print)
 inline ld ElectricPotential::capacitanceParallelPlate(
         const ld A, const ld d, bool print)
 {
-    auto C = constants::e0 * (A / d);
+    auto C = constants::_e0 * (A / d);
     if (print)
         std::cout << "C = " << C << " F" << std::endl;
     return C;
@@ -1111,7 +1111,7 @@ inline ld ElectricPotential::capacitanceParallelPlate(
 
 inline ld ElectricPotential::capacitanceParallelPlateDielectric(const ld d_k, const ld A, const ld d, bool print)
 {
-    auto var = d_k * (constants::e0 * A / d);
+    auto var = d_k * (constants::_e0 * A / d);
     if (print)
         std::cout << "C = " << var << " F" << std::endl;
     return var;
@@ -1160,7 +1160,7 @@ inline ld ElectricPotential::potentialAcross_Ecap_CE(const ld C, const ld Ecap, 
 
 inline ld ElectricPotential::capacitorPlateArea(const ld C, const ld d, bool print)
 {
-    auto var = C * d / (constants::e0);
+    auto var = C * d / (constants::_e0);
     if (print)
         std::cout << "A = " << var << " m^2" << std::endl;
     return var;
@@ -1170,7 +1170,7 @@ inline ld ElectricPotential::capacitorPlateAreaDielectric(const ld C,
                                                           const ld d,
                                                           const ld k, bool print)
 {
-    auto var = (d * C) / (k * constants::e0);
+    auto var = (d * C) / (k * constants::_e0);
     if (print)
         std::cout << "A = " << var << " m^2" << std::endl;
     return var;
@@ -1428,7 +1428,7 @@ ElectricPotential::distanceFromLineOfCharge(
     auto m = constants::PROTON_MASS;
     auto q = constants::PROTON_CHARGE;
     auto KE = 0.5 * m * pow(v, 2);
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto pi_ = constants::PI;
     auto lnR2R1 = (KE * 2.0 * pi_ * e0) / (lambda * q);
     auto r2 = r / exp(lnR2R1);
@@ -1439,7 +1439,7 @@ ElectricPotential::distanceFromLineOfCharge(
 }
 
 ld ElectricPotential::capacitanceRoundParallelPlate(ld R, ld d, bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto pi_ = constants::PI;
     auto C = (2.0 * e0 * pi_ * R * R) / d;
     if (print) {
@@ -1449,7 +1449,7 @@ ld ElectricPotential::capacitanceRoundParallelPlate(ld R, ld d, bool print) {
 }
 
 ld ElectricPotential::electricEnergyDensity(ld E, bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto U = 0.5 * e0 * E * E;
     if (print) {
         std::cout << "U = " << U << " J/m^3" << std::endl;
@@ -1459,7 +1459,7 @@ ld ElectricPotential::electricEnergyDensity(ld E, bool print) {
 
 ld
 ElectricPotential::electricEnergyInThundercloud(ld h, ld d, ld E, bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto pi = constants::PI;
     auto U_e = electricEnergyDensity(E, false);
     // a cylindric cloud has volume pi * r^2 * h
@@ -1500,7 +1500,7 @@ ld ElectricPotential::potentialDueToChargeDistribution(
 ld ElectricPotential::energyDensityAtDistanceFromCharge(
         ld uE, ld d, ld dx, bool print) {
     auto pi = constants::PI;
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto U = (uE*uE)/(32.0*(pi*pi)*e0*pow(dx, 4));
     if (print) {
         std::cout << "U = " << U << " J/m^3" << std::endl;
@@ -1510,7 +1510,7 @@ ld ElectricPotential::energyDensityAtDistanceFromCharge(
 
 ld
 ElectricPotential::electrostaticEnergyInCubicalRegion(ld L, ld E0, bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto U = (e0 * E0 * E0 * L * L * L) / 6.0;
     if (print) {
         std::cout << "U = " << U << " J" << std::endl;
@@ -1546,7 +1546,7 @@ ld ElectricPotential::relationshipBetweenDiametersOf2Wires(ld rho1, ld rho2,
 
 vector<ld>
 ElectricPotential::workToTransferCharge(ld s, ld d, ld Qa, ld Qb, bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto w_a = (Qa * Qa * d) / (2.0 * e0 * s*s);
     auto w_b = (((Qb+Qa) * (Qb+Qa) * d) / (2.0 * e0 * s*s)) - w_a;
     if (print) {
@@ -1557,7 +1557,7 @@ ElectricPotential::workToTransferCharge(ld s, ld d, ld Qa, ld Qb, bool print) {
 }
 
 vector<ld> ElectricPotential::chargeMoved(ld Eu, ld s, ld d, bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto Q = sqrt((2.0 * e0 * s * s * Eu) / d);
     auto V = (2.0 * Eu) / Q;
     if (print) {
@@ -1567,7 +1567,7 @@ vector<ld> ElectricPotential::chargeMoved(ld Eu, ld s, ld d, bool print) {
 }
 
 ld ElectricPotential::capacitorPlateArea_QVd(ld Q, ld V, ld d, bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto A = (Q * d) / (e0 * V);
     if (print) {
         std::cout << "A = " << A << " m^2" << std::endl;
@@ -1612,16 +1612,10 @@ ElectricPotential::maxMinAndIntermediateCapacitances(ld C1, ld C2, ld C3,
 }
 
 ld ElectricPotential::volumeOfUniformElectricField(ld U, ld E, bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto V = (2.0 * U) / (e0 * (E * E));
     if (print) {
         std::cout << "V = " << V << " m^3" << std::endl;
     }
     return V;
 }
-
-
-
-
-
-

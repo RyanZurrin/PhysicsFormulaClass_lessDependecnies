@@ -125,27 +125,27 @@ public:
     /// <param name="E">The energy.</param>
     /// <param name="c">The c.</param>
     /// <returns>energy</returns>
-    static constexpr ld massFromEnergy(ld E, ld c);
+    static constexpr ld massFromEnergy(ld E, ld c, bool print = true);
     /// <summary>
     /// Masses from energy.
     /// </summary>
     /// <param name="M">The electrons mass.</param>
     /// <returns>energy</returns>
-    static constexpr ld massFromEnergy(ld M);
+    static constexpr ld massFromEnergy(ld M, bool print = true);
 
     /// <summary>
     /// Totals the electron mass.
     /// </summary>
     /// <param name="Ne">The total electrons.</param>
     /// <returns>mass of electrons in kg</returns>
-    static constexpr ld totalElectronMass(ld Ne);
+    static constexpr ld totalElectronMass(ld Ne, bool print = true);
 
     /// <summary>
     /// Totals the proton mass.
     /// </summary>
     /// <param name="Np">The total protons.</param>
     /// <returns>mass of protons in kg</returns>
-    static constexpr ld totalProtonMass(ld Np);
+    static constexpr ld totalProtonMass(ld Np, bool print = true);
 
     /// <summary>
     /// Totals the mass.
@@ -153,7 +153,7 @@ public:
     /// <param name="Ne">The total electrons.</param>
     /// <param name="Np">The total protons.</param>
     /// <returns>the total mass of protons and electrons</returns>
-    static constexpr ld totalMass(ld Ne, ld Np);
+    static constexpr ld totalMass(ld Ne, ld Np, bool print = true);
 
     /// <summary>
     /// Calculates the magnitude of force between two electrostatic forces
@@ -164,11 +164,11 @@ public:
     /// <param name="r">The distance between the charges.</param>
     /// <returns></returns>
     static constexpr ld coulombsLaw(ld q1, ld q2, ld r,
-                                    bool print = false);
+                                    bool print = true);
 
 
     static constexpr ld coulombsLaw(ld q1, pair<ld, ld> xy1, ld q2, pair<ld, ld> xy2,
-                                    int multiplier = 1, bool print = false);
+                                    int multiplier = 1, bool print = true);
     /// <summary>
     /// electric dipole moment is defined as the product of the charge q and
     // the separation d between the two charges making up the dipole.
@@ -176,7 +176,7 @@ public:
     /// <param name="q">The charge.</param>
     /// <param name="d">The separation.</param>
     /// <returns>the electric dipole moment</returns>
-    static constexpr ld dipoleMoment(ld q, ld d, bool print = false);
+    static constexpr ld dipoleMoment(ld q, ld d, bool print = true);
 
     /// <summary>
     /// dipole field for |y|  >> a, on perpendicular bisector.
@@ -184,14 +184,14 @@ public:
     /// <param name="p">The dipole moment.</param>
     /// <param name="y">The y axis.</param>
     /// <returns>the electric dipole field</returns>
-    static constexpr ld dipoleFieldPerpendicularBisector(ld p, ld y);
+    static constexpr ld dipoleFieldPerpendicularBisector(ld p, ld y, bool print = true);
 
     /// <summary>
     /// dipole field for |x| >> a, on axis
     /// </summary>
     /// <param name="p">The dipole moment.</param>
     /// <param name="x">The x axis.</param>
-    static constexpr ld dipoleFieldForXaxis(ld p, ld x);
+    static constexpr ld dipoleFieldForXaxis(ld p, ld x, bool print = true);
 
 
     /// <summary>
@@ -201,7 +201,7 @@ public:
     /// <param name="mass">The mass.</param>
     /// <param name="r">The r.</param>
     /// <returns></returns>
-    static ld chargeOfElectrostaticForce_equalPointCharges(ld q, ld mass, ld r);
+    static ld chargeOfElectrostaticForce_equalPointCharges(ld q, ld mass, ld r, bool print = true);
 
     /// <summary>
     /// Electrics the field e.
@@ -209,7 +209,7 @@ public:
     /// <param name="COULOMB">The q.</param>
     /// <param name="r">The r.</param>
     /// <returns></returns>
-    static constexpr ld electricFieldForce(ld Q, ld r, bool print = false);
+    static constexpr ld electricFieldForce(ld Q, ld r, bool print = true);
 
     /// <summary>
     /// calculates the force by an electric field and current
@@ -217,7 +217,7 @@ public:
     /// <param name="q">The current.</param>
     /// <param name="E">The electric field strength.</param>
     /// <returns></returns>
-    static constexpr ld forceByElectricField(ld q, ld E, bool print = false);
+    static constexpr ld forceByElectricField(ld q, ld E, bool print = true);
 
     /**
      * A positive charge +NQ is located at the origin, and a negative charge
@@ -238,7 +238,7 @@ public:
     /// <param name="baseNumber">The base number.</param>
     /// <param name="su">The scientific notation multiple.</param>
     /// <returns>number of electrons</returns>
-    static constexpr ld electrons(ld baseNumber, ld su);
+    static constexpr ld electrons(ld baseNumber, ld su, bool print = true);
 
     /// <summary>
     /// Electrons the count.
@@ -246,9 +246,9 @@ public:
     /// <param name="protons">The protons.</param>
     /// <param name="netCharge">The net charge.</param>
     /// <returns></returns>
-    static ld netElectronCount(ld protons, ld netCharge);
+    static ld netElectronCount(ld protons, ld netCharge, bool print = true);
 
-    static constexpr ld totalElectrons(ld q);
+    static constexpr ld totalElectrons(ld q, bool print = true);
 
     /// <summary>
     /// Coulombs the specified base number.
@@ -256,14 +256,14 @@ public:
     /// <param name="baseNumber">The base number.</param>
     /// <param name="su">The su.</param>
     /// <returns></returns>
-    static constexpr ld coulombs(ld baseNumber, ld su);
+    static constexpr ld coulombs(ld baseNumber, ld su, bool print = true);
 
     /// <summary>
     /// Hows the many fewer electrons then protons.
     /// </summary>
     /// <param name="netCharge">The net charge.</param>
     /// <returns></returns>
-    static ld howManyFewerElectronsThenProtons(ld netCharge);
+    static ld howManyFewerElectronsThenProtons(ld netCharge, bool print = true);
 
     /// <summary>
     /// Fractions the protons no electrons.
@@ -271,7 +271,7 @@ public:
     /// <param name="protons">The protons.</param>
     /// <param name="netCharge">The net charge.</param>
     /// <returns></returns>
-    static ld fractionProtonsNoElectrons(ld protons, ld netCharge);
+    static ld fractionProtonsNoElectrons(ld protons, ld netCharge, bool print = true);
 
     /// <summary>
     /// Forces the change two point charges.
@@ -279,7 +279,7 @@ public:
     /// <param name="F">The f.</param>
     /// <param name="factorChange">The factor change.</param>
     /// <returns></returns>
-    static constexpr ld forceChangeTwoPointCharges(ld F, ld factorChange);
+    static constexpr ld forceChangeTwoPointCharges(ld F, ld factorChange, bool print = true);
 
     /// <summary>
     /// Electrics the field.
@@ -287,17 +287,17 @@ public:
     /// <param name="F">The force.</param>
     /// <param name="q">The charge.</param>
     /// <returns></returns>
-    static constexpr ld electricField(ld F, ld q);
+    static constexpr ld electricField(ld F, ld q, bool print = true);
 
     static ld electricFieldFromPointChargeDistribution(
-            vector<ld> charges, vector<ld> r_vals);
+            vector<ld> charges, vector<ld> r_vals, bool print = true);
 
     /// <summary>
     /// Electric field caused by point charges.
     /// </summary>
     /// <param name="q">The charge.</param>
     /// <param name="r">The r.</param>
-    static constexpr ld electricFieldByPointCharge(ld q, ld r, bool print = false);
+    static constexpr ld electricFieldByPointCharge(ld q, ld r, bool print = true);
 
     /**
      * Two protons are d nm apart. Find the electric field at a point between
@@ -307,7 +307,7 @@ public:
      * @param r1 the distance from one of the protons
      * @return the force on an electron at this point
      */
-    static ld forceOnElectron(ld d, ld r1, bool print = false);
+    static ld forceOnElectron(ld d, ld r1, bool print = true);
 
     /// <summary>
     /// Calculates the magnitude of a point charge that creates a electric field
@@ -316,7 +316,7 @@ public:
     /// <param name="E">The force of the electric field in N/C.</param>
     /// <param name="r">The distance it causes this force.</param>
     /// <returns>magnitude of the point charge (C)</returns>
-    static constexpr ld magnitudePointCharge(ld E, ld r, bool print = false);
+    static constexpr ld magnitudePointCharge(ld E, ld r, bool print = true);
 
     /// <summary>
     /// Calculates the charge of a point particle having a force of F acting on
@@ -325,7 +325,7 @@ public:
     /// <param name="F">The force acting on a charge.</param>
     /// <param name="E">The electric field strength.</param>
     /// <returns></returns>
-    static constexpr ld charge(ld F, ld E);
+    static constexpr ld charge(ld F, ld E, bool print = true);
 
     /**
      * Calculates the electric flux (number of field lines per unit area)
@@ -339,7 +339,7 @@ public:
      * the surface in degrees.
      * @return
      */
-    static constexpr ld electricFlux(ld E, ld A, ld theta, bool print = false);
+    static constexpr ld electricFlux(ld E, ld A, ld theta, bool print = true);
 
     /**
      * Calculates the electric flux (number of field lines per unit area)
@@ -348,9 +348,9 @@ public:
      * @param print  print the result
      * @return  the electric flux
      */
-    static ld electricFlux(Vector3D E, Vector3D A, bool print = false);
+    static ld electricFlux(Vector3D E, Vector3D A, bool print = true);
 
-    static constexpr ld electricFluxDisc(ld E, ld R, ld theta, bool print = false);
+    static constexpr ld electricFluxDisc(ld E, ld R, ld theta, bool print = true);
 
     /**
      * Calculates he static electric field generated by a distribution of
@@ -358,7 +358,7 @@ public:
      * @param q the charge over an area
      * @return the static electric field strength
      */
-    static constexpr ld electricFluxSphere(ld q);
+    static constexpr ld electricFluxSphere(ld q, bool print = true);
 
     /**
      * @brief Calculates the elextric flux of a charged sphere of radius r,
@@ -368,7 +368,7 @@ public:
      * @param print whether or not to print the result
      * @return the electric flux
      */
-    static constexpr ld electricFluxSphere(ld E, ld r, bool print = false);
+    static constexpr ld electricFluxSphere(ld E, ld r, bool print = true);
 
     /**
      * @brief Calculates the flux through a half cylinder of radius r and and
@@ -390,7 +390,7 @@ public:
      * @return  the electric field strength
      */
     static constexpr ld fieldOutsideSphericalChargeDistribution(
-            ld Q, ld r, bool print = false);
+            ld Q, ld r, bool print = true);
 
     /**
      * @brief Calculates the filed inside a uniformly charged sphere using
@@ -401,9 +401,9 @@ public:
      * @return the electric field strength
      */
     static constexpr ld fieldInsideSphericalChargeDistribution(
-            ld Qr, ld R, bool print = false);
+            ld Qr, ld R, bool print = true);
 
-    static constexpr ld gaussSphericalSymmetry(ld Q, ld A, bool print = false);
+    static constexpr ld gaussSphericalSymmetry(ld Q, ld A, bool print = true);
 
     /**
      * Calculates the electric field of a distribution of electric charges over a
@@ -412,7 +412,7 @@ public:
      * @param r  the radius of the line
      * @return  the electric field strength
      */
-    static constexpr ld fieldOfALineCharge(ld lambda, ld r, bool print = false);
+    static constexpr ld fieldOfALineCharge(ld lambda, ld r, bool print = true);
 
     /**
      * @brief Calculates the electric field of a distribution of electric charges
@@ -423,7 +423,7 @@ public:
      * @param print whether or not to print the result
      * @return the electric field strength
      */
-    static constexpr ld fieldOfLineCharge(ld q, ld l, ld r, bool print = false);
+    static constexpr ld fieldOfLineCharge(ld q, ld l, ld r, bool print = true);
 
     /**
      * @brief Calculates the line charge density (lambda) of a uniformly charged
@@ -433,7 +433,7 @@ public:
      * @param print  whether or not to print the result
      * @return  the line charge density
      */
-    static constexpr ld lineChargeDensity(ld q, ld L, bool print = false);
+    static constexpr ld lineChargeDensity(ld q, ld L, bool print = true);
 
 
     /// <summary>
@@ -443,7 +443,7 @@ public:
     /// <param name="q2">point charge 2.</param>
     /// <param name="F">The Force in Newtons.</param>
     /// <returns></returns>
-    static ld separationBetweenPointCharges(ld q1, ld q2, ld F);
+    static ld separationBetweenPointCharges(ld q1, ld q2, ld F, bool print = true);
 
     /// <summary>
     /// Hows the many electrons.
@@ -451,7 +451,7 @@ public:
     /// <param name="totalParticles">The total particles.</param>
     /// <param name="netCharge">The net charge.</param>
     /// <returns></returns>
-    static constexpr ld howManyElectrons(ld totalParticles, ld netCharge);
+    static constexpr ld howManyElectrons(ld totalParticles, ld netCharge, bool print = true);
 
     /// <summary>
     /// Minimums the charge to lift object.
@@ -460,7 +460,7 @@ public:
     /// <param name="charge">The charge.</param>
     /// <param name="m">The mass.</param>
     /// <returns></returns>
-    static ld minimumChargeToLiftObject(ld r, ld charge, ld m);
+    static ld minimumChargeToLiftObject(ld r, ld charge, ld m, bool print = true);
 
     /// <summary>
     /// A wrecking yard inventor wants to pick up cars by charging a ball
@@ -472,13 +472,13 @@ public:
     /// <param name="l">The length of initial lift .</param>
     /// <param name="m">The mass.</param>
     /// <returns>the minimum charge needed in C</returns>
-    static ld minimumChargeToLiftCar(ld r, ld l, ld m);
+    static ld minimumChargeToLiftCar(ld r, ld l, ld m, bool print = true);
 
     static ld netForceOnChargeFromOtherCharges(ld q0, pair<ld, ld> q0Loc,
                                                vector<ld> charges,
                                                vector<pair<ld, ld>>
                                                chargeLocs,
-                                               bool print = false);
+                                               bool print = true);
 
     /// <summary>
     /// Superposition principle. Adding charges up.
@@ -493,7 +493,7 @@ public:
             pair<ld, ld> Qloc,
             const vector<ld>& charges,
             const vector<pair<ld, ld>>& locations,
-            bool print = false);
+            bool print = true);
 
     /// <summary>
     /// Distance between points.
@@ -502,7 +502,7 @@ public:
     /// <param name="q2">The q2.</param>
     /// <param name="F">The f.</param>
     /// <returns></returns>
-    static ld distanceBetweenPoints(ld q1, ld q2, ld F);
+    static ld distanceBetweenPoints(ld q1, ld q2, ld F, bool print = true);
 
     /// <summary>
     /// Angles the vertical axis.
@@ -510,7 +510,7 @@ public:
     /// <param name="Fe">The force of the electric field.</param>
     /// <param name="mass">The mass.</param>
     /// <returns></returns>
-    static ld angleVerticalAxis(ld Fe, ld mass);
+    static ld angleVerticalAxis(ld Fe, ld mass, bool print = true);
 
     /// <summary>
     /// Two raindrops with equal masses of m are in a thunderhead r meters apart
@@ -521,7 +521,7 @@ public:
     /// <param name="q1">The charge on particle 1.</param>
     /// <param name="q2">The charge on particle 2.</param>
     /// <returns>acceleration in m/s^2</returns>
-    static constexpr ld accelerationOfParticles(ld m, ld r, ld q1, ld q2);
+    static constexpr ld accelerationOfParticles(ld m, ld r, ld q1, ld q2, bool print = true);
 
     /// <summary>
     /// Calculate the electric field strength near a conducting sphere with a
@@ -530,7 +530,7 @@ public:
     /// <param name="d">The diameter.</param>
     /// <param name="q_excess">The excess charge.</param>
     /// <returns>Electric field strength</returns>
-    static constexpr ld electricFieldStrength(ld d, ld q_excess);
+    static constexpr ld electricFieldStrength(ld d, ld q_excess, bool print = true);
 
     /// <summary>
     /// A charged insulating ball of mass m hangs on a long string with a length
@@ -541,7 +541,7 @@ public:
     /// <param name="theta">The angle theta.</param>
     /// <param name="q">The charge of the mass.</param>
     /// <returns>the strength of the electric field</returns>
-    static ld electricFieldStrength(ld m, ld theta, ld q);
+    static ld electricFieldStrength(ld m, ld theta, ld q, bool print = true);
 
     /// <summary>
     /// four equal charges q lie on the corners of a square. A fifth charge COULOMB
@@ -554,7 +554,7 @@ public:
     /// <param name="m">The mass in center.</param>
     /// <param name="d">The length of a side and height of the center.</param>
     /// <returns>the charge of the corner points </returns>
-    static ld magnitudeOfq_termsOf_Q_m_d(ld Q, ld m, ld d);
+    static ld magnitudeOfq_termsOf_Q_m_d(ld Q, ld m, ld d, bool print = true);
 
     /// <summary>
     /// Calculate the angular velocity Ω of an electron orbiting a proton in
@@ -566,7 +566,7 @@ public:
     /// <param name="m">The mass electron.</param>
     /// <param name="q">The charge of electron.</param>
     /// <returns>angular velocity (rad/s)</returns>
-    static ld angularVelocityOfElectronOrbitingProton(ld r, ld m, ld q);
+    static ld angularVelocityOfElectronOrbitingProton(ld r, ld m, ld q, bool print = true);
 
     /// <summary>
     /// Point charges of q1C and q2 C are placed l meters apart. Where can a
@@ -576,7 +576,7 @@ public:
     /// <param name="q1">The charge of particle 1.</param>
     /// <param name="q2">The charge of particle 2.</param>
     /// <returns>the distance to place the third particle</returns>
-    static ld distanceToPlaceThirdChargeToMakeZero(ld l, ld q1, ld q2);
+    static ld distanceToPlaceThirdChargeToMakeZero(ld l, ld q1, ld q2, bool print = true);
 
     /// <summary>
     /// Using the symmetry of the arrangement, determine the direction of the
@@ -591,7 +591,7 @@ public:
     /// <param name="q1">The charge in the center point.</param>
     /// <param name="theta">the angle.</param>
     /// <returns>force on the point q</returns>
-    static ld magnitudeOfForceOn_q(ld qx4, ld lSide, ld q1, ld theta);
+    static ld magnitudeOfForceOn_q(ld qx4, ld lSide, ld q1, ld theta, bool print = true);
 
     /// <summary>
     /// Find the electric field at the location of qa in Figure 18.52 given
@@ -601,7 +601,7 @@ public:
     /// <param name="qm">The charge on the middle particle.</param>
     /// <param name="l">The length of a side.</param>
     /// <returns>the electric field force n N/C</returns>
-    static ld electricFieldAtLocation(ld qb, ld qm, ld l);
+    static ld electricFieldAtLocation(ld qb, ld qm, ld l, bool print = true);
 
     /// <summary>
     /// Electrics the field at center triangle.
@@ -612,7 +612,7 @@ public:
     /// <param name="l">The l.</param>
     /// <returns></returns>
     static std::vector<ld> electricFieldAtCenterTriangle(
-            ld qa, ld qb, ld qc, ld l);
+            ld qa, ld qb, ld qc, ld l, bool print = true);
 
     /**
      * @brief A very long straight wire has charge per unit length lambda. At
@@ -624,7 +624,7 @@ public:
      * @return the distance
      */
     static constexpr ld distanceFromWireElectricFieldMagnitude(
-            ld lambda, ld Ef, bool print = false);
+            ld lambda, ld Ef, bool print = true);
 
     /**
      * A (l) m length of power line carries a total charge of (q) C
@@ -639,7 +639,7 @@ public:
      * @return the magnitude of the electric field
      */
     static constexpr ld magnitudeOfElectricFieldByWire(
-            ld l, ld q, ld r, bool print = false);
+            ld l, ld q, ld r, bool print = true);
 
     /**
      * @brief A rod l m long and r m in radius carries a Q C charge
@@ -653,7 +653,7 @@ public:
      * @return the magnitude of the electric field
      */
     static constexpr ld magnitudeOfElectricFieldByRod(
-            ld l, ld Q, ld r, ld R, bool print = false);
+            ld l, ld Q, ld r, ld R, bool print = true);
 
     /**
      * @brief Find the magnitude of the electric field due to a charged ring of
@@ -664,7 +664,7 @@ public:
      * @param print  true to print the answer
      * @return  the magnitude of the electric field
      */
-    static ld electricFieldFromChargedRing(ld a, ld Q, bool print = false);
+    static ld electricFieldFromChargedRing(ld a, ld Q, bool print = true);
 
     /**
      * @brief Find the magnitude of the electric field at a point located at z
@@ -676,7 +676,7 @@ public:
      * @return  the magnitude of the electric field
      */
     static ld electricFieldAtPointFromChargedRing(
-            ld r, ld z, ld Q, bool print = false);
+            ld r, ld z, ld Q, bool print = true);
 
     /**
      * A proton moving to the right at V m/s enters a region where a
@@ -687,7 +687,7 @@ public:
      * @param print true to print the answer
      * @return the distance
      */
-    static ld distanceProtonGetsBeforeSpeedZero(ld V, ld E, bool print = false);
+    static ld distanceProtonGetsBeforeSpeedZero(ld V, ld E, bool print = true);
 
     /**
      * The charges are in a uniform electric field whose direction makes an
@@ -699,7 +699,7 @@ public:
      * @param p dipole moment
      * @param print true to print the answer
      */
-    static ld magnitudeOfElectricField(ld t, ld theta, ld p, bool print = false);
+    static ld magnitudeOfElectricField(ld t, ld theta, ld p, bool print = true);
 
     /**
      * Three identical charges q form an equilateral triangle of side a,
@@ -712,7 +712,7 @@ public:
      * @param print true to print the answer
      * @return the electric field
      */
-    static ld electricFieldAtPointOnYAxis(ld q, ld a, ld y, bool print = false);
+    static ld electricFieldAtPointOnYAxis(ld q, ld a, ld y, bool print = true);
 
     /**
      * Four equal charges  Q  are at the corners of a square of side  a .
@@ -722,7 +722,7 @@ public:
      * @param print true to print the answer
      * @return the force
      */
-    static ld forceOnEachChargeInSquare(ld Q, ld a, bool print = false);
+    static ld forceOnEachChargeInSquare(ld Q, ld a, bool print = true);
 
     /**
      * @brief Calculate the surface charge density of a uniformly charged
@@ -732,7 +732,7 @@ public:
      * @param print  true to print the answer
      * @return  the surface charge density
      */
-    static constexpr ld surfaceChargeDensity(ld Q, ld A, bool print = false);
+    static constexpr ld surfaceChargeDensity(ld Q, ld A, bool print = true);
 
     /**
      * @brief Calculate the surface charge density of a uncharged spherical
@@ -742,7 +742,7 @@ public:
      * @param print  true to print the answer
      * @return  the surface charge density
      */
-    static constexpr ld surfaceChargeDensitySphere(ld Q, ld r, bool print = false);
+    static constexpr ld surfaceChargeDensitySphere(ld Q, ld r, bool print = true);
 
     /**
      * An electron close to a large, flat sheet of charge is repelled from the
@@ -751,7 +751,7 @@ public:
      * @param print true to print the answer
      * @return the surface charge density
      */
-    static constexpr ld surfaceChargeDensity(ld E, bool print = false);
+    static constexpr ld surfaceChargeDensity(ld E, bool print = true);
 
     /**
      * @brief Calculate the Electric field strength inside a uniformly charged
@@ -762,7 +762,7 @@ public:
      * @return  the electric field strength
      */
     static constexpr ld fieldInsideSlabWithVolumeChargeDensity(
-            ld rho, ld x, bool print = false);
+            ld rho, ld x, bool print = true);
 
     /**
      * @brief Calculates the Electric field strength outside a slab at a
@@ -773,7 +773,7 @@ public:
      * @return the electric field strength
      */
     static constexpr ld fieldOutsideSlabWithVolumeChargeDensity(
-            ld rho, ld d, bool print = false);
+            ld rho, ld d, bool print = true);
 
     /**
      * brief What surface charge density on an infinite sheet will produce an
@@ -782,7 +782,7 @@ public:
      * @param print true to print the answer
      * @return the surface charge density
      */
-    static constexpr ld surfaceChargeDensityFromElectricField(ld E, bool print = false);
+    static constexpr ld surfaceChargeDensityFromElectricField(ld E, bool print = true);
 
     /**
      * @brief Calculate the field charge of a sheet with a surface charge density
@@ -791,7 +791,7 @@ public:
      * @param print true to print the answer
      * @return the field charge
      */
-    static constexpr ld fieldChargeOfSheet(ld sigma, bool print = false);
+    static constexpr ld fieldChargeOfSheet(ld sigma, bool print = true);
 
     /**
      * A total charge of Q C is applied to a thin, square metal plate l m
@@ -802,7 +802,7 @@ public:
      * @return the electric field strength
      */
     static constexpr ld electricFieldStrengthNearPlate(
-            ld Q, ld l, bool print = false);
+            ld Q, ld l, bool print = true);
 
     /**
      * @brief Calculate the electric field at the surface of a conductor with
@@ -811,8 +811,56 @@ public:
      * @param print  true to print the answer
      * @return  the electric field
      */
-    static constexpr ld fieldAtConductorSurface(ld sigma, bool print = false);
+    static constexpr ld fieldAtConductorSurface(ld sigma, bool print = true);
 
+    /**
+     * @brief Calculate the charge between two point charges of equal
+     * magnitude a distance r apart with a repulsive force of F.
+     * @param F the force
+     * @param r the distance
+     * @param print true to print the answer
+     * @return the charge
+     */
+    static ld chargeBetweenPointCharges(ld F, ld r, bool print = true);
+
+    /**
+     * @brief Two small spheres spaced r m apart have equal charge. Calculate
+     * how many excess electrons must be present on each sphere if the
+     * magnitude of the force of repulsion between them is F newtons.
+     * @param r is the distance between the spheres in m
+     * @param F is the force of repulsion in N
+     * @param print prints the result
+     * @return  the number of excess electrons
+     */
+    static ld excessElectrons(ld r, ld F, bool print = true);
+
+    /**
+     * @brief The molecule's mol has a dipole moment of p C⋅m. Calculate the
+     * separation between the charges if the molecule is consists of two
+     * electric charges of ±e.
+     * @param p the dipole moment
+     * @param print true to print the answer
+     */
+    static ld separationOfCharges(ld p, bool print = true);
+
+    /**
+     * @brief In his famous 1909 experiment that demonstrated quantization of
+     * electric charge, R. A. Millikan suspended small oil drops in an
+     * electric field. With a field strength of E N/C, calculate the mass
+     * of the drop that can be suspended when the drop carries a net charge
+     * of n elementary charges.
+     * @param E the electric field strength
+     * @param n the number of elementary charges
+     * @param print true to print the answer
+     * @return the mass of the drop
+     */
+    static ld massOfDropInElectricField(ld E, ld n, bool print = true);
+
+
+    /**
+     * @brief set the value of the electric charge variable
+     * @param val
+     */
     void setElectricChargeVal(ld val) { _electricChargeVal = val; }
 
 
@@ -828,29 +876,44 @@ private:
 };
 #endif //PHYSICSFORMULA_ELECTRICCHARGE_H
 
-constexpr ld ElectricCharge::massFromEnergy(const ld E, const ld c)
+constexpr ld ElectricCharge::massFromEnergy(const ld E, const ld c, bool print)
 {
-    return E / (c * c);
+    ld m = E / (c * c);
+    if (print)
+        std::cout << "m = " << m << " kg" << std::endl;
+    return m;
 }
 
-constexpr ld ElectricCharge::massFromEnergy(const ld M)
+constexpr ld ElectricCharge::massFromEnergy(const ld M, bool print)
 {
-    return 2.0 * M;
+    ld m = 2.0 * M;
+    if (print)
+        std::cout << "m = " << m << " kg" << std::endl;
+    return m;
 }
 
-constexpr ld ElectricCharge::totalElectronMass(const ld Ne)
+constexpr ld ElectricCharge::totalElectronMass(const ld Ne, bool print)
 {
-    return Ne * constants::ELECTRON_MASS;
+    ld m = Ne * constants::ELECTRON_MASS;
+    if (print)
+        std::cout << "m = " << m << " kg" << std::endl;
+    return m;
 }
 
-constexpr ld ElectricCharge::totalProtonMass(const ld Np)
+constexpr ld ElectricCharge::totalProtonMass(const ld Np, bool print)
 {
-    return Np * constants::PROTON_MASS;
+    ld m = Np * constants::PROTON_MASS;
+    if (print)
+        std::cout << "m = " << m << " kg" << std::endl;
+    return m;
 }
 
-constexpr ld ElectricCharge::totalMass(const ld Ne, const ld Np)
+constexpr ld ElectricCharge::totalMass(const ld Ne, const ld Np, bool print)
 {
-    return totalElectronMass(Ne) + totalProtonMass(Np);
+    ld m = totalElectronMass(Ne, false) + totalProtonMass(Np, false);
+    if (print)
+        std::cout << "m = " << m << " kg" << std::endl;
+    return m;
 }
 
 constexpr ld ElectricCharge::coulombsLaw(
@@ -863,10 +926,7 @@ constexpr ld ElectricCharge::coulombsLaw(
 }
 
 constexpr ld ElectricCharge::coulombsLaw(
-        ld q1,
-        pair<ld, ld> xy1,
-        ld q2, pair<ld, ld> xy2,
-        int multiplier,
+        ld q1, pair<ld, ld> xy1, ld q2, pair<ld, ld> xy2, int multiplier,
         bool print)
 {
     // get the distance between the two points
@@ -883,10 +943,12 @@ constexpr ld ElectricCharge::coulombsLaw(
 }
 
 inline ld ElectricCharge::chargeOfElectrostaticForce_equalPointCharges(
-        const ld q, const ld mass, const ld r
-)
+        const ld q, const ld mass, const ld r, bool print)
 {
-    return r * (sqrt((mass * constants::Ga) / constants::K));
+    auto Q = r * (sqrt((mass * constants::Ga) / constants::K));
+    if (print)
+        std::cout << "q = " << Q << " C" << std::endl;
+    return Q;
 }
 
 constexpr ld ElectricCharge::electricFieldForce(
@@ -919,38 +981,53 @@ ld ElectricCharge::electricFieldZero(ld Qp, ld Qn, ld a, bool print) {
 
 
 constexpr ld ElectricCharge::coulombs(
-        const ld baseNumber, const ld su)
+        const ld baseNumber, const ld su, bool print)
 {
-    return baseNumber * su * constants::PROTON_CHARGE;
+    auto C = baseNumber * su * constants::_e;
+    if (print)
+        std::cout << "C = " << C << " C" << std::endl;
+    return C;
 }
 
 inline ld ElectricCharge::howManyFewerElectronsThenProtons(
-        const ld netCharge)
+        const ld netCharge, bool print)
 {
-    return netCharge / abs(constants::ELECTRON_CHARGE);
+    auto Ne = (netCharge / abs(constants::ELECTRON_CHARGE));
+    if (print)
+        std::cout << "Ne = " << Ne << std::endl;
+    return Ne;
 }
 
 inline ld ElectricCharge::fractionProtonsNoElectrons(
-        const ld protons, const ld netCharge)
+        const ld protons, const ld netCharge, bool print)
 {
     const ld temp = howManyFewerElectronsThenProtons(netCharge);
-    return temp / protons;
+    auto Np = temp / protons;
+    if (print)
+        std::cout << "Np = " << Np << std::endl;
+    return Np;
 }
 
 constexpr ld ElectricCharge::forceChangeTwoPointCharges(
-        const ld F, const ld factorChange)
+        const ld F, const ld factorChange, bool print)
 {
-    return F / (factorChange * factorChange);
+    auto F2 = F / (factorChange * factorChange);
+    if (print)
+        std::cout << "F2 = " << F2 << " N" << std::endl;
+    return F2;
 }
 
 constexpr ld ElectricCharge::electricField(
-        const ld F, const ld q)
+        const ld F, const ld q, bool print)
 {
-    return F / q;
+    auto E = F / q;
+    if (print)
+        std::cout << "E = " << E << " N/C" << std::endl;
+    return E;
 }
 
 ld ElectricCharge::electricFieldFromPointChargeDistribution(
-        vector<ld> charges, vector<ld> r_vals)
+        vector<ld> charges, vector<ld> r_vals, bool print)
 {
     ld E = 0.0;
     for (int i = 0; i < charges.size(); i++) {
@@ -960,9 +1037,8 @@ ld ElectricCharge::electricFieldFromPointChargeDistribution(
 }
 
 
-constexpr ld ElectricCharge::electricFieldByPointCharge(ld q,
-                                                        ld r,
-                                                        bool print) {
+constexpr ld ElectricCharge::electricFieldByPointCharge(
+        ld q, ld r,  bool print) {
     auto E = (constants::K * q) / (r * r);
     if (print)
         std::cout << "E = " << E << " N/C" << std::endl;
@@ -993,37 +1069,50 @@ constexpr ld ElectricCharge::magnitudePointCharge(
     return Q;
 }
 
-constexpr ld ElectricCharge::charge(const ld F, const ld E)
+constexpr ld ElectricCharge::charge(const ld F, const ld E, bool print)
 {
-    return F / E;
+    auto q = F / E;
+    if (print)
+        std::cout << "q = " << q << " C" << std::endl;
+    return q;
 }
 
 inline ld ElectricCharge::separationBetweenPointCharges(
-        const ld q1, const ld q2, const ld F)
+        const ld q1, const ld q2, const ld F, bool print)
 {
-    return sqrt((constants::K * (q1 * q2)) / F);
+    auto r = sqrt((constants::K * (q1 * q2)) / F);
+    if (print)
+        std::cout << "r = " << r << " m" << std::endl;
+    return r;
 }
 
 constexpr ld ElectricCharge::howManyElectrons(
-        const ld totalParticles, const ld netCharge)
+        const ld totalParticles, const ld netCharge, bool print)
 {
     const ld NeMinusNp = netCharge / constants::ELECTRON_CHARGE;
     const ld total     = totalParticles + NeMinusNp;
     const ld Ne        = total / 2.0;
-
+    if (print)
+        std::cout << "Ne = " << Ne << std::endl;
     return Ne;
 }
 
 inline ld ElectricCharge::minimumChargeToLiftObject(
-        const ld r, const ld charge, const ld m)
+        const ld r, const ld charge, const ld m, bool print)
 {
-    return (m * constants::Ga * (r * r)) / (constants::K * charge);
+    auto F = (m * constants::Ga * (r * r)) / (constants::K * charge);
+    if (print)
+        std::cout << "F = " << F << " N" << std::endl;
+    return F;
 }
 
 inline ld ElectricCharge::minimumChargeToLiftCar(
-        const ld r, const ld l, const ld m)
+        const ld r, const ld l, const ld m, bool print)
 {
-    return (r + l) * sqrt((m * constants::Ga) / constants::K);
+    auto F = (r + l) * sqrt((m * constants::Ga) / constants::K);
+    if (print)
+        std::cout << "F = " << F << " N" << std::endl;
+    return F;
 }
 
 vector<ld> ElectricCharge::superpositionPrinciple(
@@ -1067,67 +1156,97 @@ vector<ld> ElectricCharge::superpositionPrinciple(
 }
 
 inline ld ElectricCharge::distanceBetweenPoints(
-        const ld q1, const ld q2, const ld F)
+        const ld q1, const ld q2, const ld F, bool print)
 {
-    return sqrt((constants::K * abs(q1) * abs(q2)) / F);
+    auto r = sqrt((constants::K * (abs(q1) * abs(q2))) / F);
+    if (print)
+        std::cout << "r = " << r << " m" << std::endl;
+    return r;
 }
 
 inline ld ElectricCharge::angleVerticalAxis(
-        const ld Fe, const ld mass)
+        const ld Fe, const ld mass, bool print)
 {
-    return atan((Fe / (mass * constants::Ga))) * constants::DEGREE;
+    auto theta = atan((Fe / (mass * constants::Ga))) * constants::DEGREE;
+    if (print)
+        std::cout << "theta = " << theta << " degrees" << std::endl;
+    return theta;
 }
 
 constexpr ld ElectricCharge::accelerationOfParticles(
-        const ld m, const ld r, const ld q1, const ld q2)
+        const ld m, const ld r, const ld q1, const ld q2, bool print)
 {
-    return (constants::K * (q1 * q2)) / (m * (r * r));
+    auto a = (constants::K * (q1 * q2)) / (m * (r * r));
+    if (print)
+        std::cout << "a = " << a << " m/s^2" << std::endl;
+    return a;
 }
 
-constexpr ld ElectricCharge::electricFieldStrength(const ld d, const ld q_excess)
+constexpr ld ElectricCharge::electricFieldStrength(const ld d, const ld q_excess, bool print)
 {
-    return (4.0 * constants::K * q_excess) / (d * d);
+    auto E =(4.0 * constants::K * q_excess) / (d * d);
+    if (print)
+        std::cout << "E = " << E << " N/C" << std::endl;
+    return E;
 }
 
 inline ld ElectricCharge::electricFieldStrength(
-        const ld m, const ld theta, const ld q)
+        const ld m, const ld theta, const ld q, bool print)
 {
-    return (m * constants::Ga * tan(theta * constants::RADIAN)) / q;
+    auto E = (m * constants::Ga * tan(theta * constants::RADIAN)) / q;
+    if (print)
+        std::cout << "E = " << E << " N/C" << std::endl;
+    return E;
 }
 
 inline ld ElectricCharge::magnitudeOfq_termsOf_Q_m_d(
-        const ld Q, const ld m, const ld d)
+        const ld Q, const ld m, const ld d, bool print)
 {
-    return (3.0 * sqrt(6.0) * (d * d) * m * constants::Ga) / (16.0 * constants::K * Q);
+    auto q =(3.0 * sqrt(6.0) * (d * d) * m * constants::Ga) / (16.0 * constants::K * Q);
+    if (print)
+        std::cout << "q = " << q << " C" << std::endl;
+    return q;
 }
 
 inline ld ElectricCharge::angularVelocityOfElectronOrbitingProton(
-        const ld r, const ld m, const ld q)
+        const ld r, const ld m, const ld q, bool print)
 {
-    return q * sqrt((constants::K) / (m * r));
+    auto omega = q * sqrt((constants::K) / (m * r));
+    if (print)
+        std::cout << "omega = " << omega << " rad/s" << std::endl;
+    return omega;
 }
 
 inline ld ElectricCharge::distanceToPlaceThirdChargeToMakeZero(
-        const ld l, const ld q1, const ld q2)
+        const ld l, const ld q1, const ld q2, bool print)
 {
-    return (l * sqrt(q2 / q1)) / (1.0 - sqrt(q2 / q1));
+    auto r = (l * sqrt(q2 / q1)) / (1.0 - sqrt(q2 / q1));
+    if (print)
+        std::cout << "r = " << r << " m" << std::endl;
+    return r;
 }
 
 inline ld ElectricCharge::magnitudeOfForceOn_q(
-        const ld qx4, const ld lSide, const ld q1, const ld theta = 45.0)
+        const ld qx4, const ld lSide, const ld q1, const ld theta = 45.0, bool print)
 {
-    return ((8.0 * constants::K * qx4 * q1) / (lSide * lSide)) *
+    auto F = ((8.0 * constants::K * qx4 * q1) / (lSide * lSide)) *
     sin(theta * constants::RADIAN);
+    if (print)
+        std::cout << "F = " << F << " N" << std::endl;
+    return F;
 }
 
 inline ld ElectricCharge::electricFieldAtLocation(
-        const ld qb, const ld qm, const ld l)
+        const ld qb, const ld qm, const ld l, bool print)
 {
-    return (constants::K / (l * l)) * (sqrt(2) * qb + (qb / 2.0) - 2 * qm);
+    auto E = (constants::K / (l * l)) * (sqrt(2) * qb + (qb / 2.0) - 2 * qm);
+    if (print)
+        std::cout << "E = " << E << " N/C" << std::endl;
+    return E;
 }
 
 inline std::vector<ld> ElectricCharge::electricFieldAtCenterTriangle(
-        const ld qa, const ld qb, const ld qc, const ld l)
+        const ld qa, const ld qb, const ld qc, const ld l, bool print)
 {
     std::vector<ld> results = {0.0, 0.0};
     const ld sr_rthx   = 3.0 * sqrt(3);
@@ -1147,58 +1266,77 @@ inline std::vector<ld> ElectricCharge::electricFieldAtCenterTriangle(
     //cout << "Ey: " << Ey << endl;
     results[0] = sqrt((Ex * Ex) + (Ey * Ey));
     results[1] = atan((Ey / Ex)) * 180 / constants::PI;
-
+    if (print) {
+        std::cout << "E = " << results[0] << " N/C" << std::endl;
+        std::cout << "theta = " << results[1] << " degrees" << std::endl;
+    }
     return results;
 }
 
 constexpr ld ElectricCharge::electrons(
-        const ld baseNumber, const ld su)
+        const ld baseNumber, const ld su, bool print)
 {
-    return (baseNumber * su) / constants::ELECTRON_CHARGE;
+    auto electrons = (baseNumber * su) / constants::ELECTRON_CHARGE;
+    if (print)
+        std::cout << "electrons = " << electrons << std::endl;
+    return electrons;
 }
 
 inline ld ElectricCharge::netElectronCount(
-        const ld protons, const ld netCharge)
+        const ld protons, const ld netCharge, bool print)
 {
-    return protons + ((-abs(netCharge)) / constants::PROTON_CHARGE);
+    auto electrons = protons + ((-abs(netCharge)) / constants::PROTON_CHARGE);
+    if (print)
+        std::cout << "electrons = " << electrons << std::endl;
+    return electrons;
 }
 
 constexpr ld ElectricCharge::dipoleMoment(ld q, ld d, bool print) {
     auto mu = q * d;
-    if (print) {
+    if (print)
         std::cout << "Dipole moment = " << mu << " Cm" << std::endl;
-    }
     return mu;
 }
 
-constexpr ld ElectricCharge::dipoleFieldPerpendicularBisector(ld p, ld y) {
-    return -(constants::K * p) / abs(y*y*y);
+constexpr ld ElectricCharge::dipoleFieldPerpendicularBisector(
+        ld p, ld y, bool print) {
+    auto E = -(constants::K * p) / abs(y*y*y);
+    if (print)
+        std::cout << "E = " << E << " N/C" << std::endl;
+    return E;
 }
 
-constexpr ld ElectricCharge::dipoleFieldForXaxis(ld p, ld x) {
-    return (2*constants::K*p) / (abs(x*x*x));
+constexpr ld ElectricCharge::dipoleFieldForXaxis(ld p, ld x, bool print) {
+    auto E = (2.0 * constants::K * p) / abs(x*x*x);
+    if (print)
+        std::cout << "E = " << E << " N/C" << std::endl;
+    return E;
 }
 
-constexpr ld ElectricCharge::totalElectrons(ld q) {
-    return abs(q / constants::ELECTRON_CHARGE);
+constexpr ld ElectricCharge::totalElectrons(ld q, bool print) {
+    auto electrons = abs(q / constants::ELECTRON_CHARGE);
+    if (print)
+        std::cout << "electrons = " << electrons << std::endl;
+    return electrons;
 }
 
 constexpr ld ElectricCharge::electricFlux(ld E, ld A, ld theta, bool print) {
     auto phi = E * A * cos(theta*constants::RADIAN);
-    if (print) {
+    if (print)
         std::cout << "Electric flux = " << phi << " Nm/C" << std::endl;
-    }
     return phi;
 }
 
-
-constexpr ld ElectricCharge::electricFluxSphere(ld q) {
-    return q/constants::e0;
+constexpr ld ElectricCharge::electricFluxSphere(ld q, bool print) {
+    auto phi = q / constants::_e0;
+    if (print)
+        std::cout << "Electric flux = " << phi << " Nm/C" << std::endl;
+    return phi;
 }
 
 constexpr ld
 ElectricCharge::fieldOutsideSphericalChargeDistribution(ld Q, ld r, bool print) {
-    auto E = Q / (4.0 * constants::PI * (r * r) * constants::e0);
+    auto E = Q / (4.0 * constants::PI * (r * r) * constants::_e0);
     if (print) {
         std::cout << "Field outside spherical charge distribution = "
         << E << " N/C" << std::endl;
@@ -1207,19 +1345,17 @@ ElectricCharge::fieldOutsideSphericalChargeDistribution(ld Q, ld r, bool print) 
 }
 
 constexpr ld ElectricCharge::fieldOfALineCharge(ld lambda, ld r, bool print) {
-    auto E = lambda / (2.0 * constants::PI * r * constants::e0);
-    if (print) {
+    auto E = lambda / (2.0 * constants::PI * r * constants::_e0);
+    if (print)
         std::cout << "Field of a line charge = " << E << " N/C" << std::endl;
-    }
     return E;
 }
 
 constexpr ld
 ElectricCharge::electricFluxDisc(ld E, ld R, ld theta, bool print) {
     auto phi = E * constants::PI * (R*R) * cos(theta*constants::RADIAN);
-    if (print) {
+    if (print)
         std::cout << "Electric flux = " << phi << " Nm/C" << std::endl;
-    }
     return phi;
 }
 
@@ -1227,11 +1363,10 @@ constexpr ld
 ElectricCharge::distanceFromWireElectricFieldMagnitude(ld lambda,
                                                        ld Ef,
                                                        bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto r = lambda / (2.0 * constants::PI * e0 * Ef);
-    if (print) {
+    if (print)
         std::cout << "Distance from wire = " << r << " m" << std::endl;
-    }
     return r;
 }
 
@@ -1239,9 +1374,8 @@ ld ElectricCharge::electricFieldFromChargedRing(ld a, ld Q, bool print) {
     auto k = constants::K;
 
     auto E = (k * Q) / (2.0* sqrt(2.0) * a * a);
-    if (print) {
+    if (print)
         std::cout << "Electric field = " << E << " V/m" << std::endl;
-    }
     return E;
 }
 
@@ -1249,9 +1383,8 @@ ld ElectricCharge::electricFieldAtPointFromChargedRing(ld r, ld z, ld Q,
                                                     bool print) {
     auto k = constants::K;
     auto E = (k * Q) / pow(((r * r) + (z * z)), 3.0/2.0);
-    if (print) {
+    if (print)
         std::cout << "Electric field = " << E << " V/m" << std::endl;
-    }
     return E;
 }
 
@@ -1280,17 +1413,15 @@ ld ElectricCharge::distanceProtonGetsBeforeSpeedZero(ld V, ld E, bool print) {
     auto m = constants::PROTON_MASS;
     auto q = constants::PROTON_CHARGE;
     auto r = (m * (V * V)) / (2.0 * q * E);
-    if (print) {
+    if (print)
         std::cout << "Distance = " << r << " m" << std::endl;
-    }
     return r;
 }
 
 ld ElectricCharge::magnitudeOfElectricField(ld t, ld theta, ld p, bool print) {
     auto E = t / (p * sin(theta*constants::RADIAN));
-    if (print) {
+    if (print)
         std::cout << "Electric field = " << E << " N/C" << std::endl;
-    }
     return E;
 }
 
@@ -1299,9 +1430,8 @@ ElectricCharge::magnitudeOfElectricFieldByWire(ld l, ld q, ld r, bool print) {
     auto lamda = q / l;
     auto k = constants::K;
     auto E = (2.0 * k * lamda) / r;
-    if (print) {
+    if (print)
         std::cout << "Electric field = " << E << " N/C" << std::endl;
-    }
     return E;
 }
 
@@ -1312,122 +1442,109 @@ ElectricCharge::magnitudeOfElectricFieldByRod(
     auto d = R + r;
     auto k = constants::K;
     auto E = (2.0 * k * lambda) / d;
-    if (print) {
+    if (print)
         std::cout << "Electric field = " << E << " N/C" << std::endl;
-    }
     return E;
 }
 
 ld ElectricCharge::electricFieldAtPointOnYAxis(ld q, ld a, ld y, bool print) {
     auto k = constants::K;
-    auto E = (4.0 * k * q) / (pow((2.0 * y - a * sqrt(3.0)), 2.0) + (4.0 * y) / pow((4.0 * y * y + a * a), 3.0/2.0));
-    if (print) {
+    auto E = (4.0 * k * q) / (pow((2.0 * y - a * sqrt(3.0)), 2.0) + (4.0 * y) /
+            pow((4.0 * y * y + a * a), 3.0/2.0));
+    if (print)
         std::cout << "Electric field = " << E << " N/C" << std::endl;
-    }
     return E;
 }
 
 ld ElectricCharge::forceOnEachChargeInSquare(ld Q, ld a, bool print) {
     auto k = constants::K;
     auto F = ((k * Q * Q) / (2.0 * a * a))*(2.0*sqrt(2.0) + 1.0);
-    if (print) {
+    if (print)
         std::cout << "Force = " << F << " N" << std::endl;
-    }
     return F;
 }
 
 ld ElectricCharge::electricFlux(Vector3D E, Vector3D A, bool print) {
     auto phi = E.dot(A);
-    if (print) {
+    if (print)
         std::cout << "Electric flux = " << phi << " Nm/C" << std::endl;
-    }
     return phi;
 }
 
 constexpr ld ElectricCharge::electricFluxSphere(ld E, ld r, bool print) {
     auto phi = 4.0 * constants::PI * E * r * r;
-    if (print) {
+    if (print)
         std::cout << "Electric flux = " << phi << " Nm/C" << std::endl;
-    }
     return phi;
 }
 
 constexpr ld ElectricCharge::fieldInsideSphericalChargeDistribution(ld Qr, ld R,
                                                                     bool print) {
-    auto epsilon0 = constants::e0;
+    auto epsilon0 = constants::_e0;
     auto E = (Qr / (4.0 * constants::PI * epsilon0 * (R * R * R)));
-    if (print) {
+    if (print)
         std::cout << "Electric field = " << E << " N/C" << std::endl;
-    }
     return E;
 }
 
 constexpr ld ElectricCharge::lineChargeDensity(ld q, ld L, bool print) {
     auto lamda = q / L;
-    if (print) {
+    if (print)
         std::cout << "Line charge density = " << lamda << " C/m" << std::endl;
-    }
     return lamda;
 }
 
 constexpr ld ElectricCharge::surfaceChargeDensity(ld Q, ld A, bool print) {
     auto sigma = Q / A;
-    if (print) {
+    if (print)
         std::cout << "Surface charge density = " << sigma << " C/m^2" << std::endl;
-    }
     return sigma;
 }
 
 constexpr ld ElectricCharge::surfaceChargeDensity(ld E, bool print) {
     auto e = constants::ELECTRON_CHARGE;
-    auto sigma = (E * 2.0 * constants::e0) / e;
-    if (print) {
+    auto sigma = (E * 2.0 * constants::_e0) / e;
+    if (print)
         std::cout << "Surface charge density = " << sigma << " C/m^2" << std::endl;
-    }
     return sigma;
 }
 
 constexpr ld
 ElectricCharge::surfaceChargeDensityFromElectricField(ld E, bool print) {
-    auto sigma = E * 2.0 * constants::e0;
-    if (print) {
+    auto sigma = E * 2.0 * constants::_e0;
+    if (print)
         std::cout << "Surface charge density = " << sigma << " C/m^2" << std::endl;
-    }
     return sigma;
 }
 
 constexpr ld ElectricCharge::fieldOfLineCharge(ld q, ld l, ld r, bool print) {
-    auto epsilon0 = constants::e0;
+    auto epsilon0 = constants::_e0;
     auto E = (q / (2.0 * constants::PI * epsilon0 * r * l));
-    if (print) {
+    if (print)
         std::cout << "Electric field = " << E << " N/C" << std::endl;
-    }
     return E;
 }
 
 constexpr ld ElectricCharge::fieldChargeOfSheet(ld sigma, bool print) {
-    auto epsilon0 = constants::e0;
+    auto epsilon0 = constants::_e0;
     auto E = sigma / ( 2.0 * epsilon0);
-    if (print) {
+    if (print)
         std::cout << "Electric field = " << E << " N/C" << std::endl;
-    }
     return E;
 }
 
 constexpr ld ElectricCharge::fieldAtConductorSurface(ld sigma, bool print) {
-    auto epsilon0 = constants::e0;
+    auto epsilon0 = constants::_e0;
     auto E = sigma / epsilon0;
-    if (print) {
+    if (print)
         std::cout << "Electric field = " << E << " N/C" << std::endl;
-    }
     return E;
 }
 
 constexpr ld ElectricCharge::gaussSphericalSymmetry(ld Q, ld A, bool print) {
     auto E = fieldInsideSphericalChargeDistribution(Q, A, false);
-    if (print) {
+    if (print)
         std::cout << "Electric field = " << E << " N/C" << std::endl;
-    }
     return E;
 }
 
@@ -1447,30 +1564,27 @@ ElectricCharge::electricFieldStrengthNearPlate(ld Q, ld l, bool print) {
     auto A = l * l;
     auto sigma = Q / A;
     auto E = fieldChargeOfSheet(sigma, false);
-    if (print) {
+    if (print)
         std::cout << "Electric field = " << E << " N/C" << std::endl;
-    }
     return E;
 }
 
 constexpr ld
 ElectricCharge::fieldInsideSlabWithVolumeChargeDensity(ld rho, ld x, bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto E = (rho * x) / (e0);
-    if (print) {
+    if (print)
         std::cout << "Electric field = " << E << " N/C" << std::endl;
-    }
     return E;
 }
 
 constexpr ld
 ElectricCharge::fieldOutsideSlabWithVolumeChargeDensity(
         ld rho, ld d, bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto E = (rho * d) / (2.0 * e0);
-    if (print) {
+    if (print)
         std::cout << "Electric field = " << E << " N/C" << std::endl;
-    }
     return E;
 }
 
@@ -1483,4 +1597,36 @@ ElectricCharge::surfaceChargeDensitySphere(ld Q, ld r, bool print) {
         std::endl;
     }
     return sigma;
+}
+
+ld ElectricCharge::chargeBetweenPointCharges(ld F, ld r, bool print) {
+    auto k = constants::K;
+    auto q = sqrt((F * (r*r)) / k);
+    if (print)
+        std::cout << "Charge = " << q << " C" << std::endl;
+    return q;
+}
+
+ld ElectricCharge::excessElectrons(ld r, ld F, bool print) {
+    auto q = chargeBetweenPointCharges(F, r, false);
+    cout << "q = " << q << endl;
+    auto n = ceil(abs(q / constants::ELECTRON_CHARGE));
+    if (print)
+        std::cout << "Number of excess electrons = " << n << std::endl;
+    return n;
+}
+
+ld ElectricCharge::separationOfCharges(ld p, bool print) {
+    auto e = constants::_e;
+    auto r = p / e;
+    if (print)
+        std::cout << "Separation = " << r << " m" << std::endl;
+    return r;
+}
+
+ld ElectricCharge::massOfDropInElectricField(ld E, ld n, bool print) {
+    auto m = (E * n * constants::_e) / constants::Ga;
+    if (print)
+        std::cout << "Mass = " << m << " kg" << std::endl;
+    return m;
 }

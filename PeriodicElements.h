@@ -115,7 +115,7 @@ static struct Elements
         const long double resistivity = FP_NAN; //FP_NAN
         const long double heat_specific = 14300.0; // 14300.0 J/kgK
         const long double heat_vaporization = .452; // 452 kJ/mol
-        const long double heat_fusion = .558; // .558 kJ/mol
+        const long double heat_fusion = .0585; // .558 kJ/mol
         const long double ionization_1st = 13.598;
         static void display()
         {
@@ -4126,7 +4126,7 @@ static long double getMeltingPoint(string element)
     if(element == "tellurium") return 722.66;
     if(element == "iodine") return 386.85;
     if(element == "xenon") return 161.4;
-    if(element == "cesium") return 301.59;
+    if(element == "caesium") return 301.59;
     if(element == "barium") return 1000;
     if(element == "lanthanum") return 1193;
     if(element == "cerium") return 1068;

@@ -191,7 +191,7 @@ private:
 //in-line class Implementation
 inline ld ElectromagneticWaves::speedOfElectroMagneticWaves()
 {
-    return 1.0 / sqrt (constants::mu0 * constants::e0);
+    return 1.0 / sqrt (constants::_mu0 * constants::_e0);
 }
 
 inline ld ElectromagneticWaves::magneticFieldStrength_emWave(const ld E)
@@ -236,7 +236,7 @@ inline ld ElectromagneticWaves::echoTime(const ld d)
 
 inline ld ElectromagneticWaves::intensityAvg_emWave_E(const ld E)
 {
-    return (constants::LIGHT_SPEED * constants::e0 * (E * E)) / 2.0;
+    return (constants::LIGHT_SPEED * constants::_e0 * (E * E)) / 2.0;
 }
 
 inline ld ElectromagneticWaves::powerReceivedByAntenna(const ld d, const ld I)
@@ -261,5 +261,5 @@ inline ld ElectromagneticWaves::capacitanceOfCircuitFromWavelength(const ld thet
 
 inline ld ElectromagneticWaves::intensityAvg_emWave_B(const ld B)
 {
-    return (constants::LIGHT_SPEED * (B * B)) / (2.0 * constants::mu0);
+    return (constants::LIGHT_SPEED * (B * B)) / (2.0 * constants::_mu0);
 }

@@ -12,7 +12,8 @@
  */
 #include "Heat.h"
 #include "Energy.h"
-#include "PeriodicElements.h"
+#include "PeriodicTable.h"
+
 static int thermodynamics_objectCount = 0;
 
 ld static kiloJoulesToCalories(const ld kJ)
@@ -428,15 +429,7 @@ public:
      * @param W the work done
      * @return the change in the system's internal energy
      */
-    static ld firstLaw(const ld Q, const ld W, bool print = true)
-    {
-        ld E = Q + W;
-        if (print)
-            cout << "the change in the system's internal energy is "
-                 << E << " J" << std::endl;
-        return E;
-    }
-
+    static ld firstLaw(ld Q, ld W, bool print = true);
 
     /**
      * @brief first law of thermodynamics  delta_U = COULOMB - W
@@ -444,10 +437,7 @@ public:
      * @param W is the sum of all work done on or by the system
      * @returns delta U, is the change in internal energy U of the system
      */
-    static ld changeOfInternalEnergy(const ld Q, const ld W)
-    {
-        return Q - W;
-    }
+    static ld changeOfInternalEnergy(ld Q, ld W);
 
     /**
      * @brief isothermal process, work done is proportional to temperature difference
@@ -457,18 +447,9 @@ public:
      * @param Vf the final volume of the system
      * @return the heat supplied to the system during an isothermal process
      */
-    static ld workByIsothermalProcess(const ld T,
-                                 const ld n,
-                                 const ld Vi,
-                                 const ld Vf,
-                                 bool print = true)
-    {
-        auto Q = (n * constants::R.L_atm * T * log(Vi / Vf));
-        if (print)
-            cout << "the heat supplied to the system during an isothermal process is "
-                 << Q << " J" << std::endl;
-        return Q;
-    }
+    static ld workByIsothermalProcess(
+            ld T, ld n, ld Vi, ld Vf, bool print = true);
+
     /**
      * @brief work by isothermal process
      * @param p  the pressure of the system
@@ -477,48 +458,33 @@ public:
      * @param print  print the result
      * @return  the work done by the system during an isothermal process
      */
-    static ld workByIsothermalProcess(const ld p,
-                                      const ld Vi,
-                                      const ld Vf,
-                                      bool print = true)
-    {
-        auto Q = ((p * Vf) * log(Vf / Vi));
-        if (print) {
-            cout << "the heat supplied to the system during an isothermal process is "
-            << Q << " J" << std::endl;
-        }
-        return Q;
-    }
+    static ld workByIsothermalProcess(
+            ld p, ld Vi, ld Vf, bool print = true);
 
-    static ld temperatureIsothermalProcess(const ld n,
-                                           const ld W,
-                                           const ld Vi,
-                                           const ld Vf,
-                                           bool print = true)
-    {
-        auto T = (W / (n * constants::R.joules * log(Vi / Vf)));
-        if (print)
-            cout << "the temperature of the system during an isothermal process is "
-                 << T << " K" << std::endl;
-        return T;
-    }
+    /**
+     * @brief temperature of an isothermal process
+     * @param n  the number of moles in the system
+     * @param W  the work done by the system
+     * @param Vi  the initial volume of the system
+     * @param Vf  the final volume of the system
+     * @param print  print the result
+     * @return  the temperature of the system during an isothermal process
+     */
+    static ld temperatureIsothermalProcess(
+            ld n, ld W, ld Vi, ld Vf, bool print = true);
 
-    static ld workByIsothermalAdiabaticProcess(const ld p,
-                                                const ld Vi,
-                                                const ld Vf,
-                                                const ld gamma,
-                                                bool print = true)
-    {
-        auto p2 = pressure2AdiabaticProcess(gamma, p, Vi, Vf);
-        auto Wad = workByAdiabaticProcess(gamma, p, p2, Vi, Vf);
-        auto Wiso = workByIsothermalProcess(p, Vf, Vi);
-        auto W = Wad - Wiso;
-        if (print) {
-            cout << "the work done by the system during an isothermal adiabatic process is "
-            << W << " J" << std::endl;
-        }
-        return W;
-    }
+    /**
+     * @brief work by isothermal and adiabatic process
+     * @param p the pressure of the system
+     * @param Vi  the initial volume of the system
+     * @param Vf  the final volume of the system
+     * @param gamma  the ratio of specific heats
+     * @param print  print the result
+     * @return  the work done by the system during an isothermal and adiabatic process
+     */
+    static ld workByIsothermalAdiabaticProcess(
+            ld p, ld Vi, ld Vf, ld gamma, bool print = true);
+
     /**
      * An ideal gas with γ=gamma occupies a volume of V m^3 at T K and p1 Pa
      * pressure and is heated at constant volume until its pressure has
@@ -536,13 +502,9 @@ public:
      * @param print print the result
      * @return  the work done by the system
      */
-    static ld workByIsothermalAdiabaticProcess(const ld p1,
-                                               const ld x,
-                                               const ld V,
-                                               const ld y,
-                                               const ld T,
-                                               const ld gamma,
-                                               bool print = true)
+    static ld workByIsothermalAdiabaticProcess(
+            const ld p1, const ld x, const ld V, const ld y, const ld T,
+            const ld gamma, bool print = true)
     {
         auto Wbc = (p1 * V * (x * pow(y, gamma-1.0) - x))/ (1.0 - gamma);
         auto Wcd = (p1 * V * log (y));
@@ -1724,39 +1686,7 @@ public:
      * moles, and the final pressure in the flask
      */
     static vector<ld> flaskInBoilingWaterData(
-            const ld vol, const ld Pi, const ld Ti, bool print = true)
-    {
-         // convert pressure to pascals
-         auto PiPa = Pi * 101325;
-         // convert temperature to kelvin
-         auto TiK = Ti + 273.15;
-         // temp of boiling water
-         auto TbK = 373.15;
-         // get the number of moles
-         auto n = numberMoles_idealGasLaw(PiPa, vol, TiK);
-         // get the maximum pressure (nRT/V = P)
-         auto Pmax = (n * constants::R.joules * TbK) / vol;
-         // convert to atm
-         Pmax /= 101325;
-         // get the moles that escapes when the flask is opened
-         auto n2 = numberMoles_idealGasLaw(PiPa, vol, TbK);
-         auto n2f = n - n2;
-         // get the final pressure
-         auto Pf = (n2 * constants::R.joules * TiK) / vol;
-         cout << "The final pressure reached in the flask is: " << Pf
-              << " Pascals\n";
-         // convert to atm
-         Pf /= 101325;
-         if (print) {
-             std::cout << "The maximum pressure reached in the flask is: "
-                       << Pmax << " atm\n";
-             std::cout << "The number of moles that escape from the flask "
-                       << "when it is opened is: " << n2f << " moles\n";
-             std::cout << "The final pressure in the flask is: " << Pf
-                       << " atm\n";
-         }
-         return {Pmax, n2, Pf};
-    }
+            const ld vol, const ld Pi, const ld Ti, bool print = true);
 
     /**
      * @brief A thin partition divides a thermally insulated vessel into a lower
@@ -1773,39 +1703,18 @@ public:
      * @return  the number of moles of gas initially contained in the lower
      */
     static ld molesOfGasInLowerCompartment(
-            const ld V, const ld x, const ld S, bool print = true)
-    {
-        auto vf = (V * x) + V;
-        auto n = S / (constants::R.joules * log(vf / V));
-        if (print) {
-            std::cout << "The number of moles of gas initially contained in "
-                      << "the lower compartment is: " << n << " moles\n";
-        }
-        return n;
-    }
+            ld V, ld x, ld S, bool print = true);
 
     /**
-      * @brief Melting a block of substance already at its melting point results
-      * in an entropy increase of S J/K . Calculate the mass of the block.
-      * @param S is the entropy change in J/K
-      * @param substance is the substance
-      * @param print prints the result
-      * @return  the mass of the block
-      */
-     static ld massOfBlock(
-             const ld S, const string& substance, bool print = true)
-     {
-         auto boilingPoint = round(getMeltingPoint(substance));
-         auto Lf = LF.elems_j.at(substance);
-         auto mass = (S * boilingPoint) / (Lf);
-         if (print) {
-             std::cout << "The mass of the block is: " << mass << " kg\n";
-         }
-         return mass;
-     }
-
-
-
+     * @brief Melting a block of substance already at its melting point results
+     * in an entropy increase of S J/K . Calculate the mass of the block.
+     * @param S is the entropy change in J/K
+     * @param substance is the substance
+     * @param print prints the result
+     * @return  the mass of the block
+     */
+    static ld massOfBlock(
+            ld S, const string& substance, bool print = true);
 
     /**
      * @brief destructor
@@ -1814,5 +1723,122 @@ public:
         countDecrease();
     }
 };
-
 #endif //PHYSICSFORMULA_THERMODYNAMICS_H
+//*************************  Method Definitions  *****************************//
+ld Thermodynamics::massOfBlock(const ld S, const string &substance, bool print)
+{
+    auto boilingPoint = round(getMeltingPoint(substance));
+    auto Lf = getLatentHeatFusion(substance);
+    auto mass = (S * boilingPoint) / (Lf);
+    if (print) {
+        std::cout << "The mass of the block is: " << mass << " kg\n";
+    }
+    return mass;
+}
+
+ld Thermodynamics::molesOfGasInLowerCompartment(
+        const ld V, const ld x, const ld S, bool print)
+{
+    auto vf = (V * x) + V;
+    auto n = S / (constants::R.joules * log(vf / V));
+    if (print) {
+        std::cout << "The number of moles of gas initially contained in "
+                  << "the lower compartment is: " << n << " moles\n";
+    }
+    return n;
+}
+
+vector<ld>
+Thermodynamics::flaskInBoilingWaterData(
+        const ld vol, const ld Pi, const ld Ti,  bool print)
+{
+    // convert pressure to pascals
+    auto PiPa = Pi * 101325;
+    // convert temperature to kelvin
+    auto TiK = Ti + 273.15;
+    // temp of boiling water
+    auto TbK = 373.15;
+    // get the number of moles
+    auto n = numberMoles_idealGasLaw(PiPa, vol, TiK);
+    // get the maximum pressure (nRT/V = P)
+    auto Pmax = (n * constants::R.joules * TbK) / vol;
+    // convert to atm
+    Pmax /= 101325;
+    // get the moles that escapes when the flask is opened
+    auto n2 = numberMoles_idealGasLaw(PiPa, vol, TbK);
+    auto n2f = n - n2;
+    // get the final pressure
+    auto Pf = (n2 * constants::R.joules * TiK) / vol;
+    cout << "The final pressure reached in the flask is: " << Pf
+         << " Pascals\n";
+    // convert to atm
+    Pf /= 101325;
+    if (print) {
+        std::cout << "The maximum pressure reached in the flask is: "
+                  << Pmax << " atm\n";
+        std::cout << "The number of moles that escape from the flask "
+                  << "when it is opened is: " << n2f << " moles\n";
+        std::cout << "The final pressure in the flask is: " << Pf
+                  << " atm\n";
+    }
+    return {Pmax, n2, Pf};
+}
+
+ld Thermodynamics::firstLaw(const ld Q, const ld W, bool print)
+{
+    ld E = Q + W;
+    if (print)
+        cout << "the change in the system's internal energy is "
+             << E << " J" << std::endl;
+    return E;
+}
+
+ld Thermodynamics::changeOfInternalEnergy(const ld Q, const ld W)
+{
+    return Q - W;
+}
+
+ld Thermodynamics::workByIsothermalProcess(
+        const ld T, const ld n, const ld Vi, const ld Vf, bool print)
+{
+    auto Q = (n * constants::R.L_atm * T * log(Vi / Vf));
+    if (print)
+        cout << "the heat supplied to the system during an isothermal process is "
+             << Q << " J" << std::endl;
+    return Q;
+}
+
+ld Thermodynamics::workByIsothermalProcess(
+        const ld p, const ld Vi, const ld Vf,  bool print)
+{
+    auto Q = ((p * Vf) * log(Vf / Vi));
+    if (print) {
+        cout << "the heat supplied to the system during an isothermal process is "
+             << Q << " J" << std::endl;
+    }
+    return Q;
+}
+
+ld Thermodynamics::temperatureIsothermalProcess(
+        const ld n, const ld W, const ld Vi, const ld Vf, bool print)
+{
+    auto T = (W / (n * constants::R.joules * log(Vi / Vf)));
+    if (print)
+        cout << "the temperature of the system during an isothermal process is "
+             << T << " K" << std::endl;
+    return T;
+}
+
+ld Thermodynamics::workByIsothermalAdiabaticProcess(
+        const ld p, const ld Vi, const ld Vf, const ld gamma, bool print)
+{
+    auto p2 = pressure2AdiabaticProcess(gamma, p, Vi, Vf);
+    auto Wad = workByAdiabaticProcess(gamma, p, p2, Vi, Vf);
+    auto Wiso = workByIsothermalProcess(p, Vf, Vi);
+    auto W = Wad - Wiso;
+    if (print) {
+        cout << "the work done by the system during an isothermal adiabatic process is "
+             << W << " J" << std::endl;
+    }
+    return W;
+}

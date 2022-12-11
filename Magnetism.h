@@ -1162,7 +1162,7 @@ inline ld Magnetism::mFieldStrength_Fc(const ld m, const ld v, const ld q, const
 
 inline ld Magnetism::mFieldStrength_straightCurrentCarryingWire(const ld I, const ld r, bool print)
 {
-    auto Bccw = (constants::mu0 * I) / (2.0 * constants::PI * r);//(T)
+    auto Bccw = (constants::_mu0 * I) / (2.0 * constants::PI * r);//(T)
     if (print)
         std::cout << "m field strength: " << Bccw << " T" << std::endl;
     return Bccw;
@@ -1170,7 +1170,7 @@ inline ld Magnetism::mFieldStrength_straightCurrentCarryingWire(const ld I, cons
 
 inline ld Magnetism::mFieldStrengthCenterCircularLoop(const ld I, const ld R, const ld N = 1.0, bool print)
 {
-    auto B = (N * constants::mu0 * I) / (2.0 * R);//(T)
+    auto B = (N * constants::_mu0 * I) / (2.0 * R);//(T)
     if (print)
         std::cout << "m field strength: " << B << " T" << std::endl;
     return B;
@@ -1178,7 +1178,7 @@ inline ld Magnetism::mFieldStrengthCenterCircularLoop(const ld I, const ld R, co
 
 inline ld Magnetism::mField_solenoid(ld n, ld I, bool print)
 {
-    auto B = constants::mu0 * n * I;//(T)
+    auto B = constants::_mu0 * n * I;//(T)
     if (print)
         std::cout << "m field strength: " << B << " T" << std::endl;
     return B;
@@ -1186,7 +1186,7 @@ inline ld Magnetism::mField_solenoid(ld n, ld I, bool print)
 
 inline ld Magnetism::mField_solenoid(ld N, ld l, ld I, bool print)
 {
-    auto B = constants::mu0 * (N / l) * I;//T
+    auto B = constants::_mu0 * (N / l) * I;//T
     if (print)
         std::cout << "m field strength: " << B << " T" << std::endl;
     return B;
@@ -1230,7 +1230,7 @@ inline ld Magnetism::radiusCurvatureOfPath(const ld m,
 
 inline ld Magnetism::radiusLoopOfCurrentCarryingWire(const ld I, const ld B, bool print)
 {
-    auto r_loop = (constants::mu0 * I) / (2.0 * B);//m
+    auto r_loop = (constants::_mu0 * I) / (2.0 * B);//m
     if (print) {
         std::cout << "Radius of loop of current carrying wire: " << r_loop <<
                   " m" << std::endl;
@@ -1240,7 +1240,7 @@ inline ld Magnetism::radiusLoopOfCurrentCarryingWire(const ld I, const ld B, boo
 
 inline ld Magnetism::distanceBetween2wires(const ld I1, const ld I2, const ld Fl, bool print)
 {
-    auto d = (constants::mu0 * I1 * I2) / (2.0 * constants::PI * Fl);//m
+    auto d = (constants::_mu0 * I1 * I2) / (2.0 * constants::PI * Fl);//m
     if (print)
         std::cout << "Distance between 2 wires: " << d << " m" << std::endl;
     return d;
@@ -1251,7 +1251,7 @@ inline ld Magnetism::forceMagnitude2wires(const ld I1,
                                           const ld l,
                                           const ld r, bool print)
 {
-    auto Fmag = (constants::mu0 * I1 * I2 * l) / (2.0 * constants::PI * r);//N
+    auto Fmag = (constants::_mu0 * I1 * I2 * l) / (2.0 * constants::PI * r);//N
     if (print)
         std::cout << "Force magnitude between 2 wires: " << Fmag << " N" << std::endl;
     return Fmag;
@@ -1313,7 +1313,7 @@ inline ld Magnetism::forceOnWire(
 inline ld Magnetism::forcePerUnitLengthBetween2ParallelWires(
         const ld I1, const ld I2, const ld r, bool print)
 {
-    auto F = (constants::mu0 * I1 * I2) / (2.0 * constants::PI * r);
+    auto F = (constants::_mu0 * I1 * I2) / (2.0 * constants::PI * r);
     if (print)
         std::cout << "Force per unit length between 2 parallel wires: " << F << " N/m" << std::endl;
     return F;
@@ -1323,7 +1323,7 @@ inline ld Magnetism::currentFromWire2ParallelRunning(const ld I1,
                                                      const ld r,
                                                      const ld Fl, bool print)
 {
-    auto I = ((2.0 * constants::PI * r) / (constants::mu0 * I1)) * Fl;//A
+    auto I = ((2.0 * constants::PI * r) / (constants::_mu0 * I1)) * Fl;//A
     if (print)
         std::cout << "Current from wire 2 parallel running: " << I << " A" << std::endl;
     return I;
@@ -1365,7 +1365,7 @@ inline ld Magnetism::currentFromTorqueMax(const ld tMax,
 
 inline ld Magnetism::currentInLongStraightWire(const ld r, const ld B, bool print)
 {
-    auto I = (2.0 * constants::PI * r * B) / constants::mu0;//(A)
+    auto I = (2.0 * constants::PI * r * B) / constants::_mu0;//(A)
     if (print)
         std::cout << "Current in long straight wire: " << I << " A" << std::endl;
     return I;
@@ -1373,7 +1373,7 @@ inline ld Magnetism::currentInLongStraightWire(const ld r, const ld B, bool prin
 
 inline ld Magnetism::currentSolenoid(const ld B, const ld n, const ld l, bool print)
 {
-    auto I_sol =  B / (constants::mu0 * (n / l));// A
+    auto I_sol =  B / (constants::_mu0 * (n / l));// A
     if (print)
         std::cout << "Current in solenoid: " << I_sol << " A" << std::endl;
     return I_sol;
@@ -1437,7 +1437,7 @@ inline ld Magnetism::mForceOnCurrentCarryingWire(
 }
 
 ld Magnetism::biotSavartLaw(ld I, ld l, ld r, ld theta, bool print) {
-    auto mu0 = constants::mu0;
+    auto mu0 = constants::_mu0;
     auto pi = constants::PI;
     auto mu_4pi = mu0 / (4.0 * pi);
     auto dB = mu_4pi * (I * l * sin(theta * constants::RADIAN)) / (r * r);//T
@@ -1448,7 +1448,7 @@ ld Magnetism::biotSavartLaw(ld I, ld l, ld r, ld theta, bool print) {
 
 ld Magnetism::mForceBetweenTwoParallelWires(ld I1, ld I2, ld d, ld l,
                                                    bool print) {
-    auto mu0 = constants::mu0;
+    auto mu0 = constants::_mu0;
     auto pi = constants::PI;
     auto F2 = mu0 * (I1 * I2 * l) / (2.0 * d);//N
     if (print)
@@ -1457,7 +1457,7 @@ ld Magnetism::mForceBetweenTwoParallelWires(ld I1, ld I2, ld d, ld l,
 }
 
 ld Magnetism::mFieldStraightWire(ld I, ld r, bool print) {
-    auto mu0 = constants::mu0;
+    auto mu0 = constants::_mu0;
     auto pi = constants::PI;
     auto B = (mu0 * I) / (2.0 * pi * r);//T
     if (print)
@@ -1466,28 +1466,28 @@ ld Magnetism::mFieldStraightWire(ld I, ld r, bool print) {
 }
 
 ld Magnetism::amperesLaw(ld I, bool print) {
-    auto B = I * constants::mu0;//T
+    auto B = I * constants::_mu0;//T
     if (print)
         std::cout <<  "Amperes law: " << B << " T" << std::endl;
     return B;
 }
 
 ld Magnetism::amperesLawSolarCurrents(ld l, ld B, bool print) {
-    auto I = (2.0 * l * B) / constants::mu0;//A
+    auto I = (2.0 * l * B) / constants::_mu0;//A
     if (print)
         std::cout << "Amperes law solar currents: " << I << " A" << std::endl;
     return I;
 }
 
 ld Magnetism::mField_lineCurrent_outside(ld I, ld r, bool print) {
-    auto B = (constants::mu0 * I) / (2.0 * constants::PI * r);//T
+    auto B = (constants::_mu0 * I) / (2.0 * constants::PI * r);//T
     if (print)
         std::cout << "m field outside line symmetry: " << B << " T" << std::endl;
     return B;
 }
 
 ld Magnetism::mField_lineCurrent_inside(ld I, ld r, ld R, bool print) {
-    auto B = (constants::mu0 * I * r) / (2.0 * constants::PI * R * R);//T
+    auto B = (constants::_mu0 * I * r) / (2.0 * constants::PI * R * R);//T
     if (print)
         std::cout << "m field inside line symmetry: " << B << " T" << std::endl;
     return B;
@@ -1495,7 +1495,7 @@ ld Magnetism::mField_lineCurrent_inside(ld I, ld r, ld R, bool print) {
 
 ld Magnetism::mField_sheet(ld I, ld l, bool print) {
     auto J = I / l;//A/m^2
-    auto B = (1.0 / 2.0) * constants::mu0 * J;//T
+    auto B = (1.0 / 2.0) * constants::_mu0 * J;//T
     if (print)
         std::cout << "m field infinite width current sheet: " << B << " T" << std::endl;
     return B;
@@ -1510,7 +1510,7 @@ ld Magnetism::turnsPerUnitLength(ld d, bool print) {
 
 ld Magnetism::currentInSolenoid(ld d, ld B, bool print) {
     auto N = turnsPerUnitLength(d, false);
-    auto I = (B) / (constants::mu0 * N);//A
+    auto I = (B) / (constants::_mu0 * N);//A
     if (print)
         std::cout << "Current in solenoid: " << I << " A" << std::endl;
     return I;
@@ -1579,7 +1579,7 @@ ld Magnetism::netCurrentAmpereanLoop(ld I, ld n, ld l, bool print) {
 }
 
 ld Magnetism::B_in(ld I, ld n, ld l, bool print) {
-    auto B = constants::mu0 * n * I; //T
+    auto B = constants::_mu0 * n * I; //T
     if (print)
         std::cout << "B in Amperean loop: " << B << " T" << std::endl;
     return B;
@@ -1587,7 +1587,7 @@ ld Magnetism::B_in(ld I, ld n, ld l, bool print) {
 
 ld Magnetism::mField_movingCharge(ld q, ld v, Direction v_hat, ld r,
                                   Direction r_hat, bool print) {
-    auto B = (constants::mu0 * q * v) / (2.0 * constants::PI * r * r);//T
+    auto B = (constants::_mu0 * q * v) / (2.0 * constants::PI * r * r);//T
     auto direction = findDirectionOfBField(v_hat, r_hat, true, false);
     if (print)
         std::cout << "m field moving charge: " << B << " T " << direction << std::endl;
@@ -1604,7 +1604,7 @@ ld Magnetism::speedOfIon(ld q, ld V, bool print) {
 
 ld Magnetism::fieldStrengthOnLoopAxisAtX(ld I, ld B, ld x, bool print) {
     auto a = radiusLoopOfCurrentCarryingWire(I, B, false);
-    auto mu0 = constants::mu0;//T*m/A
+    auto mu0 = constants::_mu0;//T*m/A
     auto Bf = (mu0 * I * a * a)/ (2.0 * pow((a * a + x * x), 1.5));//T
     if (print)
         std::cout << "Field strength on loop axis at x: " << Bf << " T" << std::endl;
@@ -1612,7 +1612,7 @@ ld Magnetism::fieldStrengthOnLoopAxisAtX(ld I, ld B, ld x, bool print) {
 }
 
 ld Magnetism::fieldStrengthOnLoopAxisAtX_Irx(ld I, ld r, ld x, bool print) {
-    auto mu0 = constants::mu0;//T*m/A
+    auto mu0 = constants::_mu0;//T*m/A
     auto Bf = (mu0 * I * r * r)/ (2.0 * pow((r * r + x * x), 1.5));//T
     if (print)
         std::cout << "Field strength on loop axis at x: " << Bf << " T" << std::endl;
@@ -1647,7 +1647,7 @@ ld Magnetism::netTorque_IabBtheta_theta_i(
 }
 
 ld Magnetism::mFieldStrengthCoaxialCable_Iar(ld I, ld a, ld r, bool print) {
-    auto mu0 = constants::mu0;//T*m/A
+    auto mu0 = constants::_mu0;//T*m/A
     auto pi = constants::PI;//rad
     auto B = (mu0 * I * r) / (2.0 * pi * a * a);//T
     if (print)
@@ -1656,7 +1656,7 @@ ld Magnetism::mFieldStrengthCoaxialCable_Iar(ld I, ld a, ld r, bool print) {
 }
 
 ld Magnetism::mFieldStrengthCoaxialCable_Ir(ld I, ld r, bool print) {
-    auto mu0 = constants::mu0;//T*m/A
+    auto mu0 = constants::_mu0;//T*m/A
     auto pi = constants::PI;//rad
     auto B = (mu0 * I) / (2.0 * pi * r);//T
     if (print)
@@ -1666,7 +1666,7 @@ ld Magnetism::mFieldStrengthCoaxialCable_Ir(ld I, ld r, bool print) {
 
 ld
 Magnetism::mFieldStrengthCoaxialCable_Irbc(ld I, ld r, ld b, ld c, bool print) {
-    auto mu0 = constants::mu0;//T*m/A
+    auto mu0 = constants::_mu0;//T*m/A
     auto pi = constants::PI;//rad
     auto B = (mu0 * I * r * (pow(b+c, 2) - (r * r))) /
             (2.0 * pi * r * (pow(b + c, 2) - (b * b)));//T
@@ -1692,7 +1692,7 @@ ld Magnetism::energyToFlipProton_muB(ld mu, ld B, bool print) {
 
 ld Magnetism::netMagneticForce_I1I2lwd(
         ld I1, ld I2, ld l, ld w, ld d, bool print) {
-    auto mu0 = constants::mu0;//T*m/A
+    auto mu0 = constants::_mu0;//T*m/A
     auto pi = constants::PI;//rad
     // side near the wire
     auto F1 = (mu0 * I1 * I2 * l) / (2.0 * pi * d);//N
@@ -1709,7 +1709,7 @@ ld Magnetism::netMagneticForce_I1I2lwd(
 }
 
 ld Magnetism::heightToReachEquilibrium_Iml(ld I, ld m, ld l, bool print) {
-    auto mu0 = constants::mu0;
+    auto mu0 = constants::_mu0;
     auto pi = constants::PI;
     auto g = constants::Ga;
     auto h = (mu0 * I * I * l) / (2.0 * pi * m * g);
@@ -1717,4 +1717,3 @@ ld Magnetism::heightToReachEquilibrium_Iml(ld I, ld m, ld l, bool print) {
         std::cout << "Height to reach equilibrium is " << h << " m." << endl;
     return h;
 }
-

@@ -1277,7 +1277,7 @@ std::tuple<long double, long double, long double>
 Circuits::conductingPlatesChargeData(
         long double A, long double d, long double k, long double E, bool
         print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto sigma_1 = k*e0*E;
     auto sigma_2 = sigma_1 * (1.0 - (1.0/k));
     auto U = (1.0/2.0)*k*e0*(E*E)*A*d;
@@ -1304,7 +1304,7 @@ long double Circuits::fractionOfArea(
 }
 
 ld Circuits::dielectricConstant(ld C, ld A, ld d, bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto epsilon = (C * d) / (e0 * A);
     if (print) {
         std::cout << "epsilon = " << epsilon << std::endl;
@@ -1346,7 +1346,7 @@ ld Circuits::electronSpeed(ld E, ld h0, ld h1, ld m, ld qe, bool print) {
 
 std::vector<ld> Circuits::chargeToStoreEnergy(
         ld l, ld d, ld U, bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto A = l * l;
     auto Cap = (e0 * A)/d;
     auto Q = sqrt(U * 2.0 * Cap);
@@ -1393,7 +1393,7 @@ ld Circuits::energyStoredInCapacitor_VQ(ld V, ld Q, bool print) {
 }
 
 ld Circuits::electricFieldBetweenPlates(ld sigma, bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto E = sigma / e0;
     if (print) {
         std::cout << "E = " << E << " V/m" << std::endl;
@@ -1401,7 +1401,7 @@ ld Circuits::electricFieldBetweenPlates(ld sigma, bool print) {
     return E;
 }
 ld Circuits::electricFieldBetweenPlates_QA(ld Q, ld A, bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto E = Q / (e0 * A);
     if (print) {
         std::cout << "E = " << E << " V/m" << std::endl;
@@ -1429,7 +1429,7 @@ ld Circuits::kineticEnergyOfChargeBetweenPlates(ld Q, ld V, bool print) {
 
 vector<ld>
 Circuits::sphericalCapacitor(ld ra, ld rb, ld V, ld r1, ld r2, bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto pi = constants::PI;
     auto C = (4.0 * pi * e0 * ra * rb) / (rb - ra);
     auto Q = C * V;
@@ -1522,7 +1522,7 @@ ld Circuits::equivalentCapacitance(
 }
 
 ld Circuits::fieldStrengthFromEnergyDensity(ld U_e, bool print) {
-    auto E = sqrt((2.0 * U_e) / constants::e0);
+    auto E = sqrt((2.0 * U_e) / constants::_e0);
     if (print) {
         std::cout << "E = " << E << " V/m" << std::endl;
     }
@@ -1542,7 +1542,7 @@ vector<ld> Circuits::medicalDefibrillator(ld U, ld C, ld U_dis, ld t, bool print
 }
 
 ld Circuits::concentricCylinders(ld L, ld a, ld b, bool print) {
-    auto e0 = constants::e0;
+    auto e0 = constants::_e0;
     auto pi = constants::PI;
     auto C = (2.0 * pi
             * e0 * L) / (log(b / a));

@@ -61,7 +61,6 @@
 #include "Circle.h"
 #include "StaticEquilibrium.h"
 #include "Plots.h"
-#include "Element.h"
 
 typedef TriangleSolver TS;
 typedef QuantumPhysics QP;
@@ -427,6 +426,22 @@ static struct Conversions
         static auto kCalKgC_to_joulesKgC_IT(const T kCal = _val_)
         {
             return kCal * 4186.8;
+        }
+        template<typename T>
+        static auto kJoulesMolC_to_kCalMolC(const T kJ = _val_)
+        {
+            return kJ * .239005736137;
+        }
+        template<typename T>
+        static auto kCalMolC_to_kJoulesMolC(const T kCal = _val_)
+        {
+            return kCal * 4.184;
+        }
+        // method to go from kj/mol to joules/kg
+        template<typename T>
+        static auto kJoulesMolC_to_joulesKgC(const T kJ = _val_, const T m = _val_)
+        {
+            return kJ * m * .239005736137;
         }
     }heat;
 

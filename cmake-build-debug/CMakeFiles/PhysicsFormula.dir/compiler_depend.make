@@ -3901,6 +3901,8 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: D:/src/CLionProjects/PhysicsF
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Statics.h \
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/templateGraph.h \
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Thermodynamics.h \
+  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/PeriodicTable.h \
+  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Element.h \
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Torque.h \
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/TransitiveClosure.h \
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/TriangleSolver.h \
@@ -3923,7 +3925,6 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: D:/src/CLionProjects/PhysicsF
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Plots.h \
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/pbPlots.hpp \
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/supportLib.hpp \
-  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Element.h \
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/RunTimer.h
 
 
@@ -4026,6 +4027,8 @@ D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/QuadTree.h:
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.7571.171/bin/mingw/x86_64-w64-mingw32/include/stdlib.h:
 
 D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/Eigen/src/Geometry/Umeyama.h:
+
+D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/PeriodicTable.h:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.7571.171/bin/mingw/x86_64-w64-mingw32/include/corecrt.h:
 
@@ -5195,6 +5198,8 @@ D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Statics.h:
 
 D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Thermodynamics.h:
 
+D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Element.h:
+
 D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Torque.h:
 
 D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/TransitiveClosure.h:
@@ -5216,7 +5221,5 @@ D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/FluidDynamics.h:
 D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Circle.h:
 
 D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Plots.h:
-
-D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Element.h:
 
 D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/RunTimer.h:

@@ -12,14 +12,7 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-
-
-    Thermodynamics::massOfBlock(800.0, "lead");
-    Hydrogen atom;
-    atom.print();
-
-
-
+    ECH::massOfDropInElectricField(20.0e6, 10.0);
 
     //**************************************************************************
     //Stopping RunTimer and displaying the programs' execution time

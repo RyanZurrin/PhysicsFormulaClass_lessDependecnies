@@ -3920,6 +3920,8 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Statics.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/templateGraph.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Thermodynamics.h
+ D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/PeriodicTable.h
+ D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Element.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Torque.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/TransitiveClosure.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/TriangleSolver.h
@@ -3942,6 +3944,5 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Plots.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/pbPlots.hpp
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/supportLib.hpp
- D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Element.h
  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/RunTimer.h
 

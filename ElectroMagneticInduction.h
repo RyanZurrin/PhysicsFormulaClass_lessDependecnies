@@ -1663,22 +1663,22 @@ inline ld ElectroMagneticInduction::inductanceSolenoid_NAL(
     ld var;
     if (mode == 'a' || mode == 'A')
     {
-        var = (constants::mu0 * (N * N) * A) / l;//(H)
+        var = (constants::_mu0 * (N * N) * A) / l;//(H)
     }
     else if	(mode == 'r' || mode == 'R')
     {
         area = circle_area_r(A);
-        var = (constants::mu0 * (N * N) * area) / l;//(H)
+        var = (constants::_mu0 * (N * N) * area) / l;//(H)
     }
     else if (mode == 'c' || mode == 'C')
     {
         area = circle_area_c(A);
-        var = (constants::mu0 * (N * N) * area) / (2.0 * l);//(H)
+        var = (constants::_mu0 * (N * N) * area) / (2.0 * l);//(H)
     }
     else
     {
         area = circle_area_d(A);
-        var = (constants::mu0 * (N * N) * area) / l;//(H)
+        var = (constants::_mu0 * (N * N) * area) / l;//(H)
     }
     if (print)
         std::cout << "Inductance = " << var << " Henry" << std::endl;
@@ -1915,7 +1915,7 @@ inline ld ElectroMagneticInduction::emfPeek(
 inline ld ElectroMagneticInduction::magneticFluxSolenoidLoop(
         ld R, ld n, ld I, bool print)
 {
-    auto mu0 = constants::mu0;
+    auto mu0 = constants::_mu0;
     auto pi = constants::PI;
     auto phi = mu0*n*I*pi*(R*R);
     if (print)
@@ -1926,7 +1926,7 @@ inline ld ElectroMagneticInduction::magneticFluxSolenoidLoop(
 inline ld ElectroMagneticInduction::magneticFluxRectangularLoop(
         ld I, ld a, ld l, ld w, bool print)
 {
-    auto mu0 = constants::mu0;
+    auto mu0 = constants::_mu0;
     auto pi = constants::PI;
     auto phi = ((mu0*I*l)/(2.0*pi)) * std::log((a+w)/a);
     if (print)
@@ -1937,7 +1937,7 @@ inline ld ElectroMagneticInduction::magneticFluxRectangularLoop(
 inline ld ElectroMagneticInduction::inducedCurrentLoop(
         ld r, ld R, ld dB_dt, bool print)
 {
-    auto mu0 = constants::mu0;
+    auto mu0 = constants::_mu0;
     auto pi = constants::PI;
     auto emf = pi * (r * r) * dB_dt;
     auto I = emf / R;
@@ -2017,7 +2017,7 @@ inline vector<ld> ElectroMagneticInduction::energyReleaseMRI(
 inline ld ElectroMagneticInduction::energyStoredSolenoid(
         ld l, ld A, ld n, ld I, bool print)
 {
-    auto mu0 = constants::mu0;
+    auto mu0 = constants::_mu0;
     auto U = (1.0 / 2.0 * mu0)*pow(mu0 * n * I, 2.0) * l * A;
     if (print)
         std::cout << "Energy Stored = " << U << " Joules" << std::endl;
@@ -2027,7 +2027,7 @@ inline ld ElectroMagneticInduction::energyStoredSolenoid(
 inline ld ElectroMagneticInduction::energyStoredSolenoid(
         ld l, ld A, ld B, bool print)
 {
-    auto mu0 = constants::mu0;
+    auto mu0 = constants::_mu0;
     auto U = ((B*B)/(2.0*mu0)) * l * A;
     if (print)
         std::cout << "Energy Stored = " << U << " Joules" << std::endl;
@@ -2037,7 +2037,7 @@ inline ld ElectroMagneticInduction::energyStoredSolenoid(
 inline ld ElectroMagneticInduction::energyDensityMagneticField(
         ld B, bool print)
 {
-    auto mu0 = constants::mu0;
+    auto mu0 = constants::_mu0;
     auto U = (B*B) / (2.0*mu0);
     if (print)
         std::cout << "Energy Density = " << U << " Joules/m^3" << std::endl;
@@ -2191,7 +2191,7 @@ inline ld ElectroMagneticInduction::selfInductance(
 inline ld ElectroMagneticInduction::mutualInductance(
         ld A, ld l, ld N1, ld I1, ld N2, bool print)
 {
-    auto mu0 = constants::mu0;
+    auto mu0 = constants::_mu0;
     auto M = (mu0 * N1 * N2 * A) / l;
     if (print)
         std::cout << "Mutual Inductance = " << M << " Henry" << std::endl;
@@ -2201,7 +2201,7 @@ inline ld ElectroMagneticInduction::mutualInductance(
 inline ld ElectroMagneticInduction::magneticEnergy(
         ld N, ld l, ld d, ld I, bool print)
 {
-    auto mu0 = constants::mu0;
+    auto mu0 = constants::_mu0;
     auto A = circle_area_d(d);
     auto U = (1.0/2.0) * ((mu0 * (N * N) * A) / l) * (I * I);
     if (print)
@@ -2230,7 +2230,7 @@ inline ld ElectroMagneticInduction::electricFieldTheta(
 inline vector<ld> ElectroMagneticInduction::currentInLoops(
         ld N, ld l, ld d, ld d1, ld R, ld dI, bool print)
 {
-    auto mu0 = constants::mu0;
+    auto mu0 = constants::_mu0;
     auto pi = constants::PI;
     auto A1 = circle_area_d(d1);
     auto E_ind1 = mu0 * (N / l) * A1 * dI;
