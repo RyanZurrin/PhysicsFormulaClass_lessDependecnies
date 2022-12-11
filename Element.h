@@ -12,24 +12,6 @@
 
 class Element {
 public:
-//    [[nodiscard]] virtual int getGroup() const = 0;
-//    [[nodiscard]] virtual std::string getSymbol() const = 0;
-//    [[nodiscard]] virtual std::string getType() const = 0;
-//    [[nodiscard]] virtual std::string getCrystalType() const = 0;
-//    [[nodiscard]] virtual std::string getElectronConfiguration() const = 0;
-//    [[nodiscard]] virtual long double getAtomicWeight() const = 0;
-//    [[nodiscard]] virtual int getAtomicNumber() const = 0;
-//    [[nodiscard]] virtual std::vector<long double> getEnergyLevels() const = 0;
-//    [[nodiscard]] virtual long double getDensitySTP() const = 0;
-//    [[nodiscard]] virtual long double getMeltingPoint() const = 0;
-//    [[nodiscard]] virtual long double getBoilingPoint() const = 0;
-//    [[nodiscard]] virtual long double getThermalConductivity() const = 0;
-//    [[nodiscard]] virtual long double getElectricConductivity() const = 0;
-//    [[nodiscard]] virtual long double getResistivity() const = 0;
-//    [[nodiscard]] virtual long double getHeatSpecific() const = 0;
-//    [[nodiscard]] virtual long double getHeatVaporization() const = 0;
-//    [[nodiscard]] virtual long double getHeatFusion() const = 0;
-//    [[nodiscard]] virtual long double getIonization1st() const = 0;
     [[nodiscard]] virtual int getGroup() const { return group; }
     [[nodiscard]] virtual std::string getSymbol() const { return symbol; }
     [[nodiscard]] virtual std::string getType() const { return type; }
@@ -2471,34 +2453,6 @@ public:
     }
 };
 
-///// <summary>
-/////	Mercury is a chemical element with the symbol Hg and atomic number 80.
-/////	It is commonly known as quicksilver and was formerly named hydrargyrum.
-///// </summary>
-//const struct MERCURY
-//{
-//    const int group = 12;
-//    const string type = "Transition Metal";
-//    const string crystal_type = "Rhombohedral";
-//    const string electron_configuration = "[Xe]4f14 5d10 6s2";
-//    const long double atomic_weight = 200.59; // u (g/mol)
-//    const int atomic_number = 80;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 18, 2};
-//    const long double density_STP = 13534; // kg/m^3
-//    const long double melting_point = -38.830; // C
-//    const long double boiling_point = 356.73; // C
-//    const long double thermal_conductivity = 8.3; // W/mK
-//    const long double electric_conductivity = 1.0; // MS/m
-//    const long double resistivity = 9.6e-7; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = 139.5; // J/kgK
-//    const long double heat_vaporization = 59.2; // kJ/mol
-//    const long double heat_fusion = 2.29; // kJ/mol
-//    const long double ionization_1st = 10.438; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(80));
-//    }
-//} Hg;
 /**
  * @brief Mercury is a chemical element with the symbol Hg and atomic number 80.
  * It is commonly known as quicksilver and was formerly named hydrargyrum.
@@ -2527,35 +2481,6 @@ public:
     }
 };
 
-///// <summary>
-/////	Thallium is a chemical element with the symbol Tl and atomic number 81.
-/////	It is a gray post-transition metal that is not found free in nature.
-/////	When isolated, thallium resembles tin, but discolors when exposed to air.
-///// </summary>
-//const struct THALLIUM
-//{
-//    const int group = 13;
-//    const string type = "Post-Transition Metal";
-//    const string crystal_type = "Hexagonal Close Packed";
-//    const string electron_configuration = "[Xe]4f14 5d10 6s2 6p1";
-//    const long double atomic_weight = 204.38; // u (g/mol)
-//    const int atomic_number = 81;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 18, 3};
-//    const long double density_STP = 11850; // kg/m^3
-//    const long double melting_point = 304.0; // C
-//    const long double boiling_point = 1473.0; // C
-//    const long double thermal_conductivity = 46.0; // W/mK
-//    const long double electric_conductivity = 6.7; // MS/m
-//    const long double resistivity = 1.5e-7; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = 129.0; // J/kg
-//    const long double heat_vaporization = 165.0; // kJ/mol
-//    const long double heat_fusion = 4.2; // kJ/mol
-//    const long double ionization_1st = 6.109; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(81));
-//    }
-//} Tl;
 /**
  * @brief Thallium is a chemical element with the symbol Tl and atomic number 81.
  * It is a gray post-transition metal that is not found free in nature.
@@ -2585,37 +2510,6 @@ public:
     }
 };
 
-///// <summary>
-/////	Lead is a chemical element with the symbol Pb and atomic number 82.
-/////	It is a heavy metal that is denser than most common materials. Lead is
-/////	soft and malleable, and also has a relatively low melting point. When
-/////	freshly cut, lead is silvery with a hint of blue; it tarnishes to a dull
-/////	gray color when exposed to air.
-///// </summary>
-//const struct LEAD
-//{
-//    const int group = 14;
-//    const string type = "Post-Transition Metal";
-//    const string crystal_type = "Face-Centered Cubic";
-//    const string electron_configuration = "[Xe]4f14 5d10 6s2 6p2";
-//    const long double atomic_weight = 207.2; // u (g/mol)
-//    const int atomic_number = 82;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 18, 4};
-//    const long double density_STP = 11340; // kg/m^3
-//    const long double melting_point = 327.46; // C
-//    const long double boiling_point = 1749.0; // C
-//    const long double thermal_conductivity = 35.0; // W/mK
-//    const long double electric_conductivity = 4.8; // MS/m
-//    const long double resistivity = 2.1e-7; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = 127.0; // J/kgK
-//    const long double heat_vaporization = 178.0; // kJ/mol
-//    const long double heat_fusion = 4.77; // kJ/mol
-//    const long double ionization_1st = 7.417; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(82));
-//    }
-//} Pb;
 /**
  * @brief Lead is a chemical element with the symbol Pb and atomic number 82.
  * It is a heavy metal that is denser than most common materials. Lead is
@@ -2647,36 +2541,6 @@ public:
     }
 };
 
-///// <summary>
-/////	Bismuth is a chemical element with the symbol Bi and atomic number 83.
-/////	It is a pentavalent post-transition metal and one of the pnictogens with
-/////	chemical properties resembling its lighter group 15 siblings arsenic
-/////	and antimony.
-///// </summary>
-//const struct BISMUTH
-//{
-//    const int group = 15;
-//    const string type = "Post-Transition Metal";
-//    const string crystal_type = "Rhombohedral";
-//    const string electron_configuration = "[Xe]4f14 5d10 6s2 6p3";
-//    const long double atomic_weight = 208.98; // u (g/mol)
-//    const int atomic_number = 83;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 18, 5};
-//    const long double density_STP = 9780; // kg/m^3
-//    const long double melting_point = 271.3; // C
-//    const long double boiling_point = 1564.0; // C
-//    const long double thermal_conductivity = 8.0; // W/mK
-//    const long double electric_conductivity = .77; // MS/m
-//    const long double resistivity = 1.3e-6; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = 122.0; // J/kgK
-//    const long double heat_vaporization = 160.0; // kJ/mol
-//    const long double heat_fusion = 10.9; // kJ/mol
-//    const long double ionization_1st = 7.29; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(83));
-//    }
-//} Bi;
 /**
  * @brief Bismuth is a chemical element with the symbol Bi and atomic number 83.
  * It is a pentavalent post-transition metal and one of the pnictogens with
@@ -2707,37 +2571,6 @@ public:
     }
 };
 
-///// <summary>
-/////	Polonium is a chemical element with the symbol Po and atomic number 84.
-/////	A rare and highly radioactive metal with no stable isotopes, polonium
-/////	is chemically similar to selenium and tellurium, though its metallic
-/////	character resembles that of its horizontal neighbors in the periodic
-/////	table: thallium, lead, and bismuth.
-///// </summary>
-//const struct POLONIUM
-//{
-//    const int group = 16;
-//    const string type = "Post-Transition Metal";
-//    const string crystal_type = "Simple Cubic / Rhombohedral";
-//    const string electron_configuration = "[Xe]4f14 5d10 6s2 6p4";
-//    const long double atomic_weight = (209); // u (g/mol)
-//    const int atomic_number = 84;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 18, 6};
-//    const long double density_STP = 9196.0; // kg/m^3
-//    const long double melting_point = 255.0; // C
-//    const long double boiling_point = 961.9; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = 2.3; // MS/m
-//    const long double resistivity = 4.3e-7; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = 100.0; // kJ/mol
-//    const long double heat_fusion = 13.0; // kJ/mol
-//    const long double ionization_1st = 8.417; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(84));
-//    }
-//} Po;
 /**
  * @brief Polonium is a chemical element with the symbol Po and atomic number 84.
  * A rare and highly radioactive metal with no stable isotopes, polonium
@@ -2769,37 +2602,6 @@ public:
     }
 };
 
-///// <summary>
-/////	Astatine is a chemical element with the symbol At and atomic number 85.
-/////	It is the rarest naturally occurring element in the Earth's crust,
-/////	occurring only as the decay product of various heavier elements.
-/////	All of astatine's isotopes are short-lived; the most stable is
-/////	astatine-210, with a half-life of 8.1 hours.
-///// </summary>
-//const struct ASTATINE
-//{
-//    const int group = 17;
-//    const string type = "Metalloid";
-//    const string crystal_type = "Face-Centered Cubic:?";
-//    const string electron_configuration = "[Xe]4f14 5d10 6s2 6p5";
-//    const long double atomic_weight = (210); // u (g/mol)
-//    const int atomic_number = 85;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 18, 7};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = 302.0; // C
-//    const long double boiling_point = 350.0; // C
-//    const long double thermal_conductivity = 2.0; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = 40.0; // kJ/mol
-//    const long double heat_fusion = 6.0; // kJ/mol
-//    const long double ionization_1st = 9.22; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(85));
-//    }
-//} At;
 /**
  * @brief Astatine is a chemical element with the symbol At and atomic number 85.
  * It is the rarest naturally occurring element in the Earth's crust,
@@ -2831,34 +2633,6 @@ public:
     }
 };
 
-///// <summary>
-/////	Radon is a chemical element with the symbol Rn and atomic number 86.
-/////	It is a radioactive, colorless, odorless, tasteless noble gas.
-///// </summary>
-//const struct RADON
-//{
-//    const int group = 18;
-//    const string type = "Noble Gas";
-//    const string crystal_type = "Face-Centered Cubic";
-//    const string electron_configuration = "[Xe]4f14 5d10 6s2 6p6";
-//    const long double atomic_weight = (222); // u (g/mol)
-//    const int atomic_number = 86;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 18, 8};
-//    const long double density_STP = 9.73; // kg/m^3
-//    const long double melting_point = -71.1; // C
-//    const long double boiling_point = -61.85; // C
-//    const long double thermal_conductivity = .00361; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = 93.65; // J/kgK
-//    const long double heat_vaporization = 17.0; // kJ/mol
-//    const long double heat_fusion = 3.0; // kJ/mol
-//    const long double ionization_1st = 10.75; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(86));
-//    }
-//} Rn;
 /**
  * @brief Radon is a chemical element with the symbol Rn and atomic number 86.
  * It is a radioactive, colorless, odorless, tasteless noble gas.
@@ -2887,36 +2661,6 @@ public:
     }
 };
 
-///// <summary>
-/////	Francium is a chemical element with the symbol Fr and atomic number 87.
-/////	Prior to its discovery, it was referred to as eka-caesium. It is extremely
-/////	radioactive; its most stable isotope, francium-223, has a half-life
-/////	of only 22 minutes.
-///// </summary>
-//const struct FRANCIUM
-//{
-//    const int group = 1;
-//    const string type = "Alkali Metal";
-//    const string crystal_type = "Body-Centered Cubic:?";
-//    const string electron_configuration = "[Rn]7s1";
-//    const long double atomic_weight = (223); // u (g/mol)
-//    const int atomic_number = 87;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 18, 8, 1};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = 20.9; // C
-//    const long double boiling_point = 650.0; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = 65.0; // kJ/mol
-//    const long double heat_fusion = 2.0; // kJ/mol
-//    const long double ionization_1st = 3.94; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(87));
-//    }
-//} Fr;
 /**
  * @brief Francium is a chemical element with the symbol Fr and atomic number 87.
  * Prior to its discovery, it was referred to as eka-caesium. It is extremely
@@ -2947,37 +2691,6 @@ public:
     }
 };
 
-///// <summary>
-/////	Radium is a chemical element with the symbol Ra and atomic number 88.
-/////	It is the sixth element in group 2 of the periodic table, also known
-/////	as the alkaline earth metals. Pure radium is silvery-white, but it
-/////	readily reacts with nitrogen on exposure to air, forming a black
-/////	surface layer of radium nitride.
-///// </summary>
-//const struct RADIUM
-//{
-//    const int group = 2;
-//    const string type = "Alkaline Earth Metal";
-//    const string crystal_type = "Body-Centered Cubic";
-//    const string electron_configuration = "[Rn]7s2";
-//    const long double atomic_weight = (226); // u (g/mol)
-//    const int atomic_number = 88;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 18, 8, 2};
-//    const long double density_STP = 5000.0; // kg/m^3
-//    const long double melting_point = 700.0; // C
-//    const long double boiling_point = 1737.0; // C
-//    const long double thermal_conductivity = 19.0; // W/mK
-//    const long double electric_conductivity = 1.0; // MS/m
-//    const long double resistivity = 1.0e-6; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = 92.0; // J/kgK
-//    const long double heat_vaporization = 125.0; // kJ/mol
-//    const long double heat_fusion = 8.0; // kJ/mol
-//    const long double ionization_1st = 5.279; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(88));
-//    }
-//} Ra;
 /**
  * @brief Radium is a chemical element with the symbol Ra and atomic number 88.
  * It is the sixth element in group 2 of the periodic table, also known
@@ -3009,36 +2722,6 @@ public:
     }
 };
 
-///// <summary>
-/////	Actinium is a chemical element with the symbol Ac and atomic number 89.
-/////	It was first isolated by Friedrich Oskar Giesel in 1902, who gave it
-/////	the name emanium; the element got its name by being wrongly identified
-/////	with a substance André-Louis Debierne found and called actinium.
-///// </summary>
-//const struct ACTINIUM
-//{
-//    const int group = 3;
-//    const string type = "Actinoid";
-//    const string crystal_type = "Face-Centered Cubic";
-//    const string electron_configuration = "[Rn]6d1 7s2";
-//    const long double atomic_weight = (227); // u (g/mol)
-//    const int atomic_number = 89;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 18, 9, 2};
-//    const long double density_STP = 10070.0; // kg/m^3
-//    const long double melting_point = 1050.0; // C
-//    const long double boiling_point = 3200.0; // C
-//    const long double thermal_conductivity = 12.0; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = 120.0; // J/kgK
-//    const long double heat_vaporization = 400.0; // kJ/mol
-//    const long double heat_fusion = 14.0; // kJ/mol
-//    const long double ionization_1st = 5.17; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(89));
-//    }
-//} Ac;
 /**
  * @brief Actinium is a chemical element with the symbol Ac and atomic number 89.
  * It was first isolated by Friedrich Oskar Giesel in 1902, who gave it
@@ -3069,35 +2752,6 @@ public:
     }
 };
 
-///// <summary>
-/////	Thorium is a weakly radioactive metallic chemical element with the symbol Th and atomic number 90.
-/////	Thorium is silvery and tarnishes black when it is exposed to air, forming
-/////	thorium dioxide; it is moderately soft, malleable, and has a high melting point.
-///// </summary>
-//const struct THORIUM
-//{
-//    const int group = 3;
-//    const string type = "Actinoid";
-//    const string crystal_type = "Face-Centered Cubic";
-//    const string electron_configuration = "[Rn]6d2 7s2";
-//    const long double atomic_weight = 232.04; // u (g/mol)
-//    const int atomic_number = 90;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 18, 10, 2};
-//    const long double density_STP = 11724.0; // kg/m^3
-//    const long double melting_point = 1750.0; // C
-//    const long double boiling_point = 4820.0; // C
-//    const long double thermal_conductivity = 54.0; // W/mK
-//    const long double electric_conductivity = 6.7; // MS/m
-//    const long double resistivity = 1.5e-7; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = 118.0; // J/kgK
-//    const long double heat_vaporization = 530.0; // kJ/mol
-//    const long double heat_fusion = 16.0; // kJ/mol
-//    const long double ionization_1st = 6.08; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(90));
-//    }
-//} Th;
 /**
  * @brief Thorium is a weakly radioactive metallic chemical element with the symbol Th and atomic number 90.
  * Thorium is silvery and tarnishes black when it is exposed to air, forming
@@ -3127,859 +2781,830 @@ public:
     }
 };
 
-///// <summary>
-/////	Protactinium is a chemical element with the symbol Pa and atomic number 91.
-/////	It is a dense, silvery-gray actinide metal which readily reacts with oxygen,
-/////	water vapor and inorganic acids.
-///// </summary>
-//const struct PROTACTINIUM
-//{
-//    const int group = 3;
-//    const string type = "Actinoid";
-//    const string crystal_type = "Tetragonal";
-//    const string electron_configuration = "[Rn]5f2 6d1 7s2";
-//    const long double atomic_weight = 231.04; // u (g/mol)
-//    const int atomic_number = 91;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 20, 9, 2};
-//    const long double density_STP = 15370.0; // kg/m^3
-//    const long double melting_point = 1572.0; // C
-//    const long double boiling_point = 4000.0; // C
-//    const long double thermal_conductivity = 47.0; // W/mK
-//    const long double electric_conductivity = 5.6; // MS/m
-//    const long double resistivity = 1.8e-7; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = 99.1; // J/kgK
-//    const long double heat_vaporization = 470.0; // kJ/mol
-//    const long double heat_fusion = 15.0; // kJ/mol
-//    const long double ionization_1st = 5.89; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(91));
-//    }
-//} Pa;
-//
-///// <summary>
-/////	Uranium is a chemical element with the symbol U and atomic number 92.
-/////	It is a silvery-grey metal in the actinide series of the periodic table.
-/////	A uranium atom has 92 protons and 92 electrons, of which 6 are
-/////	valence electrons.
-///// </summary>
-//const struct URANIUM
-//{
-//    const int group = 3;
-//    const string type = "Actinoid";
-//    const string crystal_type = "Orthorhombic";
-//    const string electron_configuration = "[Rn]5f3 6d1 7s2";
-//    const long double atomic_weight = 238.03; // u (g/mol)
-//    const int atomic_number = 92;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 21, 9, 2};
-//    const long double density_STP = 19050.0; // kg/m^3
-//    const long double melting_point = 1135.0; // C
-//    const long double boiling_point = 3900.0; // C
-//    const long double thermal_conductivity = 27.0; // W/mK
-//    const long double electric_conductivity = 3.6; // MS/m
-//    const long double resistivity = 2.8e-7; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = 116.0; // J/kgK
-//    const long double heat_vaporization = 420.0; // kJ/mol
-//    const long double heat_fusion = 14.0; // kJ/mol
-//    const long double ionization_1st = 6.194; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(192));
-//    }
-//} U;
-//
-///// <summary>
-/////	Neptunium is a chemical element with the symbol Np and atomic number 93.
-/////	A radioactive actinide metal, neptunium is the first transuranic element.
-/////	Its position in the periodic table just after uranium, named after the
-/////	planet Uranus, led to it being named after Neptune, the next planet
-/////	beyond Uranus.
-///// </summary>
-//const struct NEPTUNIUM
-//{
-//    const int group = 3;
-//    const string type = "Actinoid";
-//    const string crystal_type = "Orthorhombic";
-//    const string electron_configuration = "[Rn]5f4 6d1 7s2";
-//    const long double atomic_weight = (237); // u (g/mol)
-//    const int atomic_number = 93;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 22, 9, 2};
-//    const long double density_STP = 20450.0; // kg/m^3
-//    const long double melting_point = 644.0; // C
-//    const long double boiling_point = 4000.0; // C
-//    const long double thermal_conductivity = 6.0; // W/mK
-//    const long double electric_conductivity = .83; // MS/m
-//    const long double resistivity = 1.2e-6; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = 335.0; // kJ/mol
-//    const long double heat_fusion = 10.0; // kJ/mol
-//    const long double ionization_1st = 6.265; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(93));
-//    }
-//} Np;
-//
-///// <summary>
-/////	Plutonium is a radioactive chemical element with the symbol Pu and atomic number 94.
-/////	It is an actinide metal of silvery-gray appearance that tarnishes when exposed to air,
-/////	and forms a dull coating when oxidized. The element normally exhibits six allotropes
-/////	and four oxidation states.
-///// </summary>
-//const struct PLUTONIUM
-//{
-//    const int group = 3;
-//    const string type = "Actinoid";
-//    const string crystal_type = "Monoclinic";
-//    const string electron_configuration = "[Rn]5f6 7s2";
-//    const long double atomic_weight = (244); // u (g/mol)
-//    const int atomic_number = 94;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 24, 8, 2};
-//    const long double density_STP = 19816.0; // kg/m^3
-//    const long double melting_point = 640.0; // C
-//    const long double boiling_point = 3230.0; // C
-//    const long double thermal_conductivity = 6.0; // W/mK
-//    const long double electric_conductivity = .67; // MS/m
-//    const long double resistivity = 1.5e-6; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = 325.0; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = 6.060; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(94));
-//    }
-//} Pu;
-//
-///// <summary>
-/////	Americium is a synthetic radioactive chemical element with the symbol Am and atomic number 95.
-/////	It is a transuranic member of the actinide series, in the periodic table located under
-/////	the lanthanide element europium, and thus by analogy was named after the Americas.
-///// </summary>
-//const struct AMERICIUM
-//{
-//    const int group = 3;
-//    const string type = "Actinoid";
-//    const string crystal_type = "Double Hexagonal Close Packed";
-//    const string electron_configuration = "[Rn]5f7 7s2";
-//    const long double atomic_weight = (243); // u (g/mol)
-//    const int atomic_number = 95;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 25, 8, 2};
-//    const long double density_STP = 13670.0; // kg/m^3
-//    const long double melting_point = 1176.0; // C
-//    const long double boiling_point = 2011.0; // C
-//    const long double thermal_conductivity = 10.0; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = 5.99; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(95));
-//    }
-//} Am;
-//
-///// <summary>
-/////	Curium is a transuranic radioactive chemical element with the symbol Cm and atomic number 96.
-/////	This element of the actinide series was named after Marie and Pierre Curie, both known
-/////	for their research on radioactivity.
-///// </summary>
-//const struct CURIUM
-//{
-//    const int group = 3;
-//    const string type = "Actinoid";
-//    const string crystal_type = "Double Hexagonal Close Packed";
-//    const string electron_configuration = "[Rn]5f7 6d1 7s2";
-//    const long double atomic_weight = (247); // u (g/mol)
-//    const int atomic_number = 96;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 25, 9, 2};
-//    const long double density_STP = 13510.0; // kg/m^3
-//    const long double melting_point = 1345.0; // C
-//    const long double boiling_point = 3110.0; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = 6.02; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(96));
-//    }
-//} Cm;
-//
-///// <summary>
-/////	Berkelium is a transuranic radioactive chemical element with the symbol Bk and atomic number 97.
-/////	It is a member of the actinide and transuranium element series. It is named
-/////	after the city of Berkeley, California, the location of the Lawrence Berkeley
-/////	National Laboratory where it was discovered in December 1949.
-///// </summary>
-//const struct BERKELIUM
-//{
-//    const int group = 3;
-//    const string type = "Actinoid";
-//    const string crystal_type = "Double Hexagonal Close Packed";
-//    const string electron_configuration = "[Rn]5f9 7s2";
-//    const long double atomic_weight = (247); // u (g/mol)
-//    const int atomic_number = 97;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 27, 8, 2};
-//    const long double density_STP = 14780.00; // kg/m^3
-//    const long double melting_point = 1050.0; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = 10.0; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = 6.23; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(97));
-//    }
-//} Bk;
-//
-///// <summary>
-/////	Californium is a radioactive chemical element with the symbol Cf and atomic number 98.
-/////	The element was first synthesized in 1950 at the Lawrence Berkeley National Laboratory,
-/////	by bombarding curium with alpha particles.
-///// </summary>
-//const struct CALIFORNIUM
-//{
-//    const int group = 3;
-//    const string type = "Actinoid";
-//    const string crystal_type = "Double Hexagonal Close Packed";
-//    const string electron_configuration = "[Rn]5f10 7s2";
-//    const long double atomic_weight = (251); // u (g/mol)
-//    const int atomic_number = 98;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 28, 8, 2};
-//    const long double density_STP = 15100.0; // kg/m^3
-//    const long double melting_point = 899.9; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = 6.30; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(98));
-//    }
-//} Cf;
-//
-///// <summary>
-/////	Einsteinium is a synthetic element with the symbol Es and atomic number 99.
-/////	Einsteinium is a member of the actinide series and it is the seventh transuranic
-/////	element. It is named to honor Albert Einstein. Einsteinium was discovered
-/////	as a component of the debris of the first hydrogen bomb explosion in 1952.
-///// </summary>
-//const struct EINSTEINIUM
-//{
-//    const int group = 3;
-//    const string type = "Actinoid";
-//    const string crystal_type = "Face-Centered Cubic";
-//    const string electron_configuration = "[Rn]5f11 7s2";
-//    const long double atomic_weight = (252); // u (g/mol)
-//    const int atomic_number = 99;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 29, 8, 2};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = 859.9; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = 6.42; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(99));
-//    }
-//} Es;
-//
-///// <summary>
-/////	Fermium is a synthetic element with the symbol Fm and atomic number 100.
-/////	It is an actinide and the heaviest element that can be formed by neutron
-/////	bombardment of lighter elements, and hence the last element that can be
-/////	prepared in macroscopic quantities, although pure fermium metal has not
-/////	yet been prepared.
-///// </summary>
-//const struct FERMIUM
-//{
-//    const int group = 3;
-//    const string type = "Actinoid";
-//    const string crystal_type = "Face-Centered Cubic";
-//    const string electron_configuration = "[Rn]5f12 7s2";
-//    const long double atomic_weight = (257); // u (g/mol)
-//    const int atomic_number = 100;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 30, 8, 2};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = 1500.0; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = 6.50; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(100));
-//    }
-//} Fm;
-//
-///// <summary>
-/////	Mendelevium is a synthetic element with the symbol Md and atomic number 101.
-/////	A metallic radioactive transuranic element in the actinide series, it is the
-/////	first element by atomic number that currently cannot be produced in
-/////	macroscopic quantities through neutron bombardment of lighter elements.
-///// </summary>
-//const struct MANDELEVIUM
-//{
-//    const int group = 3;
-//    const string type = "Actinoid";
-//    const string crystal_type = "Face-Centered Cubic";
-//    const string electron_configuration = "[Rn]5f13 7s2";
-//    const long double atomic_weight = (258); // u (g/mol)
-//    const int atomic_number = 101;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 31, 8, 2};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = 830.0; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = 6.58; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(101));
-//    }
-//} Md;
-//
-///// <summary>
-/////	Nobelium is a synthetic chemical element with the symbol No and atomic number 102.
-/////	It is named in honor of Alfred Nobel, the inventor of dynamite and benefactor
-/////	of science. A radioactive metal, it is the tenth transuranic element and is
-/////	the penultimate member of the actinide series.
-///// </summary>
-//const struct NOBELIUM
-//{
-//    const int group = 3;
-//    const string type = "Actinoid";
-//    const string crystal_type = "Face-Centered Cubic";
-//    const string electron_configuration = "[Rn]5f14 7s2";
-//    const long double atomic_weight = (259); // u (g/mol)
-//    const int atomic_number = 102;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 8, 2};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = 830.0; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = 6.65; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(102));
-//    }
-//} No;
-//
-///// <summary>
-/////	Lawrencium is a synthetic chemical element with the symbol Lr and atomic number 103.
-/////	It is named in honor of Ernest Lawrence, inventor of the cyclotron, a
-/////	device that was used to discover many artificial radioactive elements.
-///// </summary>
-//const struct LAWRENCIUM
-//{
-//    const int group = 3;
-//    const string type = "Actinoid";
-//    const string crystal_type = "Hexagonal Close Packed:?";
-//    const string electron_configuration = "[Rn]5f14 7s2 7p1";
-//    const long double atomic_weight = (266); // u (g/mol)
-//    const int atomic_number = 103;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 8, 3};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = 1600.0; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = 4.87; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(103));
-//    }
-//} Lr;
-//
-///// <summary>
-/////	Rutherfordium is a synthetic chemical element with the symbol Rf and atomic number 104,
-/////	named after New Zealand physicist Ernest Rutherford. As a synthetic element,
-/////	it is not found in nature and can only be created in a laboratory.
-///// </summary>
-//const struct RUTHERFORDIUM
-//{
-//    const int group = 4;
-//    const string type = "Transition Metal";
-//    const string crystal_type = "Hexagonal Close Packed:?";
-//    const string electron_configuration = "[Rn]5f14 6d2 7s2";
-//    const long double atomic_weight = (267); // u (g/mol)
-//    const int atomic_number = 104;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 10, 2};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = FP_NAN; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = 6.01; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(104));
-//    }
-//} Rf;
-//
-///// <summary>
-/////	Dubnium is a synthetic chemical element with the symbol Db and atomic number 105.
-/////	Dubnium is highly radioactive: the most stable known isotope, dubnium-268,
-/////	has a half-life of about 28 hours. This greatly limits extended research
-/////	on dubnium. Dubnium does not occur naturally on Earth and is produced
-/////	artificially.
-///// </summary>
-//const struct DUBNIUM
-//{
-//    const int group = 5;
-//    const string type = "Transition Metal";
-//    const string crystal_type = "Body-Centered Cubic:?";
-//    const string electron_configuration = "[Rn]5f14 6d3 7s2";
-//    const long double atomic_weight = (268); // u (g/mol)
-//    const int atomic_number = 105;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 11, 2};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = FP_NAN; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = FP_NAN; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(105));
-//    }
-//} Db;
-//
-///// <summary>
-/////	Seaborgium is a synthetic chemical element with the symbol Sg and atomic number 106.
-/////	It is named after the American nuclear chemist Glenn T. Seaborg. As a synthetic
-/////	element, it can be created in a laboratory but is not found in nature.
-///// </summary>
-//const struct SEABORGIUM
-//{
-//    const int group = 6;
-//    const string type = "Transition Metal";
-//    const string crystal_type = "Body-Centered Cubic:?";
-//    const string electron_configuration = "[Rn]5f14 6d4 7s2";
-//    const long double atomic_weight = (269); // u (g/mol)
-//    const int atomic_number = 106;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 12, 2};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = FP_NAN; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = FP_NAN; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(106));
-//    }
-//} Sg;
-//
-///// <summary>
-/////	Bohrium is a synthetic chemical element with the symbol Bh and atomic number 107.
-/////	It is named after Danish physicist Niels Bohr. As a synthetic element,
-/////	it can be created in a laboratory but is not found in nature.
-///// </summary>
-//const struct BOHRIUM
-//{
-//    const int group = 7;
-//    const string type = "Transition Metal";
-//    const string crystal_type = "Hexagonal Close Packed:?";
-//    const string electron_configuration = "[Rn]5f14 6d5 7s2";
-//    const long double atomic_weight = (270); // u (g/mol)
-//    const int atomic_number = 107;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 13, 2};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = FP_NAN; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = FP_NAN; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(107));
-//    }
-//} Bh;
-//
-///// <summary>
-/////	Hassium is a chemical element with the symbol Hs and the atomic number 108.
-/////	Hassium is highly radioactive; its most stable known isotopes have half-lives
-/////	of approximately ten seconds.
-///// </summary>
-//const struct HASSIUM
-//{
-//    const int group = 8;
-//    const string type = "Transition Metal";
-//    const string crystal_type = "Hexagonal Close Packed:?";
-//    const string electron_configuration = "[Rn]5f14 6d6 7s2";
-//    const long double atomic_weight = 277; // u (g/mol)
-//    const int atomic_number = 108;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 14, 2};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = FP_NAN; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = FP_NAN; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(108));
-//    }
-//} Hs;
-//
-///// <summary>
-/////	Meitnerium is a synthetic chemical element with the symbol Mt and atomic number 109.
-/////	It is an extremely radioactive synthetic element. The most stable known isotope,
-/////	meitnerium-278, has a half-life of 4.5 seconds, although the unconfirmed
-/////	meitnerium-282 may have a longer half-life of 67 seconds.
-///// </summary>
-//const struct MEITNERIUM
-//{
-//    const int group = 9;
-//    const string type = "N/A";
-//    const string crystal_type = "Face-Centered Cubic:?";
-//    const string electron_configuration = "([Rn]5f14 6d7 7s2):?";
-//    const long double atomic_weight = 278; // u (g/mol)
-//    const int atomic_number = 109;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 15, 2};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = FP_NAN; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = FP_NAN; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(109));
-//    }
-//} Mt;
-//
-///// <summary>
-/////	Darmstadtium is a chemical element with the symbol Ds and atomic number 110.
-/////	It is an extremely radioactive synthetic element. The most stable known
-/////	isotope, darmstadtium-281, has a half-life of approximately 12.7 seconds.
-///// </summary>
-//const struct DARMSTADTIUM
-//{
-//    const int group = 10;
-//    const string type = "N/A";
-//    const string crystal_type = "Body-Centered Cubic:?";
-//    const string electron_configuration = "([Rn]5f14 6d9 7s1):?";
-//    const long double atomic_weight = 281; // u (g/mol)
-//    const int atomic_number = 110;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 17, 1};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = FP_NAN; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = FP_NAN; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(110));
-//    }
-//} Ds;
-//
-//
-///// <summary>
-/////	Roentgenium is a chemical element with the symbol Rg and atomic number 111.
-/////	It is an extremely radioactive synthetic element that can be created in a
-/////	laboratory but is not found in nature.
-///// </summary>
-//const struct ROENTGENUIM
-//{
-//    const int group = 11;
-//    const string type = "N/A";
-//    const string crystal_type = "Body-Centered Cubic:?";
-//    const string electron_configuration = "([Rn]5f14 6d10 7s1):?";
-//    const long double atomic_weight = 282; // u (g/mol)
-//    const int atomic_number = 111;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 17, 2};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = FP_NAN; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = FP_NAN; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(111));
-//    }
-//} Rg;
-//
-///// <summary>
-/////	Copernicium is a synthetic chemical element with the symbol Cn and atomic number 112.
-/////	Its known isotopes are extremely radioactive, and have only been created in a laboratory.
-/////	The most stable known isotope, copernicium-285, has a half-life of approximately 28 seconds.
-///// </summary>
-//const struct COPERNICIUM
-//{
-//    const int group = 12;
-//    const string type = "N/A";
-//    const string crystal_type = "Hexagonal Close Packed:?";
-//    const string electron_configuration = "([Rn]5f14 6d10 7s2):?";
-//    const long double atomic_weight = 285; // u (g/mol)
-//    const int atomic_number = 112;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 2};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = FP_NAN; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = FP_NAN; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(112));
-//    }
-//} Cn;
-//
-///// <summary>
-/////	Nihonium is a synthetic chemical element with the symbol Nh and atomic number 113.
-/////	It is extremely radioactive; its most stable known isotope, nihonium-286,
-/////	has a half-life of about 10 seconds. In the periodic table, nihonium is
-/////	a transactinide element in the p-block. It is a member of period 7
-/////	and group 13.
-///// </summary>
-//const struct NIHONIUM
-//{
-//    const int group = 13;
-//    const string type = "N/A";
-//    const string crystal_type = "Hexagonal Close Packed:?";
-//    const string electron_configuration = "([Rn]5f14 6d10 7s2 7p1):?";
-//    const long double atomic_weight = 286; // u (g/mol)
-//    const int atomic_number = 113;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 3};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = FP_NAN; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = FP_NAN; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(113));
-//    }
-//} Nh;
-//
-///// <summary>
-/////	Flerovium is a superheavy artificial chemical element with the symbol Fl and atomic number 114.
-/////	It is an extremely radioactive synthetic element. The element is named
-/////	after the Flerov Laboratory of Nuclear Reactions of the Joint Institute
-/////	for Nuclear Research in Dubna, Russia, where the element was discovered in 1998.
-///// </summary>
-//const struct FLEROVIUM
-//{
-//    const int group = 14;
-//    const string type = "N/A";
-//    const string crystal_type = "N/A";
-//    const string electron_configuration = "([Rn]5f14 6d10 7s2 7p2):?";
-//    const long double atomic_weight = 289; // u (g/mol)
-//    const int atomic_number = 114;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 4};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = FP_NAN; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = FP_NAN; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(114));
-//    }
-//} Fl;
-//
-///// <summary>
-/////	Moscovium is a synthetic chemical element with the symbol Mc and atomic number 115.
-/////	It was first synthesized in 2003 by a joint team of Russian and American scientists
-/////	at the Joint Institute for Nuclear Research in Dubna, Russia.
-///// </summary>
-//const struct MOSCOVIUM
-//{
-//    const int group = 15;
-//    const string type = "N/A";
-//    const string crystal_type = "N/A";
-//    const string electron_configuration = "([Rn]5f14 6d10 7s2 7p3):?";
-//    const long double atomic_weight = 290; // u (g/mol)
-//    const int atomic_number = 115;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 5};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = FP_NAN; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = FP_NAN; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(115));
-//    }
-//} Mc;
-//
-///// <summary>
-/////	Livermorium is a synthetic chemical element with the symbol Lv and has an atomic number of 116.
-/////	It is an extremely radioactive element that has only been created in the
-/////	laboratory and has not been observed in nature.
-///// </summary>
-//const struct LIVERMORIUM
-//{
-//    const int group = 16;
-//    const string type = "N/A";
-//    const string crystal_type = "N/A";
-//    const string electron_configuration = "([Rn]5f14 6d10 7s2 7p4):?";
-//    const long double atomic_weight = 293; // u (g/mol)
-//    const int atomic_number = 116;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 6};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = FP_NAN; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = FP_NAN; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(116));
-//    }
-//} Lv;
-//
-///// <summary>
-/////	Tennessine is a synthetic chemical element with the symbol Ts and atomic number 117.
-/////	It is the second-heaviest known element and the penultimate element of the
-/////	7th period of the periodic table.
-///// </summary>
-//const struct TENNESSINE
-//{
-//    const int group = 17;
-//    const string type = "N/A";
-//    const string crystal_type = "N/A";
-//    const string electron_configuration = "([Rn]5f14 6d10 7s2 7p5):?";
-//    const long double atomic_weight = 294; // u (g/mol)
-//    const int atomic_number = 117;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 7};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = FP_NAN; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = FP_NAN; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(117));
-//    }
-//} Ts;
-//
-///// <summary>
-/////	Oganesson is a synthetic chemical element with the symbol Og and atomic number 118.
-/////	It was first synthesized in 2002 at the Joint Institute for Nuclear Research in Dubna,
-/////	near Moscow, Russia, by a joint team of Russian and American scientists.
-///// </summary>
-//const struct OGANESSON
-//{
-//    const int group = 18;
-//    const string type = "N/A";
-//    const string crystal_type = "Face-centered cubic:?";
-//    const string electron_configuration = "([Rn]5f14 6d10 7s2 7p6):?";
-//    const long double atomic_weight = 294; // u (g/mol)
-//    const int atomic_number = 118;
-//    const vector<long double> energy_levels = {2, 8, 18, 32, 32, 18, 8};
-//    const long double density_STP = FP_NAN; // kg/m^3
-//    const long double melting_point = FP_NAN; // C
-//    const long double boiling_point = FP_NAN; // C
-//    const long double thermal_conductivity = FP_NAN; // W/mK
-//    const long double electric_conductivity = FP_NAN; // MS/m
-//    const long double resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
-//    const long double heat_specific = FP_NAN; // J/kgK
-//    const long double heat_vaporization = FP_NAN; // kJ/mol
-//    const long double heat_fusion = FP_NAN; // kJ/mol
-//    const long double ionization_1st = FP_NAN; // eV
-//    static void display()
-//    {
-//        displayElementImg(getFileName(118));
-//    }
-//} Og;
+/**
+ * @brief Protactinium is a chemical element with the symbol Pa and atomic number 91.
+ * It is a dense, silvery-gray actinide metal which readily reacts with oxygen,
+ * water vapor and inorganic acids.
+ */
+class Protactinium : public Element {
+public:
+    Protactinium() {
+        group = 3;
+        symbol = "Pa";
+        type = "Actinoid";
+        crystal_type = "Tetragonal";
+        electron_configuration = "[Rn]5f2 6d1 7s2";
+        atomicWeight = 231.04; // u (g/mol)
+        atomicNumber = 91;
+        energyLevels = {2, 8, 18, 32, 20, 9, 2};
+        densitySTP = 15370.0; // kg/m^3
+        meltingPoint = 1572.0; // C
+        boilingPoint = 4000.0; // C
+        thermalConductivity = 47.0; // W/mK
+        electricConductivity = 5.6; // MS/m
+        resistivity = 1.8e-7; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = 99.1; // J/kgK
+        heatVaporization = 470.0; // kJ/mol
+        heatFusion = 15.0; // kJ/mol
+        ionization1st = 5.89; // eV
+    }
+};
+
+/**
+ * @brief Uranium is a chemical element with the symbol U and atomic number 92.
+ * It is a silvery-grey metal in the actinide series of the periodic table.
+ * A uranium atom has 92 protons and 92 electrons, of which 6 are
+ * valence electrons.
+ */
+class Uranium : public Element {
+public:
+    Uranium() {
+        group = 3;
+        symbol = "U";
+        type = "Actinoid";
+        crystal_type = "Orthorhombic";
+        electron_configuration = "[Rn]5f3 6d1 7s2";
+        atomicWeight = 238.03; // u (g/mol)
+        atomicNumber = 92;
+        energyLevels = {2, 8, 18, 32, 21, 9, 2};
+        densitySTP = 19050.0; // kg/m^3
+        meltingPoint = 1135.0; // C
+        boilingPoint = 3900.0; // C
+        thermalConductivity = 27.0; // W/mK
+        electricConductivity = 3.6; // MS/m
+        resistivity = 2.8e-7; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = 116.0; // J/kgK
+        heatVaporization = 420.0; // kJ/mol
+        heatFusion = 14.0; // kJ/mol
+        ionization1st = 6.194; // eV
+    }
+};
+
+/**
+ * @brief Neptunium is a chemical element with the symbol Np and atomic number 93.
+ * A radioactive actinide metal, neptunium is the first transuranic element. Its
+ * position in the periodic table just after uranium, named after the planet
+ * Uranus, led to it being named after Neptune, the next planet beyond Uranus.
+ */
+class Neptunium : public Element {
+public:
+    Neptunium() {
+        group = 3;
+        symbol = "Np";
+        type = "Actinoid";
+        crystal_type = "Orthorhombic";
+        electron_configuration = "[Rn]5f4 6d1 7s2";
+        atomicWeight = (237); // u (g/mol)
+        atomicNumber = 93;
+        energyLevels = {2, 8, 18, 32, 22, 9, 2};
+        densitySTP = 20450.0; // kg/m^3
+        meltingPoint = 644.0; // C
+        boilingPoint = 4000.0; // C
+        thermalConductivity = 6.0; // W/mK
+        electricConductivity = .83; // MS/m
+        resistivity = 1.2e-6; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = 335.0; // kJ/mol
+        heatFusion = 10.0; // kJ/mol
+        ionization1st = 6.265; // eV
+    }
+};
+
+/**
+ * @brief Plutonium is a radioactive chemical element with the symbol Pu and atomic
+ * number 94. It is an actinide metal of silvery-gray appearance that tarnishes when
+ * exposed to air, and forms a dull coating when oxidized. The element normally
+ * exhibits six allotropes and four oxidation states.
+ */
+class Plutonium : public Element {
+public:
+    Plutonium() {
+        group = 3;
+        symbol = "Pu";
+        type = "Actinoid";
+        crystal_type = "Monoclinic";
+        electron_configuration = "[Rn]5f6 7s2";
+        atomicWeight = (244); // u (g/mol)
+        atomicNumber = 94;
+        energyLevels = {2, 8, 18, 32, 24, 8, 2};
+        densitySTP = 19816.0; // kg/m^3
+        meltingPoint = 640.0; // C
+        boilingPoint = 3230.0; // C
+        thermalConductivity = 6.0; // W/mK
+        electricConductivity = .67; // MS/m
+        resistivity = 1.5e-6; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = 325.0; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = 6.060; // eV
+    }
+};
+
+/**
+ * @brief Americium is a synthetic radioactive chemical element with the symbol Am and
+ * atomic number 95. It is a transuranic member of the actinide series, in the periodic
+ * table located under the lanthanide element europium, and thus by analogy was named
+ * after the Americas.
+ */
+class Americium : public Element {
+public:
+    Americium() {
+        group = 3;
+        symbol = "Am";
+        type = "Actinoid";
+        crystal_type = "Double Hexagonal Close Packed";
+        electron_configuration = "[Rn]5f7 7s2";
+        atomicWeight = (243); // u (g/mol)
+        atomicNumber = 95;
+        energyLevels = {2, 8, 18, 32, 25, 8, 2};
+        densitySTP = 13670.0; // kg/m^3
+        meltingPoint = 1176.0; // C
+        boilingPoint = 2011.0; // C
+        thermalConductivity = 10.0; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = 5.99; // eV
+    }
+};
+
+/**
+ * @brief Curium is a transuranic radioactive chemical element with the symbol Cm and
+ * atomic number 96. This element of the actinide series was named after Marie and Pierre
+ * Curie, both known for their research on radioactivity.
+ */
+class Curium : public Element {
+public:
+    Curium() {
+        group = 3;
+        symbol = "Cm";
+        type = "Actinoid";
+        crystal_type = "Double Hexagonal Close Packed";
+        electron_configuration = "[Rn]5f7 6d1 7s2";
+        atomicWeight = (247); // u (g/mol)
+        atomicNumber = 96;
+        energyLevels = {2, 8, 18, 32, 25, 9, 2};
+        densitySTP = 13510.0; // kg/m^3
+        meltingPoint = 1345.0; // C
+        boilingPoint = 3110.0; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = 6.02; // eV
+    }
+};
+
+/**
+ * @brief Berkelium is a transuranic radioactive chemical element with the symbol Bk and
+ * atomic number 97. It is a member of the actinide and transuranium element
+ * series. It is named after the city of Berkeley, California, the location
+ * of the Lawrence Berkeley National Laboratory where it was discovered in
+ * December 1949.
+ */
+class Berkelium : public Element {
+public:
+    Berkelium() {
+        group = 3;
+        symbol = "Bk";
+        type = "Actinoid";
+        crystal_type = "Double Hexagonal Close Packed";
+        electron_configuration = "[Rn]5f9 7s2";
+        atomicWeight = (247); // u (g/mol)
+        atomicNumber = 97;
+        energyLevels = {2, 8, 18, 32, 27, 8, 2};
+        densitySTP = 14780.00; // kg/m^3
+        meltingPoint = 1050.0; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = 10.0; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = 6.23; // eV
+    }
+};
+
+/**
+ * @brief Californium is a radioactive chemical element with the symbol Cf and atomic
+ * number 98. The element was first synthesized in 1950 at the Lawrence Berkeley
+ * National Laboratory, by bombarding curium with alpha particles.
+ */
+class Californium : public Element {
+public:
+    Californium() {
+        group = 3;
+        symbol = "Cf";
+        type = "Actinoid";
+        crystal_type = "Double Hexagonal Close Packed";
+        electron_configuration = "[Rn]5f10 7s2";
+        atomicWeight = (251); // u (g/mol)
+        atomicNumber = 98;
+        energyLevels = {2, 8, 18, 32, 28, 8, 2};
+        densitySTP = 15100.0; // kg/m^3
+        meltingPoint = 899.9; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = 6.30; // eV
+    }
+};
+
+/**
+ * @brief Einsteinium is a synthetic element with the symbol Es and atomic number 99.
+ * Einsteinium is a member of the actinide series and it is the seventh transuranic
+ * element. It is named to honor Albert Einstein. Einsteinium was discovered as a
+ * component of the debris of the first hydrogen bomb explosion in 1952.
+ */
+class Einsteinium : public Element {
+public:
+    Einsteinium() {
+        group = 3;
+        symbol = "Es";
+        type = "Actinoid";
+        crystal_type = "Face-Centered Cubic";
+        electron_configuration = "[Rn]5f11 7s2";
+        atomicWeight = (252); // u (g/mol)
+        atomicNumber = 99;
+        energyLevels = {2, 8, 18, 32, 29, 8, 2};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = 859.9; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = 6.42; // eV
+    }
+};
+
+/**
+ * @brief Fermium is a synthetic element with the symbol Fm and atomic number 100.
+ * It is an actinide and the heaviest element that can be formed by neutron
+ * bombardment of lighter elements, and hence the last element that can be
+ * prepared in macroscopic quantities, although pure fermium metal has not yet
+ * been prepared.
+ */
+class Fermium : public Element {
+public:
+    Fermium() {
+        group = 3;
+        symbol = "Fm";
+        type = "Actinoid";
+        crystal_type = "Face-Centered Cubic";
+        electron_configuration = "[Rn]5f12 7s2";
+        atomicWeight = (257); // u (g/mol)
+        atomicNumber = 100;
+        energyLevels = {2, 8, 18, 32, 30, 8, 2};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = 1500.0; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = 6.50; // eV
+    }
+};
+
+/**
+ * @brief Mendelevium is a synthetic element with the symbol Md and atomic number 101.
+ * A metallic radioactive transuranic element in the actinide series, it is the
+ * first element by atomic number that currently cannot be produced in
+ * macroscopic quantities through neutron bombardment of lighter elements.
+ */
+class Mendelevium : public Element {
+public:
+    Mendelevium() {
+        group = 3;
+        symbol = "Md";
+        type = "Actinoid";
+        crystal_type = "Face-Centered Cubic";
+        electron_configuration = "[Rn]5f13 7s2";
+        atomicWeight = (258); // u (g/mol)
+        atomicNumber = 101;
+        energyLevels = {2, 8, 18, 32, 31, 8, 2};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = 830.0; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = 6.58; // eV
+    }
+};
+
+/**
+ * @brief Nobelium is a synthetic chemical element with the symbol No and atomic number 102.
+ * It is named in honor of Alfred Nobel, the inventor of dynamite and benefactor
+ * of science. A radioactive metal it is the tenth transuranic element and is
+ * the penultimate member of the actinide series.
+ */
+class Nobelium : public Element {
+public:
+    Nobelium() {
+        group = 3;
+        symbol = "No";
+        type = "Actinoid";
+        crystal_type = "Face-Centered Cubic";
+        electron_configuration = "[Rn]5f14 7s2";
+        atomicWeight = (259); // u (g/mol)
+        atomicNumber = 102;
+        energyLevels = {2, 8, 18, 32, 32, 8, 2};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = 830.0; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = 6.65; // eV
+    }
+};
+
+/**
+ * @brief Lawrencium is a synthetic chemical element with the symbol Lr and atomic number 103.
+ * It is named in honor of Ernest Lawrence, inventor of the cyclotron, a
+ * device that was used to discover many artificial radioactive elements.
+ */
+class Lawrencium : public Element {
+public:
+    Lawrencium() {
+        group = 3;
+        symbol = "Lr";
+        type = "Actinoid";
+        crystal_type = "Hexagonal Close Packed:?";
+        electron_configuration = "[Rn]5f14 7s2 7p1";
+        atomicWeight = (266); // u (g/mol)
+        atomicNumber = 103;
+        energyLevels = {2, 8, 18, 32, 32, 8, 3};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = 1600.0; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = 4.87; // eV
+    }
+};
+
+/**
+ * @brief Rutherfordium is a synthetic chemical element with the symbol Rf and atomic number 104,
+ * named after New Zealand physicist Ernest Rutherford. As a synthetic element,
+ * it is not found in nature and can only be created in a laboratory.
+ */
+class Rutherfordium : public Element {
+public:
+    Rutherfordium() {
+        group = 4;
+        symbol = "Rf";
+        type = "Transition Metal";
+        crystal_type = "Hexagonal Close Packed:?";
+        electron_configuration = "[Rn]5f14 6d2 7s2";
+        atomicWeight = (267); // u (g/mol)
+        atomicNumber = 104;
+        energyLevels = {2, 8, 18, 32, 32, 10, 2};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = FP_NAN; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = 6.01; // eV
+    }
+};
+
+/**
+ * @brief Dubnium is a synthetic chemical element with the symbol Db and atomic number 105.
+ * Dubnium is highly radioactive: the most stable known isotope, dubnium-268,
+ * has a half-life of about 28 hours. This greatly limits extended research
+ * on dubnium. Dubnium does not occur naturally on Earth and is produced
+ * artificially.
+ */
+class Dubnium : public Element {
+public:
+    Dubnium() {
+        group = 5;
+        symbol = "Db";
+        type = "Transition Metal";
+        crystal_type = "Body-Centered Cubic:?";
+        electron_configuration = "[Rn]5f14 6d3 7s2";
+        atomicWeight = (268); // u (g/mol)
+        atomicNumber = 105;
+        energyLevels = {2, 8, 18, 32, 32, 11, 2};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = FP_NAN; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = FP_NAN; // eV
+    }
+};
+
+/**
+ * @brief Seaborgium is a synthetic chemical element with the symbol Sg and atomic number 106.
+ * It is named after the American nuclear chemist Glenn T. Seaborg. As a synthetic
+ * element, it can be created in a laboratory but is not found in nature.
+ */
+class Seaborgium : public Element {
+public:
+    Seaborgium() {
+        group = 6;
+        symbol = "Sg";
+        type = "Transition Metal";
+        crystal_type = "Body-Centered Cubic:?";
+        electron_configuration = "[Rn]5f14 6d4 7s2";
+        atomicWeight = (269); // u (g/mol)
+        atomicNumber = 106;
+        energyLevels = {2, 8, 18, 32, 32, 12, 2};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = FP_NAN; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = FP_NAN; // eV
+    }
+};
+
+/**
+ * @brief Bohrium is a synthetic chemical element with the symbol Bh and atomic number 107.
+ * It is named after Danish physicist Niels Bohr. As a synthetic element,
+ * it can be created in a laboratory but is not found in nature.
+ */
+class Bohrium : public Element {
+public:
+    Bohrium() {
+        group = 7;
+        symbol = "Bh";
+        type = "Transition Metal";
+        crystal_type = "Hexagonal Close Packed:?";
+        electron_configuration = "[Rn]5f14 6d5 7s2";
+        atomicWeight = (270); // u (g/mol)
+        atomicNumber = 107;
+        energyLevels = {2, 8, 18, 32, 32, 13, 2};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = FP_NAN; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = FP_NAN; // eV
+    }
+};
+
+/**
+ * @brief Hassium is a chemical element with the symbol Hs and the atomic number 108.
+ * Hassium is highly radioactive; its most stable known isotopes have half-lives
+ * of approximately ten seconds.
+ */
+class Hassium : public Element {
+public:
+    Hassium() {
+        group = 8;
+        symbol = "Hs";
+        type = "Transition Metal";
+        crystal_type = "Hexagonal Close Packed:?";
+        electron_configuration = "[Rn]5f14 6d6 7s2";
+        atomicWeight = 277; // u (g/mol)
+        atomicNumber = 108;
+        energyLevels = {2, 8, 18, 32, 32, 14, 2};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = FP_NAN; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = FP_NAN; // eV
+    }
+};
+
+/**
+ * @brief Meitnerium is a synthetic chemical element with the symbol Mt and atomic number 109.
+ * It is an extremely radioactive synthetic element. The most stable known isotope,
+ * meitnerium-278, has a half-life of 4.5 seconds, although the unconfirmed
+ * meitnerium-282 may have a longer half-life of 67 seconds.
+ */
+class Meitnerium : public Element {
+public:
+    Meitnerium() {
+        group = 9;
+        symbol = "Mt";
+        type = "N/A";
+        crystal_type = "Face-Centered Cubic:?";
+        electron_configuration = "([Rn]5f14 6d7 7s2):?";
+        atomicWeight = 278; // u (g/mol)
+        atomicNumber = 109;
+        energyLevels = {2, 8, 18, 32, 32, 15, 2};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = FP_NAN; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = FP_NAN; // eV
+    }
+};
+
+/**
+ * @brief Darmstadtium is a chemical element with the symbol Ds and atomic number 110.
+ * It is an extremely radioactive synthetic element. The most stable known
+ * isotope, darmstadtium-281, has a half-life of approximately 12.7 seconds.
+ */
+class Darmstadtium : public Element {
+public:
+    Darmstadtium() {
+        group = 10;
+        symbol = "Ds";
+        type = "N/A";
+        crystal_type = "Body-Centered Cubic:?";
+        electron_configuration = "([Rn]5f14 6d9 7s1):?";
+        atomicWeight = 281; // u (g/mol)
+        atomicNumber = 110;
+        energyLevels = {2, 8, 18, 32, 32, 17, 1};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = FP_NAN; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = FP_NAN; // eV
+    }
+};
+
+/**
+ * @brief Roentgenium is a chemical element with the symbol Rg and atomic number 111.
+ * It is an extremely radioactive synthetic element that can be created in a
+ * laboratory but is not found in nature.
+ */
+class Roentgenium : public Element {
+public:
+    Roentgenium() {
+        group = 11;
+        symbol = "Rg";
+        type = "N/A";
+        crystal_type = "Body-Centered Cubic:?";
+        electron_configuration = "([Rn]5f14 6d10 7s1):?";
+        atomicWeight = 282; // u (g/mol)
+        atomicNumber = 111;
+        energyLevels = {2, 8, 18, 32, 32, 17, 2};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = FP_NAN; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = FP_NAN; // eV
+    }
+};
+
+/**
+ * @brief Copernicium is a synthetic chemical element with the symbol Cn and atomic number 112.
+ * Its known isotopes are extremely radioactive, and have only been created in a laboratory.
+ * The most stable known isotope, copernicium-285, has a half-life of approximately 28 seconds.
+ */
+class Copernicium : public Element {
+public:
+    Copernicium() {
+        group = 12;
+        symbol = "Cn";
+        type = "N/A";
+        crystal_type = "Hexagonal Close Packed:?";
+        electron_configuration = "([Rn]5f14 6d10 7s2):?";
+        atomicWeight = 285; // u (g/mol)
+        atomicNumber = 112;
+        energyLevels = {2, 8, 18, 32, 32, 18, 2};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = FP_NAN; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = FP_NAN; // eV
+    }
+};
+
+/**
+ * @brief Nihonium is a synthetic chemical element with the symbol Nh and atomic number 113.
+ * It is extremely radioactive; its most stable known isotope, nihonium-286,
+ * has a half-life of about 10 seconds. In the periodic table nihonium is a
+ * transactinide element in the p-block. It is a member of period 7 and group 13.
+ */
+class Nihonium : public Element {
+public:
+    Nihonium() {
+        group = 13;
+        symbol = "Nh";
+        type = "N/A";
+        crystal_type = "Hexagonal Close Packed:?";
+        electron_configuration = "([Rn]5f14 6d10 7s2 7p1):?";
+        atomicWeight = 286; // u (g/mol)
+        atomicNumber = 113;
+        energyLevels = {2, 8, 18, 32, 32, 18, 3};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = FP_NAN; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = FP_NAN; // eV
+    }
+};
+
+/**
+ * @brief Flerovium is a superheavy artificial chemical element with the symbol Fl and atomic number 114.
+ * It is an extremely radioactive synthetic element. The element is named
+ * after the Flerov Laboratory of Nuclear Reactions of the Joint Institute
+ * for Nuclear Research in Dubna, Russia, where the element was discovered in 1998.
+ */
+class Flerovium : public Element {
+public:
+    Flerovium() {
+        group = 14;
+        symbol = "Fl";
+        type = "N/A";
+        crystal_type = "N/A";
+        electron_configuration = "([Rn]5f14 6d10 7s2 7p2):?";
+        atomicWeight = 289; // u (g/mol)
+        atomicNumber = 114;
+        energyLevels = {2, 8, 18, 32, 32, 18, 4};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = FP_NAN; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = FP_NAN; // eV
+    }
+};
+
+/**
+ * @brief Moscovium is a synthetic chemical element with the symbol Mc and atomic number 115.
+ * It was first synthesized in 2003 by a joint team of Russian and American scientists
+ * at the Joint Institute for Nuclear Research in Dubna, Russia.
+ */
+class Moscovium : public Element {
+public:
+    Moscovium() {
+        group = 15;
+        symbol = "Mc";
+        type = "N/A";
+        crystal_type = "N/A";
+        electron_configuration = "([Rn]5f14 6d10 7s2 7p3):?";
+        atomicWeight = 290; // u (g/mol)
+        atomicNumber = 115;
+        energyLevels = {2, 8, 18, 32, 32, 18, 5};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = FP_NAN; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = FP_NAN; // eV
+    }
+};
+
+/**
+ * @brief Livermorium is a synthetic chemical element with the symbol Lv and has an atomic number of 116.
+ * It is an extremely radioactive element that has only been created in the
+ * laboratory and has not been observed in nature.
+ */
+class Livermorium : public Element {
+public:
+    Livermorium() {
+        group = 16;
+        symbol = "Lv";
+        type = "N/A";
+        crystal_type = "N/A";
+        electron_configuration = "([Rn]5f14 6d10 7s2 7p4):?";
+        atomicWeight = 293; // u (g/mol)
+        atomicNumber = 116;
+        energyLevels = {2, 8, 18, 32, 32, 18, 6};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = FP_NAN; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = FP_NAN; // eV
+    }
+};
+
+/**
+ * @brief Tennessine is a synthetic chemical element with the symbol Ts and atomic number 117.
+ * It is the second-heaviest known element and the penultimate element of the
+ * 7th period of the periodic table.
+ */
+class Tennessine : public Element {
+public:
+    Tennessine() {
+        group = 17;
+        symbol = "Ts";
+        type = "N/A";
+        crystal_type = "N/A";
+        electron_configuration = "([Rn]5f14 6d10 7s2 7p5):?";
+        atomicWeight = 294; // u (g/mol)
+        atomicNumber = 117;
+        energyLevels = {2, 8, 18, 32, 32, 18, 7};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = FP_NAN; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = FP_NAN; // eV
+    }
+};
+
+/**
+ * @brief Oganesson is a synthetic chemical element with the symbol Og and atomic number 118.
+ * It was first synthesized in 2002 at the Joint Institute for Nuclear Research in Dubna,
+ * near Moscow, Russia, by a joint team of Russian and American scientists.
+ */
+class Oganesson : public Element {
+public:
+    Oganesson() {
+        group = 18;
+        symbol = "Og";
+        type = "N/A";
+        crystal_type = "Face-centered cubic:?";
+        electron_configuration = "([Rn]5f14 6d10 7s2 7p6):?";
+        atomicWeight = 294; // u (g/mol)
+        atomicNumber = 118;
+        energyLevels = {2, 8, 18, 32, 32, 18, 8};
+        densitySTP = FP_NAN; // kg/m^3
+        meltingPoint = FP_NAN; // C
+        boilingPoint = FP_NAN; // C
+        thermalConductivity = FP_NAN; // W/mK
+        electricConductivity = FP_NAN; // MS/m
+        resistivity = FP_NAN; // m Ohm (m * kg*m^2*s^-3*A^-2)
+        heatSpecific = FP_NAN; // J/kgK
+        heatVaporization = FP_NAN; // kJ/mol
+        heatFusion = FP_NAN; // kJ/mol
+        ionization1st = FP_NAN; // eV
+    }
+};
