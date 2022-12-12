@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    ECH::massOfDropInElectricField(20.0e6, 10.0);
+    ECH::workDoneByElectricForce(2.20e-6, -5.00e-6, {.170, 0}, {.255, .235});
 
     //**************************************************************************
     //Stopping RunTimer and displaying the programs' execution time

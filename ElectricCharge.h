@@ -856,12 +856,49 @@ public:
      */
     static ld massOfDropInElectricField(ld E, ld n, bool print = true);
 
+    /**
+     * @brief A q1 C charge and a q2 C charge are inside an uncharged
+     * sphere. Calculate the the electric flux through the sphere?
+     * @param q1 the first charge
+     * @param q2 the second charge
+     * @param print true to print the answer
+     */
+    static ld electricFluxThroughSphere(ld q1, ld q2, bool print = true);
+
+    /**
+     * @brief Calculate the electric field strength just outside the surface
+     * of a conducting sphere carrying surface charge density sigma C/m2?
+     * @param sigma the surface charge density
+     * @param print true to print the answer
+     * @return the electric field strength
+     */
+    static ld electricFieldStrengthOutsideSphere(ld sigma, bool print = true);
+
+    /**
+     * @brief A point charge with charge q1 C is held stationary at the origin.
+     * A second point charge with charge q2 C moves from the point P1(x1, y1)
+     * to the point P2(x2, y2).
+     * Calculate how much work W is done by the electric force on the moving
+     * point charge.
+     * @param q1 the first charge
+     * @param q2 the second charge
+     * @param P1 the first point
+     * @param P2 the second point
+     * @param print true to print the answer
+     * @return the work done
+     */
+    static ld workDoneByElectricForce(
+            ld q1, ld q2, const Vector2D& P1, const Vector2D& P2, bool print = true);
+
+    static ld forceBetweenPointCharges(ld q1, ld q2, long double r, bool print);
 
     /**
      * @brief set the value of the electric charge variable
      * @param val
      */
     void setElectricChargeVal(ld val) { _electricChargeVal = val; }
+
+
 
 
     ~ElectricCharge()
@@ -873,6 +910,8 @@ private:
     static void countIncrease() { electricCharge_objectCount += 1; }
     static void countDecrease() { electricCharge_objectCount -= 1; }
     ld _electricChargeVal;
+
+
 };
 #endif //PHYSICSFORMULA_ELECTRICCHARGE_H
 
@@ -1629,4 +1668,42 @@ ld ElectricCharge::massOfDropInElectricField(ld E, ld n, bool print) {
     if (print)
         std::cout << "Mass = " << m << " kg" << std::endl;
     return m;
+}
+
+ld ElectricCharge::electricFluxThroughSphere(ld q1, ld q2, bool print) {
+    auto e0 = constants::_e0;
+    auto phi = (q1 + q2) / e0;
+    if (print)
+        std::cout << "Electric flux = " << phi << " Nm^2/C" << std::endl;
+    return phi;
+}
+
+ld ElectricCharge::electricFieldStrengthOutsideSphere(ld sigma, bool print)
+{
+    auto e0 = constants::_e0;
+    auto E = sigma / e0;
+    if (print)
+        std::cout << "Electric field = " << E << " N/C" << std::endl;
+    return E;
+}
+
+ld ElectricCharge::workDoneByElectricForce(
+        ld q1, ld q2, const Vector2D& P1, const Vector2D& P2, bool print)
+{
+    auto r1 = P1.getMag();
+    auto r2 = P2.getMag();
+    auto k = constants::K;
+    auto W = (k * q1 * q2) * (1.0 / r1 - 1.0 / r2);
+    if (print)
+        std::cout << "Work done = " << W << " J" << std::endl;
+    return W;
+}
+
+ld ElectricCharge::forceBetweenPointCharges(
+        ld q1, ld q2, long double r, bool print) {
+    auto k = constants::K;
+    auto F = (k * q1 * q2) / (r * r);
+    if (print)
+        std::cout << "Force = " << F << " N" << std::endl;
+    return F;
 }
