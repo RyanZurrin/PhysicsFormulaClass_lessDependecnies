@@ -271,6 +271,12 @@ PhysicsFormula_SOURCE_DIR:STATIC=D:/src/CLionProjects/PhysicsFormulaClass_lessDe
 //Path to a file.
 SFML_DOC_DIR:PATH=SFML_DOC_DIR-NOTFOUND
 
+//Skip finding dependencies
+SYMENGINE_SKIP_DEPENDENCIES:BOOL=no
+
+//The directory containing a CMake configuration file for SymEngine.
+SymEngine_DIR:PATH=E:/ProgramData/Microsoft/VisualStudio/vcpkg/packages/symengine_x64-windows/share/symengine
+
 //Use Boost
 USE_BOOST:BOOL=OFF
 
@@ -282,6 +288,9 @@ VorbisFile_LIB:FILEPATH=D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnie
 
 //Path to a library.
 Vorbis_LIB:FILEPATH=D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/lib/libvorbis.a
+
+//The directory containing a CMake configuration file for symengine.
+symengine_DIR:PATH=symengine_DIR-NOTFOUND
 
 
 ########################

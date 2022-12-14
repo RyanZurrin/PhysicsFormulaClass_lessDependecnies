@@ -3845,6 +3845,7 @@ CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj: D:/src/CLionProjects/PhysicsF
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/ElectricCurrent.h \
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/ElectricPotential.h \
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Heat.h \
+  D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/SpecificHeat.h \
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Temperature.h \
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Vector3D.h \
   D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/Vector2D.h \
@@ -4245,6 +4246,8 @@ E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.7571.171/bin/
 D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/include/SFML/Graphics/Text.hpp:
 
 E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.7571.171/bin/mingw/lib/gcc/x86_64-w64-mingw32/11.2.0/include/c++/bits/postypes.h:
+
+D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/SpecificHeat.h:
 
 D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/eigen-3.3.7/Eigen/src/Core/Dot.h:
 

@@ -43,7 +43,7 @@ add_executable(PhysicsFormula testFactory.cpp Angle.h AtomicPhysics.h
         TemplateBST.h templateGraph.h templateGraph.cpp Calculus.h Derivation.h
         EuclideanGraph.h Constants.h StaticEquilibrium.h UnitVector.h
         Kirschoff.h pbPlots.hpp pbPlots.cpp supportLib.hpp supportLib.cpp
-        Plots.h Dimensions.h ElectricField.h Scale.h CircuitBoard.h CapacitorNode.h ResistorNode.h InductorNode.h Element.h Element.h PeriodicTable.h PeriodicTable.h)
+        Plots.h Dimensions.h ElectricField.h Scale.h CircuitBoard.h CapacitorNode.h ResistorNode.h InductorNode.h Element.h Element.h PeriodicTable.h PeriodicTable.h SpecificHeat.h)
 
 
 set(SFML_STATIC_LIBRARIES TRUE)
@@ -72,3 +72,11 @@ if(USE_BOOST)
     target_link_libraries(PhysicsFormula Boost::system Boost::filesystem)
     message("Boost library is used")
 endif()
+
+# Add the installation prefix of "SymEngine" to CMAKE_PREFIX_PATH or set
+# "SymEngine_DIR" to a directory containing one of the above files.
+#set(symengine_DIR E:/ProgramData/Microsoft/VisualStudio/vcpkg/packages/symengine_x64-windows/share/symengine)
+
+# add symengine library that was built using vcpkg
+#find_package(symengine CONFIG REQUIRED)
+#target_link_libraries(PhysicsFormula symengine)

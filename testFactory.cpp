@@ -12,7 +12,9 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    ECH::workDoneByElectricForce(2.20e-6, -5.00e-6, {.170, 0}, {.255, .235});
+    ECH::diskRadiusAndCharge(544.0e3, 417.0e3, 1.27);
+    Thermodynamics::gasPressure(1.0e5, 1.0e5, 1.0e5);
+    Thermodynamics::massOfBlock(1.0e5, "copper");
 
     //**************************************************************************
     //Stopping RunTimer and displaying the programs' execution time

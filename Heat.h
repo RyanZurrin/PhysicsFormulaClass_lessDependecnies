@@ -16,6 +16,7 @@
 #include <vector>
 #include <cmath>
 #include "Constants.h"
+#include "SpecificHeat.h"
 using namespace std;
 static int heat_objectCount = 0;
 
@@ -949,6 +950,21 @@ public:
         if (print)
             std::cout << "thermal equilibrium temp: " << temp << std::endl;
         return temp;
+    }
+
+    static ld thermalEquilibriumTemp(vector<SpecificHeat> &sh, bool print = true)
+    {
+        ld top = 0;
+        ld bot = 0;
+        for (auto &i : sh)
+        {
+            top += (i.getHeat());
+            bot += (i.getMass() * i.getSpecificHeat());
+        }
+        auto tempFinal = top / bot;
+        if (print)
+            std::cout << "thermal equilibrium temp: " << tempFinal << std::endl;
+        return tempFinal;
     }
 
     /**

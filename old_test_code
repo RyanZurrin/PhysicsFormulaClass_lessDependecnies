@@ -111,3 +111,30 @@
   //    ResistorNode Re({2.0, Rf.eR}, 's');
   //    ResistorNode Requiv({Rc.eR, Re.eR}, 'p');
   //    Requiv.print();
+
+
+//
+//#include <chrono>
+//
+//
+//#include <symengine/basic.h>
+//#include <symengine/add.h>
+//#include <symengine/symbol.h>
+//#include <symengine/dict.h>
+//#include <symengine/integer.h>
+//#include <symengine/mul.h>
+//#include <symengine/pow.h>
+//
+//using SymEngine::Basic;
+//using SymEngine::Add;
+//using SymEngine::Mul;
+//using SymEngine::Pow;
+//using SymEngine::Symbol;
+//using SymEngine::symbol;
+//using SymEngine::umap_basic_num;
+//using SymEngine::map_vec_uint;
+//using SymEngine::Integer;
+//using SymEngine::integer;
+//using SymEngine::multinomial_coefficients;
+//using SymEngine::RCP;
+//using SymEngine::rcp_dynamic_cast;

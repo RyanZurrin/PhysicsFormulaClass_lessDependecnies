@@ -8,8 +8,8 @@
  * @class ElectroMagneticInduction
  * @details driver class for solving complex physics problems
  * @author Ryan Zurrin
- * @dateBuilt  3/21/2021
- * @lastEdit 3/21/2021
+ * @date  3/21/2021
+ * @version 12.13.2022
  */
 #include <iostream>
 #include "Magnetism.h"
@@ -25,13 +25,11 @@ class ElectroMagneticInduction :
 public:
     ElectroMagneticInduction()
     {
-        _electroMagVar = 0.0;
         countIncrease();
     }
 
     explicit ElectroMagneticInduction(ld val)
     {
-        _electroMagVar = val;
         countIncrease();
     }
 
@@ -40,7 +38,6 @@ public:
      */
     ElectroMagneticInduction(const ElectroMagneticInduction& t)
      : Magnetism(t) {
-        _electroMagVar = t._electroMagVar;
         countIncrease();
     }
     /**
@@ -48,7 +45,6 @@ public:
      */
     ElectroMagneticInduction(ElectroMagneticInduction&& t) noexcept
     {
-        _electroMagVar = t._electroMagVar;
         countIncrease();
     }
     /**
@@ -58,13 +54,10 @@ public:
     {
         if (this != &t)
         {
-            _electroMagVar = t._electroMagVar;
             countIncrease();
         }
         return *this;
     }
-    void setElectroMagVar(ld var) { _electroMagVar = var; }
-    [[nodiscard]] ld getElectroMagVar()const { return _electroMagVar; }
     static void show_objectCount() { std::cout << "\n electromagnetic induction object count: "
                                                << emi_objectCount << std::endl; }
     static int get_objectCount() { return emi_objectCount; }
@@ -936,7 +929,7 @@ public:
      * @param print (default is true) if true prints the equation and result.
      * @return magnetic energy density per unit volume
      */
-    static ld energyDensityMagneticField(ld B, bool print = true);
+    static ld magneticEnergyDensity(ld B, bool print = true);
 
     /**
      * @brief A long solenoid has circular cross section of radius R. The
@@ -1248,8 +1241,6 @@ public:
 private:
     static void countIncrease() { emi_objectCount += 1; }
     static void countDecrease() { emi_objectCount -= 1; }
-    ld _electroMagVar;
-
 
 
 };
@@ -2034,7 +2025,7 @@ inline ld ElectroMagneticInduction::energyStoredSolenoid(
     return U;
 }
 
-inline ld ElectroMagneticInduction::energyDensityMagneticField(
+inline ld ElectroMagneticInduction::magneticEnergyDensity(
         ld B, bool print)
 {
     auto mu0 = constants::_mu0;
