@@ -284,7 +284,7 @@ int rez::orientation(const Face& _f, const Vector3f& _p)
     Vector3f PA = point_vec[0] - _p;
     float winding_constant = dotProduct(plane.getNormal(), PA);
 
-    // If winding constant is negative, it means from the _p point of view, points in the plane is counter clockwise
+    // If winding constant is negative, it means from the resistivity_ldR point of view, points in the plane is counter clockwise
     if (winding_constant < ZERO)
         return CCW;
 

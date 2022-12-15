@@ -566,7 +566,7 @@ public:
     /// </summary>
     /// <param name="m">The mass.</param>
     /// <param name="h">The height.</param>
-    /// <param name="_p">The density.</param>
+    /// <param name="resistivity_ldR">The density.</param>
     /// <returns>the radius</returns>
     static ld radiusCylinder(const ld m,
                              const ld h,
@@ -579,7 +579,7 @@ public:
     /// Depth of a rectangular tank.
     /// </summary>
     /// <param name="m">The mass.</param>
-    /// <param name="_p">The density.</param>
+    /// <param name="resistivity_ldR">The density.</param>
     /// <param name="l">The length.</param>
     /// <param name="w">The width.</param>
     /// <returns></returns>

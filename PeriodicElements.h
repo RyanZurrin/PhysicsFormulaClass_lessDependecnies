@@ -58,7 +58,7 @@ static struct AtomicMass
 /// charged particles. The atoms of metal elements are characterized by the
 /// presence of valence electrons, which are electrons in the outer shell of
 /// an atom that are free to move about.\n\n
-/// resistivity: (also called specific electrical resistance or volume resistivity)
+/// resistivity_VIlg: (also called specific electrical resistance or volume resistivity_ldR)
 /// is a fundamental property of a material that measures how strongly it resists
 /// electric current. Its inverse, called electrical conductivity, quantifies
 /// how well a material conducts electricity.\n\n
@@ -3939,7 +3939,7 @@ static void printElementData(ELEM el)
     std::cout << setw(23) << left << "boiling point: " << el.boiling_point << " C" << std::endl;
     std::cout << setw(23) << left << "thermal conductivity: " << el.thermal_conductivity << " W/mK" << std::endl;
     std::cout << setw(23) << left << "electric conductivity: " << el.electric_conductivity << " MS/m" << std::endl;
-    std::cout << setw(23) << left << "resistivity: " << el.resistivity << " Ohm*m" << std::endl;
+    std::cout << setw(23) << left << "resistivity_ldR: " << el.resistivity_ldR << " Ohm*m" << std::endl;
     std::cout << setw(23) << left << "specific heat: " << el.heat_specific << " J/kgK" << std::endl;
     std::cout << setw(23) << left << "vaporization heat: " << el.heat_vaporization << " kJ/mol" << std::endl;
     std::cout << setw(23) << left << "fusion heat: " << el.heat_fusion << " kJ/mol" << std::endl;

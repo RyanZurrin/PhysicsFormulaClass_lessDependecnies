@@ -104,13 +104,11 @@ public:
 
     ElectricPotential()
     {
-        _electricPotentialVal = 0.0;
         countIncrease();
     }
 
     explicit ElectricPotential(ld val)
     {
-        _electricPotentialVal = 0.0;
         countIncrease();
     }
 
@@ -119,7 +117,6 @@ public:
      */
     ElectricPotential(const ElectricPotential& t)
     {
-        _electricPotentialVal = t._electricPotentialVal;
         countIncrease();
     }
     /**
@@ -127,7 +124,6 @@ public:
      */
     ElectricPotential(ElectricPotential&& t) noexcept
     {
-        _electricPotentialVal = t._electricPotentialVal;
         countIncrease();
     }
     /**
@@ -137,7 +133,6 @@ public:
     {
         if (this != &t)
         {
-            _electricPotentialVal = t._electricPotentialVal;
             countIncrease();
         }
         return *this;
@@ -858,9 +853,9 @@ public:
     /**
      * @brief Calculate the voltages compare across two wires both of length
      * L and diameter d, carrying the same current I. One wire has a
-     * resistivity of rho1 and the other has a resistivity of rho2.
-     * @param rho1 the resistivity of wire 1 (ohm-m)
-     * @param rho2 the resistivity of wire 2 (ohm-m)
+     * resistivity_VIlg of rho1 and the other has a resistivity_ldR of rho2.
+     * @param rho1 the resistivity_ldR of wire 1 (ohm-m)
+     * @param rho2 the resistivity_ldR of wire 2 (ohm-m)
      * @param print true to print the answer
      * @return the voltage difference (V)
      */
@@ -868,10 +863,10 @@ public:
 
     /**
      * @brief Calculate the relationship between the diameters of two wires
-     * that have the same resistance and length. One wire has a resistivity
-     * of rho1 and the other has a resistivity of rho2.
-     * @param rho1 the resistivity of wire 1 (ohm-m)
-     * @param rho2 the resistivity of wire 2 (ohm-m)
+     * that have the same resistance and length. One wire has a resistivity_ldR
+     * of rho1 and the other has a resistivity_ldR of rho2.
+     * @param rho1 the resistivity_ldR of wire 1 (ohm-m)
+     * @param rho2 the resistivity_ldR of wire 2 (ohm-m)
      * @param print true to print the answer
      * @return the relationship between the diameters
      */
@@ -889,12 +884,32 @@ public:
      */
     static ld volumeOfUniformElectricField(ld U, ld E, bool print = true);
 
+    /**
+     * @brief Consider a parallel-plate capacitor with plates of area A and with
+     * separation d. Calculate F(V), the magnitude of the force each plate
+     * experiences due to the other plate as a function of V, the potential drop
+     * across the capacitor.
+     * @param A the area of the plates (m^2)
+     * @param d the separation of the plates (m)
+     * @param V the potential drop across the capacitor (V)
+     * @param print true to print the answer
+     * @return the force (N)
+     */
+    static ld forceOnPlateOfParallelPlateCapacitor(
+            ld A, ld d, ld V, bool print = true);
 
+    /**
+     * @brief A charge Q0 is at the origin. A second charge, Qx=2Q0 is brought
+     * to the point x=a, y=0. Then a third charge Qy is brought to the
+     * point x=0, y=a. If it takes twice as much work to bring in Qy as it did
+     * Qx, what is Qy in terms of Q0?
+     * @param Q0 the charge (C)
+     * @param a the distance (m)
+     * @param print true to print the answer
+     * @return the charge (C)
+     */
+    static ld chargeQyInTermsOfQ0(ld Q0, ld a, bool print = true);
 
-    void setElectricPotentialVal(ld val)
-    {
-        _electricPotentialVal = val;
-    }
 
     ~ElectricPotential()
     {
@@ -904,7 +919,6 @@ public:
 private:
     static void countIncrease() { electricalPotential_objectCount += 1; }
     static void countDecrease() { electricalPotential_objectCount -= 1; }
-    ld _electricPotentialVal;
 
 };
 
@@ -1618,4 +1632,21 @@ ld ElectricPotential::volumeOfUniformElectricField(ld U, ld E, bool print) {
         std::cout << "V = " << V << " m^3" << std::endl;
     }
     return V;
+}
+
+ld ElectricPotential::forceOnPlateOfParallelPlateCapacitor(
+        ld A, ld d, ld V, bool print) {
+    auto e0 = constants::_e0;
+    auto F = (A * e0 * V * V) / (2.0 * d * d);
+    if (print) {
+        std::cout << "F = " << F << " N" << std::endl;
+    }
+    return F;
+}
+
+ld ElectricPotential::chargeQyInTermsOfQ0(ld Q0, ld a, bool print) {
+    auto Qy = Q0 * (4.0 / (sqrt(2.0) + 1));
+    if (print)
+        std::cout << "Qy = " << Qy << " C" << std::endl;
+    return Qy;
 }

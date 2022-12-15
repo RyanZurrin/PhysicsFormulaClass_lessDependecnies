@@ -986,17 +986,39 @@ public:
      * @param print true to print the answer
      * @return the disk radius and charge
      */
-     static std::vector<ld> diskRadiusAndCharge(ld V, ld E, ld x, bool print = true);
+    static std::vector<ld> diskRadiusAndCharge(ld V, ld E, ld x, bool print = true);
 
-     /**
-      * @brief A solid sphere of radius R carries charge Q distributed uniformly
-      * throughout its volume. Find the potential difference from the sphere's
-      * surface to its center.
-      * @param Q the charge
-      * @param R the radius
-      * @param print true to print the answer
-      */
-      static ld potentialDifferenceFromSphere(ld Q, ld R, bool print = true);
+    /**
+     * @brief A solid sphere of radius R carries charge Q distributed uniformly
+     * throughout its volume. Find the potential difference from the sphere's
+     * surface to its center.
+     * @param Q the charge
+     * @param R the radius
+     * @param print true to print the answer
+     */
+    static ld potentialDifferenceFromSphere(ld Q, ld R, bool print = true);
+
+    /**
+     * @brief Calculate the energy stored in the electric field due to a
+     * spherical shell of charge Q C and radius R m.
+     * @param Q the charge
+     * @param R the radius
+     * @param print true to print the answer
+     * @return the energy
+     */
+    static ld energyStoredInElectricField(ld Q, ld R, bool print = true);
+
+    /**
+     * @brief The energy stored in the electric field of a spherical shell is
+     * approximately E J. Assuming the spherical shell to have a charge
+     * of Q C spread uniformly over its surface, estimate its radius to one
+     * significant figure.
+     * @param E the energy
+     * @param Q the charge
+     * @param print true to print the answer
+     * @return the radius
+     */
+    static ld sphericalShellRadius(ld E, ld Q, bool print = true);
 
 
 
@@ -1825,4 +1847,20 @@ ld ElectricCharge::potentialDifferenceFromSphere(ld Q, ld R, bool print) {
     if (print)
         std::cout << "Potential difference = " << V << " V" << std::endl;
     return V;
+}
+
+ld ElectricCharge::energyStoredInElectricField(ld Q, ld R, bool print) {
+    auto k = constants::K;
+    auto U = (k * Q * Q) / (2.0 * R);
+    if (print)
+        std::cout << "Energy stored = " << U << " J" << std::endl;
+    return U;
+}
+
+ld ElectricCharge::sphericalShellRadius(ld E, ld Q, bool print) {
+    auto k = constants::K;
+    auto r = (k * Q * Q) / (2.0 * E);
+    if (print)
+        std::cout << "Radius = " << r << " m" << std::endl;
+    return r;
 }

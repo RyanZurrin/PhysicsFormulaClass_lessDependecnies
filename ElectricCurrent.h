@@ -24,7 +24,7 @@ static struct Resistivities
     Resistivities() {}
     const struct MetallicConductors {
         const long double SILVER = 1.59e-8; //1.59e-8 conductor, OHm*m
-        const long double COPPER = 1.68e-8; //1.72e-8 conductor, OHm*m
+        const long double COPPER = 1.724e-8; //1.72e-8 conductor, OHm*m
         const long double GOLD  = 2.24e-8; //2.44e-8 conductor, OHm*m
         const long double ALUMINUM = 2.65e-8; //conductor, OHm*m
         const long double TUNGSTEN = 5.6e-8; //conductor, OHm*m
@@ -62,6 +62,9 @@ static struct Resistivities
         const long double WOOD = 1e11; //OHm*m
         const long double QUARTZ = 7.5e17; //OHm*m
     }insulators;
+
+    const long double AIR = 2e16; //OHm*m
+    const long double VACUUM = 377.0; //OHm*m
 
 
     const long double CARBON_PURE = 3.5 * pow(10, 5); //semiconductor, OHm*m
@@ -133,6 +136,40 @@ static struct Resistivities
     /// <param name="value">The value passed shoulong double be between 10^9 - 10^14.</param>
     void setWOOD(long double X) { GLASS = pow(10, X); }
 
+    // create a map of the materials and their values for lookup
+    std::map<std::string, long double> materialMap = {
+        {"air", 2e16},
+        {"vacuum", 377.0},
+        {"aluminum", 2.65e-8},
+        {"copper", 1.72e-8},
+        {"gold", 2.44e-8},
+        {"iron", 9.71e-8},
+        {"lead", 22.0e-8},
+        {"manganin", 44.03-8},
+        {"constantan", 49.0e-8},
+        {"nichrome", 100.0e-8},
+        {"l_molar_cus04", 3.8e-4},
+        {"l_molar_hci", 1.7e-2},
+        {"l_molar_nacl", 1.4e-4},
+        {"h20", 2.6e-5},
+        {"blood_human", .70},
+        {"sea_water", .22},
+        {"germanium",  .50},
+        {"silicon",  3.0e3},
+        {"diamond", 1.0e4},
+        {"ceramics", 1e12},
+        {"glass", 1e14},
+        {"polyethylene", 1e16},
+        {"polypropylene", 1e16},
+        {"rubber", 1e15},
+        {"wood", 1e9},
+        {"quartz", 7.5e17},
+        {"carbon", 10e5},
+        {"carbon_pure", 3.5e5},
+        {"germanium_pure", 600.0e-3},
+        {"silicon_pure", 2300.0},
+        {"amber", 5.0e14}
+    };
 
 }resistivity;
 
@@ -270,14 +307,11 @@ public:
 
     ElectricCurrent()
     {
-        _electricCurrentVal = 0.0;
         countIncrease();
-        //cout << "in electricCurrent count: " << electricCurrent_objectCount << endl;
     }
 
     explicit ElectricCurrent(long double val)
     {
-        _electricCurrentVal = 0.0;
         countIncrease();
 
     }
@@ -287,7 +321,6 @@ public:
      */
     ElectricCurrent(const ElectricCurrent& t)
     {
-        _electricCurrentVal = t._electricCurrentVal;
         countIncrease();
     }
     /**
@@ -295,7 +328,6 @@ public:
      */
     ElectricCurrent(ElectricCurrent&& t) noexcept
     {
-        _electricCurrentVal = t._electricCurrentVal;
         countIncrease();
     }
     /**
@@ -305,13 +337,14 @@ public:
     {
         if (this != &t)
         {
-            _electricCurrentVal = t._electricCurrentVal;
             countIncrease();
         }
         return *this;
     }
 
-    static void show_objectCount() { std::cout << "\n electric current object count: " << electricCurrent_objectCount << std::endl; }
+    static void show_objectCount() { std::cout
+    << "\n electric current object count: " << electricCurrent_objectCount
+    << std::endl; }
     static int get_objectCount() { return electricCurrent_objectCount; }
 
     /**
@@ -474,30 +507,13 @@ public:
      */
     static long double resistance_ohms(long double I, long double V, bool print = true);
 
-    /**
-     * @brief calculates the current from rearranging the power equations
-     * @param P  the power in watts
-     * @param R  the resistance
-     * @param print  print to console
-     * @return  the current in amperes(I)
-     */
-    static long double current_PR(long double P, long double R, bool print = true);
 
     /**
-     * @brief calculates the current from power and volts
-     * @param P  the power in watts
-     * @param V  the volts
-     * @param print  print to console
-     * @return
-     */
-    static long double current_PV(long double P, long double V, bool print = true);
-
-    /**
-     * @brief calculates the current from the voltage, diameter, resistivity
+     * @brief calculates the current from the voltage, diameter, resistivity_ldR
      * and length of a wire.
      * @param V  the voltage
      * @param d the diameter
-     * @param rho  the resistivity
+     * @param rho  the resistivity_ldR
      * @param L  the length of the wire
      * @param print  print to console
      * @return  the current in amperes
@@ -515,9 +531,9 @@ public:
     static long double resistance_ohmic(long double V, long double I, bool print = true);
 
     /**
-     * @brief calculates the resistance of resistor with a resistivity of p and a
+     * @brief calculates the resistance of resistor with a resistivity_ldR of p and a
      * length of l with a area of A(pir^2, in a circular resistor).
-     * @param p  the resistivity
+     * @param p  the resistivity_ldR
      * @param l  the length
      * @param A  the cross sectional area
      * @param print  print to console
@@ -546,9 +562,9 @@ public:
 
     /**
      * @brief calculates the resistance of a piece of wire with a length of l,
-     * having a diameter of d and a resistivity of p, which depends on the
+     * having a diameter of d and a resistivity_ldR of p, which depends on the
      * material its made from. copper is a p = 1.72e-8 Ohms/m
-     * @param p  the resistivity
+     * @param p  the resistivity_ldR
      * @param l  the length
      * @param d  the diameter
      * @param print  print to console
@@ -561,13 +577,13 @@ public:
     /// <summary>
     /// calculates the cross sectional areas the of a resistor.
     /// </summary>
-    /// <param name="p">The resistivity.</param>
+    /// <param name="p">The resistivity_ldR.</param>
     /// <param name="R">The Resistance.</param>
     /// <param name="l">The length.</param>
     /// <returns>area of resistor (m^2)</returns>
     /**
      * @brief calculates the cross sectional areas the of a resistor.
-     * @param p  the resistivity
+     * @param p  the resistivity_ldR
      * @param R  the Resistance
      * @param l  the length
      * @param print  print to console
@@ -581,7 +597,7 @@ public:
      * @brief calculates the length of a resistor.
      * @param A  the cross sectional area
      * @param R  The resistance
-     * @param p  The resistivity
+     * @param p  The resistivity_ldR
      * @param print  print to console
      * @return  the length of resistor (m)
      */
@@ -593,7 +609,7 @@ public:
      * @brief calculates the Lengths of filament.
      * @param d  the diameter
      * @param R  the resistance
-     * @param p  the resistivity
+     * @param p  the resistivity_ldR
      * @param print  print to console
      * @return  the length of filament (m)
      */
@@ -604,32 +620,30 @@ public:
     /**
      * @brief As part of a class project you are given m g of copper and asked
      * to fabricate a wire with uniform cross-section. You use up m kg of the
-     * copper and make a wire with a resistance of R Ω. The resistivity
+     * copper and make a wire with a resistance of R Ω. The resistivity_ldR
      * of copper is p Ω · m and its density is pd kg/m^3
      * calculates the Lengths of filament.
      * @param m  the mass
      * @param R  the resistance
-     * @param p  the resistivity
+     * @param p  the resistivity_ldR
      * @param pd  the density
      * @param print  print to console
      * @return  the length of filament (m)
      */
-    static long double lengthOfWireMade(long double m,
-                                        long double R,
-                                        long double p,
-                                        long double pd, bool print = true);
+    static long double lengthOfWireMade(
+            long double m, long double R,long double p, long double pd,
+            bool print = true);
 
     /**
-     * @brief calculates the resistivity of a resistor.
+     * @brief calculates the resistivity_ldR of a resistor.
      * @param R  The resistance
      * @param A  area
      * @param l  The length
      * @param print  print to console
-     * @return  the resistivity
+     * @return  the resistivity_ldR
      */
-    static long double resistivityOfResistor(long double R,
-                                             long double A,
-                                             long double l, bool print = true);
+    static long double resistivityOfResistor(
+            long double R, long double A, long double l, bool print = true);
 
     /**
      * @brief Of what material is a wire made, if it is a length of (l)m long with a
@@ -640,22 +654,20 @@ public:
      * @param print  print to console
      * @return  Ohm m
      */
-    static long double resistivity(long double l,
-                                   long double d,
-                                   long double R, bool print = true);
+    static long double resistivity_ldR(
+            long double l, long double d, long double R, bool print = true);
 
     /**
      * @brief A d m-diameter rod carries a I A current when the electric
-     * field in the rod is E V/m. Calculate the resistivity of the rod.
+     * field in the rod is E V/m. Calculate the resistivity_ldR of the rod.
      * @param d  The diameter
      * @param I  The current
      * @param E  The electric field
      * @param print  print to console
      * @return  Ohm m
      */
-    static long double resistivity_dIE(long double d,
-                                   long double I,
-                                   long double E, bool print = true);
+    static long double resistivity_dIE(
+            long double d, long double I, long double E, bool print = true);
 
     /**
      * @brief calculates the voltages drop across a resistor.
@@ -664,7 +676,8 @@ public:
      * @param print  print to console
      * @return  The voltage
      */
-    static long double voltageDropAcrossResistor(long double I, long double R, bool print = true);
+    static long double voltageDropAcrossResistor(
+            long double I, long double R, bool print = true);
 
     /**
      * @brief Calculates the drifts the velocity (V_d) of a common wire.
@@ -699,7 +712,7 @@ public:
 
     /**
      * @brief Calculates the crosses sectional area
-     * @param p  The resistivity
+     * @param p  The resistivity_ldR
      * @param l  The length
      * @param R  The resistance
      * @param print  print to console
@@ -713,14 +726,14 @@ public:
      * @brief Calculates the change in resistances from the effects of a
      * change in temperature.
      * @param R0  The initial colong double resistance
-     * @param tCoR  The temperature coefficients of resistivity.
+     * @param tCoR  The temperature coefficients of resistivity_ldR.
      * @param tempChange  The change in the temperature.
      * @param print  print to console
      * @return  the new resistance in Ohms
      */
-    static long double resistanceChangeFromTemperature(long double R0,
-                                                       long double tCoR,
-                                                       long double tempChange, bool print = true);
+    static long double resistanceChangeFromTemperature(
+            long double R0, long double tCoR, long double tempChange,
+            bool print = true);
 
     /**
      * @brief calculates the electrical power from current and volts
@@ -729,35 +742,8 @@ public:
      * @param print  print to console
      * @return  energy from electrical(W)
      */
-    static long double electricalPower_IV(long double I, long double V, bool print = true);
-
-    /**
-     * @brief calculates the electrical power from volts and resistance
-     * @param V  The volts
-     * @param R  The resistance
-     * @param print  print to console
-     * @return  energy from electrical (W)
-     */
-    static long double electricalPower_VR(long double V, long double R, bool print = true);
-
-    /**
-     * @brief Some makes of olong doubleer cars have 6.00-V electrical systems. (a) What is
-     * the hot resistance of a 30.0-W headlight in such a car?
-     * @param P  The power.
-     * @param V  The volts.
-     * @param print  print to console
-     * @return  resistance
-     */
-    static long double resistanceFromPowerAndVolts(long double P, long double V, bool print = true);
-
-    /**
-     * @brief Calculates the resistance from power and current.
-     * @param P  The power.
-     * @param I  The current.
-     * @param print  print to console
-     * @return  resistance
-     */
-    static long double resistanceFromPowerAndCurrent(long double P, long double I, bool print = true);
+    static long double electricalPower_IV(
+            long double I, long double V, bool print = true);
 
     /**
      * @brief calculates the electrical power from current and resistance
@@ -766,19 +752,122 @@ public:
      * @param print  print to console
      * @return  energy from electrical (W)
      */
-    static long double electricalPower_IR(long double I, long double R, bool print = true);
+    static long double electricalPower_IR(
+            long double I, long double R, bool print = true);
 
     /**
-     * @brief A charge of (COULOMB) C of charge passes through a pocket calculator’s solar
-     * cells in t seconds. What is the power output, given the calculator’s
-     * voltage output is a voltage of V.
+     * @brief calculates the electrical power from volts and resistance
+     * @param V  The volts
+     * @param R  The resistance
+     * @param print  print to console
+     * @return  energy from electrical (W)
+     */
+    static long double electricalPower_VR(
+            long double V, long double R, bool print = true);
+
+    /**
+     * @brief Some makes of along double cars have 6.00-V electrical systems.
+     * What is the hot resistance of a 30.0-W headlight in such a car?
+     * @param P  The power.
+     * @param V  The volts.
+     * @param print  print to console
+     * @return  resistance
+     */
+    static long double resistance_PV(
+            long double P, long double V, bool print = true);
+
+    /**
+     * @brief Calculates the resistance from power and current.
+     * @param P  The power.
+     * @param I  The current.
+     * @param print  print to console
+     * @return  resistance
+     */
+    static long double resistance_PI(
+            long double P, long double I, bool print = true);
+
+    /**
+     * @brief Calculates the resistance from voltage and current.
+     * @param V  The volts.
+     * @param I  The current.
+     * @param print  print to console
+     * @return  resistance
+     */
+    static long double resistance_VI(
+            long double V, long double I, bool print = true);
+
+    /**
+     * @brief Calculate the voltage from power P and resistance R.
+     * @param P  The power.
+     * @param R  The resistance.
+     * @param print  print to console
+     * @return  voltage
+     */
+    static long double voltage_PR(
+            long double P, long double R, bool print = true);
+
+    /**
+     * @brief Calculate the voltage from current I and resistance R.
+     * @param I  The current.
+     * @param R  The resistance.
+     * @param print  print to console
+     * @return  voltage
+     */
+    static long double voltage_IR(
+            long double I, long double R, bool print = true);
+
+    /**
+     * @brief Calculate the voltage from current I and power P.
+     * @param I  The current.
+     * @param P  The power.
+     * @param print  print to console
+     * @return  voltage
+     */
+    static long double voltage_IP(
+            long double I, long double P, bool print = true);
+
+    /**
+     * @brief calculates the current from rearranging the power equations
+     * @param P  the power in watts
+     * @param R  the resistance
+     * @param print  print to console
+     * @return  the current in amperes(I)
+     */
+    static long double current_PR(
+            long double P, long double R, bool print = true);
+
+    /**
+     * @brief calculates the current from power and volts
+     * @param P  the power in watts
+     * @param V  the volts
+     * @param print  print to console
+     * @return
+     */
+    static long double current_PV(
+            long double P, long double V, bool print = true);
+
+    /**
+     * @brief calculates the current from volts and resistance
+     * @param V  the volts
+     * @param R  the resistance
+     * @param print  print to console
+     * @return  the current in amperes(I)
+     */
+    static long double current_VR(
+            long double V, long double R, bool print = true);
+
+    /**
+     * @brief A charge of (COULOMB) C of charge passes through a pocket
+     * calculator’s solar cells in t seconds. What is the power output, given
+     * the calculator’s voltage output is a voltage of V.
      * @param COULOMB  The charge.
      * @param t  The time.
      * @param V  The voltage.
      * @param print  print to console
      * @return  the watts
      */
-    static long double powerOutputOverTime(long double Q, long double t, long double V, bool print = true);
+    static long double powerOutputOverTime(
+            long double Q, long double t, long double V, bool print = true);
 
     /**
      * @brief Calculates the total electrons  that pass through a charge.
@@ -786,58 +875,62 @@ public:
      * @param print  print to console
      * @return  Ne, number of electrons
      */
-    static long double electronsThatPassThroughACharge(long double Q, bool print = true);
+    static long double electronsThatPassThroughACharge(
+            long double Q, bool print = true);
 
     /**
-     * @brief If a large cyclotron directs a beam of freeProtons nuclei onto a target
-     * with a beam current of I Amperes. Calculate How many nuclei per second
-     * this is.
+     * @brief If a large cyclotron directs a beam of freeProtons nuclei onto a
+     * target with a beam current of I Amperes. Calculate How many nuclei per
+     * second this is.
      * @param I  The current.
      * @param freeProtons  The number of free protons.
      * @param print  print to console
      * @return  nuclei/second
      */
-    static long double nucleiPerSecond(long double I, long double freeProtons, bool print = true);
+    static long double nucleiPerSecond(
+            long double I, long double freeProtons, bool print = true);
 
     /**
-     * @brief Calculates the ratio of the resistivity of wire1 to that of wire2, if they have
-     * the same resistance per unit length (as they might in householong double wiring)
-     * @param p1  The the bigger resistivity.
-     * @param p2  The smaller resistivity.
+     * @brief Calculates the ratio of the resistivity_ldR of wire1 to that of wire2,
+     * if they have the same resistance per unit length
+     * (as they might in household double wiring)
+     * @param p1  The the bigger resistivity_ldR.
+     * @param p2  The smaller resistivity_ldR.
      * @param print  print to console
-     * @return  the ratio meaning the size of the smaller resistivity value will
+     * @return  the ratio meaning the size of the smaller resistivity_ldR value will
      * to by this value bigger
      */
-    static long double ratioOfDiametersInWires(long double p1, long double p2, bool print = true);
+    static long double ratioOfDiametersInWires(
+            long double p1, long double p2, bool print = true);
 
     /**
      * @brief Calculates the current flows through a diameter of (d) rod with a
-     * resistivity of (p) that is a length of (l)m long, when (V) voltage is
+     * resistivity_ldR of (p) that is a length of (l)m long, when (V) voltage is
      * applied to it? (Such a rod may be used to make nuclear- particle
      * detectors, for example.)
      * @param V  The applied voltage.
-     * @param p  The resistivity.
+     * @param p  The resistivity_ldR.
      * @param d  The diameter.
      * @param l  The length.
      * @param print  print to console
      * @return  the Amperes
      */
-    static long double currentFlowThroughOfMaterial(long double V,
-                                                    long double p,
-                                                    long double d,
-                                                    long double l, bool print = true);
+    static long double currentFlowThroughOfMaterial(
+            long double V, long double p, long double d, long double l,
+            bool print = true);
 
     /**
      * @brief A resistor made of Nichrome wire is used in an application where its
      * resistance cannot change more than 1.00% from its value at 20.0∘C .
      * Over what temperature range can it be used?
-     * @param tempCoEffOfResistivity  The temperature coefficient of resistivity.
+     * @param tempCoEffOfResistivity  The temperature coefficient of resistivity_ldR.
      * @param maxChangePercent  The maximum change percent.
      * @param print  print to console
      * @return  temperature
      */
-    static long double maximumTempchange(long double tempCoEffOfResistivity,
-                                         long double maxChangePercent, bool print = true);
+    static long double maximumTempchange(
+            long double tempCoEffOfResistivity, long double maxChangePercent,
+            bool print = true);
 
     /**
      * @brief With a 1200-W toaster, how much electrical energy is needed to make a
@@ -848,9 +941,9 @@ public:
      * @param print  print to console
      * @return  total cost to use electricity
      */
-    static long double costOfElectricityUsed_kWh(long double P,
-                                                 long double t,
-                                                 long double ratePerKwh, bool print = true);
+    static long double costOfElectricityUsed_kWh(
+            long double P, long double t, long double ratePerKwh,
+            bool print = true);
 
     /**
      * @brief An olong double light bulb draws only 50.0 W, rather than its original 60.0 W,
@@ -862,7 +955,8 @@ public:
      * @param print  print to console
      * @return  factor which diameter decreases
      */
-    static long double factorDiameterReduced(long double Pi, long double Pf, bool print = true);
+    static long double factorDiameterReduced(
+            long double Pi, long double Pf, bool print = true);
 
     /**
      * @brief Calculates the total time.
@@ -871,7 +965,8 @@ public:
      * @param print  print to console
      * @return  time
      */
-    static long double timeTotal(long double Q, long double P, bool print = true);
+    static long double timeTotal(
+            long double Q, long double P, bool print = true);
 
     /**
      * @brief Calculates the total time.
@@ -881,7 +976,8 @@ public:
      * @param print  print to console
      * @return  time
      */
-    static long double timeTotal(long double Q, long double I, long double V, bool print = true);
+    static long double timeTotal(
+            long double Q, long double I, long double V, bool print = true);
 
     /**
      * @brief Calculates the total time.
@@ -896,14 +992,10 @@ public:
      * @param print  print to console
      * @return  time
      */
-    static long double timeToRaiseTemperature(long double m1,
-                                              long double c,
-                                              long double Ti,
-                                              long double Tf,
-                                              long double m2,
-                                              long double Lv,
-                                              long double I,
-                                              long double V, bool print = true);
+    static long double timeToRaiseTemperature(
+            long double m1, long double c, long double Ti, long double Tf,
+            long double m2, long double Lv, long double I, long double V,
+            bool print = true);
 
     /**
      * @brief Calculates the cost of heating a hot tub containing 1500 kg of water from
@@ -918,12 +1010,9 @@ public:
      * @param print  print to console
      * @return  cost in cents
      */
-    static long double costToHeatHotTub(long double m,
-                                        long double c,
-                                        long double Ti,
-                                        long double Tf,
-                                        long double eff,
-                                        long double rate, bool print = true);
+    static long double costToHeatHotTub(
+            long double m, long double c, long double Ti, long double Tf,
+            long double eff, long double rate, bool print = true);
 
     /**
      * @brief Calculates the RMS current.
@@ -989,7 +1078,8 @@ public:
      * @param print  print to console
      * @return  peak power
      */
-    static long double peekPower(long double Vrms, long double Irms, bool print = true);
+    static long double peekPower(
+            long double Vrms, long double Irms, bool print = true);
 
     /**
      * @brief Calculates the voltage at a given time.
@@ -999,31 +1089,32 @@ public:
      * @param print  print to console
      * @return  voltage
      */
-    static long double voltageAC(long double Vo, long double f, long double t, bool print = true);
+    static long double voltageAC(
+            long double Vo, long double f, long double t, bool print = true);
 
     /**
      * @brief Calculates the current at a given time.
-     * @param Io  The peek current (Io = Vo/R).
+     * @param I0  The peek current (Io = Vo/R).
      * @param f  The frequency in hertz.
      * @param t  The time we are looking to find the current at.
      * @param print  print to console
      * @return  amperes
      */
-    static long double currentAC(long double Io, long double f, long double t, bool print = true);
+    static long double currentAC_ftI0(
+            long double I0, long double f, long double t, bool print = true);
 
     /**
-     * @brief Calculates the temperature coefficient of resistivity.
+     * @brief Calculates the temperature coefficient of resistivity_ldR.
      * @param R  The resistance.
      * @param R_o  The resistance at 0 degrees.
      * @param T_i  The initial temp.
      * @param T_f  The final temp.
      * @param print  print to console
-     * @return  temp coeff of resistivity
+     * @return  temp coeff of resistivity_ldR
      */
-    static long double tempCoeffOfResistivity(long double R,
-                                              long double R_o,
-                                              long double T_i,
-                                              long double T_f, bool print = true);
+    static long double tempCoeffOfResistivity(
+            long double R, long double R_o, long double T_i, long double T_f,
+            bool print = true);
 
     /**
      * @brief Currents aren’t always confined to wires. Currents in Earth, in
@@ -1040,7 +1131,8 @@ public:
      * @param print  print to console
      * @return  current density
      */
-    static long double currentDensity_nqv(long double n, long double q, long double v, bool print = true);
+    static long double currentDensity_nqv(
+            long double n, long double q, long double v, bool print = true);
 
     /**
      * @brief Calculates the current density.
@@ -1053,28 +1145,32 @@ public:
     print = true);
 
     /**
-     * @brief Calculates the current density of a wire with a resistivity of
+     * @brief Calculates the current density of a wire with a resistivity_ldR of
      * ρ and and electric field of E mV/m.
-     * @param I the resistivity of the wire
+     * @param I the resistivity_ldR of the wire
      * @param A the electric field of the wire
      * @param print print to console
      * @return current density
      */
-    static long double currentDensity_pE(long double p, long double E, bool print = true);
+    static long double currentDensity_pE(
+            long double p, long double E, bool print = true);
 
 
     /**
-     * A d m-diameter wire with a resistivity of p, carries I A to a household
+     * A d m-diameter wire with a resistivity_ldR of p, carries I A to a household
      * appliance.
      * Calculate the magnitude of the electric field in the wire.
      * @param I  The current.
-     * @param p  The resistivity.
-     * @param d  The diameter.
+     * @param p  The resistivity_ldR.
+     * @param drc  The unit for area.
+     * @param mode 'r' for radius, 'd' for diameter (default) or
+     * 'c' for circumference
      * @param print  print to console
      * @return  electric field
      */
     static long double electricFieldInWire(
-            long double I, long double p, long double d, bool print = true);
+            long double I, long double p, long double drc, char mode = 'd',
+            bool print = true);
 
     /**
      * @brief A metallic wire has a diameter of d m. When the current in the
@@ -1097,7 +1193,8 @@ public:
      * @param print If true, print the result.
      * @return The number of electrons.
      */
-    static long double electronsPassed(long double I, long double t, bool print = true);
+    static long double electronsPassed(
+            long double I, long double t, bool print = true);
 
     /**
      * @brief A piece of wire made from metal A joins a piece of wire metal B
@@ -1118,19 +1215,37 @@ public:
     /**
      * @brief A potential difference of V (V) is imposed across a l m length
      * of g gauge wire. As a result, a I A current flows in the wire.
-     * Calculate the resistivity of the wire.
+     * Calculate the resistivity_ldR of the wire.
      * @param V  The potential difference.
      * @param I  The current.
      * @param l  The length.
      * @param g  The gauge.
      * @param print  print to console
-     * @return  resistivity
+     * @return  resistivity_ldR
      */
-    static long double resistivity(long double V, long double I, long double l,
-                                   int g, bool print = true);
+    static long double resistivity_VIlg(
+            long double V, long double I, long double l, int g,
+            bool print = true);
 
+    /**
+     * @brief Calculate the maximum permissible length for an extension cord
+     * made from g-gauge type metal wire. The current drawn is I A
+     * and needs a minimum of V_min V across its motor when the outlet supplies
+     * V0 V.
+     * @param I  The current.
+     * @param V_min  The minimum voltage.
+     * @param V0  The voltage.
+     * @param g  The gauge of the wire (default is 18).
+     * @param type The type of wire (default is copper).
+     * @param print  print to console (default is true).
+     * @return  maximum length of extension cord
+     */
+    static long double maxExtensionCordLength(
+            long double I, long double V_min, long double V0, int g = 18,
+            const std::string& type = "copper", bool print = true);
 
-    void setElectricCurrentVal(long double val) { _electricCurrentVal = val; }
+    static long double getResistivity(const string& basicString);
+
 
     ~ElectricCurrent()
     {
@@ -1138,79 +1253,88 @@ public:
     }
 
 private:
-    long double _electricCurrentVal;
     static void countIncrease() { electricCurrent_objectCount += 1; }
     static void countDecrease() { electricCurrent_objectCount -= 1; }
 
+
 };
 
-inline long double ElectricCurrent::circle_area_r(const long double r, bool print)
+inline long double ElectricCurrent::circle_area_r(
+        const long double r, bool print)
 {
     auto val =  constants::PI * (r*r);//m^2
     if (print)
     {
-        std::cout << "Area of a circle with radius " << r << " is " << val << " m^2" << std::endl;
+        std::cout << "Area of a circle with radius " << r << " is " << val
+        << " m^2" << std::endl;
     }
     return val;
 }
 
-inline long double ElectricCurrent::circle_area_d(const long double d, bool print)
+inline long double ElectricCurrent::circle_area_d(
+        const long double d, bool print)
 {
     auto val =  constants::PI*((d*d)/4);//m^2
     if (print)
     {
-        std::cout << "Area of a circle with diameter " << d << " is " << val << " m^2" << std::endl;
+        std::cout << "Area of a circle with diameter " << d << " is " << val
+        << " m^2" << std::endl;
     }
     return val;
 }
 
-inline long double ElectricCurrent::electricCurrent(const long double Q, const long double t, bool print)
+inline long double ElectricCurrent::electricCurrent(
+        const long double Q, const long double t, bool print)
 {
     auto val =  Q / t;//Amperes(I)
     if (print)
     {
-        std::cout << "The electric current is " << val << " Amperes(I)" << std::endl;
+        std::cout << "The electric current is " << val << " Amperes(I)"
+        << std::endl;
     }
     return val;
 }
 
-inline long double ElectricCurrent::timeItTakesChargeToFlow(const long double Q, const long double I, bool print)
+inline long double ElectricCurrent::timeItTakesChargeToFlow(
+        const long double Q, const long double I, bool print)
 {
     auto val =  Q / I;//seconds(s)
     if (print)
     {
-        std::cout << "The time it takes for the charge to flow is " << val << " seconds(s)" << std::endl;
+        std::cout << "The time it takes for the charge to flow is " << val
+        << " seconds(s)" << std::endl;
     }
     return val;
 }
 
-inline long double ElectricCurrent::electricCharge(const long double I, const long double t, bool print)
+inline long double ElectricCurrent::electricCharge(
+        const long double I, const long double t, bool print)
 {
     auto val =  I * t;//Coulombs(C)
     if (print)
     {
-        std::cout << "The electric charge is " << val << " Coulombs(C)" << std::endl;
+        std::cout << "The electric charge is " << val << " Coulombs(C)"
+        << std::endl;
     }
     return val;
 }
 
-inline long double ElectricCurrent::current_qnAx_t(const long double q,
-                                          const long double n,
-                                          const long double Ax,
-                                          const long double t, bool print)
+inline long double ElectricCurrent::current_qnAx_t(
+        const long double q, const long double n, const long double Ax,
+        const long double t, bool print)
 {
     auto val =  (q * n * Ax) / t;//Amperes or Coulombs/second
     if (print)
     {
-        std::cout << "The current is " << val << " Amperes or Coulombs/second" << std::endl;
+        std::cout << "The current is " << val << " Amperes or Coulombs/second"
+        << std::endl;
     }
     return val;
 }
 
-inline long double ElectricCurrent::current_nqAvd(const long double n,
-                                         const long double q,
-                                         const long double A,
-                                         const long double vd, bool print)
+inline long double ElectricCurrent::current_nqAvd(
+        const long double n, const long double q, const long double A,
+        const long double vd, bool print)
 {
     auto val =  n * q * A * vd;//Amperes or C/s
     if (print)
@@ -1220,7 +1344,8 @@ inline long double ElectricCurrent::current_nqAvd(const long double n,
     return val;
 }
 
-inline long double ElectricCurrent::current_ohms(const long double V, const long double R, bool print)
+inline long double ElectricCurrent::current_ohms(
+        const long double V, const long double R, bool print)
 {
     auto val =  V / R;//Amperes(I)
     if (print)
@@ -1230,7 +1355,8 @@ inline long double ElectricCurrent::current_ohms(const long double V, const long
     return val;
 }
 
-inline long double ElectricCurrent::current_PR(const long double P, const long double R, bool print)
+inline long double ElectricCurrent::current_PR(
+        const long double P, const long double R, bool print)
 {
     auto val =  sqrt(P/R);//Amperes(I)
     if (print)
@@ -1240,7 +1366,8 @@ inline long double ElectricCurrent::current_PR(const long double P, const long d
     return val;
 }
 
-inline long double ElectricCurrent::current_PV(const long double P, const long double V, bool print)
+inline long double ElectricCurrent::current_PV(
+        const long double P, const long double V, bool print)
 {
     auto val =  P/V;//Amperes
     if (print)
@@ -1250,7 +1377,8 @@ inline long double ElectricCurrent::current_PV(const long double P, const long d
     return val;
 }
 
-inline long double ElectricCurrent::resistance_ohmic(const long double V, const long double I, bool print)
+inline long double ElectricCurrent::resistance_ohmic(
+        const long double V, const long double I, bool print)
 {
     auto val =  V / I;//Ohms
     if (print)
@@ -1261,7 +1389,8 @@ inline long double ElectricCurrent::resistance_ohmic(const long double V, const 
 }
 
 inline long double ElectricCurrent::resistanceUsingResistivity(
-        const long double p, const long double l, const long double A, bool print)
+        const long double p, const long double l, const long double A,
+        bool print)
 {
     auto val =  p*(l  / A);//Ohms
     if (print)
@@ -1273,7 +1402,8 @@ inline long double ElectricCurrent::resistanceUsingResistivity(
 
 
 inline long double ElectricCurrent::resistanceUsingResistivityWire(
-        const long double p, const long double l, const long double d, bool print)
+        const long double p, const long double l, const long double d,
+        bool print)
 {
     auto A = circle_area_d(d);
     auto r =  (p * l) / A;//Ohms
@@ -1285,34 +1415,40 @@ inline long double ElectricCurrent::resistanceUsingResistivityWire(
 }
 
 inline long double ElectricCurrent::areaOfResistor(
-        const long double p, const long double R, const long double l, bool print)
+        const long double p, const long double R, const long double l,
+        bool print)
 {
     auto val =  p * (l / R);//m^2
     if (print)
     {
-        std::cout << "The area of the resistor is " << val << " m^2" << std::endl;
+        std::cout << "The area of the resistor is " << val
+        << " m^2" << std::endl;
     }
     return val;
 }
 
 inline long double ElectricCurrent::lengthOfResistor(
-        const long double A, const long double R, const long double p, bool print)
+        const long double A, const long double R, const long double p,
+        bool print)
 {
     auto val =  (A * R) / p;//m
     if (print)
     {
-        std::cout << "The length of the resistor is " << val << " m" << std::endl;
+        std::cout << "The length of the resistor is " << val
+        << " m" << std::endl;
     }
     return val;
 }
 
 inline long double ElectricCurrent::lengthOfFilament(
-        const long double d, const long double R, const long double p, bool print)
+        const long double d, const long double R, const long double p,
+        bool print)
 {
     auto val =  (constants::PI*(d*d)*R)/(4.0*p);//meters
     if (print)
     {
-        std::cout << "The length of the filament is " << val << " meters" << std::endl;
+        std::cout << "The length of the filament is " << val
+        << " meters" << std::endl;
     }
     return val;
 }
@@ -1335,22 +1471,25 @@ inline long double ElectricCurrent::resistivityOfResistor(
     auto val =  (A * R) / l;//Ohms/m
     if (print)
     {
-        std::cout << "The resistivity of the resistor is " << val << " Ohms/m" << std::endl;
+        std::cout << "The resistivity_ldR of the resistor is " << val << " Ohms/m" << std::endl;
     }
     return val;
 }
 
-inline long double ElectricCurrent::resistivity(const long double l, const long double d, const long double R, bool print)
+inline long double ElectricCurrent::resistivity_ldR(
+        const long double l, const long double d, const long double R,
+        bool print)
 {
     auto val =  (constants::PI*(d*d)*R)/(4.0*l);//Ohms meters
     if (print)
     {
-        std::cout << "The resistivity is " << val << " Ohms meters" << std::endl;
+        std::cout << "The resistivity_ldR is " << val << " Ohms meters" << std::endl;
     }
     return val;
 }
 
-inline long double ElectricCurrent::voltageDropAcrossResistor(const long double I, const long double R, bool print)
+inline long double ElectricCurrent::voltageDropAcrossResistor(
+        const long double I, const long double R, bool print)
 {
     auto val =  I * R;//volts
     if (print)
@@ -1360,11 +1499,9 @@ inline long double ElectricCurrent::voltageDropAcrossResistor(const long double 
     return val;
 }
 
-inline long double ElectricCurrent::driftVelocity_commonWire(const long double q,
-                                                    const long double diameter,
-                                                    const long double I,
-                                                    const long double p,
-                                                    const long double mass, bool print)
+inline long double ElectricCurrent::driftVelocity_commonWire(
+        const long double q, const long double diameter, const long double I,
+        const long double p, const long double mass, bool print)
 {
     const long double n = (constants::AVOGADRO * 1000.0 * p) / (mass);
     auto val =  I / (n * q * (constants::PI*pow(diameter/2.0,2)));
@@ -1375,10 +1512,9 @@ inline long double ElectricCurrent::driftVelocity_commonWire(const long double q
     return val;
 }
 
-inline long double ElectricCurrent::driftVelocity_commonWire_n(const long double n,
-                                                      const long double q,
-                                                      const long double diameter,
-                                                      const long double I, bool print)
+inline long double ElectricCurrent::driftVelocity_commonWire_n(
+        const long double n, const long double q, const long double diameter,
+        const long double I, bool print)
 {
     auto val =  I / (n * q * (constants::PI * pow(diameter / 2, 2)));
     if (print)
@@ -1388,7 +1524,9 @@ inline long double ElectricCurrent::driftVelocity_commonWire_n(const long double
     return val;
 }
 
-inline long double ElectricCurrent::crossSectionalArea(const long double p, const long double l, const long double R, bool print)
+inline long double ElectricCurrent::crossSectionalArea(
+        const long double p, const long double l, const long double R,
+        bool print)
 {
     auto val =  (p * l) / R;
     if (print)
@@ -1398,9 +1536,9 @@ inline long double ElectricCurrent::crossSectionalArea(const long double p, cons
     return val;
 }
 
-inline long double ElectricCurrent::resistanceChangeFromTemperature(const long double R0,
-                                                           const long double tCoR,
-                                                           const long double tempChange, bool print)
+inline long double ElectricCurrent::resistanceChangeFromTemperature(
+        const long double R0, const long double tCoR,
+        const long double tempChange, bool print)
 {
     auto val =  R0 * (1.0 + tCoR * tempChange);
     if (print)
@@ -1410,7 +1548,8 @@ inline long double ElectricCurrent::resistanceChangeFromTemperature(const long d
     return val;
 }
 
-inline long double ElectricCurrent::electricalPower_IV(const long double I, const long double V, bool print)
+inline long double ElectricCurrent::electricalPower_IV(
+        const long double I, const long double V, bool print)
 {
     auto P =  I * V;//Watts
     if (print)
@@ -1420,7 +1559,8 @@ inline long double ElectricCurrent::electricalPower_IV(const long double I, cons
     return P;
 }
 
-inline long double ElectricCurrent::electricalPower_VR(const long double V, const long double R, bool print)
+inline long double ElectricCurrent::electricalPower_VR(
+        const long double V, const long double R, bool print)
 {
     auto val =  (V * V) / R;//Watts
     if (print)
@@ -1430,7 +1570,8 @@ inline long double ElectricCurrent::electricalPower_VR(const long double V, cons
     return val;
 }
 
-inline long double ElectricCurrent::resistanceFromPowerAndVolts(const long double P, const long double V, bool print)
+inline long double ElectricCurrent::resistance_PV(
+        const long double P, const long double V, bool print)
 {
     auto val =  (V*V)/P;//Ohms
     if (print)
@@ -1440,7 +1581,8 @@ inline long double ElectricCurrent::resistanceFromPowerAndVolts(const long doubl
     return val;
 }
 
-inline long double ElectricCurrent::resistanceFromPowerAndCurrent(const long double P, const long double I, bool print)
+inline long double ElectricCurrent::resistance_PI(
+        const long double P, const long double I, bool print)
 {
     auto val =  P/(I*I);//Ohms
     if (print)
@@ -1450,7 +1592,8 @@ inline long double ElectricCurrent::resistanceFromPowerAndCurrent(const long dou
     return val;
 }
 
-inline long double ElectricCurrent::electricalPower_IR(const long double I, const long double R, bool print)
+inline long double ElectricCurrent::electricalPower_IR(
+        const long double I, const long double R, bool print)
 {
     auto val =  (I * I) * R;//Watts
     if (print)
@@ -1460,7 +1603,9 @@ inline long double ElectricCurrent::electricalPower_IR(const long double I, cons
     return val;
 }
 
-inline long double ElectricCurrent::powerOutputOverTime(const long double Q, const long double t, const long double V, bool print)
+inline long double ElectricCurrent::powerOutputOverTime(
+        const long double Q, const long double t, const long double V,
+        bool print)
 {
     auto val =  (Q/t)*V;//watts
     if (print)
@@ -1470,7 +1615,8 @@ inline long double ElectricCurrent::powerOutputOverTime(const long double Q, con
     return val;
 }
 
-inline long double ElectricCurrent::electronsThatPassThroughACharge(const long double Q, bool print)
+inline long double ElectricCurrent::electronsThatPassThroughACharge(
+        const long double Q, bool print)
 {
     auto val =  Q / constants::PROTON_CHARGE;
     if (print)
@@ -1480,7 +1626,8 @@ inline long double ElectricCurrent::electronsThatPassThroughACharge(const long d
     return val;
 }
 
-inline long double ElectricCurrent::nucleiPerSecond(const long double I, const long double freeProtons, bool print)
+inline long double ElectricCurrent::nucleiPerSecond(
+        const long double I, const long double freeProtons, bool print)
 {
     auto val =  I / (freeProtons * constants::PROTON_CHARGE);
     if (print)
@@ -1490,7 +1637,8 @@ inline long double ElectricCurrent::nucleiPerSecond(const long double I, const l
     return val;
 }
 
-inline long double ElectricCurrent::ratioOfDiametersInWires(const long double p1, const long double p2, bool print)
+inline long double ElectricCurrent::ratioOfDiametersInWires(
+        const long double p1, const long double p2, bool print)
 {
     auto val =  sqrt(p1/p2);
     if (print)
@@ -1500,15 +1648,15 @@ inline long double ElectricCurrent::ratioOfDiametersInWires(const long double p1
     return val;
 }
 
-inline long double ElectricCurrent::currentFlowThroughOfMaterial(const long double V,
-                                                        const long double p,
-                                                        const long double d,
-                                                        const long double l, bool print)
+inline long double ElectricCurrent::currentFlowThroughOfMaterial(
+        const long double V, const long double p, const long double d,
+        const long double l, bool print)
 {
     auto val =  (V*constants::PI*(d*d))/(4.0*p*l);//Amperes(I)
     if (print)
     {
-        std::cout << "The current flow through the material is " << val << " Amperes" << std::endl;
+        std::cout << "The current flow through the material is " << val
+        << " Amperes" << std::endl;
     }
     return val;
 }
@@ -1520,25 +1668,28 @@ inline long double ElectricCurrent::maximumTempchange(
     auto val =  (maxChangePercent/100)/tempCoEffOfResistivity;
     if (print)
     {
-        std::cout << "The maximum temperature change is " << val << " degrees Celsius" << std::endl;
+        std::cout << "The maximum temperature change is " << val
+        << " degrees Celsius" << std::endl;
     }
     return val;
 }
 
-inline long double ElectricCurrent::costOfElectricityUsed_kWh(const long double P,
-                                                     const long double t,
-                                                     const long double ratePerKwh, bool print)
+inline long double ElectricCurrent::costOfElectricityUsed_kWh(
+        const long double P, const long double t, const long double ratePerKwh,
+        bool print)
 {
     const long double joules = P * t;
     auto val =  (joules * ratePerKwh)/(1000.0*3600);
     if (print)
     {
-        std::cout << "The cost of electricity used is " << val << " dollars" << std::endl;
+        std::cout << "The cost of electricity used is " << val
+        << " dollars" << std::endl;
     }
     return val;
 }
 
-inline long double ElectricCurrent::factorDiameterReduced(const long double Pi, const long double Pf, bool print)
+inline long double ElectricCurrent::factorDiameterReduced(
+        const long double Pi, const long double Pf, bool print)
 {
     auto val =  sqrt(Pf / Pi);
     if (print)
@@ -1548,7 +1699,8 @@ inline long double ElectricCurrent::factorDiameterReduced(const long double Pi, 
     return val;
 }
 
-inline long double ElectricCurrent::timeTotal(const long double Q, const long double P, bool print)
+inline long double ElectricCurrent::timeTotal(
+        const long double Q, const long double P, bool print)
 {
     auto val =  Q / P;//seconds
     if (print)
@@ -1558,7 +1710,9 @@ inline long double ElectricCurrent::timeTotal(const long double Q, const long do
     return val;
 }
 
-inline long double ElectricCurrent::timeTotal(const long double Q, const long double I, const long double V, bool print)
+inline long double ElectricCurrent::timeTotal(
+        const long double Q, const long double I, const long double V,
+        bool print)
 {
     auto val =  Q/(I*V);
     if (print)
@@ -1568,14 +1722,10 @@ inline long double ElectricCurrent::timeTotal(const long double Q, const long do
     return val;
 }
 
-inline long double ElectricCurrent::timeToRaiseTemperature(const long double m1,
-                                                  const long double c,
-                                                  const long double Ti,
-                                                  const long double Tf,
-                                                  const long double m2,
-                                                  const long double Lv,
-                                                  const long double I,
-                                                  const long double V, bool print)
+inline long double ElectricCurrent::timeToRaiseTemperature(
+        const long double m1, const long double c, const long double Ti,
+        const long double Tf, const long double m2, const long double Lv,
+        const long double I, const long double V, bool print)
 {
     auto val =  (m1*c*(Tf-Ti)+ m2*Lv)/(I*V);//time(s)
     if (print)
@@ -1585,17 +1735,16 @@ inline long double ElectricCurrent::timeToRaiseTemperature(const long double m1,
     return val;
 }
 
-inline long double ElectricCurrent::costToHeatHotTub(const long double m,
-                                            const long double c,
-                                            const long double Ti,
-                                            const long double Tf,
-                                            const long double eff,
-                                            const long double rate, bool print)
+inline long double ElectricCurrent::costToHeatHotTub(
+        const long double m, const long double c, const long double Ti,
+        const long double Tf, const long double eff, const long double rate,
+        bool print)
 {
     auto val =  ((m*c*(Tf-Ti))/eff)*(rate/(1000.0*3600));
     if (print)
     {
-        std::cout << "The cost to heat the hot tub is " << val << " dollars" << std::endl;
+        std::cout << "The cost to heat the hot tub is " << val
+        << " dollars" << std::endl;
     }
     return val;
 }
@@ -1610,7 +1759,8 @@ inline long double ElectricCurrent::rmsCurrent(const long double Io, bool print)
     return val;
 }
 
-inline long double ElectricCurrent::peekCurrent(const long double Irms, bool print)
+inline long double ElectricCurrent::peekCurrent(
+        const long double Irms, bool print)
 {
     auto val =  sqrt(2) * Irms;
     if (print)
@@ -1630,7 +1780,8 @@ inline long double ElectricCurrent::rmsVoltage(const long double Vo, bool print)
     return val;
 }
 
-inline long double ElectricCurrent::peekVoltage(const long double Vrms, bool print)
+inline long double ElectricCurrent::peekVoltage(
+        const long double Vrms, bool print)
 {
     auto val =  sqrt(2)*Vrms;
     if (print)
@@ -1640,7 +1791,8 @@ inline long double ElectricCurrent::peekVoltage(const long double Vrms, bool pri
     return val;
 }
 
-inline long double ElectricCurrent::peekPower(const long double Vrms, const long double Irms, bool print)
+inline long double ElectricCurrent::peekPower(
+        const long double Vrms, const long double Irms, bool print)
 {
     auto val =  2.0*(Vrms*Irms);
     if (print)
@@ -1650,7 +1802,9 @@ inline long double ElectricCurrent::peekPower(const long double Vrms, const long
     return val;
 }
 
-inline long double ElectricCurrent::voltageAC(const long double Vo, const long double f, const long double t, bool print)
+inline long double ElectricCurrent::voltageAC(
+        const long double Vo, const long double f, const long double t,
+        bool print)
 {
     auto val =  Vo * sin(2*constants::PI)*f*t;// volts
     if (print)
@@ -1660,9 +1814,11 @@ inline long double ElectricCurrent::voltageAC(const long double Vo, const long d
     return val;
 }
 
-inline long double ElectricCurrent::currentAC(const long double Io, const long double f, const long double t, bool print)
+inline long double ElectricCurrent::currentAC_ftI0(
+        const long double I0, const long double f, const long double t,
+        bool print)
 {
-    auto val =  Io * sin(2 * constants::PI) * f * t;//amperes
+    auto val =  I0 * sin(2 * constants::PI) * f * t;//amperes
     if (print)
     {
         std::cout << "The current AC is " << val << " Amperes" << std::endl;
@@ -1670,15 +1826,15 @@ inline long double ElectricCurrent::currentAC(const long double Io, const long d
     return val;
 }
 
-inline long double ElectricCurrent::tempCoeffOfResistivity(const long double R,
-                                                  const long double R_o,
-                                                  const long double T_i,
-                                                  const long double T_f, bool print)
+inline long double ElectricCurrent::tempCoeffOfResistivity(
+        const long double R, const long double R_o, const long double T_i,
+        const long double T_f, bool print)
 {
     auto val =  ((R / R_o) - 1.0) / (T_f - T_i);
     if (print)
     {
-        std::cout << "The temperature coefficient of resistivity is " << val << " degrees Celsius^-1" << std::endl;
+        std::cout << "The temperature coefficient of resistivity_ldR is "
+        << val << " degrees Celsius^-1" << std::endl;
     }
     return val;
 }
@@ -1693,8 +1849,8 @@ ElectricCurrent::steadyCurrent(long double Q, long double t, bool print) {
 }
 
 long double
-ElectricCurrent::instantaneousCurrent(long double I_max, long double w,
-                                      long double t, bool print) {
+ElectricCurrent::instantaneousCurrent(
+        long double I_max, long double w, long double t, bool print) {
     long double I = I_max * sin(w * t);
     if (print) {
         std::cout << "I = " << I << " A" << std::endl;
@@ -1703,8 +1859,8 @@ ElectricCurrent::instantaneousCurrent(long double I_max, long double w,
 }
 
 long double
-ElectricCurrent::currentDensity_nqv(long double n, long double q, long double v,
-                                    bool print) {
+ElectricCurrent::currentDensity_nqv(
+        long double n, long double q, long double v, bool print) {
     long double J = n * q * v;
     if (print) {
         std::cout << "J = " << J << " A" << std::endl;
@@ -1713,7 +1869,8 @@ ElectricCurrent::currentDensity_nqv(long double n, long double q, long double v,
 }
 
 long double
-ElectricCurrent::currentDensity_IA(long double I, long double A, bool print) {
+ElectricCurrent::currentDensity_IA(
+        long double I, long double A, bool print) {
     long double J = I / A;
     if (print) {
         std::cout << "J = " << J << " A" << std::endl;
@@ -1722,7 +1879,8 @@ ElectricCurrent::currentDensity_IA(long double I, long double A, bool print) {
 }
 
 long double
-ElectricCurrent::currentDensity_pE(long double p, long double E, bool print) {
+ElectricCurrent::currentDensity_pE(
+        long double p, long double E, bool print) {
     long double J = E / p;
     if (print) {
         std::cout << "J = " << J << " A" << std::endl;
@@ -1730,9 +1888,19 @@ ElectricCurrent::currentDensity_pE(long double p, long double E, bool print) {
     return J;
 }
 
-long double ElectricCurrent::electricFieldInWire(long double I, long double p,
-                                                 long double d, bool print) {
-    long double E = (I * p) / (constants::PI * d * d);
+long double ElectricCurrent::electricFieldInWire(
+        long double I, long double p, long double drc, char mode, bool print) {
+    long double A;
+    if (mode == 'd') {
+        A = circle_area_d(drc);
+    } else if (mode == 'r') {
+        A = circle_area_r(drc);
+    } else if (mode == 'c') {
+        A = circle_area_c(drc);
+    } else {
+        std::cout << "Invalid mode" << std::endl;
+    }
+    long double E = (I * p) / A;
     if (print) {
         std::cout << "E = " << E << " V/m" << std::endl;
     }
@@ -1815,7 +1983,7 @@ ElectricCurrent::electronDriftVelocityRatio(long double nA, long double nB,
 }
 
 long double
-ElectricCurrent::resistivity(
+ElectricCurrent::resistivity_VIlg(
         long double V, long double I, long double l, int g, bool print) {
     auto R = V / I;
     auto d = AWG.convertGauge2Diameter(g);
@@ -1895,6 +2063,78 @@ ElectricCurrent::rectangle_area(long double l, long double w, bool print) {
         std::cout << "A = " << A << " m^2" << std::endl;
     }
     return A;
+}
+
+long double
+ElectricCurrent::resistance_VI(long double V, long double I, bool print) {
+    auto R = V / I;
+    if (print) {
+        std::cout << "R = " << R << " Ohms" << std::endl;
+    }
+    return R;
+}
+
+long double
+ElectricCurrent::voltage_PR(long double P, long double R, bool print) {
+    auto V = sqrt(P * R);
+    if (print) {
+        std::cout << "V = " << V << " V" << std::endl;
+    }
+    return V;
+}
+
+long double
+ElectricCurrent::voltage_IR(long double I, long double R, bool print) {
+    auto V = I * R;
+    if (print) {
+        std::cout << "V = " << V << " V" << std::endl;
+    }
+    return V;
+}
+
+long double
+ElectricCurrent::voltage_IP(long double I, long double P, bool print) {
+    auto V = P / I;
+    if (print) {
+        std::cout << "V = " << V << " V" << std::endl;
+    }
+    return V;
+}
+
+long double
+ElectricCurrent::current_VR(long double V, long double R, bool print) {
+    auto I = V / R;
+    if (print) {
+        std::cout << "I = " << I << " A" << std::endl;
+    }
+    return I;
+}
+
+long double
+ElectricCurrent::maxExtensionCordLength(long double I, long double V_min,
+                                        long double V0, int g,
+                                        const std::string& type,
+                                        bool print) {
+    auto d = AWG.convertGauge2Diameter(g);
+    auto A = circle_area_d(d, false);
+    auto p = getResistivity(type);
+    auto maxVoltageDrop = V0 - V_min;
+    auto R_max = maxVoltageDrop / I;
+    auto L_max = R_max * (A / p);
+    L_max *= 3.28084/2.0;
+    if (print) {
+        std::cout << "L_max = " << L_max << " ft" << std::endl;
+    }
+    return L_max;
+}
+
+long double ElectricCurrent::getResistivity(const string& material) {
+    auto p = resistivity.materialMap.find(material);
+    if (p != resistivity.materialMap.end()) {
+        return p->second;
+    } else {
+        return 0.0;
+    }
 }
 
 

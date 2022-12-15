@@ -897,12 +897,28 @@ public:
      * @param units the units to use:
      *        "s" for seconds, "m" for minutes, "h" for hours, "d" for days
      * @param print true to print the answer
-     * @return the time (s)
+     * @return the time
      */
-    static ld batteryLife(ld V, ld U, ld I, char units, bool print = true);
+    static ld batteryLife_VUI(
+            ld V, ld U, ld I, char units = 's', bool print = true);
 
     /**
-     * @brief Consider the juncion of three wires as shown:
+     * @brief There are n electrons inside a V V battery that produces I A
+     * of current. How long, in units, will the battery last?
+     * @param V the voltage (V)
+     * @param I the current (A)
+     * @param n the number of electrons
+     * @param units the units to use:
+     *       "s" for seconds, "m" for minutes, "h" for hours, "d" for days
+     *       "y" for years
+     * @param print true to print the answer
+     * @return the time
+     */
+    static ld batteryLife_VIn(
+            ld V, ld I, ld n, char units = 's', bool print = true);
+
+    /**
+     * @brief Consider the junction of three wires as shown:
      *  W1  \   / W2
      *       \/
      *       |
@@ -1024,6 +1040,16 @@ public:
      * @return the ratio of the drift speeds
      */
     static ld driftSpeedRatio(ld nd1, ld nd2, ld d1, ld d2, bool print = true);
+
+    /**
+     * @brief Assuming a current ofI A, Calculate how much total charge passes
+     * through  a light bulb that is left on for t hr.
+     * @param I the current (A)
+     * @param t the time (hr)
+     * @param print true to print the answer
+     * @return the charge (C)
+     */
+    static ld chargeThroughLightBulb(ld I, ld t, bool print = true);
 
 
 
@@ -1663,7 +1689,7 @@ vector<long double> Circuits::internalExternalResistances(
     return {r, R};
 }
 
-ld Circuits::batteryLife(ld V, ld U, ld I, char units, bool print) {
+ld Circuits::batteryLife_VUI(ld V, ld U, ld I, char units, bool print) {
     auto W = V * I;
     auto t = U / W;
     switch (units) {
@@ -1687,6 +1713,36 @@ ld Circuits::batteryLife(ld V, ld U, ld I, char units, bool print) {
     }
     if (print) {
         std::cout << "t = " << t << " s" << std::endl;
+    }
+    return t;
+}
+
+ld Circuits::batteryLife_VIn(ld V, ld I, ld n, char units, bool print) {
+    // charge on 1 electron is 1.602176634e-19 C so total charge is n * 1.602176634e-19 C
+    auto q = n * abs(constants::ELECTRON_CHARGE);
+    auto t = q / I;
+
+    switch (units) {
+        case 's':
+            break;
+        case 'm':
+            t /= 60.0;
+            break;
+        case 'h':
+            t /= 3600.0;
+            break;
+        case 'd':
+            t /= 86400.0;
+            break;
+        case 'y':
+            t /= 31536000.0;
+            break;
+        default:
+            std::cout << "Invalid units" << std::endl;
+            break;
+    }
+    if (print) {
+        std::cout << "t = " << t << " " << units << std::endl;
     }
     return t;
 }
@@ -1801,4 +1857,14 @@ ld Circuits::driftSpeedRatio(ld nd1, ld nd2, ld d1, ld d2, bool print) {
         std::cout << "r = " << r << std::endl;
     }
     return r;
+}
+
+ld Circuits::chargeThroughLightBulb(ld I, ld t, bool print) {
+    // convert the hours to seconds
+    t *= 3600.0;
+    auto q = I * t;
+    if (print) {
+        std::cout << "q = " << q << " C" << std::endl;
+    }
+    return q;
 }

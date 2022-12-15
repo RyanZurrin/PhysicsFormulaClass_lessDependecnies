@@ -523,14 +523,14 @@ public:
      * @brief Calculate  the current of a system with duel rails,
      * under the following conditions. The resistance between the rails is R,
      * the rails and the moving rod are identical in cross section A and have
-     * the same resistivity ρ . The distance between the rails is l, and the
+     * the same resistivity_ldR ρ . The distance between the rails is l, and the
      * rod moves at constant speed v perpendicular to the uniform field B.
      * At time zero, the moving rod is next to the resistance R.
      * @param B The magnetic field.
      * @param l The length.
      * @param v The velocity.
      * @param A The area.
-     * @param p The resistivity.
+     * @param p The resistivity_ldR.
      * @param R The radius.
      * @param t The time.
      * @param print (default is true) if true prints the equation and result.
