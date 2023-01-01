@@ -1,5 +1,20 @@
-E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\223.7571.171\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S D:\src\ClionProjects\PhysicsFormulaClass_lessDependecnies -B D:\src\ClionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug
+C:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\223.8214.51\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies -B D:\src\CLionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug
+-- The C compiler identification is GNU 11.2.0
+-- The CXX compiler identification is GNU 11.2.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/gcc.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Users/ryanz/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/223.8214.51/bin/mingw/bin/g++.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python3: D:/anaconda3/python.exe (found version "3.9.12") found components: Interpreter Development Development.Module Development.Embed 
 -- Found SFML 2.5.1 in D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/lib/cmake/SFML
+-- Found Boost: D:/MingGW/MinGW/include (found version "1.77.0") found components: system filesystem 
+Boost library is used
 -- Configuring done
 -- Generating done
 -- Build files have been written to: D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug

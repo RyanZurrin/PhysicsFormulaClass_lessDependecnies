@@ -1371,7 +1371,7 @@ public:
     {
         vector<string> substances = {};
         auto elems = LF.elems_kj;
-        for (auto elem : elems)
+        for (const auto& elem : elems)
         {
             if (abs(elem.second - Lv) < threshold)
             {
@@ -1380,14 +1380,14 @@ public:
         }
         if (print)
         {
-            if (substances.size() == 0)
+            if (substances.empty())
             {
                 std::cout << "No substances found within threshold\n";
             }
             else
             {
                 std::cout << "The substances are: ";
-                for (auto s : substances)
+                for (const auto& s : substances)
                 {
                     std::cout << s << ", ";
                 }
@@ -1687,7 +1687,7 @@ public:
      * moles, and the final pressure in the flask
      */
     static vector<ld> flaskInBoilingWaterData(
-            const ld vol, const ld Pi, const ld Ti, bool print = true);
+            ld vol, ld Pi, ld Ti, bool print = true);
 
     /**
      * @brief A thin partition divides a thermally insulated vessel into a lower
