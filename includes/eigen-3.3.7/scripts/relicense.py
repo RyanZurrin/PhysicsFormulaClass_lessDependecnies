@@ -41,7 +41,7 @@ mpl2_header = """
 import os
 import sys
 
-exclusions = set(['relicense.py'])
+exclusions = {'relicense.py'}
 
 def update(text):
   if text.find(lgpl3_header) == -1:
