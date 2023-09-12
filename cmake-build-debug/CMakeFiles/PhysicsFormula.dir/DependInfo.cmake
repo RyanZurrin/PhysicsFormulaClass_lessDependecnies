@@ -29,8 +29,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/testFactory.cpp" "CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj" "gcc" "CMakeFiles/PhysicsFormula.dir/testFactory.cpp.obj.d"
   )
 
-# Targets to which this target links.
-set(CMAKE_TARGET_LINKED_INFO_FILES
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
   )
 
 # Fortran module output directory.

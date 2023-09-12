@@ -18,6 +18,7 @@
 #include "ResistorNode.h"
 #include "CapacitorNode.h"
 #include "InductorNode.h"
+#include "ElectroMagneticWaves.h"
 
 static int circuits_objectCount = 0;
 
@@ -51,9 +52,9 @@ struct Battery {
 
 
 struct CircuitNode {
-    vector<CapacitorNode> capacitorNodes;
-    vector<ResistorNode> resistorNodes;
-    vector<InductorNode> inductorNodes;
+    vector<CapacitorNode<long double>> capacitorNodes;
+    vector<ResistorNode<long double>> resistorNodes;
+    vector<InductorNode<long double>> inductorNodes;
     vector<Battery> powerNodes;
 
     CircuitNode() {
@@ -62,9 +63,9 @@ struct CircuitNode {
         inductorNodes = {};
         powerNodes = {};
     }
-    CircuitNode(vector<CapacitorNode> c,
-                vector<ResistorNode> r,
-                vector<InductorNode> i,
+    CircuitNode(vector<CapacitorNode<long double>> c,
+                vector<ResistorNode<long double>> r,
+                vector<InductorNode<long double>> i,
                 vector<Battery> p) {
         capacitorNodes = c;
         resistorNodes = r;
@@ -93,23 +94,19 @@ struct CircuitNode {
     }
 };
 
-
-
-
 class Circuits:
-        public ElectricCurrent, public ElectricPotential
+        public ElectricPotential,
+        public ElectromagneticWaves
 {
 
 public:
 
     Circuits()
     {
-        _circuitVal = 0.0;
         countIncrease();
     }
     explicit Circuits(long double val)
     {
-        _circuitVal = val;
         countIncrease();
     }
 
@@ -117,8 +114,7 @@ public:
      * @brief copy constructor
      */
     Circuits(const Circuits& c)
-     : ElectricCurrent(c) , ElectricPotential(c) {
-        _circuitVal = 0.0;
+     : ElectricPotential(c) , ElectromagneticWaves(c) {
         countIncrease();
     }
     /**
@@ -126,7 +122,6 @@ public:
      */
     Circuits(Circuits&& c) noexcept
     {
-        _circuitVal = c._circuitVal;
         countIncrease();
     }
     /**
@@ -136,7 +131,6 @@ public:
     {
         if (this != &c)
         {
-            _circuitVal = c._circuitVal;
             countIncrease();
         }
         return *this;
@@ -146,7 +140,7 @@ public:
                                                << circuits_objectCount << std::endl; }
     static int get_objectCount() { return circuits_objectCount; }
 
-    constexpr void setCircuitVal(long double val) { _circuitVal = val; }
+    constexpr void setCircuitVal(long double val) {}
 
 
 
@@ -224,7 +218,7 @@ public:
      * @param I  The current.
      * @param R  The resistance.
      * @param print  Whether or not to print the results.
-     * @return  The power output in watts (W).
+     * @return  The power dissipated in watts (W).
      */
     static constexpr long double powerDissipation_IR(
             long double I, long double R, bool print = true);
@@ -235,10 +229,21 @@ public:
      * @param I  The current.
      * @param V  The voltage.
      * @param print  Whether or not to print the results.
-     * @return  The power output in watts (W).
+     * @return  The power dissipated in watts (W).
      */
     static constexpr long double powerDissipation_IV(
             long double I, long double V, bool print = true);
+
+    /**
+     * @brief Calculates the power dissipated in a resistor, when the voltage
+     * is V and the resistance is R.
+     * @param V  The voltage.
+     * @param R  The resistance.
+     * @param print  Whether or not to print the results.
+     * @return  The power dissipated in watts (W).
+     */
+    static constexpr long double powerDissipation_VR(
+            long double V, long double R, bool print = true);
 
     /**
      * @brief Calculates the power dissipated in a resistor, when the battery
@@ -261,7 +266,42 @@ public:
      * @return  The total power output in watts (W).
      */
     static long double powerDissipation_series(
-            long double E, const vector<long double>& R, long double r, bool print = true);
+            long double E, const vector<long double>& R, long double r,
+            bool print = true);
+
+    /**
+     * @brief Calulates the total power dissipated by a series of resistors,
+     * given a battery with voltage V V.
+     * @param V  The voltage.
+     * @param R  The array of resistors.
+     * @param print  Whether or not to print the results.
+     * @return  The total power output in watts (W).
+     */
+    static long double powerDissipation_series_VR(
+            long double V, const vector<long double>& R, bool print = true);
+
+    /**
+     * @brief Calculates the total power dissipated by a circuit of resistors
+     * in parallel, given a battery with an emf of E and an internal resistance
+     * of r.
+     * @param E  The electromotive force.
+     * @param R  The array of resistors.
+     * @param r  The internal resistance.
+     */
+    static long double powerDissipation_parallel(
+            long double E, const vector<long double>& R, long double r,
+            bool print = true);
+
+    /**
+     * @brief Calculates the total power dissipated by a circuit of resistors
+     * in parallel, given a battery with voltage V.
+     * @param V  The voltage.
+     * @param R  The array of resistors.
+     * @param print  Whether or not to print the results.
+     * @return  The total power output in watts (W).
+     */
+    static long double powerDissipation_parallel_VR(
+            long double V, const vector<long double>& R, bool print = true);
 
     /**
      * @brief adds the total emfs for a series connection. where emf is the
@@ -403,6 +443,26 @@ public:
      * @return  The frequency (Hz).
      */
     static constexpr long double frequency(long double period, bool print = true);
+
+    /**
+     * @brief Calculates the angular frequency of an AC current (omega) from the
+     * frequency of the current (f).
+     * @param f  The frequency.
+     * @param print  Whether or not to print the results.
+     * @return  The frequency (Hz).
+     */
+    static constexpr long double angularFrequency(long double f, bool print = true);
+
+    /**
+     * @brief Calculates the resonant frequency of at which an LC circuit
+     * oscillates.
+     * @param L  The inductance.
+     * @param C  The capacitance.
+     * @param print  Whether or not to print the results.
+     * @return  The angular frequency (rad/s).
+     */
+    static constexpr long double resonantFrequency(
+            long double L, long double C, bool print = true);
 
     /**
      * @brief Calculates the period from the frequency.
@@ -835,7 +895,7 @@ public:
      * @param print true to print the answer
      */
     static ld unknownCapacitor(
-            ld C1p, ld C2s, ld Cfs, ld v, ld U, bool print = true);
+            ld C1s, ld C1p, ld Cfs, ld v, ld U, bool print = true);
 
     /**
      * @brief An ion channel in a cell membrane carries I A when it's open,
@@ -1051,6 +1111,139 @@ public:
      */
     static ld chargeThroughLightBulb(ld I, ld t, bool print = true);
 
+    /**
+     * @brief Each plate of a parallel-plate capacitor is a square with side
+     * length r, and the plates are separated by a distance d. The capacitor is
+     * connected to a source of voltage V. A plastic slab of thickness d and
+     * dielectric constant k is inserted slowly between the plates over the
+     * time period Δt until the slab is squarely between the plates.
+     * While the slab is being inserted, a current runs through the
+     * battery/capacitor circuit. Assuming that the dielectric is inserted at a
+     * constant rate, Calculate the current I as the slab is inserted.
+     * @param r the side length of the plates (m)
+     * @param d the distance between the plates (m)
+     * @param V the voltage (V)
+     * @param k the dielectric constant
+     * @param dt the time period (s)
+     * @param print true to print the answer
+     * @return the current (A)
+     */
+    static ld currentOnCapacitor_parallelPlate(
+            ld r, ld d, ld V, ld k, ld dt, bool print = true);
+
+    /**
+     * @brief A magnetic field points Direction DB with magnitude B T. A wire
+     * carries a current of I A in Direction DI. Calculate the direction of
+     * the force exerted on the wire.
+     * @param B the magnitude of the magnetic field (T)
+     * @param DB the direction of the magnetic field
+     * @param I the current (A)
+     * @param DI the direction of the current
+     * @param print true to print the answer
+     * @return the direction of the force
+     */
+    static string directionOfForceOnWire(
+            ld B, Direction DB, ld I, Direction DI, bool print = true);
+
+    /**
+     * @brief In an experimental nuclear fusion reactor, plans call for a wire
+     * of mass m kg to cross a l-m-long region where a B-T magnetic
+     * field points horizontally in such a way that the magnetic force on the
+     * wire will be upward. Calculate the maximum current the wire can carry
+     * without the magnitude of the magnetic force exceeding its weight.
+     * @param m the mass of the wire (kg)
+     * @param l the length of the region (m)
+     * @param B the magnitude of the magnetic field (T)
+     * @param print true to print the answer
+     * @return the current (A)
+     */
+    static ld maxCurrentOnWireByMass(ld m, ld l, ld B, bool print = true);
+
+    /**
+     * @brief Calculate the total energy in an LC circuit with an inductor of
+     * L H and a capacitor of C F when the current is I A and the voltage is V V.
+     * @param L the inductance (H)
+     * @param C the capacitance (F)
+     * @param I the current (A)
+     * @param V the voltage (V)
+     * @param print true to print the answer
+     * @return the energy (J)
+     */
+    static ld energyInLC(ld L, ld C, ld I, ld V, bool print = true);
+
+    /**
+     * @brief Calculate the capacitance of capacitor in LC circuit with an
+     * inductor of L H being powered by a source at a frequency of f Hz.
+     * @param L the inductance (H)
+     * @param f the frequency (Hz)
+     * @param print true to print the answer
+     * @return the capacitance (F)
+     */
+    static ld capacitanceInLC(ld L, ld f, bool print = true);
+
+    /**
+     * @brief You wish to make an  circuit oscillate at fi Hz to use in tuning
+     * pianos. You have a L H inductor.
+     * Calculate the following:
+     * (a) What value of capacitance should be used
+     * (b) If you charge the capacitor to V V, what will be the peak current
+     * in the circuit be.
+     * @param L the inductance (H)
+     * @param fi the frequency (Hz)
+     * @param V the voltage (V)
+     * @param print true to print the answer
+     * @return the capacitance (F) and the peak current (A)
+     */
+    static vector<ld> oscillationLC(ld L, ld fi, ld V, bool print = true);
+
+     /**
+      * @brief Calculate the peek voltage of an RLC circuit with and inductor
+      * of L H, a capacitor of C F, and a resistor of R Ω when the current is
+      * I A. The circuit is powered by a source at a frequency of f Hz.
+      * @param L the inductance (H)
+      * @param C the capacitance (F)
+      * @param R the resistance (Ω)
+      * @param I the current (A)
+      * @param f the frequency (Hz)
+      * @param print true to print the answer
+      * @return the peek voltage (V)
+      */
+     static ld peekVoltageRLC(ld L, ld C, ld R, ld I, ld f, bool print = true);
+
+     /**
+      * @brief Calculate the peek current of an RLC circuit with and inductor
+      * of L H, a capacitor of C F, and a resistor of R Ω when the voltage is
+      * V  V. The circuit is powered by a source at a frequency of f Hz.
+      * @param L the inductance (H)
+      * @param C the capacitance (F)
+      * @param R the resistance (Ω)
+      * @param V the voltage (V)
+      * @param f the frequency (Hz)
+      * @param print true to print the answer
+      * @return the peek current (A)
+      */
+     static ld peekCurrentRLC(ld L, ld C, ld R, ld V, ld f, bool print = true);
+
+     /**
+      * @brief Current flows to the midrange speaker in a loudspeaker system
+      * through a L H inductor in series with a capacitor.
+      * Calculate the following:
+      * (a) What should the capacitance be so that a given voltage produces the
+      * greatest current at f1 Hz.
+      * (b) If the same voltage produces half this current at f2 Hz, what is
+      * the speaker’s resistance.
+      * (c) If the peak output voltage of the amplifier is V V, what will the
+      * peak capacitor voltage be at f1 Hz?
+      * @param L the inductance (H)
+      * @param f1 the frequency (Hz)
+      * @param f2 the frequency (Hz)
+      * @param V the voltage (V)
+      * @param print true to print the answer
+      * @return the capacitance (F), the resistance (Ω), and the peak voltage (V)
+      */
+     static vector<ld> loudspeakerSystem(ld L, ld f1, ld f2, ld V, bool print = true);
+
+
 
 
     ~Circuits()
@@ -1061,7 +1254,6 @@ public:
 private:
     static void countIncrease() { circuits_objectCount += 1; }
     static void countDecrease() { circuits_objectCount -= 1; }
-    long double _circuitVal;
 
 };
 #endif //PHYSICSFORMULA_CIRCUITS_H
@@ -1128,14 +1320,6 @@ constexpr long double Circuits::current_emfRloadr(
     return I;
 }
 
-constexpr long double Circuits::powerDissipation_IR(
-        const long double I, const long double R, bool print)
-{
-    auto pow_dis = (I*I)*R;//Watts
-    if (print)
-        cout << "The power dissipation is " << pow_dis << " Watts." << endl;
-    return pow_dis;
-}
 
 long double Circuits::emfsParallelConnection_added(
         const vector<ld>& emfs, bool print)
@@ -1776,9 +1960,27 @@ ld Circuits::voltmeterVoltage(ld emf, ld r, ld R, bool print) {
     return V;
 }
 
+constexpr long double Circuits::powerDissipation_IR(
+        const long double I, const long double R, bool print)
+{
+    auto pow_dis = (I*I)*R;//Watts
+    if (print)
+        cout << "The power dissipation is " << pow_dis << " Watts." << endl;
+    return pow_dis;
+}
+
 constexpr long double
 Circuits::powerDissipation_IV(long double I, long double V, bool print) {
     auto P = I * V;
+    if (print) {
+        std::cout << "P = " << P << " W" << std::endl;
+    }
+    return P;
+}
+
+constexpr long double
+Circuits::powerDissipation_VR(long double V, long double R, bool print) {
+    auto P = (V * V) / R;
     if (print) {
         std::cout << "P = " << P << " W" << std::endl;
     }
@@ -1798,10 +2000,51 @@ Circuits::powerDissipation_ErR(long double E, long double R, long double r,
 long double
 Circuits::powerDissipation_series(long double E, const vector<long double> &R,
                                   long double r, bool print) {
-    auto P = (E * E * R.at(0)) / pow(r + R.at(0), 2);
-    for (auto i = 1; i < R.size(); i++) {
-        P += (E * E * R.at(i)) / pow(r + R.at(i), 2);
+    ResistorNode<long double> resistors{R, E, 's'};
+    auto R_equiv = resistors.eR;
+    auto P = (E * E * R_equiv) / pow(r + R_equiv, 2);
+    if (print) {
+        std::cout << "P = " << P << " W" << std::endl;
     }
+    return P;
+//    auto P = (E * E * R.at(0)) / pow(r + R.at(0), 2);
+//    for (auto i = 1; i < R.size(); i++) {
+//        P += (E * E * R.at(i)) / pow(r + R.at(i), 2);
+//    }
+//    if (print) {
+//        std::cout << "P = " << P << " W" << std::endl;
+//    }
+//    return P;
+}
+
+long double Circuits::powerDissipation_series_VR(
+        long double V, const vector<long double> &R, bool print) {
+    ResistorNode<long double> resistors{R, V, 's'};
+    auto R_equiv = resistors.eR;
+    auto P = (V * V) / R_equiv;
+    if (print) {
+        std::cout << "P = " << P << " W" << std::endl;
+    }
+    return P;
+}
+
+long double
+Circuits::powerDissipation_parallel(long double E, const vector<long double> &R,
+                                    long double r, bool print) {
+    ResistorNode<long double> resistors{R, E, 'p'};
+    auto R_equiv = resistors.eR;
+    auto P = (E * E * R_equiv) / pow(r + R_equiv, 2);
+    if (print) {
+        std::cout << "P = " << P << " W" << std::endl;
+    }
+    return P;
+}
+
+long double Circuits::powerDissipation_parallel_VR(
+        long double V, const vector<long double> &R, bool print) {
+    ResistorNode<long double> resistors{R, V, 'p'};
+    auto R_equiv = resistors.eR;
+    auto P = (V * V) / R_equiv;
     if (print) {
         std::cout << "P = " << P << " W" << std::endl;
     }
@@ -1860,11 +2103,126 @@ ld Circuits::driftSpeedRatio(ld nd1, ld nd2, ld d1, ld d2, bool print) {
 }
 
 ld Circuits::chargeThroughLightBulb(ld I, ld t, bool print) {
-    // convert the hours to seconds
     t *= 3600.0;
     auto q = I * t;
     if (print) {
         std::cout << "q = " << q << " C" << std::endl;
     }
     return q;
+}
+
+ld Circuits::currentOnCapacitor_parallelPlate(
+        ld r, ld d, ld V, ld k, ld dt, bool print) {
+    auto e0 = constants::_e0;
+    auto I = (k - 1.0) * (((r * r) * e0 * V) /  (d * dt));
+    if (print) {
+        std::cout << "I = " << I << " A" << std::endl;
+    }
+    return I;
+}
+
+string
+Circuits::directionOfForceOnWire(ld B, Direction DB, ld I, Direction DI, bool
+print) {
+    auto direction = rhr.findForceDirection(DI, DB);
+    if (print) {
+        std::cout << "F is pointing " << direction << std::endl;
+    }
+    return direction;
+}
+
+ld Circuits::maxCurrentOnWireByMass(ld m, ld l, ld B, bool print) {
+    auto weight = m * constants::Ga;
+    auto I = weight / (l * B);
+    if (print) {
+        std::cout << "I = " << I << " A" << std::endl;
+    }
+    return I;
+}
+
+constexpr long double Circuits::angularFrequency(long double f, bool print) {
+    auto omega = 2.0 * constants::PI * f;
+    if (print) {
+        std::cout << "omega = " << omega << " rad/s" << std::endl;
+    }
+    return omega;
+}
+
+ld Circuits::energyInLC(ld L, ld C, ld I, ld V, bool print) {
+    auto E = (L * I * I) / 2.0 + (C * V * V) / 2.0;
+    if (print) {
+        std::cout << "E = " << E << " J" << std::endl;
+    }
+    return E;
+}
+
+constexpr long double
+Circuits::resonantFrequency(long double L, long double C, bool print) {
+    auto omega = 1.0 / sqrt(L * C);
+    if (print) {
+        std::cout << "omega = " << omega << " rad/s" << std::endl;
+    }
+    return omega;
+}
+
+ld Circuits::capacitanceInLC(ld L, ld f, bool print) {
+    auto C = 1.0 / (4.0 * constants::PI * constants::PI * f * f * L);
+    if (print) {
+        std::cout << "C = " << C << " F" << std::endl;
+    }
+    return C;
+}
+
+vector<ld> Circuits::oscillationLC(ld L, ld fi, ld V, bool print) {
+    auto C = capacitanceInLC(L, fi, false);
+    auto omega = resonantFrequency(L, C, false);
+    auto I = peekCurrentAC_LC(L, C, V, false);
+    auto t = 2.0 * constants::PI * sqrt(L * C);
+    auto A = V / sqrt(L * C);
+    auto phi = fi - atan(L / (omega * C));
+    if (print) {
+        std::cout << "C = " << C << " F" << std::endl;
+        std::cout << "I = " << I << " A" << std::endl;
+        std::cout << "t = " << t << " s" << std::endl;
+        std::cout << "A = " << A << " V" << std::endl;
+        std::cout << "phi = " << phi << " rad" << std::endl;
+    }
+    return {I, t, A, phi};
+}
+
+ld Circuits::peekVoltageRLC(ld L, ld C, ld R, ld I, ld f, bool print) {
+    auto omega = angularFrequency(f);
+    auto Xl = inductiveReactance_fL(f, L, false);
+    auto Xc = capacitiveReactance_fC(f, C, false);
+    auto Vp = sqrt((I*I*R*R) + pow((I*(Xl-Xc)), 2));
+    if (print) {
+        std::cout << "Vp = " << Vp << " V" << std::endl;
+    }
+    return Vp;
+}
+
+ld Circuits::peekCurrentRLC(ld L, ld C, ld R, ld V, ld f, bool print) {
+    auto Z = impedance(R, L, C, f, false);
+    auto I = V / Z;
+    if (print) {
+        std::cout << "I = " << I << " A" << std::endl;
+    }
+    return I;
+}
+
+vector<ld>
+Circuits::loudspeakerSystem(ld L, ld f1, ld f2, ld V, bool print) {
+    auto C = capacitanceInLC(L, f1, false);
+    auto omega2 = angularFrequency(f2, false);
+    auto R = (1.0/sqrt(3.0))*abs(omega2*L - 1.0/(omega2*C));
+    auto Xc = capacitiveReactance_fC(f1, C, false);
+    auto Ip = V / R;
+    auto Vcp = Ip * Xc;
+    if (print) {
+        std::cout << "C = " << C << " F" << std::endl;
+        std::cout << "R = " << R << " Ohm" << std::endl;
+        std::cout << "Ip = " << Ip << " A" << std::endl;
+        std::cout << "Vcp = " << Vcp << " V" << std::endl;
+    }
+    return {C, R, Ip, Vcp};
 }

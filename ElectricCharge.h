@@ -479,7 +479,72 @@ public:
      * @param print  whether or not to print the result
      * @return  the line charge density
      */
-    static constexpr ld lineChargeDensity(ld q, ld L, bool print = true);
+    static constexpr ld linearChargeDensity(ld q, ld L, bool print = true);
+
+    /**
+     * @brief Calculate the surface charge density of a uniformly charged
+     * sheet of charge Q and area A.
+     * @param Q the charge
+     * @param A  the area
+     * @param print  true to print the answer
+     * @return  the surface charge density
+     */
+    static constexpr ld surfaceChargeDensity(ld Q, ld A, bool print = true);
+
+    /**
+     * @brief Calculate the surface charge density of a uncharged spherical
+     * conducting shell of radius r with a charge Q placed at the center.
+     * @param Q  the charge
+     * @param r  the radius
+     * @param print  true to print the answer
+     * @return  the surface charge density
+     */
+    static constexpr ld surfaceChargeDensitySphere(ld Q, ld r, bool print = true);
+
+    /**
+     * An electron close to a large, flat sheet of charge is repelled from the
+     * sheet with a E force. Calculate the surface charge density of the sheet.
+     * @param E the force
+     * @param print true to print the answer
+     * @return the surface charge density
+     */
+    static constexpr ld surfaceChargeDensity(ld E, bool print = true);
+
+    /**
+     * @brief Calculates the volume charge density of a uniformly charged sphere
+     * of radius r and charge Q.
+     * @param Q the charge
+     * @param V the volume
+     * @param print true to print the answer
+     * @return the volume charge density
+     */
+    static constexpr ld volumeChargeDensity(ld Q, ld V, bool print = true);
+
+    /**
+     * @brief Calculates the volume charge density of a uniformly charged sphere
+     * of radius r and charge Q.
+     * @param Q the charge
+     * @param r the radius
+     * @param print true to print the answer
+     * @return the volume charge density
+     */
+    static constexpr ld volumeChargeDensitySphere(ld Q, ld r, bool print = true);
+
+    /**
+     * @brief Calculates the volume charge density of a uniformly charged
+     * cylinder of radius r and length l and charge Q.
+     * @param Q the charge
+     * @param r the radius
+     * @param l the length
+     * @param print true to print the answer
+     * @return the volume charge density
+     */
+    static constexpr ld volumeChargeDensityCylinder(
+            ld Q, ld r, ld l, bool print = true);
+
+    /**
+     * @brief Calculates the volume charge density of a
+     */
 
     /**
      * @brief Separates the between point charges.
@@ -794,35 +859,6 @@ public:
      * @return the force
      */
     static ld forceOnEachChargeInSquare(ld Q, ld a, bool print = true);
-
-    /**
-     * @brief Calculate the surface charge density of a uniformly charged
-     * sheet of charge Q and area A.
-     * @param Q the charge
-     * @param A  the area
-     * @param print  true to print the answer
-     * @return  the surface charge density
-     */
-    static constexpr ld surfaceChargeDensity(ld Q, ld A, bool print = true);
-
-    /**
-     * @brief Calculate the surface charge density of a uncharged spherical
-     * conducting shell of radius r with a charge Q placed at the center.
-     * @param Q  the charge
-     * @param r  the radius
-     * @param print  true to print the answer
-     * @return  the surface charge density
-     */
-    static constexpr ld surfaceChargeDensitySphere(ld Q, ld r, bool print = true);
-
-    /**
-     * An electron close to a large, flat sheet of charge is repelled from the
-     * sheet with a E force. Calculate the surface charge density of the sheet.
-     * @param E the force
-     * @param print true to print the answer
-     * @return the surface charge density
-     */
-    static constexpr ld surfaceChargeDensity(ld E, bool print = true);
 
     /**
      * @brief Calculate the Electric field strength inside a uniformly charged
@@ -1646,7 +1682,7 @@ constexpr ld ElectricCharge::fieldInsideSphericalChargeDistribution(ld Qr, ld R,
     return E;
 }
 
-constexpr ld ElectricCharge::lineChargeDensity(ld q, ld L, bool print) {
+constexpr ld ElectricCharge::linearChargeDensity(ld q, ld L, bool print) {
     auto lamda = q / L;
     if (print)
         std::cout << "Line charge density = " << lamda << " C/m" << std::endl;
@@ -1666,6 +1702,29 @@ constexpr ld ElectricCharge::surfaceChargeDensity(ld E, bool print) {
     if (print)
         std::cout << "Surface charge density = " << sigma << " C/m^2" << std::endl;
     return sigma;
+}
+
+constexpr ld ElectricCharge::volumeChargeDensity(ld Q, ld V, bool print) {
+    auto rho = Q / V;
+    if (print)
+        std::cout << "Volume charge density = " << rho << " C/m^3" << std::endl;
+    return rho;
+}
+
+constexpr ld ElectricCharge::volumeChargeDensitySphere(ld Q, ld r, bool print) {
+    auto V = (4.0 * constants::PI * r * r * r) / 3.0;
+    auto rho = Q / V;
+    if (print)
+        std::cout << "Volume charge density = " << rho << " C/m^3" << std::endl;
+    return rho;
+}
+constexpr ld
+ElectricCharge::volumeChargeDensityCylinder(ld Q, ld r, ld l, bool print) {
+    auto V = constants::PI * r * r * l;
+    auto rho = Q / V;
+    if (print)
+        std::cout << "Volume charge density = " << rho << " C/m^3" << std::endl;
+    return rho;
 }
 
 constexpr ld

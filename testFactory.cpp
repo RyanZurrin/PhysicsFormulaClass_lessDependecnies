@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
     //add test code between starred areas
     //**************************************************************************
 
-    Circuits::maxExtensionCordLength(7.0, 115.0, 120.0, 18, "copper");
+    Circuits::rmsCurrentInRLC(470.0, 10e-6, 750e-3, 6.3, 60.0);
 
     //**************************************************************************
     //Stopping RunTimer and displaying the programs' execution time

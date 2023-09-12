@@ -1,5 +1,18 @@
-E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\223.7571.171\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S D:\src\ClionProjects\PhysicsFormulaClass_lessDependecnies -B D:\src\ClionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug
+E:\Users\ryanz\AppData\Local\JetBrains\Toolbox\CLion\bin\cmake\win\x64\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" -S D:\src\ClionProjects\PhysicsFormulaClass_lessDependecnies -B D:\src\ClionProjects\PhysicsFormulaClass_lessDependecnies\cmake-build-debug
+-- The C compiler identification is GNU 13.1.0
+-- The CXX compiler identification is GNU 13.1.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/CLion/bin/mingw/bin/gcc.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: E:/Users/ryanz/AppData/Local/JetBrains/Toolbox/CLion/bin/mingw/bin/g++.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found Python3: E:/Program Files/Python310/python.exe (found version "3.10.5") found components: Interpreter Development Development.Module Development.Embed 
 -- Found SFML 2.5.1 in D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/includes/SFML/lib/cmake/SFML
--- Configuring done
--- Generating done
+-- Configuring done (37.7s)
+-- Generating done (0.1s)
 -- Build files have been written to: D:/src/CLionProjects/PhysicsFormulaClass_lessDependecnies/cmake-build-debug

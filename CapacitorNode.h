@@ -9,16 +9,16 @@
 #include <cmath>
 #include <cassert>
 
-
+template<typename T>
 class CapacitorNode {
 public:
-    double VCC{};
-    std::vector<double> capacitances;
-    std::vector<double> storedEnergies;
-    std::vector<double> voltages;
+    T VCC{};
+    std::vector<T> capacitances;
+    std::vector<T> storedEnergies;
+    std::vector<T> voltages;
     char type{}; // 'p' for parallel, 's' for series
-    double eC{}; // equivalent capacitance
-    double Q{}; // total charge
+    T eC{}; // equivalent capacitance
+    T Q{}; // total charge
 
     CapacitorNode() {
         capacitances = {};
@@ -30,11 +30,11 @@ public:
         Q = 0.0;
     }
 
-    [[nodiscard]] double calculateTotalCharge() const {
+    [[nodiscard]] T calculateTotalCharge() const {
         return VCC * eC;
     }
 
-    CapacitorNode(std::vector<double> c, char t) {
+    CapacitorNode(std::vector<T> c, char t) {
         capacitances = std::move(c);
         type = t;
         VCC = 0.0;
@@ -44,7 +44,7 @@ public:
         Q = calculateTotalCharge();
     }
 
-    CapacitorNode(std::vector<double> c, double v, char t) {
+    CapacitorNode(std::vector<T> c, T v, char t) {
         capacitances = std::move(c);
         type = t;
         VCC = v;
@@ -54,14 +54,14 @@ public:
         storedEnergies = calculateStoredEnergy();
     }
 
-    double calculateEquivalentCapacitance() {
-        double sum = 0.0;
+    T calculateEquivalentCapacitance() {
+        T sum = 0.0;
         if (type == 'p') {
-            for (double capacitance : capacitances) {
+            for (T capacitance : capacitances) {
                 sum += capacitance;
             }
         } else if (type == 's') {
-            for (double capacitance : capacitances) {
+            for (T capacitance : capacitances) {
                 sum += 1.0 / capacitance;
             }
             sum = 1.0 / sum;
@@ -69,10 +69,10 @@ public:
         return sum;
     }
 
-    std::vector<double> calculateStoredEnergy() {
-        std::vector<double> energies;
+    std::vector<T> calculateStoredEnergy() {
+        std::vector<T> energies;
         if (type == 'p') {
-            for (double capacitance : capacitances) {
+            for (T capacitance : capacitances) {
                 energies.push_back((capacitance * pow(VCC, 2)) / 2.0);
             }
         } else if (type == 's') {
@@ -83,30 +83,30 @@ public:
         return energies;
     }
 
-    std::vector<double> calculateVoltages() {
-        std::vector<double> _voltages;
+    std::vector<T> calculateVoltages() {
+        std::vector<T> _voltages;
         if (type == 'p') {
             // in parallel node voltages are equal to the voltage of the
             // source across each capacitor
-            for (double capacitance : capacitances) {
+            for (T capacitance : capacitances) {
                 _voltages.push_back(VCC);
             }
         } else if (type == 's') {
-            for (double capacitance : capacitances) {
+            for (T capacitance : capacitances) {
                 _voltages.push_back((Q / capacitance));
             }
         }
         return _voltages;
     }
 
-    void setVoltage(double v) {
+    void setVoltage(T v) {
         VCC = v;
         storedEnergies = calculateStoredEnergy();
         voltages = calculateVoltages();
         Q = calculateTotalCharge();
     }
 
-    void setCapacitances(std::vector<double> c) {
+    void setCapacitances(std::vector<T> c) {
         // assert that VCC is not 0
         assert(VCC != 0.0);
         capacitances = std::move(c);

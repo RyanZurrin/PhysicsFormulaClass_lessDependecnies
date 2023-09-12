@@ -9,20 +9,21 @@
 #include <vector>
 #include <cmath>
 
+template<typename T>
 class InductorNode {
 public:
-    double L{};
-    double I{};
-    double V{};
-    double P{};
-    double VCC{};
-    double eL{};
-    std::vector<double> inductances;
-    std::vector<double> couplingCoefficients;
-    std::vector<double> mutualInductances;
-    std::vector<double> currents;
-    std::vector<double> voltages;
-    std::vector<double> powers;
+    T L{};
+    T I{};
+    T V{};
+    T P{};
+    T VCC{};
+    T eL{};
+    std::vector<T> inductances;
+    std::vector<T> couplingCoefficients;
+    std::vector<T> mutualInductances;
+    std::vector<T> currents;
+    std::vector<T> voltages;
+    std::vector<T> powers;
     char type;
 
     InductorNode() {
@@ -40,7 +41,7 @@ public:
         type = 'p';
     }
 
-    InductorNode(double vcc, std::vector<double> l, char t) {
+    InductorNode(T vcc, std::vector<T> l, char t) {
         VCC = vcc;
         inductances = std::move(l);
         type = t;
@@ -54,7 +55,7 @@ public:
         P = calculateTotalPower();
     }
 
-    InductorNode(double vcc, const std::vector<InductorNode>& l, char t) {
+    InductorNode(T vcc, const std::vector<InductorNode>& l, char t) {
         VCC = vcc;
         type = t;
         // add all the inductances from each node to the vector
@@ -70,7 +71,7 @@ public:
         }
         // add all the inductors from each node to the vector
         for (const InductorNode& inductor : l) {
-            for (double inductance : inductor.inductances) {
+            for (T inductance : inductor.inductances) {
                 inductances.push_back(inductance);
             }
         }
@@ -89,7 +90,7 @@ public:
         }
     }
 
-    void removeInductance(double l)
+    void removeInductance(T l)
     {
         for (int i = 0; i < inductances.size(); i++) {
             if (inductances[i] == l) {
@@ -99,8 +100,8 @@ public:
         }
     }
 
-    std::vector<double> calculateCouplingCoefficients() {
-        std::vector<double> couplingCoefficients_;
+    std::vector<T> calculateCouplingCoefficients() {
+        std::vector<T> couplingCoefficients_;
         for (int i = 0; i < inductances.size(); i++) {
             couplingCoefficients_.push_back(0.0);
         }
@@ -114,8 +115,8 @@ public:
         return couplingCoefficients_;
     }
 
-    std::vector<double> calculateMutualInductances() {
-        std::vector<double> mutualInductances_;
+    std::vector<T> calculateMutualInductances() {
+        std::vector<T> mutualInductances_;
         for (int i = 0; i < inductances.size(); i++) {
             mutualInductances_.push_back(0.0);
         }
@@ -129,15 +130,15 @@ public:
         return mutualInductances_;
     }
 
-    double calculateEquivalentInductance() {
-        double sum = 0.0;
+    T calculateEquivalentInductance() {
+        T sum = 0.0;
         if (type == 'p') {
-            for (double inductance : inductances) {
+            for (T inductance : inductances) {
                 sum += 1.0 / inductance;
             }
             sum = 1.0 / sum;
         } else if (type == 's') {
-            for (double inductance : inductances) {
+            for (T inductance : inductances) {
                 sum += inductance;
             }
 
@@ -145,48 +146,48 @@ public:
         return sum;
     }
 
-    std::vector<double> calculateVoltages() {
-        std::vector<double> _voltages;
+    std::vector<T> calculateVoltages() {
+        std::vector<T> _voltages;
         if (type == 'p') {
             // calculate the voltage across each inductor
-            for (double inductance : inductances) {
+            for (T inductance : inductances) {
                 _voltages.push_back((I * inductance));
             }
         } else if (type == 's') {
-            for (double inductance : inductances) {
+            for (T inductance : inductances) {
                 _voltages.push_back(VCC);
             }
         }
         return _voltages;
     }
 
-    std::vector<double> calculateCurrents() {
-        std::vector<double> _currents;
+    std::vector<T> calculateCurrents() {
+        std::vector<T> _currents;
         if (type == 'p') {
             // calculate the current through each inductor
-            for (double inductance : inductances) {
+            for (T inductance : inductances) {
                 _currents.push_back((VCC / inductance));
             }
         } else if (type == 's') {
-            for (double inductance : inductances) {
+            for (T inductance : inductances) {
                 _currents.push_back(I);
             }
         }
         return _currents;
     }
 
-    std::vector<double> calculatePowers() {
-        std::vector<double> _powers;
+    std::vector<T> calculatePowers() {
+        std::vector<T> _powers;
         for (int i = 0; i < inductances.size(); i++) {
             _powers.push_back((pow(currents[i], 2)) * inductances[i]);
         }
         return _powers;
     }
 
-    double calculateTotalPower() {
-        double sum = 0.0;
+    T calculateTotalPower() {
+        T sum = 0.0;
         if (type == 'p') {
-            for (double power : powers) {
+            for (T power : powers) {
                 sum += power;
             }
         } else if (type == 's') {
@@ -195,10 +196,10 @@ public:
         return sum;
     }
 
-    double calculateTotalCurrent() {
-        double sum = 0.0;
+    T calculateTotalCurrent() {
+        T sum = 0.0;
         if (type == 'p') {
-            for (double current : currents) {
+            for (T current : currents) {
                 sum += current;
             }
         } else if (type == 's') {

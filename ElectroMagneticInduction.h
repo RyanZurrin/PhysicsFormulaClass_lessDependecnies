@@ -447,7 +447,7 @@ public:
     /**
      * @brief calculates the self inductance.
      * @param N The number of loops.
-     * @param phi The flux.
+     * @param phi The flux through each loop.
      * @param I The current.
      * @param print (default is true) if true prints the equation and result.
      * @return inductance(H)
@@ -472,7 +472,7 @@ public:
      * @param print (default is true) if true prints the equation and result.
      * @return self inductance
      */
-    static ld selfInductance_taoR(const ld toa, const ld R, bool print = true);
+    static ld selfInductance_taoR(ld toa, ld R, bool print = true);
 
     /**
      * @brief Calculates the inductance of a solenoid.
@@ -498,6 +498,17 @@ public:
     static ld inductanceFromEnergyStored(ld E, ld I, bool print = true);
 
     /**
+     * @brief What inductance L would be needed to store energy E kWh
+     * (kilowatt-hours) in a coil carrying current I A.
+     * @param kWh The energy in kWh.
+     * @param I The current.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the inductance (H)
+     * @note 1 kWh = 3.6 x 10^6 J
+     */
+    static ld inductanceFromEnergyStored_kWhI(ld kWh, ld I, bool print = true);
+
+    /**
      * @brief Calculates the energy stored in an inductor.
      * @param L The inductance.
      * @param I The current.
@@ -517,7 +528,7 @@ public:
      * @param print (default is true) if true prints the equation and result.
      * @return time to switch on off current through an inductor
      */
-    static ld timeOnOffToInduceCurrent(const ld I, const ld L, const ld emf, bool print = true);
+    static ld timeOnOffToInduceCurrent(ld I, ld L, ld emf, bool print = true);
 
     /**
      * @brief Calculate  the current of a system with duel rails,
@@ -530,14 +541,14 @@ public:
      * @param l The length.
      * @param v The velocity.
      * @param A The area.
-     * @param p The resistivity_ldR.
+     * @param p_ The resistivity_ldR.
      * @param R The radius.
      * @param t The time.
      * @param print (default is true) if true prints the equation and result.
      * @return current
      */
     static ld currentSystemOnRails(
-            ld B, ld l, ld v, ld A, ld p, ld R, ld t, bool print = true);
+            ld B, ld l, ld v, ld A, ld p_, ld R, ld t, bool print = true);
 
     /**
      * @brief Calculates the Characteristic time constant. (cTc)
@@ -555,19 +566,19 @@ public:
      * @param print (default is true) if true prints the equation and result.
      * @return inductive reactance (H)
      */
-    static ld inductanceReactance_fL(ld f, ld L, bool print = true);
+    static ld inductiveReactance_fL(ld f, ld L, bool print = true);
 
     /**
      * @brief calculates the Capacitive reactance (XC).
      * @param f The frequency.
-     * @param C The capacitance_Qv.
+     * @param C The capacitance.
      * @param print (default is true) if true prints the equation and result.
      * @return capacitive reactance (ohms)
      */
     static ld capacitiveReactance_fC(ld f, ld C, bool print = true);
 
     /**
-     * @brief Calculates the capacitance_Qv from reactance and frequency
+     * @brief Calculates the capacitance from reactance and frequency
      * @param f The frequency in Hz.
      * @param _xc The capacitive reactance.
      * @param print (default is true) if true prints the equation and result.
@@ -641,13 +652,23 @@ public:
 
     /**
      * @brief Calculates the peeks the current in an AC circuit using the peek voltage
-     * of Vo and its impedance of Z_.
-     * @param Vo The peek voltage in circuit.
+     * of Vp and its impedance of Z_.
+     * @param Vp The peek voltage in circuit.
      * @param Z_ The impedance.
      * @param print (default is true) if true prints the equation and result.
      * @return The peek current -> Io = peek Amps
      */
-    static ld peekCurrent_AC(ld Vo, ld Z, bool print = true);
+    static ld peekCurrentAC(ld Vp, ld Z, bool print = true);
+    
+    /**
+     * @brief Calculate the peek current in an LC circuit contain a inductor
+     * of inductance L and a capacitor of capacitance C with a peek voltage of Vp.
+     * @param L The inductance.
+     * @param C The capacitance.
+     * @param Vp The peek voltage.
+     * @param print (default is true) if true prints the equation and result.
+     */
+    static ld peekCurrentAC_LC(ld L, ld C, ld Vp, bool print = true);
 
     /**
      * @brief Calculates the RMS(root mean square) or average current in an AC circuit
@@ -658,6 +679,16 @@ public:
      * @return the average or rms current Irms -> (A)
      */
     static ld rmsCurrent_AC(ld Vrms, ld Z, bool print = true);
+
+    /**
+     * @brief Calculates the RMS(root mean square) or average current in an AC circuit
+     * using the rms Voltage and the resistance of R.
+     * @param Vrms The rms Voltage, average voltage.
+     * @param R The resistance in circuit.
+     * @param print (default is true) if true prints the equation and result.
+     * @return the average or rms current Irms -> (A)
+     */
+    static ld rmsCurrent_AC_R(ld Vrms, ld R, bool print = true);
 
     /**
      * @brief Calculates the RMS(root mean square current or average current in a AC
@@ -677,7 +708,7 @@ public:
      * @param Vrms The root mean square voltage or Vrms.
      * @param R The resistance.
      * @param L The inductance.
-     * @param C The capacitance_Qv.
+     * @param C The capacitance.
      * @param f The frequency.
      * @param print (default is true) if true prints the equation and result.
      * @return Irms or root mean square current, average current(A)
@@ -700,7 +731,7 @@ public:
      * @brief Calculates the impedance in a RLC series AS circuit.
      * @param R The resistance.
      * @param L The inductance.
-     * @param C The capacitance_Qv.
+     * @param C The capacitance.
      * @param f The frequency.
      * @param print (default is true) if true prints the equation and result.
      * @return the impedance on an AC circuit (Ohms)
@@ -710,24 +741,35 @@ public:
     /**
      * @brief Calculates the resonant frequency in an RLC series AC circuit
      * @param L The inductance.
-     * @param C The capacitance_Qv.
+     * @param C The capacitance.
      * @param print (default is true) if true prints the equation and result.
      * @return resonant frequency (Hz)
      */
     static ld resonantFrequency(ld L, ld C, bool print = true);
 
     /**
-     * @brief Calculates the power factor. cos(phi) = R/Z_.
+     * @brief Calculates the power factor. cos(phi) = R/Z.
      * @param R The resistance.
-     * @param Z_ The impedance.
+     * @param Z The impedance.
      * @param print (default is true) if true prints the equation and result.
      * @return power factor(unit-less)
      */
     static ld powerFactor(ld R, ld Z, bool print = true);
 
     /**
+     * @brief Calculates the power factor in a AC circuit from the Vrms, Irms
+     * and the phase difference between them.
+     * @param Vrms The root mean square voltage.
+     * @param Irms The root mean square current.
+     * @param phi The phase difference between Vrms and Irms.
+     * @param print (default is true) if true prints the equation and result.
+     * @return power factor(unit-less)
+     */
+    static ld powerFactor(ld Vrms, ld Irms, ld phi, bool print = true);
+
+    /**
      * @brief Phases the angle.
-     * @param pf The pf.
+     * @param pf The power factor.
      * @param print (default is true) if true prints the equation and result.
      * @return phase angle
      */
@@ -741,6 +783,18 @@ public:
      * @return phase angle
      */
     static ld phaseAngle(ld R, ld Z, bool print = true);
+
+    /**
+     * @brief Calculates the phase angle of and RLC series AC circuit with a
+     * resistance of R, inductance of L, capacitance of C and frequency of f.
+     * @param R The resistance.
+     * @param L The inductance.
+     * @param C The capacitance.
+     * @param f The frequency.
+     * @param print (default is true) if true prints the equation and result.
+     * @return phase angle phi in degrees.
+     */
+    static ld phaseAngle(ld R, ld L, ld C, ld f, bool print = true);
 
     /**
      * @brief Powers the average RLC.
@@ -1231,6 +1285,248 @@ public:
      */
     static ld timeConstant(ld t, ld I, ld I0, bool print = true);
 
+    /**
+     * @brief Consider a L-R circuit where initially, the
+     * switch connects a resistor of resistance R and an inductor to a battery,
+     * and a current I0 flows through the circuit. At time t=0, the switch is
+     * thrown open with the motion indicated by the arrow, removing the battery
+     * from the circuit. Suppose you measure that the current decays to I1 at
+     * time t1. Calculate the time constant of the circuit.
+     * @param I0 The initial current.
+     * @param I1 The current at time t1.
+     * @param t1 The time.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the time constant
+     */
+    static ld timeConstant_IOI1t1(ld I0, ld I1, ld t1, bool print = true);
+
+    /**
+     * @brief calculate the inductance of an inductor from a current
+     * measurement taken at a particular time. Consider a L-R circuit.
+     * Initially, the switch connects a resistor of resistance R and an
+     * inductor to a battery, and a current I0 flows through the circuit.
+     * At time t=0, the switch is thrown open removing the battery from the
+     * circuit. Suppose you measure that the current decays to I1 at time t1.
+     * @param I0 The initial current.
+     * @param I1 The current at time t1.
+     * @param t1 The time.
+     * @param R The resistance.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the inductance
+     */
+    static ld inductance_I0I1t1R(ld I0, ld I1, ld t1, ld R, bool print = true);
+
+    /**
+     * @brief The magnetic field has uniform magnitude B T, but its direction
+     * reverses abruptly.\n
+     * ---│<----w---->│\n
+     * ------------------→B\n
+     * -→┌──────┐-→                 ───\n
+     * -→│---------→│--→              ↑\n
+     * -→│---------→│--→              h\n
+     * ←-│←---------│←--               \n
+     * ←-│←---------│←--              ↓\n
+     * ←-└──────┘←-                 ───\n
+     * ←------------------B\n
+     * Calculate how much current is encircled by the rectangular loop show
+     * with a width of w m and a height of h m.
+     * @param B The magnetic field.
+     * @param w The width.
+     * @param h The height.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the current
+     */
+    static ld currentEncircledInRectangleIn2DirBField(
+            ld B, ld w, bool print = true);
+
+    /**
+     * @brief Find E(R,t), the electromotive force (EMF) around a loop that is
+     * at distance R from the z axis, where R is restricted to the region
+     * outside the rod.
+     * @param B The magnetic field.
+     * @param A The area.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the electromotive force
+     */
+    static ld emfAroundLoop(ld B, ld A, bool print = true);
+
+    /**
+     * @brief Due to the cylindrical symmetry of this problem, the induced
+     * electric field E(R,t) can depend only on the distance R from the z
+     * axis, where R is restricted to the region outside the rod.
+     * Calculate this field.
+     * @param B The magnetic field.
+     * @param A The area.
+     * @param R The distance.
+     * @param theta The angle.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the electric field
+     */
+    static ld electricField(ld B, ld A, ld R, ld theta, bool print = true);
+
+    /**
+     * @brief A long solenoid has circular cross section of radius R. The
+     * solenoid current is increasing, and as a result so is the magnetic field
+     * in the solenoid. The field strength is given by B=bt, where b is a
+     * constant. Calculate the following:
+     * (a) the magnitude of the electric field induced inside the solenoid a
+     * distance r from the axis of the solenoid.
+     * (b) the magnitude of the electric field induced outside the solenoid a
+     * distance R from the axis of the solenoid.
+     * @param b The constant.
+     * @param r The distance.
+     * @param R The radius.
+     * @param print  (default is true) if true prints the equation and result.
+     */
+    static vector<ld> electricFieldInSolenoid(
+            ld b, ld r, ld R, bool print = true);
+
+    /**
+     * @brief consider the resonance curve for a circuit with electrical
+     * components L, R, and C and resonant frequency ω0. Calculate X_c(ω),
+     * the reactance of the capacitor at frequency ω.
+     * @param C The capacitance.
+     * @param omega The frequency.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the reactance
+     */
+    static ld reactance(ld C, ld omega, bool print = true);
+
+    /**
+     * @brief Calculate the voltage across an inductor with a current of I A
+     * and a reactance of X Ω.
+     * @param I The current.
+     * @param X The reactance.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the voltage
+     */
+    static ld voltageAcrossInductor_IX(ld I, ld X, bool print = true);
+
+    /**
+     * @brief Derive an expression for Vout/Vs, the ratio of the output and
+     * source voltage amplitudes, as a function of the angular frequency ω of
+     * the source. Express your answer in terms of the capacitance C,
+     * resistance R, inductance L, and angular frequency ω of the circuit.
+     * @param R The resistance.
+     * @param L The inductance.
+     * @param C The capacitance.
+     * @param omega The angular frequency.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the ratio
+     */
+    static ld ratioOfOutputAndSourceVoltageAmplitudes(
+            ld R, ld L, ld C, ld omega, bool print = true);
+
+    /**
+     * @brief A series RLC circuit has R Ω, C F, and L H. Calculate at what
+     * frequency is its impedance lowest and what is the value of the impedance
+     * at that frequency.
+     * @param R The resistance.
+     * @param L The inductance.
+     * @param C The capacitance.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the frequency
+     */
+    static vector<ld> frequencyOfLowestImpedance(
+            ld R, ld L, ld C, bool print = true);
+
+    /**
+     * @brief Calculate the current of an AC circuit with a resistance of R,
+     * a peek voltage of Vp, a frequency of f Hz, and a phase of θ and time of t.
+     * @param R The resistance.
+     * @param Vp The peek voltage.
+     * @param f The frequency.
+     * @param t The time.
+     * @param theta The phase. (default is 0)
+     * @param print  (default is true) if true prints the equation and result.
+     */
+    static ld currentAC_RVpft(ld R, ld Vp, ld f, ld t, ld theta = 0, bool print = true);
+
+    /**
+     * @brief Calculate the current of an AC circuit with a capacitance of C,
+     * a peek voltage of Vp, a frequency of f Hz, and a phase of θ and time of t.
+     * @param C The capacitance.
+     * @param Vp The peek voltage.
+     * @param f The frequency.
+     * @param t The time.
+     * @param theta The phase. (default is 0)
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the current
+     */
+    static ld currentAC_CVpft(ld C, ld Vp, ld f, ld t, ld theta = 0, bool print = true);
+
+    /**
+     * @brief Calculate the current of an AC circuit with an inductance of L,
+     * a peek voltage of Vp, a frequency of f Hz, and a phase of θ and time of t.
+     * @param L The inductance.
+     * @param Vp The peek voltage.
+     * @param f The frequency.
+     * @param t The time.
+     * @param theta The phase. (default is 0)
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the current
+     */
+    static ld currentAC_LVpft(ld L, ld Vp, ld f, ld t, ld theta = 0, bool print = true);
+
+    /**
+     * @brief Calculates the peek current from peek voltage Vp the
+     * capacitance C and the frequency f.
+     * @param C The capacitance.
+     * @param Vp The peek voltage.
+     * @param f The frequency.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the peek current
+     */
+    static ld peekCurrentAC_CVpf(ld C, ld Vp, ld f, bool print = true);
+
+    /**
+     * @brief Calculates the peek current from peek voltage Vp the inductance L
+     * and the frequency f.
+     * @param L The inductance.
+     * @param Vp The peek voltage.
+     * @param f The frequency.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the peek current
+     */
+    static ld peekCurrentAC_LVpf(ld L, ld Vp, ld f, bool print = true);
+
+    /**
+     * @brief Calculates the peek current from peek voltage Vp the resistance R
+     * where V and R are in phase.
+     * @param R The resistance.
+     * @param Vp The peek voltage.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the peek current
+     */
+    static ld peekCurrentAC_RVp(ld R, ld Vp, bool print = true);
+
+    /**
+     * @brief A capacitor is connected across a f-Hz, Vrms-V rms power line,
+     * and an rms current of Irms A flows.
+     * Calculate the following:
+     * (a) the capacitance.
+     * (b) What inductance, connected across the same power line, would
+     * result in the same current.
+     * (c) How would the phases of the inductor and capacitor currents compare?
+     * @param Vrms The rms voltage.
+     * @param Irms The rms current.
+     * @param f The frequency.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the capacitance, inductance needed to have the same current,
+     * and the phase difference between the inductor and capacitor currents.
+     */
+    static vector<ld> capacitorAndInductorCurrents(
+            ld Vrms, ld Irms, ld f, bool print = true);
+
+    /**
+     * @brief Calculate what inductance L is needed to have the same current
+     * as a capacitor with capacitance C, connected across a f-Hz power line.
+     * @param C The capacitance.
+     * @param f The frequency.
+     * @param print  (default is true) if true prints the equation and result.
+     * @return  the inductance
+     */
+     static ld inductanceNeededForSameCurrent(ld C, ld f, bool print = true);
 
 
     ~ElectroMagneticInduction()
@@ -1641,73 +1937,73 @@ inline ld ElectroMagneticInduction::selfInductance_phiI(
 inline ld ElectroMagneticInduction::selfInductance_taoR(
         const ld toa, const ld R, bool print)
 {
-    auto var = toa * R;//H
+    auto L = toa * R;//H
     if (print)
-        std::cout << "Self Inductance = " << var << " Henry" << std::endl;
-    return var;
+        std::cout << "Self Inductance = " << L << " Henry" << std::endl;
+    return L;
 }
 
 inline ld ElectroMagneticInduction::inductanceSolenoid_NAL(
         int N, ld A, ld l, char mode = 'a', bool print)
 {
     ld area;
-    ld var;
+    ld L;
     if (mode == 'a' || mode == 'A')
     {
-        var = (constants::_mu0 * (N * N) * A) / l;//(H)
+        L = (constants::_mu0 * (N * N) * A) / l;//(H)
     }
     else if	(mode == 'r' || mode == 'R')
     {
         area = circle_area_r(A);
-        var = (constants::_mu0 * (N * N) * area) / l;//(H)
+        L = (constants::_mu0 * (N * N) * area) / l;//(H)
     }
     else if (mode == 'c' || mode == 'C')
     {
         area = circle_area_c(A);
-        var = (constants::_mu0 * (N * N) * area) / (2.0 * l);//(H)
+        L = (constants::_mu0 * (N * N) * area) / (2.0 * l);//(H)
     }
     else
     {
         area = circle_area_d(A);
-        var = (constants::_mu0 * (N * N) * area) / l;//(H)
+        L = (constants::_mu0 * (N * N) * area) / l;//(H)
     }
     if (print)
-        std::cout << "Inductance = " << var << " Henry" << std::endl;
-    return var;
+        std::cout << "Inductance = " << L << " Henry" << std::endl;
+    return L;
 }
 
 inline ld ElectroMagneticInduction::inductanceFromEnergyStored(
         const ld E, const ld I, bool print)
 {
-    auto var = (2.0 * E) / (I * I);//H = Ohm *s
+    auto L = (2.0 * E) / (I * I);//H = Ohm *s
     if (print)
-        std::cout << "Inductance = " << var << " Henry" << std::endl;
-    return var;
+        std::cout << "Inductance = " << L << " Henry" << std::endl;
+    return L;
 }
 
 inline ld ElectroMagneticInduction::energyStoredInInductor(
         const ld L, const ld I, bool print)
 {
-    auto var = (1.0 / 2.0) * L * (I * I);//J
+    auto U = (1.0 / 2.0) * L * (I * I);//J
     if (print)
-        std::cout << "Energy = " << var << " Joule" << std::endl;
-    return var;
+        std::cout << "Energy = " << U << " Joule" << std::endl;
+    return U;
 }
 
 inline ld ElectroMagneticInduction::timeOnOffToInduceCurrent(
         const ld I, const ld L, const ld emf, bool print)
 {
-    auto var = L * (I / emf);//seconds
+    auto t = L * (I / emf);//seconds
     if (print)
-        std::cout << "Time = " << var << " seconds" << std::endl;
-    return var;
+        std::cout << "Time = " << t << " seconds" << std::endl;
+    return t;
 }
 
 inline ld ElectroMagneticInduction::currentSystemOnRails(
-        const ld B, const ld l, const ld v, const ld A, const ld p, const ld R,
+        const ld B, const ld l, const ld v, const ld A, const ld p_, const ld R,
         const ld t, bool print)
 {
-    auto var = (B * l * v * A) / (p * (2.0 * v * t + l) + R*A);//A
+    auto var = (B * l * v * A) / (p_ * (2.0 * v * t + l) + R * A);//A
     if (print)
         std::cout << "Current = " << var << " Ampere" << std::endl;
     return var;
@@ -1716,13 +2012,13 @@ inline ld ElectroMagneticInduction::currentSystemOnRails(
 inline ld ElectroMagneticInduction::inductiveTimeConstant(
         ld L, ld R, bool print)
 {
-    auto var = L/R;//s
+    auto tao = L/R;//s
     if (print)
-        std::cout << "Time Constant = " << var << " seconds" << std::endl;
-    return var;
+        std::cout << "Time Constant = " << tao << " seconds" << std::endl;
+    return tao;
 }
 
-inline ld ElectroMagneticInduction::inductanceReactance_fL(
+inline ld ElectroMagneticInduction::inductiveReactance_fL(
         ld f, ld L, bool print)
 {
     auto var = 2.0 * constants::PI * f * L;
@@ -1785,10 +2081,10 @@ inline ld ElectroMagneticInduction::currentRMS_throughCapacitor(
     return var;
 }
 
-inline ld ElectroMagneticInduction::peekCurrent_AC(
-        const ld Vo, const ld Z, bool print)
+inline ld ElectroMagneticInduction::peekCurrentAC(
+        const ld Vp, const ld Z, bool print)
 {
-    auto var = Vo / Z;//A
+    auto var = Vp / Z;//A
     if (print)
         std::cout << "Current = " << var << " Ampere" << std::endl;
     return var;
@@ -1817,7 +2113,7 @@ inline ld ElectroMagneticInduction::rmsCurrent_AC(
         const ld Vrms, const ld R, const ld L, const ld C, const ld f,
         bool print)
 {
-    const ld XL = inductanceReactance_fL(f, L);
+    const ld XL = inductiveReactance_fL(f, L);
     const ld XC = capacitiveReactance_fC(f, C);
     const ld Z = sqrt((R * R) + pow((XL - XC), 2));
     auto var = Vrms / Z;
@@ -1838,12 +2134,12 @@ inline ld ElectroMagneticInduction::impedance(
 inline ld ElectroMagneticInduction::impedance(
         const ld R, const ld L, const ld C, const ld f, bool print)
 {
-    const ld XL = inductanceReactance_fL(f, L);
+    const ld XL = inductiveReactance_fL(f, L);
     const ld XC = capacitiveReactance_fC(f, C);
-    auto var = sqrt((R * R) + pow((XL - XC), 2));
+    auto Z = sqrt((R * R) + pow((XL - XC), 2));
     if (print)
-        std::cout << "Impedance = " << var << " Ohm" << std::endl;
-    return var;
+        std::cout << "Impedance = " << Z << " Ohm" << std::endl;
+    return Z;
 }
 
 inline ld ElectroMagneticInduction::resonantFrequency(
@@ -1896,7 +2192,7 @@ inline ld ElectroMagneticInduction::powerAvgRLC(
 inline ld ElectroMagneticInduction::emfPeek(
         const ld r, const ld N, const ld t, const ld B, bool print)
 {
-    //peek emf (Vo)
+    //peek emf (Vp)
     auto var = ((constants::PI * constants::PI) * N * (r * r) * B) / (2.0 * t);
     if (print)
         std::cout << "EMF = " << var << " Volts" << std::endl;
@@ -2253,7 +2549,7 @@ inline vector<ld> ElectroMagneticInduction::slidingRod(
         std::cout << "Current in Resistor = " << I << " Ampere" << std::endl;
         std::cout << "Magnetic Force on Bar = " << F << " Newton" << std::endl;
         std::cout << "Power Dissipated in Resistor = " << P << " Watts" << std::endl;
-        std::cout << "Work Done by Agent = " << W << " Watts" << std::endl;
+        std::cout << "Work Done by Agent = " << W << " W" << std::endl;
     }
     return {I, F, P, W};
 }
@@ -2263,7 +2559,7 @@ inline ld ElectroMagneticInduction::magneticForceSlidingBar(
 {
     auto F = I * l * B;
     if (print)
-        std::cout << "Magnetic Force = " << F << " Newton" << std::endl;
+        std::cout << "Magnetic Force = " << F << " N" << std::endl;
     return F;
 }
 
@@ -2272,7 +2568,7 @@ inline ld ElectroMagneticInduction::workDoneSlidingBar(
 {
     auto W = f * v;
     if (print)
-        std::cout << "Work Done = " << W << " Joules" << std::endl;
+        std::cout << "Work Done = " << W << " J" << std::endl;
     return W;
 }
 
@@ -2288,9 +2584,9 @@ inline vector<ld> ElectroMagneticInduction::inductorRLCircuit(
     // part c find the current in the circuit at many time constants
     auto I1 = I0;
     if (print) {
-        std::cout << "Inductance = " << L << " Henry" << std::endl;
-        std::cout << "Time Constant = " << t2 << " Seconds" << std::endl;
-        std::cout << "Current at (t = infinity) = " << I1 << " Ampere" <<
+        std::cout << "Inductance = " << L << " H" << std::endl;
+        std::cout << "Time Constant = " << t2 << " s" << std::endl;
+        std::cout << "Current at (t = infinity) = " << I1 << " A" <<
         std::endl;
     }
     return {L, t2, I1};
@@ -2301,6 +2597,235 @@ inline ld ElectroMagneticInduction::timeConstant(
 {
     auto tao = - t / log((I0 - I) / I0);
     if (print)
-        std::cout << "Time Constant = " << tao << " Seconds" << std::endl;
+        std::cout << "Time Constant = " << tao << " s" << std::endl;
     return tao;
+}
+
+inline ld ElectroMagneticInduction::currentEncircledInRectangleIn2DirBField(
+        ld B, ld w, bool print)
+{
+    auto I_encl = (2.0 * B * w) / constants::_mu0;
+    if (print)
+        std::cout << "Current Encircled = " << I_encl << " A" << std::endl;
+    return I_encl;
+}
+
+inline ld ElectroMagneticInduction::emfAroundLoop(ld B, ld A, bool print)
+{
+    auto emf = -A*B;
+    if (print)
+        std::cout << "EMF = " << emf << " V" << std::endl;
+    return emf;
+}
+
+inline ld ElectroMagneticInduction::electricField(
+        ld B, ld A, ld R, ld theta, bool print)
+{
+    auto E = (B * A * sin(theta)) / (R * 2.0 * constants::PI);
+    if (print)
+        std::cout << "Electric Field = " << E << " N/C" << std::endl;
+    return E;
+}
+
+inline ld ElectroMagneticInduction::inductanceFromEnergyStored_kWhI(
+        ld kWh, ld I, bool print)
+{
+    auto joules = Conversions::kWh_to_joules(kWh);
+    auto L = (2*joules) / (I * I);
+    if (print)
+        std::cout << "Inductance = " << L << " H" << std::endl;
+    return L;
+}
+
+inline ld ElectroMagneticInduction::timeConstant_IOI1t1(
+        ld I0, ld I1, ld t1, bool print)
+{
+    auto tao = t1 / log(I0 / I1);
+    if (print)
+        std::cout << "Time Constant = " << tao << " s" << std::endl;
+    return tao;
+}
+
+inline ld ElectroMagneticInduction::inductance_I0I1t1R(
+        ld I0, ld I1, ld t1, ld R, bool print) {
+    auto tao = timeConstant_IOI1t1(I0, I1, t1, false);
+    auto L = selfInductance_taoR(tao, R, false);
+    if (print)
+        std::cout << "Inductance = " << L << " H" << std::endl;
+    return L;
+}
+
+inline vector<ld> ElectroMagneticInduction::electricFieldInSolenoid(
+        ld b, ld r, ld R, bool print)
+{
+    // part a find the magnetic field in the solenoid
+    auto Er = (b*r) / 2.0;
+    auto E = (b*R) / 2.0;
+    if (print) {
+        std::cout << "Electric Field inner Solenoid = " << E << " N/C" <<
+        std::endl;
+        std::cout << "Electric Field outer Solenoid = " << Er << " N/C" <<
+        std::endl;
+    }
+    return {E, Er};
+}
+
+inline ld ElectroMagneticInduction::reactance(
+        ld C, ld omega, bool print)
+{
+    auto Xc = 1.0 / (omega * C);
+    if (print)
+        std::cout << "Reactance of Capacitor = " << Xc << " Ohm" <<
+        std::endl;
+    return Xc;
+}
+
+inline ld ElectroMagneticInduction::voltageAcrossInductor_IX(
+        ld I, ld X, bool print)
+{
+    auto V = I * X;
+    if (print)
+        std::cout << "Voltage Across Inductor = " << V << " V" << std::endl;
+    return V;
+}
+
+inline ld ElectroMagneticInduction::ratioOfOutputAndSourceVoltageAmplitudes(
+        ld R, ld L, ld C, ld omega, bool print)
+{
+    auto Vout_Vin = 1.0 / (sqrt((1.0 - (omega * omega * L * C)) *
+            (1.0 - (omega * omega * L * C)) + (omega * R * C) *
+            (omega * R * C)));
+    if (print) {
+        std::cout << "Ratio of Output and Source Voltage Amplitudes = " <<
+                  Vout_Vin << std::endl;
+    }
+    return Vout_Vin;
+}
+
+inline vector<ld> ElectroMagneticInduction::frequencyOfLowestImpedance(
+        ld R, ld L, ld C, bool print)
+{
+    auto f = 1.0 / (2.0 * constants::PI * sqrt(L * C));
+    auto Z = R;
+    if (print) {
+        std::cout << "Frequency of Lowest Impedance = " << f << " Hz" <<
+        std::endl;
+        std::cout << "Impedance = " << Z << " Ohm" << std::endl;
+    }
+    return {f, Z};
+}
+
+ld ElectroMagneticInduction::rmsCurrent_AC_R(ld Vrms, ld R, bool print) {
+    auto Irms = Vrms / R;
+    if (print)
+        std::cout << "RMS Current = " << Irms << " A" << std::endl;
+    return Irms;
+}
+
+ld ElectroMagneticInduction::currentAC_RVpft(
+        ld R, ld Vp, ld f, ld t, ld theta, bool print)
+{
+    auto I = (Vp / R) * sin(2.0 * constants::PI * f * t + theta);
+    if (print)
+        std::cout << "Current = " << I << " A" << std::endl;
+    return I;
+}
+
+ld ElectroMagneticInduction::currentAC_CVpft(
+        ld C, ld Vp, ld f, ld t, ld theta, bool print)
+{
+    auto omega = 2.0 * constants::PI * f;
+    auto I = omega * C * Vp * sin(omega * t + (constants::PI / 2.0) + theta);
+    if (print)
+        std::cout << "Current = " << I << " A" << std::endl;
+    return I;
+}
+
+ld ElectroMagneticInduction::peekCurrentAC_CVpf(ld C, ld Vp, ld f, bool print) {
+    auto omega = 2.0 * constants::PI * f;
+    auto Xc = capacitiveReactance_fC(f, C, false);
+    auto I = Vp / Xc;
+    if (print)
+        std::cout << "Peek Current = " << I << " A" << std::endl;
+    return I;
+}
+
+ld ElectroMagneticInduction::currentAC_LVpft(
+        ld L, ld Vp, ld f, ld t, ld theta, bool print)
+{
+    auto omega = 2.0 * constants::PI * f;
+    auto I = (Vp / (omega * L)) * sin(omega * t - (constants::PI / 2.0) + theta);
+    if (print)
+        std::cout << "Current = " << I << " A" << std::endl;
+    return I;
+}
+
+ld ElectroMagneticInduction::peekCurrentAC_LVpf(ld L, ld Vp, ld f, bool print) {
+    auto omega = 2.0 * constants::PI * f;
+    auto Xl = inductiveReactance_fL(f, L, false);
+    auto I = Vp / Xl;
+    if (print)
+        std::cout << "Peek Current = " << I << " A" << std::endl;
+    return I;
+}
+
+ld ElectroMagneticInduction::peekCurrentAC_RVp(ld R, ld Vp, bool print) {
+    auto I = Vp / R;
+    if (print)
+        std::cout << "Peek Current = " << I << " A" << std::endl;
+    return I;
+}
+
+vector<ld>
+ElectroMagneticInduction::capacitorAndInductorCurrents(
+        ld Vrms, ld Irms, ld f, bool print) {
+    auto omega = 2.0 * constants::PI * f;
+    auto C = Irms / (omega * Vrms);
+    auto L = 1.0 / (omega * omega * C);
+    if (print) {
+        std::cout << "Capacitance = " << C << " F" << std::endl;
+        std::cout << "Inductance = " << L << " H" << std::endl;
+    }
+    return {C, L};
+}
+
+ld ElectroMagneticInduction::inductanceNeededForSameCurrent(
+        ld C, ld f, bool print)
+{
+    auto omega = 2.0 * constants::PI * f;
+    auto L = 1.0 / (omega * omega * C);
+    if (print)
+        std::cout << "Inductance = " << L << " H" << std::endl;
+    return L;
+}
+
+ld ElectroMagneticInduction::peekCurrentAC_LC(
+        ld L, ld C, ld Vp, bool print)
+{
+    auto I = Vp * (sqrt(C / L));
+    if (print)
+        std::cout << "Peek Current = " << I << " A" << std::endl;
+    return I;
+}
+
+ld ElectroMagneticInduction::phaseAngle(ld R, ld L, ld C, ld f, bool print) {
+
+    auto Xl = inductiveReactance_fL(f, L, false);
+    auto Xc = capacitiveReactance_fC(f, C, false);
+    auto theta = atan((Xl - Xc) / R);
+    if (print)
+        std::cout << "Phase Angle = " << theta << " rad" << std::endl;
+    return theta;
+}
+
+ld ElectroMagneticInduction::powerFactor(ld Vrms, ld Irms, ld phi, bool print) {
+    auto P = Vrms * Irms * cos(phi);
+    auto S = Vrms * Irms;
+    auto pf = P / S;
+    if (print) {
+        std::cout << "Power = " << P << " W" << std::endl;
+        std::cout << "Apparent Power = " << S << " VA" << std::endl;
+        std::cout << "Power Factor = " << pf << std::endl;
+    }
+    return pf;
 }

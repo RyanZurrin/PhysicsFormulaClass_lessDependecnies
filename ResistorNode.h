@@ -9,17 +9,18 @@
 #include <cmath>
 #include <cassert>
 
+template<typename T>
 class ResistorNode {
 public:
-    std::vector<double> resistances;
-    std::vector<double> voltages;
-    std::vector<double> currents;
-    std::vector<double> powers;
-    double VCC;
+    std::vector<T> resistances;
+    std::vector<T> voltages;
+    std::vector<T> currents;
+    std::vector<T> powers;
+    T VCC;
     char type;
-    double eR;
-    double I;
-    double P;
+    T eR;
+    T I;
+    T P;
 
     ResistorNode() {
         resistances = {};
@@ -33,7 +34,7 @@ public:
         P = 0.0;
     }
 
-    ResistorNode(std::vector<double> r, double v, char t) {
+    ResistorNode(std::vector<T> r, T v, char t) {
         resistances = r;
         type = t;
         VCC = v;
@@ -53,7 +54,7 @@ public:
         }
     }
 
-    ResistorNode(std::vector<ResistorNode> r, double v, char t) {
+    ResistorNode(std::vector<ResistorNode> r, T v, char t) {
         resistances = {};
         type = t;
         VCC = v;
@@ -67,7 +68,7 @@ public:
         }
         // add all the resistors from each node to the vector
         for (const ResistorNode& resistor : r) {
-            for (double resistance : resistor.resistances) {
+            for (T resistance : resistor.resistances) {
                 resistances.push_back(resistance);
             }
         }
@@ -86,7 +87,7 @@ public:
         }
     }
 
-    void removeResistance(double r) {
+    void removeResistance(T r) {
         for (int i = 0; i < resistances.size(); i++) {
             if (resistances[i] == r) {
                 resistances.erase(resistances.begin() + i);
@@ -95,7 +96,7 @@ public:
         }
     }
 
-    void setVoltage(double v) {
+    void setVoltage(T v) {
         VCC = v;
         if (type == 'p') {
             currents = calculateCurrents();
@@ -112,7 +113,7 @@ public:
         }
     }
 
-    void setResistances(std::vector<double> r) {
+    void setResistances(std::vector<T> r) {
         // assert that VCC is not 0
         assert(VCC != 0.0);
         resistances = r;
@@ -132,15 +133,15 @@ public:
         }
     }
 
-    double calculateEquivalentResistance() {
-        double sum = 0.0;
+    T calculateEquivalentResistance() {
+        T sum = 0.0;
         if (type == 'p') {
-            for (double resistance : resistances) {
+            for (T resistance : resistances) {
                 sum += 1.0 / resistance;
             }
             sum = 1.0 / sum;
         } else if (type == 's') {
-            for (double resistance : resistances) {
+            for (T resistance : resistances) {
                 sum += resistance;
             }
 
@@ -148,30 +149,30 @@ public:
         return sum;
     }
 
-    std::vector<double> calculateVoltages() {
-        std::vector<double> _voltages;
+    std::vector<T> calculateVoltages() {
+        std::vector<T> _voltages;
         if (type == 'p') {
             // in parallel node voltages are equal to the voltage of the
             // source across each resistor
-            for (double resistance : resistances) {
+            for (T resistance : resistances) {
                 _voltages.push_back(VCC);
             }
         } else if (type == 's') {
-            for (double resistance : resistances) {
+            for (T resistance : resistances) {
                 _voltages.push_back((I * resistance));
             }
         }
         return _voltages;
     }
 
-    std::vector<double> calculateCurrents() {
-        std::vector<double> _currents;
+    std::vector<T> calculateCurrents() {
+        std::vector<T> _currents;
         if (type == 'p') {
             for (int i = 0; i < resistances.size(); i++) {
                 _currents.push_back((VCC / resistances[i]));
             }
         } else if (type == 's') {
-            for (double resistance : resistances) {
+            for (T resistance : resistances) {
                 _currents.push_back(I);
             }
         }
@@ -179,22 +180,22 @@ public:
 
     }
 
-    std::vector<double> calculatePowers() {
-        std::vector<double> _powers;
+    std::vector<T> calculatePowers() {
+        std::vector<T> _powers;
         for (int i = 0; i < resistances.size(); i++) {
             _powers.push_back((pow(currents[i], 2)) * resistances[i]);
         }
         return _powers;
     }
 
-    double calculateTotalPower() {
+    T calculateTotalPower() {
         return VCC * I;
     }
 
-    double calculateTotalCurrent() {
-        double sum = 0.0;
+    T calculateTotalCurrent() {
+        T sum = 0.0;
         if (type == 'p') {
-            for (double current : currents) {
+            for (T current : currents) {
                 sum += current;
             }
         } else if (type == 's') {

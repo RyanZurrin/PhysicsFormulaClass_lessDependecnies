@@ -1718,7 +1718,7 @@ public:
     }
 
     /**
-     * brief An open container holds substance of mass m kg at a temperature
+     * @brief An open container holds substance of mass m kg at a temperature
      * of Ti ∘C. The mass of the container can be ignored. Heat is supplied to the
      * container at the constant rate of Q J/second. The specific heat of
      * substance to is c_s J/kg⋅K and the heat of fusion for substance is
@@ -1756,6 +1756,45 @@ public:
         }
         return {time1, time2};
 
+    }
+
+    /**
+     * @brief A wall of material 1 in a cold storage room measures h m high,
+     * and l m wide, and  w m thick. The room temperature is maintained at
+     * T_in °C and the outside temperature is T_out °C. The inside wall is to
+     * be covered by a layer of material 2 in order to reduce the rate of heat
+     * loss through the wall BY X percent. The thermal conductivities of
+     * material 1 and material 2 are k1 W/m·K and k2 W/m·K, respectively.
+     * Under steady state conditions, the thickness of the layer of material 2
+     * that will reduce the heat loss by X percent is.
+     * @param h height of wall in m
+     * @param l width of wall in m
+     * @param w thickness of wall in m
+     * @param T_in temperature of inside of wall in degrees C
+     * @param T_out temperature of outside of wall in degrees C
+     * @param k1 thermal conductivity of material 1 in W/m·K
+     * @param k2 thermal conductivity of material 2 in W/m·K
+     * @param X percent to reduce heat loss by
+     * @param print whether or not to print the results
+     * @return the thickness of the layer of material 2 that will reduce the
+     * heat loss by X percent.
+     */
+    static ld thicknessOfMaterialToReduceHeatLossByXPercent(
+            const ld h, const ld l, const ld w, const ld T_in, const ld T_out,
+            const ld k1, const ld k2, const ld X, bool print = true)
+    {
+        auto A = h * l;
+        auto dT = T_out - T_in;
+        auto dQ_dt = heatConduction(k1, A, dT, w);
+        auto dQ_dt2 = dQ_dt * (1 - X/100);
+        auto R_th = dT / dQ_dt2;
+        auto thickness = (R_th - (w/(k1*A))) * (k2*A);
+        if (print) {
+            std::cout << "The thickness of the layer of material 2 that will "
+                         "reduce the heat loss by " << X << " percent is: "
+                         << thickness << " m" << std::endl;
+        }
+        return thickness;
     }
 
 

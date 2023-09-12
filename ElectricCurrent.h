@@ -481,34 +481,6 @@ public:
                                      long double vd, bool print = true);
 
     /**
-     * @brief calculates the current using ohms law of voltage over resistances.
-     * @param V  the voltage
-     * @param R  the resistance
-     * @param print  print to console
-     * @return  the current in Amperes
-     */
-    static long double current_ohms(long double V, long double R, bool print = true);
-
-    /**
-     * @brief calculates the voltage using ohms law.
-     * @param I  the current
-     * @param R  the resistance
-     * @param print  print to console
-     * @return  the voltage in volts
-     */
-    static long double voltage_ohms(long double I, long double R, bool print = true);
-
-    /**
-     * @brief calculates the resistance using ohms law.
-     * @param I  the current
-     * @param V  the voltage
-     * @param print  print to console
-     * @return  the resistance in ohms
-     */
-    static long double resistance_ohms(long double I, long double V, bool print = true);
-
-
-    /**
      * @brief calculates the current from the voltage, diameter, resistivity_ldR
      * and length of a wire.
      * @param V  the voltage
@@ -520,15 +492,6 @@ public:
      */
     static long double current_VdRhoL(
             long double V, long double d, long double rho, long double L, bool print = true);
-
-    /**
-     * @brief calculates the resistances of an ohmic conducting material
-     * @param V  the volts
-     * @param I  the current (A)
-     * @param print  print to console
-     * @return  the resistance
-     */
-    static long double resistance_ohmic(long double V, long double I, bool print = true);
 
     /**
      * @brief calculates the resistance of resistor with a resistivity_ldR of p and a
@@ -1016,11 +979,11 @@ public:
 
     /**
      * @brief Calculates the RMS current.
-     * @param Io  The peek current.
+     * @param Ip  The peek current.
      * @param print  print to console
      * @return  rms current
      */
-    static long double rmsCurrent(long double Io, bool print = true);
+    static long double rmsCurrent(long double Ip, bool print = true);
 
     /**
      * @brief Calculates the peek current.
@@ -1029,6 +992,17 @@ public:
      * @return  peek current
      */
     static long double peekCurrent(long double Irms, bool print = true);
+
+    /**
+     * @brief Calculates the peek current from the peek voltage Vp and the
+     * resistance R of the circuit.
+     * @param Vp  The peek voltage.
+     * @param R  The resistance.
+     * @param print  print to console
+     * @return  peek current
+     */
+    static long double peekCurrent(
+            long double Vp, long double R, bool print = true);
 
     /**
      * @brief Calculate the steady current of a charge of Q coulombs flowing
@@ -1045,22 +1019,22 @@ public:
      * @brief Calculate the instantaneous current of a charge with a maximum
      * current of I_max amperes, with an angular frequency of w radians per
      * second, at a time of t seconds.
-     * @param I_max The maximum current in amperes.
+     * @param Ip The maximum current in amperes.
      * @param w The angular frequency in radians per second.
      * @param t The time in seconds.
      * @param print If true, print the result.
      * @return The current in amperes.
      */
     static long double instantaneousCurrent(
-            long double I_max, long double w, long double t, bool print = true);
+            long double Ip, long double w, long double t, bool print = true);
 
     /**
      * @brief Calculates the RMS voltage.
-     * @param Vo  The peek voltage.
+     * @param Vp  The peek voltage.
      * @param print  print to console
      * @return  voltage
      */
-    static long double rmsVoltage(long double Vo, bool print = true);
+    static long double rmsVoltage(long double Vp, bool print = true);
 
     /**
      * @brief Calculates the peek voltage.
@@ -1093,6 +1067,20 @@ public:
             long double Vo, long double f, long double t, bool print = true);
 
     /**
+     * @brief Calculates the voltage of an AC circuit given the peek voltage,
+     * Vp, and the frequency, f, the phase constant, phi_v, and the time, t.
+     * @param Vp  The peek voltage.
+     * @param f  The frequency in hertz.
+     * @param t  The time we are looking to find the voltage at.
+     * @param phi_v  The phase constant (default = 0).
+     * @param print  print to console (default = true).
+     * @return  voltage at time t in volts of an AC circuit.
+     */
+    static long double voltageAC(
+            long double Vp, long double f, long double t, long double phi_v = 0,
+            bool print = true);
+
+    /**
      * @brief Calculates the current at a given time.
      * @param I0  The peek current (Io = Vo/R).
      * @param f  The frequency in hertz.
@@ -1102,6 +1090,21 @@ public:
      */
     static long double currentAC_ftI0(
             long double I0, long double f, long double t, bool print = true);
+
+    /**
+     * @brief Calculates the current at a given time of an AC circuit given
+     * the peek current, Ip, and the frequency, f, the phase constant, phi_i,
+     * and the time, t.
+     * @param Ip  The peek current.
+     * @param f  The frequency in hertz.
+     * @param t  The time we are looking to find the current at.
+     * @param phi_i  The phase constant (default = 0).
+     * @param print  print to console
+     * @return  current at time t in amperes of an AC circuit.
+     */
+    static long double currentAC(
+            long double Ip, long double f, long double t, long double phi_i = 0,
+            bool print = true);
 
     /**
      * @brief Calculates the temperature coefficient of resistivity_ldR.
@@ -1171,6 +1174,19 @@ public:
     static long double electricFieldInWire(
             long double I, long double p, long double drc, char mode = 'd',
             bool print = true);
+
+    /**
+     * @brief An infinitely long cylinder of radius R m carries
+     * a uniform volume charge density of rho C/m3. Calculate the electric
+     * field at distance r m from the axis of the cylinder.
+     * @param rho  The charge density.
+     * @param R  The radius.
+     * @param r  The distance.
+     * @param print  print to console
+     * @return  electric field
+     */
+    static long double electricFieldInCylinder(
+            long double rho, long double R, long double r, bool print = true);
 
     /**
      * @brief A metallic wire has a diameter of d m. When the current in the
@@ -1244,7 +1260,53 @@ public:
             long double I, long double V_min, long double V0, int g = 18,
             const std::string& type = "copper", bool print = true);
 
-    static long double getResistivity(const string& basicString);
+    /**
+     * @brief looks up the resistivity of a material and returns it.
+     * @param material  The material.
+     * @return  resistivity
+     */
+    static long double getResistivity(const string& material);
+
+    /**
+     * @brief An AC current is given by I = Ip*sin(omega*t)
+     * Calculate the following:
+     * (a) the rms current
+     * (b) the frequency in Hz.
+     * @param Ip  The peak current.
+     * @param omega  The angular frequency.
+     * @param print  print to console
+     * @return  rms current, frequency
+     */
+    static vector<long double> acCurrent(
+            long double Ip, long double omega, bool print = true);
+
+    /**
+     * @brief Calculates the rms current in a C F capacitor connected across
+     * Vrms -V rms, f-Hz AC power.
+     * @param C  The capacitance.
+     * @param Vrms  The rms voltage.
+     * @param f  The frequency.
+     * @param print  print to console
+     * @return  rms current
+     */
+    static long double rmsCurrentInCapacitor(
+            long double C, long double Vrms, long double f, bool print = true);
+
+    /**
+     * @brief A R ohm resistor, a C F capacitor, and L H inductor are each
+     * connected across Vrms-V rms, f-Hz AC power. Calculate what the rms
+     * current in each is.
+     * @param R  The resistance.
+     * @param C  The capacitance.
+     * @param L  The inductance.
+     * @param Vrms  The rms voltage.
+     * @param f  The frequency.
+     * @param print  print to console
+     * @return  rms current in resistor, capacitor, inductor
+     */
+    static vector<long double> rmsCurrentInRLC(
+                long double R, long double C, long double L, long double Vrms,
+                long double f, bool print = true);
 
 
     ~ElectricCurrent()
@@ -1344,17 +1406,6 @@ inline long double ElectricCurrent::current_nqAvd(
     return val;
 }
 
-inline long double ElectricCurrent::current_ohms(
-        const long double V, const long double R, bool print)
-{
-    auto val =  V / R;//Amperes(I)
-    if (print)
-    {
-        std::cout << "The current is " << val << " Amperes(I)" << std::endl;
-    }
-    return val;
-}
-
 inline long double ElectricCurrent::current_PR(
         const long double P, const long double R, bool print)
 {
@@ -1373,17 +1424,6 @@ inline long double ElectricCurrent::current_PV(
     if (print)
     {
         std::cout << "The current is " << val << " Amperes" << std::endl;
-    }
-    return val;
-}
-
-inline long double ElectricCurrent::resistance_ohmic(
-        const long double V, const long double I, bool print)
-{
-    auto val =  V / I;//Ohms
-    if (print)
-    {
-        std::cout << "The resistance is " << val << " Ohms" << std::endl;
     }
     return val;
 }
@@ -1749,9 +1789,9 @@ inline long double ElectricCurrent::costToHeatHotTub(
     return val;
 }
 
-inline long double ElectricCurrent::rmsCurrent(const long double Io, bool print)
+inline long double ElectricCurrent::rmsCurrent(const long double Ip, bool print)
 {
-    auto val =  Io/sqrt(2);
+    auto val =  Ip/sqrt(2);
     if (print)
     {
         std::cout << "The RMS current is " << val << " Amperes" << std::endl;
@@ -1770,9 +1810,9 @@ inline long double ElectricCurrent::peekCurrent(
     return val;
 }
 
-inline long double ElectricCurrent::rmsVoltage(const long double Vo, bool print)
+inline long double ElectricCurrent::rmsVoltage(const long double Vp, bool print)
 {
-    auto val =  Vo / sqrt(2);
+    auto val =  Vp / sqrt(2);
     if (print)
     {
         std::cout << "The RMS voltage is " << val << " Volts" << std::endl;
@@ -1850,8 +1890,8 @@ ElectricCurrent::steadyCurrent(long double Q, long double t, bool print) {
 
 long double
 ElectricCurrent::instantaneousCurrent(
-        long double I_max, long double w, long double t, bool print) {
-    long double I = I_max * sin(w * t);
+        long double Ip, long double w, long double t, bool print) {
+    long double I = Ip * sin(w * t);
     if (print) {
         std::cout << "I = " << I << " A" << std::endl;
     }
@@ -1905,24 +1945,6 @@ long double ElectricCurrent::electricFieldInWire(
         std::cout << "E = " << E << " V/m" << std::endl;
     }
     return E;
-}
-
-long double
-ElectricCurrent::voltage_ohms(long double I, long double R, bool print) {
-    long double V = I * R;
-    if (print) {
-        std::cout << "V = " << V << " V" << std::endl;
-    }
-    return V;
-}
-
-long double
-ElectricCurrent::resistance_ohms(long double I, long double V, bool print) {
-    long double R = V / I;
-    if (print) {
-        std::cout << "R = " << R << " Ohms" << std::endl;
-    }
-    return R;
 }
 
 long double
@@ -2135,6 +2157,105 @@ long double ElectricCurrent::getResistivity(const string& material) {
     } else {
         return 0.0;
     }
+}
+
+long double
+ElectricCurrent::voltageAC(
+        long double Vp, long double f, long double phi_v, long double t,
+        bool print)
+{
+    auto omega = 2 * constants::PI * f;
+    auto V = Vp * sin(omega * t + phi_v);
+    if (print) {
+        std::cout << "V = " << V << " V" << std::endl;
+    }
+    return V;
+}
+
+long double
+ElectricCurrent::currentAC(
+        long double Ip, long double f, long double phi_i, long double t,
+        bool print)
+{
+    auto omega = 2 * constants::PI * f;
+    auto I = Ip * sin(omega * t + phi_i);
+    if (print) {
+        std::cout << "I = " << I << " A" << std::endl;
+    }
+    return I;
+}
+
+long double
+ElectricCurrent::peekCurrent(long double Vp, long double R, bool print) {
+    auto I = Vp / R;
+    if (print) {
+        std::cout << "I = " << I << " A" << std::endl;
+    }
+    return I;
+}
+
+long double
+ElectricCurrent::electricFieldInCylinder(
+        long double rho, long double R, long double r, bool print)
+{
+    long double E = 0.0;
+    auto e0 = constants::_e0;
+    if (r <= R) {
+        E = (rho * r) / (2.0 * e0);
+    } else {
+        E = (rho * R * R) / (2.0 * e0 * r);
+    }
+    if (print) {
+        std::cout << "E = " << E << " V/m" << std::endl;
+    }
+    return E;
+}
+
+vector<long double>
+ElectricCurrent::acCurrent(long double Ip, long double omega, bool print) {
+    auto I = Ip * sin(omega);
+    auto I_rms = Ip / sqrt(2.0);
+    auto I_peak = Ip;
+    auto I_avg = Ip / 2.0;
+    auto f = omega / (2.0 * constants::PI);
+    if (print) {
+        std::cout << "I = " << I << " A" << std::endl;
+        std::cout << "I_rms = " << I_rms << " A" << std::endl;
+        std::cout << "I_peak = " << I_peak << " A" << std::endl;
+        std::cout << "I_avg = " << I_avg << " A" << std::endl;
+        std::cout << "f = " << f << " Hz" << std::endl;
+    }
+    return {I, I_rms, I_peak, I_avg, f};
+}
+
+long double
+ElectricCurrent::rmsCurrentInCapacitor(
+        long double C, long double Vrms, long double f, bool print)
+{
+    auto Xc = 1.0 / (2.0 * constants::PI * f * C);
+    auto I = Vrms / Xc;
+    if (print) {
+        std::cout << "I = " << I << " A" << std::endl;
+    }
+    return I;
+}
+
+vector<long double>
+ElectricCurrent::rmsCurrentInRLC(
+        long double R, long double C, long double L, long double Vrms,
+        long double f, bool print)
+{
+    auto IrmsR = Vrms / R;
+    auto Xc = 1.0 / (2.0 * constants::PI * f * C);
+    auto IrmsC = Vrms / Xc;
+    auto Xl = 2.0 * constants::PI * f * L;
+    auto IrmsL = Vrms / Xl;
+    if (print) {
+        std::cout << "IrmsR = " << IrmsR << " A" << std::endl;
+        std::cout << "IrmsC = " << IrmsC << " A" << std::endl;
+        std::cout << "IrmsL = " << IrmsL << " A" << std::endl;
+    }
+    return {IrmsR, IrmsC, IrmsL};
 }
 
 

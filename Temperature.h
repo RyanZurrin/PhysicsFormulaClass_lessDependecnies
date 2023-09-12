@@ -403,13 +403,13 @@ public:
      * @brief calculates the linear thermal expansion of a object made of
      * certain materials which, distance
      * we use the expansion coefficients with
-     * @param a is the coefficient of 'linear expansion'
+     * @param alpha is the coefficient of 'linear expansion'
      * @param L is the length and the change of the thermal expansion is
      * proportional to its length
      * @param tempChange is the change in temperature
      * @returns the total expansion in meters
      */
-    static ld thermalExpansionLinear1D(
+    static ld thermalExpansionLinear(
             const ld a, const ld L, const ld tempChange, bool print = true)
     {
         auto l_expansion = a * L * tempChange;
@@ -425,7 +425,7 @@ public:
      * @param tempChange is the change in temperature
      * @returns the total thermal expansion of in area
      */
-    static ld thermalExpansionArea2D(
+    static ld thermalExpansionArea(
             const ld a, const ld areaChange, const ld tempChange, bool print = true)
     {
         auto a_expansion = a * areaChange * tempChange;
@@ -435,16 +435,58 @@ public:
     }
 
     /**
+     * @brief Calculates the final change in length of a solid object with a
+     * lenght of L m and an initial temperature of Ti C and a final temperature
+     * of Tf C. The coefficient of linear expansion is alpha.
+     * @param L is the length of the object
+     * @param Ti is the initial temperature
+     * @param Tf is the final temperature
+     * @param alpha is the coefficient of linear expansion
+     * @param print is a boolean to print the result or not
+     * @returns the change in length of the object
+     */
+    static ld thermalExpansionLinear(
+            const ld L, const ld Ti, const ld Tf, const ld alpha, bool print = true)
+    {
+        auto l_expansion = L * (1.0 + alpha * (Tf - Ti));
+        if (print)
+            std::cout << "Linear Thermal Expansion: " << l_expansion << std::endl;
+        return l_expansion;
+    }
+
+    /**
      * @brief calculates the thermal expansion in 2 dimensions, area
-     * @param av is the coefficient of 'volume expansion'
+     * @param beta is the coefficient of 'volume expansion'
      * @param vChange is the change in the volume
      * @param tempChange is the change in temperature
+     * @param print is a boolean to print the result or not
      * @returns the total thermal expansion of a volume
      */
-    static ld thermalExpansionVolume3D(
-            const ld av, const ld vChange, const ld tempChange, bool print = true)
+    static ld thermalExpansionVolume(
+            const ld beta, const ld vChange, const ld tempChange, bool print =
+    true)
     {
-        auto v_expansion = av * vChange * tempChange;
+        auto v_expansion = beta * vChange * tempChange;
+        if (print)
+            std::cout << "Volume Thermal Expansion: " << v_expansion << std::endl;
+        return v_expansion;
+    }
+
+    /**
+     * @brief The volume of some liquid is V L and it starts at a temp Ti °C
+     * what volume will this liquid occupy if it is heated to Tf °C. The
+     * substance has a volume expansion coefficient of β.
+     * @param beta is the coefficient of 'volume expansion'
+     * @param V is the volume
+     * @param Ti is the initial temperature
+     * @param Tf is the final temperature
+     * @param print is a boolean to print the result or not
+     * @returns the total thermal expansion of a volume
+     */
+    static ld thermalExpansionVolume(
+            const ld beta, const ld V, const ld Ti, const ld Tf, bool print = true)
+    {
+        auto v_expansion = V * (1.0 + beta * (Tf - Ti));
         if (print)
             std::cout << "Volume Thermal Expansion: " << v_expansion << std::endl;
         return v_expansion;
