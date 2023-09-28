@@ -24,7 +24,7 @@ namespace rez {
         Vector<float, dim> point;								// Coordinates of the vertex
         EdgeDCEL<type, dim>* incident_edge = nullptr;			// Incident edge to the vertex
 
-        VertexDCEL(Vector<type, dim>& _point) : point(_point) {}
+        explicit VertexDCEL(Vector<type, dim>& _point) : point(_point) {}
 
         void print() {
             std::cout << "(" << point[X_] << "," << point[Y_] << ") \n";
@@ -42,7 +42,7 @@ namespace rez {
 
         EdgeDCEL() { id = -1; }
 
-        EdgeDCEL(VertexDCEL<type, dim>* _origin) :origin(_origin) {
+        explicit EdgeDCEL(VertexDCEL<type, dim>* _origin) :origin(_origin) {
             id = _id++;
         };
 
@@ -209,8 +209,8 @@ namespace rez {
         edge_list[edge_list.size() - 1]->prev = edge_list[1];
 
         // Configure the faces.
-        FaceDCEL<type, dim>* f1 = new FaceDCEL<type, dim>();
-        FaceDCEL<type, dim>* f2 = new FaceDCEL<type, dim>();
+        auto* f1 = new FaceDCEL<type, dim>();
+        auto* f2 = new FaceDCEL<type, dim>();
 
         f1->outer = edge_list[0];
         // f2 is unbounded face which wrap the f1. So f1 is a hole in f2. So have clockwise edges in innder edge list
@@ -314,7 +314,7 @@ namespace rez {
         half_edge1->prev->next = half_edge1;
         half_edge2->prev->next = half_edge2;
 
-        FaceDCEL<type, dim>* new_face1 = new FaceDCEL<type, dim>();
+        auto* new_face1 = new FaceDCEL<type, dim>();
         new_face1->outer = half_edge1;
         half_edge1->incident_face = new_face1;
         auto temp_edge = half_edge1->next;
@@ -323,7 +323,7 @@ namespace rez {
             temp_edge = temp_edge->next;
         }
 
-        FaceDCEL<type, dim>* new_face2 = new FaceDCEL<type, dim>();
+        auto* new_face2 = new FaceDCEL<type, dim>();
         new_face2->outer = half_edge2;
         half_edge2->incident_face = new_face2;
         temp_edge = half_edge2->next;
@@ -335,7 +335,13 @@ namespace rez {
         face_list.push_back(new_face1);
         face_list.push_back(new_face2);
 
-        auto itr = std::find(face_list.begin(), face_list.end(), previous_face);
+        auto itr = face_list.end();
+        for (auto it = face_list.begin(); it != face_list.end(); ++it) {
+            if (*it == previous_face) {
+                itr = it;
+                break;
+            }
+        }
 
         if (itr != face_list.end()) {
             face_list.erase(itr);

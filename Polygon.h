@@ -6,7 +6,7 @@
 #define PHYSICSFORMULA_POLYGON_H
 #pragma once
 #include <vector>
-
+#include <algorithm>
 #include "Point.h"
 
 namespace rez {
@@ -20,7 +20,7 @@ namespace rez {
         friend class Polygon;
 
     public:
-        Vertex(Point3d& _point, Vertex* _next = nullptr, Vertex* _prev = nullptr) : point(_point), next(_next), prev(_prev) {}
+        explicit Vertex(Point3d& _point, Vertex* _next = nullptr, Vertex* _prev = nullptr) : point(_point), next(_next), prev(_prev) {}
     };
 
     struct Vertex2dSimple {
@@ -33,7 +33,7 @@ namespace rez {
         friend class Polygon2dSimple;
 
     public:
-        Vertex2dSimple(Point2d& _point, Vertex2dSimple* _next = nullptr, Vertex2dSimple* _prev = nullptr) : point(_point), next(_next), prev(_prev) {}
+        explicit Vertex2dSimple(Point2d& _point, Vertex2dSimple* _next = nullptr, Vertex2dSimple* _prev = nullptr) : point(_point), next(_next), prev(_prev) {}
     };
 
     struct Edge2dSimple {
@@ -56,7 +56,7 @@ namespace rez {
         Polygon();
 
         // Construct the Polyhon with given point set
-        Polygon(std::vector<Point3d> _point_list);
+        explicit Polygon(std::vector<Point3d> _point_list);
 
         void Insert(Point3d&);
 
@@ -70,9 +70,9 @@ namespace rez {
         Polygon2dSimple();
 
         // Construct the Polyhon with given point set
-        Polygon2dSimple(std::vector<Point2d> _point_list);
+        explicit Polygon2dSimple(std::vector<Point2d> _point_list);
 
-        Polygon2dSimple(Vertex2dSimple* root_vertex);
+        explicit Polygon2dSimple(Vertex2dSimple* root_vertex);
 
         void Insert(Point2d&);
 

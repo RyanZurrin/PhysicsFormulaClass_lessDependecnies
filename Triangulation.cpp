@@ -81,7 +81,7 @@ static void triangulate(Polygon2d* poly, std::vector<Vertex2dDCEL*>& vertices)
 
             //bool diagonal_added = false;
 
-            while (vertex_stack.size() != 0) {
+            while (!vertex_stack.empty()) {
                 last_vertex_ptr = vertex_stack.top();
                 if (valid_diagonal_DCEL(vertices[i], last_vertex_ptr)) {
                     poly->split(vertices[i], last_vertex_ptr);
@@ -103,7 +103,7 @@ static void triangulate(Polygon2d* poly, std::vector<Vertex2dDCEL*>& vertices)
         }
     }
 
-    if (vertex_stack.size() != 0)
+    if (!vertex_stack.empty())
         vertex_stack.pop();
 
     auto size = vertices.size();
@@ -141,22 +141,22 @@ void rez::triangulate_earclipping(Polygon2dSimple* poly, std::vector<Edge2dSimpl
     initialize_ear_status(poly);
 
     auto vertex_list = poly->getVertcies();
-    int no_vertex_to_process = vertex_list.size();
+    int no_vertex_to_process = (int)vertex_list.size();
 
     Vertex2dSimple* v0, * v1, * v2, * v3, * v4;
     int index = 0;
 
     while (no_vertex_to_process > 3) {
-        for (size_t i = 0; i < vertex_list.size(); i++)
+        for (auto & i : vertex_list)
         {
-            v2 = vertex_list[i];
+            v2 = i;
             if (v2->is_ear && !v2->is_processed) {
                 v3 = v2->next;
                 v4 = v3->next;
                 v1 = v2->prev;
                 v0 = v1->prev;
 
-                edge_list.push_back(Edge2dSimple(v1->point, v3->point));
+                edge_list.emplace_back(v1->point, v3->point);
                 v2->is_processed = true;
 
                 v1->next = v3;

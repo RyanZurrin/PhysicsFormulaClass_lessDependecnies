@@ -36,7 +36,7 @@ namespace rez {
             vertices[1] = p2;
         }
 
-        bool operator==(const Edge3d& _other)
+        bool operator==(const Edge3d& _other) const
         {
             if (*vertices[0]->point == *_other.vertices[0]->point
                 && *vertices[1]->point == *_other.vertices[1]->point)

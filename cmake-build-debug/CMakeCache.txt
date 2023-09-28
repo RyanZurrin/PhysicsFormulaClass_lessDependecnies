@@ -481,6 +481,8 @@ _Python3_INCLUDE_DIR:INTERNAL=E:/Program Files/Python310/include
 //Python3 Properties
 _Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;10;5;64;;cp310-win_amd64;;E:\Program Files\Python310\Lib;E:\Program Files\Python310\Lib;E:\Program Files\Python310\Lib\site-packages;E:\Program Files\Python310\Lib\site-packages
 _Python3_INTERPRETER_SIGNATURE:INTERNAL=089d16183857256eb3d9ea0e20a8774a
+//Interpreter reason failure
+_Python3_Interpreter_REASON_FAILURE:INTERNAL=
 //Path to a library.
 _Python3_LIBRARY_DEBUG:INTERNAL=_Python3_LIBRARY_DEBUG-NOTFOUND
 //Path to a library.

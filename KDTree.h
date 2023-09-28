@@ -11,6 +11,7 @@
 
 #include <list>
 #include <vector>
+#include <cstdint>
 #include <algorithm>
 
 namespace rez {
