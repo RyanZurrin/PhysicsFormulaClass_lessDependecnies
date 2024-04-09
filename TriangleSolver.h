@@ -1341,20 +1341,15 @@ inline void TriangleSolver::triangleTypeByAngle()
 
         const double tolerance = 1e-9; // Adjust tolerance as needed
 
-        if (std::abs(a - 90.0) < tolerance || std::abs(b - 90.0) < tolerance || std::abs(c - 90.0) < tolerance) {
+        if (abs(longest - 90) < tolerance) {
             angleType = "Right";
-        }
-        else if (std::abs(a * a + b * b - longest * longest) < tolerance) {
-            angleType = "Right";
-        }
-        else if (a * a + b * b > longest * longest) {
+        } else if (longest > 90) {
+            angleType = "Obtuse";
+        } else {
             angleType = "Acute";
         }
-        else {
-            angleType = "Obtuse";
-        }
     }
-    cout << "angleType: " << angleType << endl;
+
 }
 
 
