@@ -13,6 +13,8 @@ int main(int argc, char* argv[])
     //**************************************************************************
 
     Circuits::rmsCurrentInRLC(470.0, 10e-6, 750e-3, 6.3, 60.0);
+    TriangleSolver triangle = TriangleSolver(3, 4, 5);
+    cout << "data: " << triangle << endl;
 
     //**************************************************************************
     //Stopping RunTimer and displaying the programs' execution time

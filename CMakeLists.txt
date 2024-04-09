@@ -10,13 +10,13 @@ set(CMAKE_CXX_STANDARD 20)
 # create a flag to enable/disable the use of the boost library
 option(USE_BOOST "Use Boost" OFF)
 
-if(EXISTS "E:/Program Files/vcpkg/scripts/buildsystems/vcpkg.cmake")
-    set(DMAKE_TOOLCHAIN_FILE "E:/Program Files/vcpkg/scripts/buildsystems/vcpkg.cmake")
-else()
-    set(DMAKE_TOOLCHAIN_FILE "D:/src/vcpkg/scripts/buildsystems/vcpkg.cmake")
-    # turn on the use of the boost library
-    set(USE_BOOST ON)
-endif()
+#if(EXISTS "E:/Program Files/vcpkg/scripts/buildsystems/vcpkg.cmake")
+#    set(DMAKE_TOOLCHAIN_FILE "E:/Program Files/vcpkg/scripts/buildsystems/vcpkg.cmake")
+#else()
+#    set(DMAKE_TOOLCHAIN_FILE "D:/src/vcpkg/scripts/buildsystems/vcpkg.cmake")
+#    # turn on the use of the boost library
+#    set(USE_BOOST ON)
+#endif()
 
 
 add_executable(PhysicsFormula testFactory.cpp Angle.h AtomicPhysics.h

@@ -7,7 +7,7 @@
 // Part of a final project in c++ II, this program as a whole
 // will calculate the properties of 2D and 3D objects and vectors
 
-// prgrammer:   Ryan Zurrin
+// created by:   Ryan Zurrin
 #include <cmath>
 #include <string>
 #include <utility>
@@ -68,7 +68,7 @@ class TriangleSolver
     TriangleSolver *solve_by_SSA(const double&, const double&, const double&); //  two sides and one angle that is not the included angle
     TriangleSolver *solve_by_SSS(const double&, const double&, const double&); //  all three sides of a triangle, but no angles
 
-    // member variablesfor keeping track of triangle data
+    // member variables for keeping track of triangle data
     string ID;
     double max_side;
     double height_a, altHeight_a;
@@ -126,8 +126,8 @@ public:
     /// <param name="param3">The third parameter.</param>
     /// <param name="type">Three letter string literal or The type of triangle to be solved.</param>
     /// <param name="id">object identifier if wanted</param>
-    TriangleSolver(const double param1, const double param2, const double param3,
-                   const string type = "sss", const string id = "");
+    TriangleSolver(double param1, double param2, double param3,
+                   string type = "sss", string id = "");
 
     TriangleSolver( TriangleSolver&); // copy constructor
     TriangleSolver(TriangleSolver&& t)noexcept;
@@ -226,13 +226,13 @@ public:
     bool operator<(const TriangleSolver& s)const { return area < s.area; }
     bool operator<=(const TriangleSolver& s)const { return area <= s.area; }
     bool operator==(const TriangleSolver& s)const { return area == s.area; }
-    bool operator!=(const TriangleSolver& s)const { return !(area == s.area); }
+    bool operator!=(const TriangleSolver& s)const { return area != s.area; }
     bool operator>(const double& n)const { return area > n; }
     bool operator>=(const double& n)const { return area >= n; }
     bool operator<(const double& n)const { return n < area; }
     bool operator<=(const double& n)const { return n <= area; }
     bool operator==(const double& n)const { return area == n; }
-    bool operator!=(const double& n)const { return !(area == n); }
+    bool operator!=(const double& n)const { return area != n; }
 
     //overloaded additon operators
     TriangleSolver operator++();
@@ -886,7 +886,7 @@ inline TriangleSolver *TriangleSolver::solve_by_AAS(const double& a1, const doub
     side_b = sin(angle_B*constants::RADIAN) * s / sin(a2 * constants::RADIAN);
 
 
-    if (checkTriangle() == true) {
+    if (checkTriangle()) {
         update_triangle();
     }
     return this;
@@ -902,7 +902,7 @@ inline TriangleSolver *TriangleSolver::solve_by_ASA(const double& a1, const doub
     side_b = sin(angle_B*constants::RADIAN) * s/sin(angle_C*constants::RADIAN);
     side_a = sin(angle_A*constants::RADIAN) * s/sin(angle_C*constants::RADIAN);
 
-    if (checkTriangle() == true) {
+    if (checkTriangle()) {
         update_triangle();
     }
     return this;
@@ -930,7 +930,7 @@ inline TriangleSolver* TriangleSolver::solve_by_SSA(const double& s1, const doub
     t4 = side_a * sin(angle_C*constants::RADIAN);
     side_c = t4 / sin(angle_A*constants::RADIAN);
     //side_c = sqrt((s1 * s1) + (s2 * s2) - 2 * s1 * s2 * cos(angle_C));
-    if (checkTriangle() == true) {
+    if (checkTriangle()) {
         update_triangle();
     }
     else
@@ -957,7 +957,7 @@ inline TriangleSolver *TriangleSolver::solve_by_SSS(const double& s1, const doub
     side_a = s1;
     side_b = s2;
     side_c = s3;
-    if (checkSides() == true) {
+    if (checkSides()) {
         update_triangle();
     }
     else {
@@ -1327,37 +1327,34 @@ inline void TriangleSolver::triangleTypeByAngle()
     c = angle_C;
 
     if (!checkAngles()) {
-        //cout << "Not a valid triangle" << endl;
-        //throw ExceptionHandler.
         angleType = "invalid";
     }
     else {
         double longest = c;
 
         if (longest < a) {
-            c = longest;
-            longest = b;
-            a = c;
+            longest = a;
         }
-
         if (longest < b) {
-            c = longest;
             longest = b;
-            b = c;
-
         }
-        if (a * a + b * b == longest * longest || a == 90 || b == 90 || c==90) {
-            //cout << "This is a right-angled triangle.\n";
+
+        const double tolerance = 1e-9; // Adjust tolerance as needed
+
+        if (std::abs(a - 90.0) < tolerance || std::abs(b - 90.0) < tolerance || std::abs(c - 90.0) < tolerance) {
+            angleType = "Right";
+        }
+        else if (std::abs(a * a + b * b - longest * longest) < tolerance) {
             angleType = "Right";
         }
         else if (a * a + b * b > longest * longest) {
-            //cout << "This is an acute-angled triangle.\n";
             angleType = "Acute";
         }
-        else
-            //cout << "This is an obtuse-angled triangle.\n";
+        else {
             angleType = "Obtuse";
+        }
     }
+    cout << "angleType: " << angleType << endl;
 }
 
 
@@ -1693,6 +1690,10 @@ inline istream& operator>>(istream& is, TriangleSolver& t)
         t.badTriangle();
     }
     return is;
+}
+
+TriangleSolver TriangleSolver::operator-() const {
+    return TriangleSolver();
 }
 
 template<typename T>
